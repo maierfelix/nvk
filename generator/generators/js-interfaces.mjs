@@ -335,7 +335,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
     }`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
@@ -345,7 +345,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
     }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
@@ -355,7 +355,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
     }`;
     }
     case JavaScriptType.TYPED_ARRAY: {

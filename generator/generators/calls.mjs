@@ -37,13 +37,21 @@ function getCallExtension(call) {
   return null;
 };
 
+function getParamByParamName(call, name) {
+  for (let ii = 0; ii < call.params.length; ++ii) {
+    let param = call.params[ii];
+    if (param.name === name) return param;
+  };
+  warn(`Cannot resolve param by name "${name}"`);
+  return null;
+};
+
 function getParamIndexByParamName(call, name) {
   for (let ii = 0; ii < call.params.length; ++ii) {
     let param = call.params[ii];
     if (param.name === name) return ii;
   };
-  error(`Cannot resolve param index by name "${name}"`);
-  return null;
+  return -1;
 };
 
 function getInputArrayBody(call, param, index) {
@@ -77,18 +85,46 @@ function getInputArrayBody(call, param, index) {
   // fill variable
   out += `
   if (info[${index}].${condition}) {\n`;
-  // auto flush structs
-  if (param.isStructType) {
-    out += `
-  {
-    Napi::Array array = info[${index}].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }`;
+  if (param.length) {
+    if (param.isHandleType || param.isStructType) {
+      let lengthIndex = getParamIndexByParamName(call, param.length);
+      if (lengthIndex > -1) {
+        let lengthParam = getParamByParamName(call, param.length);
+        if (lengthParam.dereferenceCount > 0) {
+          out += `
+    // validate length
+    {
+      uint32_t expectedLength = info[${lengthIndex}].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[${index}].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }`;
+        } else if (lengthParam.isNumber && lengthParam.type === "uint32_t") {
+          out += `
+    // validate length
+    if (info[${index}].As<Napi::Array>().Length() != info[${lengthIndex}].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+        } else {
+          warn(`Cannot handle param length validation for ${call.name}.${param.name} (${param.length})`);
+        }
+      // length gets read from structure
+      } else if (param.length.match("::")) {
+        let normalizedName = param.length.split("::")[0];
+        let structureMemberName = param.length.split("::")[1];
+        let lengthIndex = getParamIndexByParamName(call, normalizedName);
+        out += `
+    // validate length
+    if ($p${lengthIndex} != nullptr && info[${index}].As<Napi::Array>().Length() != $p${lengthIndex}->${structureMemberName}) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${lengthIndex + 1} '${param.length.replace("::", ".")}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+      } else {
+        warn(`Cannot handle param length validation for ${call.name}.${param.name} (${param.length})`);
+      }
+    }
   }
   // handle
   if (param.isHandleType) {
@@ -98,6 +134,10 @@ function getInputArrayBody(call, param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+        NapiObjectTypeError(info[0], "argument ${index + 1}", "${param.type}");
+        return env.Undefined();
+      }
       ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -111,6 +151,12 @@ function getInputArrayBody(call, param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+        NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -119,27 +165,21 @@ function getInputArrayBody(call, param, index) {
   // typed array
   else if (param.isTypedArray) {
     let type = param.baseType || param.type;
+    let lengthIndex = getParamIndexByParamName(call, param.length);
+    let lengthParam = getParamByParamName(call, param.length);
     out += `
     if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.jsTypedArrayName)}) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
-    }
+    }`;
+    out += `
+    if (info[${index}].As<Napi::TypedArray>().ElementLength() != $p${lengthIndex}) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+    out += `
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
     $p${index} = std::make_shared<${type}*>(data);`;
-  }
-  // enum
-  else if (param.enumType) {
-    out += `
-    Napi::Array array = info[${index}].As<Napi::Array>();
-    ${param.enumType}* arr${index} = new ${param.enumType}[array.Length()];
-    $p${index} = arr${index};`;
-  }
-  // numbers
-  else if (param.isNumericArray && isConstant) {
-    let type = param.baseType || param.type;
-    out += `
-    std::vector<${type}> data = createArrayOfV8Numbers<${type}>(info[${index}]);
-    $p${index} = std::make_shared<std::vector<${type}>>(data);`;
   }
   else {
     warn(`Cannot handle param ${rawType} in input-array-body!`);
@@ -211,10 +251,9 @@ function getCallBodyBefore(call) {
       if (info[${index}].As<Napi::Array>().Length() != ${param.length}) {
         Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
-      } else {
-        std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
-        $p${index} = std::make_shared<std::vector<${param.type}>>(data);
       }
+      std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
+      $p${index} = std::make_shared<std::vector<${param.type}>>(data);
     } else if (!info[${index}].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
@@ -316,15 +355,6 @@ function getCallBodyBefore(call) {
         return `
   Napi::Object obj${index} = info[${index}].As<Napi::Object>();
   void *$p${index} = nullptr;`;
-      case "const void *":
-        return `
-  ${param.type}* $p${index};
-  if (info[${index}].IsTypedArray()) {
-    $p${index} = value.As<Napi::TypedArray>().ArrayBuffer().Data();
-  } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }`;
       default: {
         // array of structs or handles
         if (param.isArray && (param.isStructType || param.isHandleType)) {
@@ -356,7 +386,7 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
     if (${isInvalidStype}) {
-      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
       return env.Undefined();
     }
     obj${index} = obj;
@@ -378,7 +408,7 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
-      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
       return env.Undefined();
     }
     obj${index} = obj;
@@ -674,11 +704,13 @@ function getCallObjectUpdate(call) {
   switch (call.name) {
     case "vkCreateDevice": {
       let index = getParamIndexByParamName(call, "pDevice");
+      if (index <= -1) warn(`Cannot resolve param index by name "${name}"`);
       return `
   vkUseDevice(*$p${index});`;
     }
     case "vkCreateInstance": {
       let index = getParamIndexByParamName(call, "pInstance");
+      if (index <= -1) warn(`Cannot resolve param index by name "${name}"`);
       return `
   vkUseInstance(*$p${index});`;
     }

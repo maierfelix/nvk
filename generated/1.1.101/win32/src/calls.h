@@ -347,7 +347,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstanceCreateInfo]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstanceCreateInfo");
       return env.Undefined();
     }
     obj0 = obj;
@@ -368,7 +368,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkInstance]");
+      NapiObjectTypeError(info[2], "argument 3", "VkInstance");
       return env.Undefined();
     }
     obj2 = obj;
@@ -400,7 +400,7 @@ Napi::Value _vkDestroyInstance(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -431,7 +431,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -464,11 +464,23 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pPhysicalDevices' in 'vkEnumeratePhysicalDevices'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkPhysicalDevice> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
+        NapiObjectTypeError(info[0], "argument 3", "VkPhysicalDevice");
+        return env.Undefined();
+      }
       VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -510,7 +522,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -549,7 +561,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -588,7 +600,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -606,7 +618,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceProperties") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceProperties");
       return env.Undefined();
     }
     obj1 = obj;
@@ -644,7 +656,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -677,20 +689,25 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pQueueFamilyProperties' in 'vkGetPhysicalDeviceQueueFamilyProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkQueueFamilyProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueueFamilyProperties") {
+        NapiObjectTypeError(info[2], "argument 3", "VkQueueFamilyProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkQueueFamilyProperties* instance = reinterpret_cast<VkQueueFamilyProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -731,7 +748,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -749,7 +766,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceMemoryProperties") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceMemoryProperties");
       return env.Undefined();
     }
     obj1 = obj;
@@ -787,7 +804,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -805,7 +822,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceFeatures") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceFeatures");
       return env.Undefined();
     }
     obj1 = obj;
@@ -843,7 +860,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -867,7 +884,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFormatProperties") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkFormatProperties]");
+      NapiObjectTypeError(info[2], "argument 3", "VkFormatProperties");
       return env.Undefined();
     }
     obj2 = obj;
@@ -906,7 +923,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -954,7 +971,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageFormatProperties") {
-      NapiObjectTypeError(info[6], "argument 7", "[object VkImageFormatProperties]");
+      NapiObjectTypeError(info[6], "argument 7", "VkImageFormatProperties");
       return env.Undefined();
     }
     obj6 = obj;
@@ -997,7 +1014,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1015,7 +1032,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -1036,7 +1053,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDevice]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDevice");
       return env.Undefined();
     }
     obj3 = obj;
@@ -1069,7 +1086,7 @@ Napi::Value _vkDestroyDevice(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1143,20 +1160,25 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
 
   if (info[1].IsArray()) {
 
-  {
-    Napi::Array array = info[1].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[0].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[1].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 2 'pProperties' in 'vkEnumerateInstanceLayerProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[1].As<Napi::Array>();
     std::vector<VkLayerProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkLayerProperties") {
+        NapiObjectTypeError(info[1], "argument 2", "VkLayerProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkLayerProperties* instance = reinterpret_cast<VkLayerProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1219,20 +1241,25 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkEnumerateInstanceExtensionProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkExtensionProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExtensionProperties") {
+        NapiObjectTypeError(info[2], "argument 3", "VkExtensionProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkExtensionProperties* instance = reinterpret_cast<VkExtensionProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1274,7 +1301,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1307,20 +1334,25 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkEnumerateDeviceLayerProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkLayerProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkLayerProperties") {
+        NapiObjectTypeError(info[2], "argument 3", "VkLayerProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkLayerProperties* instance = reinterpret_cast<VkLayerProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1361,7 +1393,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1402,20 +1434,25 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pProperties' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkExtensionProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExtensionProperties") {
+        NapiObjectTypeError(info[3], "argument 4", "VkExtensionProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkExtensionProperties* instance = reinterpret_cast<VkExtensionProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1458,7 +1495,7 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1488,7 +1525,7 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkQueue]");
+      NapiObjectTypeError(info[3], "argument 4", "VkQueue");
       return env.Undefined();
     }
     obj3 = obj;
@@ -1520,7 +1557,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1543,20 +1580,22 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pSubmits' in 'vkQueueSubmit'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkSubmitInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSubmitInfo") {
+        NapiObjectTypeError(info[2], "argument 3", "VkSubmitInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSubmitInfo* instance = reinterpret_cast<VkSubmitInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1572,7 +1611,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      NapiObjectTypeError(info[3], "argument 4", "VkFence");
       return env.Undefined();
     }
     obj3 = obj;
@@ -1604,7 +1643,7 @@ Napi::Value _vkQueueWaitIdle(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1633,7 +1672,7 @@ Napi::Value _vkDeviceWaitIdle(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1662,7 +1701,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1680,7 +1719,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryAllocateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkMemoryAllocateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -1701,7 +1740,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDeviceMemory");
       return env.Undefined();
     }
     obj3 = obj;
@@ -1733,7 +1772,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1751,7 +1790,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceMemory");
       return env.Undefined();
     }
     obj1 = obj;
@@ -1783,7 +1822,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1801,7 +1840,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceMemory");
       return env.Undefined();
     }
     obj1 = obj;
@@ -1860,7 +1899,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1878,7 +1917,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceMemory");
       return env.Undefined();
     }
     obj1 = obj;
@@ -1908,7 +1947,7 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1931,20 +1970,22 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pMemoryRanges' in 'vkFlushMappedMemoryRanges'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkMappedMemoryRange> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMappedMemoryRange") {
+        NapiObjectTypeError(info[2], "argument 3", "VkMappedMemoryRange");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkMappedMemoryRange* instance = reinterpret_cast<VkMappedMemoryRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -1973,7 +2014,7 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -1996,20 +2037,22 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pMemoryRanges' in 'vkInvalidateMappedMemoryRanges'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkMappedMemoryRange> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMappedMemoryRange") {
+        NapiObjectTypeError(info[2], "argument 3", "VkMappedMemoryRange");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkMappedMemoryRange* instance = reinterpret_cast<VkMappedMemoryRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -2038,7 +2081,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2056,7 +2099,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceMemory");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2105,7 +2148,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2123,7 +2166,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2141,7 +2184,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryRequirements") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMemoryRequirements");
       return env.Undefined();
     }
     obj2 = obj;
@@ -2180,7 +2223,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2198,7 +2241,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2216,7 +2259,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDeviceMemory");
       return env.Undefined();
     }
     obj2 = obj;
@@ -2255,7 +2298,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2273,7 +2316,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2291,7 +2334,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryRequirements") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMemoryRequirements");
       return env.Undefined();
     }
     obj2 = obj;
@@ -2330,7 +2373,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2348,7 +2391,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2366,7 +2409,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDeviceMemory");
       return env.Undefined();
     }
     obj2 = obj;
@@ -2405,7 +2448,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2423,7 +2466,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2456,20 +2499,25 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pSparseMemoryRequirements' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkSparseImageMemoryRequirements> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSparseImageMemoryRequirements") {
+        NapiObjectTypeError(info[3], "argument 4", "VkSparseImageMemoryRequirements");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSparseImageMemoryRequirements* instance = reinterpret_cast<VkSparseImageMemoryRequirements*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -2511,7 +2559,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2574,20 +2622,25 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
 
   if (info[7].IsArray()) {
 
-  {
-    Napi::Array array = info[7].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[6].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[7].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 8 'pProperties' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[7].As<Napi::Array>();
     std::vector<VkSparseImageFormatProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSparseImageFormatProperties") {
+        NapiObjectTypeError(info[7], "argument 8", "VkSparseImageFormatProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSparseImageFormatProperties* instance = reinterpret_cast<VkSparseImageFormatProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -2633,7 +2686,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2656,20 +2709,22 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pBindInfo' in 'vkQueueBindSparse'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkBindSparseInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBindSparseInfo") {
+        NapiObjectTypeError(info[2], "argument 3", "VkBindSparseInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBindSparseInfo* instance = reinterpret_cast<VkBindSparseInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -2685,7 +2740,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      NapiObjectTypeError(info[3], "argument 4", "VkFence");
       return env.Undefined();
     }
     obj3 = obj;
@@ -2717,7 +2772,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2735,7 +2790,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFenceCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFenceCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2756,7 +2811,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      NapiObjectTypeError(info[3], "argument 4", "VkFence");
       return env.Undefined();
     }
     obj3 = obj;
@@ -2788,7 +2843,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2806,7 +2861,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFence]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFence");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2838,7 +2893,7 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2861,11 +2916,20 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pFences' in 'vkResetFences'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkFence> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
+        NapiObjectTypeError(info[0], "argument 3", "VkFence");
+        return env.Undefined();
+      }
       VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -2894,7 +2958,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2912,7 +2976,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFence]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFence");
       return env.Undefined();
     }
     obj1 = obj;
@@ -2942,7 +3006,7 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -2965,11 +3029,20 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pFences' in 'vkWaitForFences'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkFence> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
+        NapiObjectTypeError(info[0], "argument 3", "VkFence");
+        return env.Undefined();
+      }
       VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -3013,7 +3086,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3031,7 +3104,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSemaphoreCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3052,7 +3125,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSemaphore");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3084,7 +3157,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3102,7 +3175,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphore]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSemaphore");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3134,7 +3207,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3152,7 +3225,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EVENT_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEventCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEventCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3173,7 +3246,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkEvent]");
+      NapiObjectTypeError(info[3], "argument 4", "VkEvent");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3205,7 +3278,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3223,7 +3296,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3255,7 +3328,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3273,7 +3346,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3303,7 +3376,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3321,7 +3394,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3351,7 +3424,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3369,7 +3442,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3399,7 +3472,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3417,7 +3490,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPoolCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPoolCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3438,7 +3511,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkQueryPool]");
+      NapiObjectTypeError(info[3], "argument 4", "VkQueryPool");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3470,7 +3543,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3488,7 +3561,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3520,7 +3593,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3538,7 +3611,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3615,7 +3688,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3633,7 +3706,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBufferCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBufferCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3654,7 +3727,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3686,7 +3759,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3704,7 +3777,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3736,7 +3809,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3754,7 +3827,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBufferViewCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBufferViewCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3775,7 +3848,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferView") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBufferView]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBufferView");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3807,7 +3880,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3825,7 +3898,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferView") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBufferView]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBufferView");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3857,7 +3930,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3875,7 +3948,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3896,7 +3969,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      NapiObjectTypeError(info[3], "argument 4", "VkImage");
       return env.Undefined();
     }
     obj3 = obj;
@@ -3928,7 +4001,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3946,7 +4019,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -3978,7 +4051,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -3996,7 +4069,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4014,7 +4087,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageSubresource") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkImageSubresource]");
+      NapiObjectTypeError(info[2], "argument 3", "VkImageSubresource");
       return env.Undefined();
     }
     obj2 = obj;
@@ -4034,7 +4107,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSubresourceLayout") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSubresourceLayout]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSubresourceLayout");
       return env.Undefined();
     }
     obj3 = obj;
@@ -4074,7 +4147,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4092,7 +4165,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageViewCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageViewCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4113,7 +4186,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkImageView]");
+      NapiObjectTypeError(info[3], "argument 4", "VkImageView");
       return env.Undefined();
     }
     obj3 = obj;
@@ -4145,7 +4218,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4163,7 +4236,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageView]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageView");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4195,7 +4268,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4213,7 +4286,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkShaderModuleCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkShaderModuleCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4234,7 +4307,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkShaderModule") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkShaderModule]");
+      NapiObjectTypeError(info[3], "argument 4", "VkShaderModule");
       return env.Undefined();
     }
     obj3 = obj;
@@ -4266,7 +4339,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4284,7 +4357,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkShaderModule") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkShaderModule]");
+      NapiObjectTypeError(info[1], "argument 2", "VkShaderModule");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4316,7 +4389,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4334,7 +4407,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCacheCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCacheCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4355,7 +4428,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[3], "argument 4", "VkPipelineCache");
       return env.Undefined();
     }
     obj3 = obj;
@@ -4387,7 +4460,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4405,7 +4478,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4437,7 +4510,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4455,7 +4528,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4514,7 +4587,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4532,7 +4605,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4555,11 +4628,20 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pSrcCaches' in 'vkMergePipelineCaches'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkPipelineCache> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
+        NapiObjectTypeError(info[0], "argument 4", "VkPipelineCache");
+        return env.Undefined();
+      }
       VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -4589,7 +4671,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4607,7 +4689,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4630,20 +4712,22 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCreateInfos' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkGraphicsPipelineCreateInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkGraphicsPipelineCreateInfo") {
+        NapiObjectTypeError(info[3], "argument 4", "VkGraphicsPipelineCreateInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkGraphicsPipelineCreateInfo* instance = reinterpret_cast<VkGraphicsPipelineCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -4659,11 +4743,20 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pPipelines' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkPipeline> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
+        NapiObjectTypeError(info[0], "argument 6", "VkPipeline");
+        return env.Undefined();
+      }
       VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -4707,7 +4800,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4725,7 +4818,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4748,20 +4841,22 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCreateInfos' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkComputePipelineCreateInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkComputePipelineCreateInfo") {
+        NapiObjectTypeError(info[3], "argument 4", "VkComputePipelineCreateInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkComputePipelineCreateInfo* instance = reinterpret_cast<VkComputePipelineCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -4777,11 +4872,20 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pPipelines' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkPipeline> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
+        NapiObjectTypeError(info[0], "argument 6", "VkPipeline");
+        return env.Undefined();
+      }
       VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -4825,7 +4929,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4843,7 +4947,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipeline");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4875,7 +4979,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4893,7 +4997,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayoutCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineLayoutCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4914,7 +5018,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[3], "argument 4", "VkPipelineLayout");
       return env.Undefined();
     }
     obj3 = obj;
@@ -4946,7 +5050,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -4964,7 +5068,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineLayout");
       return env.Undefined();
     }
     obj1 = obj;
@@ -4996,7 +5100,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5014,7 +5118,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSamplerCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5035,7 +5139,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSampler") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSampler]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSampler");
       return env.Undefined();
     }
     obj3 = obj;
@@ -5067,7 +5171,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5085,7 +5189,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSampler") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSampler]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSampler");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5117,7 +5221,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5135,7 +5239,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorSetLayoutCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5156,7 +5260,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSetLayout") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorSetLayout]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDescriptorSetLayout");
       return env.Undefined();
     }
     obj3 = obj;
@@ -5188,7 +5292,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5206,7 +5310,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSetLayout") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayout]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorSetLayout");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5238,7 +5342,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5256,7 +5360,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPoolCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorPoolCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5277,7 +5381,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorPool]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDescriptorPool");
       return env.Undefined();
     }
     obj3 = obj;
@@ -5309,7 +5413,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5327,7 +5431,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5359,7 +5463,7 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5377,7 +5481,7 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5414,7 +5518,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5432,7 +5536,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetAllocateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorSetAllocateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5451,11 +5555,20 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if ($p1 != nullptr && info[2].As<Napi::Array>().Length() != $p1->descriptorSetCount) {
+      Napi::RangeError::New(env, "Invalid array length for argument 2 'pAllocateInfo.descriptorSetCount' in 'vkAllocateDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSet") {
+        NapiObjectTypeError(info[0], "argument 3", "VkDescriptorSet");
+        return env.Undefined();
+      }
       VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -5496,7 +5609,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5514,7 +5627,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5537,11 +5650,20 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pDescriptorSets' in 'vkFreeDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSet") {
+        NapiObjectTypeError(info[0], "argument 4", "VkDescriptorSet");
+        return env.Undefined();
+      }
       VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -5571,7 +5693,7 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5594,20 +5716,22 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pDescriptorWrites' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkWriteDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkWriteDescriptorSet") {
+        NapiObjectTypeError(info[2], "argument 3", "VkWriteDescriptorSet");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkWriteDescriptorSet* instance = reinterpret_cast<VkWriteDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -5628,20 +5752,22 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[4].IsArray()) {
 
-  {
-    Napi::Array array = info[4].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[4].As<Napi::Array>().Length() != info[3].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pDescriptorCopies' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[4].As<Napi::Array>();
     std::vector<VkCopyDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCopyDescriptorSet") {
+        NapiObjectTypeError(info[4], "argument 5", "VkCopyDescriptorSet");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkCopyDescriptorSet* instance = reinterpret_cast<VkCopyDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -5672,7 +5798,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5690,7 +5816,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFramebufferCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFramebufferCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5711,7 +5837,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFramebuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkFramebuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkFramebuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -5743,7 +5869,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5761,7 +5887,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFramebuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFramebuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFramebuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5793,7 +5919,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5811,7 +5937,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPassCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5832,7 +5958,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
+      NapiObjectTypeError(info[3], "argument 4", "VkRenderPass");
       return env.Undefined();
     }
     obj3 = obj;
@@ -5864,7 +5990,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5882,7 +6008,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPass");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5914,7 +6040,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -5932,7 +6058,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPass");
       return env.Undefined();
     }
     obj1 = obj;
@@ -5950,7 +6076,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExtent2D") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkExtent2D]");
+      NapiObjectTypeError(info[2], "argument 3", "VkExtent2D");
       return env.Undefined();
     }
     obj2 = obj;
@@ -5989,7 +6115,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6007,7 +6133,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPoolCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandPoolCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6028,7 +6154,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkCommandPool]");
+      NapiObjectTypeError(info[3], "argument 4", "VkCommandPool");
       return env.Undefined();
     }
     obj3 = obj;
@@ -6060,7 +6186,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6078,7 +6204,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6110,7 +6236,7 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6128,7 +6254,7 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6165,7 +6291,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6183,7 +6309,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandBufferAllocateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandBufferAllocateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6202,11 +6328,20 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if ($p1 != nullptr && info[2].As<Napi::Array>().Length() != $p1->commandBufferCount) {
+      Napi::RangeError::New(env, "Invalid array length for argument 2 'pAllocateInfo.commandBufferCount' in 'vkAllocateCommandBuffers'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCommandBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
+        NapiObjectTypeError(info[0], "argument 3", "VkCommandBuffer");
+        return env.Undefined();
+      }
       VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -6247,7 +6382,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6265,7 +6400,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6288,11 +6423,20 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCommandBuffers' in 'vkFreeCommandBuffers'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkCommandBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
+        NapiObjectTypeError(info[0], "argument 4", "VkCommandBuffer");
+        return env.Undefined();
+      }
       VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -6322,7 +6466,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6340,7 +6484,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandBufferBeginInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandBufferBeginInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -6372,7 +6516,7 @@ Napi::Value _vkEndCommandBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6401,7 +6545,7 @@ Napi::Value _vkResetCommandBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6437,7 +6581,7 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6461,7 +6605,7 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkPipeline]");
+      NapiObjectTypeError(info[2], "argument 3", "VkPipeline");
       return env.Undefined();
     }
     obj2 = obj;
@@ -6492,7 +6636,7 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6521,20 +6665,22 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pViewports' in 'vkCmdSetViewport'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkViewport> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkViewport") {
+        NapiObjectTypeError(info[3], "argument 4", "VkViewport");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkViewport* instance = reinterpret_cast<VkViewport*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -6564,7 +6710,7 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6593,20 +6739,22 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pScissors' in 'vkCmdSetScissor'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkRect2D> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRect2D") {
+        NapiObjectTypeError(info[3], "argument 4", "VkRect2D");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -6636,7 +6784,7 @@ Napi::Value _vkCmdSetLineWidth(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6672,7 +6820,7 @@ Napi::Value _vkCmdSetDepthBias(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6722,7 +6870,7 @@ Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6741,10 +6889,9 @@ Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
       if (info[1].As<Napi::Array>().Length() != 4) {
         Napi::RangeError::New(env, "Invalid array length for argument 2 'blendConstants' in 'vkCmdSetBlendConstants'").ThrowAsJavaScriptException();
         return env.Undefined();
-      } else {
-        std::vector<float> data = createArrayOfV8Numbers<float>(info[1]);
-        $p1 = std::make_shared<std::vector<float>>(data);
       }
+      std::vector<float> data = createArrayOfV8Numbers<float>(info[1]);
+      $p1 = std::make_shared<std::vector<float>>(data);
     } else if (!info[1].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument 2 'blendConstants' in 'vkCmdSetBlendConstants'").ThrowAsJavaScriptException();
       return env.Undefined();
@@ -6767,7 +6914,7 @@ Napi::Value _vkCmdSetDepthBounds(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6810,7 +6957,7 @@ Napi::Value _vkCmdSetStencilCompareMask(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6853,7 +7000,7 @@ Napi::Value _vkCmdSetStencilWriteMask(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6896,7 +7043,7 @@ Napi::Value _vkCmdSetStencilReference(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6939,7 +7086,7 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -6963,7 +7110,7 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[2], "argument 3", "VkPipelineLayout");
       return env.Undefined();
     }
     obj2 = obj;
@@ -6992,11 +7139,20 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pDescriptorSets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSet") {
+        NapiObjectTypeError(info[0], "argument 6", "VkDescriptorSet");
+        return env.Undefined();
+      }
       VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -7019,6 +7175,10 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
 
     if (info[7].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
       Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[7].As<Napi::TypedArray>().ElementLength() != $p6) {
+      Napi::RangeError::New(env, "Invalid array length for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[7]);
@@ -7052,7 +7212,7 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7070,7 +7230,7 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7115,7 +7275,7 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7144,11 +7304,20 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pBuffers' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
+        NapiObjectTypeError(info[0], "argument 4", "VkBuffer");
+        return env.Undefined();
+      }
       VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -7165,6 +7334,10 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
@@ -7195,7 +7368,7 @@ Napi::Value _vkCmdDraw(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7252,7 +7425,7 @@ Napi::Value _vkCmdDrawIndexed(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7316,7 +7489,7 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7334,7 +7507,7 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7386,7 +7559,7 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7404,7 +7577,7 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7456,7 +7629,7 @@ Napi::Value _vkCmdDispatch(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7506,7 +7679,7 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7524,7 +7697,7 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7562,7 +7735,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7580,7 +7753,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7598,7 +7771,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      NapiObjectTypeError(info[2], "argument 3", "VkBuffer");
       return env.Undefined();
     }
     obj2 = obj;
@@ -7621,20 +7794,22 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
 
   if (info[4].IsArray()) {
 
-  {
-    Napi::Array array = info[4].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[4].As<Napi::Array>().Length() != info[3].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pRegions' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[4].As<Napi::Array>();
     std::vector<VkBufferCopy> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferCopy") {
+        NapiObjectTypeError(info[4], "argument 5", "VkBufferCopy");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBufferCopy* instance = reinterpret_cast<VkBufferCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -7665,7 +7840,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7683,7 +7858,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7707,7 +7882,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      NapiObjectTypeError(info[3], "argument 4", "VkImage");
       return env.Undefined();
     }
     obj3 = obj;
@@ -7736,20 +7911,22 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
 
   if (info[6].IsArray()) {
 
-  {
-    Napi::Array array = info[6].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[6].As<Napi::Array>().Length() != info[5].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 7 'pRegions' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[6].As<Napi::Array>();
     std::vector<VkImageCopy> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageCopy") {
+        NapiObjectTypeError(info[6], "argument 7", "VkImageCopy");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageCopy* instance = reinterpret_cast<VkImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -7782,7 +7959,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7800,7 +7977,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7824,7 +8001,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      NapiObjectTypeError(info[3], "argument 4", "VkImage");
       return env.Undefined();
     }
     obj3 = obj;
@@ -7853,20 +8030,22 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
 
   if (info[6].IsArray()) {
 
-  {
-    Napi::Array array = info[6].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[6].As<Napi::Array>().Length() != info[5].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 7 'pRegions' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[6].As<Napi::Array>();
     std::vector<VkImageBlit> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageBlit") {
+        NapiObjectTypeError(info[6], "argument 7", "VkImageBlit");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageBlit* instance = reinterpret_cast<VkImageBlit*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -7906,7 +8085,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -7924,7 +8103,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -7942,7 +8121,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkImage]");
+      NapiObjectTypeError(info[2], "argument 3", "VkImage");
       return env.Undefined();
     }
     obj2 = obj;
@@ -7971,20 +8150,22 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pRegions' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkBufferImageCopy> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferImageCopy") {
+        NapiObjectTypeError(info[5], "argument 6", "VkBufferImageCopy");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBufferImageCopy* instance = reinterpret_cast<VkBufferImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8016,7 +8197,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8034,7 +8215,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8058,7 +8239,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -8081,20 +8262,22 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pRegions' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkBufferImageCopy> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferImageCopy") {
+        NapiObjectTypeError(info[5], "argument 6", "VkBufferImageCopy");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBufferImageCopy* instance = reinterpret_cast<VkBufferImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8126,7 +8309,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8144,7 +8327,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8200,7 +8383,7 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8218,7 +8401,7 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8271,7 +8454,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8289,7 +8472,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8313,7 +8496,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearColorValue") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkClearColorValue]");
+      NapiObjectTypeError(info[3], "argument 4", "VkClearColorValue");
       return env.Undefined();
     }
     obj3 = obj;
@@ -8338,20 +8521,22 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pRanges' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkImageSubresourceRange> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageSubresourceRange") {
+        NapiObjectTypeError(info[5], "argument 6", "VkImageSubresourceRange");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageSubresourceRange* instance = reinterpret_cast<VkImageSubresourceRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8383,7 +8568,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8401,7 +8586,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8425,7 +8610,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearDepthStencilValue") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkClearDepthStencilValue]");
+      NapiObjectTypeError(info[3], "argument 4", "VkClearDepthStencilValue");
       return env.Undefined();
     }
     obj3 = obj;
@@ -8450,20 +8635,22 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pRanges' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkImageSubresourceRange> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageSubresourceRange") {
+        NapiObjectTypeError(info[5], "argument 6", "VkImageSubresourceRange");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageSubresourceRange* instance = reinterpret_cast<VkImageSubresourceRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8495,7 +8682,7 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8518,20 +8705,22 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pAttachments' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkClearAttachment> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearAttachment") {
+        NapiObjectTypeError(info[2], "argument 3", "VkClearAttachment");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkClearAttachment* instance = reinterpret_cast<VkClearAttachment*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8552,20 +8741,22 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
 
   if (info[4].IsArray()) {
 
-  {
-    Napi::Array array = info[4].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[4].As<Napi::Array>().Length() != info[3].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pRects' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[4].As<Napi::Array>();
     std::vector<VkClearRect> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearRect") {
+        NapiObjectTypeError(info[4], "argument 5", "VkClearRect");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkClearRect* instance = reinterpret_cast<VkClearRect*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8596,7 +8787,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8614,7 +8805,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8638,7 +8829,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      NapiObjectTypeError(info[3], "argument 4", "VkImage");
       return env.Undefined();
     }
     obj3 = obj;
@@ -8667,20 +8858,22 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
 
   if (info[6].IsArray()) {
 
-  {
-    Napi::Array array = info[6].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[6].As<Napi::Array>().Length() != info[5].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 7 'pRegions' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[6].As<Napi::Array>();
     std::vector<VkImageResolve> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageResolve") {
+        NapiObjectTypeError(info[6], "argument 7", "VkImageResolve");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageResolve* instance = reinterpret_cast<VkImageResolve*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8713,7 +8906,7 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8731,7 +8924,7 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8768,7 +8961,7 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8786,7 +8979,7 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      NapiObjectTypeError(info[1], "argument 2", "VkEvent");
       return env.Undefined();
     }
     obj1 = obj;
@@ -8823,7 +9016,7 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -8846,11 +9039,20 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pEvents' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkEvent> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
+        NapiObjectTypeError(info[0], "argument 3", "VkEvent");
+        return env.Undefined();
+      }
       VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8883,20 +9085,22 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
 
   if (info[6].IsArray()) {
 
-  {
-    Napi::Array array = info[6].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[6].As<Napi::Array>().Length() != info[5].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 7 'pMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[6].As<Napi::Array>();
     std::vector<VkMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryBarrier") {
+        NapiObjectTypeError(info[6], "argument 7", "VkMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkMemoryBarrier* instance = reinterpret_cast<VkMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8917,20 +9121,22 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
 
   if (info[8].IsArray()) {
 
-  {
-    Napi::Array array = info[8].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[8].As<Napi::Array>().Length() != info[7].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 9 'pBufferMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[8].As<Napi::Array>();
     std::vector<VkBufferMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferMemoryBarrier") {
+        NapiObjectTypeError(info[8], "argument 9", "VkBufferMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBufferMemoryBarrier* instance = reinterpret_cast<VkBufferMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -8951,20 +9157,22 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
 
   if (info[10].IsArray()) {
 
-  {
-    Napi::Array array = info[10].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[10].As<Napi::Array>().Length() != info[9].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 11 'pImageMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[10].As<Napi::Array>();
     std::vector<VkImageMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageMemoryBarrier") {
+        NapiObjectTypeError(info[10], "argument 11", "VkImageMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageMemoryBarrier* instance = reinterpret_cast<VkImageMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9001,7 +9209,7 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9042,20 +9250,22 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryBarrier") {
+        NapiObjectTypeError(info[5], "argument 6", "VkMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkMemoryBarrier* instance = reinterpret_cast<VkMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9076,20 +9286,22 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
 
   if (info[7].IsArray()) {
 
-  {
-    Napi::Array array = info[7].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[7].As<Napi::Array>().Length() != info[6].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 8 'pBufferMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[7].As<Napi::Array>();
     std::vector<VkBufferMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferMemoryBarrier") {
+        NapiObjectTypeError(info[7], "argument 8", "VkBufferMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBufferMemoryBarrier* instance = reinterpret_cast<VkBufferMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9110,20 +9322,22 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
 
   if (info[9].IsArray()) {
 
-  {
-    Napi::Array array = info[9].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[9].As<Napi::Array>().Length() != info[8].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 10 'pImageMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[9].As<Napi::Array>();
     std::vector<VkImageMemoryBarrier> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageMemoryBarrier") {
+        NapiObjectTypeError(info[9], "argument 10", "VkImageMemoryBarrier");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkImageMemoryBarrier* instance = reinterpret_cast<VkImageMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9159,7 +9373,7 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9177,7 +9391,7 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9221,7 +9435,7 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9239,7 +9453,7 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9276,7 +9490,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9294,7 +9508,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkConditionalRenderingBeginInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkConditionalRenderingBeginInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9326,7 +9540,7 @@ Napi::Value _vkCmdEndConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9355,7 +9569,7 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9373,7 +9587,7 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9417,7 +9631,7 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9441,7 +9655,7 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkQueryPool]");
+      NapiObjectTypeError(info[2], "argument 3", "VkQueryPool");
       return env.Undefined();
     }
     obj2 = obj;
@@ -9479,7 +9693,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9497,7 +9711,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9527,7 +9741,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[4], "argument 5", "[object VkBuffer]");
+      NapiObjectTypeError(info[4], "argument 5", "VkBuffer");
       return env.Undefined();
     }
     obj4 = obj;
@@ -9583,7 +9797,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9601,7 +9815,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineLayout");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9662,7 +9876,7 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9680,7 +9894,7 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPassBeginInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -9719,7 +9933,7 @@ Napi::Value _vkCmdNextSubpass(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9755,7 +9969,7 @@ Napi::Value _vkCmdEndRenderPass(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9784,7 +9998,7 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9807,11 +10021,20 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pCommandBuffers' in 'vkCmdExecuteCommands'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCommandBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
+        NapiObjectTypeError(info[0], "argument 3", "VkCommandBuffer");
+        return env.Undefined();
+      }
       VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9840,7 +10063,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9873,20 +10096,25 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPropertiesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDisplayPropertiesKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayPropertiesKHR") {
+        NapiObjectTypeError(info[2], "argument 3", "VkDisplayPropertiesKHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayPropertiesKHR* instance = reinterpret_cast<VkDisplayPropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -9927,7 +10155,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -9960,20 +10188,25 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPlanePropertiesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDisplayPlanePropertiesKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayPlanePropertiesKHR") {
+        NapiObjectTypeError(info[2], "argument 3", "VkDisplayPlanePropertiesKHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayPlanePropertiesKHR* instance = reinterpret_cast<VkDisplayPlanePropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10014,7 +10247,7 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10053,11 +10286,23 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
 
   if (info[3].IsArray()) {
 
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pDisplays' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkDisplayKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
+        NapiObjectTypeError(info[0], "argument 4", "VkDisplayKHR");
+        return env.Undefined();
+      }
       VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10100,7 +10345,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10118,7 +10363,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10151,20 +10396,25 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pProperties' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkDisplayModePropertiesKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModePropertiesKHR") {
+        NapiObjectTypeError(info[3], "argument 4", "VkDisplayModePropertiesKHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayModePropertiesKHR* instance = reinterpret_cast<VkDisplayModePropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10206,7 +10456,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10224,7 +10474,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10242,7 +10492,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayModeCreateInfoKHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDisplayModeCreateInfoKHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -10263,7 +10513,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModeKHR") {
-      NapiObjectTypeError(info[4], "argument 5", "[object VkDisplayModeKHR]");
+      NapiObjectTypeError(info[4], "argument 5", "VkDisplayModeKHR");
       return env.Undefined();
     }
     obj4 = obj;
@@ -10296,7 +10546,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10314,7 +10564,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModeKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayModeKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayModeKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10338,7 +10588,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayPlaneCapabilitiesKHR") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDisplayPlaneCapabilitiesKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDisplayPlaneCapabilitiesKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -10378,7 +10628,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10396,7 +10646,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplaySurfaceCreateInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplaySurfaceCreateInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10417,7 +10667,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -10449,7 +10699,7 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10472,20 +10722,22 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pCreateInfos' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkSwapchainCreateInfoKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainCreateInfoKHR") {
+        NapiObjectTypeError(info[2], "argument 3", "VkSwapchainCreateInfoKHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSwapchainCreateInfoKHR* instance = reinterpret_cast<VkSwapchainCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10501,11 +10753,20 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
 
   if (info[4].IsArray()) {
 
+    // validate length
+    if (info[4].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pSwapchains' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[4].As<Napi::Array>();
     std::vector<VkSwapchainKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
+        NapiObjectTypeError(info[0], "argument 5", "VkSwapchainKHR");
+        return env.Undefined();
+      }
       VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10548,7 +10809,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10566,7 +10827,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10598,7 +10859,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10622,7 +10883,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -10674,7 +10935,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10692,7 +10953,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10710,7 +10971,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceCapabilitiesKHR") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilitiesKHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSurfaceCapabilitiesKHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -10749,7 +11010,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10767,7 +11028,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10800,20 +11061,25 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pSurfaceFormats' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkSurfaceFormatKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceFormatKHR") {
+        NapiObjectTypeError(info[3], "argument 4", "VkSurfaceFormatKHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSurfaceFormatKHR* instance = reinterpret_cast<VkSurfaceFormatKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -10855,7 +11121,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10873,7 +11139,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10910,6 +11176,10 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
       Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
+    if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
@@ -10938,7 +11208,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -10956,7 +11226,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainCreateInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainCreateInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -10977,7 +11247,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -11009,7 +11279,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11027,7 +11297,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11059,7 +11329,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11077,7 +11347,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11110,11 +11380,23 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pSwapchainImages' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkImage> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
+        NapiObjectTypeError(info[0], "argument 4", "VkImage");
+        return env.Undefined();
+      }
       VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -11157,7 +11439,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11175,7 +11457,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11200,7 +11482,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSemaphore");
       return env.Undefined();
     }
     obj3 = obj;
@@ -11218,7 +11500,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[4], "argument 5", "[object VkFence]");
+      NapiObjectTypeError(info[4], "argument 5", "VkFence");
       return env.Undefined();
     }
     obj4 = obj;
@@ -11269,7 +11551,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11287,7 +11569,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PRESENT_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPresentInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPresentInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11319,7 +11601,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11337,7 +11619,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkWin32SurfaceCreateInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkWin32SurfaceCreateInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11358,7 +11640,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -11390,7 +11672,7 @@ Napi::Value _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Napi::Callback
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11426,7 +11708,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11444,7 +11726,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackCreateInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugReportCallbackCreateInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11465,7 +11747,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugReportCallbackEXT") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDebugReportCallbackEXT]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDebugReportCallbackEXT");
       return env.Undefined();
     }
     obj3 = obj;
@@ -11497,7 +11779,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11515,7 +11797,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugReportCallbackEXT") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugReportCallbackEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11547,7 +11829,7 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11633,7 +11915,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11651,7 +11933,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectNameInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugMarkerObjectNameInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11683,7 +11965,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11701,7 +11983,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectTagInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugMarkerObjectTagInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11733,7 +12015,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11751,7 +12033,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugMarkerMarkerInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11783,7 +12065,7 @@ Napi::Value _vkCmdDebugMarkerEndEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11812,7 +12094,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11830,7 +12112,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugMarkerMarkerInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -11862,7 +12144,7 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11916,7 +12198,7 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExternalImageFormatPropertiesNV") {
-      NapiObjectTypeError(info[7], "argument 8", "[object VkExternalImageFormatPropertiesNV]");
+      NapiObjectTypeError(info[7], "argument 8", "VkExternalImageFormatPropertiesNV");
       return env.Undefined();
     }
     obj7 = obj;
@@ -11960,7 +12242,7 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -11978,7 +12260,7 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceMemory");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12038,7 +12320,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12056,7 +12338,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12081,7 +12363,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -12135,7 +12417,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12153,7 +12435,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12178,7 +12460,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -12232,7 +12514,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12250,7 +12532,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCmdProcessCommandsInfoNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCmdProcessCommandsInfoNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12282,7 +12564,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12300,7 +12582,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCmdReserveSpaceForCommandsInfoNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCmdReserveSpaceForCommandsInfoNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12332,7 +12614,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12350,7 +12632,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutCreateInfoNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkIndirectCommandsLayoutCreateInfoNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12371,7 +12653,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkIndirectCommandsLayoutNVX") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkIndirectCommandsLayoutNVX]");
+      NapiObjectTypeError(info[3], "argument 4", "VkIndirectCommandsLayoutNVX");
       return env.Undefined();
     }
     obj3 = obj;
@@ -12403,7 +12685,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12421,7 +12703,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkIndirectCommandsLayoutNVX") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkIndirectCommandsLayoutNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12453,7 +12735,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12471,7 +12753,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableCreateInfoNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkObjectTableCreateInfoNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12492,7 +12774,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkObjectTableNVX]");
+      NapiObjectTypeError(info[3], "argument 4", "VkObjectTableNVX");
       return env.Undefined();
     }
     obj3 = obj;
@@ -12524,7 +12806,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12542,7 +12824,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkObjectTableNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12574,7 +12856,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12592,7 +12874,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkObjectTableNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12615,20 +12897,22 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'ppObjectTableEntries' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkObjectTableEntryNVX> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableEntryNVX") {
+        NapiObjectTypeError(info[3], "argument 4", "VkObjectTableEntryNVX");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkObjectTableEntryNVX* instance = reinterpret_cast<VkObjectTableEntryNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -12645,6 +12929,10 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pObjectIndices' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[4]);
@@ -12675,7 +12963,7 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12693,7 +12981,7 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkObjectTableNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12720,6 +13008,10 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 4 'pObjectEntryTypes' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
+    if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pObjectEntryTypes' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
@@ -12734,6 +13026,10 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pObjectIndices' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[4]);
@@ -12764,7 +13060,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12782,7 +13078,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceGeneratedCommandsFeaturesNVX]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceGeneratedCommandsFeaturesNVX");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12802,7 +13098,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceGeneratedCommandsLimitsNVX]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDeviceGeneratedCommandsLimitsNVX");
       return env.Undefined();
     }
     obj2 = obj;
@@ -12847,7 +13143,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12865,7 +13161,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceFeatures2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12903,7 +13199,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12921,7 +13217,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceProperties2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -12959,7 +13255,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -12983,7 +13279,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkFormatProperties2]");
+      NapiObjectTypeError(info[2], "argument 3", "VkFormatProperties2");
       return env.Undefined();
     }
     obj2 = obj;
@@ -13022,7 +13318,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13040,7 +13336,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceImageFormatInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceImageFormatInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13060,7 +13356,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkImageFormatProperties2]");
+      NapiObjectTypeError(info[2], "argument 3", "VkImageFormatProperties2");
       return env.Undefined();
     }
     obj2 = obj;
@@ -13099,7 +13395,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13132,20 +13428,25 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pQueueFamilyProperties' in 'vkGetPhysicalDeviceQueueFamilyProperties2'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkQueueFamilyProperties2> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueueFamilyProperties2") {
+        NapiObjectTypeError(info[2], "argument 3", "VkQueueFamilyProperties2");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkQueueFamilyProperties2* instance = reinterpret_cast<VkQueueFamilyProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -13186,7 +13487,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13204,7 +13505,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceMemoryProperties2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13242,7 +13543,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13260,7 +13561,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSparseImageFormatInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceSparseImageFormatInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13295,20 +13596,25 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pProperties' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkSparseImageFormatProperties2> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSparseImageFormatProperties2") {
+        NapiObjectTypeError(info[3], "argument 4", "VkSparseImageFormatProperties2");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSparseImageFormatProperties2* instance = reinterpret_cast<VkSparseImageFormatProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -13350,7 +13656,7 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13374,7 +13680,7 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[2], "argument 3", "VkPipelineLayout");
       return env.Undefined();
     }
     obj2 = obj;
@@ -13403,20 +13709,22 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
-  {
-    Napi::Array array = info[5].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[4].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pDescriptorWrites' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkWriteDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkWriteDescriptorSet") {
+        NapiObjectTypeError(info[5], "argument 6", "VkWriteDescriptorSet");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkWriteDescriptorSet* instance = reinterpret_cast<VkWriteDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -13448,7 +13756,7 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13466,7 +13774,7 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkCommandPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13503,7 +13811,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13521,7 +13829,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalBufferInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceExternalBufferInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13541,7 +13849,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkExternalBufferProperties]");
+      NapiObjectTypeError(info[2], "argument 3", "VkExternalBufferProperties");
       return env.Undefined();
     }
     obj2 = obj;
@@ -13580,7 +13888,7 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13598,7 +13906,7 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryGetWin32HandleInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkMemoryGetWin32HandleInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13653,7 +13961,7 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13684,7 +13992,7 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryWin32HandlePropertiesKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkMemoryWin32HandlePropertiesKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -13724,7 +14032,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13742,7 +14050,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryGetFdInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkMemoryGetFdInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13792,7 +14100,7 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13822,7 +14130,7 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryFdPropertiesKHR]");
+      NapiObjectTypeError(info[3], "argument 4", "VkMemoryFdPropertiesKHR");
       return env.Undefined();
     }
     obj3 = obj;
@@ -13862,7 +14170,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13880,7 +14188,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalSemaphoreInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceExternalSemaphoreInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -13900,7 +14208,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkExternalSemaphoreProperties]");
+      NapiObjectTypeError(info[2], "argument 3", "VkExternalSemaphoreProperties");
       return env.Undefined();
     }
     obj2 = obj;
@@ -13939,7 +14247,7 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -13957,7 +14265,7 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetWin32HandleInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSemaphoreGetWin32HandleInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14012,7 +14320,7 @@ Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14030,7 +14338,7 @@ Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreWin32HandleInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImportSemaphoreWin32HandleInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14062,7 +14370,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14080,7 +14388,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetFdInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSemaphoreGetFdInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14130,7 +14438,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14148,7 +14456,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreFdInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImportSemaphoreFdInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14180,7 +14488,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14198,7 +14506,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalFenceInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceExternalFenceInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14218,7 +14526,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkExternalFenceProperties]");
+      NapiObjectTypeError(info[2], "argument 3", "VkExternalFenceProperties");
       return env.Undefined();
     }
     obj2 = obj;
@@ -14257,7 +14565,7 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14275,7 +14583,7 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFenceGetWin32HandleInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFenceGetWin32HandleInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14330,7 +14638,7 @@ Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14348,7 +14656,7 @@ Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportFenceWin32HandleInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImportFenceWin32HandleInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14380,7 +14688,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14398,7 +14706,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFenceGetFdInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkFenceGetFdInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14448,7 +14756,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14466,7 +14774,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportFenceFdInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImportFenceFdInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14498,7 +14806,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14516,7 +14824,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14546,7 +14854,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14564,7 +14872,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14582,7 +14890,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayPowerInfoEXT]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDisplayPowerInfoEXT");
       return env.Undefined();
     }
     obj2 = obj;
@@ -14615,7 +14923,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14633,7 +14941,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceEventInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceEventInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14654,7 +14962,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      NapiObjectTypeError(info[3], "argument 4", "VkFence");
       return env.Undefined();
     }
     obj3 = obj;
@@ -14686,7 +14994,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14704,7 +15012,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14722,7 +15030,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayEventInfoEXT]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDisplayEventInfoEXT");
       return env.Undefined();
     }
     obj2 = obj;
@@ -14743,7 +15051,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
-      NapiObjectTypeError(info[4], "argument 5", "[object VkFence]");
+      NapiObjectTypeError(info[4], "argument 5", "VkFence");
       return env.Undefined();
     }
     obj4 = obj;
@@ -14776,7 +15084,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14794,7 +15102,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14850,7 +15158,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14868,7 +15176,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -14886,7 +15194,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2EXT]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSurfaceCapabilities2EXT");
       return env.Undefined();
     }
     obj2 = obj;
@@ -14925,7 +15233,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -14958,20 +15266,25 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pPhysicalDeviceGroupProperties' in 'vkEnumeratePhysicalDeviceGroups'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkPhysicalDeviceGroupProperties> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceGroupProperties") {
+        NapiObjectTypeError(info[2], "argument 3", "VkPhysicalDeviceGroupProperties");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkPhysicalDeviceGroupProperties* instance = reinterpret_cast<VkPhysicalDeviceGroupProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15012,7 +15325,7 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15080,7 +15393,7 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15103,20 +15416,22 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pBindInfos' in 'vkBindBufferMemory2'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkBindBufferMemoryInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBindBufferMemoryInfo") {
+        NapiObjectTypeError(info[2], "argument 3", "VkBindBufferMemoryInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBindBufferMemoryInfo* instance = reinterpret_cast<VkBindBufferMemoryInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15145,7 +15460,7 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15168,20 +15483,22 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pBindInfos' in 'vkBindImageMemory2'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkBindImageMemoryInfo> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBindImageMemoryInfo") {
+        NapiObjectTypeError(info[2], "argument 3", "VkBindImageMemoryInfo");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBindImageMemoryInfo* instance = reinterpret_cast<VkBindImageMemoryInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15210,7 +15527,7 @@ Napi::Value _vkCmdSetDeviceMask(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15246,7 +15563,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15264,7 +15581,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceGroupPresentCapabilitiesKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceGroupPresentCapabilitiesKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15302,7 +15619,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15320,7 +15637,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15368,7 +15685,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15386,7 +15703,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAcquireNextImageInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAcquireNextImageInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15436,7 +15753,7 @@ Napi::Value _vkCmdDispatchBase(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15507,7 +15824,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15525,7 +15842,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSurfaceKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15558,20 +15875,25 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pRects' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkRect2D> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRect2D") {
+        NapiObjectTypeError(info[3], "argument 4", "VkRect2D");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15613,7 +15935,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15631,7 +15953,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplateCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorUpdateTemplateCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15652,7 +15974,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorUpdateTemplate]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDescriptorUpdateTemplate");
       return env.Undefined();
     }
     obj3 = obj;
@@ -15684,7 +16006,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15702,7 +16024,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorUpdateTemplate");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15734,7 +16056,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15752,7 +16074,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSet") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSet]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorSet");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15770,7 +16092,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDescriptorUpdateTemplate]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDescriptorUpdateTemplate");
       return env.Undefined();
     }
     obj2 = obj;
@@ -15811,7 +16133,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15829,7 +16151,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorUpdateTemplate");
       return env.Undefined();
     }
     obj1 = obj;
@@ -15847,7 +16169,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      NapiObjectTypeError(info[2], "argument 3", "VkPipelineLayout");
       return env.Undefined();
     }
     obj2 = obj;
@@ -15895,7 +16217,7 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15918,11 +16240,20 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pSwapchains' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkSwapchainKHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
+        NapiObjectTypeError(info[0], "argument 3", "VkSwapchainKHR");
+        return env.Undefined();
+      }
       VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15937,20 +16268,22 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pMetadata' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkHdrMetadataEXT> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkHdrMetadataEXT") {
+        NapiObjectTypeError(info[3], "argument 4", "VkHdrMetadataEXT");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkHdrMetadataEXT* instance = reinterpret_cast<VkHdrMetadataEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -15980,7 +16313,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -15998,7 +16331,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16028,7 +16361,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16046,7 +16379,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16064,7 +16397,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRefreshCycleDurationGOOGLE") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkRefreshCycleDurationGOOGLE]");
+      NapiObjectTypeError(info[2], "argument 3", "VkRefreshCycleDurationGOOGLE");
       return env.Undefined();
     }
     obj2 = obj;
@@ -16103,7 +16436,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16121,7 +16454,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16154,20 +16487,25 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentationTimings' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkPastPresentationTimingGOOGLE> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPastPresentationTimingGOOGLE") {
+        NapiObjectTypeError(info[3], "argument 4", "VkPastPresentationTimingGOOGLE");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkPastPresentationTimingGOOGLE* instance = reinterpret_cast<VkPastPresentationTimingGOOGLE*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16209,7 +16547,7 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16238,20 +16576,22 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pViewportWScalings' in 'vkCmdSetViewportWScalingNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkViewportWScalingNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkViewportWScalingNV") {
+        NapiObjectTypeError(info[3], "argument 4", "VkViewportWScalingNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkViewportWScalingNV* instance = reinterpret_cast<VkViewportWScalingNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16281,7 +16621,7 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16310,20 +16650,22 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pDiscardRectangles' in 'vkCmdSetDiscardRectangleEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkRect2D> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRect2D") {
+        NapiObjectTypeError(info[3], "argument 4", "VkRect2D");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16353,7 +16695,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16371,7 +16713,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSampleLocationsInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSampleLocationsInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16403,7 +16745,7 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16427,7 +16769,7 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMultisamplePropertiesEXT]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMultisamplePropertiesEXT");
       return env.Undefined();
     }
     obj2 = obj;
@@ -16466,7 +16808,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16484,7 +16826,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceSurfaceInfo2KHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16504,7 +16846,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2KHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSurfaceCapabilities2KHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -16543,7 +16885,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16561,7 +16903,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPhysicalDeviceSurfaceInfo2KHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16596,20 +16938,25 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pSurfaceFormats' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkSurfaceFormat2KHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceFormat2KHR") {
+        NapiObjectTypeError(info[3], "argument 4", "VkSurfaceFormat2KHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSurfaceFormat2KHR* instance = reinterpret_cast<VkSurfaceFormat2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16651,7 +16998,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16684,20 +17031,25 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayProperties2KHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDisplayProperties2KHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayProperties2KHR") {
+        NapiObjectTypeError(info[2], "argument 3", "VkDisplayProperties2KHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayProperties2KHR* instance = reinterpret_cast<VkDisplayProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16738,7 +17090,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16771,20 +17123,25 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPlaneProperties2KHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDisplayPlaneProperties2KHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayPlaneProperties2KHR") {
+        NapiObjectTypeError(info[2], "argument 3", "VkDisplayPlaneProperties2KHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayPlaneProperties2KHR* instance = reinterpret_cast<VkDisplayPlaneProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16825,7 +17182,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16843,7 +17200,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16876,20 +17233,25 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pProperties' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkDisplayModeProperties2KHR> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModeProperties2KHR") {
+        NapiObjectTypeError(info[3], "argument 4", "VkDisplayModeProperties2KHR");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkDisplayModeProperties2KHR* instance = reinterpret_cast<VkDisplayModeProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -16931,7 +17293,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -16949,7 +17311,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayPlaneInfo2KHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDisplayPlaneInfo2KHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -16969,7 +17331,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayPlaneCapabilities2KHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDisplayPlaneCapabilities2KHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -17008,7 +17370,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17026,7 +17388,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBufferMemoryRequirementsInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBufferMemoryRequirementsInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17046,7 +17408,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMemoryRequirements2");
       return env.Undefined();
     }
     obj2 = obj;
@@ -17085,7 +17447,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17103,7 +17465,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageMemoryRequirementsInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageMemoryRequirementsInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17123,7 +17485,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMemoryRequirements2");
       return env.Undefined();
     }
     obj2 = obj;
@@ -17162,7 +17524,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17180,7 +17542,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageSparseMemoryRequirementsInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageSparseMemoryRequirementsInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17215,20 +17577,25 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[2].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[3].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pSparseMemoryRequirements' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkSparseImageMemoryRequirements2> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSparseImageMemoryRequirements2") {
+        NapiObjectTypeError(info[3], "argument 4", "VkSparseImageMemoryRequirements2");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkSparseImageMemoryRequirements2* instance = reinterpret_cast<VkSparseImageMemoryRequirements2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -17270,7 +17637,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17288,7 +17655,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversionCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSamplerYcbcrConversionCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17309,7 +17676,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSamplerYcbcrConversion") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSamplerYcbcrConversion]");
+      NapiObjectTypeError(info[3], "argument 4", "VkSamplerYcbcrConversion");
       return env.Undefined();
     }
     obj3 = obj;
@@ -17341,7 +17708,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17359,7 +17726,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSamplerYcbcrConversion") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversion]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSamplerYcbcrConversion");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17391,7 +17758,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17409,7 +17776,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceQueueInfo2]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDeviceQueueInfo2");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17429,7 +17796,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkQueue]");
+      NapiObjectTypeError(info[2], "argument 3", "VkQueue");
       return env.Undefined();
     }
     obj2 = obj;
@@ -17460,7 +17827,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17478,7 +17845,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheCreateInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkValidationCacheCreateInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17499,7 +17866,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkValidationCacheEXT]");
+      NapiObjectTypeError(info[3], "argument 4", "VkValidationCacheEXT");
       return env.Undefined();
     }
     obj3 = obj;
@@ -17531,7 +17898,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17549,7 +17916,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkValidationCacheEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17581,7 +17948,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17599,7 +17966,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkValidationCacheEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17658,7 +18025,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17676,7 +18043,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkValidationCacheEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17699,11 +18066,20 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pSrcCaches' in 'vkMergeValidationCachesEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkValidationCacheEXT> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
+        NapiObjectTypeError(info[0], "argument 4", "VkValidationCacheEXT");
+        return env.Undefined();
+      }
       VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -17733,7 +18109,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17751,7 +18127,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDescriptorSetLayoutCreateInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17771,7 +18147,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkDescriptorSetLayoutSupport]");
+      NapiObjectTypeError(info[2], "argument 3", "VkDescriptorSetLayoutSupport");
       return env.Undefined();
     }
     obj2 = obj;
@@ -17810,7 +18186,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17828,7 +18204,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipeline");
       return env.Undefined();
     }
     obj1 = obj;
@@ -17901,7 +18277,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17938,6 +18314,10 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
       Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
+    if (info[2].As<Napi::TypedArray>().ElementLength() != $p1) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     int32_t* data = getTypedArrayData<int32_t>(info[2]);
     $p2 = std::make_shared<int32_t*>(data);
   } else if (!info[2].IsNull()) {
@@ -17965,7 +18345,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -17988,20 +18368,22 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pTimestampInfos' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCalibratedTimestampInfoEXT> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCalibratedTimestampInfoEXT") {
+        NapiObjectTypeError(info[2], "argument 3", "VkCalibratedTimestampInfoEXT");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkCalibratedTimestampInfoEXT* instance = reinterpret_cast<VkCalibratedTimestampInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -18018,6 +18400,10 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
 
     if (info[3].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
       Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[3].As<Napi::TypedArray>().ElementLength() != $p1) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint64_t* data = getTypedArrayData<uint64_t>(info[3]);
@@ -18066,7 +18452,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18084,7 +18470,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectNameInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsObjectNameInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18116,7 +18502,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18134,7 +18520,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectTagInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsObjectTagInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18166,7 +18552,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18184,7 +18570,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsLabelEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18216,7 +18602,7 @@ Napi::Value _vkQueueEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18245,7 +18631,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18263,7 +18649,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsLabelEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18295,7 +18681,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18313,7 +18699,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsLabelEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18345,7 +18731,7 @@ Napi::Value _vkCmdEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18374,7 +18760,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18392,7 +18778,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsLabelEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18424,7 +18810,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18442,7 +18828,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerCreateInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsMessengerCreateInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18463,7 +18849,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugUtilsMessengerEXT") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerEXT]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDebugUtilsMessengerEXT");
       return env.Undefined();
     }
     obj3 = obj;
@@ -18495,7 +18881,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18513,7 +18899,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugUtilsMessengerEXT") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkDebugUtilsMessengerEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18545,7 +18931,7 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      NapiObjectTypeError(info[0], "argument 1", "VkInstance");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18575,7 +18961,7 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerCallbackDataEXT]");
+      NapiObjectTypeError(info[3], "argument 4", "VkDebugUtilsMessengerCallbackDataEXT");
       return env.Undefined();
     }
     obj3 = obj;
@@ -18609,7 +18995,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18642,7 +19028,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryHostPointerPropertiesEXT]");
+      NapiObjectTypeError(info[3], "argument 4", "VkMemoryHostPointerPropertiesEXT");
       return env.Undefined();
     }
     obj3 = obj;
@@ -18682,7 +19068,7 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18706,7 +19092,7 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      NapiObjectTypeError(info[2], "argument 3", "VkBuffer");
       return env.Undefined();
     }
     obj2 = obj;
@@ -18752,7 +19138,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18770,7 +19156,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo2KHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPassCreateInfo2KHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18791,7 +19177,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
+      NapiObjectTypeError(info[3], "argument 4", "VkRenderPass");
       return env.Undefined();
     }
     obj3 = obj;
@@ -18823,7 +19209,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18841,7 +19227,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
+      NapiObjectTypeError(info[1], "argument 2", "VkRenderPassBeginInfo");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18861,7 +19247,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSubpassBeginInfoKHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSubpassBeginInfoKHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -18894,7 +19280,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18912,7 +19298,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSubpassBeginInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSubpassBeginInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -18932,7 +19318,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkSubpassEndInfoKHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkSubpassEndInfoKHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -18965,7 +19351,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -18983,7 +19369,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSubpassEndInfoKHR]");
+      NapiObjectTypeError(info[1], "argument 2", "VkSubpassEndInfoKHR");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19015,7 +19401,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19033,7 +19419,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19058,7 +19444,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -19112,7 +19498,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19130,7 +19516,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19155,7 +19541,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -19209,7 +19595,7 @@ Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19248,7 +19634,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      NapiObjectTypeError(info[0], "argument 1", "VkQueue");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19281,20 +19667,25 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pCheckpointData' in 'vkGetQueueCheckpointDataNV'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCheckpointDataNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCheckpointDataNV") {
+        NapiObjectTypeError(info[2], "argument 3", "VkCheckpointDataNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkCheckpointDataNV* instance = reinterpret_cast<VkCheckpointDataNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -19335,7 +19726,7 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19364,11 +19755,20 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pBuffers' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
+        NapiObjectTypeError(info[0], "argument 4", "VkBuffer");
+        return env.Undefined();
+      }
       VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -19387,6 +19787,10 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
       Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -19401,6 +19805,10 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
 
     if (info[5].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
       Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[5].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[5]);
@@ -19432,7 +19840,7 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19461,11 +19869,20 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCounterBuffers' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
+        NapiObjectTypeError(info[0], "argument 4", "VkBuffer");
+        return env.Undefined();
+      }
       VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -19482,6 +19899,10 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
@@ -19512,7 +19933,7 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19541,11 +19962,20 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCounterBuffers' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
+        NapiObjectTypeError(info[0], "argument 4", "VkBuffer");
+        return env.Undefined();
+      }
       VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -19562,6 +19992,10 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+      Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
@@ -19592,7 +20026,7 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19610,7 +20044,7 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19661,7 +20095,7 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19679,7 +20113,7 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19723,7 +20157,7 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19753,7 +20187,7 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -19807,7 +20241,7 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19836,20 +20270,22 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pExclusiveScissors' in 'vkCmdSetExclusiveScissorNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkRect2D> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRect2D") {
+        NapiObjectTypeError(info[3], "argument 4", "VkRect2D");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -19879,7 +20315,7 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19897,7 +20333,7 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImageView]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImageView");
       return env.Undefined();
     }
     obj1 = obj;
@@ -19934,7 +20370,7 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -19963,20 +20399,22 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pShadingRatePalettes' in 'vkCmdSetViewportShadingRatePaletteNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkShadingRatePaletteNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkShadingRatePaletteNV") {
+        NapiObjectTypeError(info[3], "argument 4", "VkShadingRatePaletteNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkShadingRatePaletteNV* instance = reinterpret_cast<VkShadingRatePaletteNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -20006,7 +20444,7 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20035,20 +20473,22 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCustomSampleOrders' in 'vkCmdSetCoarseSampleOrderNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkCoarseSampleOrderCustomNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCoarseSampleOrderCustomNV") {
+        NapiObjectTypeError(info[3], "argument 4", "VkCoarseSampleOrderCustomNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkCoarseSampleOrderCustomNV* instance = reinterpret_cast<VkCoarseSampleOrderCustomNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -20078,7 +20518,7 @@ Napi::Value _vkCmdDrawMeshTasksNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20121,7 +20561,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20139,7 +20579,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20191,7 +20631,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20209,7 +20649,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20234,7 +20674,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -20288,7 +20728,7 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20306,7 +20746,7 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipeline");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20343,7 +20783,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20361,7 +20801,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureCreateInfoNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureCreateInfoNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20382,7 +20822,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[3], "argument 4", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj3 = obj;
@@ -20414,7 +20854,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20432,7 +20872,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20464,7 +20904,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20482,7 +20922,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureMemoryRequirementsInfoNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureMemoryRequirementsInfoNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20502,7 +20942,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2_KHR) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2KHR]");
+      NapiObjectTypeError(info[2], "argument 3", "VkMemoryRequirements2KHR");
       return env.Undefined();
     }
     obj2 = obj;
@@ -20541,7 +20981,7 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20564,20 +21004,22 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pBindInfos' in 'vkBindAccelerationStructureMemoryNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkBindAccelerationStructureMemoryInfoNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBindAccelerationStructureMemoryInfoNV") {
+        NapiObjectTypeError(info[2], "argument 3", "VkBindAccelerationStructureMemoryInfoNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkBindAccelerationStructureMemoryInfoNV* instance = reinterpret_cast<VkBindAccelerationStructureMemoryInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -20606,7 +21048,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20624,7 +21066,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20642,7 +21084,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[2], "argument 3", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj2 = obj;
@@ -20680,7 +21122,7 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20703,11 +21145,20 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if (info[2].As<Napi::Array>().Length() != info[1].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 3 'pAccelerationStructures' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkAccelerationStructureNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
+        NapiObjectTypeError(info[0], "argument 3", "VkAccelerationStructureNV");
+        return env.Undefined();
+      }
       VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -20729,7 +21180,7 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
-      NapiObjectTypeError(info[4], "argument 5", "[object VkQueryPool]");
+      NapiObjectTypeError(info[4], "argument 5", "VkQueryPool");
       return env.Undefined();
     }
     obj4 = obj;
@@ -20769,7 +21220,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20787,7 +21238,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureInfoNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureInfoNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20807,7 +21258,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      NapiObjectTypeError(info[2], "argument 3", "VkBuffer");
       return env.Undefined();
     }
     obj2 = obj;
@@ -20838,7 +21289,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[5].IsObject()) {
     Napi::Object obj = info[5].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[5], "argument 6", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[5], "argument 6", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj5 = obj;
@@ -20856,7 +21307,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[6], "argument 7", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[6], "argument 7", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj6 = obj;
@@ -20874,7 +21325,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[7], "argument 8", "[object VkBuffer]");
+      NapiObjectTypeError(info[7], "argument 8", "VkBuffer");
       return env.Undefined();
     }
     obj7 = obj;
@@ -20918,7 +21369,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      NapiObjectTypeError(info[0], "argument 1", "VkCommandBuffer");
       return env.Undefined();
     }
     obj0 = obj;
@@ -20936,7 +21387,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBuffer");
       return env.Undefined();
     }
     obj1 = obj;
@@ -20961,7 +21412,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      NapiObjectTypeError(info[3], "argument 4", "VkBuffer");
       return env.Undefined();
     }
     obj3 = obj;
@@ -20993,7 +21444,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[6], "argument 7", "[object VkBuffer]");
+      NapiObjectTypeError(info[6], "argument 7", "VkBuffer");
       return env.Undefined();
     }
     obj6 = obj;
@@ -21025,7 +21476,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   if (info[9].IsObject()) {
     Napi::Object obj = info[9].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
-      NapiObjectTypeError(info[9], "argument 10", "[object VkBuffer]");
+      NapiObjectTypeError(info[9], "argument 10", "VkBuffer");
       return env.Undefined();
     }
     obj9 = obj;
@@ -21100,7 +21551,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21118,7 +21569,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipeline");
       return env.Undefined();
     }
     obj1 = obj;
@@ -21180,7 +21631,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21198,7 +21649,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      NapiObjectTypeError(info[1], "argument 2", "VkAccelerationStructureNV");
       return env.Undefined();
     }
     obj1 = obj;
@@ -21246,7 +21697,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21264,7 +21715,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      NapiObjectTypeError(info[1], "argument 2", "VkPipelineCache");
       return env.Undefined();
     }
     obj1 = obj;
@@ -21287,20 +21738,22 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
 
   if (info[3].IsArray()) {
 
-  {
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    if (info[3].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 4 'pCreateInfos' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[3].As<Napi::Array>();
     std::vector<VkRayTracingPipelineCreateInfoNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRayTracingPipelineCreateInfoNV") {
+        NapiObjectTypeError(info[3], "argument 4", "VkRayTracingPipelineCreateInfoNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkRayTracingPipelineCreateInfoNV* instance = reinterpret_cast<VkRayTracingPipelineCreateInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -21316,11 +21769,20 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
 
   if (info[5].IsArray()) {
 
+    // validate length
+    if (info[5].As<Napi::Array>().Length() != info[2].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument 6 'pPipelines' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[5].As<Napi::Array>();
     std::vector<VkPipeline> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
+        NapiObjectTypeError(info[0], "argument 6", "VkPipeline");
+        return env.Undefined();
+      }
       VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
@@ -21364,7 +21826,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21382,7 +21844,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      NapiObjectTypeError(info[1], "argument 2", "VkImage");
       return env.Undefined();
     }
     obj1 = obj;
@@ -21400,7 +21862,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT) {
-      NapiObjectTypeError(info[2], "argument 3", "[object VkImageDrmFormatModifierPropertiesEXT]");
+      NapiObjectTypeError(info[2], "argument 3", "VkImageDrmFormatModifierPropertiesEXT");
       return env.Undefined();
     }
     obj2 = obj;
@@ -21439,7 +21901,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21457,7 +21919,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkBufferDeviceAddressInfoEXT]");
+      NapiObjectTypeError(info[1], "argument 2", "VkBufferDeviceAddressInfoEXT");
       return env.Undefined();
     }
     obj1 = obj;
@@ -21489,7 +21951,7 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      NapiObjectTypeError(info[0], "argument 1", "VkPhysicalDevice");
       return env.Undefined();
     }
     obj0 = obj;
@@ -21522,20 +21984,25 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
 
   if (info[2].IsArray()) {
 
-  {
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
-      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
-    };
-  }
+    // validate length
+    {
+      uint32_t expectedLength = info[1].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[2].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pProperties' in 'vkGetPhysicalDeviceCooperativeMatrixPropertiesNV'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCooperativeMatrixPropertiesNV> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCooperativeMatrixPropertiesNV") {
+        NapiObjectTypeError(info[2], "argument 3", "VkCooperativeMatrixPropertiesNV");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
       VkCooperativeMatrixPropertiesNV* instance = reinterpret_cast<VkCooperativeMatrixPropertiesNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
       data[ii] = *instance;
     };
