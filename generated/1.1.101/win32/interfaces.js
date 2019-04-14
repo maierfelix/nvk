@@ -1487,12 +1487,10 @@ class VkRect2D {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x10);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._offset = new VkOffset2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
@@ -1592,13 +1590,11 @@ class VkClearRect {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x18);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     }
@@ -7549,12 +7545,10 @@ class VkImageCopy {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x44) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x44);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._srcSubresource = new VkImageSubresourceLayers({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
@@ -7756,12 +7750,10 @@ class VkImageBlit {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x50) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x50);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._srcSubresource = new VkImageSubresourceLayers({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
@@ -7951,14 +7943,12 @@ class VkBufferImageCopy {
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
       this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x38);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
       this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     
@@ -8137,12 +8127,10 @@ class VkImageResolve {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x44) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x44);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._srcSubresource = new VkImageSubresourceLayers({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
@@ -14040,14 +14028,12 @@ class VkClearAttachment {
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
       this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x18);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
       this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     
@@ -18183,13 +18169,11 @@ class VkDisplayModeParametersKHR {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0xC) / 0x8);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0xC);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     }
@@ -26274,13 +26258,11 @@ class VkRectLayerKHR {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x14) / 0x8);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x14);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     }
@@ -44866,13 +44848,11 @@ class VkAttachmentSampleLocationsEXT {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x30);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     
@@ -44954,13 +44934,11 @@ class VkSubpassSampleLocationsEXT {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x30);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     
@@ -56665,12 +56643,10 @@ class VkGeometryDataNV {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x88) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x88);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._triangles = new VkGeometryTrianglesNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
@@ -60522,12 +60498,10 @@ class VkClearValue {
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
 
     } else {
       this.memoryBuffer = new ArrayBuffer(0x10);
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 
     }
     this._color = new VkClearColorValue({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });

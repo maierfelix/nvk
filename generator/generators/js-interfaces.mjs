@@ -132,7 +132,7 @@ function getStructureMemoryViews(passedByReference) {
   let viewTypes = [];
   struct.children.map(member => {
     let jsType = getJavaScriptType(ast, member);
-    let {type} = jsType;
+    let {type, isReference} = jsType;
     if (
       type === JavaScriptType.NUMBER ||
       type === JavaScriptType.BIGINT ||
@@ -142,7 +142,7 @@ function getStructureMemoryViews(passedByReference) {
       if (viewTypes.indexOf(viewInstr) <= -1) viewTypes.push(viewInstr);
     }
     else if (
-      (type === JavaScriptType.OBJECT ||
+      ((type === JavaScriptType.OBJECT && (isReference || member.isHandleType)) ||
       (type === JavaScriptType.STRING && !jsType.isStatic) ||
       type === JavaScriptType.TYPED_ARRAY) &&
       isFillableMember(struct, member)
