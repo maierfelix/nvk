@@ -18,7 +18,8 @@
     },
     {
       "sources": [
-        "./src/index.cpp"
+        "./src/index.cpp",
+"./src/source.cpp"
       ],
       "conditions": [
         [

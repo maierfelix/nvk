@@ -109,6 +109,7 @@ function getHandleByteLength() {
 };
 
 function getEnumInlineValue(name) {
+  if (!enumLayouts) return ``;
   let value = enumLayouts[name];
   if (value === void 0) {
     let value_KHR = enumLayouts[name + "_KHR"];
@@ -121,6 +122,7 @@ function getEnumInlineValue(name) {
 };
 
 function getEnumInlineStypeValue(name) {
+  if (!enumLayouts) return ``;
   let value = getEnumInlineValue(name);
   if (Number.isNaN(parseInt(value))) return `VkStructureType.${value}`;
   return value;

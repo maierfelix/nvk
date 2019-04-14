@@ -2,6 +2,11 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+import {
+  warn,
+  getPlatformRelevantIncludes
+} from "../utils";
+
 let ast = null;
 
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/utils-h.njk`, "utf-8");

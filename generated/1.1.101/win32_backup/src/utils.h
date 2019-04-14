@@ -7,13 +7,7 @@
 
 #define NAPI_EXPERIMENTAL
 #include <napi.h>
-
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
-#ifdef _WIN32
-#include <windows.h>
-#endif
+#include "source.h"
 
 #define VULKAN_ASSERT(func) { VkResult res = func; TRAP(res >= VK_SUCCESS); }
 

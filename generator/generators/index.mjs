@@ -7,7 +7,10 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
-import { getSortedIncludes } from "../utils";
+import {
+  getSortedIncludes,
+  getPlatformRelevantIncludes
+} from "../utils";
 
 let ast = null;
 
@@ -20,7 +23,10 @@ export default function(astReference, includes, calls) {
   ast = astReference;
   let vars = {
     calls,
-    includes
+    includes,
+    getPlatformRelevantIncludes: () => {
+      return getPlatformRelevantIncludes(ast);
+    }
   };
   let out = {
     header: null,
