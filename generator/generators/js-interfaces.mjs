@@ -45,7 +45,7 @@ function getConstructorMemberInitializer(member) {
       } else {
         let byteOffset = getStructureMemberByteOffset(member);
         let memoryOffset = getHexaByteOffset(byteOffset);
-        return `this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} });`;
+        return `this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + ${memoryOffset} });`;
       }
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
@@ -53,7 +53,7 @@ function getConstructorMemberInitializer(member) {
       let byteOffset = getStructureMemberByteOffset(member);
       let memoryOffset = getHexaByteOffset(byteOffset);
       let byteLength = getHexaByteOffset(parseInt(getStructureMemberByteLength(member)) / length);
-      return `this._${member.name} = [...Array(${length})].map((v, i) => new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} + (i * ${byteLength}) }));`;
+      return `this._${member.name} = [...Array(${length})].map((v, i) => new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + ${memoryOffset} + (i * ${byteLength}) }));`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
       if (currentStruct.isUnionType) return `this._${member.name} = null;`;
@@ -210,7 +210,7 @@ function getGetterProcessor(member) {
       if (jsType.isStatic) {
         return `
     return decodeNullTerminatedUTF8String(
-      new Uint8Array(this.memoryBuffer).subarray(${hxByteOffsetBegin}, ${hxByteOffsetEnd})
+      new Uint8Array(this.memoryBuffer).subarray(this.$memoryOffset + ${hxByteOffsetBegin}, ${hxByteOffsetEnd})
     ) || null;`;
       }
       return `

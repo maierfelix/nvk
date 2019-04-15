@@ -3,9 +3,11 @@ class {{ struct.name }} {
   constructor(opts) {
     this.memoryBuffer = null;
     this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
     if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
       this.memoryBuffer = opts.$memoryBuffer;
       this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
 {{ getStructureMemoryViews(false) | safe }}
     } else {
       this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});

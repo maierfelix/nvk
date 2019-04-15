@@ -3,6 +3,10 @@ generated/*/*/enumLayouts.json
 generated/*/*/memoryLayouts.json
 generated/*/*/src
 
+generated/*/*/build/glfw3.lib
+generated/*/*/build/glfw3dll.lib
+generated/*/*/build/Release/vulkaninfo.exe
+
 generated/*/*/build/Release/obj
 generated/*/*/build/Release/*.iobj
 generated/*/*/build/Release/*.ipdb

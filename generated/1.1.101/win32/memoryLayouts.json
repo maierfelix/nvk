@@ -1,6 +1,5 @@
 {
   "VkBaseOutStructure": {
-    "byteLength": 16,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8,10 +7,10 @@
     "pNext": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkBaseInStructure": {
-    "byteLength": 16,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -19,10 +18,10 @@
     "pNext": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkOffset2D": {
-    "byteLength": 8,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -30,10 +29,10 @@
     "y": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkOffset3D": {
-    "byteLength": 12,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -45,10 +44,10 @@
     "z": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkExtent2D": {
-    "byteLength": 8,
     "width": {
       "byteOffset": 0,
       "byteLength": 4
@@ -56,10 +55,10 @@
     "height": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkExtent3D": {
-    "byteLength": 12,
     "width": {
       "byteOffset": 0,
       "byteLength": 4
@@ -71,10 +70,10 @@
     "depth": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkViewport": {
-    "byteLength": 24,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -98,10 +97,10 @@
     "maxDepth": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkRect2D": {
-    "byteLength": 16,
     "offset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -109,10 +108,10 @@
     "extent": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkClearRect": {
-    "byteLength": 24,
     "rect": {
       "byteOffset": 0,
       "byteLength": 16
@@ -124,10 +123,10 @@
     "layerCount": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkComponentMapping": {
-    "byteLength": 16,
     "r": {
       "byteOffset": 0,
       "byteLength": 4
@@ -143,10 +142,10 @@
     "a": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkPhysicalDeviceProperties": {
-    "byteLength": 824,
     "apiVersion": {
       "byteOffset": 0,
       "byteLength": 4
@@ -182,10 +181,10 @@
     "sparseProperties": {
       "byteOffset": 800,
       "byteLength": 20
-    }
+    },
+    "byteLength": 824
   },
   "VkExtensionProperties": {
-    "byteLength": 260,
     "extensionName": {
       "byteOffset": 0,
       "byteLength": 256
@@ -193,10 +192,10 @@
     "specVersion": {
       "byteOffset": 256,
       "byteLength": 4
-    }
+    },
+    "byteLength": 260
   },
   "VkLayerProperties": {
-    "byteLength": 520,
     "layerName": {
       "byteOffset": 0,
       "byteLength": 256
@@ -212,10 +211,10 @@
     "description": {
       "byteOffset": 264,
       "byteLength": 256
-    }
+    },
+    "byteLength": 520
   },
   "VkApplicationInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -243,10 +242,10 @@
     "apiVersion": {
       "byteOffset": 44,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkAllocationCallbacks": {
-    "byteLength": 48,
     "pUserData": {
       "byteOffset": 0,
       "byteLength": 8
@@ -270,10 +269,10 @@
     "pfnInternalFree": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkDeviceQueueCreateInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -297,10 +296,10 @@
     "pQueuePriorities": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkDeviceCreateInfo": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -340,10 +339,10 @@
     "pEnabledFeatures": {
       "byteOffset": 64,
       "byteLength": 8
-    }
+    },
+    "byteLength": 72
   },
   "VkInstanceCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -375,10 +374,10 @@
     "ppEnabledExtensionNames": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkQueueFamilyProperties": {
-    "byteLength": 24,
     "queueFlags": {
       "byteOffset": 0,
       "byteLength": 4
@@ -394,10 +393,10 @@
     "minImageTransferGranularity": {
       "byteOffset": 12,
       "byteLength": 12
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceMemoryProperties": {
-    "byteLength": 520,
     "memoryTypeCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -413,10 +412,10 @@
     "memoryHeaps": {
       "byteOffset": 264,
       "byteLength": 256
-    }
+    },
+    "byteLength": 520
   },
   "VkMemoryAllocateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -432,10 +431,10 @@
     "memoryTypeIndex": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkMemoryRequirements": {
-    "byteLength": 24,
     "size": {
       "byteOffset": 0,
       "byteLength": 8
@@ -447,10 +446,10 @@
     "memoryTypeBits": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSparseImageFormatProperties": {
-    "byteLength": 20,
     "aspectMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -462,10 +461,10 @@
     "flags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 20
   },
   "VkSparseImageMemoryRequirements": {
-    "byteLength": 48,
     "formatProperties": {
       "byteOffset": 0,
       "byteLength": 20
@@ -485,10 +484,10 @@
     "imageMipTailStride": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkMemoryType": {
-    "byteLength": 8,
     "propertyFlags": {
       "byteOffset": 0,
       "byteLength": 4
@@ -496,10 +495,10 @@
     "heapIndex": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkMemoryHeap": {
-    "byteLength": 16,
     "size": {
       "byteOffset": 0,
       "byteLength": 8
@@ -507,10 +506,10 @@
     "flags": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkMappedMemoryRange": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -530,10 +529,10 @@
     "size": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkFormatProperties": {
-    "byteLength": 12,
     "linearTilingFeatures": {
       "byteOffset": 0,
       "byteLength": 4
@@ -545,10 +544,10 @@
     "bufferFeatures": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkImageFormatProperties": {
-    "byteLength": 32,
     "maxExtent": {
       "byteOffset": 0,
       "byteLength": 12
@@ -568,10 +567,10 @@
     "maxResourceSize": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorBufferInfo": {
-    "byteLength": 24,
     "buffer": {
       "byteOffset": 0,
       "byteLength": 8
@@ -583,10 +582,10 @@
     "range": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkDescriptorImageInfo": {
-    "byteLength": 24,
     "sampler": {
       "byteOffset": 0,
       "byteLength": 8
@@ -598,10 +597,10 @@
     "imageLayout": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkWriteDescriptorSet": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -641,10 +640,10 @@
     "pTexelBufferView": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkCopyDescriptorSet": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -680,10 +679,10 @@
     "descriptorCount": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkBufferCreateInfo": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -715,10 +714,10 @@
     "pQueueFamilyIndices": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkBufferViewCreateInfo": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -746,10 +745,10 @@
     "range": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkImageSubresource": {
-    "byteLength": 12,
     "aspectMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -761,10 +760,10 @@
     "arrayLayer": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkImageSubresourceLayers": {
-    "byteLength": 16,
     "aspectMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -780,10 +779,10 @@
     "layerCount": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkImageSubresourceRange": {
-    "byteLength": 20,
     "aspectMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -803,10 +802,10 @@
     "layerCount": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 20
   },
   "VkMemoryBarrier": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -822,10 +821,10 @@
     "dstAccessMask": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkBufferMemoryBarrier": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -861,10 +860,10 @@
     "size": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkImageMemoryBarrier": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -904,10 +903,10 @@
     "subresourceRange": {
       "byteOffset": 48,
       "byteLength": 20
-    }
+    },
+    "byteLength": 72
   },
   "VkImageCreateInfo": {
-    "byteLength": 88,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -967,10 +966,10 @@
     "initialLayout": {
       "byteOffset": 80,
       "byteLength": 4
-    }
+    },
+    "byteLength": 88
   },
   "VkSubresourceLayout": {
-    "byteLength": 40,
     "offset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -990,10 +989,10 @@
     "depthPitch": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkImageViewCreateInfo": {
-    "byteLength": 80,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1025,10 +1024,10 @@
     "subresourceRange": {
       "byteOffset": 56,
       "byteLength": 20
-    }
+    },
+    "byteLength": 80
   },
   "VkBufferCopy": {
-    "byteLength": 24,
     "srcOffset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1040,10 +1039,10 @@
     "size": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSparseMemoryBind": {
-    "byteLength": 40,
     "resourceOffset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1063,10 +1062,10 @@
     "flags": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkSparseImageMemoryBind": {
-    "byteLength": 64,
     "subresource": {
       "byteOffset": 0,
       "byteLength": 12
@@ -1090,10 +1089,10 @@
     "flags": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkSparseBufferMemoryBindInfo": {
-    "byteLength": 24,
     "buffer": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1105,10 +1104,10 @@
     "pBinds": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSparseImageOpaqueMemoryBindInfo": {
-    "byteLength": 24,
     "image": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1120,10 +1119,10 @@
     "pBinds": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSparseImageMemoryBindInfo": {
-    "byteLength": 24,
     "image": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1135,10 +1134,10 @@
     "pBinds": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkBindSparseInfo": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1186,10 +1185,10 @@
     "pSignalSemaphores": {
       "byteOffset": 88,
       "byteLength": 8
-    }
+    },
+    "byteLength": 96
   },
   "VkImageCopy": {
-    "byteLength": 68,
     "srcSubresource": {
       "byteOffset": 0,
       "byteLength": 16
@@ -1209,10 +1208,10 @@
     "extent": {
       "byteOffset": 56,
       "byteLength": 12
-    }
+    },
+    "byteLength": 68
   },
   "VkImageBlit": {
-    "byteLength": 80,
     "srcSubresource": {
       "byteOffset": 0,
       "byteLength": 16
@@ -1228,10 +1227,10 @@
     "dstOffsets": {
       "byteOffset": 56,
       "byteLength": 24
-    }
+    },
+    "byteLength": 80
   },
   "VkBufferImageCopy": {
-    "byteLength": 56,
     "bufferOffset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -1255,10 +1254,10 @@
     "imageExtent": {
       "byteOffset": 44,
       "byteLength": 12
-    }
+    },
+    "byteLength": 56
   },
   "VkImageResolve": {
-    "byteLength": 68,
     "srcSubresource": {
       "byteOffset": 0,
       "byteLength": 16
@@ -1278,10 +1277,10 @@
     "extent": {
       "byteOffset": 56,
       "byteLength": 12
-    }
+    },
+    "byteLength": 68
   },
   "VkShaderModuleCreateInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1301,10 +1300,10 @@
     "pCode": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkDescriptorSetLayoutBinding": {
-    "byteLength": 24,
     "binding": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1324,10 +1323,10 @@
     "pImmutableSamplers": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkDescriptorSetLayoutCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1347,10 +1346,10 @@
     "pBindings": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorPoolSize": {
-    "byteLength": 8,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1358,10 +1357,10 @@
     "descriptorCount": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkDescriptorPoolCreateInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1385,10 +1384,10 @@
     "pPoolSizes": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkDescriptorSetAllocateInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1408,10 +1407,10 @@
     "pSetLayouts": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkSpecializationMapEntry": {
-    "byteLength": 16,
     "constantID": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1423,10 +1422,10 @@
     "size": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkSpecializationInfo": {
-    "byteLength": 32,
     "mapEntryCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1442,10 +1441,10 @@
     "pData": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPipelineShaderStageCreateInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1473,10 +1472,10 @@
     "pSpecializationInfo": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkComputePipelineCreateInfo": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1504,10 +1503,10 @@
     "basePipelineIndex": {
       "byteOffset": 88,
       "byteLength": 4
-    }
+    },
+    "byteLength": 96
   },
   "VkVertexInputBindingDescription": {
-    "byteLength": 12,
     "binding": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1519,10 +1518,10 @@
     "inputRate": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkVertexInputAttributeDescription": {
-    "byteLength": 16,
     "location": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1538,10 +1537,10 @@
     "offset": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkPipelineVertexInputStateCreateInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1569,10 +1568,10 @@
     "pVertexAttributeDescriptions": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkPipelineInputAssemblyStateCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1592,10 +1591,10 @@
     "primitiveRestartEnable": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPipelineTessellationStateCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1611,10 +1610,10 @@
     "patchControlPoints": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineViewportStateCreateInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1642,10 +1641,10 @@
     "pScissors": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkPipelineRasterizationStateCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1697,10 +1696,10 @@
     "lineWidth": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkPipelineMultisampleStateCreateInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1736,10 +1735,10 @@
     "alphaToOneEnable": {
       "byteOffset": 44,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkPipelineColorBlendAttachmentState": {
-    "byteLength": 32,
     "blendEnable": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1771,10 +1770,10 @@
     "colorWriteMask": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPipelineColorBlendStateCreateInfo": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1806,10 +1805,10 @@
     "blendConstants": {
       "byteOffset": 40,
       "byteLength": 16
-    }
+    },
+    "byteLength": 56
   },
   "VkPipelineDynamicStateCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1829,10 +1828,10 @@
     "pDynamicStates": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkStencilOpState": {
-    "byteLength": 28,
     "failOp": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1860,10 +1859,10 @@
     "reference": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 28
   },
   "VkPipelineDepthStencilStateCreateInfo": {
-    "byteLength": 104,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1911,10 +1910,10 @@
     "maxDepthBounds": {
       "byteOffset": 100,
       "byteLength": 4
-    }
+    },
+    "byteLength": 104
   },
   "VkGraphicsPipelineCreateInfo": {
-    "byteLength": 144,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -1990,10 +1989,10 @@
     "basePipelineIndex": {
       "byteOffset": 136,
       "byteLength": 4
-    }
+    },
+    "byteLength": 144
   },
   "VkPipelineCacheCreateInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2013,10 +2012,10 @@
     "pInitialData": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkPushConstantRange": {
-    "byteLength": 12,
     "stageFlags": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2028,10 +2027,10 @@
     "size": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkPipelineLayoutCreateInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2059,10 +2058,10 @@
     "pPushConstantRanges": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkSamplerCreateInfo": {
-    "byteLength": 80,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2134,10 +2133,10 @@
     "unnormalizedCoordinates": {
       "byteOffset": 76,
       "byteLength": 4
-    }
+    },
+    "byteLength": 80
   },
   "VkCommandPoolCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2153,10 +2152,10 @@
     "queueFamilyIndex": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkCommandBufferAllocateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2176,10 +2175,10 @@
     "commandBufferCount": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkCommandBufferInheritanceInfo": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2211,10 +2210,10 @@
     "pipelineStatistics": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkCommandBufferBeginInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2230,10 +2229,10 @@
     "pInheritanceInfo": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkRenderPassBeginInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2261,10 +2260,10 @@
     "pClearValues": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkClearDepthStencilValue": {
-    "byteLength": 8,
     "depth": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2272,10 +2271,10 @@
     "stencil": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkClearAttachment": {
-    "byteLength": 24,
     "aspectMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2287,10 +2286,10 @@
     "clearValue": {
       "byteOffset": 8,
       "byteLength": 16
-    }
+    },
+    "byteLength": 24
   },
   "VkAttachmentDescription": {
-    "byteLength": 36,
     "flags": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2326,10 +2325,10 @@
     "finalLayout": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 36
   },
   "VkAttachmentReference": {
-    "byteLength": 8,
     "attachment": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2337,10 +2336,10 @@
     "layout": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkSubpassDescription": {
-    "byteLength": 72,
     "flags": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2380,10 +2379,10 @@
     "pPreserveAttachments": {
       "byteOffset": 64,
       "byteLength": 8
-    }
+    },
+    "byteLength": 72
   },
   "VkSubpassDependency": {
-    "byteLength": 28,
     "srcSubpass": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2411,10 +2410,10 @@
     "dependencyFlags": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 28
   },
   "VkRenderPassCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2450,10 +2449,10 @@
     "pDependencies": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkEventCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2465,10 +2464,10 @@
     "flags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkFenceCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2480,10 +2479,10 @@
     "flags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFeatures": {
-    "byteLength": 220,
     "robustBufferAccess": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2703,10 +2702,10 @@
     "inheritedQueries": {
       "byteOffset": 216,
       "byteLength": 4
-    }
+    },
+    "byteLength": 220
   },
   "VkPhysicalDeviceSparseProperties": {
-    "byteLength": 20,
     "residencyStandard2DBlockShape": {
       "byteOffset": 0,
       "byteLength": 4
@@ -2726,10 +2725,10 @@
     "residencyNonResidentStrict": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 20
   },
   "VkPhysicalDeviceLimits": {
-    "byteLength": 504,
     "maxImageDimension1D": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3153,10 +3152,10 @@
     "nonCoherentAtomSize": {
       "byteOffset": 496,
       "byteLength": 8
-    }
+    },
+    "byteLength": 504
   },
   "VkSemaphoreCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3168,10 +3167,10 @@
     "flags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkQueryPoolCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3195,10 +3194,10 @@
     "pipelineStatistics": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkFramebufferCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3234,10 +3233,10 @@
     "layers": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkDrawIndirectCommand": {
-    "byteLength": 16,
     "vertexCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3253,10 +3252,10 @@
     "firstInstance": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkDrawIndexedIndirectCommand": {
-    "byteLength": 20,
     "indexCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3276,10 +3275,10 @@
     "firstInstance": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 20
   },
   "VkDispatchIndirectCommand": {
-    "byteLength": 12,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3291,10 +3290,10 @@
     "z": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkSubmitInfo": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3330,10 +3329,10 @@
     "pSignalSemaphores": {
       "byteOffset": 64,
       "byteLength": 8
-    }
+    },
+    "byteLength": 72
   },
   "VkDisplayPropertiesKHR": {
-    "byteLength": 48,
     "display": {
       "byteOffset": 0,
       "byteLength": 8
@@ -3361,10 +3360,10 @@
     "persistentContent": {
       "byteOffset": 40,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkDisplayPlanePropertiesKHR": {
-    "byteLength": 16,
     "currentDisplay": {
       "byteOffset": 0,
       "byteLength": 8
@@ -3372,10 +3371,10 @@
     "currentStackIndex": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkDisplayModeParametersKHR": {
-    "byteLength": 12,
     "visibleRegion": {
       "byteOffset": 0,
       "byteLength": 8
@@ -3383,10 +3382,10 @@
     "refreshRate": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkDisplayModePropertiesKHR": {
-    "byteLength": 24,
     "displayMode": {
       "byteOffset": 0,
       "byteLength": 8
@@ -3394,10 +3393,10 @@
     "parameters": {
       "byteOffset": 8,
       "byteLength": 12
-    }
+    },
+    "byteLength": 24
   },
   "VkDisplayModeCreateInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3413,10 +3412,10 @@
     "parameters": {
       "byteOffset": 20,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkDisplayPlaneCapabilitiesKHR": {
-    "byteLength": 68,
     "supportedAlpha": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3452,10 +3451,10 @@
     "maxDstExtent": {
       "byteOffset": 60,
       "byteLength": 8
-    }
+    },
+    "byteLength": 68
   },
   "VkDisplaySurfaceCreateInfoKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3495,10 +3494,10 @@
     "imageExtent": {
       "byteOffset": 52,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkDisplayPresentInfoKHR": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3518,10 +3517,10 @@
     "persistent": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkSurfaceCapabilitiesKHR": {
-    "byteLength": 52,
     "minImageCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3561,10 +3560,10 @@
     "supportedUsageFlags": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 52
   },
   "VkWin32SurfaceCreateInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3584,10 +3583,10 @@
     "hwnd": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkSurfaceFormatKHR": {
-    "byteLength": 8,
     "format": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3595,10 +3594,10 @@
     "colorSpace": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkSwapchainCreateInfoKHR": {
-    "byteLength": 104,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3670,10 +3669,10 @@
     "oldSwapchain": {
       "byteOffset": 96,
       "byteLength": 8
-    }
+    },
+    "byteLength": 104
   },
   "VkPresentInfoKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3705,10 +3704,10 @@
     "pResults": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkDebugReportCallbackCreateInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3728,10 +3727,10 @@
     "pUserData": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkValidationFlagsEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3747,10 +3746,10 @@
     "pDisabledValidationChecks": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkValidationFeaturesEXT": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3774,10 +3773,10 @@
     "pDisabledValidationFeatures": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkPipelineRasterizationStateRasterizationOrderAMD": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3789,10 +3788,10 @@
     "rasterizationOrder": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDebugMarkerObjectNameInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3812,10 +3811,10 @@
     "pObjectName": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkDebugMarkerObjectTagInfoEXT": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3843,10 +3842,10 @@
     "pTag": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkDebugMarkerMarkerInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3862,10 +3861,10 @@
     "color": {
       "byteOffset": 24,
       "byteLength": 16
-    }
+    },
+    "byteLength": 40
   },
   "VkDedicatedAllocationImageCreateInfoNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3877,10 +3876,10 @@
     "dedicatedAllocation": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDedicatedAllocationBufferCreateInfoNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3892,10 +3891,10 @@
     "dedicatedAllocation": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDedicatedAllocationMemoryAllocateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3911,10 +3910,10 @@
     "buffer": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalImageFormatPropertiesNV": {
-    "byteLength": 48,
     "imageFormatProperties": {
       "byteOffset": 0,
       "byteLength": 32
@@ -3930,10 +3929,10 @@
     "compatibleHandleTypes": {
       "byteOffset": 40,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkExternalMemoryImageCreateInfoNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3945,10 +3944,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExportMemoryAllocateInfoNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3960,10 +3959,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImportMemoryWin32HandleInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3979,10 +3978,10 @@
     "handle": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkExportMemoryWin32HandleInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -3998,10 +3997,10 @@
     "dwAccess": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkWin32KeyedMutexAcquireReleaseInfoNV": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4037,10 +4036,10 @@
     "pReleaseKeys": {
       "byteOffset": 64,
       "byteLength": 8
-    }
+    },
+    "byteLength": 72
   },
   "VkDeviceGeneratedCommandsFeaturesNVX": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4052,10 +4051,10 @@
     "computeBindingPointSupport": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceGeneratedCommandsLimitsNVX": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4083,10 +4082,10 @@
     "minCommandsTokenBufferOffsetAlignment": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkIndirectCommandsTokenNVX": {
-    "byteLength": 24,
     "tokenType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4098,10 +4097,10 @@
     "offset": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkIndirectCommandsLayoutTokenNVX": {
-    "byteLength": 16,
     "tokenType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4117,10 +4116,10 @@
     "divisor": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkIndirectCommandsLayoutCreateInfoNVX": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4144,10 +4143,10 @@
     "pTokens": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkCmdProcessCommandsInfoNVX": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4195,10 +4194,10 @@
     "sequencesIndexOffset": {
       "byteOffset": 88,
       "byteLength": 8
-    }
+    },
+    "byteLength": 96
   },
   "VkCmdReserveSpaceForCommandsInfoNVX": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4218,10 +4217,10 @@
     "maxSequencesCount": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkObjectTableCreateInfoNVX": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4265,10 +4264,10 @@
     "maxPipelineLayouts": {
       "byteOffset": 64,
       "byteLength": 4
-    }
+    },
+    "byteLength": 72
   },
   "VkObjectTableEntryNVX": {
-    "byteLength": 8,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4276,10 +4275,10 @@
     "flags": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkObjectTablePipelineEntryNVX": {
-    "byteLength": 16,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4291,10 +4290,10 @@
     "pipeline": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkObjectTableDescriptorSetEntryNVX": {
-    "byteLength": 24,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4310,10 +4309,10 @@
     "descriptorSet": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkObjectTableVertexBufferEntryNVX": {
-    "byteLength": 16,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4325,10 +4324,10 @@
     "buffer": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkObjectTableIndexBufferEntryNVX": {
-    "byteLength": 24,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4344,10 +4343,10 @@
     "indexType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkObjectTablePushConstantEntryNVX": {
-    "byteLength": 24,
     "type": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4363,10 +4362,10 @@
     "stageFlags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFeatures2": {
-    "byteLength": 240,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4378,10 +4377,10 @@
     "features": {
       "byteOffset": 16,
       "byteLength": 220
-    }
+    },
+    "byteLength": 240
   },
   "VkPhysicalDeviceFeatures2KHR": {
-    "byteLength": 240,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4393,10 +4392,10 @@
     "features": {
       "byteOffset": 16,
       "byteLength": 220
-    }
+    },
+    "byteLength": 240
   },
   "VkPhysicalDeviceProperties2": {
-    "byteLength": 840,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4408,10 +4407,10 @@
     "properties": {
       "byteOffset": 16,
       "byteLength": 824
-    }
+    },
+    "byteLength": 840
   },
   "VkPhysicalDeviceProperties2KHR": {
-    "byteLength": 840,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4423,10 +4422,10 @@
     "properties": {
       "byteOffset": 16,
       "byteLength": 824
-    }
+    },
+    "byteLength": 840
   },
   "VkFormatProperties2": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4438,10 +4437,10 @@
     "formatProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkFormatProperties2KHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4453,10 +4452,10 @@
     "formatProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkImageFormatProperties2": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4468,10 +4467,10 @@
     "imageFormatProperties": {
       "byteOffset": 16,
       "byteLength": 32
-    }
+    },
+    "byteLength": 48
   },
   "VkImageFormatProperties2KHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4483,10 +4482,10 @@
     "imageFormatProperties": {
       "byteOffset": 16,
       "byteLength": 32
-    }
+    },
+    "byteLength": 48
   },
   "VkPhysicalDeviceImageFormatInfo2": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4514,10 +4513,10 @@
     "flags": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDeviceImageFormatInfo2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4545,10 +4544,10 @@
     "flags": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkQueueFamilyProperties2": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4560,10 +4559,10 @@
     "queueFamilyProperties": {
       "byteOffset": 16,
       "byteLength": 24
-    }
+    },
+    "byteLength": 40
   },
   "VkQueueFamilyProperties2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4575,10 +4574,10 @@
     "queueFamilyProperties": {
       "byteOffset": 16,
       "byteLength": 24
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDeviceMemoryProperties2": {
-    "byteLength": 536,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4590,10 +4589,10 @@
     "memoryProperties": {
       "byteOffset": 16,
       "byteLength": 520
-    }
+    },
+    "byteLength": 536
   },
   "VkPhysicalDeviceMemoryProperties2KHR": {
-    "byteLength": 536,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4605,10 +4604,10 @@
     "memoryProperties": {
       "byteOffset": 16,
       "byteLength": 520
-    }
+    },
+    "byteLength": 536
   },
   "VkSparseImageFormatProperties2": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4620,10 +4619,10 @@
     "properties": {
       "byteOffset": 16,
       "byteLength": 20
-    }
+    },
+    "byteLength": 40
   },
   "VkSparseImageFormatProperties2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4635,10 +4634,10 @@
     "properties": {
       "byteOffset": 16,
       "byteLength": 20
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDeviceSparseImageFormatInfo2": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4666,10 +4665,10 @@
     "tiling": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDeviceSparseImageFormatInfo2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4697,10 +4696,10 @@
     "tiling": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDevicePushDescriptorPropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4712,10 +4711,10 @@
     "maxPushDescriptors": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkConformanceVersionKHR": {
-    "byteLength": 4,
     "major": {
       "byteOffset": 0,
       "byteLength": 1
@@ -4731,10 +4730,10 @@
     "patch": {
       "byteOffset": 3,
       "byteLength": 1
-    }
+    },
+    "byteLength": 4
   },
   "VkPhysicalDeviceDriverPropertiesKHR": {
-    "byteLength": 536,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4758,10 +4757,10 @@
     "conformanceVersion": {
       "byteOffset": 532,
       "byteLength": 4
-    }
+    },
+    "byteLength": 536
   },
   "VkPresentRegionsKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4777,10 +4776,10 @@
     "pRegions": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPresentRegionKHR": {
-    "byteLength": 16,
     "rectangleCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4788,10 +4787,10 @@
     "pRectangles": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkRectLayerKHR": {
-    "byteLength": 20,
     "offset": {
       "byteOffset": 0,
       "byteLength": 8
@@ -4803,10 +4802,10 @@
     "layer": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 20
   },
   "VkPhysicalDeviceVariablePointerFeatures": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4822,10 +4821,10 @@
     "variablePointers": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceVariablePointerFeaturesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4841,10 +4840,10 @@
     "variablePointers": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalMemoryProperties": {
-    "byteLength": 12,
     "externalMemoryFeatures": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4856,10 +4855,10 @@
     "compatibleHandleTypes": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkExternalMemoryPropertiesKHR": {
-    "byteLength": 12,
     "externalMemoryFeatures": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4871,10 +4870,10 @@
     "compatibleHandleTypes": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkPhysicalDeviceExternalImageFormatInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4886,10 +4885,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceExternalImageFormatInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4901,10 +4900,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalImageFormatProperties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4916,10 +4915,10 @@
     "externalMemoryProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalImageFormatPropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4931,10 +4930,10 @@
     "externalMemoryProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceExternalBufferInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4954,10 +4953,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceExternalBufferInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4977,10 +4976,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalBufferProperties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -4992,10 +4991,10 @@
     "externalMemoryProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalBufferPropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5007,10 +5006,10 @@
     "externalMemoryProperties": {
       "byteOffset": 16,
       "byteLength": 12
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceIDProperties": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5038,10 +5037,10 @@
     "deviceLUIDValid": {
       "byteOffset": 60,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkPhysicalDeviceIDPropertiesKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5069,10 +5068,10 @@
     "deviceLUIDValid": {
       "byteOffset": 60,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkExternalMemoryImageCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5084,10 +5083,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalMemoryImageCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5099,10 +5098,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalMemoryBufferCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5114,10 +5113,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalMemoryBufferCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5129,10 +5128,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExportMemoryAllocateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5144,10 +5143,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExportMemoryAllocateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5159,10 +5158,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImportMemoryWin32HandleInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5182,10 +5181,10 @@
     "name": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkExportMemoryWin32HandleInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5205,10 +5204,10 @@
     "name": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkMemoryWin32HandlePropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5220,10 +5219,10 @@
     "memoryTypeBits": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryGetWin32HandleInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5239,10 +5238,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkImportMemoryFdInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5258,10 +5257,10 @@
     "fd": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryFdPropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5273,10 +5272,10 @@
     "memoryTypeBits": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryGetFdInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5292,10 +5291,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkWin32KeyedMutexAcquireReleaseInfoKHR": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5331,10 +5330,10 @@
     "pReleaseKeys": {
       "byteOffset": 64,
       "byteLength": 8
-    }
+    },
+    "byteLength": 72
   },
   "VkPhysicalDeviceExternalSemaphoreInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5346,10 +5345,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceExternalSemaphoreInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5361,10 +5360,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalSemaphoreProperties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5384,10 +5383,10 @@
     "externalSemaphoreFeatures": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalSemaphorePropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5407,10 +5406,10 @@
     "externalSemaphoreFeatures": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkExportSemaphoreCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5422,10 +5421,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExportSemaphoreCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5437,10 +5436,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImportSemaphoreWin32HandleInfoKHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5468,10 +5467,10 @@
     "name": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkExportSemaphoreWin32HandleInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5491,10 +5490,10 @@
     "name": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkD3D12FenceSubmitInfoKHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5518,10 +5517,10 @@
     "pSignalSemaphoreValues": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkSemaphoreGetWin32HandleInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5537,10 +5536,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkImportSemaphoreFdInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5564,10 +5563,10 @@
     "fd": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkSemaphoreGetFdInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5583,10 +5582,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceExternalFenceInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5598,10 +5597,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceExternalFenceInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5613,10 +5612,10 @@
     "handleType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExternalFenceProperties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5636,10 +5635,10 @@
     "externalFenceFeatures": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkExternalFencePropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5659,10 +5658,10 @@
     "externalFenceFeatures": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkExportFenceCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5674,10 +5673,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkExportFenceCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5689,10 +5688,10 @@
     "handleTypes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImportFenceWin32HandleInfoKHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5720,10 +5719,10 @@
     "name": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkExportFenceWin32HandleInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5743,10 +5742,10 @@
     "name": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkFenceGetWin32HandleInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5762,10 +5761,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkImportFenceFdInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5789,10 +5788,10 @@
     "fd": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkFenceGetFdInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5808,10 +5807,10 @@
     "handleType": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceMultiviewFeatures": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5831,10 +5830,10 @@
     "multiviewTessellationShader": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceMultiviewFeaturesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5854,10 +5853,10 @@
     "multiviewTessellationShader": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceMultiviewProperties": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5873,10 +5872,10 @@
     "maxMultiviewInstanceIndex": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceMultiviewPropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5892,10 +5891,10 @@
     "maxMultiviewInstanceIndex": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkRenderPassMultiviewCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5927,10 +5926,10 @@
     "pCorrelationMasks": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkRenderPassMultiviewCreateInfoKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -5962,10 +5961,10 @@
     "pCorrelationMasks": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkSurfaceCapabilities2EXT": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6017,10 +6016,10 @@
     "supportedSurfaceCounters": {
       "byteOffset": 68,
       "byteLength": 4
-    }
+    },
+    "byteLength": 72
   },
   "VkDisplayPowerInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6032,10 +6031,10 @@
     "powerState": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceEventInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6047,10 +6046,10 @@
     "deviceEvent": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDisplayEventInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6062,10 +6061,10 @@
     "displayEvent": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSwapchainCounterCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6077,10 +6076,10 @@
     "surfaceCounters": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceGroupProperties": {
-    "byteLength": 288,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6100,10 +6099,10 @@
     "subsetAllocation": {
       "byteOffset": 280,
       "byteLength": 4
-    }
+    },
+    "byteLength": 288
   },
   "VkPhysicalDeviceGroupPropertiesKHR": {
-    "byteLength": 288,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6123,10 +6122,10 @@
     "subsetAllocation": {
       "byteOffset": 280,
       "byteLength": 4
-    }
+    },
+    "byteLength": 288
   },
   "VkMemoryAllocateFlagsInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6142,10 +6141,10 @@
     "deviceMask": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryAllocateFlagsInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6161,10 +6160,10 @@
     "deviceMask": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkBindBufferMemoryInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6184,10 +6183,10 @@
     "memoryOffset": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkBindBufferMemoryInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6207,10 +6206,10 @@
     "memoryOffset": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkBindBufferMemoryDeviceGroupInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6226,10 +6225,10 @@
     "pDeviceIndices": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkBindBufferMemoryDeviceGroupInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6245,10 +6244,10 @@
     "pDeviceIndices": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkBindImageMemoryInfo": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6268,10 +6267,10 @@
     "memoryOffset": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkBindImageMemoryInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6291,10 +6290,10 @@
     "memoryOffset": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkBindImageMemoryDeviceGroupInfo": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6318,10 +6317,10 @@
     "pSplitInstanceBindRegions": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkBindImageMemoryDeviceGroupInfoKHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6345,10 +6344,10 @@
     "pSplitInstanceBindRegions": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkDeviceGroupRenderPassBeginInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6368,10 +6367,10 @@
     "pDeviceRenderAreas": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDeviceGroupRenderPassBeginInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6391,10 +6390,10 @@
     "pDeviceRenderAreas": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDeviceGroupCommandBufferBeginInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6406,10 +6405,10 @@
     "deviceMask": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceGroupCommandBufferBeginInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6421,10 +6420,10 @@
     "deviceMask": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceGroupSubmitInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6456,10 +6455,10 @@
     "pSignalSemaphoreDeviceIndices": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkDeviceGroupSubmitInfoKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6491,10 +6490,10 @@
     "pSignalSemaphoreDeviceIndices": {
       "byteOffset": 56,
       "byteLength": 8
-    }
+    },
+    "byteLength": 64
   },
   "VkDeviceGroupBindSparseInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6510,10 +6509,10 @@
     "memoryDeviceIndex": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceGroupBindSparseInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6529,10 +6528,10 @@
     "memoryDeviceIndex": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceGroupPresentCapabilitiesKHR": {
-    "byteLength": 152,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6548,10 +6547,10 @@
     "modes": {
       "byteOffset": 144,
       "byteLength": 4
-    }
+    },
+    "byteLength": 152
   },
   "VkImageSwapchainCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6563,10 +6562,10 @@
     "swapchain": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkBindImageMemorySwapchainInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6582,10 +6581,10 @@
     "imageIndex": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkAcquireNextImageInfoKHR": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6613,10 +6612,10 @@
     "deviceMask": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkDeviceGroupPresentInfoKHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6636,10 +6635,10 @@
     "mode": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkDeviceGroupDeviceCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6655,10 +6654,10 @@
     "pPhysicalDevices": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDeviceGroupDeviceCreateInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6674,10 +6673,10 @@
     "pPhysicalDevices": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDeviceGroupSwapchainCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6689,10 +6688,10 @@
     "modes": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDescriptorUpdateTemplateEntry": {
-    "byteLength": 32,
     "dstBinding": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6716,10 +6715,10 @@
     "stride": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorUpdateTemplateEntryKHR": {
-    "byteLength": 32,
     "dstBinding": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6743,10 +6742,10 @@
     "stride": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorUpdateTemplateCreateInfo": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6786,10 +6785,10 @@
     "set": {
       "byteOffset": 64,
       "byteLength": 4
-    }
+    },
+    "byteLength": 72
   },
   "VkDescriptorUpdateTemplateCreateInfoKHR": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6829,10 +6828,10 @@
     "set": {
       "byteOffset": 64,
       "byteLength": 4
-    }
+    },
+    "byteLength": 72
   },
   "VkXYColorEXT": {
-    "byteLength": 8,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6840,10 +6839,10 @@
     "y": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkHdrMetadataEXT": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6883,17 +6882,17 @@
     "maxFrameAverageLightLevel": {
       "byteOffset": 60,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkRefreshCycleDurationGOOGLE": {
-    "byteLength": 8,
     "refreshDuration": {
       "byteOffset": 0,
       "byteLength": 8
-    }
+    },
+    "byteLength": 8
   },
   "VkPastPresentationTimingGOOGLE": {
-    "byteLength": 40,
     "presentID": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6913,10 +6912,10 @@
     "presentMargin": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkPresentTimesInfoGOOGLE": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6932,10 +6931,10 @@
     "pTimes": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPresentTimeGOOGLE": {
-    "byteLength": 16,
     "presentID": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6943,10 +6942,10 @@
     "desiredPresentTime": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkViewportWScalingNV": {
-    "byteLength": 8,
     "xcoeff": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6954,10 +6953,10 @@
     "ycoeff": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkPipelineViewportWScalingStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6977,10 +6976,10 @@
     "pViewportWScalings": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkViewportSwizzleNV": {
-    "byteLength": 16,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -6996,10 +6995,10 @@
     "w": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkPipelineViewportSwizzleStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7019,10 +7018,10 @@
     "pViewportSwizzles": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceDiscardRectanglePropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7034,10 +7033,10 @@
     "maxDiscardRectangles": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineDiscardRectangleStateCreateInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7061,10 +7060,10 @@
     "pDiscardRectangles": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7076,10 +7075,10 @@
     "perViewPositionAllComponents": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkInputAttachmentAspectReference": {
-    "byteLength": 12,
     "subpass": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7091,10 +7090,10 @@
     "aspectMask": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkInputAttachmentAspectReferenceKHR": {
-    "byteLength": 12,
     "subpass": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7106,10 +7105,10 @@
     "aspectMask": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkRenderPassInputAttachmentAspectCreateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7125,10 +7124,10 @@
     "pAspectReferences": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkRenderPassInputAttachmentAspectCreateInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7144,10 +7143,10 @@
     "pAspectReferences": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceSurfaceInfo2KHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7159,10 +7158,10 @@
     "surface": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSurfaceCapabilities2KHR": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7174,10 +7173,10 @@
     "surfaceCapabilities": {
       "byteOffset": 16,
       "byteLength": 52
-    }
+    },
+    "byteLength": 72
   },
   "VkSurfaceFormat2KHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7189,10 +7188,10 @@
     "surfaceFormat": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkDisplayProperties2KHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7204,10 +7203,10 @@
     "displayProperties": {
       "byteOffset": 16,
       "byteLength": 48
-    }
+    },
+    "byteLength": 64
   },
   "VkDisplayPlaneProperties2KHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7219,10 +7218,10 @@
     "displayPlaneProperties": {
       "byteOffset": 16,
       "byteLength": 16
-    }
+    },
+    "byteLength": 32
   },
   "VkDisplayModeProperties2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7234,10 +7233,10 @@
     "displayModeProperties": {
       "byteOffset": 16,
       "byteLength": 24
-    }
+    },
+    "byteLength": 40
   },
   "VkDisplayPlaneInfo2KHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7253,10 +7252,10 @@
     "planeIndex": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkDisplayPlaneCapabilities2KHR": {
-    "byteLength": 88,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7268,10 +7267,10 @@
     "capabilities": {
       "byteOffset": 16,
       "byteLength": 68
-    }
+    },
+    "byteLength": 88
   },
   "VkSharedPresentSurfaceCapabilitiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7283,10 +7282,10 @@
     "sharedPresentSupportedUsageFlags": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDevice16BitStorageFeatures": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7310,10 +7309,10 @@
     "storageInputOutput16": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDevice16BitStorageFeaturesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7337,10 +7336,10 @@
     "storageInputOutput16": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceSubgroupProperties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7364,10 +7363,10 @@
     "quadOperationsInAllStages": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkBufferMemoryRequirementsInfo2": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7379,10 +7378,10 @@
     "buffer": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkBufferMemoryRequirementsInfo2KHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7394,10 +7393,10 @@
     "buffer": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkImageMemoryRequirementsInfo2": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7409,10 +7408,10 @@
     "image": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkImageMemoryRequirementsInfo2KHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7424,10 +7423,10 @@
     "image": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkImageSparseMemoryRequirementsInfo2": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7439,10 +7438,10 @@
     "image": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkImageSparseMemoryRequirementsInfo2KHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7454,10 +7453,10 @@
     "image": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryRequirements2": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7469,10 +7468,10 @@
     "memoryRequirements": {
       "byteOffset": 16,
       "byteLength": 24
-    }
+    },
+    "byteLength": 40
   },
   "VkMemoryRequirements2KHR": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7484,10 +7483,10 @@
     "memoryRequirements": {
       "byteOffset": 16,
       "byteLength": 24
-    }
+    },
+    "byteLength": 40
   },
   "VkSparseImageMemoryRequirements2": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7499,10 +7498,10 @@
     "memoryRequirements": {
       "byteOffset": 16,
       "byteLength": 48
-    }
+    },
+    "byteLength": 64
   },
   "VkSparseImageMemoryRequirements2KHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7514,10 +7513,10 @@
     "memoryRequirements": {
       "byteOffset": 16,
       "byteLength": 48
-    }
+    },
+    "byteLength": 64
   },
   "VkPhysicalDevicePointClippingProperties": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7529,10 +7528,10 @@
     "pointClippingBehavior": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDevicePointClippingPropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7544,10 +7543,10 @@
     "pointClippingBehavior": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryDedicatedRequirements": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7563,10 +7562,10 @@
     "requiresDedicatedAllocation": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryDedicatedRequirementsKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7582,10 +7581,10 @@
     "requiresDedicatedAllocation": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryDedicatedAllocateInfo": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7601,10 +7600,10 @@
     "buffer": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkMemoryDedicatedAllocateInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7620,10 +7619,10 @@
     "buffer": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkImageViewUsageCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7635,10 +7634,10 @@
     "usage": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImageViewUsageCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7650,10 +7649,10 @@
     "usage": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineTessellationDomainOriginStateCreateInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7665,10 +7664,10 @@
     "domainOrigin": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineTessellationDomainOriginStateCreateInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7680,10 +7679,10 @@
     "domainOrigin": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerYcbcrConversionInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7695,10 +7694,10 @@
     "conversion": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerYcbcrConversionInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7710,10 +7709,10 @@
     "conversion": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerYcbcrConversionCreateInfo": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7753,10 +7752,10 @@
     "forceExplicitReconstruction": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkSamplerYcbcrConversionCreateInfoKHR": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7796,10 +7795,10 @@
     "forceExplicitReconstruction": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkBindImagePlaneMemoryInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7811,10 +7810,10 @@
     "planeAspect": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkBindImagePlaneMemoryInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7826,10 +7825,10 @@
     "planeAspect": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImagePlaneMemoryRequirementsInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7841,10 +7840,10 @@
     "planeAspect": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkImagePlaneMemoryRequirementsInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7856,10 +7855,10 @@
     "planeAspect": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceSamplerYcbcrConversionFeatures": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7871,10 +7870,10 @@
     "samplerYcbcrConversion": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7886,10 +7885,10 @@
     "samplerYcbcrConversion": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerYcbcrConversionImageFormatProperties": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7901,10 +7900,10 @@
     "combinedImageSamplerDescriptorCount": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerYcbcrConversionImageFormatPropertiesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7916,10 +7915,10 @@
     "combinedImageSamplerDescriptorCount": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkTextureLODGatherFormatPropertiesAMD": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7931,10 +7930,10 @@
     "supportsTextureGatherLODBiasAMD": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkConditionalRenderingBeginInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7954,10 +7953,10 @@
     "flags": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkProtectedSubmitInfo": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7969,10 +7968,10 @@
     "protectedSubmit": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceProtectedMemoryFeatures": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7984,10 +7983,10 @@
     "protectedMemory": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceProtectedMemoryProperties": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -7999,10 +7998,10 @@
     "protectedNoFault": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceQueueInfo2": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8022,10 +8021,10 @@
     "queueIndex": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPipelineCoverageToColorStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8045,10 +8044,10 @@
     "coverageToColorLocation": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8064,10 +8063,10 @@
     "filterMinmaxImageComponentMapping": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSampleLocationEXT": {
-    "byteLength": 8,
     "x": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8075,10 +8074,10 @@
     "y": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkSampleLocationsInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8102,10 +8101,10 @@
     "pSampleLocations": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkAttachmentSampleLocationsEXT": {
-    "byteLength": 48,
     "attachmentIndex": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8113,10 +8112,10 @@
     "sampleLocationsInfo": {
       "byteOffset": 8,
       "byteLength": 40
-    }
+    },
+    "byteLength": 48
   },
   "VkSubpassSampleLocationsEXT": {
-    "byteLength": 48,
     "subpassIndex": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8124,10 +8123,10 @@
     "sampleLocationsInfo": {
       "byteOffset": 8,
       "byteLength": 40
-    }
+    },
+    "byteLength": 48
   },
   "VkRenderPassSampleLocationsBeginInfoEXT": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8151,10 +8150,10 @@
     "pPostSubpassSampleLocations": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkPipelineSampleLocationsStateCreateInfoEXT": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8170,10 +8169,10 @@
     "sampleLocationsInfo": {
       "byteOffset": 24,
       "byteLength": 40
-    }
+    },
+    "byteLength": 64
   },
   "VkPhysicalDeviceSampleLocationsPropertiesEXT": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8201,10 +8200,10 @@
     "variableSampleLocations": {
       "byteOffset": 40,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkMultisamplePropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8216,10 +8215,10 @@
     "maxSampleLocationGridSize": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkSamplerReductionModeCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8231,10 +8230,10 @@
     "reductionMode": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8246,10 +8245,10 @@
     "advancedBlendCoherentOperations": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8281,10 +8280,10 @@
     "advancedBlendAllOperations": {
       "byteOffset": 36,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkPipelineColorBlendAdvancedStateCreateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8304,10 +8303,10 @@
     "blendOverlap": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceInlineUniformBlockFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8323,10 +8322,10 @@
     "descriptorBindingInlineUniformBlockUpdateAfterBind": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceInlineUniformBlockPropertiesEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8354,10 +8353,10 @@
     "maxDescriptorSetUpdateAfterBindInlineUniformBlocks": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkWriteDescriptorSetInlineUniformBlockEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8373,10 +8372,10 @@
     "pData": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorPoolInlineUniformBlockCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8388,10 +8387,10 @@
     "maxInlineUniformBlockBindings": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineCoverageModulationStateCreateInfoNV": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8419,10 +8418,10 @@
     "pCoverageModulationTable": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkImageFormatListCreateInfoKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8438,10 +8437,10 @@
     "pViewFormats": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkValidationCacheCreateInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8461,10 +8460,10 @@
     "pInitialData": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkShaderModuleValidationCacheCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8476,10 +8475,10 @@
     "validationCache": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceMaintenance3Properties": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8495,10 +8494,10 @@
     "maxMemoryAllocationSize": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceMaintenance3PropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8514,10 +8513,10 @@
     "maxMemoryAllocationSize": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorSetLayoutSupport": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8529,10 +8528,10 @@
     "supported": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDescriptorSetLayoutSupportKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8544,10 +8543,10 @@
     "supported": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceShaderDrawParameterFeatures": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8559,10 +8558,10 @@
     "shaderDrawParameters": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFloat16Int8FeaturesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8578,10 +8577,10 @@
     "shaderInt8": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFloatControlsPropertiesKHR": {
-    "byteLength": 88,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8657,10 +8656,10 @@
     "shaderRoundingModeRTZFloat64": {
       "byteOffset": 80,
       "byteLength": 4
-    }
+    },
+    "byteLength": 88
   },
   "VkShaderResourceUsageAMD": {
-    "byteLength": 32,
     "numUsedVgprs": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8680,10 +8679,10 @@
     "scratchMemUsageInBytes": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkShaderStatisticsInfoAMD": {
-    "byteLength": 72,
     "shaderStageMask": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8711,10 +8710,10 @@
     "computeWorkGroupSize": {
       "byteOffset": 56,
       "byteLength": 12
-    }
+    },
+    "byteLength": 72
   },
   "VkDeviceQueueGlobalPriorityCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8726,10 +8725,10 @@
     "globalPriority": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDebugUtilsObjectNameInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8749,10 +8748,10 @@
     "pObjectName": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkDebugUtilsObjectTagInfoEXT": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8780,10 +8779,10 @@
     "pTag": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkDebugUtilsLabelEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8799,10 +8798,10 @@
     "color": {
       "byteOffset": 24,
       "byteLength": 16
-    }
+    },
+    "byteLength": 40
   },
   "VkDebugUtilsMessengerCreateInfoEXT": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8830,10 +8829,10 @@
     "pUserData": {
       "byteOffset": 40,
       "byteLength": 8
-    }
+    },
+    "byteLength": 48
   },
   "VkDebugUtilsMessengerCallbackDataEXT": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8881,10 +8880,10 @@
     "pObjects": {
       "byteOffset": 88,
       "byteLength": 8
-    }
+    },
+    "byteLength": 96
   },
   "VkImportMemoryHostPointerInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8900,10 +8899,10 @@
     "pHostPointer": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkMemoryHostPointerPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8915,10 +8914,10 @@
     "memoryTypeBits": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceExternalMemoryHostPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8930,10 +8929,10 @@
     "minImportedHostPointerAlignment": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceConservativeRasterizationPropertiesEXT": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8977,10 +8976,10 @@
     "conservativeRasterizationPostDepthCoverage": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkCalibratedTimestampInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -8992,10 +8991,10 @@
     "timeDomain": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceShaderCorePropertiesAMD": {
-    "byteLength": 72,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9059,10 +9058,10 @@
     "vgprAllocationGranularity": {
       "byteOffset": 68,
       "byteLength": 4
-    }
+    },
+    "byteLength": 72
   },
   "VkPipelineRasterizationConservativeStateCreateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9082,10 +9081,10 @@
     "extraPrimitiveOverestimationSize": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceDescriptorIndexingFeaturesEXT": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9173,10 +9172,10 @@
     "runtimeDescriptorArray": {
       "byteOffset": 92,
       "byteLength": 4
-    }
+    },
+    "byteLength": 96
   },
   "VkPhysicalDeviceDescriptorIndexingPropertiesEXT": {
-    "byteLength": 112,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9276,10 +9275,10 @@
     "maxDescriptorSetUpdateAfterBindInputAttachments": {
       "byteOffset": 104,
       "byteLength": 4
-    }
+    },
+    "byteLength": 112
   },
   "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9295,10 +9294,10 @@
     "pBindingFlags": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9314,10 +9313,10 @@
     "pDescriptorCounts": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9329,10 +9328,10 @@
     "maxVariableDescriptorCount": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkAttachmentDescription2KHR": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9376,10 +9375,10 @@
     "finalLayout": {
       "byteOffset": 48,
       "byteLength": 4
-    }
+    },
+    "byteLength": 56
   },
   "VkAttachmentReference2KHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9399,10 +9398,10 @@
     "aspectMask": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkSubpassDescription2KHR": {
-    "byteLength": 88,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9454,10 +9453,10 @@
     "pPreserveAttachments": {
       "byteOffset": 80,
       "byteLength": 8
-    }
+    },
+    "byteLength": 88
   },
   "VkSubpassDependency2KHR": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9497,10 +9496,10 @@
     "viewOffset": {
       "byteOffset": 44,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkRenderPassCreateInfo2KHR": {
-    "byteLength": 80,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9544,10 +9543,10 @@
     "pCorrelatedViewMasks": {
       "byteOffset": 72,
       "byteLength": 8
-    }
+    },
+    "byteLength": 80
   },
   "VkSubpassBeginInfoKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9559,10 +9558,10 @@
     "contents": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkSubpassEndInfoKHR": {
-    "byteLength": 16,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9570,10 +9569,10 @@
     "pNext": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkVertexInputBindingDivisorDescriptionEXT": {
-    "byteLength": 8,
     "binding": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9581,10 +9580,10 @@
     "divisor": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkPipelineVertexInputDivisorStateCreateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9600,10 +9599,10 @@
     "pVertexBindingDivisors": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9615,10 +9614,10 @@
     "maxVertexAttribDivisor": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDevicePCIBusInfoPropertiesEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9642,10 +9641,10 @@
     "pciFunction": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkCommandBufferInheritanceConditionalRenderingInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9657,10 +9656,10 @@
     "conditionalRenderingEnable": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDevice8BitStorageFeaturesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9680,10 +9679,10 @@
     "storagePushConstant8": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceConditionalRenderingFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9699,10 +9698,10 @@
     "inheritedConditionalRendering": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9722,10 +9721,10 @@
     "vulkanMemoryModelAvailabilityVisibilityChains": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9741,10 +9740,10 @@
     "shaderSharedInt64Atomics": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9760,10 +9759,10 @@
     "vertexAttributeInstanceRateZeroDivisor": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkQueueFamilyCheckpointPropertiesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9775,10 +9774,10 @@
     "checkpointExecutionStageMask": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkCheckpointDataNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9794,10 +9793,10 @@
     "pCheckpointMarker": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceDepthStencilResolvePropertiesKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9821,10 +9820,10 @@
     "independentResolve": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkSubpassDescriptionDepthStencilResolveKHR": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9844,10 +9843,10 @@
     "pDepthStencilResolveAttachment": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkImageViewASTCDecodeModeEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9859,10 +9858,10 @@
     "decodeMode": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceASTCDecodeFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9874,10 +9873,10 @@
     "decodeModeSharedExponent": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceTransformFeedbackFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9893,10 +9892,10 @@
     "geometryStreams": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceTransformFeedbackPropertiesEXT": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9944,10 +9943,10 @@
     "transformFeedbackDraw": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkPipelineRasterizationStateStreamCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9963,10 +9962,10 @@
     "rasterizationStream": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9978,10 +9977,10 @@
     "representativeFragmentTest": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineRepresentativeFragmentTestStateCreateInfoNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -9993,10 +9992,10 @@
     "representativeFragmentTestEnable": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceExclusiveScissorFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10008,10 +10007,10 @@
     "exclusiveScissor": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineViewportExclusiveScissorStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10027,10 +10026,10 @@
     "pExclusiveScissors": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceCornerSampledImageFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10042,10 +10041,10 @@
     "cornerSampledImage": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10061,10 +10060,10 @@
     "computeDerivativeGroupLinear": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10076,10 +10075,10 @@
     "fragmentShaderBarycentric": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceShaderImageFootprintFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10091,10 +10090,10 @@
     "imageFootprint": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10106,10 +10105,10 @@
     "dedicatedAllocationImageAliasing": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkShadingRatePaletteNV": {
-    "byteLength": 16,
     "shadingRatePaletteEntryCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10117,10 +10116,10 @@
     "pShadingRatePaletteEntries": {
       "byteOffset": 8,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   },
   "VkPipelineViewportShadingRateImageStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10140,10 +10139,10 @@
     "pShadingRatePalettes": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceShadingRateImageFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10159,10 +10158,10 @@
     "shadingRateCoarseSampleOrder": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceShadingRateImagePropertiesNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10182,10 +10181,10 @@
     "shadingRateMaxCoarseSamples": {
       "byteOffset": 28,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkCoarseSampleLocationNV": {
-    "byteLength": 12,
     "pixelX": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10197,10 +10196,10 @@
     "sample": {
       "byteOffset": 8,
       "byteLength": 4
-    }
+    },
+    "byteLength": 12
   },
   "VkCoarseSampleOrderCustomNV": {
-    "byteLength": 24,
     "shadingRate": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10216,10 +10215,10 @@
     "pSampleLocations": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineViewportCoarseSampleOrderStateCreateInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10239,10 +10238,10 @@
     "pCustomSampleOrders": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceMeshShaderFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10258,10 +10257,10 @@
     "meshShader": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceMeshShaderPropertiesNV": {
-    "byteLength": 88,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10321,10 +10320,10 @@
     "meshOutputPerPrimitiveGranularity": {
       "byteOffset": 80,
       "byteLength": 4
-    }
+    },
+    "byteLength": 88
   },
   "VkDrawMeshTasksIndirectCommandNV": {
-    "byteLength": 8,
     "taskCount": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10332,10 +10331,10 @@
     "firstTask": {
       "byteOffset": 4,
       "byteLength": 4
-    }
+    },
+    "byteLength": 8
   },
   "VkRayTracingShaderGroupCreateInfoNV": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10363,10 +10362,10 @@
     "intersectionShader": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkRayTracingPipelineCreateInfoNV": {
-    "byteLength": 80,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10410,10 +10409,10 @@
     "basePipelineIndex": {
       "byteOffset": 72,
       "byteLength": 4
-    }
+    },
+    "byteLength": 80
   },
   "VkGeometryTrianglesNV": {
-    "byteLength": 96,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10465,10 +10464,10 @@
     "transformOffset": {
       "byteOffset": 88,
       "byteLength": 8
-    }
+    },
+    "byteLength": 96
   },
   "VkGeometryAABBNV": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10492,10 +10491,10 @@
     "offset": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkGeometryDataNV": {
-    "byteLength": 136,
     "triangles": {
       "byteOffset": 0,
       "byteLength": 96
@@ -10503,10 +10502,10 @@
     "aabbs": {
       "byteOffset": 96,
       "byteLength": 40
-    }
+    },
+    "byteLength": 136
   },
   "VkGeometryNV": {
-    "byteLength": 168,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10526,10 +10525,10 @@
     "flags": {
       "byteOffset": 160,
       "byteLength": 4
-    }
+    },
+    "byteLength": 168
   },
   "VkAccelerationStructureInfoNV": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10557,10 +10556,10 @@
     "pGeometries": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkAccelerationStructureCreateInfoNV": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10576,10 +10575,10 @@
     "info": {
       "byteOffset": 24,
       "byteLength": 40
-    }
+    },
+    "byteLength": 64
   },
   "VkBindAccelerationStructureMemoryInfoNV": {
-    "byteLength": 56,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10607,10 +10606,10 @@
     "pDeviceIndices": {
       "byteOffset": 48,
       "byteLength": 8
-    }
+    },
+    "byteLength": 56
   },
   "VkWriteDescriptorSetAccelerationStructureNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10626,10 +10625,10 @@
     "pAccelerationStructures": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkAccelerationStructureMemoryRequirementsInfoNV": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10645,10 +10644,10 @@
     "accelerationStructure": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceRayTracingPropertiesNV": {
-    "byteLength": 64,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10688,10 +10687,10 @@
     "maxDescriptorSetAccelerationStructures": {
       "byteOffset": 56,
       "byteLength": 4
-    }
+    },
+    "byteLength": 64
   },
   "VkDrmFormatModifierPropertiesListEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10707,10 +10706,10 @@
     "pDrmFormatModifierProperties": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkDrmFormatModifierPropertiesEXT": {
-    "byteLength": 16,
     "drmFormatModifier": {
       "byteOffset": 0,
       "byteLength": 8
@@ -10722,10 +10721,10 @@
     "drmFormatModifierTilingFeatures": {
       "byteOffset": 12,
       "byteLength": 4
-    }
+    },
+    "byteLength": 16
   },
   "VkPhysicalDeviceImageDrmFormatModifierInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10749,10 +10748,10 @@
     "pQueueFamilyIndices": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkImageDrmFormatModifierListCreateInfoEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10768,10 +10767,10 @@
     "pDrmFormatModifiers": {
       "byteOffset": 24,
       "byteLength": 8
-    }
+    },
+    "byteLength": 32
   },
   "VkImageDrmFormatModifierExplicitCreateInfoEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10791,10 +10790,10 @@
     "pPlaneLayouts": {
       "byteOffset": 32,
       "byteLength": 8
-    }
+    },
+    "byteLength": 40
   },
   "VkImageDrmFormatModifierPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10806,10 +10805,10 @@
     "drmFormatModifier": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkImageStencilUsageCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10821,10 +10820,10 @@
     "stencilUsage": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkDeviceMemoryOverallocationCreateInfoAMD": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10836,10 +10835,10 @@
     "overallocationBehavior": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceFragmentDensityMapFeaturesEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10859,10 +10858,10 @@
     "fragmentDensityMapNonSubsampledImages": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkPhysicalDeviceFragmentDensityMapPropertiesEXT": {
-    "byteLength": 40,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10882,10 +10881,10 @@
     "fragmentDensityInvocations": {
       "byteOffset": 32,
       "byteLength": 4
-    }
+    },
+    "byteLength": 40
   },
   "VkRenderPassFragmentDensityMapCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10897,10 +10896,10 @@
     "fragmentDensityMapAttachment": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10912,10 +10911,10 @@
     "scalarBlockLayout": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceDepthClipEnableFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10927,10 +10926,10 @@
     "depthClipEnable": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPipelineRasterizationDepthClipStateCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10946,10 +10945,10 @@
     "depthClipEnable": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceMemoryBudgetPropertiesEXT": {
-    "byteLength": 272,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10965,10 +10964,10 @@
     "heapUsage": {
       "byteOffset": 144,
       "byteLength": 128
-    }
+    },
+    "byteLength": 272
   },
   "VkPhysicalDeviceMemoryPriorityFeaturesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10980,10 +10979,10 @@
     "memoryPriority": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkMemoryPriorityAllocateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -10995,10 +10994,10 @@
     "priority": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceBufferAddressFeaturesEXT": {
-    "byteLength": 32,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11018,10 +11017,10 @@
     "bufferDeviceAddressMultiDevice": {
       "byteOffset": 24,
       "byteLength": 4
-    }
+    },
+    "byteLength": 32
   },
   "VkBufferDeviceAddressInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11033,10 +11032,10 @@
     "buffer": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkBufferDeviceAddressCreateInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11048,10 +11047,10 @@
     "deviceAddress": {
       "byteOffset": 16,
       "byteLength": 8
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceImageViewImageFormatInfoEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11063,10 +11062,10 @@
     "imageViewType": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkFilterCubicImageViewImageFormatPropertiesEXT": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11082,10 +11081,10 @@
     "filterCubicMinmax": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceCooperativeMatrixFeaturesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11101,10 +11100,10 @@
     "cooperativeMatrixRobustBufferAccess": {
       "byteOffset": 20,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkPhysicalDeviceCooperativeMatrixPropertiesNV": {
-    "byteLength": 24,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11116,10 +11115,10 @@
     "cooperativeMatrixSupportedStages": {
       "byteOffset": 16,
       "byteLength": 4
-    }
+    },
+    "byteLength": 24
   },
   "VkCooperativeMatrixPropertiesNV": {
-    "byteLength": 48,
     "sType": {
       "byteOffset": 0,
       "byteLength": 4
@@ -11159,10 +11158,10 @@
     "scope": {
       "byteOffset": 44,
       "byteLength": 4
-    }
+    },
+    "byteLength": 48
   },
   "VkClearColorValue": {
-    "byteLength": 16,
     "float32": {
       "byteOffset": 0,
       "byteLength": 16
@@ -11174,10 +11173,10 @@
     "uint32": {
       "byteOffset": 0,
       "byteLength": 16
-    }
+    },
+    "byteLength": 16
   },
   "VkClearValue": {
-    "byteLength": 16,
     "color": {
       "byteOffset": 0,
       "byteLength": 16
@@ -11185,6 +11184,7 @@
     "depthStencil": {
       "byteOffset": 0,
       "byteLength": 8
-    }
+    },
+    "byteLength": 16
   }
 }
