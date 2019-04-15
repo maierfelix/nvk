@@ -1,6 +1,6 @@
 {
   "name": "nvk-v1.1.101",
-  "version": "0.3.6",
+  "version": "0.3.8",
   "sdkPath": "/Users/user/Documents/Projects//vulkansdk-macos-1.1.101.0//macOS",
   "gypfile": true,
   "scripts": {},

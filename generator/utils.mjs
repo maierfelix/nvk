@@ -171,9 +171,10 @@ export function getAutoStructureType(name) {
     }
   });
   out += values.join(`_`).toUpperCase();
-  // merge e.g. 8_BIT => 8BIT
+  // manual spelling fix ups
   out = out.replace(/(_BIT)/gm, `BIT`);
   out = out.replace(/(WIN_32)/gm, `WIN32`);
+  out = out.replace(/(MAC_OS)/gm, `MACOS`);
   return out;
 };
 

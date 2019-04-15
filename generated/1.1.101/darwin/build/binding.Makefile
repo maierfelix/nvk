@@ -3,4 +3,4 @@
 export builddir_name ?= ./build/.
 .PHONY: all
 all:
-	$(MAKE) action_after_build addon-darwin
+	$(MAKE) addon-darwin action_after_build

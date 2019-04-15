@@ -7,8 +7,6 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#include "source.h"
-
 class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
 
   public:
@@ -462,18 +460,34 @@ Napi::Value VulkanWindow::createSurface(const Napi::CallbackInfo& info) {
   Napi::Object arg1;
   Napi::Object arg2;
   if (info[0].IsObject()) arg0 = info[0].As<Napi::Object>();
-  else Napi::TypeError::New(env, "Argument 1 must be of type 'VkInstance'").ThrowAsJavaScriptException();
+  else {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'VkInstance'").ThrowAsJavaScriptException();
+    return Napi::Number::New(env, static_cast<int32_t>(VK_INCOMPLETE));
+  }
   if (info[2].IsObject()) arg2 = info[2].As<Napi::Object>();
-  else Napi::TypeError::New(env, "Argument 2 must be of type 'VkSurfaceKHR'").ThrowAsJavaScriptException();
+  else {
+    Napi::TypeError::New(env, "Argument 2 must be of type 'VkSurfaceKHR'").ThrowAsJavaScriptException();
+    return Napi::Number::New(env, static_cast<int32_t>(VK_INCOMPLETE));
+  }
 
-  _VkInstance* instance = Napi::ObjectWrap<_VkInstance>::Unwrap(arg0);
-  _VkSurfaceKHR* surface = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(arg2);
+  if ((arg0.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'VkInstance'").ThrowAsJavaScriptException();
+    return Napi::Number::New(env, static_cast<int32_t>(VK_INCOMPLETE));
+  }
+
+  if ((arg2.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
+    Napi::TypeError::New(env, "Argument 2 must be of type 'VkSurfaceKHR'").ThrowAsJavaScriptException();
+    return Napi::Number::New(env, static_cast<int32_t>(VK_INCOMPLETE));
+  }
+
+  VkInstance* instance = reinterpret_cast<VkInstance*>(arg0.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+  VkSurfaceKHR* surface = reinterpret_cast<VkSurfaceKHR*>(arg2.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
 
   VkResult out = glfwCreateWindowSurface(
-    instance->instance,
+    *instance,
     this->instance,
     nullptr,
-    &surface->instance
+    surface
   );
   return Napi::Number::New(env, static_cast<int32_t>(out));
 }

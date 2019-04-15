@@ -38,11 +38,7 @@ CFLAGS_CC_Debug := \
 	-fno-rtti \
 	-fno-exceptions \
 	-std=c++11 \
-	-stdlib=libc++ \
-	-fexceptions \
-	-Wno-switch \
-	-Wno-unused \
-	-Wno-uninitialized
+	-stdlib=libc++
 
 # Flags passed to only ObjC files.
 CFLAGS_OBJC_Debug :=
@@ -51,13 +47,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/user/.node-gyp/11.10.0/include/node \
-	-I/Users/user/.node-gyp/11.10.0/src \
-	-I/Users/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/Users/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/Users/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/Users/user/.node-gyp/11.10.0/deps/zlib \
-	-I/Users/user/.node-gyp/11.10.0/deps/v8/include \
+	-I/Users/user/.node-gyp/11.14.0/include/node \
+	-I/Users/user/.node-gyp/11.14.0/src \
+	-I/Users/user/.node-gyp/11.14.0/deps/openssl/config \
+	-I/Users/user/.node-gyp/11.14.0/deps/openssl/openssl/include \
+	-I/Users/user/.node-gyp/11.14.0/deps/uv/include \
+	-I/Users/user/.node-gyp/11.14.0/deps/zlib \
+	-I/Users/user/.node-gyp/11.14.0/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.101.0/macOS/include
@@ -95,11 +91,7 @@ CFLAGS_CC_Release := \
 	-fno-rtti \
 	-fno-exceptions \
 	-std=c++11 \
-	-stdlib=libc++ \
-	-fexceptions \
-	-Wno-switch \
-	-Wno-unused \
-	-Wno-uninitialized
+	-stdlib=libc++
 
 # Flags passed to only ObjC files.
 CFLAGS_OBJC_Release :=
@@ -108,20 +100,19 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/user/.node-gyp/11.10.0/include/node \
-	-I/Users/user/.node-gyp/11.10.0/src \
-	-I/Users/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/Users/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/Users/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/Users/user/.node-gyp/11.10.0/deps/zlib \
-	-I/Users/user/.node-gyp/11.10.0/deps/v8/include \
+	-I/Users/user/.node-gyp/11.14.0/include/node \
+	-I/Users/user/.node-gyp/11.14.0/src \
+	-I/Users/user/.node-gyp/11.14.0/deps/openssl/config \
+	-I/Users/user/.node-gyp/11.14.0/deps/openssl/openssl/include \
+	-I/Users/user/.node-gyp/11.14.0/deps/uv/include \
+	-I/Users/user/.node-gyp/11.14.0/deps/zlib \
+	-I/Users/user/.node-gyp/11.14.0/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.101.0/macOS/include
 
 OBJS := \
-	$(obj).target/$(TARGET)/src/index.o \
-	$(obj).target/$(TARGET)/src/source.o
+	$(obj).target/$(TARGET)/src/index.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
