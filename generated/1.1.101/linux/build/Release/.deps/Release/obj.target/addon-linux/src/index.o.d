@@ -11,8 +11,8 @@ Release/obj.target/addon-linux/src/index.o: ../src/index.cpp \
  /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vulkan.h \
  /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vk_platform.h \
  /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vulkan_core.h \
- ../src/source.h ../src/utils.h ../src/calls.h ../src/enums.h \
- ../src/window.h
+ ../src/calls.h ../src/utils.h ../src/enums.h ../src/window.h \
+ ../src/memoryLayouts.h
 ../src/index.cpp:
 /home/user/Documents/GitHub/nvk/node_modules/node-addon-api/napi.h:
 /home/user/.node-gyp/11.10.1/include/node/node_api.h:
@@ -25,8 +25,8 @@ Release/obj.target/addon-linux/src/index.o: ../src/index.cpp \
 /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vulkan.h:
 /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vk_platform.h:
 /home/user/vulkan/1.1.101.0/x86_64/include/vulkan/vulkan_core.h:
-../src/source.h:
-../src/utils.h:
 ../src/calls.h:
+../src/utils.h:
 ../src/enums.h:
 ../src/window.h:
+../src/memoryLayouts.h:

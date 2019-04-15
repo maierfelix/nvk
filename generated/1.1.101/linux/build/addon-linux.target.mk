@@ -108,8 +108,7 @@ INCS_Release := \
 	-I/home/user/vulkan/1.1.101.0/x86_64/include
 
 OBJS := \
-	$(obj).target/$(TARGET)/src/index.o \
-	$(obj).target/$(TARGET)/src/source.o
+	$(obj).target/$(TARGET)/src/index.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
