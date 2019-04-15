@@ -249,6 +249,13 @@ async function generateBindings({xml, version, docs, incremental} = _) {
 const {platform} = process;
 const nvk = require("./build/Release/addon-" + platform + ".node");
 
+let ENABLE_SHARED_MEMORY_HINTS = !!process.env.npm_config_enable_shared_memory_hints;
+if (!ENABLE_SHARED_MEMORY_HINTS) {
+  process.argv.map(arg => {
+    if (arg.match("enable-shared-memory-hints")) ENABLE_SHARED_MEMORY_HINTS = true;
+  });
+}
+
 const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
 const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
 

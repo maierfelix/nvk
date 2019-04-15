@@ -436,6 +436,7 @@ function getFlusherProcessor(member) {
       let srcView = new Uint8Array(this._${member.name}.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, ${byteOffset});
+      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'${currentStruct.name}.${member.name}' isn't used as shared-memory");
     }
   }`;
       }
