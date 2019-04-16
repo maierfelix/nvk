@@ -169,7 +169,6 @@
     "cache_lock_stale": "60000",
     "otp": "",
     "cache_min": "10",
-    "docs": "true",
     "searchexclude": "",
     "cache": "/Users/user/.npm",
     "color": "true",
