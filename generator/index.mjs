@@ -264,7 +264,7 @@ global.ArrayBuffer.prototype.getAddress = function() {
 };
 
 global.ArrayBuffer.fromAddress = function(address, byteLength) {
-  return getArrayBufferFromAddress(address, byteLength);
+  return getArrayBufferFromAddress(address, BigInt(byteLength));
 };
 
 const BI0 = BigInt(0);

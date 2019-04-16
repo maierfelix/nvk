@@ -209,11 +209,16 @@ function getCallBodyBefore(call) {
     if (param.isWin32Handle) {
       return `
   bool lossless${index} = false;
-  if (!info[${index}].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+  if (!info[${index}].IsBigInt() && !info[${index}].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  ${param.type} $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
+  ${param.type} $p${index} = 0;
+  if (info[${index}].IsBigInt()) {
+    $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));
+  } else {
+    $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::Number>().Int64Value());
+  }`;
     }
     if (param.isWin32HandleReference) {
       return `
@@ -289,11 +294,16 @@ function getCallBodyBefore(call) {
         let type = param.enumType || param.type;
         return `
   bool lossless${index};
-  if (!info[${index}].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+  if (!info[${index}].IsBigInt() && !info[${index}].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
+  ${type} $p${index} = 0;
+  if (info[${index}].IsBigInt()) {
+    $p${index} = static_cast<${type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));
+  } else {
+    $p${index} = static_cast<${type}>(info[${index}].As<Napi::Number>().Int64Value());
+  }`;
       }
       case "int":
       case "float":

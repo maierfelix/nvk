@@ -23,7 +23,7 @@ global.ArrayBuffer.prototype.getAddress = function() {
 };
 
 global.ArrayBuffer.fromAddress = function(address, byteLength) {
-  return getArrayBufferFromAddress(address, byteLength);
+  return getArrayBufferFromAddress(address, BigInt(byteLength));
 };
 
 const BI0 = BigInt(0);
@@ -3314,10 +3314,10 @@ class VkMemoryAllocateInfo {
     return this.memoryViewBigUint64[0x2];
   }
   set allocationSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.allocationSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.allocationSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get memoryTypeIndex() {
     return this.memoryViewUint32[0x6];
@@ -3786,19 +3786,19 @@ class VkMappedMemoryRange {
     return this.memoryViewBigUint64[0x3];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkMappedMemoryRange.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkMappedMemoryRange.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x4];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkMappedMemoryRange.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkMappedMemoryRange.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -4050,19 +4050,19 @@ class VkDescriptorBufferInfo {
     return this.memoryViewBigUint64[0x1];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x1] = value;
+    this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get range() {
     return this.memoryViewBigUint64[0x2];
   }
   set range(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.range': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.range': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
 };
@@ -4780,10 +4780,10 @@ class VkBufferCreateInfo {
     return this.memoryViewBigUint64[0x3];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferCreateInfo.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get usage() {
     return this.memoryViewInt32[0x8];
@@ -4975,19 +4975,19 @@ class VkBufferViewCreateInfo {
     return this.memoryViewBigUint64[0x5];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x5] = value;
+    this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get range() {
     return this.memoryViewBigUint64[0x6];
   }
   set range(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.range': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.range': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x6] = value;
+    this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   
 };
@@ -5566,19 +5566,19 @@ class VkBufferMemoryBarrier {
     return this.memoryViewBigUint64[0x5];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x5] = value;
+    this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x6];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x6] = value;
+    this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   
 };
@@ -6549,28 +6549,28 @@ class VkBufferCopy {
     return this.memoryViewBigUint64[0x0];
   }
   set srcOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.srcOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferCopy.srcOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x0] = value;
+    this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get dstOffset() {
     return this.memoryViewBigUint64[0x1];
   }
   set dstOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.dstOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferCopy.dstOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x1] = value;
+    this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x2];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferCopy.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
 };
@@ -6641,19 +6641,19 @@ class VkSparseMemoryBind {
     return this.memoryViewBigUint64[0x0];
   }
   set resourceOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.resourceOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSparseMemoryBind.resourceOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x0] = value;
+    this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x1];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSparseMemoryBind.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x1] = value;
+    this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get memory() {
     return this._memory;
@@ -6675,10 +6675,10 @@ class VkSparseMemoryBind {
     return this.memoryViewBigUint64[0x3];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSparseMemoryBind.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0x8];
@@ -6832,10 +6832,10 @@ class VkSparseImageMemoryBind {
     return this.memoryViewBigUint64[0x6];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x6] = value;
+    this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0xE];
@@ -8104,10 +8104,10 @@ class VkBufferImageCopy {
     return this.memoryViewBigUint64[0x0];
   }
   set bufferOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferImageCopy.bufferOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferImageCopy.bufferOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x0] = value;
+    this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get bufferRowLength() {
     return this.memoryViewUint32[0x2];
@@ -8546,10 +8546,10 @@ class VkShaderModuleCreateInfo {
     return this.memoryViewBigInt64[0x3];
   }
   set codeSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.codeSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.codeSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pCode() {
     return this._pCode;
@@ -9391,10 +9391,10 @@ class VkSpecializationMapEntry {
     return this.memoryViewBigInt64[0x1];
   }
   set size(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSpecializationMapEntry.size': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSpecializationMapEntry.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x1] = value;
+    this.memoryViewBigInt64[0x1] = BigInt(value);
   }
   
 };
@@ -9483,10 +9483,10 @@ class VkSpecializationInfo {
     return this.memoryViewBigInt64[0x2];
   }
   set dataSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkSpecializationInfo.dataSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkSpecializationInfo.dataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x2] = value;
+    this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get pData() {
     return this._pData;
@@ -12691,10 +12691,10 @@ class VkPipelineCacheCreateInfo {
     return this.memoryViewBigInt64[0x3];
   }
   set initialDataSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.initialDataSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.initialDataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pInitialData() {
     return this._pInitialData;
@@ -19399,19 +19399,19 @@ class VkWin32SurfaceCreateInfoKHR {
     return this.memoryViewBigInt64[0x3];
   }
   set hinstance(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hinstance': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hinstance': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get hwnd() {
     return this.memoryViewBigInt64[0x4];
   }
   set hwnd(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hwnd': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hwnd': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x4] = value;
+    this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   
 };
@@ -20660,10 +20660,10 @@ class VkDebugMarkerObjectNameInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set object(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.object': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.object': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get pObjectName() {
     if (this._pObjectName !== null) {
@@ -20796,28 +20796,28 @@ class VkDebugMarkerObjectTagInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set object(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.object': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.object': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get tagName() {
     return this.memoryViewBigUint64[0x4];
   }
   set tagName(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagName': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagName': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get tagSize() {
     return this.memoryViewBigInt64[0x5];
   }
   set tagSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x5] = value;
+    this.memoryViewBigInt64[0x5] = BigInt(value);
   }
   get pTag() {
     return this._pTag;
@@ -21643,10 +21643,10 @@ class VkImportMemoryWin32HandleInfoNV {
     return this.memoryViewBigInt64[0x3];
   }
   set handle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoNV.handle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoNV.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
 };
@@ -22314,10 +22314,10 @@ class VkIndirectCommandsTokenNVX {
     return this.memoryViewBigUint64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
 };
@@ -22778,10 +22778,10 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewBigUint64[0x9];
   }
   set sequencesCountOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesCountOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesCountOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x9] = value;
+    this.memoryViewBigUint64[0x9] = BigInt(value);
   }
   get sequencesIndexBuffer() {
     return this._sequencesIndexBuffer;
@@ -22803,10 +22803,10 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewBigUint64[0xB];
   }
   set sequencesIndexOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesIndexOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesIndexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0xB] = value;
+    this.memoryViewBigUint64[0xB] = BigInt(value);
   }
   
 };
@@ -28824,10 +28824,10 @@ class VkImportMemoryWin32HandleInfoKHR {
     return this.memoryViewBigInt64[0x3];
   }
   set handle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.handle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get name() {
     if (this._name !== null) {
@@ -30405,10 +30405,10 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this.memoryViewBigInt64[0x4];
   }
   set handle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.handle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x4] = value;
+    this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   get name() {
     if (this._name !== null) {
@@ -31751,10 +31751,10 @@ class VkImportFenceWin32HandleInfoKHR {
     return this.memoryViewBigInt64[0x4];
   }
   set handle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.handle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x4] = value;
+    this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   get name() {
     if (this._name !== null) {
@@ -34144,10 +34144,10 @@ class VkBindBufferMemoryInfo {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -34297,10 +34297,10 @@ class VkBindBufferMemoryInfoKHR {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -34676,10 +34676,10 @@ class VkBindImageMemoryInfo {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -34831,10 +34831,10 @@ class VkBindImageMemoryInfoKHR {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -36694,10 +36694,10 @@ class VkAcquireNextImageInfoKHR {
     return this.memoryViewBigUint64[0x3];
   }
   set timeout(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.timeout': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.timeout': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get semaphore() {
     return this._semaphore;
@@ -37353,19 +37353,19 @@ class VkDescriptorUpdateTemplateEntry {
     return this.memoryViewBigInt64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x2] = value;
+    this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get stride() {
     return this.memoryViewBigInt64[0x3];
   }
   set stride(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.stride': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.stride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
 };
@@ -37486,19 +37486,19 @@ class VkDescriptorUpdateTemplateEntryKHR {
     return this.memoryViewBigInt64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x2] = value;
+    this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get stride() {
     return this.memoryViewBigInt64[0x3];
   }
   set stride(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.stride': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.stride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
 };
@@ -38671,10 +38671,10 @@ class VkPresentTimeGOOGLE {
     return this.memoryViewBigUint64[0x1];
   }
   set desiredPresentTime(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkPresentTimeGOOGLE.desiredPresentTime': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkPresentTimeGOOGLE.desiredPresentTime': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x1] = value;
+    this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   
 };
@@ -44657,10 +44657,10 @@ class VkConditionalRenderingBeginInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0x8];
@@ -47460,10 +47460,10 @@ class VkValidationCacheCreateInfoEXT {
     return this.memoryViewBigInt64[0x3];
   }
   set initialDataSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.initialDataSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.initialDataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x3] = value;
+    this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pInitialData() {
     return this._pInitialData;
@@ -48785,10 +48785,10 @@ class VkDebugUtilsObjectNameInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set objectHandle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.objectHandle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.objectHandle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get pObjectName() {
     if (this._pObjectName !== null) {
@@ -48921,28 +48921,28 @@ class VkDebugUtilsObjectTagInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set objectHandle(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.objectHandle': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.objectHandle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get tagName() {
     return this.memoryViewBigUint64[0x4];
   }
   set tagName(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagName': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagName': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get tagSize() {
     return this.memoryViewBigInt64[0x5];
   }
   set tagSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigInt64[0x5] = value;
+    this.memoryViewBigInt64[0x5] = BigInt(value);
   }
   get pTag() {
     return this._pTag;
@@ -57237,10 +57237,10 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0x3];
   }
   set vertexOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x3] = value;
+    this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get vertexCount() {
     return this.memoryViewUint32[0x8];
@@ -57255,10 +57255,10 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0x5];
   }
   set vertexStride(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexStride': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexStride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x5] = value;
+    this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get vertexFormat() {
     return this.memoryViewInt32[0xC];
@@ -57289,10 +57289,10 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0x8];
   }
   set indexOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x8] = value;
+    this.memoryViewBigUint64[0x8] = BigInt(value);
   }
   get indexCount() {
     return this.memoryViewUint32[0x12];
@@ -57332,10 +57332,10 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0xB];
   }
   set transformOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.transformOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.transformOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0xB] = value;
+    this.memoryViewBigUint64[0xB] = BigInt(value);
   }
   
 };
@@ -57506,10 +57506,10 @@ class VkGeometryAABBNV {
     return this.memoryViewBigUint64[0x4];
   }
   set offset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkGeometryAABBNV.offset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkGeometryAABBNV.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
 };
@@ -58037,10 +58037,10 @@ class VkAccelerationStructureCreateInfoNV {
     return this.memoryViewBigUint64[0x2];
   }
   set compactedSize(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.compactedSize': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.compactedSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get info() {
     return this._info;
@@ -58204,10 +58204,10 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.memoryOffset': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x4] = value;
+    this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0xA];
@@ -58906,10 +58906,10 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set drmFormatModifier(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.drmFormatModifier': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.drmFormatModifier': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get sharingMode() {
     return this.memoryViewInt32[0x6];
@@ -59161,10 +59161,10 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set drmFormatModifier(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.drmFormatModifier': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.drmFormatModifier': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get drmFormatModifierPlaneCount() {
     return this.memoryViewUint32[0x6];
@@ -60705,10 +60705,10 @@ class VkBufferDeviceAddressCreateInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set deviceAddress(value) {
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for 'VkBufferDeviceAddressCreateInfoEXT.deviceAddress': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for 'VkBufferDeviceAddressCreateInfoEXT.deviceAddress': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryViewBigUint64[0x2] = value;
+    this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
 };

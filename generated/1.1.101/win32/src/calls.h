@@ -1853,18 +1853,28 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkMapMemory'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkMapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'size' in 'vkMapMemory'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'size' in 'vkMapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[4].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 5 'flags' in 'vkMapMemory'").ThrowAsJavaScriptException();
@@ -2272,11 +2282,16 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'memoryOffset' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'memoryOffset' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
   int32_t out = vkBindBufferMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -2422,11 +2437,16 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'memoryOffset' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'memoryOffset' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
   int32_t out = vkBindImageMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -3059,11 +3079,16 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'timeout' in 'vkWaitForFences'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'timeout' in 'vkWaitForFences'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
   int32_t out = vkWaitForFences(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -3636,11 +3661,16 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'dataSize' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'dataSize' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  size_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
@@ -3652,11 +3682,16 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   }
 
   bool lossless6;
-  if (!info[6].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 7 'stride' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+  if (!info[6].IsBigInt() && !info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 7 'stride' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
+  uint64_t $p6 = 0;
+  if (info[6].IsBigInt()) {
+    $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
+  } else {
+    $p6 = static_cast<uint64_t>(info[6].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[7].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 8 'flags' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
@@ -7243,11 +7278,16 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[3].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 4 'indexType' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
@@ -7520,11 +7560,16 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[3].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
@@ -7590,11 +7635,16 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[3].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
@@ -7710,11 +7760,16 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDispatchIndirect'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDispatchIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 vkCmdDispatchIndirect(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -8340,18 +8395,28 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dstOffset' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'dstOffset' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'dataSize' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'dataSize' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   void* $p4 = nullptr;
   if (info[4].IsArrayBuffer()) {
@@ -8414,18 +8479,28 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dstOffset' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'dstOffset' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'size' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'size' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[4].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 5 'data' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
@@ -9754,18 +9829,28 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   }
 
   bool lossless5;
-  if (!info[5].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 6 'dstOffset' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+  if (!info[5].IsBigInt() && !info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 6 'dstOffset' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
+  uint64_t $p5 = 0;
+  if (info[5].IsBigInt()) {
+    $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
+  } else {
+    $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless6;
-  if (!info[6].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 7 'stride' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+  if (!info[6].IsBigInt() && !info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 7 'stride' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
+  uint64_t $p6 = 0;
+  if (info[6].IsBigInt()) {
+    $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
+  } else {
+    $p6 = static_cast<uint64_t>(info[6].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[7].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 8 'flags' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
@@ -11470,11 +11555,16 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'timeout' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'timeout' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkSemaphore *$p3 = nullptr;
@@ -11854,18 +11944,28 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   VkDebugReportObjectTypeEXT $p2 = static_cast<VkDebugReportObjectTypeEXT>(info[2].As<Napi::Number>().Int64Value());
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'object' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'object' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'location' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'location' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  size_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'messageCode' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
@@ -12351,11 +12451,16 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -12376,11 +12481,16 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
@@ -12448,11 +12558,16 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -12473,11 +12588,16 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
@@ -13980,11 +14100,16 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   bool lossless2 = false;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'handle' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'handle' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  HANDLE $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  HANDLE $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkMemoryWin32HandlePropertiesKHR *$p3 = nullptr;
@@ -19105,11 +19230,16 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'dstOffset' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'dstOffset' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[4].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 5 'marker' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
@@ -19432,11 +19562,16 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -19457,11 +19592,16 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
@@ -19529,11 +19669,16 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -19554,11 +19699,16 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
@@ -20200,11 +20350,16 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'counterBufferOffset' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'counterBufferOffset' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'counterOffset' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
@@ -20592,11 +20747,16 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[3].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
@@ -20662,11 +20822,16 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -20687,11 +20852,16 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'countBufferOffset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[5].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
@@ -21271,11 +21441,16 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless3;
-  if (!info[3].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'instanceOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
+  if (!info[3].IsBigInt() && !info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 4 'instanceOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  uint64_t $p3 = 0;
+  if (info[3].IsBigInt()) {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
+  } else {
+    $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[4].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 5 'update' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
@@ -21338,11 +21513,16 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless8;
-  if (!info[8].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 9 'scratchOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
+  if (!info[8].IsBigInt() && !info[8].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 9 'scratchOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
+  uint64_t $p8 = 0;
+  if (info[8].IsBigInt()) {
+    $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
+  } else {
+    $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
+  }
 $vkCmdBuildAccelerationStructureNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -21400,11 +21580,16 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'raygenShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'raygenShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  uint64_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -21425,18 +21610,28 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'missShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'missShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  uint64_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless5;
-  if (!info[5].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 6 'missShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[5].IsBigInt() && !info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 6 'missShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
+  uint64_t $p5 = 0;
+  if (info[5].IsBigInt()) {
+    $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
+  } else {
+    $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj6;
   VkBuffer *$p6 = nullptr;
@@ -21457,18 +21652,28 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless7;
-  if (!info[7].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 8 'hitShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[7].IsBigInt() && !info[7].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 8 'hitShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p7 = static_cast<uint64_t>(info[7].As<Napi::BigInt>().Int64Value(&lossless7));
+  uint64_t $p7 = 0;
+  if (info[7].IsBigInt()) {
+    $p7 = static_cast<uint64_t>(info[7].As<Napi::BigInt>().Int64Value(&lossless7));
+  } else {
+    $p7 = static_cast<uint64_t>(info[7].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless8;
-  if (!info[8].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 9 'hitShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[8].IsBigInt() && !info[8].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 9 'hitShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
+  uint64_t $p8 = 0;
+  if (info[8].IsBigInt()) {
+    $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
+  } else {
+    $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
+  }
 
   Napi::Object obj9;
   VkBuffer *$p9 = nullptr;
@@ -21489,18 +21694,28 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   }
 
   bool lossless10;
-  if (!info[10].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 11 'callableShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[10].IsBigInt() && !info[10].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 11 'callableShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p10 = static_cast<uint64_t>(info[10].As<Napi::BigInt>().Int64Value(&lossless10));
+  uint64_t $p10 = 0;
+  if (info[10].IsBigInt()) {
+    $p10 = static_cast<uint64_t>(info[10].As<Napi::BigInt>().Int64Value(&lossless10));
+  } else {
+    $p10 = static_cast<uint64_t>(info[10].As<Napi::Number>().Int64Value());
+  }
 
   bool lossless11;
-  if (!info[11].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 12 'callableShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+  if (!info[11].IsBigInt() && !info[11].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 12 'callableShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  uint64_t $p11 = static_cast<uint64_t>(info[11].As<Napi::BigInt>().Int64Value(&lossless11));
+  uint64_t $p11 = 0;
+  if (info[11].IsBigInt()) {
+    $p11 = static_cast<uint64_t>(info[11].As<Napi::BigInt>().Int64Value(&lossless11));
+  } else {
+    $p11 = static_cast<uint64_t>(info[11].As<Napi::Number>().Int64Value());
+  }
 
   if (!info[12].IsNumber()) {
     Napi::TypeError::New(env, "Expected 'Number' for argument 13 'width' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
@@ -21594,11 +21809,16 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
-  if (!info[4].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'dataSize' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
+  if (!info[4].IsBigInt() && !info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 5 'dataSize' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  size_t $p4 = 0;
+  if (info[4].IsBigInt()) {
+    $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
+  } else {
+    $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  }
 
   void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
@@ -21662,11 +21882,16 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   }
 
   bool lossless2;
-  if (!info[2].IsBigInt()) {
-    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dataSize' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
+  if (!info[2].IsBigInt() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' or 'Number' for argument 3 'dataSize' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
-  size_t $p2 = static_cast<size_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  size_t $p2 = 0;
+  if (info[2].IsBigInt()) {
+    $p2 = static_cast<size_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
+  } else {
+    $p2 = static_cast<size_t>(info[2].As<Napi::Number>().Int64Value());
+  }
 
   void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {

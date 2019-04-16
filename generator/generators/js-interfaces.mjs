@@ -286,10 +286,10 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (typeof value !== "bigint") {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    if (typeof value !== "bigint" && typeof value !== "number") {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
     }
-    this.memoryView${instr}[${offset}] = value;`;
+    this.memoryView${instr}[${offset}] = BigInt(value);`;
     }
     case JavaScriptType.BOOLEAN: {
       let instr = getDataViewInstruction(member);
