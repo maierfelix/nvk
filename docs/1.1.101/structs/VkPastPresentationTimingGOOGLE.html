@@ -60,21 +60,25 @@ pastPresentationTimingGOOGLE.presentMargin;
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>desiredPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is an application-provided value that was given to a previous <b><a href="../calls/vkQueuePresentKHR.html">vkQueuePresentKHR</a></b> command via <b><a href="../structs/VkPresentTimeGOOGLE.html">VkPresentTimeGOOGLE</a></b>::<b>desiredPresentTime</b>. If non-zero, it was used by the application to indicate that an image not be presented any sooner than <b>desiredPresentTime</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>actualPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the time when the image of the <b>swapchain</b> was actually displayed.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>earliestPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the time when the image of the <b>swapchain</b> could have been displayed. This <i>may</i> differ from <b>actualPresentTime</b> if the application requested that the image be presented no sooner than <b><a href="../structs/VkPresentTimeGOOGLE.html">VkPresentTimeGOOGLE</a></b>::<b>desiredPresentTime</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>presentMargin</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is an indication of how early the <b><a href="../calls/vkQueuePresentKHR.html">vkQueuePresentKHR</a></b> command was processed compared to how soon it needed to be processed, and still be presented at <b>earliestPresentTime</b>.</vk-property-description>
       </vk-property-entry>
       

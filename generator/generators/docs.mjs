@@ -73,7 +73,8 @@ function getType(object) {
       return `Function`;
     }
     case JavaScriptType.BIGINT: {
-      return `<a href="${LINK_MDN_GOBJECTS}/BigInt">BigInt</a>`;
+      return `<a href="${LINK_MDN_GOBJECTS}/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number`;
     }
     case JavaScriptType.OBJECT_INOUT: {
       return `Object.$<vk-property-type type="object">(${value})</vk-property-type>`;
