@@ -274,7 +274,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 ````
 [--vkversion]: The Vulkan version to generate bindings for
 [--incremental]: Enables incremental builds when building the bindings
-[--enabled-shared-memory-hints]: Enables console hints reporting to use nested structures when possible - useful for performance optimization
+[--enable-shared-memory-hints]: Enables console hints reporting to use nested structures when possible - useful for performance optimization
 [--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
 
