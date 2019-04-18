@@ -977,16 +977,16 @@ VkBaseOutStructure.prototype.reflect = function reflect(memoryAddress) {
 
 VkBaseOutStructure.byteLength = 0x10;
 
-VkBaseOutStructure.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBaseOutStructure.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBaseInStructure **/
 class VkBaseInStructure {
   constructor(opts) {
@@ -1055,16 +1055,16 @@ VkBaseInStructure.prototype.reflect = function reflect(memoryAddress) {
 
 VkBaseInStructure.byteLength = 0x10;
 
-VkBaseInStructure.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBaseInStructure.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkOffset2D **/
 class VkOffset2D {
   constructor(opts) {
@@ -1124,16 +1124,16 @@ VkOffset2D.prototype.reflect = function reflect(memoryAddress) {
 
 VkOffset2D.byteLength = 0x8;
 
-VkOffset2D.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkOffset2D.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkOffset3D **/
 class VkOffset3D {
   constructor(opts) {
@@ -1204,20 +1204,20 @@ VkOffset3D.prototype.reflect = function reflect(memoryAddress) {
 
 VkOffset3D.byteLength = 0xC;
 
-VkOffset3D.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkOffset3D.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  z: Object.freeze({
+  },
+  z: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExtent2D **/
 class VkExtent2D {
   constructor(opts) {
@@ -1277,16 +1277,16 @@ VkExtent2D.prototype.reflect = function reflect(memoryAddress) {
 
 VkExtent2D.byteLength = 0x8;
 
-VkExtent2D.memoryLayout = Object.freeze({
-  width: Object.freeze({
+VkExtent2D.memoryLayout = {
+  width: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  height: Object.freeze({
+  },
+  height: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExtent3D **/
 class VkExtent3D {
   constructor(opts) {
@@ -1357,20 +1357,20 @@ VkExtent3D.prototype.reflect = function reflect(memoryAddress) {
 
 VkExtent3D.byteLength = 0xC;
 
-VkExtent3D.memoryLayout = Object.freeze({
-  width: Object.freeze({
+VkExtent3D.memoryLayout = {
+  width: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  height: Object.freeze({
+  },
+  height: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  depth: Object.freeze({
+  },
+  depth: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkViewport **/
 class VkViewport {
   constructor(opts) {
@@ -1474,32 +1474,32 @@ VkViewport.prototype.reflect = function reflect(memoryAddress) {
 
 VkViewport.byteLength = 0x18;
 
-VkViewport.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkViewport.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  width: Object.freeze({
+  },
+  width: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  height: Object.freeze({
+  },
+  height: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  minDepth: Object.freeze({
+  },
+  minDepth: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxDepth: Object.freeze({
+  },
+  maxDepth: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRect2D **/
 class VkRect2D {
   constructor(opts) {
@@ -1597,16 +1597,16 @@ VkRect2D.prototype.reflect = function reflect(memoryAddress) {
 
 VkRect2D.byteLength = 0x10;
 
-VkRect2D.memoryLayout = Object.freeze({
-  offset: Object.freeze({
+VkRect2D.memoryLayout = {
+  offset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkClearRect **/
 class VkClearRect {
   constructor(opts) {
@@ -1697,20 +1697,20 @@ VkClearRect.prototype.reflect = function reflect(memoryAddress) {
 
 VkClearRect.byteLength = 0x18;
 
-VkClearRect.memoryLayout = Object.freeze({
-  rect: Object.freeze({
+VkClearRect.memoryLayout = {
+  rect: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  baseArrayLayer: Object.freeze({
+  },
+  baseArrayLayer: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  layerCount: Object.freeze({
+  },
+  layerCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkComponentMapping **/
 class VkComponentMapping {
   constructor(opts) {
@@ -1792,24 +1792,24 @@ VkComponentMapping.prototype.reflect = function reflect(memoryAddress) {
 
 VkComponentMapping.byteLength = 0x10;
 
-VkComponentMapping.memoryLayout = Object.freeze({
-  r: Object.freeze({
+VkComponentMapping.memoryLayout = {
+  r: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  g: Object.freeze({
+  },
+  g: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  b: Object.freeze({
+  },
+  b: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  a: Object.freeze({
+  },
+  a: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceProperties **/
 class VkPhysicalDeviceProperties {
   constructor(opts) {
@@ -1916,44 +1916,44 @@ VkPhysicalDeviceProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkPhysicalDeviceProperties.byteLength = 0x338;
 
-VkPhysicalDeviceProperties.memoryLayout = Object.freeze({
-  apiVersion: Object.freeze({
+VkPhysicalDeviceProperties.memoryLayout = {
+  apiVersion: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  driverVersion: Object.freeze({
+  },
+  driverVersion: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  vendorID: Object.freeze({
+  },
+  vendorID: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  deviceID: Object.freeze({
+  },
+  deviceID: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  deviceType: Object.freeze({
+  },
+  deviceType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  deviceName: Object.freeze({
+  },
+  deviceName: {
     byteOffset: 0x14,
     byteLength: 0x100
-  }),
-  pipelineCacheUUID: Object.freeze({
+  },
+  pipelineCacheUUID: {
     byteOffset: 0x114,
     byteLength: 0x10
-  }),
-  limits: Object.freeze({
+  },
+  limits: {
     byteOffset: 0x128,
     byteLength: 0x1F8
-  }),
-  sparseProperties: Object.freeze({
+  },
+  sparseProperties: {
     byteOffset: 0x320,
     byteLength: 0x14
-  }),
-});
+  },
+};
 /** VkExtensionProperties **/
 class VkExtensionProperties {
   constructor(opts) {
@@ -2005,16 +2005,16 @@ VkExtensionProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkExtensionProperties.byteLength = 0x104;
 
-VkExtensionProperties.memoryLayout = Object.freeze({
-  extensionName: Object.freeze({
+VkExtensionProperties.memoryLayout = {
+  extensionName: {
     byteOffset: 0x0,
     byteLength: 0x100
-  }),
-  specVersion: Object.freeze({
+  },
+  specVersion: {
     byteOffset: 0x100,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkLayerProperties **/
 class VkLayerProperties {
   constructor(opts) {
@@ -2076,24 +2076,24 @@ VkLayerProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkLayerProperties.byteLength = 0x208;
 
-VkLayerProperties.memoryLayout = Object.freeze({
-  layerName: Object.freeze({
+VkLayerProperties.memoryLayout = {
+  layerName: {
     byteOffset: 0x0,
     byteLength: 0x100
-  }),
-  specVersion: Object.freeze({
+  },
+  specVersion: {
     byteOffset: 0x100,
     byteLength: 0x4
-  }),
-  implementationVersion: Object.freeze({
+  },
+  implementationVersion: {
     byteOffset: 0x104,
     byteLength: 0x4
-  }),
-  description: Object.freeze({
+  },
+  description: {
     byteOffset: 0x108,
     byteLength: 0x100
-  }),
-});
+  },
+};
 /** VkApplicationInfo **/
 class VkApplicationInfo {
   constructor(opts) {
@@ -2236,36 +2236,36 @@ VkApplicationInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkApplicationInfo.byteLength = 0x30;
 
-VkApplicationInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkApplicationInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pApplicationName: Object.freeze({
+  },
+  pApplicationName: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  applicationVersion: Object.freeze({
+  },
+  applicationVersion: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pEngineName: Object.freeze({
+  },
+  pEngineName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  engineVersion: Object.freeze({
+  },
+  engineVersion: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  apiVersion: Object.freeze({
+  },
+  apiVersion: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAllocationCallbacks **/
 class VkAllocationCallbacks {
   constructor(opts) {
@@ -2319,12 +2319,12 @@ VkAllocationCallbacks.prototype.reflect = function reflect(memoryAddress) {
 
 VkAllocationCallbacks.byteLength = 0x30;
 
-VkAllocationCallbacks.memoryLayout = Object.freeze({
-  pUserData: Object.freeze({
+VkAllocationCallbacks.memoryLayout = {
+  pUserData: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceQueueCreateInfo **/
 class VkDeviceQueueCreateInfo {
   constructor(opts) {
@@ -2458,32 +2458,32 @@ VkDeviceQueueCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceQueueCreateInfo.byteLength = 0x28;
 
-VkDeviceQueueCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceQueueCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  queueFamilyIndex: Object.freeze({
+  },
+  queueFamilyIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  queueCount: Object.freeze({
+  },
+  queueCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pQueuePriorities: Object.freeze({
+  },
+  pQueuePriorities: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceCreateInfo **/
 class VkDeviceCreateInfo {
   constructor(opts) {
@@ -2779,48 +2779,48 @@ VkDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceCreateInfo.byteLength = 0x48;
 
-VkDeviceCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  queueCreateInfoCount: Object.freeze({
+  },
+  queueCreateInfoCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pQueueCreateInfos: Object.freeze({
+  },
+  pQueueCreateInfos: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  enabledLayerCount: Object.freeze({
+  },
+  enabledLayerCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  ppEnabledLayerNames: Object.freeze({
+  },
+  ppEnabledLayerNames: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  enabledExtensionCount: Object.freeze({
+  },
+  enabledExtensionCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  ppEnabledExtensionNames: Object.freeze({
+  },
+  ppEnabledExtensionNames: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  pEnabledFeatures: Object.freeze({
+  },
+  pEnabledFeatures: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkInstanceCreateInfo **/
 class VkInstanceCreateInfo {
   constructor(opts) {
@@ -3037,40 +3037,40 @@ VkInstanceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkInstanceCreateInfo.byteLength = 0x40;
 
-VkInstanceCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkInstanceCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pApplicationInfo: Object.freeze({
+  },
+  pApplicationInfo: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  enabledLayerCount: Object.freeze({
+  },
+  enabledLayerCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  ppEnabledLayerNames: Object.freeze({
+  },
+  ppEnabledLayerNames: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  enabledExtensionCount: Object.freeze({
+  },
+  enabledExtensionCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  ppEnabledExtensionNames: Object.freeze({
+  },
+  ppEnabledExtensionNames: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkQueueFamilyProperties **/
 class VkQueueFamilyProperties {
   constructor(opts) {
@@ -3132,24 +3132,24 @@ VkQueueFamilyProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkQueueFamilyProperties.byteLength = 0x18;
 
-VkQueueFamilyProperties.memoryLayout = Object.freeze({
-  queueFlags: Object.freeze({
+VkQueueFamilyProperties.memoryLayout = {
+  queueFlags: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  queueCount: Object.freeze({
+  },
+  queueCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  timestampValidBits: Object.freeze({
+  },
+  timestampValidBits: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  minImageTransferGranularity: Object.freeze({
+  },
+  minImageTransferGranularity: {
     byteOffset: 0xC,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMemoryProperties **/
 class VkPhysicalDeviceMemoryProperties {
   constructor(opts) {
@@ -3211,24 +3211,24 @@ VkPhysicalDeviceMemoryProperties.prototype.reflect = function reflect(memoryAddr
 
 VkPhysicalDeviceMemoryProperties.byteLength = 0x208;
 
-VkPhysicalDeviceMemoryProperties.memoryLayout = Object.freeze({
-  memoryTypeCount: Object.freeze({
+VkPhysicalDeviceMemoryProperties.memoryLayout = {
+  memoryTypeCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  memoryTypes: Object.freeze({
+  },
+  memoryTypes: {
     byteOffset: 0x4,
     byteLength: 0x100
-  }),
-  memoryHeapCount: Object.freeze({
+  },
+  memoryHeapCount: {
     byteOffset: 0x104,
     byteLength: 0x4
-  }),
-  memoryHeaps: Object.freeze({
+  },
+  memoryHeaps: {
     byteOffset: 0x108,
     byteLength: 0x100
-  }),
-});
+  },
+};
 /** VkMemoryAllocateInfo **/
 class VkMemoryAllocateInfo {
   constructor(opts) {
@@ -3349,24 +3349,24 @@ VkMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryAllocateInfo.byteLength = 0x20;
 
-VkMemoryAllocateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryAllocateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  allocationSize: Object.freeze({
+  },
+  allocationSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memoryTypeIndex: Object.freeze({
+  },
+  memoryTypeIndex: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryRequirements **/
 class VkMemoryRequirements {
   constructor(opts) {
@@ -3422,20 +3422,20 @@ VkMemoryRequirements.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryRequirements.byteLength = 0x18;
 
-VkMemoryRequirements.memoryLayout = Object.freeze({
-  size: Object.freeze({
+VkMemoryRequirements.memoryLayout = {
+  size: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  alignment: Object.freeze({
+  },
+  alignment: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryTypeBits: Object.freeze({
+  },
+  memoryTypeBits: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSparseImageFormatProperties **/
 class VkSparseImageFormatProperties {
   constructor(opts) {
@@ -3491,20 +3491,20 @@ VkSparseImageFormatProperties.prototype.reflect = function reflect(memoryAddress
 
 VkSparseImageFormatProperties.byteLength = 0x14;
 
-VkSparseImageFormatProperties.memoryLayout = Object.freeze({
-  aspectMask: Object.freeze({
+VkSparseImageFormatProperties.memoryLayout = {
+  aspectMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  imageGranularity: Object.freeze({
+  },
+  imageGranularity: {
     byteOffset: 0x4,
     byteLength: 0xC
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSparseImageMemoryRequirements **/
 class VkSparseImageMemoryRequirements {
   constructor(opts) {
@@ -3570,28 +3570,28 @@ VkSparseImageMemoryRequirements.prototype.reflect = function reflect(memoryAddre
 
 VkSparseImageMemoryRequirements.byteLength = 0x30;
 
-VkSparseImageMemoryRequirements.memoryLayout = Object.freeze({
-  formatProperties: Object.freeze({
+VkSparseImageMemoryRequirements.memoryLayout = {
+  formatProperties: {
     byteOffset: 0x0,
     byteLength: 0x14
-  }),
-  imageMipTailFirstLod: Object.freeze({
+  },
+  imageMipTailFirstLod: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  imageMipTailSize: Object.freeze({
+  },
+  imageMipTailSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  imageMipTailOffset: Object.freeze({
+  },
+  imageMipTailOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  imageMipTailStride: Object.freeze({
+  },
+  imageMipTailStride: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkMemoryType **/
 class VkMemoryType {
   constructor(opts) {
@@ -3643,16 +3643,16 @@ VkMemoryType.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryType.byteLength = 0x8;
 
-VkMemoryType.memoryLayout = Object.freeze({
-  propertyFlags: Object.freeze({
+VkMemoryType.memoryLayout = {
+  propertyFlags: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  heapIndex: Object.freeze({
+  },
+  heapIndex: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryHeap **/
 class VkMemoryHeap {
   constructor(opts) {
@@ -3704,16 +3704,16 @@ VkMemoryHeap.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryHeap.byteLength = 0x10;
 
-VkMemoryHeap.memoryLayout = Object.freeze({
-  size: Object.freeze({
+VkMemoryHeap.memoryLayout = {
+  size: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMappedMemoryRange **/
 class VkMappedMemoryRange {
   constructor(opts) {
@@ -3821,28 +3821,28 @@ VkMappedMemoryRange.prototype.reflect = function reflect(memoryAddress) {
 
 VkMappedMemoryRange.byteLength = 0x28;
 
-VkMappedMemoryRange.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMappedMemoryRange.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkFormatProperties **/
 class VkFormatProperties {
   constructor(opts) {
@@ -3896,20 +3896,20 @@ VkFormatProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkFormatProperties.byteLength = 0xC;
 
-VkFormatProperties.memoryLayout = Object.freeze({
-  linearTilingFeatures: Object.freeze({
+VkFormatProperties.memoryLayout = {
+  linearTilingFeatures: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  optimalTilingFeatures: Object.freeze({
+  },
+  optimalTilingFeatures: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  bufferFeatures: Object.freeze({
+  },
+  bufferFeatures: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImageFormatProperties **/
 class VkImageFormatProperties {
   constructor(opts) {
@@ -3977,28 +3977,28 @@ VkImageFormatProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageFormatProperties.byteLength = 0x20;
 
-VkImageFormatProperties.memoryLayout = Object.freeze({
-  maxExtent: Object.freeze({
+VkImageFormatProperties.memoryLayout = {
+  maxExtent: {
     byteOffset: 0x0,
     byteLength: 0xC
-  }),
-  maxMipLevels: Object.freeze({
+  },
+  maxMipLevels: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  maxArrayLayers: Object.freeze({
+  },
+  maxArrayLayers: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  sampleCounts: Object.freeze({
+  },
+  sampleCounts: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxResourceSize: Object.freeze({
+  },
+  maxResourceSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorBufferInfo **/
 class VkDescriptorBufferInfo {
   constructor(opts) {
@@ -4078,20 +4078,20 @@ VkDescriptorBufferInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorBufferInfo.byteLength = 0x18;
 
-VkDescriptorBufferInfo.memoryLayout = Object.freeze({
-  buffer: Object.freeze({
+VkDescriptorBufferInfo.memoryLayout = {
+  buffer: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  range: Object.freeze({
+  },
+  range: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorImageInfo **/
 class VkDescriptorImageInfo {
   constructor(opts) {
@@ -4178,20 +4178,20 @@ VkDescriptorImageInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorImageInfo.byteLength = 0x18;
 
-VkDescriptorImageInfo.memoryLayout = Object.freeze({
-  sampler: Object.freeze({
+VkDescriptorImageInfo.memoryLayout = {
+  sampler: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  imageView: Object.freeze({
+  },
+  imageView: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  imageLayout: Object.freeze({
+  },
+  imageLayout: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkWriteDescriptorSet **/
 class VkWriteDescriptorSet {
   constructor(opts) {
@@ -4450,48 +4450,48 @@ VkWriteDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
 
 VkWriteDescriptorSet.byteLength = 0x40;
 
-VkWriteDescriptorSet.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWriteDescriptorSet.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dstSet: Object.freeze({
+  },
+  dstSet: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  dstBinding: Object.freeze({
+  },
+  dstBinding: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  dstArrayElement: Object.freeze({
+  },
+  dstArrayElement: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  descriptorType: Object.freeze({
+  },
+  descriptorType: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  pImageInfo: Object.freeze({
+  },
+  pImageInfo: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pBufferInfo: Object.freeze({
+  },
+  pBufferInfo: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  pTexelBufferView: Object.freeze({
+  },
+  pTexelBufferView: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkCopyDescriptorSet **/
 class VkCopyDescriptorSet {
   constructor(opts) {
@@ -4650,44 +4650,44 @@ VkCopyDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
 
 VkCopyDescriptorSet.byteLength = 0x38;
 
-VkCopyDescriptorSet.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCopyDescriptorSet.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcSet: Object.freeze({
+  },
+  srcSet: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  srcBinding: Object.freeze({
+  },
+  srcBinding: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  srcArrayElement: Object.freeze({
+  },
+  srcArrayElement: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  dstSet: Object.freeze({
+  },
+  dstSet: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  dstBinding: Object.freeze({
+  },
+  dstBinding: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  dstArrayElement: Object.freeze({
+  },
+  dstArrayElement: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBufferCreateInfo **/
 class VkBufferCreateInfo {
   constructor(opts) {
@@ -4847,40 +4847,40 @@ VkBufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferCreateInfo.byteLength = 0x38;
 
-VkBufferCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  sharingMode: Object.freeze({
+  },
+  sharingMode: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  queueFamilyIndexCount: Object.freeze({
+  },
+  queueFamilyIndexCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  pQueueFamilyIndices: Object.freeze({
+  },
+  pQueueFamilyIndices: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBufferViewCreateInfo **/
 class VkBufferViewCreateInfo {
   constructor(opts) {
@@ -5010,36 +5010,36 @@ VkBufferViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferViewCreateInfo.byteLength = 0x38;
 
-VkBufferViewCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferViewCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  range: Object.freeze({
+  },
+  range: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageSubresource **/
 class VkImageSubresource {
   constructor(opts) {
@@ -5112,20 +5112,20 @@ VkImageSubresource.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageSubresource.byteLength = 0xC;
 
-VkImageSubresource.memoryLayout = Object.freeze({
-  aspectMask: Object.freeze({
+VkImageSubresource.memoryLayout = {
+  aspectMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  mipLevel: Object.freeze({
+  },
+  mipLevel: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  arrayLayer: Object.freeze({
+  },
+  arrayLayer: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImageSubresourceLayers **/
 class VkImageSubresourceLayers {
   constructor(opts) {
@@ -5209,24 +5209,24 @@ VkImageSubresourceLayers.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageSubresourceLayers.byteLength = 0x10;
 
-VkImageSubresourceLayers.memoryLayout = Object.freeze({
-  aspectMask: Object.freeze({
+VkImageSubresourceLayers.memoryLayout = {
+  aspectMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  mipLevel: Object.freeze({
+  },
+  mipLevel: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  baseArrayLayer: Object.freeze({
+  },
+  baseArrayLayer: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  layerCount: Object.freeze({
+  },
+  layerCount: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImageSubresourceRange **/
 class VkImageSubresourceRange {
   constructor(opts) {
@@ -5321,28 +5321,28 @@ VkImageSubresourceRange.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageSubresourceRange.byteLength = 0x14;
 
-VkImageSubresourceRange.memoryLayout = Object.freeze({
-  aspectMask: Object.freeze({
+VkImageSubresourceRange.memoryLayout = {
+  aspectMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  baseMipLevel: Object.freeze({
+  },
+  baseMipLevel: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  levelCount: Object.freeze({
+  },
+  levelCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  baseArrayLayer: Object.freeze({
+  },
+  baseArrayLayer: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  layerCount: Object.freeze({
+  },
+  layerCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryBarrier **/
 class VkMemoryBarrier {
   constructor(opts) {
@@ -5430,24 +5430,24 @@ VkMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryBarrier.byteLength = 0x18;
 
-VkMemoryBarrier.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryBarrier.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcAccessMask: Object.freeze({
+  },
+  srcAccessMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstAccessMask: Object.freeze({
+  },
+  dstAccessMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBufferMemoryBarrier **/
 class VkBufferMemoryBarrier {
   constructor(opts) {
@@ -5601,44 +5601,44 @@ VkBufferMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferMemoryBarrier.byteLength = 0x38;
 
-VkBufferMemoryBarrier.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferMemoryBarrier.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcAccessMask: Object.freeze({
+  },
+  srcAccessMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstAccessMask: Object.freeze({
+  },
+  dstAccessMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  srcQueueFamilyIndex: Object.freeze({
+  },
+  srcQueueFamilyIndex: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  dstQueueFamilyIndex: Object.freeze({
+  },
+  dstQueueFamilyIndex: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageMemoryBarrier **/
 class VkImageMemoryBarrier {
   constructor(opts) {
@@ -5838,48 +5838,48 @@ VkImageMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageMemoryBarrier.byteLength = 0x48;
 
-VkImageMemoryBarrier.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageMemoryBarrier.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcAccessMask: Object.freeze({
+  },
+  srcAccessMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstAccessMask: Object.freeze({
+  },
+  dstAccessMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  oldLayout: Object.freeze({
+  },
+  oldLayout: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  newLayout: Object.freeze({
+  },
+  newLayout: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  srcQueueFamilyIndex: Object.freeze({
+  },
+  srcQueueFamilyIndex: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  dstQueueFamilyIndex: Object.freeze({
+  },
+  dstQueueFamilyIndex: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  subresourceRange: Object.freeze({
+  },
+  subresourceRange: {
     byteOffset: 0x30,
     byteLength: 0x14
-  }),
-});
+  },
+};
 /** VkImageCreateInfo **/
 class VkImageCreateInfo {
   constructor(opts) {
@@ -6140,68 +6140,68 @@ VkImageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageCreateInfo.byteLength = 0x58;
 
-VkImageCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  imageType: Object.freeze({
+  },
+  imageType: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x1C,
     byteLength: 0xC
-  }),
-  mipLevels: Object.freeze({
+  },
+  mipLevels: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  arrayLayers: Object.freeze({
+  },
+  arrayLayers: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  samples: Object.freeze({
+  },
+  samples: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  tiling: Object.freeze({
+  },
+  tiling: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  sharingMode: Object.freeze({
+  },
+  sharingMode: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  queueFamilyIndexCount: Object.freeze({
+  },
+  queueFamilyIndexCount: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  pQueueFamilyIndices: Object.freeze({
+  },
+  pQueueFamilyIndices: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  initialLayout: Object.freeze({
+  },
+  initialLayout: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubresourceLayout **/
 class VkSubresourceLayout {
   constructor(opts) {
@@ -6263,28 +6263,28 @@ VkSubresourceLayout.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubresourceLayout.byteLength = 0x28;
 
-VkSubresourceLayout.memoryLayout = Object.freeze({
-  offset: Object.freeze({
+VkSubresourceLayout.memoryLayout = {
+  offset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  rowPitch: Object.freeze({
+  },
+  rowPitch: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  arrayPitch: Object.freeze({
+  },
+  arrayPitch: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  depthPitch: Object.freeze({
+  },
+  depthPitch: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageViewCreateInfo **/
 class VkImageViewCreateInfo {
   constructor(opts) {
@@ -6482,40 +6482,40 @@ VkImageViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageViewCreateInfo.byteLength = 0x50;
 
-VkImageViewCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageViewCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  viewType: Object.freeze({
+  },
+  viewType: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  components: Object.freeze({
+  },
+  components: {
     byteOffset: 0x28,
     byteLength: 0x10
-  }),
-  subresourceRange: Object.freeze({
+  },
+  subresourceRange: {
     byteOffset: 0x38,
     byteLength: 0x14
-  }),
-});
+  },
+};
 /** VkBufferCopy **/
 class VkBufferCopy {
   constructor(opts) {
@@ -6586,20 +6586,20 @@ VkBufferCopy.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferCopy.byteLength = 0x18;
 
-VkBufferCopy.memoryLayout = Object.freeze({
-  srcOffset: Object.freeze({
+VkBufferCopy.memoryLayout = {
+  srcOffset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  dstOffset: Object.freeze({
+  },
+  dstOffset: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSparseMemoryBind **/
 class VkSparseMemoryBind {
   constructor(opts) {
@@ -6703,28 +6703,28 @@ VkSparseMemoryBind.prototype.reflect = function reflect(memoryAddress) {
 
 VkSparseMemoryBind.byteLength = 0x28;
 
-VkSparseMemoryBind.memoryLayout = Object.freeze({
-  resourceOffset: Object.freeze({
+VkSparseMemoryBind.memoryLayout = {
+  resourceOffset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSparseImageMemoryBind **/
 class VkSparseImageMemoryBind {
   constructor(opts) {
@@ -6899,32 +6899,32 @@ VkSparseImageMemoryBind.prototype.reflect = function reflect(memoryAddress) {
 
 VkSparseImageMemoryBind.byteLength = 0x40;
 
-VkSparseImageMemoryBind.memoryLayout = Object.freeze({
-  subresource: Object.freeze({
+VkSparseImageMemoryBind.memoryLayout = {
+  subresource: {
     byteOffset: 0x0,
     byteLength: 0xC
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0xC,
     byteLength: 0xC
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x18,
     byteLength: 0xC
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSparseBufferMemoryBindInfo **/
 class VkSparseBufferMemoryBindInfo {
   constructor(opts) {
@@ -7030,20 +7030,20 @@ VkSparseBufferMemoryBindInfo.prototype.reflect = function reflect(memoryAddress)
 
 VkSparseBufferMemoryBindInfo.byteLength = 0x18;
 
-VkSparseBufferMemoryBindInfo.memoryLayout = Object.freeze({
-  buffer: Object.freeze({
+VkSparseBufferMemoryBindInfo.memoryLayout = {
+  buffer: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  bindCount: Object.freeze({
+  },
+  bindCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  pBinds: Object.freeze({
+  },
+  pBinds: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSparseImageOpaqueMemoryBindInfo **/
 class VkSparseImageOpaqueMemoryBindInfo {
   constructor(opts) {
@@ -7149,20 +7149,20 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.reflect = function reflect(memoryAdd
 
 VkSparseImageOpaqueMemoryBindInfo.byteLength = 0x18;
 
-VkSparseImageOpaqueMemoryBindInfo.memoryLayout = Object.freeze({
-  image: Object.freeze({
+VkSparseImageOpaqueMemoryBindInfo.memoryLayout = {
+  image: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  bindCount: Object.freeze({
+  },
+  bindCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  pBinds: Object.freeze({
+  },
+  pBinds: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSparseImageMemoryBindInfo **/
 class VkSparseImageMemoryBindInfo {
   constructor(opts) {
@@ -7268,20 +7268,20 @@ VkSparseImageMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkSparseImageMemoryBindInfo.byteLength = 0x18;
 
-VkSparseImageMemoryBindInfo.memoryLayout = Object.freeze({
-  image: Object.freeze({
+VkSparseImageMemoryBindInfo.memoryLayout = {
+  image: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  bindCount: Object.freeze({
+  },
+  bindCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  pBinds: Object.freeze({
+  },
+  pBinds: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindSparseInfo **/
 class VkBindSparseInfo {
   constructor(opts) {
@@ -7606,56 +7606,56 @@ VkBindSparseInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindSparseInfo.byteLength = 0x60;
 
-VkBindSparseInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindSparseInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreCount: Object.freeze({
+  },
+  waitSemaphoreCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphores: Object.freeze({
+  },
+  pWaitSemaphores: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  bufferBindCount: Object.freeze({
+  },
+  bufferBindCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pBufferBinds: Object.freeze({
+  },
+  pBufferBinds: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  imageOpaqueBindCount: Object.freeze({
+  },
+  imageOpaqueBindCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pImageOpaqueBinds: Object.freeze({
+  },
+  pImageOpaqueBinds: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  imageBindCount: Object.freeze({
+  },
+  imageBindCount: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  pImageBinds: Object.freeze({
+  },
+  pImageBinds: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  signalSemaphoreCount: Object.freeze({
+  },
+  signalSemaphoreCount: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  pSignalSemaphores: Object.freeze({
+  },
+  pSignalSemaphores: {
     byteOffset: 0x58,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageCopy **/
 class VkImageCopy {
   constructor(opts) {
@@ -7846,28 +7846,28 @@ VkImageCopy.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageCopy.byteLength = 0x44;
 
-VkImageCopy.memoryLayout = Object.freeze({
-  srcSubresource: Object.freeze({
+VkImageCopy.memoryLayout = {
+  srcSubresource: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  srcOffset: Object.freeze({
+  },
+  srcOffset: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-  dstSubresource: Object.freeze({
+  },
+  dstSubresource: {
     byteOffset: 0x1C,
     byteLength: 0x10
-  }),
-  dstOffset: Object.freeze({
+  },
+  dstOffset: {
     byteOffset: 0x2C,
     byteLength: 0xC
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x38,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkImageBlit **/
 class VkImageBlit {
   constructor(opts) {
@@ -8045,24 +8045,24 @@ VkImageBlit.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageBlit.byteLength = 0x50;
 
-VkImageBlit.memoryLayout = Object.freeze({
-  srcSubresource: Object.freeze({
+VkImageBlit.memoryLayout = {
+  srcSubresource: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  srcOffsets: Object.freeze({
+  },
+  srcOffsets: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-  dstSubresource: Object.freeze({
+  },
+  dstSubresource: {
     byteOffset: 0x28,
     byteLength: 0x10
-  }),
-  dstOffsets: Object.freeze({
+  },
+  dstOffsets: {
     byteOffset: 0x38,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkBufferImageCopy **/
 class VkBufferImageCopy {
   constructor(opts) {
@@ -8228,32 +8228,32 @@ VkBufferImageCopy.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferImageCopy.byteLength = 0x38;
 
-VkBufferImageCopy.memoryLayout = Object.freeze({
-  bufferOffset: Object.freeze({
+VkBufferImageCopy.memoryLayout = {
+  bufferOffset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  bufferRowLength: Object.freeze({
+  },
+  bufferRowLength: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  bufferImageHeight: Object.freeze({
+  },
+  bufferImageHeight: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  imageSubresource: Object.freeze({
+  },
+  imageSubresource: {
     byteOffset: 0x10,
     byteLength: 0x10
-  }),
-  imageOffset: Object.freeze({
+  },
+  imageOffset: {
     byteOffset: 0x20,
     byteLength: 0xC
-  }),
-  imageExtent: Object.freeze({
+  },
+  imageExtent: {
     byteOffset: 0x2C,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkImageResolve **/
 class VkImageResolve {
   constructor(opts) {
@@ -8444,28 +8444,28 @@ VkImageResolve.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageResolve.byteLength = 0x44;
 
-VkImageResolve.memoryLayout = Object.freeze({
-  srcSubresource: Object.freeze({
+VkImageResolve.memoryLayout = {
+  srcSubresource: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  srcOffset: Object.freeze({
+  },
+  srcOffset: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-  dstSubresource: Object.freeze({
+  },
+  dstSubresource: {
     byteOffset: 0x1C,
     byteLength: 0x10
-  }),
-  dstOffset: Object.freeze({
+  },
+  dstOffset: {
     byteOffset: 0x2C,
     byteLength: 0xC
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x38,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkShaderModuleCreateInfo **/
 class VkShaderModuleCreateInfo {
   constructor(opts) {
@@ -8586,28 +8586,28 @@ VkShaderModuleCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkShaderModuleCreateInfo.byteLength = 0x28;
 
-VkShaderModuleCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkShaderModuleCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  codeSize: Object.freeze({
+  },
+  codeSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pCode: Object.freeze({
+  },
+  pCode: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetLayoutBinding **/
 class VkDescriptorSetLayoutBinding {
   constructor(opts) {
@@ -8728,28 +8728,28 @@ VkDescriptorSetLayoutBinding.prototype.reflect = function reflect(memoryAddress)
 
 VkDescriptorSetLayoutBinding.byteLength = 0x18;
 
-VkDescriptorSetLayoutBinding.memoryLayout = Object.freeze({
-  binding: Object.freeze({
+VkDescriptorSetLayoutBinding.memoryLayout = {
+  binding: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  descriptorType: Object.freeze({
+  },
+  descriptorType: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  stageFlags: Object.freeze({
+  },
+  stageFlags: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  pImmutableSamplers: Object.freeze({
+  },
+  pImmutableSamplers: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetLayoutCreateInfo **/
 class VkDescriptorSetLayoutCreateInfo {
   constructor(opts) {
@@ -8893,28 +8893,28 @@ VkDescriptorSetLayoutCreateInfo.prototype.reflect = function reflect(memoryAddre
 
 VkDescriptorSetLayoutCreateInfo.byteLength = 0x20;
 
-VkDescriptorSetLayoutCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetLayoutCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  bindingCount: Object.freeze({
+  },
+  bindingCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pBindings: Object.freeze({
+  },
+  pBindings: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorPoolSize **/
 class VkDescriptorPoolSize {
   constructor(opts) {
@@ -8976,16 +8976,16 @@ VkDescriptorPoolSize.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorPoolSize.byteLength = 0x8;
 
-VkDescriptorPoolSize.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkDescriptorPoolSize.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDescriptorPoolCreateInfo **/
 class VkDescriptorPoolCreateInfo {
   constructor(opts) {
@@ -9140,32 +9140,32 @@ VkDescriptorPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorPoolCreateInfo.byteLength = 0x28;
 
-VkDescriptorPoolCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorPoolCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxSets: Object.freeze({
+  },
+  maxSets: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  poolSizeCount: Object.freeze({
+  },
+  poolSizeCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pPoolSizes: Object.freeze({
+  },
+  pPoolSizes: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetAllocateInfo **/
 class VkDescriptorSetAllocateInfo {
   constructor(opts) {
@@ -9316,28 +9316,28 @@ VkDescriptorSetAllocateInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkDescriptorSetAllocateInfo.byteLength = 0x28;
 
-VkDescriptorSetAllocateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetAllocateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  descriptorPool: Object.freeze({
+  },
+  descriptorPool: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  descriptorSetCount: Object.freeze({
+  },
+  descriptorSetCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pSetLayouts: Object.freeze({
+  },
+  pSetLayouts: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSpecializationMapEntry **/
 class VkSpecializationMapEntry {
   constructor(opts) {
@@ -9410,20 +9410,20 @@ VkSpecializationMapEntry.prototype.reflect = function reflect(memoryAddress) {
 
 VkSpecializationMapEntry.byteLength = 0x10;
 
-VkSpecializationMapEntry.memoryLayout = Object.freeze({
-  constantID: Object.freeze({
+VkSpecializationMapEntry.memoryLayout = {
+  constantID: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSpecializationInfo **/
 class VkSpecializationInfo {
   constructor(opts) {
@@ -9538,24 +9538,24 @@ VkSpecializationInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkSpecializationInfo.byteLength = 0x20;
 
-VkSpecializationInfo.memoryLayout = Object.freeze({
-  mapEntryCount: Object.freeze({
+VkSpecializationInfo.memoryLayout = {
+  mapEntryCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pMapEntries: Object.freeze({
+  },
+  pMapEntries: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dataSize: Object.freeze({
+  },
+  dataSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  pData: Object.freeze({
+  },
+  pData: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineShaderStageCreateInfo **/
 class VkPipelineShaderStageCreateInfo {
   constructor(opts) {
@@ -9700,36 +9700,36 @@ VkPipelineShaderStageCreateInfo.prototype.reflect = function reflect(memoryAddre
 
 VkPipelineShaderStageCreateInfo.byteLength = 0x30;
 
-VkPipelineShaderStageCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineShaderStageCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stage: Object.freeze({
+  },
+  stage: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  module: Object.freeze({
+  },
+  module: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pName: Object.freeze({
+  },
+  pName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pSpecializationInfo: Object.freeze({
+  },
+  pSpecializationInfo: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkComputePipelineCreateInfo **/
 class VkComputePipelineCreateInfo {
   constructor(opts) {
@@ -9884,36 +9884,36 @@ VkComputePipelineCreateInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkComputePipelineCreateInfo.byteLength = 0x60;
 
-VkComputePipelineCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkComputePipelineCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stage: Object.freeze({
+  },
+  stage: {
     byteOffset: 0x18,
     byteLength: 0x30
-  }),
-  layout: Object.freeze({
+  },
+  layout: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  basePipelineHandle: Object.freeze({
+  },
+  basePipelineHandle: {
     byteOffset: 0x50,
     byteLength: 0x8
-  }),
-  basePipelineIndex: Object.freeze({
+  },
+  basePipelineIndex: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkVertexInputBindingDescription **/
 class VkVertexInputBindingDescription {
   constructor(opts) {
@@ -9986,20 +9986,20 @@ VkVertexInputBindingDescription.prototype.reflect = function reflect(memoryAddre
 
 VkVertexInputBindingDescription.byteLength = 0xC;
 
-VkVertexInputBindingDescription.memoryLayout = Object.freeze({
-  binding: Object.freeze({
+VkVertexInputBindingDescription.memoryLayout = {
+  binding: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  stride: Object.freeze({
+  },
+  stride: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  inputRate: Object.freeze({
+  },
+  inputRate: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkVertexInputAttributeDescription **/
 class VkVertexInputAttributeDescription {
   constructor(opts) {
@@ -10083,24 +10083,24 @@ VkVertexInputAttributeDescription.prototype.reflect = function reflect(memoryAdd
 
 VkVertexInputAttributeDescription.byteLength = 0x10;
 
-VkVertexInputAttributeDescription.memoryLayout = Object.freeze({
-  location: Object.freeze({
+VkVertexInputAttributeDescription.memoryLayout = {
+  location: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  binding: Object.freeze({
+  },
+  binding: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineVertexInputStateCreateInfo **/
 class VkPipelineVertexInputStateCreateInfo {
   constructor(opts) {
@@ -10292,36 +10292,36 @@ VkPipelineVertexInputStateCreateInfo.prototype.reflect = function reflect(memory
 
 VkPipelineVertexInputStateCreateInfo.byteLength = 0x30;
 
-VkPipelineVertexInputStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineVertexInputStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  vertexBindingDescriptionCount: Object.freeze({
+  },
+  vertexBindingDescriptionCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pVertexBindingDescriptions: Object.freeze({
+  },
+  pVertexBindingDescriptions: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  vertexAttributeDescriptionCount: Object.freeze({
+  },
+  vertexAttributeDescriptionCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pVertexAttributeDescriptions: Object.freeze({
+  },
+  pVertexAttributeDescriptions: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineInputAssemblyStateCreateInfo **/
 class VkPipelineInputAssemblyStateCreateInfo {
   constructor(opts) {
@@ -10419,28 +10419,28 @@ VkPipelineInputAssemblyStateCreateInfo.prototype.reflect = function reflect(memo
 
 VkPipelineInputAssemblyStateCreateInfo.byteLength = 0x20;
 
-VkPipelineInputAssemblyStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineInputAssemblyStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  topology: Object.freeze({
+  },
+  topology: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  primitiveRestartEnable: Object.freeze({
+  },
+  primitiveRestartEnable: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineTessellationStateCreateInfo **/
 class VkPipelineTessellationStateCreateInfo {
   constructor(opts) {
@@ -10547,24 +10547,24 @@ VkPipelineTessellationStateCreateInfo.prototype.reflect = function reflect(memor
 
 VkPipelineTessellationStateCreateInfo.byteLength = 0x18;
 
-VkPipelineTessellationStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineTessellationStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  patchControlPoints: Object.freeze({
+  },
+  patchControlPoints: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineViewportStateCreateInfo **/
 class VkPipelineViewportStateCreateInfo {
   constructor(opts) {
@@ -10760,36 +10760,36 @@ VkPipelineViewportStateCreateInfo.prototype.reflect = function reflect(memoryAdd
 
 VkPipelineViewportStateCreateInfo.byteLength = 0x30;
 
-VkPipelineViewportStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  viewportCount: Object.freeze({
+  },
+  viewportCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pViewports: Object.freeze({
+  },
+  pViewports: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  scissorCount: Object.freeze({
+  },
+  scissorCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pScissors: Object.freeze({
+  },
+  pScissors: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineRasterizationStateCreateInfo **/
 class VkPipelineRasterizationStateCreateInfo {
   constructor(opts) {
@@ -10991,60 +10991,60 @@ VkPipelineRasterizationStateCreateInfo.prototype.reflect = function reflect(memo
 
 VkPipelineRasterizationStateCreateInfo.byteLength = 0x40;
 
-VkPipelineRasterizationStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRasterizationStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  depthClampEnable: Object.freeze({
+  },
+  depthClampEnable: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  rasterizerDiscardEnable: Object.freeze({
+  },
+  rasterizerDiscardEnable: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  polygonMode: Object.freeze({
+  },
+  polygonMode: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  cullMode: Object.freeze({
+  },
+  cullMode: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  frontFace: Object.freeze({
+  },
+  frontFace: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  depthBiasEnable: Object.freeze({
+  },
+  depthBiasEnable: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  depthBiasConstantFactor: Object.freeze({
+  },
+  depthBiasConstantFactor: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  depthBiasClamp: Object.freeze({
+  },
+  depthBiasClamp: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  depthBiasSlopeFactor: Object.freeze({
+  },
+  depthBiasSlopeFactor: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  lineWidth: Object.freeze({
+  },
+  lineWidth: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineMultisampleStateCreateInfo **/
 class VkPipelineMultisampleStateCreateInfo {
   constructor(opts) {
@@ -11206,44 +11206,44 @@ VkPipelineMultisampleStateCreateInfo.prototype.reflect = function reflect(memory
 
 VkPipelineMultisampleStateCreateInfo.byteLength = 0x30;
 
-VkPipelineMultisampleStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineMultisampleStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  rasterizationSamples: Object.freeze({
+  },
+  rasterizationSamples: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  sampleShadingEnable: Object.freeze({
+  },
+  sampleShadingEnable: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  minSampleShading: Object.freeze({
+  },
+  minSampleShading: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pSampleMask: Object.freeze({
+  },
+  pSampleMask: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  alphaToCoverageEnable: Object.freeze({
+  },
+  alphaToCoverageEnable: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  alphaToOneEnable: Object.freeze({
+  },
+  alphaToOneEnable: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineColorBlendAttachmentState **/
 class VkPipelineColorBlendAttachmentState {
   constructor(opts) {
@@ -11368,40 +11368,40 @@ VkPipelineColorBlendAttachmentState.prototype.reflect = function reflect(memoryA
 
 VkPipelineColorBlendAttachmentState.byteLength = 0x20;
 
-VkPipelineColorBlendAttachmentState.memoryLayout = Object.freeze({
-  blendEnable: Object.freeze({
+VkPipelineColorBlendAttachmentState.memoryLayout = {
+  blendEnable: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  srcColorBlendFactor: Object.freeze({
+  },
+  srcColorBlendFactor: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  dstColorBlendFactor: Object.freeze({
+  },
+  dstColorBlendFactor: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  colorBlendOp: Object.freeze({
+  },
+  colorBlendOp: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  srcAlphaBlendFactor: Object.freeze({
+  },
+  srcAlphaBlendFactor: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstAlphaBlendFactor: Object.freeze({
+  },
+  dstAlphaBlendFactor: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  alphaBlendOp: Object.freeze({
+  },
+  alphaBlendOp: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  colorWriteMask: Object.freeze({
+  },
+  colorWriteMask: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineColorBlendStateCreateInfo **/
 class VkPipelineColorBlendStateCreateInfo {
   constructor(opts) {
@@ -11604,40 +11604,40 @@ VkPipelineColorBlendStateCreateInfo.prototype.reflect = function reflect(memoryA
 
 VkPipelineColorBlendStateCreateInfo.byteLength = 0x38;
 
-VkPipelineColorBlendStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineColorBlendStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  logicOpEnable: Object.freeze({
+  },
+  logicOpEnable: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  logicOp: Object.freeze({
+  },
+  logicOp: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  attachmentCount: Object.freeze({
+  },
+  attachmentCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pAttachments: Object.freeze({
+  },
+  pAttachments: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  blendConstants: Object.freeze({
+  },
+  blendConstants: {
     byteOffset: 0x28,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkPipelineDynamicStateCreateInfo **/
 class VkPipelineDynamicStateCreateInfo {
   constructor(opts) {
@@ -11743,28 +11743,28 @@ VkPipelineDynamicStateCreateInfo.prototype.reflect = function reflect(memoryAddr
 
 VkPipelineDynamicStateCreateInfo.byteLength = 0x20;
 
-VkPipelineDynamicStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineDynamicStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dynamicStateCount: Object.freeze({
+  },
+  dynamicStateCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDynamicStates: Object.freeze({
+  },
+  pDynamicStates: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkStencilOpState **/
 class VkStencilOpState {
   constructor(opts) {
@@ -11881,36 +11881,36 @@ VkStencilOpState.prototype.reflect = function reflect(memoryAddress) {
 
 VkStencilOpState.byteLength = 0x1C;
 
-VkStencilOpState.memoryLayout = Object.freeze({
-  failOp: Object.freeze({
+VkStencilOpState.memoryLayout = {
+  failOp: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  passOp: Object.freeze({
+  },
+  passOp: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  depthFailOp: Object.freeze({
+  },
+  depthFailOp: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  compareOp: Object.freeze({
+  },
+  compareOp: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  compareMask: Object.freeze({
+  },
+  compareMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  writeMask: Object.freeze({
+  },
+  writeMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  reference: Object.freeze({
+  },
+  reference: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineDepthStencilStateCreateInfo **/
 class VkPipelineDepthStencilStateCreateInfo {
   constructor(opts) {
@@ -12118,56 +12118,56 @@ VkPipelineDepthStencilStateCreateInfo.prototype.reflect = function reflect(memor
 
 VkPipelineDepthStencilStateCreateInfo.byteLength = 0x68;
 
-VkPipelineDepthStencilStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineDepthStencilStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  depthTestEnable: Object.freeze({
+  },
+  depthTestEnable: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  depthWriteEnable: Object.freeze({
+  },
+  depthWriteEnable: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  depthCompareOp: Object.freeze({
+  },
+  depthCompareOp: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  depthBoundsTestEnable: Object.freeze({
+  },
+  depthBoundsTestEnable: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  stencilTestEnable: Object.freeze({
+  },
+  stencilTestEnable: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  front: Object.freeze({
+  },
+  front: {
     byteOffset: 0x28,
     byteLength: 0x1C
-  }),
-  back: Object.freeze({
+  },
+  back: {
     byteOffset: 0x44,
     byteLength: 0x1C
-  }),
-  minDepthBounds: Object.freeze({
+  },
+  minDepthBounds: {
     byteOffset: 0x60,
     byteLength: 0x4
-  }),
-  maxDepthBounds: Object.freeze({
+  },
+  maxDepthBounds: {
     byteOffset: 0x64,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkGraphicsPipelineCreateInfo **/
 class VkGraphicsPipelineCreateInfo {
   constructor(opts) {
@@ -12550,84 +12550,84 @@ VkGraphicsPipelineCreateInfo.prototype.reflect = function reflect(memoryAddress)
 
 VkGraphicsPipelineCreateInfo.byteLength = 0x90;
 
-VkGraphicsPipelineCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkGraphicsPipelineCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stageCount: Object.freeze({
+  },
+  stageCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pStages: Object.freeze({
+  },
+  pStages: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pVertexInputState: Object.freeze({
+  },
+  pVertexInputState: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pInputAssemblyState: Object.freeze({
+  },
+  pInputAssemblyState: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pTessellationState: Object.freeze({
+  },
+  pTessellationState: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  pViewportState: Object.freeze({
+  },
+  pViewportState: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  pRasterizationState: Object.freeze({
+  },
+  pRasterizationState: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-  pMultisampleState: Object.freeze({
+  },
+  pMultisampleState: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  pDepthStencilState: Object.freeze({
+  },
+  pDepthStencilState: {
     byteOffset: 0x50,
     byteLength: 0x8
-  }),
-  pColorBlendState: Object.freeze({
+  },
+  pColorBlendState: {
     byteOffset: 0x58,
     byteLength: 0x8
-  }),
-  pDynamicState: Object.freeze({
+  },
+  pDynamicState: {
     byteOffset: 0x60,
     byteLength: 0x8
-  }),
-  layout: Object.freeze({
+  },
+  layout: {
     byteOffset: 0x68,
     byteLength: 0x8
-  }),
-  renderPass: Object.freeze({
+  },
+  renderPass: {
     byteOffset: 0x70,
     byteLength: 0x8
-  }),
-  subpass: Object.freeze({
+  },
+  subpass: {
     byteOffset: 0x78,
     byteLength: 0x4
-  }),
-  basePipelineHandle: Object.freeze({
+  },
+  basePipelineHandle: {
     byteOffset: 0x80,
     byteLength: 0x8
-  }),
-  basePipelineIndex: Object.freeze({
+  },
+  basePipelineIndex: {
     byteOffset: 0x88,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineCacheCreateInfo **/
 class VkPipelineCacheCreateInfo {
   constructor(opts) {
@@ -12731,28 +12731,28 @@ VkPipelineCacheCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkPipelineCacheCreateInfo.byteLength = 0x28;
 
-VkPipelineCacheCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineCacheCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  initialDataSize: Object.freeze({
+  },
+  initialDataSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pInitialData: Object.freeze({
+  },
+  pInitialData: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPushConstantRange **/
 class VkPushConstantRange {
   constructor(opts) {
@@ -12825,20 +12825,20 @@ VkPushConstantRange.prototype.reflect = function reflect(memoryAddress) {
 
 VkPushConstantRange.byteLength = 0xC;
 
-VkPushConstantRange.memoryLayout = Object.freeze({
-  stageFlags: Object.freeze({
+VkPushConstantRange.memoryLayout = {
+  stageFlags: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  size: Object.freeze({
+  },
+  size: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineLayoutCreateInfo **/
 class VkPipelineLayoutCreateInfo {
   constructor(opts) {
@@ -13013,36 +13013,36 @@ VkPipelineLayoutCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkPipelineLayoutCreateInfo.byteLength = 0x30;
 
-VkPipelineLayoutCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineLayoutCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  setLayoutCount: Object.freeze({
+  },
+  setLayoutCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pSetLayouts: Object.freeze({
+  },
+  pSetLayouts: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pushConstantRangeCount: Object.freeze({
+  },
+  pushConstantRangeCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pPushConstantRanges: Object.freeze({
+  },
+  pPushConstantRanges: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSamplerCreateInfo **/
 class VkSamplerCreateInfo {
   constructor(opts) {
@@ -13297,80 +13297,80 @@ VkSamplerCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkSamplerCreateInfo.byteLength = 0x50;
 
-VkSamplerCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  magFilter: Object.freeze({
+  },
+  magFilter: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  minFilter: Object.freeze({
+  },
+  minFilter: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  mipmapMode: Object.freeze({
+  },
+  mipmapMode: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  addressModeU: Object.freeze({
+  },
+  addressModeU: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  addressModeV: Object.freeze({
+  },
+  addressModeV: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  addressModeW: Object.freeze({
+  },
+  addressModeW: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  mipLodBias: Object.freeze({
+  },
+  mipLodBias: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  anisotropyEnable: Object.freeze({
+  },
+  anisotropyEnable: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  maxAnisotropy: Object.freeze({
+  },
+  maxAnisotropy: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  compareEnable: Object.freeze({
+  },
+  compareEnable: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  compareOp: Object.freeze({
+  },
+  compareOp: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  minLod: Object.freeze({
+  },
+  minLod: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  maxLod: Object.freeze({
+  },
+  maxLod: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  borderColor: Object.freeze({
+  },
+  borderColor: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  unnormalizedCoordinates: Object.freeze({
+  },
+  unnormalizedCoordinates: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCommandPoolCreateInfo **/
 class VkCommandPoolCreateInfo {
   constructor(opts) {
@@ -13460,24 +13460,24 @@ VkCommandPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkCommandPoolCreateInfo.byteLength = 0x18;
 
-VkCommandPoolCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCommandPoolCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  queueFamilyIndex: Object.freeze({
+  },
+  queueFamilyIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCommandBufferAllocateInfo **/
 class VkCommandBufferAllocateInfo {
   constructor(opts) {
@@ -13585,28 +13585,28 @@ VkCommandBufferAllocateInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkCommandBufferAllocateInfo.byteLength = 0x20;
 
-VkCommandBufferAllocateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCommandBufferAllocateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  commandPool: Object.freeze({
+  },
+  commandPool: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  level: Object.freeze({
+  },
+  level: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  commandBufferCount: Object.freeze({
+  },
+  commandBufferCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCommandBufferInheritanceInfo **/
 class VkCommandBufferInheritanceInfo {
   constructor(opts) {
@@ -13768,40 +13768,40 @@ VkCommandBufferInheritanceInfo.prototype.reflect = function reflect(memoryAddres
 
 VkCommandBufferInheritanceInfo.byteLength = 0x38;
 
-VkCommandBufferInheritanceInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCommandBufferInheritanceInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  renderPass: Object.freeze({
+  },
+  renderPass: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  subpass: Object.freeze({
+  },
+  subpass: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  framebuffer: Object.freeze({
+  },
+  framebuffer: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  occlusionQueryEnable: Object.freeze({
+  },
+  occlusionQueryEnable: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  queryFlags: Object.freeze({
+  },
+  queryFlags: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  pipelineStatistics: Object.freeze({
+  },
+  pipelineStatistics: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCommandBufferBeginInfo **/
 class VkCommandBufferBeginInfo {
   constructor(opts) {
@@ -13913,24 +13913,24 @@ VkCommandBufferBeginInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkCommandBufferBeginInfo.byteLength = 0x20;
 
-VkCommandBufferBeginInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCommandBufferBeginInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pInheritanceInfo: Object.freeze({
+  },
+  pInheritanceInfo: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkRenderPassBeginInfo **/
 class VkRenderPassBeginInfo {
   constructor(opts) {
@@ -14131,36 +14131,36 @@ VkRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkRenderPassBeginInfo.byteLength = 0x40;
 
-VkRenderPassBeginInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassBeginInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  renderPass: Object.freeze({
+  },
+  renderPass: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  framebuffer: Object.freeze({
+  },
+  framebuffer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  renderArea: Object.freeze({
+  },
+  renderArea: {
     byteOffset: 0x20,
     byteLength: 0x10
-  }),
-  clearValueCount: Object.freeze({
+  },
+  clearValueCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pClearValues: Object.freeze({
+  },
+  pClearValues: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkClearDepthStencilValue **/
 class VkClearDepthStencilValue {
   constructor(opts) {
@@ -14222,16 +14222,16 @@ VkClearDepthStencilValue.prototype.reflect = function reflect(memoryAddress) {
 
 VkClearDepthStencilValue.byteLength = 0x8;
 
-VkClearDepthStencilValue.memoryLayout = Object.freeze({
-  depth: Object.freeze({
+VkClearDepthStencilValue.memoryLayout = {
+  depth: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  stencil: Object.freeze({
+  },
+  stencil: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkClearAttachment **/
 class VkClearAttachment {
   constructor(opts) {
@@ -14324,20 +14324,20 @@ VkClearAttachment.prototype.reflect = function reflect(memoryAddress) {
 
 VkClearAttachment.byteLength = 0x18;
 
-VkClearAttachment.memoryLayout = Object.freeze({
-  aspectMask: Object.freeze({
+VkClearAttachment.memoryLayout = {
+  aspectMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  colorAttachment: Object.freeze({
+  },
+  colorAttachment: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  clearValue: Object.freeze({
+  },
+  clearValue: {
     byteOffset: 0x8,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkAttachmentDescription **/
 class VkAttachmentDescription {
   constructor(opts) {
@@ -14474,44 +14474,44 @@ VkAttachmentDescription.prototype.reflect = function reflect(memoryAddress) {
 
 VkAttachmentDescription.byteLength = 0x24;
 
-VkAttachmentDescription.memoryLayout = Object.freeze({
-  flags: Object.freeze({
+VkAttachmentDescription.memoryLayout = {
+  flags: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  samples: Object.freeze({
+  },
+  samples: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  loadOp: Object.freeze({
+  },
+  loadOp: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  storeOp: Object.freeze({
+  },
+  storeOp: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stencilLoadOp: Object.freeze({
+  },
+  stencilLoadOp: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  stencilStoreOp: Object.freeze({
+  },
+  stencilStoreOp: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  initialLayout: Object.freeze({
+  },
+  initialLayout: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  finalLayout: Object.freeze({
+  },
+  finalLayout: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAttachmentReference **/
 class VkAttachmentReference {
   constructor(opts) {
@@ -14573,16 +14573,16 @@ VkAttachmentReference.prototype.reflect = function reflect(memoryAddress) {
 
 VkAttachmentReference.byteLength = 0x8;
 
-VkAttachmentReference.memoryLayout = Object.freeze({
-  attachment: Object.freeze({
+VkAttachmentReference.memoryLayout = {
+  attachment: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  layout: Object.freeze({
+  },
+  layout: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubpassDescription **/
 class VkSubpassDescription {
   constructor(opts) {
@@ -14824,48 +14824,48 @@ VkSubpassDescription.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassDescription.byteLength = 0x48;
 
-VkSubpassDescription.memoryLayout = Object.freeze({
-  flags: Object.freeze({
+VkSubpassDescription.memoryLayout = {
+  flags: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pipelineBindPoint: Object.freeze({
+  },
+  pipelineBindPoint: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  inputAttachmentCount: Object.freeze({
+  },
+  inputAttachmentCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  pInputAttachments: Object.freeze({
+  },
+  pInputAttachments: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  colorAttachmentCount: Object.freeze({
+  },
+  colorAttachmentCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pColorAttachments: Object.freeze({
+  },
+  pColorAttachments: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pResolveAttachments: Object.freeze({
+  },
+  pResolveAttachments: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pDepthStencilAttachment: Object.freeze({
+  },
+  pDepthStencilAttachment: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  preserveAttachmentCount: Object.freeze({
+  },
+  preserveAttachmentCount: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  pPreserveAttachments: Object.freeze({
+  },
+  pPreserveAttachments: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSubpassDependency **/
 class VkSubpassDependency {
   constructor(opts) {
@@ -14982,36 +14982,36 @@ VkSubpassDependency.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassDependency.byteLength = 0x1C;
 
-VkSubpassDependency.memoryLayout = Object.freeze({
-  srcSubpass: Object.freeze({
+VkSubpassDependency.memoryLayout = {
+  srcSubpass: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  dstSubpass: Object.freeze({
+  },
+  dstSubpass: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  srcStageMask: Object.freeze({
+  },
+  srcStageMask: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  dstStageMask: Object.freeze({
+  },
+  dstStageMask: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  srcAccessMask: Object.freeze({
+  },
+  srcAccessMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstAccessMask: Object.freeze({
+  },
+  dstAccessMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  dependencyFlags: Object.freeze({
+  },
+  dependencyFlags: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRenderPassCreateInfo **/
 class VkRenderPassCreateInfo {
   constructor(opts) {
@@ -15253,44 +15253,44 @@ VkRenderPassCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkRenderPassCreateInfo.byteLength = 0x40;
 
-VkRenderPassCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  attachmentCount: Object.freeze({
+  },
+  attachmentCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pAttachments: Object.freeze({
+  },
+  pAttachments: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  subpassCount: Object.freeze({
+  },
+  subpassCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSubpasses: Object.freeze({
+  },
+  pSubpasses: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  dependencyCount: Object.freeze({
+  },
+  dependencyCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pDependencies: Object.freeze({
+  },
+  pDependencies: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkEventCreateInfo **/
 class VkEventCreateInfo {
   constructor(opts) {
@@ -15367,20 +15367,20 @@ VkEventCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkEventCreateInfo.byteLength = 0x18;
 
-VkEventCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkEventCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkFenceCreateInfo **/
 class VkFenceCreateInfo {
   constructor(opts) {
@@ -15475,20 +15475,20 @@ VkFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkFenceCreateInfo.byteLength = 0x18;
 
-VkFenceCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFenceCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFeatures **/
 class VkPhysicalDeviceFeatures {
   constructor(opts) {
@@ -15966,228 +15966,228 @@ VkPhysicalDeviceFeatures.prototype.reflect = function reflect(memoryAddress) {
 
 VkPhysicalDeviceFeatures.byteLength = 0xDC;
 
-VkPhysicalDeviceFeatures.memoryLayout = Object.freeze({
-  robustBufferAccess: Object.freeze({
+VkPhysicalDeviceFeatures.memoryLayout = {
+  robustBufferAccess: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  fullDrawIndexUint32: Object.freeze({
+  },
+  fullDrawIndexUint32: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  imageCubeArray: Object.freeze({
+  },
+  imageCubeArray: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  independentBlend: Object.freeze({
+  },
+  independentBlend: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  geometryShader: Object.freeze({
+  },
+  geometryShader: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  tessellationShader: Object.freeze({
+  },
+  tessellationShader: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  sampleRateShading: Object.freeze({
+  },
+  sampleRateShading: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  dualSrcBlend: Object.freeze({
+  },
+  dualSrcBlend: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  logicOp: Object.freeze({
+  },
+  logicOp: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  multiDrawIndirect: Object.freeze({
+  },
+  multiDrawIndirect: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  drawIndirectFirstInstance: Object.freeze({
+  },
+  drawIndirectFirstInstance: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  depthClamp: Object.freeze({
+  },
+  depthClamp: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  depthBiasClamp: Object.freeze({
+  },
+  depthBiasClamp: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  fillModeNonSolid: Object.freeze({
+  },
+  fillModeNonSolid: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  depthBounds: Object.freeze({
+  },
+  depthBounds: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  wideLines: Object.freeze({
+  },
+  wideLines: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  largePoints: Object.freeze({
+  },
+  largePoints: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  alphaToOne: Object.freeze({
+  },
+  alphaToOne: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  multiViewport: Object.freeze({
+  },
+  multiViewport: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  samplerAnisotropy: Object.freeze({
+  },
+  samplerAnisotropy: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  textureCompressionETC2: Object.freeze({
+  },
+  textureCompressionETC2: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  textureCompressionASTC_LDR: Object.freeze({
+  },
+  textureCompressionASTC_LDR: {
     byteOffset: 0x54,
     byteLength: 0x4
-  }),
-  textureCompressionBC: Object.freeze({
+  },
+  textureCompressionBC: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-  occlusionQueryPrecise: Object.freeze({
+  },
+  occlusionQueryPrecise: {
     byteOffset: 0x5C,
     byteLength: 0x4
-  }),
-  pipelineStatisticsQuery: Object.freeze({
+  },
+  pipelineStatisticsQuery: {
     byteOffset: 0x60,
     byteLength: 0x4
-  }),
-  vertexPipelineStoresAndAtomics: Object.freeze({
+  },
+  vertexPipelineStoresAndAtomics: {
     byteOffset: 0x64,
     byteLength: 0x4
-  }),
-  fragmentStoresAndAtomics: Object.freeze({
+  },
+  fragmentStoresAndAtomics: {
     byteOffset: 0x68,
     byteLength: 0x4
-  }),
-  shaderTessellationAndGeometryPointSize: Object.freeze({
+  },
+  shaderTessellationAndGeometryPointSize: {
     byteOffset: 0x6C,
     byteLength: 0x4
-  }),
-  shaderImageGatherExtended: Object.freeze({
+  },
+  shaderImageGatherExtended: {
     byteOffset: 0x70,
     byteLength: 0x4
-  }),
-  shaderStorageImageExtendedFormats: Object.freeze({
+  },
+  shaderStorageImageExtendedFormats: {
     byteOffset: 0x74,
     byteLength: 0x4
-  }),
-  shaderStorageImageMultisample: Object.freeze({
+  },
+  shaderStorageImageMultisample: {
     byteOffset: 0x78,
     byteLength: 0x4
-  }),
-  shaderStorageImageReadWithoutFormat: Object.freeze({
+  },
+  shaderStorageImageReadWithoutFormat: {
     byteOffset: 0x7C,
     byteLength: 0x4
-  }),
-  shaderStorageImageWriteWithoutFormat: Object.freeze({
+  },
+  shaderStorageImageWriteWithoutFormat: {
     byteOffset: 0x80,
     byteLength: 0x4
-  }),
-  shaderUniformBufferArrayDynamicIndexing: Object.freeze({
+  },
+  shaderUniformBufferArrayDynamicIndexing: {
     byteOffset: 0x84,
     byteLength: 0x4
-  }),
-  shaderSampledImageArrayDynamicIndexing: Object.freeze({
+  },
+  shaderSampledImageArrayDynamicIndexing: {
     byteOffset: 0x88,
     byteLength: 0x4
-  }),
-  shaderStorageBufferArrayDynamicIndexing: Object.freeze({
+  },
+  shaderStorageBufferArrayDynamicIndexing: {
     byteOffset: 0x8C,
     byteLength: 0x4
-  }),
-  shaderStorageImageArrayDynamicIndexing: Object.freeze({
+  },
+  shaderStorageImageArrayDynamicIndexing: {
     byteOffset: 0x90,
     byteLength: 0x4
-  }),
-  shaderClipDistance: Object.freeze({
+  },
+  shaderClipDistance: {
     byteOffset: 0x94,
     byteLength: 0x4
-  }),
-  shaderCullDistance: Object.freeze({
+  },
+  shaderCullDistance: {
     byteOffset: 0x98,
     byteLength: 0x4
-  }),
-  shaderFloat64: Object.freeze({
+  },
+  shaderFloat64: {
     byteOffset: 0x9C,
     byteLength: 0x4
-  }),
-  shaderInt64: Object.freeze({
+  },
+  shaderInt64: {
     byteOffset: 0xA0,
     byteLength: 0x4
-  }),
-  shaderInt16: Object.freeze({
+  },
+  shaderInt16: {
     byteOffset: 0xA4,
     byteLength: 0x4
-  }),
-  shaderResourceResidency: Object.freeze({
+  },
+  shaderResourceResidency: {
     byteOffset: 0xA8,
     byteLength: 0x4
-  }),
-  shaderResourceMinLod: Object.freeze({
+  },
+  shaderResourceMinLod: {
     byteOffset: 0xAC,
     byteLength: 0x4
-  }),
-  sparseBinding: Object.freeze({
+  },
+  sparseBinding: {
     byteOffset: 0xB0,
     byteLength: 0x4
-  }),
-  sparseResidencyBuffer: Object.freeze({
+  },
+  sparseResidencyBuffer: {
     byteOffset: 0xB4,
     byteLength: 0x4
-  }),
-  sparseResidencyImage2D: Object.freeze({
+  },
+  sparseResidencyImage2D: {
     byteOffset: 0xB8,
     byteLength: 0x4
-  }),
-  sparseResidencyImage3D: Object.freeze({
+  },
+  sparseResidencyImage3D: {
     byteOffset: 0xBC,
     byteLength: 0x4
-  }),
-  sparseResidency2Samples: Object.freeze({
+  },
+  sparseResidency2Samples: {
     byteOffset: 0xC0,
     byteLength: 0x4
-  }),
-  sparseResidency4Samples: Object.freeze({
+  },
+  sparseResidency4Samples: {
     byteOffset: 0xC4,
     byteLength: 0x4
-  }),
-  sparseResidency8Samples: Object.freeze({
+  },
+  sparseResidency8Samples: {
     byteOffset: 0xC8,
     byteLength: 0x4
-  }),
-  sparseResidency16Samples: Object.freeze({
+  },
+  sparseResidency16Samples: {
     byteOffset: 0xCC,
     byteLength: 0x4
-  }),
-  sparseResidencyAliased: Object.freeze({
+  },
+  sparseResidencyAliased: {
     byteOffset: 0xD0,
     byteLength: 0x4
-  }),
-  variableMultisampleRate: Object.freeze({
+  },
+  variableMultisampleRate: {
     byteOffset: 0xD4,
     byteLength: 0x4
-  }),
-  inheritedQueries: Object.freeze({
+  },
+  inheritedQueries: {
     byteOffset: 0xD8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSparseProperties **/
 class VkPhysicalDeviceSparseProperties {
   constructor(opts) {
@@ -16249,28 +16249,28 @@ VkPhysicalDeviceSparseProperties.prototype.reflect = function reflect(memoryAddr
 
 VkPhysicalDeviceSparseProperties.byteLength = 0x14;
 
-VkPhysicalDeviceSparseProperties.memoryLayout = Object.freeze({
-  residencyStandard2DBlockShape: Object.freeze({
+VkPhysicalDeviceSparseProperties.memoryLayout = {
+  residencyStandard2DBlockShape: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  residencyStandard2DMultisampleBlockShape: Object.freeze({
+  },
+  residencyStandard2DMultisampleBlockShape: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  residencyStandard3DBlockShape: Object.freeze({
+  },
+  residencyStandard3DBlockShape: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  residencyAlignedMipSize: Object.freeze({
+  },
+  residencyAlignedMipSize: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  residencyNonResidentStrict: Object.freeze({
+  },
+  residencyNonResidentStrict: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceLimits **/
 class VkPhysicalDeviceLimits {
   constructor(opts) {
@@ -16776,432 +16776,432 @@ VkPhysicalDeviceLimits.prototype.reflect = function reflect(memoryAddress) {
 
 VkPhysicalDeviceLimits.byteLength = 0x1F8;
 
-VkPhysicalDeviceLimits.memoryLayout = Object.freeze({
-  maxImageDimension1D: Object.freeze({
+VkPhysicalDeviceLimits.memoryLayout = {
+  maxImageDimension1D: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  maxImageDimension2D: Object.freeze({
+  },
+  maxImageDimension2D: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  maxImageDimension3D: Object.freeze({
+  },
+  maxImageDimension3D: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  maxImageDimensionCube: Object.freeze({
+  },
+  maxImageDimensionCube: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  maxImageArrayLayers: Object.freeze({
+  },
+  maxImageArrayLayers: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxTexelBufferElements: Object.freeze({
+  },
+  maxTexelBufferElements: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxUniformBufferRange: Object.freeze({
+  },
+  maxUniformBufferRange: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  maxStorageBufferRange: Object.freeze({
+  },
+  maxStorageBufferRange: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  maxPushConstantsSize: Object.freeze({
+  },
+  maxPushConstantsSize: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  maxMemoryAllocationCount: Object.freeze({
+  },
+  maxMemoryAllocationCount: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  maxSamplerAllocationCount: Object.freeze({
+  },
+  maxSamplerAllocationCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  bufferImageGranularity: Object.freeze({
+  },
+  bufferImageGranularity: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  sparseAddressSpaceSize: Object.freeze({
+  },
+  sparseAddressSpaceSize: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  maxBoundDescriptorSets: Object.freeze({
+  },
+  maxBoundDescriptorSets: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorSamplers: Object.freeze({
+  },
+  maxPerStageDescriptorSamplers: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUniformBuffers: Object.freeze({
+  },
+  maxPerStageDescriptorUniformBuffers: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorStorageBuffers: Object.freeze({
+  },
+  maxPerStageDescriptorStorageBuffers: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorSampledImages: Object.freeze({
+  },
+  maxPerStageDescriptorSampledImages: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorStorageImages: Object.freeze({
+  },
+  maxPerStageDescriptorStorageImages: {
     byteOffset: 0x54,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorInputAttachments: Object.freeze({
+  },
+  maxPerStageDescriptorInputAttachments: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-  maxPerStageResources: Object.freeze({
+  },
+  maxPerStageResources: {
     byteOffset: 0x5C,
     byteLength: 0x4
-  }),
-  maxDescriptorSetSamplers: Object.freeze({
+  },
+  maxDescriptorSetSamplers: {
     byteOffset: 0x60,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUniformBuffers: Object.freeze({
+  },
+  maxDescriptorSetUniformBuffers: {
     byteOffset: 0x64,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUniformBuffersDynamic: Object.freeze({
+  },
+  maxDescriptorSetUniformBuffersDynamic: {
     byteOffset: 0x68,
     byteLength: 0x4
-  }),
-  maxDescriptorSetStorageBuffers: Object.freeze({
+  },
+  maxDescriptorSetStorageBuffers: {
     byteOffset: 0x6C,
     byteLength: 0x4
-  }),
-  maxDescriptorSetStorageBuffersDynamic: Object.freeze({
+  },
+  maxDescriptorSetStorageBuffersDynamic: {
     byteOffset: 0x70,
     byteLength: 0x4
-  }),
-  maxDescriptorSetSampledImages: Object.freeze({
+  },
+  maxDescriptorSetSampledImages: {
     byteOffset: 0x74,
     byteLength: 0x4
-  }),
-  maxDescriptorSetStorageImages: Object.freeze({
+  },
+  maxDescriptorSetStorageImages: {
     byteOffset: 0x78,
     byteLength: 0x4
-  }),
-  maxDescriptorSetInputAttachments: Object.freeze({
+  },
+  maxDescriptorSetInputAttachments: {
     byteOffset: 0x7C,
     byteLength: 0x4
-  }),
-  maxVertexInputAttributes: Object.freeze({
+  },
+  maxVertexInputAttributes: {
     byteOffset: 0x80,
     byteLength: 0x4
-  }),
-  maxVertexInputBindings: Object.freeze({
+  },
+  maxVertexInputBindings: {
     byteOffset: 0x84,
     byteLength: 0x4
-  }),
-  maxVertexInputAttributeOffset: Object.freeze({
+  },
+  maxVertexInputAttributeOffset: {
     byteOffset: 0x88,
     byteLength: 0x4
-  }),
-  maxVertexInputBindingStride: Object.freeze({
+  },
+  maxVertexInputBindingStride: {
     byteOffset: 0x8C,
     byteLength: 0x4
-  }),
-  maxVertexOutputComponents: Object.freeze({
+  },
+  maxVertexOutputComponents: {
     byteOffset: 0x90,
     byteLength: 0x4
-  }),
-  maxTessellationGenerationLevel: Object.freeze({
+  },
+  maxTessellationGenerationLevel: {
     byteOffset: 0x94,
     byteLength: 0x4
-  }),
-  maxTessellationPatchSize: Object.freeze({
+  },
+  maxTessellationPatchSize: {
     byteOffset: 0x98,
     byteLength: 0x4
-  }),
-  maxTessellationControlPerVertexInputComponents: Object.freeze({
+  },
+  maxTessellationControlPerVertexInputComponents: {
     byteOffset: 0x9C,
     byteLength: 0x4
-  }),
-  maxTessellationControlPerVertexOutputComponents: Object.freeze({
+  },
+  maxTessellationControlPerVertexOutputComponents: {
     byteOffset: 0xA0,
     byteLength: 0x4
-  }),
-  maxTessellationControlPerPatchOutputComponents: Object.freeze({
+  },
+  maxTessellationControlPerPatchOutputComponents: {
     byteOffset: 0xA4,
     byteLength: 0x4
-  }),
-  maxTessellationControlTotalOutputComponents: Object.freeze({
+  },
+  maxTessellationControlTotalOutputComponents: {
     byteOffset: 0xA8,
     byteLength: 0x4
-  }),
-  maxTessellationEvaluationInputComponents: Object.freeze({
+  },
+  maxTessellationEvaluationInputComponents: {
     byteOffset: 0xAC,
     byteLength: 0x4
-  }),
-  maxTessellationEvaluationOutputComponents: Object.freeze({
+  },
+  maxTessellationEvaluationOutputComponents: {
     byteOffset: 0xB0,
     byteLength: 0x4
-  }),
-  maxGeometryShaderInvocations: Object.freeze({
+  },
+  maxGeometryShaderInvocations: {
     byteOffset: 0xB4,
     byteLength: 0x4
-  }),
-  maxGeometryInputComponents: Object.freeze({
+  },
+  maxGeometryInputComponents: {
     byteOffset: 0xB8,
     byteLength: 0x4
-  }),
-  maxGeometryOutputComponents: Object.freeze({
+  },
+  maxGeometryOutputComponents: {
     byteOffset: 0xBC,
     byteLength: 0x4
-  }),
-  maxGeometryOutputVertices: Object.freeze({
+  },
+  maxGeometryOutputVertices: {
     byteOffset: 0xC0,
     byteLength: 0x4
-  }),
-  maxGeometryTotalOutputComponents: Object.freeze({
+  },
+  maxGeometryTotalOutputComponents: {
     byteOffset: 0xC4,
     byteLength: 0x4
-  }),
-  maxFragmentInputComponents: Object.freeze({
+  },
+  maxFragmentInputComponents: {
     byteOffset: 0xC8,
     byteLength: 0x4
-  }),
-  maxFragmentOutputAttachments: Object.freeze({
+  },
+  maxFragmentOutputAttachments: {
     byteOffset: 0xCC,
     byteLength: 0x4
-  }),
-  maxFragmentDualSrcAttachments: Object.freeze({
+  },
+  maxFragmentDualSrcAttachments: {
     byteOffset: 0xD0,
     byteLength: 0x4
-  }),
-  maxFragmentCombinedOutputResources: Object.freeze({
+  },
+  maxFragmentCombinedOutputResources: {
     byteOffset: 0xD4,
     byteLength: 0x4
-  }),
-  maxComputeSharedMemorySize: Object.freeze({
+  },
+  maxComputeSharedMemorySize: {
     byteOffset: 0xD8,
     byteLength: 0x4
-  }),
-  maxComputeWorkGroupCount: Object.freeze({
+  },
+  maxComputeWorkGroupCount: {
     byteOffset: 0xDC,
     byteLength: 0xC
-  }),
-  maxComputeWorkGroupInvocations: Object.freeze({
+  },
+  maxComputeWorkGroupInvocations: {
     byteOffset: 0xE8,
     byteLength: 0x4
-  }),
-  maxComputeWorkGroupSize: Object.freeze({
+  },
+  maxComputeWorkGroupSize: {
     byteOffset: 0xEC,
     byteLength: 0xC
-  }),
-  subPixelPrecisionBits: Object.freeze({
+  },
+  subPixelPrecisionBits: {
     byteOffset: 0xF8,
     byteLength: 0x4
-  }),
-  subTexelPrecisionBits: Object.freeze({
+  },
+  subTexelPrecisionBits: {
     byteOffset: 0xFC,
     byteLength: 0x4
-  }),
-  mipmapPrecisionBits: Object.freeze({
+  },
+  mipmapPrecisionBits: {
     byteOffset: 0x100,
     byteLength: 0x4
-  }),
-  maxDrawIndexedIndexValue: Object.freeze({
+  },
+  maxDrawIndexedIndexValue: {
     byteOffset: 0x104,
     byteLength: 0x4
-  }),
-  maxDrawIndirectCount: Object.freeze({
+  },
+  maxDrawIndirectCount: {
     byteOffset: 0x108,
     byteLength: 0x4
-  }),
-  maxSamplerLodBias: Object.freeze({
+  },
+  maxSamplerLodBias: {
     byteOffset: 0x10C,
     byteLength: 0x4
-  }),
-  maxSamplerAnisotropy: Object.freeze({
+  },
+  maxSamplerAnisotropy: {
     byteOffset: 0x110,
     byteLength: 0x4
-  }),
-  maxViewports: Object.freeze({
+  },
+  maxViewports: {
     byteOffset: 0x114,
     byteLength: 0x4
-  }),
-  maxViewportDimensions: Object.freeze({
+  },
+  maxViewportDimensions: {
     byteOffset: 0x118,
     byteLength: 0x8
-  }),
-  viewportBoundsRange: Object.freeze({
+  },
+  viewportBoundsRange: {
     byteOffset: 0x120,
     byteLength: 0x8
-  }),
-  viewportSubPixelBits: Object.freeze({
+  },
+  viewportSubPixelBits: {
     byteOffset: 0x128,
     byteLength: 0x4
-  }),
-  minMemoryMapAlignment: Object.freeze({
+  },
+  minMemoryMapAlignment: {
     byteOffset: 0x130,
     byteLength: 0x8
-  }),
-  minTexelBufferOffsetAlignment: Object.freeze({
+  },
+  minTexelBufferOffsetAlignment: {
     byteOffset: 0x138,
     byteLength: 0x8
-  }),
-  minUniformBufferOffsetAlignment: Object.freeze({
+  },
+  minUniformBufferOffsetAlignment: {
     byteOffset: 0x140,
     byteLength: 0x8
-  }),
-  minStorageBufferOffsetAlignment: Object.freeze({
+  },
+  minStorageBufferOffsetAlignment: {
     byteOffset: 0x148,
     byteLength: 0x8
-  }),
-  minTexelOffset: Object.freeze({
+  },
+  minTexelOffset: {
     byteOffset: 0x150,
     byteLength: 0x4
-  }),
-  maxTexelOffset: Object.freeze({
+  },
+  maxTexelOffset: {
     byteOffset: 0x154,
     byteLength: 0x4
-  }),
-  minTexelGatherOffset: Object.freeze({
+  },
+  minTexelGatherOffset: {
     byteOffset: 0x158,
     byteLength: 0x4
-  }),
-  maxTexelGatherOffset: Object.freeze({
+  },
+  maxTexelGatherOffset: {
     byteOffset: 0x15C,
     byteLength: 0x4
-  }),
-  minInterpolationOffset: Object.freeze({
+  },
+  minInterpolationOffset: {
     byteOffset: 0x160,
     byteLength: 0x4
-  }),
-  maxInterpolationOffset: Object.freeze({
+  },
+  maxInterpolationOffset: {
     byteOffset: 0x164,
     byteLength: 0x4
-  }),
-  subPixelInterpolationOffsetBits: Object.freeze({
+  },
+  subPixelInterpolationOffsetBits: {
     byteOffset: 0x168,
     byteLength: 0x4
-  }),
-  maxFramebufferWidth: Object.freeze({
+  },
+  maxFramebufferWidth: {
     byteOffset: 0x16C,
     byteLength: 0x4
-  }),
-  maxFramebufferHeight: Object.freeze({
+  },
+  maxFramebufferHeight: {
     byteOffset: 0x170,
     byteLength: 0x4
-  }),
-  maxFramebufferLayers: Object.freeze({
+  },
+  maxFramebufferLayers: {
     byteOffset: 0x174,
     byteLength: 0x4
-  }),
-  framebufferColorSampleCounts: Object.freeze({
+  },
+  framebufferColorSampleCounts: {
     byteOffset: 0x178,
     byteLength: 0x4
-  }),
-  framebufferDepthSampleCounts: Object.freeze({
+  },
+  framebufferDepthSampleCounts: {
     byteOffset: 0x17C,
     byteLength: 0x4
-  }),
-  framebufferStencilSampleCounts: Object.freeze({
+  },
+  framebufferStencilSampleCounts: {
     byteOffset: 0x180,
     byteLength: 0x4
-  }),
-  framebufferNoAttachmentsSampleCounts: Object.freeze({
+  },
+  framebufferNoAttachmentsSampleCounts: {
     byteOffset: 0x184,
     byteLength: 0x4
-  }),
-  maxColorAttachments: Object.freeze({
+  },
+  maxColorAttachments: {
     byteOffset: 0x188,
     byteLength: 0x4
-  }),
-  sampledImageColorSampleCounts: Object.freeze({
+  },
+  sampledImageColorSampleCounts: {
     byteOffset: 0x18C,
     byteLength: 0x4
-  }),
-  sampledImageIntegerSampleCounts: Object.freeze({
+  },
+  sampledImageIntegerSampleCounts: {
     byteOffset: 0x190,
     byteLength: 0x4
-  }),
-  sampledImageDepthSampleCounts: Object.freeze({
+  },
+  sampledImageDepthSampleCounts: {
     byteOffset: 0x194,
     byteLength: 0x4
-  }),
-  sampledImageStencilSampleCounts: Object.freeze({
+  },
+  sampledImageStencilSampleCounts: {
     byteOffset: 0x198,
     byteLength: 0x4
-  }),
-  storageImageSampleCounts: Object.freeze({
+  },
+  storageImageSampleCounts: {
     byteOffset: 0x19C,
     byteLength: 0x4
-  }),
-  maxSampleMaskWords: Object.freeze({
+  },
+  maxSampleMaskWords: {
     byteOffset: 0x1A0,
     byteLength: 0x4
-  }),
-  timestampComputeAndGraphics: Object.freeze({
+  },
+  timestampComputeAndGraphics: {
     byteOffset: 0x1A4,
     byteLength: 0x4
-  }),
-  timestampPeriod: Object.freeze({
+  },
+  timestampPeriod: {
     byteOffset: 0x1A8,
     byteLength: 0x4
-  }),
-  maxClipDistances: Object.freeze({
+  },
+  maxClipDistances: {
     byteOffset: 0x1AC,
     byteLength: 0x4
-  }),
-  maxCullDistances: Object.freeze({
+  },
+  maxCullDistances: {
     byteOffset: 0x1B0,
     byteLength: 0x4
-  }),
-  maxCombinedClipAndCullDistances: Object.freeze({
+  },
+  maxCombinedClipAndCullDistances: {
     byteOffset: 0x1B4,
     byteLength: 0x4
-  }),
-  discreteQueuePriorities: Object.freeze({
+  },
+  discreteQueuePriorities: {
     byteOffset: 0x1B8,
     byteLength: 0x4
-  }),
-  pointSizeRange: Object.freeze({
+  },
+  pointSizeRange: {
     byteOffset: 0x1BC,
     byteLength: 0x8
-  }),
-  lineWidthRange: Object.freeze({
+  },
+  lineWidthRange: {
     byteOffset: 0x1C4,
     byteLength: 0x8
-  }),
-  pointSizeGranularity: Object.freeze({
+  },
+  pointSizeGranularity: {
     byteOffset: 0x1CC,
     byteLength: 0x4
-  }),
-  lineWidthGranularity: Object.freeze({
+  },
+  lineWidthGranularity: {
     byteOffset: 0x1D0,
     byteLength: 0x4
-  }),
-  strictLines: Object.freeze({
+  },
+  strictLines: {
     byteOffset: 0x1D4,
     byteLength: 0x4
-  }),
-  standardSampleLocations: Object.freeze({
+  },
+  standardSampleLocations: {
     byteOffset: 0x1D8,
     byteLength: 0x4
-  }),
-  optimalBufferCopyOffsetAlignment: Object.freeze({
+  },
+  optimalBufferCopyOffsetAlignment: {
     byteOffset: 0x1E0,
     byteLength: 0x8
-  }),
-  optimalBufferCopyRowPitchAlignment: Object.freeze({
+  },
+  optimalBufferCopyRowPitchAlignment: {
     byteOffset: 0x1E8,
     byteLength: 0x8
-  }),
-  nonCoherentAtomSize: Object.freeze({
+  },
+  nonCoherentAtomSize: {
     byteOffset: 0x1F0,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSemaphoreCreateInfo **/
 class VkSemaphoreCreateInfo {
   constructor(opts) {
@@ -17296,20 +17296,20 @@ VkSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkSemaphoreCreateInfo.byteLength = 0x18;
 
-VkSemaphoreCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSemaphoreCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkQueryPoolCreateInfo **/
 class VkQueryPoolCreateInfo {
   constructor(opts) {
@@ -17421,32 +17421,32 @@ VkQueryPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkQueryPoolCreateInfo.byteLength = 0x20;
 
-VkQueryPoolCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkQueryPoolCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  queryType: Object.freeze({
+  },
+  queryType: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  queryCount: Object.freeze({
+  },
+  queryCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pipelineStatistics: Object.freeze({
+  },
+  pipelineStatistics: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkFramebufferCreateInfo **/
 class VkFramebufferCreateInfo {
   constructor(opts) {
@@ -17624,44 +17624,44 @@ VkFramebufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkFramebufferCreateInfo.byteLength = 0x40;
 
-VkFramebufferCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFramebufferCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  renderPass: Object.freeze({
+  },
+  renderPass: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  attachmentCount: Object.freeze({
+  },
+  attachmentCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pAttachments: Object.freeze({
+  },
+  pAttachments: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  width: Object.freeze({
+  },
+  width: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  height: Object.freeze({
+  },
+  height: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  layers: Object.freeze({
+  },
+  layers: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDrawIndirectCommand **/
 class VkDrawIndirectCommand {
   constructor(opts) {
@@ -17743,24 +17743,24 @@ VkDrawIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
 
 VkDrawIndirectCommand.byteLength = 0x10;
 
-VkDrawIndirectCommand.memoryLayout = Object.freeze({
-  vertexCount: Object.freeze({
+VkDrawIndirectCommand.memoryLayout = {
+  vertexCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  instanceCount: Object.freeze({
+  },
+  instanceCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  firstVertex: Object.freeze({
+  },
+  firstVertex: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  firstInstance: Object.freeze({
+  },
+  firstInstance: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDrawIndexedIndirectCommand **/
 class VkDrawIndexedIndirectCommand {
   constructor(opts) {
@@ -17855,28 +17855,28 @@ VkDrawIndexedIndirectCommand.prototype.reflect = function reflect(memoryAddress)
 
 VkDrawIndexedIndirectCommand.byteLength = 0x14;
 
-VkDrawIndexedIndirectCommand.memoryLayout = Object.freeze({
-  indexCount: Object.freeze({
+VkDrawIndexedIndirectCommand.memoryLayout = {
+  indexCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  instanceCount: Object.freeze({
+  },
+  instanceCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  firstIndex: Object.freeze({
+  },
+  firstIndex: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  vertexOffset: Object.freeze({
+  },
+  vertexOffset: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  firstInstance: Object.freeze({
+  },
+  firstInstance: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDispatchIndirectCommand **/
 class VkDispatchIndirectCommand {
   constructor(opts) {
@@ -17947,20 +17947,20 @@ VkDispatchIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
 
 VkDispatchIndirectCommand.byteLength = 0xC;
 
-VkDispatchIndirectCommand.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkDispatchIndirectCommand.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  z: Object.freeze({
+  },
+  z: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubmitInfo **/
 class VkSubmitInfo {
   constructor(opts) {
@@ -18209,44 +18209,44 @@ VkSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubmitInfo.byteLength = 0x48;
 
-VkSubmitInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubmitInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreCount: Object.freeze({
+  },
+  waitSemaphoreCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphores: Object.freeze({
+  },
+  pWaitSemaphores: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pWaitDstStageMask: Object.freeze({
+  },
+  pWaitDstStageMask: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  commandBufferCount: Object.freeze({
+  },
+  commandBufferCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  pCommandBuffers: Object.freeze({
+  },
+  pCommandBuffers: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  signalSemaphoreCount: Object.freeze({
+  },
+  signalSemaphoreCount: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  pSignalSemaphores: Object.freeze({
+  },
+  pSignalSemaphores: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDisplayPropertiesKHR **/
 class VkDisplayPropertiesKHR {
   constructor(opts) {
@@ -18327,36 +18327,36 @@ VkDisplayPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayPropertiesKHR.byteLength = 0x30;
 
-VkDisplayPropertiesKHR.memoryLayout = Object.freeze({
-  display: Object.freeze({
+VkDisplayPropertiesKHR.memoryLayout = {
+  display: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  displayName: Object.freeze({
+  },
+  displayName: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  physicalDimensions: Object.freeze({
+  },
+  physicalDimensions: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  physicalResolution: Object.freeze({
+  },
+  physicalResolution: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  supportedTransforms: Object.freeze({
+  },
+  supportedTransforms: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  planeReorderPossible: Object.freeze({
+  },
+  planeReorderPossible: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  persistentContent: Object.freeze({
+  },
+  persistentContent: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayPlanePropertiesKHR **/
 class VkDisplayPlanePropertiesKHR {
   constructor(opts) {
@@ -18406,16 +18406,16 @@ VkDisplayPlanePropertiesKHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkDisplayPlanePropertiesKHR.byteLength = 0x10;
 
-VkDisplayPlanePropertiesKHR.memoryLayout = Object.freeze({
-  currentDisplay: Object.freeze({
+VkDisplayPlanePropertiesKHR.memoryLayout = {
+  currentDisplay: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  currentStackIndex: Object.freeze({
+  },
+  currentStackIndex: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayModeParametersKHR **/
 class VkDisplayModeParametersKHR {
   constructor(opts) {
@@ -18495,16 +18495,16 @@ VkDisplayModeParametersKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayModeParametersKHR.byteLength = 0xC;
 
-VkDisplayModeParametersKHR.memoryLayout = Object.freeze({
-  visibleRegion: Object.freeze({
+VkDisplayModeParametersKHR.memoryLayout = {
+  visibleRegion: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  refreshRate: Object.freeze({
+  },
+  refreshRate: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayModePropertiesKHR **/
 class VkDisplayModePropertiesKHR {
   constructor(opts) {
@@ -18554,16 +18554,16 @@ VkDisplayModePropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayModePropertiesKHR.byteLength = 0x18;
 
-VkDisplayModePropertiesKHR.memoryLayout = Object.freeze({
-  displayMode: Object.freeze({
+VkDisplayModePropertiesKHR.memoryLayout = {
+  displayMode: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  parameters: Object.freeze({
+  },
+  parameters: {
     byteOffset: 0x8,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkDisplayModeCreateInfoKHR **/
 class VkDisplayModeCreateInfoKHR {
   constructor(opts) {
@@ -18671,24 +18671,24 @@ VkDisplayModeCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayModeCreateInfoKHR.byteLength = 0x20;
 
-VkDisplayModeCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayModeCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  parameters: Object.freeze({
+  },
+  parameters: {
     byteOffset: 0x14,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkDisplayPlaneCapabilitiesKHR **/
 class VkDisplayPlaneCapabilitiesKHR {
   constructor(opts) {
@@ -18782,44 +18782,44 @@ VkDisplayPlaneCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress
 
 VkDisplayPlaneCapabilitiesKHR.byteLength = 0x44;
 
-VkDisplayPlaneCapabilitiesKHR.memoryLayout = Object.freeze({
-  supportedAlpha: Object.freeze({
+VkDisplayPlaneCapabilitiesKHR.memoryLayout = {
+  supportedAlpha: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  minSrcPosition: Object.freeze({
+  },
+  minSrcPosition: {
     byteOffset: 0x4,
     byteLength: 0x8
-  }),
-  maxSrcPosition: Object.freeze({
+  },
+  maxSrcPosition: {
     byteOffset: 0xC,
     byteLength: 0x8
-  }),
-  minSrcExtent: Object.freeze({
+  },
+  minSrcExtent: {
     byteOffset: 0x14,
     byteLength: 0x8
-  }),
-  maxSrcExtent: Object.freeze({
+  },
+  maxSrcExtent: {
     byteOffset: 0x1C,
     byteLength: 0x8
-  }),
-  minDstPosition: Object.freeze({
+  },
+  minDstPosition: {
     byteOffset: 0x24,
     byteLength: 0x8
-  }),
-  maxDstPosition: Object.freeze({
+  },
+  maxDstPosition: {
     byteOffset: 0x2C,
     byteLength: 0x8
-  }),
-  minDstExtent: Object.freeze({
+  },
+  minDstExtent: {
     byteOffset: 0x34,
     byteLength: 0x8
-  }),
-  maxDstExtent: Object.freeze({
+  },
+  maxDstExtent: {
     byteOffset: 0x3C,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDisplaySurfaceCreateInfoKHR **/
 class VkDisplaySurfaceCreateInfoKHR {
   constructor(opts) {
@@ -19004,48 +19004,48 @@ VkDisplaySurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkDisplaySurfaceCreateInfoKHR.byteLength = 0x40;
 
-VkDisplaySurfaceCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplaySurfaceCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  displayMode: Object.freeze({
+  },
+  displayMode: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  planeIndex: Object.freeze({
+  },
+  planeIndex: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  planeStackIndex: Object.freeze({
+  },
+  planeStackIndex: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  transform: Object.freeze({
+  },
+  transform: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  globalAlpha: Object.freeze({
+  },
+  globalAlpha: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  alphaMode: Object.freeze({
+  },
+  alphaMode: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  imageExtent: Object.freeze({
+  },
+  imageExtent: {
     byteOffset: 0x34,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDisplayPresentInfoKHR **/
 class VkDisplayPresentInfoKHR {
   constructor(opts) {
@@ -19183,28 +19183,28 @@ VkDisplayPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayPresentInfoKHR.byteLength = 0x38;
 
-VkDisplayPresentInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayPresentInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcRect: Object.freeze({
+  },
+  srcRect: {
     byteOffset: 0x10,
     byteLength: 0x10
-  }),
-  dstRect: Object.freeze({
+  },
+  dstRect: {
     byteOffset: 0x20,
     byteLength: 0x10
-  }),
-  persistent: Object.freeze({
+  },
+  persistent: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSurfaceCapabilitiesKHR **/
 class VkSurfaceCapabilitiesKHR {
   constructor(opts) {
@@ -19294,48 +19294,48 @@ VkSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceCapabilitiesKHR.byteLength = 0x34;
 
-VkSurfaceCapabilitiesKHR.memoryLayout = Object.freeze({
-  minImageCount: Object.freeze({
+VkSurfaceCapabilitiesKHR.memoryLayout = {
+  minImageCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  maxImageCount: Object.freeze({
+  },
+  maxImageCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  currentExtent: Object.freeze({
+  },
+  currentExtent: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  minImageExtent: Object.freeze({
+  },
+  minImageExtent: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  maxImageExtent: Object.freeze({
+  },
+  maxImageExtent: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  maxImageArrayLayers: Object.freeze({
+  },
+  maxImageArrayLayers: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  supportedTransforms: Object.freeze({
+  },
+  supportedTransforms: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  currentTransform: Object.freeze({
+  },
+  currentTransform: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  supportedCompositeAlpha: Object.freeze({
+  },
+  supportedCompositeAlpha: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  supportedUsageFlags: Object.freeze({
+  },
+  supportedUsageFlags: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkWin32SurfaceCreateInfoKHR **/
 class VkWin32SurfaceCreateInfoKHR {
   constructor(opts) {
@@ -19434,28 +19434,28 @@ VkWin32SurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkWin32SurfaceCreateInfoKHR.byteLength = 0x28;
 
-VkWin32SurfaceCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWin32SurfaceCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  hinstance: Object.freeze({
+  },
+  hinstance: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  hwnd: Object.freeze({
+  },
+  hwnd: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSurfaceFormatKHR **/
 class VkSurfaceFormatKHR {
   constructor(opts) {
@@ -19505,16 +19505,16 @@ VkSurfaceFormatKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceFormatKHR.byteLength = 0x8;
 
-VkSurfaceFormatKHR.memoryLayout = Object.freeze({
-  format: Object.freeze({
+VkSurfaceFormatKHR.memoryLayout = {
+  format: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  colorSpace: Object.freeze({
+  },
+  colorSpace: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSwapchainCreateInfoKHR **/
 class VkSwapchainCreateInfoKHR {
   constructor(opts) {
@@ -19813,80 +19813,80 @@ VkSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSwapchainCreateInfoKHR.byteLength = 0x68;
 
-VkSwapchainCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSwapchainCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  surface: Object.freeze({
+  },
+  surface: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  minImageCount: Object.freeze({
+  },
+  minImageCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  imageFormat: Object.freeze({
+  },
+  imageFormat: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  imageColorSpace: Object.freeze({
+  },
+  imageColorSpace: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  imageExtent: Object.freeze({
+  },
+  imageExtent: {
     byteOffset: 0x2C,
     byteLength: 0x8
-  }),
-  imageArrayLayers: Object.freeze({
+  },
+  imageArrayLayers: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  imageUsage: Object.freeze({
+  },
+  imageUsage: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  imageSharingMode: Object.freeze({
+  },
+  imageSharingMode: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  queueFamilyIndexCount: Object.freeze({
+  },
+  queueFamilyIndexCount: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  pQueueFamilyIndices: Object.freeze({
+  },
+  pQueueFamilyIndices: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  preTransform: Object.freeze({
+  },
+  preTransform: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  compositeAlpha: Object.freeze({
+  },
+  compositeAlpha: {
     byteOffset: 0x54,
     byteLength: 0x4
-  }),
-  presentMode: Object.freeze({
+  },
+  presentMode: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-  clipped: Object.freeze({
+  },
+  clipped: {
     byteOffset: 0x5C,
     byteLength: 0x4
-  }),
-  oldSwapchain: Object.freeze({
+  },
+  oldSwapchain: {
     byteOffset: 0x60,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPresentInfoKHR **/
 class VkPresentInfoKHR {
   constructor(opts) {
@@ -20102,40 +20102,40 @@ VkPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkPresentInfoKHR.byteLength = 0x40;
 
-VkPresentInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPresentInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreCount: Object.freeze({
+  },
+  waitSemaphoreCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphores: Object.freeze({
+  },
+  pWaitSemaphores: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  swapchainCount: Object.freeze({
+  },
+  swapchainCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSwapchains: Object.freeze({
+  },
+  pSwapchains: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pImageIndices: Object.freeze({
+  },
+  pImageIndices: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  pResults: Object.freeze({
+  },
+  pResults: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugReportCallbackCreateInfoEXT **/
 class VkDebugReportCallbackCreateInfoEXT {
   constructor(opts) {
@@ -20228,24 +20228,24 @@ VkDebugReportCallbackCreateInfoEXT.prototype.reflect = function reflect(memoryAd
 
 VkDebugReportCallbackCreateInfoEXT.byteLength = 0x28;
 
-VkDebugReportCallbackCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugReportCallbackCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pUserData: Object.freeze({
+  },
+  pUserData: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkValidationFlagsEXT **/
 class VkValidationFlagsEXT {
   constructor(opts) {
@@ -20340,24 +20340,24 @@ VkValidationFlagsEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkValidationFlagsEXT.byteLength = 0x20;
 
-VkValidationFlagsEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkValidationFlagsEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  disabledValidationCheckCount: Object.freeze({
+  },
+  disabledValidationCheckCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDisabledValidationChecks: Object.freeze({
+  },
+  pDisabledValidationChecks: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkValidationFeaturesEXT **/
 class VkValidationFeaturesEXT {
   constructor(opts) {
@@ -20479,32 +20479,32 @@ VkValidationFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkValidationFeaturesEXT.byteLength = 0x30;
 
-VkValidationFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkValidationFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  enabledValidationFeatureCount: Object.freeze({
+  },
+  enabledValidationFeatureCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pEnabledValidationFeatures: Object.freeze({
+  },
+  pEnabledValidationFeatures: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  disabledValidationFeatureCount: Object.freeze({
+  },
+  disabledValidationFeatureCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pDisabledValidationFeatures: Object.freeze({
+  },
+  pDisabledValidationFeatures: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineRasterizationStateRasterizationOrderAMD **/
 class VkPipelineRasterizationStateRasterizationOrderAMD {
   constructor(opts) {
@@ -20581,20 +20581,20 @@ VkPipelineRasterizationStateRasterizationOrderAMD.prototype.reflect = function r
 
 VkPipelineRasterizationStateRasterizationOrderAMD.byteLength = 0x18;
 
-VkPipelineRasterizationStateRasterizationOrderAMD.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRasterizationStateRasterizationOrderAMD.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  rasterizationOrder: Object.freeze({
+  },
+  rasterizationOrder: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDebugMarkerObjectNameInfoEXT **/
 class VkDebugMarkerObjectNameInfoEXT {
   constructor(opts) {
@@ -20705,28 +20705,28 @@ VkDebugMarkerObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddres
 
 VkDebugMarkerObjectNameInfoEXT.byteLength = 0x28;
 
-VkDebugMarkerObjectNameInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugMarkerObjectNameInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectType: Object.freeze({
+  },
+  objectType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  object: Object.freeze({
+  },
+  object: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pObjectName: Object.freeze({
+  },
+  pObjectName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugMarkerObjectTagInfoEXT **/
 class VkDebugMarkerObjectTagInfoEXT {
   constructor(opts) {
@@ -20854,36 +20854,36 @@ VkDebugMarkerObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress
 
 VkDebugMarkerObjectTagInfoEXT.byteLength = 0x38;
 
-VkDebugMarkerObjectTagInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugMarkerObjectTagInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectType: Object.freeze({
+  },
+  objectType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  object: Object.freeze({
+  },
+  object: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  tagName: Object.freeze({
+  },
+  tagName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  tagSize: Object.freeze({
+  },
+  tagSize: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pTag: Object.freeze({
+  },
+  pTag: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugMarkerMarkerInfoEXT **/
 class VkDebugMarkerMarkerInfoEXT {
   constructor(opts) {
@@ -21010,24 +21010,24 @@ VkDebugMarkerMarkerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDebugMarkerMarkerInfoEXT.byteLength = 0x28;
 
-VkDebugMarkerMarkerInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugMarkerMarkerInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pMarkerName: Object.freeze({
+  },
+  pMarkerName: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  color: Object.freeze({
+  },
+  color: {
     byteOffset: 0x18,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkDedicatedAllocationImageCreateInfoNV **/
 class VkDedicatedAllocationImageCreateInfoNV {
   constructor(opts) {
@@ -21103,20 +21103,20 @@ VkDedicatedAllocationImageCreateInfoNV.prototype.reflect = function reflect(memo
 
 VkDedicatedAllocationImageCreateInfoNV.byteLength = 0x18;
 
-VkDedicatedAllocationImageCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDedicatedAllocationImageCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dedicatedAllocation: Object.freeze({
+  },
+  dedicatedAllocation: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDedicatedAllocationBufferCreateInfoNV **/
 class VkDedicatedAllocationBufferCreateInfoNV {
   constructor(opts) {
@@ -21192,20 +21192,20 @@ VkDedicatedAllocationBufferCreateInfoNV.prototype.reflect = function reflect(mem
 
 VkDedicatedAllocationBufferCreateInfoNV.byteLength = 0x18;
 
-VkDedicatedAllocationBufferCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDedicatedAllocationBufferCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dedicatedAllocation: Object.freeze({
+  },
+  dedicatedAllocation: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDedicatedAllocationMemoryAllocateInfoNV **/
 class VkDedicatedAllocationMemoryAllocateInfoNV {
   constructor(opts) {
@@ -21307,24 +21307,24 @@ VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reflect = function reflect(m
 
 VkDedicatedAllocationMemoryAllocateInfoNV.byteLength = 0x20;
 
-VkDedicatedAllocationMemoryAllocateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDedicatedAllocationMemoryAllocateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkExternalImageFormatPropertiesNV **/
 class VkExternalImageFormatPropertiesNV {
   constructor(opts) {
@@ -21384,24 +21384,24 @@ VkExternalImageFormatPropertiesNV.prototype.reflect = function reflect(memoryAdd
 
 VkExternalImageFormatPropertiesNV.byteLength = 0x30;
 
-VkExternalImageFormatPropertiesNV.memoryLayout = Object.freeze({
-  imageFormatProperties: Object.freeze({
+VkExternalImageFormatPropertiesNV.memoryLayout = {
+  imageFormatProperties: {
     byteOffset: 0x0,
     byteLength: 0x20
-  }),
-  externalMemoryFeatures: Object.freeze({
+  },
+  externalMemoryFeatures: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryImageCreateInfoNV **/
 class VkExternalMemoryImageCreateInfoNV {
   constructor(opts) {
@@ -21478,20 +21478,20 @@ VkExternalMemoryImageCreateInfoNV.prototype.reflect = function reflect(memoryAdd
 
 VkExternalMemoryImageCreateInfoNV.byteLength = 0x18;
 
-VkExternalMemoryImageCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalMemoryImageCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportMemoryAllocateInfoNV **/
 class VkExportMemoryAllocateInfoNV {
   constructor(opts) {
@@ -21568,20 +21568,20 @@ VkExportMemoryAllocateInfoNV.prototype.reflect = function reflect(memoryAddress)
 
 VkExportMemoryAllocateInfoNV.byteLength = 0x18;
 
-VkExportMemoryAllocateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportMemoryAllocateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportMemoryWin32HandleInfoNV **/
 class VkImportMemoryWin32HandleInfoNV {
   constructor(opts) {
@@ -21669,24 +21669,24 @@ VkImportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddre
 
 VkImportMemoryWin32HandleInfoNV.byteLength = 0x20;
 
-VkImportMemoryWin32HandleInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportMemoryWin32HandleInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  handle: Object.freeze({
+  },
+  handle: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkExportMemoryWin32HandleInfoNV **/
 class VkExportMemoryWin32HandleInfoNV {
   constructor(opts) {
@@ -21752,16 +21752,16 @@ VkExportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddre
 
 VkExportMemoryWin32HandleInfoNV.byteLength = 0x20;
 
-VkExportMemoryWin32HandleInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportMemoryWin32HandleInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkWin32KeyedMutexAcquireReleaseInfoNV **/
 class VkWin32KeyedMutexAcquireReleaseInfoNV {
   constructor(opts) {
@@ -21973,44 +21973,44 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.reflect = function reflect(memor
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.byteLength = 0x48;
 
-VkWin32KeyedMutexAcquireReleaseInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWin32KeyedMutexAcquireReleaseInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  acquireCount: Object.freeze({
+  },
+  acquireCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAcquireSyncs: Object.freeze({
+  },
+  pAcquireSyncs: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pAcquireKeys: Object.freeze({
+  },
+  pAcquireKeys: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pAcquireTimeoutMilliseconds: Object.freeze({
+  },
+  pAcquireTimeoutMilliseconds: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  releaseCount: Object.freeze({
+  },
+  releaseCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pReleaseSyncs: Object.freeze({
+  },
+  pReleaseSyncs: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  pReleaseKeys: Object.freeze({
+  },
+  pReleaseKeys: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGeneratedCommandsFeaturesNVX **/
 class VkDeviceGeneratedCommandsFeaturesNVX {
   constructor(opts) {
@@ -22086,20 +22086,20 @@ VkDeviceGeneratedCommandsFeaturesNVX.prototype.reflect = function reflect(memory
 
 VkDeviceGeneratedCommandsFeaturesNVX.byteLength = 0x18;
 
-VkDeviceGeneratedCommandsFeaturesNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGeneratedCommandsFeaturesNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  computeBindingPointSupport: Object.freeze({
+  },
+  computeBindingPointSupport: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGeneratedCommandsLimitsNVX **/
 class VkDeviceGeneratedCommandsLimitsNVX {
   constructor(opts) {
@@ -22222,36 +22222,36 @@ VkDeviceGeneratedCommandsLimitsNVX.prototype.reflect = function reflect(memoryAd
 
 VkDeviceGeneratedCommandsLimitsNVX.byteLength = 0x28;
 
-VkDeviceGeneratedCommandsLimitsNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGeneratedCommandsLimitsNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxIndirectCommandsLayoutTokenCount: Object.freeze({
+  },
+  maxIndirectCommandsLayoutTokenCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxObjectEntryCounts: Object.freeze({
+  },
+  maxObjectEntryCounts: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  minSequenceCountBufferOffsetAlignment: Object.freeze({
+  },
+  minSequenceCountBufferOffsetAlignment: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  minSequenceIndexBufferOffsetAlignment: Object.freeze({
+  },
+  minSequenceIndexBufferOffsetAlignment: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  minCommandsTokenBufferOffsetAlignment: Object.freeze({
+  },
+  minCommandsTokenBufferOffsetAlignment: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkIndirectCommandsTokenNVX **/
 class VkIndirectCommandsTokenNVX {
   constructor(opts) {
@@ -22333,20 +22333,20 @@ VkIndirectCommandsTokenNVX.prototype.reflect = function reflect(memoryAddress) {
 
 VkIndirectCommandsTokenNVX.byteLength = 0x18;
 
-VkIndirectCommandsTokenNVX.memoryLayout = Object.freeze({
-  tokenType: Object.freeze({
+VkIndirectCommandsTokenNVX.memoryLayout = {
+  tokenType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkIndirectCommandsLayoutTokenNVX **/
 class VkIndirectCommandsLayoutTokenNVX {
   constructor(opts) {
@@ -22430,24 +22430,24 @@ VkIndirectCommandsLayoutTokenNVX.prototype.reflect = function reflect(memoryAddr
 
 VkIndirectCommandsLayoutTokenNVX.byteLength = 0x10;
 
-VkIndirectCommandsLayoutTokenNVX.memoryLayout = Object.freeze({
-  tokenType: Object.freeze({
+VkIndirectCommandsLayoutTokenNVX.memoryLayout = {
+  tokenType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  bindingUnit: Object.freeze({
+  },
+  bindingUnit: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  dynamicCount: Object.freeze({
+  },
+  dynamicCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  divisor: Object.freeze({
+  },
+  divisor: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkIndirectCommandsLayoutCreateInfoNVX **/
 class VkIndirectCommandsLayoutCreateInfoNVX {
   constructor(opts) {
@@ -22585,32 +22585,32 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.reflect = function reflect(memor
 
 VkIndirectCommandsLayoutCreateInfoNVX.byteLength = 0x28;
 
-VkIndirectCommandsLayoutCreateInfoNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkIndirectCommandsLayoutCreateInfoNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pipelineBindPoint: Object.freeze({
+  },
+  pipelineBindPoint: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  tokenCount: Object.freeze({
+  },
+  tokenCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pTokens: Object.freeze({
+  },
+  pTokens: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkCmdProcessCommandsInfoNVX **/
 class VkCmdProcessCommandsInfoNVX {
   constructor(opts) {
@@ -22851,56 +22851,56 @@ VkCmdProcessCommandsInfoNVX.prototype.reflect = function reflect(memoryAddress) 
 
 VkCmdProcessCommandsInfoNVX.byteLength = 0x60;
 
-VkCmdProcessCommandsInfoNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCmdProcessCommandsInfoNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectTable: Object.freeze({
+  },
+  objectTable: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  indirectCommandsLayout: Object.freeze({
+  },
+  indirectCommandsLayout: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  indirectCommandsTokenCount: Object.freeze({
+  },
+  indirectCommandsTokenCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pIndirectCommandsTokens: Object.freeze({
+  },
+  pIndirectCommandsTokens: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxSequencesCount: Object.freeze({
+  },
+  maxSequencesCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  targetCommandBuffer: Object.freeze({
+  },
+  targetCommandBuffer: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  sequencesCountBuffer: Object.freeze({
+  },
+  sequencesCountBuffer: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-  sequencesCountOffset: Object.freeze({
+  },
+  sequencesCountOffset: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  sequencesIndexBuffer: Object.freeze({
+  },
+  sequencesIndexBuffer: {
     byteOffset: 0x50,
     byteLength: 0x8
-  }),
-  sequencesIndexOffset: Object.freeze({
+  },
+  sequencesIndexOffset: {
     byteOffset: 0x58,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkCmdReserveSpaceForCommandsInfoNVX **/
 class VkCmdReserveSpaceForCommandsInfoNVX {
   constructor(opts) {
@@ -23015,28 +23015,28 @@ VkCmdReserveSpaceForCommandsInfoNVX.prototype.reflect = function reflect(memoryA
 
 VkCmdReserveSpaceForCommandsInfoNVX.byteLength = 0x28;
 
-VkCmdReserveSpaceForCommandsInfoNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCmdReserveSpaceForCommandsInfoNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectTable: Object.freeze({
+  },
+  objectTable: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  indirectCommandsLayout: Object.freeze({
+  },
+  indirectCommandsLayout: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  maxSequencesCount: Object.freeze({
+  },
+  maxSequencesCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkObjectTableCreateInfoNVX **/
 class VkObjectTableCreateInfoNVX {
   constructor(opts) {
@@ -23218,52 +23218,52 @@ VkObjectTableCreateInfoNVX.prototype.reflect = function reflect(memoryAddress) {
 
 VkObjectTableCreateInfoNVX.byteLength = 0x48;
 
-VkObjectTableCreateInfoNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkObjectTableCreateInfoNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectCount: Object.freeze({
+  },
+  objectCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pObjectEntryTypes: Object.freeze({
+  },
+  pObjectEntryTypes: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pObjectEntryCounts: Object.freeze({
+  },
+  pObjectEntryCounts: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pObjectEntryUsageFlags: Object.freeze({
+  },
+  pObjectEntryUsageFlags: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxUniformBuffersPerDescriptor: Object.freeze({
+  },
+  maxUniformBuffersPerDescriptor: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  maxStorageBuffersPerDescriptor: Object.freeze({
+  },
+  maxStorageBuffersPerDescriptor: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  maxStorageImagesPerDescriptor: Object.freeze({
+  },
+  maxStorageImagesPerDescriptor: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  maxSampledImagesPerDescriptor: Object.freeze({
+  },
+  maxSampledImagesPerDescriptor: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  maxPipelineLayouts: Object.freeze({
+  },
+  maxPipelineLayouts: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkObjectTableEntryNVX **/
 class VkObjectTableEntryNVX {
   constructor(opts) {
@@ -23323,16 +23323,16 @@ VkObjectTableEntryNVX.prototype.reflect = function reflect(memoryAddress) {
 
 VkObjectTableEntryNVX.byteLength = 0x8;
 
-VkObjectTableEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTableEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkObjectTablePipelineEntryNVX **/
 class VkObjectTablePipelineEntryNVX {
   constructor(opts) {
@@ -23412,20 +23412,20 @@ VkObjectTablePipelineEntryNVX.prototype.reflect = function reflect(memoryAddress
 
 VkObjectTablePipelineEntryNVX.byteLength = 0x10;
 
-VkObjectTablePipelineEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTablePipelineEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  pipeline: Object.freeze({
+  },
+  pipeline: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkObjectTableDescriptorSetEntryNVX **/
 class VkObjectTableDescriptorSetEntryNVX {
   constructor(opts) {
@@ -23523,24 +23523,24 @@ VkObjectTableDescriptorSetEntryNVX.prototype.reflect = function reflect(memoryAd
 
 VkObjectTableDescriptorSetEntryNVX.byteLength = 0x18;
 
-VkObjectTableDescriptorSetEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTableDescriptorSetEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  pipelineLayout: Object.freeze({
+  },
+  pipelineLayout: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  descriptorSet: Object.freeze({
+  },
+  descriptorSet: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkObjectTableVertexBufferEntryNVX **/
 class VkObjectTableVertexBufferEntryNVX {
   constructor(opts) {
@@ -23620,20 +23620,20 @@ VkObjectTableVertexBufferEntryNVX.prototype.reflect = function reflect(memoryAdd
 
 VkObjectTableVertexBufferEntryNVX.byteLength = 0x10;
 
-VkObjectTableVertexBufferEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTableVertexBufferEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkObjectTableIndexBufferEntryNVX **/
 class VkObjectTableIndexBufferEntryNVX {
   constructor(opts) {
@@ -23724,24 +23724,24 @@ VkObjectTableIndexBufferEntryNVX.prototype.reflect = function reflect(memoryAddr
 
 VkObjectTableIndexBufferEntryNVX.byteLength = 0x18;
 
-VkObjectTableIndexBufferEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTableIndexBufferEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  indexType: Object.freeze({
+  },
+  indexType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkObjectTablePushConstantEntryNVX **/
 class VkObjectTablePushConstantEntryNVX {
   constructor(opts) {
@@ -23832,24 +23832,24 @@ VkObjectTablePushConstantEntryNVX.prototype.reflect = function reflect(memoryAdd
 
 VkObjectTablePushConstantEntryNVX.byteLength = 0x18;
 
-VkObjectTablePushConstantEntryNVX.memoryLayout = Object.freeze({
-  type: Object.freeze({
+VkObjectTablePushConstantEntryNVX.memoryLayout = {
+  type: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  pipelineLayout: Object.freeze({
+  },
+  pipelineLayout: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  stageFlags: Object.freeze({
+  },
+  stageFlags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFeatures2 **/
 class VkPhysicalDeviceFeatures2 {
   constructor(opts) {
@@ -23994,20 +23994,20 @@ VkPhysicalDeviceFeatures2.prototype.reflect = function reflect(memoryAddress) {
 
 VkPhysicalDeviceFeatures2.byteLength = 0xF0;
 
-VkPhysicalDeviceFeatures2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFeatures2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  features: Object.freeze({
+  },
+  features: {
     byteOffset: 0x10,
     byteLength: 0xDC
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFeatures2KHR **/
 class VkPhysicalDeviceFeatures2KHR {
   constructor(opts) {
@@ -24152,20 +24152,20 @@ VkPhysicalDeviceFeatures2KHR.prototype.reflect = function reflect(memoryAddress)
 
 VkPhysicalDeviceFeatures2KHR.byteLength = 0xF0;
 
-VkPhysicalDeviceFeatures2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFeatures2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  features: Object.freeze({
+  },
+  features: {
     byteOffset: 0x10,
     byteLength: 0xDC
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceProperties2 **/
 class VkPhysicalDeviceProperties2 {
   constructor(opts) {
@@ -24285,20 +24285,20 @@ VkPhysicalDeviceProperties2.prototype.reflect = function reflect(memoryAddress) 
 
 VkPhysicalDeviceProperties2.byteLength = 0x348;
 
-VkPhysicalDeviceProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  properties: Object.freeze({
+  },
+  properties: {
     byteOffset: 0x10,
     byteLength: 0x338
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceProperties2KHR **/
 class VkPhysicalDeviceProperties2KHR {
   constructor(opts) {
@@ -24418,20 +24418,20 @@ VkPhysicalDeviceProperties2KHR.prototype.reflect = function reflect(memoryAddres
 
 VkPhysicalDeviceProperties2KHR.byteLength = 0x348;
 
-VkPhysicalDeviceProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  properties: Object.freeze({
+  },
+  properties: {
     byteOffset: 0x10,
     byteLength: 0x338
-  }),
-});
+  },
+};
 /** VkFormatProperties2 **/
 class VkFormatProperties2 {
   constructor(opts) {
@@ -24524,20 +24524,20 @@ VkFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
 
 VkFormatProperties2.byteLength = 0x20;
 
-VkFormatProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFormatProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  formatProperties: Object.freeze({
+  },
+  formatProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkFormatProperties2KHR **/
 class VkFormatProperties2KHR {
   constructor(opts) {
@@ -24630,20 +24630,20 @@ VkFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkFormatProperties2KHR.byteLength = 0x20;
 
-VkFormatProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFormatProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  formatProperties: Object.freeze({
+  },
+  formatProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkImageFormatProperties2 **/
 class VkImageFormatProperties2 {
   constructor(opts) {
@@ -24740,20 +24740,20 @@ VkImageFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageFormatProperties2.byteLength = 0x30;
 
-VkImageFormatProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageFormatProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  imageFormatProperties: Object.freeze({
+  },
+  imageFormatProperties: {
     byteOffset: 0x10,
     byteLength: 0x20
-  }),
-});
+  },
+};
 /** VkImageFormatProperties2KHR **/
 class VkImageFormatProperties2KHR {
   constructor(opts) {
@@ -24850,20 +24850,20 @@ VkImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkImageFormatProperties2KHR.byteLength = 0x30;
 
-VkImageFormatProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageFormatProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  imageFormatProperties: Object.freeze({
+  },
+  imageFormatProperties: {
     byteOffset: 0x10,
     byteLength: 0x20
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceImageFormatInfo2 **/
 class VkPhysicalDeviceImageFormatInfo2 {
   constructor(opts) {
@@ -25005,36 +25005,36 @@ VkPhysicalDeviceImageFormatInfo2.prototype.reflect = function reflect(memoryAddr
 
 VkPhysicalDeviceImageFormatInfo2.byteLength = 0x28;
 
-VkPhysicalDeviceImageFormatInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceImageFormatInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  tiling: Object.freeze({
+  },
+  tiling: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceImageFormatInfo2KHR **/
 class VkPhysicalDeviceImageFormatInfo2KHR {
   constructor(opts) {
@@ -25176,36 +25176,36 @@ VkPhysicalDeviceImageFormatInfo2KHR.prototype.reflect = function reflect(memoryA
 
 VkPhysicalDeviceImageFormatInfo2KHR.byteLength = 0x28;
 
-VkPhysicalDeviceImageFormatInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceImageFormatInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  tiling: Object.freeze({
+  },
+  tiling: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkQueueFamilyProperties2 **/
 class VkQueueFamilyProperties2 {
   constructor(opts) {
@@ -25298,20 +25298,20 @@ VkQueueFamilyProperties2.prototype.reflect = function reflect(memoryAddress) {
 
 VkQueueFamilyProperties2.byteLength = 0x28;
 
-VkQueueFamilyProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkQueueFamilyProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  queueFamilyProperties: Object.freeze({
+  },
+  queueFamilyProperties: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkQueueFamilyProperties2KHR **/
 class VkQueueFamilyProperties2KHR {
   constructor(opts) {
@@ -25404,20 +25404,20 @@ VkQueueFamilyProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkQueueFamilyProperties2KHR.byteLength = 0x28;
 
-VkQueueFamilyProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkQueueFamilyProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  queueFamilyProperties: Object.freeze({
+  },
+  queueFamilyProperties: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMemoryProperties2 **/
 class VkPhysicalDeviceMemoryProperties2 {
   constructor(opts) {
@@ -25510,20 +25510,20 @@ VkPhysicalDeviceMemoryProperties2.prototype.reflect = function reflect(memoryAdd
 
 VkPhysicalDeviceMemoryProperties2.byteLength = 0x218;
 
-VkPhysicalDeviceMemoryProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMemoryProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryProperties: Object.freeze({
+  },
+  memoryProperties: {
     byteOffset: 0x10,
     byteLength: 0x208
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMemoryProperties2KHR **/
 class VkPhysicalDeviceMemoryProperties2KHR {
   constructor(opts) {
@@ -25616,20 +25616,20 @@ VkPhysicalDeviceMemoryProperties2KHR.prototype.reflect = function reflect(memory
 
 VkPhysicalDeviceMemoryProperties2KHR.byteLength = 0x218;
 
-VkPhysicalDeviceMemoryProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMemoryProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryProperties: Object.freeze({
+  },
+  memoryProperties: {
     byteOffset: 0x10,
     byteLength: 0x208
-  }),
-});
+  },
+};
 /** VkSparseImageFormatProperties2 **/
 class VkSparseImageFormatProperties2 {
   constructor(opts) {
@@ -25705,20 +25705,20 @@ VkSparseImageFormatProperties2.prototype.reflect = function reflect(memoryAddres
 
 VkSparseImageFormatProperties2.byteLength = 0x28;
 
-VkSparseImageFormatProperties2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSparseImageFormatProperties2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  properties: Object.freeze({
+  },
+  properties: {
     byteOffset: 0x10,
     byteLength: 0x14
-  }),
-});
+  },
+};
 /** VkSparseImageFormatProperties2KHR **/
 class VkSparseImageFormatProperties2KHR {
   constructor(opts) {
@@ -25794,20 +25794,20 @@ VkSparseImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAdd
 
 VkSparseImageFormatProperties2KHR.byteLength = 0x28;
 
-VkSparseImageFormatProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSparseImageFormatProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  properties: Object.freeze({
+  },
+  properties: {
     byteOffset: 0x10,
     byteLength: 0x14
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSparseImageFormatInfo2 **/
 class VkPhysicalDeviceSparseImageFormatInfo2 {
   constructor(opts) {
@@ -25928,36 +25928,36 @@ VkPhysicalDeviceSparseImageFormatInfo2.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceSparseImageFormatInfo2.byteLength = 0x28;
 
-VkPhysicalDeviceSparseImageFormatInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSparseImageFormatInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  samples: Object.freeze({
+  },
+  samples: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  tiling: Object.freeze({
+  },
+  tiling: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSparseImageFormatInfo2KHR **/
 class VkPhysicalDeviceSparseImageFormatInfo2KHR {
   constructor(opts) {
@@ -26078,36 +26078,36 @@ VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.reflect = function reflect(m
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.byteLength = 0x28;
 
-VkPhysicalDeviceSparseImageFormatInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSparseImageFormatInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  samples: Object.freeze({
+  },
+  samples: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  tiling: Object.freeze({
+  },
+  tiling: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevicePushDescriptorPropertiesKHR **/
 class VkPhysicalDevicePushDescriptorPropertiesKHR {
   constructor(opts) {
@@ -26183,20 +26183,20 @@ VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.reflect = function reflect
 
 VkPhysicalDevicePushDescriptorPropertiesKHR.byteLength = 0x18;
 
-VkPhysicalDevicePushDescriptorPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevicePushDescriptorPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxPushDescriptors: Object.freeze({
+  },
+  maxPushDescriptors: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkConformanceVersionKHR **/
 class VkConformanceVersionKHR {
   constructor(opts) {
@@ -26278,24 +26278,24 @@ VkConformanceVersionKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkConformanceVersionKHR.byteLength = 0x4;
 
-VkConformanceVersionKHR.memoryLayout = Object.freeze({
-  major: Object.freeze({
+VkConformanceVersionKHR.memoryLayout = {
+  major: {
     byteOffset: 0x0,
     byteLength: 0x1
-  }),
-  minor: Object.freeze({
+  },
+  minor: {
     byteOffset: 0x1,
     byteLength: 0x1
-  }),
-  subminor: Object.freeze({
+  },
+  subminor: {
     byteOffset: 0x2,
     byteLength: 0x1
-  }),
-  patch: Object.freeze({
+  },
+  patch: {
     byteOffset: 0x3,
     byteLength: 0x1
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDriverPropertiesKHR **/
 class VkPhysicalDeviceDriverPropertiesKHR {
   constructor(opts) {
@@ -26387,32 +26387,32 @@ VkPhysicalDeviceDriverPropertiesKHR.prototype.reflect = function reflect(memoryA
 
 VkPhysicalDeviceDriverPropertiesKHR.byteLength = 0x218;
 
-VkPhysicalDeviceDriverPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDriverPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  driverID: Object.freeze({
+  },
+  driverID: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  driverName: Object.freeze({
+  },
+  driverName: {
     byteOffset: 0x14,
     byteLength: 0x100
-  }),
-  driverInfo: Object.freeze({
+  },
+  driverInfo: {
     byteOffset: 0x114,
     byteLength: 0x100
-  }),
-  conformanceVersion: Object.freeze({
+  },
+  conformanceVersion: {
     byteOffset: 0x214,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPresentRegionsKHR **/
 class VkPresentRegionsKHR {
   constructor(opts) {
@@ -26528,24 +26528,24 @@ VkPresentRegionsKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkPresentRegionsKHR.byteLength = 0x20;
 
-VkPresentRegionsKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPresentRegionsKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchainCount: Object.freeze({
+  },
+  swapchainCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pRegions: Object.freeze({
+  },
+  pRegions: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPresentRegionKHR **/
 class VkPresentRegionKHR {
   constructor(opts) {
@@ -26631,16 +26631,16 @@ VkPresentRegionKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkPresentRegionKHR.byteLength = 0x10;
 
-VkPresentRegionKHR.memoryLayout = Object.freeze({
-  rectangleCount: Object.freeze({
+VkPresentRegionKHR.memoryLayout = {
+  rectangleCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pRectangles: Object.freeze({
+  },
+  pRectangles: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkRectLayerKHR **/
 class VkRectLayerKHR {
   constructor(opts) {
@@ -26751,20 +26751,20 @@ VkRectLayerKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkRectLayerKHR.byteLength = 0x14;
 
-VkRectLayerKHR.memoryLayout = Object.freeze({
-  offset: Object.freeze({
+VkRectLayerKHR.memoryLayout = {
+  offset: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  extent: Object.freeze({
+  },
+  extent: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  layer: Object.freeze({
+  },
+  layer: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceVariablePointerFeatures **/
 class VkPhysicalDeviceVariablePointerFeatures {
   constructor(opts) {
@@ -26848,24 +26848,24 @@ VkPhysicalDeviceVariablePointerFeatures.prototype.reflect = function reflect(mem
 
 VkPhysicalDeviceVariablePointerFeatures.byteLength = 0x18;
 
-VkPhysicalDeviceVariablePointerFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceVariablePointerFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  variablePointersStorageBuffer: Object.freeze({
+  },
+  variablePointersStorageBuffer: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  variablePointers: Object.freeze({
+  },
+  variablePointers: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceVariablePointerFeaturesKHR **/
 class VkPhysicalDeviceVariablePointerFeaturesKHR {
   constructor(opts) {
@@ -26949,24 +26949,24 @@ VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.reflect = function reflect(
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.byteLength = 0x18;
 
-VkPhysicalDeviceVariablePointerFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceVariablePointerFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  variablePointersStorageBuffer: Object.freeze({
+  },
+  variablePointersStorageBuffer: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  variablePointers: Object.freeze({
+  },
+  variablePointers: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryProperties **/
 class VkExternalMemoryProperties {
   constructor(opts) {
@@ -27020,20 +27020,20 @@ VkExternalMemoryProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkExternalMemoryProperties.byteLength = 0xC;
 
-VkExternalMemoryProperties.memoryLayout = Object.freeze({
-  externalMemoryFeatures: Object.freeze({
+VkExternalMemoryProperties.memoryLayout = {
+  externalMemoryFeatures: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryPropertiesKHR **/
 class VkExternalMemoryPropertiesKHR {
   constructor(opts) {
@@ -27087,20 +27087,20 @@ VkExternalMemoryPropertiesKHR.prototype.reflect = function reflect(memoryAddress
 
 VkExternalMemoryPropertiesKHR.byteLength = 0xC;
 
-VkExternalMemoryPropertiesKHR.memoryLayout = Object.freeze({
-  externalMemoryFeatures: Object.freeze({
+VkExternalMemoryPropertiesKHR.memoryLayout = {
+  externalMemoryFeatures: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalImageFormatInfo **/
 class VkPhysicalDeviceExternalImageFormatInfo {
   constructor(opts) {
@@ -27177,20 +27177,20 @@ VkPhysicalDeviceExternalImageFormatInfo.prototype.reflect = function reflect(mem
 
 VkPhysicalDeviceExternalImageFormatInfo.byteLength = 0x18;
 
-VkPhysicalDeviceExternalImageFormatInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalImageFormatInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalImageFormatInfoKHR **/
 class VkPhysicalDeviceExternalImageFormatInfoKHR {
   constructor(opts) {
@@ -27267,20 +27267,20 @@ VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.reflect = function reflect(
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.byteLength = 0x18;
 
-VkPhysicalDeviceExternalImageFormatInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalImageFormatInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalImageFormatProperties **/
 class VkExternalImageFormatProperties {
   constructor(opts) {
@@ -27356,20 +27356,20 @@ VkExternalImageFormatProperties.prototype.reflect = function reflect(memoryAddre
 
 VkExternalImageFormatProperties.byteLength = 0x20;
 
-VkExternalImageFormatProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalImageFormatProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  externalMemoryProperties: Object.freeze({
+  },
+  externalMemoryProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkExternalImageFormatPropertiesKHR **/
 class VkExternalImageFormatPropertiesKHR {
   constructor(opts) {
@@ -27445,20 +27445,20 @@ VkExternalImageFormatPropertiesKHR.prototype.reflect = function reflect(memoryAd
 
 VkExternalImageFormatPropertiesKHR.byteLength = 0x20;
 
-VkExternalImageFormatPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalImageFormatPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  externalMemoryProperties: Object.freeze({
+  },
+  externalMemoryProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalBufferInfo **/
 class VkPhysicalDeviceExternalBufferInfo {
   constructor(opts) {
@@ -27557,28 +27557,28 @@ VkPhysicalDeviceExternalBufferInfo.prototype.reflect = function reflect(memoryAd
 
 VkPhysicalDeviceExternalBufferInfo.byteLength = 0x20;
 
-VkPhysicalDeviceExternalBufferInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalBufferInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalBufferInfoKHR **/
 class VkPhysicalDeviceExternalBufferInfoKHR {
   constructor(opts) {
@@ -27677,28 +27677,28 @@ VkPhysicalDeviceExternalBufferInfoKHR.prototype.reflect = function reflect(memor
 
 VkPhysicalDeviceExternalBufferInfoKHR.byteLength = 0x20;
 
-VkPhysicalDeviceExternalBufferInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalBufferInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalBufferProperties **/
 class VkExternalBufferProperties {
   constructor(opts) {
@@ -27774,20 +27774,20 @@ VkExternalBufferProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkExternalBufferProperties.byteLength = 0x20;
 
-VkExternalBufferProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalBufferProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  externalMemoryProperties: Object.freeze({
+  },
+  externalMemoryProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkExternalBufferPropertiesKHR **/
 class VkExternalBufferPropertiesKHR {
   constructor(opts) {
@@ -27863,20 +27863,20 @@ VkExternalBufferPropertiesKHR.prototype.reflect = function reflect(memoryAddress
 
 VkExternalBufferPropertiesKHR.byteLength = 0x20;
 
-VkExternalBufferPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalBufferPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  externalMemoryProperties: Object.freeze({
+  },
+  externalMemoryProperties: {
     byteOffset: 0x10,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceIDProperties **/
 class VkPhysicalDeviceIDProperties {
   constructor(opts) {
@@ -28019,36 +28019,36 @@ VkPhysicalDeviceIDProperties.prototype.reflect = function reflect(memoryAddress)
 
 VkPhysicalDeviceIDProperties.byteLength = 0x40;
 
-VkPhysicalDeviceIDProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceIDProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceUUID: Object.freeze({
+  },
+  deviceUUID: {
     byteOffset: 0x10,
     byteLength: 0x10
-  }),
-  driverUUID: Object.freeze({
+  },
+  driverUUID: {
     byteOffset: 0x20,
     byteLength: 0x10
-  }),
-  deviceLUID: Object.freeze({
+  },
+  deviceLUID: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  deviceNodeMask: Object.freeze({
+  },
+  deviceNodeMask: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  deviceLUIDValid: Object.freeze({
+  },
+  deviceLUIDValid: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceIDPropertiesKHR **/
 class VkPhysicalDeviceIDPropertiesKHR {
   constructor(opts) {
@@ -28191,36 +28191,36 @@ VkPhysicalDeviceIDPropertiesKHR.prototype.reflect = function reflect(memoryAddre
 
 VkPhysicalDeviceIDPropertiesKHR.byteLength = 0x40;
 
-VkPhysicalDeviceIDPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceIDPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceUUID: Object.freeze({
+  },
+  deviceUUID: {
     byteOffset: 0x10,
     byteLength: 0x10
-  }),
-  driverUUID: Object.freeze({
+  },
+  driverUUID: {
     byteOffset: 0x20,
     byteLength: 0x10
-  }),
-  deviceLUID: Object.freeze({
+  },
+  deviceLUID: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  deviceNodeMask: Object.freeze({
+  },
+  deviceNodeMask: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  deviceLUIDValid: Object.freeze({
+  },
+  deviceLUIDValid: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryImageCreateInfo **/
 class VkExternalMemoryImageCreateInfo {
   constructor(opts) {
@@ -28297,20 +28297,20 @@ VkExternalMemoryImageCreateInfo.prototype.reflect = function reflect(memoryAddre
 
 VkExternalMemoryImageCreateInfo.byteLength = 0x18;
 
-VkExternalMemoryImageCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalMemoryImageCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryImageCreateInfoKHR **/
 class VkExternalMemoryImageCreateInfoKHR {
   constructor(opts) {
@@ -28387,20 +28387,20 @@ VkExternalMemoryImageCreateInfoKHR.prototype.reflect = function reflect(memoryAd
 
 VkExternalMemoryImageCreateInfoKHR.byteLength = 0x18;
 
-VkExternalMemoryImageCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalMemoryImageCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryBufferCreateInfo **/
 class VkExternalMemoryBufferCreateInfo {
   constructor(opts) {
@@ -28477,20 +28477,20 @@ VkExternalMemoryBufferCreateInfo.prototype.reflect = function reflect(memoryAddr
 
 VkExternalMemoryBufferCreateInfo.byteLength = 0x18;
 
-VkExternalMemoryBufferCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalMemoryBufferCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalMemoryBufferCreateInfoKHR **/
 class VkExternalMemoryBufferCreateInfoKHR {
   constructor(opts) {
@@ -28567,20 +28567,20 @@ VkExternalMemoryBufferCreateInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkExternalMemoryBufferCreateInfoKHR.byteLength = 0x18;
 
-VkExternalMemoryBufferCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalMemoryBufferCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportMemoryAllocateInfo **/
 class VkExportMemoryAllocateInfo {
   constructor(opts) {
@@ -28657,20 +28657,20 @@ VkExportMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkExportMemoryAllocateInfo.byteLength = 0x18;
 
-VkExportMemoryAllocateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportMemoryAllocateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportMemoryAllocateInfoKHR **/
 class VkExportMemoryAllocateInfoKHR {
   constructor(opts) {
@@ -28747,20 +28747,20 @@ VkExportMemoryAllocateInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkExportMemoryAllocateInfoKHR.byteLength = 0x18;
 
-VkExportMemoryAllocateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportMemoryAllocateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportMemoryWin32HandleInfoKHR **/
 class VkImportMemoryWin32HandleInfoKHR {
   constructor(opts) {
@@ -28869,28 +28869,28 @@ VkImportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddr
 
 VkImportMemoryWin32HandleInfoKHR.byteLength = 0x28;
 
-VkImportMemoryWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportMemoryWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  handle: Object.freeze({
+  },
+  handle: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkExportMemoryWin32HandleInfoKHR **/
 class VkExportMemoryWin32HandleInfoKHR {
   constructor(opts) {
@@ -28977,20 +28977,20 @@ VkExportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddr
 
 VkExportMemoryWin32HandleInfoKHR.byteLength = 0x28;
 
-VkExportMemoryWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportMemoryWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkMemoryWin32HandlePropertiesKHR **/
 class VkMemoryWin32HandlePropertiesKHR {
   constructor(opts) {
@@ -29066,20 +29066,20 @@ VkMemoryWin32HandlePropertiesKHR.prototype.reflect = function reflect(memoryAddr
 
 VkMemoryWin32HandlePropertiesKHR.byteLength = 0x18;
 
-VkMemoryWin32HandlePropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryWin32HandlePropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryTypeBits: Object.freeze({
+  },
+  memoryTypeBits: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryGetWin32HandleInfoKHR **/
 class VkMemoryGetWin32HandleInfoKHR {
   constructor(opts) {
@@ -29174,24 +29174,24 @@ VkMemoryGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkMemoryGetWin32HandleInfoKHR.byteLength = 0x20;
 
-VkMemoryGetWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryGetWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportMemoryFdInfoKHR **/
 class VkImportMemoryFdInfoKHR {
   constructor(opts) {
@@ -29279,24 +29279,24 @@ VkImportMemoryFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkImportMemoryFdInfoKHR.byteLength = 0x18;
 
-VkImportMemoryFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportMemoryFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  fd: Object.freeze({
+  },
+  fd: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryFdPropertiesKHR **/
 class VkMemoryFdPropertiesKHR {
   constructor(opts) {
@@ -29372,20 +29372,20 @@ VkMemoryFdPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryFdPropertiesKHR.byteLength = 0x18;
 
-VkMemoryFdPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryFdPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryTypeBits: Object.freeze({
+  },
+  memoryTypeBits: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryGetFdInfoKHR **/
 class VkMemoryGetFdInfoKHR {
   constructor(opts) {
@@ -29480,24 +29480,24 @@ VkMemoryGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryGetFdInfoKHR.byteLength = 0x20;
 
-VkMemoryGetFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryGetFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkWin32KeyedMutexAcquireReleaseInfoKHR **/
 class VkWin32KeyedMutexAcquireReleaseInfoKHR {
   constructor(opts) {
@@ -29709,44 +29709,44 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.reflect = function reflect(memo
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.byteLength = 0x48;
 
-VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  acquireCount: Object.freeze({
+  },
+  acquireCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAcquireSyncs: Object.freeze({
+  },
+  pAcquireSyncs: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pAcquireKeys: Object.freeze({
+  },
+  pAcquireKeys: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  pAcquireTimeouts: Object.freeze({
+  },
+  pAcquireTimeouts: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  releaseCount: Object.freeze({
+  },
+  releaseCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pReleaseSyncs: Object.freeze({
+  },
+  pReleaseSyncs: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  pReleaseKeys: Object.freeze({
+  },
+  pReleaseKeys: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalSemaphoreInfo **/
 class VkPhysicalDeviceExternalSemaphoreInfo {
   constructor(opts) {
@@ -29823,20 +29823,20 @@ VkPhysicalDeviceExternalSemaphoreInfo.prototype.reflect = function reflect(memor
 
 VkPhysicalDeviceExternalSemaphoreInfo.byteLength = 0x18;
 
-VkPhysicalDeviceExternalSemaphoreInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalSemaphoreInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalSemaphoreInfoKHR **/
 class VkPhysicalDeviceExternalSemaphoreInfoKHR {
   constructor(opts) {
@@ -29913,20 +29913,20 @@ VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.reflect = function reflect(me
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.byteLength = 0x18;
 
-VkPhysicalDeviceExternalSemaphoreInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalSemaphoreInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalSemaphoreProperties **/
 class VkExternalSemaphoreProperties {
   constructor(opts) {
@@ -30008,28 +30008,28 @@ VkExternalSemaphoreProperties.prototype.reflect = function reflect(memoryAddress
 
 VkExternalSemaphoreProperties.byteLength = 0x20;
 
-VkExternalSemaphoreProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalSemaphoreProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  externalSemaphoreFeatures: Object.freeze({
+  },
+  externalSemaphoreFeatures: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalSemaphorePropertiesKHR **/
 class VkExternalSemaphorePropertiesKHR {
   constructor(opts) {
@@ -30111,28 +30111,28 @@ VkExternalSemaphorePropertiesKHR.prototype.reflect = function reflect(memoryAddr
 
 VkExternalSemaphorePropertiesKHR.byteLength = 0x20;
 
-VkExternalSemaphorePropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalSemaphorePropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  externalSemaphoreFeatures: Object.freeze({
+  },
+  externalSemaphoreFeatures: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportSemaphoreCreateInfo **/
 class VkExportSemaphoreCreateInfo {
   constructor(opts) {
@@ -30209,20 +30209,20 @@ VkExportSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkExportSemaphoreCreateInfo.byteLength = 0x18;
 
-VkExportSemaphoreCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportSemaphoreCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportSemaphoreCreateInfoKHR **/
 class VkExportSemaphoreCreateInfoKHR {
   constructor(opts) {
@@ -30299,20 +30299,20 @@ VkExportSemaphoreCreateInfoKHR.prototype.reflect = function reflect(memoryAddres
 
 VkExportSemaphoreCreateInfoKHR.byteLength = 0x18;
 
-VkExportSemaphoreCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportSemaphoreCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportSemaphoreWin32HandleInfoKHR **/
 class VkImportSemaphoreWin32HandleInfoKHR {
   constructor(opts) {
@@ -30450,36 +30450,36 @@ VkImportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkImportSemaphoreWin32HandleInfoKHR.byteLength = 0x30;
 
-VkImportSemaphoreWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportSemaphoreWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  semaphore: Object.freeze({
+  },
+  semaphore: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  handle: Object.freeze({
+  },
+  handle: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkExportSemaphoreWin32HandleInfoKHR **/
 class VkExportSemaphoreWin32HandleInfoKHR {
   constructor(opts) {
@@ -30566,20 +30566,20 @@ VkExportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkExportSemaphoreWin32HandleInfoKHR.byteLength = 0x28;
 
-VkExportSemaphoreWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportSemaphoreWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkD3D12FenceSubmitInfoKHR **/
 class VkD3D12FenceSubmitInfoKHR {
   constructor(opts) {
@@ -30701,32 +30701,32 @@ VkD3D12FenceSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkD3D12FenceSubmitInfoKHR.byteLength = 0x30;
 
-VkD3D12FenceSubmitInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkD3D12FenceSubmitInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreValuesCount: Object.freeze({
+  },
+  waitSemaphoreValuesCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphoreValues: Object.freeze({
+  },
+  pWaitSemaphoreValues: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  signalSemaphoreValuesCount: Object.freeze({
+  },
+  signalSemaphoreValuesCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSignalSemaphoreValues: Object.freeze({
+  },
+  pSignalSemaphoreValues: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSemaphoreGetWin32HandleInfoKHR **/
 class VkSemaphoreGetWin32HandleInfoKHR {
   constructor(opts) {
@@ -30821,24 +30821,24 @@ VkSemaphoreGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddr
 
 VkSemaphoreGetWin32HandleInfoKHR.byteLength = 0x20;
 
-VkSemaphoreGetWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSemaphoreGetWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  semaphore: Object.freeze({
+  },
+  semaphore: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportSemaphoreFdInfoKHR **/
 class VkImportSemaphoreFdInfoKHR {
   constructor(opts) {
@@ -30955,32 +30955,32 @@ VkImportSemaphoreFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkImportSemaphoreFdInfoKHR.byteLength = 0x28;
 
-VkImportSemaphoreFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportSemaphoreFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  semaphore: Object.freeze({
+  },
+  semaphore: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  fd: Object.freeze({
+  },
+  fd: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSemaphoreGetFdInfoKHR **/
 class VkSemaphoreGetFdInfoKHR {
   constructor(opts) {
@@ -31075,24 +31075,24 @@ VkSemaphoreGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSemaphoreGetFdInfoKHR.byteLength = 0x20;
 
-VkSemaphoreGetFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSemaphoreGetFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  semaphore: Object.freeze({
+  },
+  semaphore: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalFenceInfo **/
 class VkPhysicalDeviceExternalFenceInfo {
   constructor(opts) {
@@ -31169,20 +31169,20 @@ VkPhysicalDeviceExternalFenceInfo.prototype.reflect = function reflect(memoryAdd
 
 VkPhysicalDeviceExternalFenceInfo.byteLength = 0x18;
 
-VkPhysicalDeviceExternalFenceInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalFenceInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalFenceInfoKHR **/
 class VkPhysicalDeviceExternalFenceInfoKHR {
   constructor(opts) {
@@ -31259,20 +31259,20 @@ VkPhysicalDeviceExternalFenceInfoKHR.prototype.reflect = function reflect(memory
 
 VkPhysicalDeviceExternalFenceInfoKHR.byteLength = 0x18;
 
-VkPhysicalDeviceExternalFenceInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalFenceInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalFenceProperties **/
 class VkExternalFenceProperties {
   constructor(opts) {
@@ -31354,28 +31354,28 @@ VkExternalFenceProperties.prototype.reflect = function reflect(memoryAddress) {
 
 VkExternalFenceProperties.byteLength = 0x20;
 
-VkExternalFenceProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalFenceProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  externalFenceFeatures: Object.freeze({
+  },
+  externalFenceFeatures: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExternalFencePropertiesKHR **/
 class VkExternalFencePropertiesKHR {
   constructor(opts) {
@@ -31457,28 +31457,28 @@ VkExternalFencePropertiesKHR.prototype.reflect = function reflect(memoryAddress)
 
 VkExternalFencePropertiesKHR.byteLength = 0x20;
 
-VkExternalFencePropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExternalFencePropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exportFromImportedHandleTypes: Object.freeze({
+  },
+  exportFromImportedHandleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  compatibleHandleTypes: Object.freeze({
+  },
+  compatibleHandleTypes: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  externalFenceFeatures: Object.freeze({
+  },
+  externalFenceFeatures: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportFenceCreateInfo **/
 class VkExportFenceCreateInfo {
   constructor(opts) {
@@ -31555,20 +31555,20 @@ VkExportFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkExportFenceCreateInfo.byteLength = 0x18;
 
-VkExportFenceCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportFenceCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkExportFenceCreateInfoKHR **/
 class VkExportFenceCreateInfoKHR {
   constructor(opts) {
@@ -31645,20 +31645,20 @@ VkExportFenceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkExportFenceCreateInfoKHR.byteLength = 0x18;
 
-VkExportFenceCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportFenceCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleTypes: Object.freeze({
+  },
+  handleTypes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportFenceWin32HandleInfoKHR **/
 class VkImportFenceWin32HandleInfoKHR {
   constructor(opts) {
@@ -31796,36 +31796,36 @@ VkImportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddre
 
 VkImportFenceWin32HandleInfoKHR.byteLength = 0x30;
 
-VkImportFenceWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportFenceWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fence: Object.freeze({
+  },
+  fence: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  handle: Object.freeze({
+  },
+  handle: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkExportFenceWin32HandleInfoKHR **/
 class VkExportFenceWin32HandleInfoKHR {
   constructor(opts) {
@@ -31912,20 +31912,20 @@ VkExportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddre
 
 VkExportFenceWin32HandleInfoKHR.byteLength = 0x28;
 
-VkExportFenceWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkExportFenceWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  name: Object.freeze({
+  },
+  name: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkFenceGetWin32HandleInfoKHR **/
 class VkFenceGetWin32HandleInfoKHR {
   constructor(opts) {
@@ -32020,24 +32020,24 @@ VkFenceGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress)
 
 VkFenceGetWin32HandleInfoKHR.byteLength = 0x20;
 
-VkFenceGetWin32HandleInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFenceGetWin32HandleInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fence: Object.freeze({
+  },
+  fence: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImportFenceFdInfoKHR **/
 class VkImportFenceFdInfoKHR {
   constructor(opts) {
@@ -32154,32 +32154,32 @@ VkImportFenceFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkImportFenceFdInfoKHR.byteLength = 0x28;
 
-VkImportFenceFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportFenceFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fence: Object.freeze({
+  },
+  fence: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  fd: Object.freeze({
+  },
+  fd: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkFenceGetFdInfoKHR **/
 class VkFenceGetFdInfoKHR {
   constructor(opts) {
@@ -32274,24 +32274,24 @@ VkFenceGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkFenceGetFdInfoKHR.byteLength = 0x20;
 
-VkFenceGetFdInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFenceGetFdInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fence: Object.freeze({
+  },
+  fence: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMultiviewFeatures **/
 class VkPhysicalDeviceMultiviewFeatures {
   constructor(opts) {
@@ -32383,28 +32383,28 @@ VkPhysicalDeviceMultiviewFeatures.prototype.reflect = function reflect(memoryAdd
 
 VkPhysicalDeviceMultiviewFeatures.byteLength = 0x20;
 
-VkPhysicalDeviceMultiviewFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMultiviewFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  multiview: Object.freeze({
+  },
+  multiview: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  multiviewGeometryShader: Object.freeze({
+  },
+  multiviewGeometryShader: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  multiviewTessellationShader: Object.freeze({
+  },
+  multiviewTessellationShader: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMultiviewFeaturesKHR **/
 class VkPhysicalDeviceMultiviewFeaturesKHR {
   constructor(opts) {
@@ -32496,28 +32496,28 @@ VkPhysicalDeviceMultiviewFeaturesKHR.prototype.reflect = function reflect(memory
 
 VkPhysicalDeviceMultiviewFeaturesKHR.byteLength = 0x20;
 
-VkPhysicalDeviceMultiviewFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMultiviewFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  multiview: Object.freeze({
+  },
+  multiview: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  multiviewGeometryShader: Object.freeze({
+  },
+  multiviewGeometryShader: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  multiviewTessellationShader: Object.freeze({
+  },
+  multiviewTessellationShader: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMultiviewProperties **/
 class VkPhysicalDeviceMultiviewProperties {
   constructor(opts) {
@@ -32597,24 +32597,24 @@ VkPhysicalDeviceMultiviewProperties.prototype.reflect = function reflect(memoryA
 
 VkPhysicalDeviceMultiviewProperties.byteLength = 0x18;
 
-VkPhysicalDeviceMultiviewProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMultiviewProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxMultiviewViewCount: Object.freeze({
+  },
+  maxMultiviewViewCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxMultiviewInstanceIndex: Object.freeze({
+  },
+  maxMultiviewInstanceIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMultiviewPropertiesKHR **/
 class VkPhysicalDeviceMultiviewPropertiesKHR {
   constructor(opts) {
@@ -32694,24 +32694,24 @@ VkPhysicalDeviceMultiviewPropertiesKHR.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceMultiviewPropertiesKHR.byteLength = 0x18;
 
-VkPhysicalDeviceMultiviewPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMultiviewPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxMultiviewViewCount: Object.freeze({
+  },
+  maxMultiviewViewCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxMultiviewInstanceIndex: Object.freeze({
+  },
+  maxMultiviewInstanceIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRenderPassMultiviewCreateInfo **/
 class VkRenderPassMultiviewCreateInfo {
   constructor(opts) {
@@ -32860,40 +32860,40 @@ VkRenderPassMultiviewCreateInfo.prototype.reflect = function reflect(memoryAddre
 
 VkRenderPassMultiviewCreateInfo.byteLength = 0x40;
 
-VkRenderPassMultiviewCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassMultiviewCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  subpassCount: Object.freeze({
+  },
+  subpassCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pViewMasks: Object.freeze({
+  },
+  pViewMasks: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  dependencyCount: Object.freeze({
+  },
+  dependencyCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pViewOffsets: Object.freeze({
+  },
+  pViewOffsets: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  correlationMaskCount: Object.freeze({
+  },
+  correlationMaskCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pCorrelationMasks: Object.freeze({
+  },
+  pCorrelationMasks: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkRenderPassMultiviewCreateInfoKHR **/
 class VkRenderPassMultiviewCreateInfoKHR {
   constructor(opts) {
@@ -33042,40 +33042,40 @@ VkRenderPassMultiviewCreateInfoKHR.prototype.reflect = function reflect(memoryAd
 
 VkRenderPassMultiviewCreateInfoKHR.byteLength = 0x40;
 
-VkRenderPassMultiviewCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassMultiviewCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  subpassCount: Object.freeze({
+  },
+  subpassCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pViewMasks: Object.freeze({
+  },
+  pViewMasks: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  dependencyCount: Object.freeze({
+  },
+  dependencyCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pViewOffsets: Object.freeze({
+  },
+  pViewOffsets: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  correlationMaskCount: Object.freeze({
+  },
+  correlationMaskCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pCorrelationMasks: Object.freeze({
+  },
+  pCorrelationMasks: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSurfaceCapabilities2EXT **/
 class VkSurfaceCapabilities2EXT {
   constructor(opts) {
@@ -33197,60 +33197,60 @@ VkSurfaceCapabilities2EXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceCapabilities2EXT.byteLength = 0x48;
 
-VkSurfaceCapabilities2EXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSurfaceCapabilities2EXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  minImageCount: Object.freeze({
+  },
+  minImageCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxImageCount: Object.freeze({
+  },
+  maxImageCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  currentExtent: Object.freeze({
+  },
+  currentExtent: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  minImageExtent: Object.freeze({
+  },
+  minImageExtent: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  maxImageExtent: Object.freeze({
+  },
+  maxImageExtent: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxImageArrayLayers: Object.freeze({
+  },
+  maxImageArrayLayers: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  supportedTransforms: Object.freeze({
+  },
+  supportedTransforms: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  currentTransform: Object.freeze({
+  },
+  currentTransform: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  supportedCompositeAlpha: Object.freeze({
+  },
+  supportedCompositeAlpha: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  supportedUsageFlags: Object.freeze({
+  },
+  supportedUsageFlags: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  supportedSurfaceCounters: Object.freeze({
+  },
+  supportedSurfaceCounters: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayPowerInfoEXT **/
 class VkDisplayPowerInfoEXT {
   constructor(opts) {
@@ -33327,20 +33327,20 @@ VkDisplayPowerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayPowerInfoEXT.byteLength = 0x18;
 
-VkDisplayPowerInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayPowerInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  powerState: Object.freeze({
+  },
+  powerState: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceEventInfoEXT **/
 class VkDeviceEventInfoEXT {
   constructor(opts) {
@@ -33417,20 +33417,20 @@ VkDeviceEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceEventInfoEXT.byteLength = 0x18;
 
-VkDeviceEventInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceEventInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceEvent: Object.freeze({
+  },
+  deviceEvent: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayEventInfoEXT **/
 class VkDisplayEventInfoEXT {
   constructor(opts) {
@@ -33507,20 +33507,20 @@ VkDisplayEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayEventInfoEXT.byteLength = 0x18;
 
-VkDisplayEventInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayEventInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  displayEvent: Object.freeze({
+  },
+  displayEvent: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSwapchainCounterCreateInfoEXT **/
 class VkSwapchainCounterCreateInfoEXT {
   constructor(opts) {
@@ -33597,20 +33597,20 @@ VkSwapchainCounterCreateInfoEXT.prototype.reflect = function reflect(memoryAddre
 
 VkSwapchainCounterCreateInfoEXT.byteLength = 0x18;
 
-VkSwapchainCounterCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSwapchainCounterCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  surfaceCounters: Object.freeze({
+  },
+  surfaceCounters: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceGroupProperties **/
 class VkPhysicalDeviceGroupProperties {
   constructor(opts) {
@@ -33696,28 +33696,28 @@ VkPhysicalDeviceGroupProperties.prototype.reflect = function reflect(memoryAddre
 
 VkPhysicalDeviceGroupProperties.byteLength = 0x120;
 
-VkPhysicalDeviceGroupProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceGroupProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  physicalDeviceCount: Object.freeze({
+  },
+  physicalDeviceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  physicalDevices: Object.freeze({
+  },
+  physicalDevices: {
     byteOffset: 0x18,
     byteLength: 0x100
-  }),
-  subsetAllocation: Object.freeze({
+  },
+  subsetAllocation: {
     byteOffset: 0x118,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceGroupPropertiesKHR **/
 class VkPhysicalDeviceGroupPropertiesKHR {
   constructor(opts) {
@@ -33803,28 +33803,28 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reflect = function reflect(memoryAd
 
 VkPhysicalDeviceGroupPropertiesKHR.byteLength = 0x120;
 
-VkPhysicalDeviceGroupPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceGroupPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  physicalDeviceCount: Object.freeze({
+  },
+  physicalDeviceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  physicalDevices: Object.freeze({
+  },
+  physicalDevices: {
     byteOffset: 0x18,
     byteLength: 0x100
-  }),
-  subsetAllocation: Object.freeze({
+  },
+  subsetAllocation: {
     byteOffset: 0x118,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryAllocateFlagsInfo **/
 class VkMemoryAllocateFlagsInfo {
   constructor(opts) {
@@ -33914,24 +33914,24 @@ VkMemoryAllocateFlagsInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryAllocateFlagsInfo.byteLength = 0x18;
 
-VkMemoryAllocateFlagsInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryAllocateFlagsInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryAllocateFlagsInfoKHR **/
 class VkMemoryAllocateFlagsInfoKHR {
   constructor(opts) {
@@ -34021,24 +34021,24 @@ VkMemoryAllocateFlagsInfoKHR.prototype.reflect = function reflect(memoryAddress)
 
 VkMemoryAllocateFlagsInfoKHR.byteLength = 0x18;
 
-VkMemoryAllocateFlagsInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryAllocateFlagsInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBindBufferMemoryInfo **/
 class VkBindBufferMemoryInfo {
   constructor(opts) {
@@ -34170,28 +34170,28 @@ VkBindBufferMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindBufferMemoryInfo.byteLength = 0x28;
 
-VkBindBufferMemoryInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindBufferMemoryInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindBufferMemoryInfoKHR **/
 class VkBindBufferMemoryInfoKHR {
   constructor(opts) {
@@ -34323,28 +34323,28 @@ VkBindBufferMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindBufferMemoryInfoKHR.byteLength = 0x28;
 
-VkBindBufferMemoryInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindBufferMemoryInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindBufferMemoryDeviceGroupInfo **/
 class VkBindBufferMemoryDeviceGroupInfo {
   constructor(opts) {
@@ -34439,24 +34439,24 @@ VkBindBufferMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAdd
 
 VkBindBufferMemoryDeviceGroupInfo.byteLength = 0x20;
 
-VkBindBufferMemoryDeviceGroupInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindBufferMemoryDeviceGroupInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceIndexCount: Object.freeze({
+  },
+  deviceIndexCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDeviceIndices: Object.freeze({
+  },
+  pDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindBufferMemoryDeviceGroupInfoKHR **/
 class VkBindBufferMemoryDeviceGroupInfoKHR {
   constructor(opts) {
@@ -34551,24 +34551,24 @@ VkBindBufferMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memory
 
 VkBindBufferMemoryDeviceGroupInfoKHR.byteLength = 0x20;
 
-VkBindBufferMemoryDeviceGroupInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindBufferMemoryDeviceGroupInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceIndexCount: Object.freeze({
+  },
+  deviceIndexCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDeviceIndices: Object.freeze({
+  },
+  pDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindImageMemoryInfo **/
 class VkBindImageMemoryInfo {
   constructor(opts) {
@@ -34702,28 +34702,28 @@ VkBindImageMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindImageMemoryInfo.byteLength = 0x28;
 
-VkBindImageMemoryInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImageMemoryInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindImageMemoryInfoKHR **/
 class VkBindImageMemoryInfoKHR {
   constructor(opts) {
@@ -34857,28 +34857,28 @@ VkBindImageMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindImageMemoryInfoKHR.byteLength = 0x28;
 
-VkBindImageMemoryInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImageMemoryInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindImageMemoryDeviceGroupInfo **/
 class VkBindImageMemoryDeviceGroupInfo {
   constructor(opts) {
@@ -35021,32 +35021,32 @@ VkBindImageMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAddr
 
 VkBindImageMemoryDeviceGroupInfo.byteLength = 0x30;
 
-VkBindImageMemoryDeviceGroupInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImageMemoryDeviceGroupInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceIndexCount: Object.freeze({
+  },
+  deviceIndexCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDeviceIndices: Object.freeze({
+  },
+  pDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  splitInstanceBindRegionCount: Object.freeze({
+  },
+  splitInstanceBindRegionCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSplitInstanceBindRegions: Object.freeze({
+  },
+  pSplitInstanceBindRegions: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindImageMemoryDeviceGroupInfoKHR **/
 class VkBindImageMemoryDeviceGroupInfoKHR {
   constructor(opts) {
@@ -35189,32 +35189,32 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkBindImageMemoryDeviceGroupInfoKHR.byteLength = 0x30;
 
-VkBindImageMemoryDeviceGroupInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImageMemoryDeviceGroupInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceIndexCount: Object.freeze({
+  },
+  deviceIndexCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDeviceIndices: Object.freeze({
+  },
+  pDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  splitInstanceBindRegionCount: Object.freeze({
+  },
+  splitInstanceBindRegionCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSplitInstanceBindRegions: Object.freeze({
+  },
+  pSplitInstanceBindRegions: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupRenderPassBeginInfo **/
 class VkDeviceGroupRenderPassBeginInfo {
   constructor(opts) {
@@ -35341,28 +35341,28 @@ VkDeviceGroupRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddr
 
 VkDeviceGroupRenderPassBeginInfo.byteLength = 0x20;
 
-VkDeviceGroupRenderPassBeginInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupRenderPassBeginInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  deviceRenderAreaCount: Object.freeze({
+  },
+  deviceRenderAreaCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDeviceRenderAreas: Object.freeze({
+  },
+  pDeviceRenderAreas: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupRenderPassBeginInfoKHR **/
 class VkDeviceGroupRenderPassBeginInfoKHR {
   constructor(opts) {
@@ -35489,28 +35489,28 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkDeviceGroupRenderPassBeginInfoKHR.byteLength = 0x20;
 
-VkDeviceGroupRenderPassBeginInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupRenderPassBeginInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  deviceRenderAreaCount: Object.freeze({
+  },
+  deviceRenderAreaCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDeviceRenderAreas: Object.freeze({
+  },
+  pDeviceRenderAreas: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupCommandBufferBeginInfo **/
 class VkDeviceGroupCommandBufferBeginInfo {
   constructor(opts) {
@@ -35589,20 +35589,20 @@ VkDeviceGroupCommandBufferBeginInfo.prototype.reflect = function reflect(memoryA
 
 VkDeviceGroupCommandBufferBeginInfo.byteLength = 0x18;
 
-VkDeviceGroupCommandBufferBeginInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupCommandBufferBeginInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupCommandBufferBeginInfoKHR **/
 class VkDeviceGroupCommandBufferBeginInfoKHR {
   constructor(opts) {
@@ -35681,20 +35681,20 @@ VkDeviceGroupCommandBufferBeginInfoKHR.prototype.reflect = function reflect(memo
 
 VkDeviceGroupCommandBufferBeginInfoKHR.byteLength = 0x18;
 
-VkDeviceGroupCommandBufferBeginInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupCommandBufferBeginInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupSubmitInfo **/
 class VkDeviceGroupSubmitInfo {
   constructor(opts) {
@@ -35843,40 +35843,40 @@ VkDeviceGroupSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceGroupSubmitInfo.byteLength = 0x40;
 
-VkDeviceGroupSubmitInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupSubmitInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreCount: Object.freeze({
+  },
+  waitSemaphoreCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphoreDeviceIndices: Object.freeze({
+  },
+  pWaitSemaphoreDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  commandBufferCount: Object.freeze({
+  },
+  commandBufferCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pCommandBufferDeviceMasks: Object.freeze({
+  },
+  pCommandBufferDeviceMasks: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  signalSemaphoreCount: Object.freeze({
+  },
+  signalSemaphoreCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pSignalSemaphoreDeviceIndices: Object.freeze({
+  },
+  pSignalSemaphoreDeviceIndices: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupSubmitInfoKHR **/
 class VkDeviceGroupSubmitInfoKHR {
   constructor(opts) {
@@ -36025,40 +36025,40 @@ VkDeviceGroupSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceGroupSubmitInfoKHR.byteLength = 0x40;
 
-VkDeviceGroupSubmitInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupSubmitInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  waitSemaphoreCount: Object.freeze({
+  },
+  waitSemaphoreCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pWaitSemaphoreDeviceIndices: Object.freeze({
+  },
+  pWaitSemaphoreDeviceIndices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  commandBufferCount: Object.freeze({
+  },
+  commandBufferCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pCommandBufferDeviceMasks: Object.freeze({
+  },
+  pCommandBufferDeviceMasks: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  signalSemaphoreCount: Object.freeze({
+  },
+  signalSemaphoreCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pSignalSemaphoreDeviceIndices: Object.freeze({
+  },
+  pSignalSemaphoreDeviceIndices: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupBindSparseInfo **/
 class VkDeviceGroupBindSparseInfo {
   constructor(opts) {
@@ -36148,24 +36148,24 @@ VkDeviceGroupBindSparseInfo.prototype.reflect = function reflect(memoryAddress) 
 
 VkDeviceGroupBindSparseInfo.byteLength = 0x18;
 
-VkDeviceGroupBindSparseInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupBindSparseInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  resourceDeviceIndex: Object.freeze({
+  },
+  resourceDeviceIndex: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  memoryDeviceIndex: Object.freeze({
+  },
+  memoryDeviceIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupBindSparseInfoKHR **/
 class VkDeviceGroupBindSparseInfoKHR {
   constructor(opts) {
@@ -36255,24 +36255,24 @@ VkDeviceGroupBindSparseInfoKHR.prototype.reflect = function reflect(memoryAddres
 
 VkDeviceGroupBindSparseInfoKHR.byteLength = 0x18;
 
-VkDeviceGroupBindSparseInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupBindSparseInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  resourceDeviceIndex: Object.freeze({
+  },
+  resourceDeviceIndex: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  memoryDeviceIndex: Object.freeze({
+  },
+  memoryDeviceIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupPresentCapabilitiesKHR **/
 class VkDeviceGroupPresentCapabilitiesKHR {
   constructor(opts) {
@@ -36387,24 +36387,24 @@ VkDeviceGroupPresentCapabilitiesKHR.prototype.reflect = function reflect(memoryA
 
 VkDeviceGroupPresentCapabilitiesKHR.byteLength = 0x98;
 
-VkDeviceGroupPresentCapabilitiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupPresentCapabilitiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  presentMask: Object.freeze({
+  },
+  presentMask: {
     byteOffset: 0x10,
     byteLength: 0x80
-  }),
-  modes: Object.freeze({
+  },
+  modes: {
     byteOffset: 0x90,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImageSwapchainCreateInfoKHR **/
 class VkImageSwapchainCreateInfoKHR {
   constructor(opts) {
@@ -36488,20 +36488,20 @@ VkImageSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkImageSwapchainCreateInfoKHR.byteLength = 0x18;
 
-VkImageSwapchainCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageSwapchainCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchain: Object.freeze({
+  },
+  swapchain: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBindImageMemorySwapchainInfoKHR **/
 class VkBindImageMemorySwapchainInfoKHR {
   constructor(opts) {
@@ -36598,24 +36598,24 @@ VkBindImageMemorySwapchainInfoKHR.prototype.reflect = function reflect(memoryAdd
 
 VkBindImageMemorySwapchainInfoKHR.byteLength = 0x20;
 
-VkBindImageMemorySwapchainInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImageMemorySwapchainInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchain: Object.freeze({
+  },
+  swapchain: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  imageIndex: Object.freeze({
+  },
+  imageIndex: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAcquireNextImageInfoKHR **/
 class VkAcquireNextImageInfoKHR {
   constructor(opts) {
@@ -36761,36 +36761,36 @@ VkAcquireNextImageInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkAcquireNextImageInfoKHR.byteLength = 0x38;
 
-VkAcquireNextImageInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAcquireNextImageInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchain: Object.freeze({
+  },
+  swapchain: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  timeout: Object.freeze({
+  },
+  timeout: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  semaphore: Object.freeze({
+  },
+  semaphore: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  fence: Object.freeze({
+  },
+  fence: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  deviceMask: Object.freeze({
+  },
+  deviceMask: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupPresentInfoKHR **/
 class VkDeviceGroupPresentInfoKHR {
   constructor(opts) {
@@ -36896,28 +36896,28 @@ VkDeviceGroupPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkDeviceGroupPresentInfoKHR.byteLength = 0x28;
 
-VkDeviceGroupPresentInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupPresentInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchainCount: Object.freeze({
+  },
+  swapchainCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDeviceMasks: Object.freeze({
+  },
+  pDeviceMasks: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  mode: Object.freeze({
+  },
+  mode: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceGroupDeviceCreateInfo **/
 class VkDeviceGroupDeviceCreateInfo {
   constructor(opts) {
@@ -37033,24 +37033,24 @@ VkDeviceGroupDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress
 
 VkDeviceGroupDeviceCreateInfo.byteLength = 0x20;
 
-VkDeviceGroupDeviceCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupDeviceCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  physicalDeviceCount: Object.freeze({
+  },
+  physicalDeviceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pPhysicalDevices: Object.freeze({
+  },
+  pPhysicalDevices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupDeviceCreateInfoKHR **/
 class VkDeviceGroupDeviceCreateInfoKHR {
   constructor(opts) {
@@ -37166,24 +37166,24 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.reflect = function reflect(memoryAddr
 
 VkDeviceGroupDeviceCreateInfoKHR.byteLength = 0x20;
 
-VkDeviceGroupDeviceCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupDeviceCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  physicalDeviceCount: Object.freeze({
+  },
+  physicalDeviceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pPhysicalDevices: Object.freeze({
+  },
+  pPhysicalDevices: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDeviceGroupSwapchainCreateInfoKHR **/
 class VkDeviceGroupSwapchainCreateInfoKHR {
   constructor(opts) {
@@ -37260,20 +37260,20 @@ VkDeviceGroupSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryA
 
 VkDeviceGroupSwapchainCreateInfoKHR.byteLength = 0x18;
 
-VkDeviceGroupSwapchainCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceGroupSwapchainCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  modes: Object.freeze({
+  },
+  modes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDescriptorUpdateTemplateEntry **/
 class VkDescriptorUpdateTemplateEntry {
   constructor(opts) {
@@ -37381,32 +37381,32 @@ VkDescriptorUpdateTemplateEntry.prototype.reflect = function reflect(memoryAddre
 
 VkDescriptorUpdateTemplateEntry.byteLength = 0x20;
 
-VkDescriptorUpdateTemplateEntry.memoryLayout = Object.freeze({
-  dstBinding: Object.freeze({
+VkDescriptorUpdateTemplateEntry.memoryLayout = {
+  dstBinding: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  dstArrayElement: Object.freeze({
+  },
+  dstArrayElement: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  descriptorType: Object.freeze({
+  },
+  descriptorType: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  stride: Object.freeze({
+  },
+  stride: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorUpdateTemplateEntryKHR **/
 class VkDescriptorUpdateTemplateEntryKHR {
   constructor(opts) {
@@ -37514,32 +37514,32 @@ VkDescriptorUpdateTemplateEntryKHR.prototype.reflect = function reflect(memoryAd
 
 VkDescriptorUpdateTemplateEntryKHR.byteLength = 0x20;
 
-VkDescriptorUpdateTemplateEntryKHR.memoryLayout = Object.freeze({
-  dstBinding: Object.freeze({
+VkDescriptorUpdateTemplateEntryKHR.memoryLayout = {
+  dstBinding: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  dstArrayElement: Object.freeze({
+  },
+  dstArrayElement: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  descriptorCount: Object.freeze({
+  },
+  descriptorCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  descriptorType: Object.freeze({
+  },
+  descriptorType: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  stride: Object.freeze({
+  },
+  stride: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorUpdateTemplateCreateInfo **/
 class VkDescriptorUpdateTemplateCreateInfo {
   constructor(opts) {
@@ -37735,48 +37735,48 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.reflect = function reflect(memory
 
 VkDescriptorUpdateTemplateCreateInfo.byteLength = 0x48;
 
-VkDescriptorUpdateTemplateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorUpdateTemplateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  descriptorUpdateEntryCount: Object.freeze({
+  },
+  descriptorUpdateEntryCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDescriptorUpdateEntries: Object.freeze({
+  },
+  pDescriptorUpdateEntries: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  templateType: Object.freeze({
+  },
+  templateType: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  descriptorSetLayout: Object.freeze({
+  },
+  descriptorSetLayout: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pipelineBindPoint: Object.freeze({
+  },
+  pipelineBindPoint: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pipelineLayout: Object.freeze({
+  },
+  pipelineLayout: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  set: Object.freeze({
+  },
+  set: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDescriptorUpdateTemplateCreateInfoKHR **/
 class VkDescriptorUpdateTemplateCreateInfoKHR {
   constructor(opts) {
@@ -37972,48 +37972,48 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reflect = function reflect(mem
 
 VkDescriptorUpdateTemplateCreateInfoKHR.byteLength = 0x48;
 
-VkDescriptorUpdateTemplateCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorUpdateTemplateCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  descriptorUpdateEntryCount: Object.freeze({
+  },
+  descriptorUpdateEntryCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDescriptorUpdateEntries: Object.freeze({
+  },
+  pDescriptorUpdateEntries: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  templateType: Object.freeze({
+  },
+  templateType: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  descriptorSetLayout: Object.freeze({
+  },
+  descriptorSetLayout: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pipelineBindPoint: Object.freeze({
+  },
+  pipelineBindPoint: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pipelineLayout: Object.freeze({
+  },
+  pipelineLayout: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  set: Object.freeze({
+  },
+  set: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkXYColorEXT **/
 class VkXYColorEXT {
   constructor(opts) {
@@ -38073,16 +38073,16 @@ VkXYColorEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkXYColorEXT.byteLength = 0x8;
 
-VkXYColorEXT.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkXYColorEXT.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkHdrMetadataEXT **/
 class VkHdrMetadataEXT {
   constructor(opts) {
@@ -38318,48 +38318,48 @@ VkHdrMetadataEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkHdrMetadataEXT.byteLength = 0x40;
 
-VkHdrMetadataEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkHdrMetadataEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  displayPrimaryRed: Object.freeze({
+  },
+  displayPrimaryRed: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  displayPrimaryGreen: Object.freeze({
+  },
+  displayPrimaryGreen: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  displayPrimaryBlue: Object.freeze({
+  },
+  displayPrimaryBlue: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  whitePoint: Object.freeze({
+  },
+  whitePoint: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxLuminance: Object.freeze({
+  },
+  maxLuminance: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  minLuminance: Object.freeze({
+  },
+  minLuminance: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  maxContentLightLevel: Object.freeze({
+  },
+  maxContentLightLevel: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  maxFrameAverageLightLevel: Object.freeze({
+  },
+  maxFrameAverageLightLevel: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRefreshCycleDurationGOOGLE **/
 class VkRefreshCycleDurationGOOGLE {
   constructor(opts) {
@@ -38405,12 +38405,12 @@ VkRefreshCycleDurationGOOGLE.prototype.reflect = function reflect(memoryAddress)
 
 VkRefreshCycleDurationGOOGLE.byteLength = 0x8;
 
-VkRefreshCycleDurationGOOGLE.memoryLayout = Object.freeze({
-  refreshDuration: Object.freeze({
+VkRefreshCycleDurationGOOGLE.memoryLayout = {
+  refreshDuration: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPastPresentationTimingGOOGLE **/
 class VkPastPresentationTimingGOOGLE {
   constructor(opts) {
@@ -38474,28 +38474,28 @@ VkPastPresentationTimingGOOGLE.prototype.reflect = function reflect(memoryAddres
 
 VkPastPresentationTimingGOOGLE.byteLength = 0x28;
 
-VkPastPresentationTimingGOOGLE.memoryLayout = Object.freeze({
-  presentID: Object.freeze({
+VkPastPresentationTimingGOOGLE.memoryLayout = {
+  presentID: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  desiredPresentTime: Object.freeze({
+  },
+  desiredPresentTime: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  actualPresentTime: Object.freeze({
+  },
+  actualPresentTime: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  earliestPresentTime: Object.freeze({
+  },
+  earliestPresentTime: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  presentMargin: Object.freeze({
+  },
+  presentMargin: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPresentTimesInfoGOOGLE **/
 class VkPresentTimesInfoGOOGLE {
   constructor(opts) {
@@ -38611,24 +38611,24 @@ VkPresentTimesInfoGOOGLE.prototype.reflect = function reflect(memoryAddress) {
 
 VkPresentTimesInfoGOOGLE.byteLength = 0x20;
 
-VkPresentTimesInfoGOOGLE.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPresentTimesInfoGOOGLE.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  swapchainCount: Object.freeze({
+  },
+  swapchainCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pTimes: Object.freeze({
+  },
+  pTimes: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPresentTimeGOOGLE **/
 class VkPresentTimeGOOGLE {
   constructor(opts) {
@@ -38690,16 +38690,16 @@ VkPresentTimeGOOGLE.prototype.reflect = function reflect(memoryAddress) {
 
 VkPresentTimeGOOGLE.byteLength = 0x10;
 
-VkPresentTimeGOOGLE.memoryLayout = Object.freeze({
-  presentID: Object.freeze({
+VkPresentTimeGOOGLE.memoryLayout = {
+  presentID: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  desiredPresentTime: Object.freeze({
+  },
+  desiredPresentTime: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkViewportWScalingNV **/
 class VkViewportWScalingNV {
   constructor(opts) {
@@ -38759,16 +38759,16 @@ VkViewportWScalingNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkViewportWScalingNV.byteLength = 0x8;
 
-VkViewportWScalingNV.memoryLayout = Object.freeze({
-  xcoeff: Object.freeze({
+VkViewportWScalingNV.memoryLayout = {
+  xcoeff: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  ycoeff: Object.freeze({
+  },
+  ycoeff: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineViewportWScalingStateCreateInfoNV **/
 class VkPipelineViewportWScalingStateCreateInfoNV {
   constructor(opts) {
@@ -38892,28 +38892,28 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.reflect = function reflect
 
 VkPipelineViewportWScalingStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineViewportWScalingStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportWScalingStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  viewportWScalingEnable: Object.freeze({
+  },
+  viewportWScalingEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  viewportCount: Object.freeze({
+  },
+  viewportCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pViewportWScalings: Object.freeze({
+  },
+  pViewportWScalings: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkViewportSwizzleNV **/
 class VkViewportSwizzleNV {
   constructor(opts) {
@@ -38995,24 +38995,24 @@ VkViewportSwizzleNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkViewportSwizzleNV.byteLength = 0x10;
 
-VkViewportSwizzleNV.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkViewportSwizzleNV.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  z: Object.freeze({
+  },
+  z: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  w: Object.freeze({
+  },
+  w: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineViewportSwizzleStateCreateInfoNV **/
 class VkPipelineViewportSwizzleStateCreateInfoNV {
   constructor(opts) {
@@ -39139,28 +39139,28 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.reflect = function reflect(
 
 VkPipelineViewportSwizzleStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineViewportSwizzleStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportSwizzleStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  viewportCount: Object.freeze({
+  },
+  viewportCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pViewportSwizzles: Object.freeze({
+  },
+  pViewportSwizzles: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDiscardRectanglePropertiesEXT **/
 class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
   constructor(opts) {
@@ -39236,20 +39236,20 @@ VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.reflect = function refle
 
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceDiscardRectanglePropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDiscardRectanglePropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxDiscardRectangles: Object.freeze({
+  },
+  maxDiscardRectangles: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineDiscardRectangleStateCreateInfoEXT **/
 class VkPipelineDiscardRectangleStateCreateInfoEXT {
   constructor(opts) {
@@ -39387,32 +39387,32 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.reflect = function reflec
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.byteLength = 0x28;
 
-VkPipelineDiscardRectangleStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineDiscardRectangleStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  discardRectangleMode: Object.freeze({
+  },
+  discardRectangleMode: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  discardRectangleCount: Object.freeze({
+  },
+  discardRectangleCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pDiscardRectangles: Object.freeze({
+  },
+  pDiscardRectangles: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX **/
 class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
   constructor(opts) {
@@ -39488,20 +39488,20 @@ VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.reflect = func
 
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.byteLength = 0x18;
 
-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  perViewPositionAllComponents: Object.freeze({
+  },
+  perViewPositionAllComponents: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkInputAttachmentAspectReference **/
 class VkInputAttachmentAspectReference {
   constructor(opts) {
@@ -39574,20 +39574,20 @@ VkInputAttachmentAspectReference.prototype.reflect = function reflect(memoryAddr
 
 VkInputAttachmentAspectReference.byteLength = 0xC;
 
-VkInputAttachmentAspectReference.memoryLayout = Object.freeze({
-  subpass: Object.freeze({
+VkInputAttachmentAspectReference.memoryLayout = {
+  subpass: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  inputAttachmentIndex: Object.freeze({
+  },
+  inputAttachmentIndex: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  aspectMask: Object.freeze({
+  },
+  aspectMask: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkInputAttachmentAspectReferenceKHR **/
 class VkInputAttachmentAspectReferenceKHR {
   constructor(opts) {
@@ -39660,20 +39660,20 @@ VkInputAttachmentAspectReferenceKHR.prototype.reflect = function reflect(memoryA
 
 VkInputAttachmentAspectReferenceKHR.byteLength = 0xC;
 
-VkInputAttachmentAspectReferenceKHR.memoryLayout = Object.freeze({
-  subpass: Object.freeze({
+VkInputAttachmentAspectReferenceKHR.memoryLayout = {
+  subpass: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  inputAttachmentIndex: Object.freeze({
+  },
+  inputAttachmentIndex: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  aspectMask: Object.freeze({
+  },
+  aspectMask: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRenderPassInputAttachmentAspectCreateInfo **/
 class VkRenderPassInputAttachmentAspectCreateInfo {
   constructor(opts) {
@@ -39789,24 +39789,24 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.reflect = function reflect
 
 VkRenderPassInputAttachmentAspectCreateInfo.byteLength = 0x20;
 
-VkRenderPassInputAttachmentAspectCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassInputAttachmentAspectCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  aspectReferenceCount: Object.freeze({
+  },
+  aspectReferenceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAspectReferences: Object.freeze({
+  },
+  pAspectReferences: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkRenderPassInputAttachmentAspectCreateInfoKHR **/
 class VkRenderPassInputAttachmentAspectCreateInfoKHR {
   constructor(opts) {
@@ -39922,24 +39922,24 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.reflect = function refl
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.byteLength = 0x20;
 
-VkRenderPassInputAttachmentAspectCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassInputAttachmentAspectCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  aspectReferenceCount: Object.freeze({
+  },
+  aspectReferenceCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAspectReferences: Object.freeze({
+  },
+  pAspectReferences: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSurfaceInfo2KHR **/
 class VkPhysicalDeviceSurfaceInfo2KHR {
   constructor(opts) {
@@ -40023,20 +40023,20 @@ VkPhysicalDeviceSurfaceInfo2KHR.prototype.reflect = function reflect(memoryAddre
 
 VkPhysicalDeviceSurfaceInfo2KHR.byteLength = 0x18;
 
-VkPhysicalDeviceSurfaceInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSurfaceInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  surface: Object.freeze({
+  },
+  surface: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSurfaceCapabilities2KHR **/
 class VkSurfaceCapabilities2KHR {
   constructor(opts) {
@@ -40129,20 +40129,20 @@ VkSurfaceCapabilities2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceCapabilities2KHR.byteLength = 0x48;
 
-VkSurfaceCapabilities2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSurfaceCapabilities2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  surfaceCapabilities: Object.freeze({
+  },
+  surfaceCapabilities: {
     byteOffset: 0x10,
     byteLength: 0x34
-  }),
-});
+  },
+};
 /** VkSurfaceFormat2KHR **/
 class VkSurfaceFormat2KHR {
   constructor(opts) {
@@ -40218,20 +40218,20 @@ VkSurfaceFormat2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceFormat2KHR.byteLength = 0x18;
 
-VkSurfaceFormat2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSurfaceFormat2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  surfaceFormat: Object.freeze({
+  },
+  surfaceFormat: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDisplayProperties2KHR **/
 class VkDisplayProperties2KHR {
   constructor(opts) {
@@ -40307,20 +40307,20 @@ VkDisplayProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayProperties2KHR.byteLength = 0x40;
 
-VkDisplayProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  displayProperties: Object.freeze({
+  },
+  displayProperties: {
     byteOffset: 0x10,
     byteLength: 0x30
-  }),
-});
+  },
+};
 /** VkDisplayPlaneProperties2KHR **/
 class VkDisplayPlaneProperties2KHR {
   constructor(opts) {
@@ -40396,20 +40396,20 @@ VkDisplayPlaneProperties2KHR.prototype.reflect = function reflect(memoryAddress)
 
 VkDisplayPlaneProperties2KHR.byteLength = 0x20;
 
-VkDisplayPlaneProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayPlaneProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  displayPlaneProperties: Object.freeze({
+  },
+  displayPlaneProperties: {
     byteOffset: 0x10,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkDisplayModeProperties2KHR **/
 class VkDisplayModeProperties2KHR {
   constructor(opts) {
@@ -40485,20 +40485,20 @@ VkDisplayModeProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkDisplayModeProperties2KHR.byteLength = 0x28;
 
-VkDisplayModeProperties2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayModeProperties2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  displayModeProperties: Object.freeze({
+  },
+  displayModeProperties: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkDisplayPlaneInfo2KHR **/
 class VkDisplayPlaneInfo2KHR {
   constructor(opts) {
@@ -40595,24 +40595,24 @@ VkDisplayPlaneInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayPlaneInfo2KHR.byteLength = 0x20;
 
-VkDisplayPlaneInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayPlaneInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  mode: Object.freeze({
+  },
+  mode: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  planeIndex: Object.freeze({
+  },
+  planeIndex: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDisplayPlaneCapabilities2KHR **/
 class VkDisplayPlaneCapabilities2KHR {
   constructor(opts) {
@@ -40688,20 +40688,20 @@ VkDisplayPlaneCapabilities2KHR.prototype.reflect = function reflect(memoryAddres
 
 VkDisplayPlaneCapabilities2KHR.byteLength = 0x58;
 
-VkDisplayPlaneCapabilities2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDisplayPlaneCapabilities2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  capabilities: Object.freeze({
+  },
+  capabilities: {
     byteOffset: 0x10,
     byteLength: 0x44
-  }),
-});
+  },
+};
 /** VkSharedPresentSurfaceCapabilitiesKHR **/
 class VkSharedPresentSurfaceCapabilitiesKHR {
   constructor(opts) {
@@ -40775,20 +40775,20 @@ VkSharedPresentSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memor
 
 VkSharedPresentSurfaceCapabilitiesKHR.byteLength = 0x18;
 
-VkSharedPresentSurfaceCapabilitiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSharedPresentSurfaceCapabilitiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  sharedPresentSupportedUsageFlags: Object.freeze({
+  },
+  sharedPresentSupportedUsageFlags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevice16BitStorageFeatures **/
 class VkPhysicalDevice16BitStorageFeatures {
   constructor(opts) {
@@ -40888,32 +40888,32 @@ VkPhysicalDevice16BitStorageFeatures.prototype.reflect = function reflect(memory
 
 VkPhysicalDevice16BitStorageFeatures.byteLength = 0x20;
 
-VkPhysicalDevice16BitStorageFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevice16BitStorageFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  storageBuffer16BitAccess: Object.freeze({
+  },
+  storageBuffer16BitAccess: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  uniformAndStorageBuffer16BitAccess: Object.freeze({
+  },
+  uniformAndStorageBuffer16BitAccess: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  storagePushConstant16: Object.freeze({
+  },
+  storagePushConstant16: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  storageInputOutput16: Object.freeze({
+  },
+  storageInputOutput16: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevice16BitStorageFeaturesKHR **/
 class VkPhysicalDevice16BitStorageFeaturesKHR {
   constructor(opts) {
@@ -41013,32 +41013,32 @@ VkPhysicalDevice16BitStorageFeaturesKHR.prototype.reflect = function reflect(mem
 
 VkPhysicalDevice16BitStorageFeaturesKHR.byteLength = 0x20;
 
-VkPhysicalDevice16BitStorageFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevice16BitStorageFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  storageBuffer16BitAccess: Object.freeze({
+  },
+  storageBuffer16BitAccess: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  uniformAndStorageBuffer16BitAccess: Object.freeze({
+  },
+  uniformAndStorageBuffer16BitAccess: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  storagePushConstant16: Object.freeze({
+  },
+  storagePushConstant16: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  storageInputOutput16: Object.freeze({
+  },
+  storageInputOutput16: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSubgroupProperties **/
 class VkPhysicalDeviceSubgroupProperties {
   constructor(opts) {
@@ -41126,32 +41126,32 @@ VkPhysicalDeviceSubgroupProperties.prototype.reflect = function reflect(memoryAd
 
 VkPhysicalDeviceSubgroupProperties.byteLength = 0x20;
 
-VkPhysicalDeviceSubgroupProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSubgroupProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  subgroupSize: Object.freeze({
+  },
+  subgroupSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  supportedStages: Object.freeze({
+  },
+  supportedStages: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  supportedOperations: Object.freeze({
+  },
+  supportedOperations: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  quadOperationsInAllStages: Object.freeze({
+  },
+  quadOperationsInAllStages: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBufferMemoryRequirementsInfo2 **/
 class VkBufferMemoryRequirementsInfo2 {
   constructor(opts) {
@@ -41235,20 +41235,20 @@ VkBufferMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddre
 
 VkBufferMemoryRequirementsInfo2.byteLength = 0x18;
 
-VkBufferMemoryRequirementsInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferMemoryRequirementsInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBufferMemoryRequirementsInfo2KHR **/
 class VkBufferMemoryRequirementsInfo2KHR {
   constructor(opts) {
@@ -41332,20 +41332,20 @@ VkBufferMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAd
 
 VkBufferMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
-VkBufferMemoryRequirementsInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferMemoryRequirementsInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageMemoryRequirementsInfo2 **/
 class VkImageMemoryRequirementsInfo2 {
   constructor(opts) {
@@ -41446,20 +41446,20 @@ VkImageMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddres
 
 VkImageMemoryRequirementsInfo2.byteLength = 0x18;
 
-VkImageMemoryRequirementsInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageMemoryRequirementsInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageMemoryRequirementsInfo2KHR **/
 class VkImageMemoryRequirementsInfo2KHR {
   constructor(opts) {
@@ -41560,20 +41560,20 @@ VkImageMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAdd
 
 VkImageMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
-VkImageMemoryRequirementsInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageMemoryRequirementsInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageSparseMemoryRequirementsInfo2 **/
 class VkImageSparseMemoryRequirementsInfo2 {
   constructor(opts) {
@@ -41657,20 +41657,20 @@ VkImageSparseMemoryRequirementsInfo2.prototype.reflect = function reflect(memory
 
 VkImageSparseMemoryRequirementsInfo2.byteLength = 0x18;
 
-VkImageSparseMemoryRequirementsInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageSparseMemoryRequirementsInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageSparseMemoryRequirementsInfo2KHR **/
 class VkImageSparseMemoryRequirementsInfo2KHR {
   constructor(opts) {
@@ -41754,20 +41754,20 @@ VkImageSparseMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(mem
 
 VkImageSparseMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
-VkImageSparseMemoryRequirementsInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageSparseMemoryRequirementsInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkMemoryRequirements2 **/
 class VkMemoryRequirements2 {
   constructor(opts) {
@@ -41860,20 +41860,20 @@ VkMemoryRequirements2.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryRequirements2.byteLength = 0x28;
 
-VkMemoryRequirements2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryRequirements2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryRequirements: Object.freeze({
+  },
+  memoryRequirements: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkMemoryRequirements2KHR **/
 class VkMemoryRequirements2KHR {
   constructor(opts) {
@@ -41966,20 +41966,20 @@ VkMemoryRequirements2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkMemoryRequirements2KHR.byteLength = 0x28;
 
-VkMemoryRequirements2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryRequirements2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryRequirements: Object.freeze({
+  },
+  memoryRequirements: {
     byteOffset: 0x10,
     byteLength: 0x18
-  }),
-});
+  },
+};
 /** VkSparseImageMemoryRequirements2 **/
 class VkSparseImageMemoryRequirements2 {
   constructor(opts) {
@@ -42055,20 +42055,20 @@ VkSparseImageMemoryRequirements2.prototype.reflect = function reflect(memoryAddr
 
 VkSparseImageMemoryRequirements2.byteLength = 0x40;
 
-VkSparseImageMemoryRequirements2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSparseImageMemoryRequirements2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryRequirements: Object.freeze({
+  },
+  memoryRequirements: {
     byteOffset: 0x10,
     byteLength: 0x30
-  }),
-});
+  },
+};
 /** VkSparseImageMemoryRequirements2KHR **/
 class VkSparseImageMemoryRequirements2KHR {
   constructor(opts) {
@@ -42144,20 +42144,20 @@ VkSparseImageMemoryRequirements2KHR.prototype.reflect = function reflect(memoryA
 
 VkSparseImageMemoryRequirements2KHR.byteLength = 0x40;
 
-VkSparseImageMemoryRequirements2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSparseImageMemoryRequirements2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryRequirements: Object.freeze({
+  },
+  memoryRequirements: {
     byteOffset: 0x10,
     byteLength: 0x30
-  }),
-});
+  },
+};
 /** VkPhysicalDevicePointClippingProperties **/
 class VkPhysicalDevicePointClippingProperties {
   constructor(opts) {
@@ -42231,20 +42231,20 @@ VkPhysicalDevicePointClippingProperties.prototype.reflect = function reflect(mem
 
 VkPhysicalDevicePointClippingProperties.byteLength = 0x18;
 
-VkPhysicalDevicePointClippingProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevicePointClippingProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pointClippingBehavior: Object.freeze({
+  },
+  pointClippingBehavior: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevicePointClippingPropertiesKHR **/
 class VkPhysicalDevicePointClippingPropertiesKHR {
   constructor(opts) {
@@ -42318,20 +42318,20 @@ VkPhysicalDevicePointClippingPropertiesKHR.prototype.reflect = function reflect(
 
 VkPhysicalDevicePointClippingPropertiesKHR.byteLength = 0x18;
 
-VkPhysicalDevicePointClippingPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevicePointClippingPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pointClippingBehavior: Object.freeze({
+  },
+  pointClippingBehavior: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryDedicatedRequirements **/
 class VkMemoryDedicatedRequirements {
   constructor(opts) {
@@ -42411,24 +42411,24 @@ VkMemoryDedicatedRequirements.prototype.reflect = function reflect(memoryAddress
 
 VkMemoryDedicatedRequirements.byteLength = 0x18;
 
-VkMemoryDedicatedRequirements.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryDedicatedRequirements.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  prefersDedicatedAllocation: Object.freeze({
+  },
+  prefersDedicatedAllocation: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  requiresDedicatedAllocation: Object.freeze({
+  },
+  requiresDedicatedAllocation: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryDedicatedRequirementsKHR **/
 class VkMemoryDedicatedRequirementsKHR {
   constructor(opts) {
@@ -42508,24 +42508,24 @@ VkMemoryDedicatedRequirementsKHR.prototype.reflect = function reflect(memoryAddr
 
 VkMemoryDedicatedRequirementsKHR.byteLength = 0x18;
 
-VkMemoryDedicatedRequirementsKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryDedicatedRequirementsKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  prefersDedicatedAllocation: Object.freeze({
+  },
+  prefersDedicatedAllocation: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  requiresDedicatedAllocation: Object.freeze({
+  },
+  requiresDedicatedAllocation: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryDedicatedAllocateInfo **/
 class VkMemoryDedicatedAllocateInfo {
   constructor(opts) {
@@ -42627,24 +42627,24 @@ VkMemoryDedicatedAllocateInfo.prototype.reflect = function reflect(memoryAddress
 
 VkMemoryDedicatedAllocateInfo.byteLength = 0x20;
 
-VkMemoryDedicatedAllocateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryDedicatedAllocateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkMemoryDedicatedAllocateInfoKHR **/
 class VkMemoryDedicatedAllocateInfoKHR {
   constructor(opts) {
@@ -42746,24 +42746,24 @@ VkMemoryDedicatedAllocateInfoKHR.prototype.reflect = function reflect(memoryAddr
 
 VkMemoryDedicatedAllocateInfoKHR.byteLength = 0x20;
 
-VkMemoryDedicatedAllocateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryDedicatedAllocateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  image: Object.freeze({
+  },
+  image: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageViewUsageCreateInfo **/
 class VkImageViewUsageCreateInfo {
   constructor(opts) {
@@ -42840,20 +42840,20 @@ VkImageViewUsageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageViewUsageCreateInfo.byteLength = 0x18;
 
-VkImageViewUsageCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageViewUsageCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImageViewUsageCreateInfoKHR **/
 class VkImageViewUsageCreateInfoKHR {
   constructor(opts) {
@@ -42930,20 +42930,20 @@ VkImageViewUsageCreateInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkImageViewUsageCreateInfoKHR.byteLength = 0x18;
 
-VkImageViewUsageCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageViewUsageCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  usage: Object.freeze({
+  },
+  usage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineTessellationDomainOriginStateCreateInfo **/
 class VkPipelineTessellationDomainOriginStateCreateInfo {
   constructor(opts) {
@@ -43020,20 +43020,20 @@ VkPipelineTessellationDomainOriginStateCreateInfo.prototype.reflect = function r
 
 VkPipelineTessellationDomainOriginStateCreateInfo.byteLength = 0x18;
 
-VkPipelineTessellationDomainOriginStateCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineTessellationDomainOriginStateCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  domainOrigin: Object.freeze({
+  },
+  domainOrigin: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineTessellationDomainOriginStateCreateInfoKHR **/
 class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
   constructor(opts) {
@@ -43110,20 +43110,20 @@ VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.reflect = functio
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.byteLength = 0x18;
 
-VkPipelineTessellationDomainOriginStateCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineTessellationDomainOriginStateCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  domainOrigin: Object.freeze({
+  },
+  domainOrigin: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionInfo **/
 class VkSamplerYcbcrConversionInfo {
   constructor(opts) {
@@ -43207,20 +43207,20 @@ VkSamplerYcbcrConversionInfo.prototype.reflect = function reflect(memoryAddress)
 
 VkSamplerYcbcrConversionInfo.byteLength = 0x18;
 
-VkSamplerYcbcrConversionInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  conversion: Object.freeze({
+  },
+  conversion: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionInfoKHR **/
 class VkSamplerYcbcrConversionInfoKHR {
   constructor(opts) {
@@ -43304,20 +43304,20 @@ VkSamplerYcbcrConversionInfoKHR.prototype.reflect = function reflect(memoryAddre
 
 VkSamplerYcbcrConversionInfoKHR.byteLength = 0x18;
 
-VkSamplerYcbcrConversionInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  conversion: Object.freeze({
+  },
+  conversion: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionCreateInfo **/
 class VkSamplerYcbcrConversionCreateInfo {
   constructor(opts) {
@@ -43507,48 +43507,48 @@ VkSamplerYcbcrConversionCreateInfo.prototype.reflect = function reflect(memoryAd
 
 VkSamplerYcbcrConversionCreateInfo.byteLength = 0x40;
 
-VkSamplerYcbcrConversionCreateInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionCreateInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  ycbcrModel: Object.freeze({
+  },
+  ycbcrModel: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  ycbcrRange: Object.freeze({
+  },
+  ycbcrRange: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  components: Object.freeze({
+  },
+  components: {
     byteOffset: 0x1C,
     byteLength: 0x10
-  }),
-  xChromaOffset: Object.freeze({
+  },
+  xChromaOffset: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  yChromaOffset: Object.freeze({
+  },
+  yChromaOffset: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  chromaFilter: Object.freeze({
+  },
+  chromaFilter: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  forceExplicitReconstruction: Object.freeze({
+  },
+  forceExplicitReconstruction: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionCreateInfoKHR **/
 class VkSamplerYcbcrConversionCreateInfoKHR {
   constructor(opts) {
@@ -43738,48 +43738,48 @@ VkSamplerYcbcrConversionCreateInfoKHR.prototype.reflect = function reflect(memor
 
 VkSamplerYcbcrConversionCreateInfoKHR.byteLength = 0x40;
 
-VkSamplerYcbcrConversionCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  ycbcrModel: Object.freeze({
+  },
+  ycbcrModel: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  ycbcrRange: Object.freeze({
+  },
+  ycbcrRange: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  components: Object.freeze({
+  },
+  components: {
     byteOffset: 0x1C,
     byteLength: 0x10
-  }),
-  xChromaOffset: Object.freeze({
+  },
+  xChromaOffset: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  yChromaOffset: Object.freeze({
+  },
+  yChromaOffset: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  chromaFilter: Object.freeze({
+  },
+  chromaFilter: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  forceExplicitReconstruction: Object.freeze({
+  },
+  forceExplicitReconstruction: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBindImagePlaneMemoryInfo **/
 class VkBindImagePlaneMemoryInfo {
   constructor(opts) {
@@ -43856,20 +43856,20 @@ VkBindImagePlaneMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkBindImagePlaneMemoryInfo.byteLength = 0x18;
 
-VkBindImagePlaneMemoryInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImagePlaneMemoryInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  planeAspect: Object.freeze({
+  },
+  planeAspect: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBindImagePlaneMemoryInfoKHR **/
 class VkBindImagePlaneMemoryInfoKHR {
   constructor(opts) {
@@ -43946,20 +43946,20 @@ VkBindImagePlaneMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress
 
 VkBindImagePlaneMemoryInfoKHR.byteLength = 0x18;
 
-VkBindImagePlaneMemoryInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindImagePlaneMemoryInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  planeAspect: Object.freeze({
+  },
+  planeAspect: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImagePlaneMemoryRequirementsInfo **/
 class VkImagePlaneMemoryRequirementsInfo {
   constructor(opts) {
@@ -44036,20 +44036,20 @@ VkImagePlaneMemoryRequirementsInfo.prototype.reflect = function reflect(memoryAd
 
 VkImagePlaneMemoryRequirementsInfo.byteLength = 0x18;
 
-VkImagePlaneMemoryRequirementsInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImagePlaneMemoryRequirementsInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  planeAspect: Object.freeze({
+  },
+  planeAspect: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkImagePlaneMemoryRequirementsInfoKHR **/
 class VkImagePlaneMemoryRequirementsInfoKHR {
   constructor(opts) {
@@ -44126,20 +44126,20 @@ VkImagePlaneMemoryRequirementsInfoKHR.prototype.reflect = function reflect(memor
 
 VkImagePlaneMemoryRequirementsInfoKHR.byteLength = 0x18;
 
-VkImagePlaneMemoryRequirementsInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImagePlaneMemoryRequirementsInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  planeAspect: Object.freeze({
+  },
+  planeAspect: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSamplerYcbcrConversionFeatures **/
 class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
   constructor(opts) {
@@ -44215,20 +44215,20 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.reflect = function refl
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.byteLength = 0x18;
 
-VkPhysicalDeviceSamplerYcbcrConversionFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSamplerYcbcrConversionFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  samplerYcbcrConversion: Object.freeze({
+  },
+  samplerYcbcrConversion: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR **/
 class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
   constructor(opts) {
@@ -44304,20 +44304,20 @@ VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.reflect = function r
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.byteLength = 0x18;
 
-VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  samplerYcbcrConversion: Object.freeze({
+  },
+  samplerYcbcrConversion: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionImageFormatProperties **/
 class VkSamplerYcbcrConversionImageFormatProperties {
   constructor(opts) {
@@ -44393,20 +44393,20 @@ VkSamplerYcbcrConversionImageFormatProperties.prototype.reflect = function refle
 
 VkSamplerYcbcrConversionImageFormatProperties.byteLength = 0x18;
 
-VkSamplerYcbcrConversionImageFormatProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionImageFormatProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  combinedImageSamplerDescriptorCount: Object.freeze({
+  },
+  combinedImageSamplerDescriptorCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSamplerYcbcrConversionImageFormatPropertiesKHR **/
 class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
   constructor(opts) {
@@ -44482,20 +44482,20 @@ VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.reflect = function re
 
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.byteLength = 0x18;
 
-VkSamplerYcbcrConversionImageFormatPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerYcbcrConversionImageFormatPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  combinedImageSamplerDescriptorCount: Object.freeze({
+  },
+  combinedImageSamplerDescriptorCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkTextureLODGatherFormatPropertiesAMD **/
 class VkTextureLODGatherFormatPropertiesAMD {
   constructor(opts) {
@@ -44571,20 +44571,20 @@ VkTextureLODGatherFormatPropertiesAMD.prototype.reflect = function reflect(memor
 
 VkTextureLODGatherFormatPropertiesAMD.byteLength = 0x18;
 
-VkTextureLODGatherFormatPropertiesAMD.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkTextureLODGatherFormatPropertiesAMD.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  supportsTextureGatherLODBiasAMD: Object.freeze({
+  },
+  supportsTextureGatherLODBiasAMD: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkConditionalRenderingBeginInfoEXT **/
 class VkConditionalRenderingBeginInfoEXT {
   constructor(opts) {
@@ -44692,28 +44692,28 @@ VkConditionalRenderingBeginInfoEXT.prototype.reflect = function reflect(memoryAd
 
 VkConditionalRenderingBeginInfoEXT.byteLength = 0x28;
 
-VkConditionalRenderingBeginInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkConditionalRenderingBeginInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkProtectedSubmitInfo **/
 class VkProtectedSubmitInfo {
   constructor(opts) {
@@ -44789,20 +44789,20 @@ VkProtectedSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
 
 VkProtectedSubmitInfo.byteLength = 0x18;
 
-VkProtectedSubmitInfo.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkProtectedSubmitInfo.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  protectedSubmit: Object.freeze({
+  },
+  protectedSubmit: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceProtectedMemoryFeatures **/
 class VkPhysicalDeviceProtectedMemoryFeatures {
   constructor(opts) {
@@ -44878,20 +44878,20 @@ VkPhysicalDeviceProtectedMemoryFeatures.prototype.reflect = function reflect(mem
 
 VkPhysicalDeviceProtectedMemoryFeatures.byteLength = 0x18;
 
-VkPhysicalDeviceProtectedMemoryFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceProtectedMemoryFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  protectedMemory: Object.freeze({
+  },
+  protectedMemory: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceProtectedMemoryProperties **/
 class VkPhysicalDeviceProtectedMemoryProperties {
   constructor(opts) {
@@ -44967,20 +44967,20 @@ VkPhysicalDeviceProtectedMemoryProperties.prototype.reflect = function reflect(m
 
 VkPhysicalDeviceProtectedMemoryProperties.byteLength = 0x18;
 
-VkPhysicalDeviceProtectedMemoryProperties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceProtectedMemoryProperties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  protectedNoFault: Object.freeze({
+  },
+  protectedNoFault: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceQueueInfo2 **/
 class VkDeviceQueueInfo2 {
   constructor(opts) {
@@ -45081,28 +45081,28 @@ VkDeviceQueueInfo2.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceQueueInfo2.byteLength = 0x20;
 
-VkDeviceQueueInfo2.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceQueueInfo2.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  queueFamilyIndex: Object.freeze({
+  },
+  queueFamilyIndex: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  queueIndex: Object.freeze({
+  },
+  queueIndex: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineCoverageToColorStateCreateInfoNV **/
 class VkPipelineCoverageToColorStateCreateInfoNV {
   constructor(opts) {
@@ -45200,28 +45200,28 @@ VkPipelineCoverageToColorStateCreateInfoNV.prototype.reflect = function reflect(
 
 VkPipelineCoverageToColorStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineCoverageToColorStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineCoverageToColorStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  coverageToColorEnable: Object.freeze({
+  },
+  coverageToColorEnable: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  coverageToColorLocation: Object.freeze({
+  },
+  coverageToColorLocation: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT **/
 class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
   constructor(opts) {
@@ -45301,24 +45301,24 @@ VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.reflect = function re
 
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  filterMinmaxSingleComponentFormats: Object.freeze({
+  },
+  filterMinmaxSingleComponentFormats: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  filterMinmaxImageComponentMapping: Object.freeze({
+  },
+  filterMinmaxImageComponentMapping: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSampleLocationEXT **/
 class VkSampleLocationEXT {
   constructor(opts) {
@@ -45378,16 +45378,16 @@ VkSampleLocationEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkSampleLocationEXT.byteLength = 0x8;
 
-VkSampleLocationEXT.memoryLayout = Object.freeze({
-  x: Object.freeze({
+VkSampleLocationEXT.memoryLayout = {
+  x: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  y: Object.freeze({
+  },
+  y: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSampleLocationsInfoEXT **/
 class VkSampleLocationsInfoEXT {
   constructor(opts) {
@@ -45545,32 +45545,32 @@ VkSampleLocationsInfoEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkSampleLocationsInfoEXT.byteLength = 0x28;
 
-VkSampleLocationsInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSampleLocationsInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  sampleLocationsPerPixel: Object.freeze({
+  },
+  sampleLocationsPerPixel: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  sampleLocationGridSize: Object.freeze({
+  },
+  sampleLocationGridSize: {
     byteOffset: 0x14,
     byteLength: 0x8
-  }),
-  sampleLocationsCount: Object.freeze({
+  },
+  sampleLocationsCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pSampleLocations: Object.freeze({
+  },
+  pSampleLocations: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkAttachmentSampleLocationsEXT **/
 class VkAttachmentSampleLocationsEXT {
   constructor(opts) {
@@ -45650,16 +45650,16 @@ VkAttachmentSampleLocationsEXT.prototype.reflect = function reflect(memoryAddres
 
 VkAttachmentSampleLocationsEXT.byteLength = 0x30;
 
-VkAttachmentSampleLocationsEXT.memoryLayout = Object.freeze({
-  attachmentIndex: Object.freeze({
+VkAttachmentSampleLocationsEXT.memoryLayout = {
+  attachmentIndex: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  sampleLocationsInfo: Object.freeze({
+  },
+  sampleLocationsInfo: {
     byteOffset: 0x8,
     byteLength: 0x28
-  }),
-});
+  },
+};
 /** VkSubpassSampleLocationsEXT **/
 class VkSubpassSampleLocationsEXT {
   constructor(opts) {
@@ -45739,16 +45739,16 @@ VkSubpassSampleLocationsEXT.prototype.reflect = function reflect(memoryAddress) 
 
 VkSubpassSampleLocationsEXT.byteLength = 0x30;
 
-VkSubpassSampleLocationsEXT.memoryLayout = Object.freeze({
-  subpassIndex: Object.freeze({
+VkSubpassSampleLocationsEXT.memoryLayout = {
+  subpassIndex: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  sampleLocationsInfo: Object.freeze({
+  },
+  sampleLocationsInfo: {
     byteOffset: 0x8,
     byteLength: 0x28
-  }),
-});
+  },
+};
 /** VkRenderPassSampleLocationsBeginInfoEXT **/
 class VkRenderPassSampleLocationsBeginInfoEXT {
   constructor(opts) {
@@ -45912,32 +45912,32 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.reflect = function reflect(mem
 
 VkRenderPassSampleLocationsBeginInfoEXT.byteLength = 0x30;
 
-VkRenderPassSampleLocationsBeginInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassSampleLocationsBeginInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  attachmentInitialSampleLocationsCount: Object.freeze({
+  },
+  attachmentInitialSampleLocationsCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAttachmentInitialSampleLocations: Object.freeze({
+  },
+  pAttachmentInitialSampleLocations: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  postSubpassSampleLocationsCount: Object.freeze({
+  },
+  postSubpassSampleLocationsCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pPostSubpassSampleLocations: Object.freeze({
+  },
+  pPostSubpassSampleLocations: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineSampleLocationsStateCreateInfoEXT **/
 class VkPipelineSampleLocationsStateCreateInfoEXT {
   constructor(opts) {
@@ -46044,24 +46044,24 @@ VkPipelineSampleLocationsStateCreateInfoEXT.prototype.reflect = function reflect
 
 VkPipelineSampleLocationsStateCreateInfoEXT.byteLength = 0x40;
 
-VkPipelineSampleLocationsStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineSampleLocationsStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  sampleLocationsEnable: Object.freeze({
+  },
+  sampleLocationsEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  sampleLocationsInfo: Object.freeze({
+  },
+  sampleLocationsInfo: {
     byteOffset: 0x18,
     byteLength: 0x28
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceSampleLocationsPropertiesEXT **/
 class VkPhysicalDeviceSampleLocationsPropertiesEXT {
   constructor(opts) {
@@ -46162,36 +46162,36 @@ VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.reflect = function reflec
 
 VkPhysicalDeviceSampleLocationsPropertiesEXT.byteLength = 0x30;
 
-VkPhysicalDeviceSampleLocationsPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceSampleLocationsPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  sampleLocationSampleCounts: Object.freeze({
+  },
+  sampleLocationSampleCounts: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxSampleLocationGridSize: Object.freeze({
+  },
+  maxSampleLocationGridSize: {
     byteOffset: 0x14,
     byteLength: 0x8
-  }),
-  sampleLocationCoordinateRange: Object.freeze({
+  },
+  sampleLocationCoordinateRange: {
     byteOffset: 0x1C,
     byteLength: 0x8
-  }),
-  sampleLocationSubPixelBits: Object.freeze({
+  },
+  sampleLocationSubPixelBits: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  variableSampleLocations: Object.freeze({
+  },
+  variableSampleLocations: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMultisamplePropertiesEXT **/
 class VkMultisamplePropertiesEXT {
   constructor(opts) {
@@ -46267,20 +46267,20 @@ VkMultisamplePropertiesEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkMultisamplePropertiesEXT.byteLength = 0x18;
 
-VkMultisamplePropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMultisamplePropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxSampleLocationGridSize: Object.freeze({
+  },
+  maxSampleLocationGridSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSamplerReductionModeCreateInfoEXT **/
 class VkSamplerReductionModeCreateInfoEXT {
   constructor(opts) {
@@ -46357,20 +46357,20 @@ VkSamplerReductionModeCreateInfoEXT.prototype.reflect = function reflect(memoryA
 
 VkSamplerReductionModeCreateInfoEXT.byteLength = 0x18;
 
-VkSamplerReductionModeCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSamplerReductionModeCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  reductionMode: Object.freeze({
+  },
+  reductionMode: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT **/
 class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
   constructor(opts) {
@@ -46446,20 +46446,20 @@ VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.reflect = function r
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  advancedBlendCoherentOperations: Object.freeze({
+  },
+  advancedBlendCoherentOperations: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT **/
 class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
   constructor(opts) {
@@ -46555,40 +46555,40 @@ VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.reflect = function
 
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.byteLength = 0x28;
 
-VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  advancedBlendMaxColorAttachments: Object.freeze({
+  },
+  advancedBlendMaxColorAttachments: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  advancedBlendIndependentBlend: Object.freeze({
+  },
+  advancedBlendIndependentBlend: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  advancedBlendNonPremultipliedSrcColor: Object.freeze({
+  },
+  advancedBlendNonPremultipliedSrcColor: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  advancedBlendNonPremultipliedDstColor: Object.freeze({
+  },
+  advancedBlendNonPremultipliedDstColor: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  advancedBlendCorrelatedOverlap: Object.freeze({
+  },
+  advancedBlendCorrelatedOverlap: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  advancedBlendAllOperations: Object.freeze({
+  },
+  advancedBlendAllOperations: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineColorBlendAdvancedStateCreateInfoEXT **/
 class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
   constructor(opts) {
@@ -46683,28 +46683,28 @@ VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.reflect = function refl
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.byteLength = 0x20;
 
-VkPipelineColorBlendAdvancedStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineColorBlendAdvancedStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcPremultiplied: Object.freeze({
+  },
+  srcPremultiplied: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstPremultiplied: Object.freeze({
+  },
+  dstPremultiplied: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  blendOverlap: Object.freeze({
+  },
+  blendOverlap: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceInlineUniformBlockFeaturesEXT **/
 class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
   constructor(opts) {
@@ -46788,24 +46788,24 @@ VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.reflect = function refle
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceInlineUniformBlockFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceInlineUniformBlockFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  inlineUniformBlock: Object.freeze({
+  },
+  inlineUniformBlock: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  descriptorBindingInlineUniformBlockUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingInlineUniformBlockUpdateAfterBind: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceInlineUniformBlockPropertiesEXT **/
 class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
   constructor(opts) {
@@ -46897,36 +46897,36 @@ VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.reflect = function ref
 
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.byteLength = 0x28;
 
-VkPhysicalDeviceInlineUniformBlockPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceInlineUniformBlockPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxInlineUniformBlockSize: Object.freeze({
+  },
+  maxInlineUniformBlockSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorInlineUniformBlocks: Object.freeze({
+  },
+  maxPerStageDescriptorInlineUniformBlocks: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  maxDescriptorSetInlineUniformBlocks: Object.freeze({
+  },
+  maxDescriptorSetInlineUniformBlocks: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindInlineUniformBlocks: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindInlineUniformBlocks: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkWriteDescriptorSetInlineUniformBlockEXT **/
 class VkWriteDescriptorSetInlineUniformBlockEXT {
   constructor(opts) {
@@ -47021,24 +47021,24 @@ VkWriteDescriptorSetInlineUniformBlockEXT.prototype.reflect = function reflect(m
 
 VkWriteDescriptorSetInlineUniformBlockEXT.byteLength = 0x20;
 
-VkWriteDescriptorSetInlineUniformBlockEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWriteDescriptorSetInlineUniformBlockEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dataSize: Object.freeze({
+  },
+  dataSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pData: Object.freeze({
+  },
+  pData: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorPoolInlineUniformBlockCreateInfoEXT **/
 class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
   constructor(opts) {
@@ -47117,20 +47117,20 @@ VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.reflect = function ref
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.byteLength = 0x18;
 
-VkDescriptorPoolInlineUniformBlockCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorPoolInlineUniformBlockCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxInlineUniformBlockBindings: Object.freeze({
+  },
+  maxInlineUniformBlockBindings: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineCoverageModulationStateCreateInfoNV **/
 class VkPipelineCoverageModulationStateCreateInfoNV {
   constructor(opts) {
@@ -47255,36 +47255,36 @@ VkPipelineCoverageModulationStateCreateInfoNV.prototype.reflect = function refle
 
 VkPipelineCoverageModulationStateCreateInfoNV.byteLength = 0x28;
 
-VkPipelineCoverageModulationStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineCoverageModulationStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  coverageModulationMode: Object.freeze({
+  },
+  coverageModulationMode: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  coverageModulationTableEnable: Object.freeze({
+  },
+  coverageModulationTableEnable: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  coverageModulationTableCount: Object.freeze({
+  },
+  coverageModulationTableCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pCoverageModulationTable: Object.freeze({
+  },
+  pCoverageModulationTable: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageFormatListCreateInfoKHR **/
 class VkImageFormatListCreateInfoKHR {
   constructor(opts) {
@@ -47379,24 +47379,24 @@ VkImageFormatListCreateInfoKHR.prototype.reflect = function reflect(memoryAddres
 
 VkImageFormatListCreateInfoKHR.byteLength = 0x20;
 
-VkImageFormatListCreateInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageFormatListCreateInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  viewFormatCount: Object.freeze({
+  },
+  viewFormatCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pViewFormats: Object.freeze({
+  },
+  pViewFormats: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkValidationCacheCreateInfoEXT **/
 class VkValidationCacheCreateInfoEXT {
   constructor(opts) {
@@ -47500,28 +47500,28 @@ VkValidationCacheCreateInfoEXT.prototype.reflect = function reflect(memoryAddres
 
 VkValidationCacheCreateInfoEXT.byteLength = 0x28;
 
-VkValidationCacheCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkValidationCacheCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  initialDataSize: Object.freeze({
+  },
+  initialDataSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pInitialData: Object.freeze({
+  },
+  pInitialData: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkShaderModuleValidationCacheCreateInfoEXT **/
 class VkShaderModuleValidationCacheCreateInfoEXT {
   constructor(opts) {
@@ -47605,20 +47605,20 @@ VkShaderModuleValidationCacheCreateInfoEXT.prototype.reflect = function reflect(
 
 VkShaderModuleValidationCacheCreateInfoEXT.byteLength = 0x18;
 
-VkShaderModuleValidationCacheCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkShaderModuleValidationCacheCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  validationCache: Object.freeze({
+  },
+  validationCache: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMaintenance3Properties **/
 class VkPhysicalDeviceMaintenance3Properties {
   constructor(opts) {
@@ -47700,24 +47700,24 @@ VkPhysicalDeviceMaintenance3Properties.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceMaintenance3Properties.byteLength = 0x20;
 
-VkPhysicalDeviceMaintenance3Properties.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMaintenance3Properties.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxPerSetDescriptors: Object.freeze({
+  },
+  maxPerSetDescriptors: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxMemoryAllocationSize: Object.freeze({
+  },
+  maxMemoryAllocationSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMaintenance3PropertiesKHR **/
 class VkPhysicalDeviceMaintenance3PropertiesKHR {
   constructor(opts) {
@@ -47799,24 +47799,24 @@ VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.reflect = function reflect(m
 
 VkPhysicalDeviceMaintenance3PropertiesKHR.byteLength = 0x20;
 
-VkPhysicalDeviceMaintenance3PropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMaintenance3PropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxPerSetDescriptors: Object.freeze({
+  },
+  maxPerSetDescriptors: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxMemoryAllocationSize: Object.freeze({
+  },
+  maxMemoryAllocationSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetLayoutSupport **/
 class VkDescriptorSetLayoutSupport {
   constructor(opts) {
@@ -47909,20 +47909,20 @@ VkDescriptorSetLayoutSupport.prototype.reflect = function reflect(memoryAddress)
 
 VkDescriptorSetLayoutSupport.byteLength = 0x18;
 
-VkDescriptorSetLayoutSupport.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetLayoutSupport.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  supported: Object.freeze({
+  },
+  supported: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDescriptorSetLayoutSupportKHR **/
 class VkDescriptorSetLayoutSupportKHR {
   constructor(opts) {
@@ -48015,20 +48015,20 @@ VkDescriptorSetLayoutSupportKHR.prototype.reflect = function reflect(memoryAddre
 
 VkDescriptorSetLayoutSupportKHR.byteLength = 0x18;
 
-VkDescriptorSetLayoutSupportKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetLayoutSupportKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  supported: Object.freeze({
+  },
+  supported: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShaderDrawParameterFeatures **/
 class VkPhysicalDeviceShaderDrawParameterFeatures {
   constructor(opts) {
@@ -48104,20 +48104,20 @@ VkPhysicalDeviceShaderDrawParameterFeatures.prototype.reflect = function reflect
 
 VkPhysicalDeviceShaderDrawParameterFeatures.byteLength = 0x18;
 
-VkPhysicalDeviceShaderDrawParameterFeatures.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShaderDrawParameterFeatures.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderDrawParameters: Object.freeze({
+  },
+  shaderDrawParameters: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFloat16Int8FeaturesKHR **/
 class VkPhysicalDeviceFloat16Int8FeaturesKHR {
   constructor(opts) {
@@ -48201,24 +48201,24 @@ VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.byteLength = 0x18;
 
-VkPhysicalDeviceFloat16Int8FeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFloat16Int8FeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderFloat16: Object.freeze({
+  },
+  shaderFloat16: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shaderInt8: Object.freeze({
+  },
+  shaderInt8: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFloatControlsPropertiesKHR **/
 class VkPhysicalDeviceFloatControlsPropertiesKHR {
   constructor(opts) {
@@ -48358,84 +48358,84 @@ VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.reflect = function reflect(
 
 VkPhysicalDeviceFloatControlsPropertiesKHR.byteLength = 0x58;
 
-VkPhysicalDeviceFloatControlsPropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFloatControlsPropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  separateDenormSettings: Object.freeze({
+  },
+  separateDenormSettings: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  separateRoundingModeSettings: Object.freeze({
+  },
+  separateRoundingModeSettings: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  shaderSignedZeroInfNanPreserveFloat16: Object.freeze({
+  },
+  shaderSignedZeroInfNanPreserveFloat16: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  shaderSignedZeroInfNanPreserveFloat32: Object.freeze({
+  },
+  shaderSignedZeroInfNanPreserveFloat32: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  shaderSignedZeroInfNanPreserveFloat64: Object.freeze({
+  },
+  shaderSignedZeroInfNanPreserveFloat64: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  shaderDenormPreserveFloat16: Object.freeze({
+  },
+  shaderDenormPreserveFloat16: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  shaderDenormPreserveFloat32: Object.freeze({
+  },
+  shaderDenormPreserveFloat32: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  shaderDenormPreserveFloat64: Object.freeze({
+  },
+  shaderDenormPreserveFloat64: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  shaderDenormFlushToZeroFloat16: Object.freeze({
+  },
+  shaderDenormFlushToZeroFloat16: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  shaderDenormFlushToZeroFloat32: Object.freeze({
+  },
+  shaderDenormFlushToZeroFloat32: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  shaderDenormFlushToZeroFloat64: Object.freeze({
+  },
+  shaderDenormFlushToZeroFloat64: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTEFloat16: Object.freeze({
+  },
+  shaderRoundingModeRTEFloat16: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTEFloat32: Object.freeze({
+  },
+  shaderRoundingModeRTEFloat32: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTEFloat64: Object.freeze({
+  },
+  shaderRoundingModeRTEFloat64: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTZFloat16: Object.freeze({
+  },
+  shaderRoundingModeRTZFloat16: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTZFloat32: Object.freeze({
+  },
+  shaderRoundingModeRTZFloat32: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  shaderRoundingModeRTZFloat64: Object.freeze({
+  },
+  shaderRoundingModeRTZFloat64: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkShaderResourceUsageAMD **/
 class VkShaderResourceUsageAMD {
   constructor(opts) {
@@ -48499,28 +48499,28 @@ VkShaderResourceUsageAMD.prototype.reflect = function reflect(memoryAddress) {
 
 VkShaderResourceUsageAMD.byteLength = 0x20;
 
-VkShaderResourceUsageAMD.memoryLayout = Object.freeze({
-  numUsedVgprs: Object.freeze({
+VkShaderResourceUsageAMD.memoryLayout = {
+  numUsedVgprs: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  numUsedSgprs: Object.freeze({
+  },
+  numUsedSgprs: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  ldsSizePerLocalWorkGroup: Object.freeze({
+  },
+  ldsSizePerLocalWorkGroup: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  ldsUsageSizeInBytes: Object.freeze({
+  },
+  ldsUsageSizeInBytes: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  scratchMemUsageInBytes: Object.freeze({
+  },
+  scratchMemUsageInBytes: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkShaderStatisticsInfoAMD **/
 class VkShaderStatisticsInfoAMD {
   constructor(opts) {
@@ -48600,36 +48600,36 @@ VkShaderStatisticsInfoAMD.prototype.reflect = function reflect(memoryAddress) {
 
 VkShaderStatisticsInfoAMD.byteLength = 0x48;
 
-VkShaderStatisticsInfoAMD.memoryLayout = Object.freeze({
-  shaderStageMask: Object.freeze({
+VkShaderStatisticsInfoAMD.memoryLayout = {
+  shaderStageMask: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  resourceUsage: Object.freeze({
+  },
+  resourceUsage: {
     byteOffset: 0x8,
     byteLength: 0x20
-  }),
-  numPhysicalVgprs: Object.freeze({
+  },
+  numPhysicalVgprs: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  numPhysicalSgprs: Object.freeze({
+  },
+  numPhysicalSgprs: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  numAvailableVgprs: Object.freeze({
+  },
+  numAvailableVgprs: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  numAvailableSgprs: Object.freeze({
+  },
+  numAvailableSgprs: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  computeWorkGroupSize: Object.freeze({
+  },
+  computeWorkGroupSize: {
     byteOffset: 0x38,
     byteLength: 0xC
-  }),
-});
+  },
+};
 /** VkDeviceQueueGlobalPriorityCreateInfoEXT **/
 class VkDeviceQueueGlobalPriorityCreateInfoEXT {
   constructor(opts) {
@@ -48706,20 +48706,20 @@ VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.reflect = function reflect(me
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.byteLength = 0x18;
 
-VkDeviceQueueGlobalPriorityCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceQueueGlobalPriorityCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  globalPriority: Object.freeze({
+  },
+  globalPriority: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDebugUtilsObjectNameInfoEXT **/
 class VkDebugUtilsObjectNameInfoEXT {
   constructor(opts) {
@@ -48830,28 +48830,28 @@ VkDebugUtilsObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddress
 
 VkDebugUtilsObjectNameInfoEXT.byteLength = 0x28;
 
-VkDebugUtilsObjectNameInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugUtilsObjectNameInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectType: Object.freeze({
+  },
+  objectType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  objectHandle: Object.freeze({
+  },
+  objectHandle: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  pObjectName: Object.freeze({
+  },
+  pObjectName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugUtilsObjectTagInfoEXT **/
 class VkDebugUtilsObjectTagInfoEXT {
   constructor(opts) {
@@ -48979,36 +48979,36 @@ VkDebugUtilsObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress)
 
 VkDebugUtilsObjectTagInfoEXT.byteLength = 0x38;
 
-VkDebugUtilsObjectTagInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugUtilsObjectTagInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  objectType: Object.freeze({
+  },
+  objectType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  objectHandle: Object.freeze({
+  },
+  objectHandle: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  tagName: Object.freeze({
+  },
+  tagName: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  tagSize: Object.freeze({
+  },
+  tagSize: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  pTag: Object.freeze({
+  },
+  pTag: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugUtilsLabelEXT **/
 class VkDebugUtilsLabelEXT {
   constructor(opts) {
@@ -49135,24 +49135,24 @@ VkDebugUtilsLabelEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDebugUtilsLabelEXT.byteLength = 0x28;
 
-VkDebugUtilsLabelEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugUtilsLabelEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pLabelName: Object.freeze({
+  },
+  pLabelName: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  color: Object.freeze({
+  },
+  color: {
     byteOffset: 0x18,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkDebugUtilsMessengerCreateInfoEXT **/
 class VkDebugUtilsMessengerCreateInfoEXT {
   constructor(opts) {
@@ -49267,32 +49267,32 @@ VkDebugUtilsMessengerCreateInfoEXT.prototype.reflect = function reflect(memoryAd
 
 VkDebugUtilsMessengerCreateInfoEXT.byteLength = 0x30;
 
-VkDebugUtilsMessengerCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugUtilsMessengerCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  messageSeverity: Object.freeze({
+  },
+  messageSeverity: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  messageType: Object.freeze({
+  },
+  messageType: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pUserData: Object.freeze({
+  },
+  pUserData: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDebugUtilsMessengerCallbackDataEXT **/
 class VkDebugUtilsMessengerCallbackDataEXT {
   constructor(opts) {
@@ -49568,56 +49568,56 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.reflect = function reflect(memory
 
 VkDebugUtilsMessengerCallbackDataEXT.byteLength = 0x60;
 
-VkDebugUtilsMessengerCallbackDataEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDebugUtilsMessengerCallbackDataEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pMessageIdName: Object.freeze({
+  },
+  pMessageIdName: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  messageIdNumber: Object.freeze({
+  },
+  messageIdNumber: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pMessage: Object.freeze({
+  },
+  pMessage: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  queueLabelCount: Object.freeze({
+  },
+  queueLabelCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pQueueLabels: Object.freeze({
+  },
+  pQueueLabels: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  cmdBufLabelCount: Object.freeze({
+  },
+  cmdBufLabelCount: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  pCmdBufLabels: Object.freeze({
+  },
+  pCmdBufLabels: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-  objectCount: Object.freeze({
+  },
+  objectCount: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  pObjects: Object.freeze({
+  },
+  pObjects: {
     byteOffset: 0x58,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImportMemoryHostPointerInfoEXT **/
 class VkImportMemoryHostPointerInfoEXT {
   constructor(opts) {
@@ -49710,24 +49710,24 @@ VkImportMemoryHostPointerInfoEXT.prototype.reflect = function reflect(memoryAddr
 
 VkImportMemoryHostPointerInfoEXT.byteLength = 0x20;
 
-VkImportMemoryHostPointerInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImportMemoryHostPointerInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  handleType: Object.freeze({
+  },
+  handleType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pHostPointer: Object.freeze({
+  },
+  pHostPointer: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkMemoryHostPointerPropertiesEXT **/
 class VkMemoryHostPointerPropertiesEXT {
   constructor(opts) {
@@ -49803,20 +49803,20 @@ VkMemoryHostPointerPropertiesEXT.prototype.reflect = function reflect(memoryAddr
 
 VkMemoryHostPointerPropertiesEXT.byteLength = 0x18;
 
-VkMemoryHostPointerPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryHostPointerPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryTypeBits: Object.freeze({
+  },
+  memoryTypeBits: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExternalMemoryHostPropertiesEXT **/
 class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
   constructor(opts) {
@@ -49892,20 +49892,20 @@ VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.reflect = function ref
 
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceExternalMemoryHostPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExternalMemoryHostPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  minImportedHostPointerAlignment: Object.freeze({
+  },
+  minImportedHostPointerAlignment: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceConservativeRasterizationPropertiesEXT **/
 class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
   constructor(opts) {
@@ -50015,52 +50015,52 @@ VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.reflect = funct
 
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.byteLength = 0x38;
 
-VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  primitiveOverestimationSize: Object.freeze({
+  },
+  primitiveOverestimationSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxExtraPrimitiveOverestimationSize: Object.freeze({
+  },
+  maxExtraPrimitiveOverestimationSize: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  extraPrimitiveOverestimationSizeGranularity: Object.freeze({
+  },
+  extraPrimitiveOverestimationSizeGranularity: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  primitiveUnderestimation: Object.freeze({
+  },
+  primitiveUnderestimation: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  conservativePointAndLineRasterization: Object.freeze({
+  },
+  conservativePointAndLineRasterization: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  degenerateTrianglesRasterized: Object.freeze({
+  },
+  degenerateTrianglesRasterized: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  degenerateLinesRasterized: Object.freeze({
+  },
+  degenerateLinesRasterized: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  fullyCoveredFragmentShaderInputVariable: Object.freeze({
+  },
+  fullyCoveredFragmentShaderInputVariable: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  conservativeRasterizationPostDepthCoverage: Object.freeze({
+  },
+  conservativeRasterizationPostDepthCoverage: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCalibratedTimestampInfoEXT **/
 class VkCalibratedTimestampInfoEXT {
   constructor(opts) {
@@ -50137,20 +50137,20 @@ VkCalibratedTimestampInfoEXT.prototype.reflect = function reflect(memoryAddress)
 
 VkCalibratedTimestampInfoEXT.byteLength = 0x18;
 
-VkCalibratedTimestampInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCalibratedTimestampInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  timeDomain: Object.freeze({
+  },
+  timeDomain: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShaderCorePropertiesAMD **/
 class VkPhysicalDeviceShaderCorePropertiesAMD {
   constructor(opts) {
@@ -50278,72 +50278,72 @@ VkPhysicalDeviceShaderCorePropertiesAMD.prototype.reflect = function reflect(mem
 
 VkPhysicalDeviceShaderCorePropertiesAMD.byteLength = 0x48;
 
-VkPhysicalDeviceShaderCorePropertiesAMD.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShaderCorePropertiesAMD.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderEngineCount: Object.freeze({
+  },
+  shaderEngineCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shaderArraysPerEngineCount: Object.freeze({
+  },
+  shaderArraysPerEngineCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  computeUnitsPerShaderArray: Object.freeze({
+  },
+  computeUnitsPerShaderArray: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  simdPerComputeUnit: Object.freeze({
+  },
+  simdPerComputeUnit: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  wavefrontsPerSimd: Object.freeze({
+  },
+  wavefrontsPerSimd: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  wavefrontSize: Object.freeze({
+  },
+  wavefrontSize: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  sgprsPerSimd: Object.freeze({
+  },
+  sgprsPerSimd: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  minSgprAllocation: Object.freeze({
+  },
+  minSgprAllocation: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  maxSgprAllocation: Object.freeze({
+  },
+  maxSgprAllocation: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  sgprAllocationGranularity: Object.freeze({
+  },
+  sgprAllocationGranularity: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  vgprsPerSimd: Object.freeze({
+  },
+  vgprsPerSimd: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  minVgprAllocation: Object.freeze({
+  },
+  minVgprAllocation: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  maxVgprAllocation: Object.freeze({
+  },
+  maxVgprAllocation: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  vgprAllocationGranularity: Object.freeze({
+  },
+  vgprAllocationGranularity: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineRasterizationConservativeStateCreateInfoEXT **/
 class VkPipelineRasterizationConservativeStateCreateInfoEXT {
   constructor(opts) {
@@ -50444,28 +50444,28 @@ VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.reflect = functi
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.byteLength = 0x20;
 
-VkPipelineRasterizationConservativeStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRasterizationConservativeStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  conservativeRasterizationMode: Object.freeze({
+  },
+  conservativeRasterizationMode: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  extraPrimitiveOverestimationSize: Object.freeze({
+  },
+  extraPrimitiveOverestimationSize: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDescriptorIndexingFeaturesEXT **/
 class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
   constructor(opts) {
@@ -50693,96 +50693,96 @@ VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.reflect = function refle
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.byteLength = 0x60;
 
-VkPhysicalDeviceDescriptorIndexingFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDescriptorIndexingFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderInputAttachmentArrayDynamicIndexing: Object.freeze({
+  },
+  shaderInputAttachmentArrayDynamicIndexing: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shaderUniformTexelBufferArrayDynamicIndexing: Object.freeze({
+  },
+  shaderUniformTexelBufferArrayDynamicIndexing: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  shaderStorageTexelBufferArrayDynamicIndexing: Object.freeze({
+  },
+  shaderStorageTexelBufferArrayDynamicIndexing: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  shaderUniformBufferArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderUniformBufferArrayNonUniformIndexing: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  shaderSampledImageArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderSampledImageArrayNonUniformIndexing: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  shaderStorageBufferArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderStorageBufferArrayNonUniformIndexing: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  shaderStorageImageArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderStorageImageArrayNonUniformIndexing: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  shaderInputAttachmentArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderInputAttachmentArrayNonUniformIndexing: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  shaderUniformTexelBufferArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderUniformTexelBufferArrayNonUniformIndexing: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  shaderStorageTexelBufferArrayNonUniformIndexing: Object.freeze({
+  },
+  shaderStorageTexelBufferArrayNonUniformIndexing: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  descriptorBindingUniformBufferUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingUniformBufferUpdateAfterBind: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  descriptorBindingSampledImageUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingSampledImageUpdateAfterBind: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  descriptorBindingStorageImageUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingStorageImageUpdateAfterBind: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  descriptorBindingStorageBufferUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingStorageBufferUpdateAfterBind: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  descriptorBindingUniformTexelBufferUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingUniformTexelBufferUpdateAfterBind: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  descriptorBindingStorageTexelBufferUpdateAfterBind: Object.freeze({
+  },
+  descriptorBindingStorageTexelBufferUpdateAfterBind: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  descriptorBindingUpdateUnusedWhilePending: Object.freeze({
+  },
+  descriptorBindingUpdateUnusedWhilePending: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  descriptorBindingPartiallyBound: Object.freeze({
+  },
+  descriptorBindingPartiallyBound: {
     byteOffset: 0x54,
     byteLength: 0x4
-  }),
-  descriptorBindingVariableDescriptorCount: Object.freeze({
+  },
+  descriptorBindingVariableDescriptorCount: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-  runtimeDescriptorArray: Object.freeze({
+  },
+  runtimeDescriptorArray: {
     byteOffset: 0x5C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDescriptorIndexingPropertiesEXT **/
 class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
   constructor(opts) {
@@ -50946,108 +50946,108 @@ VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.reflect = function ref
 
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.byteLength = 0x70;
 
-VkPhysicalDeviceDescriptorIndexingPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDescriptorIndexingPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxUpdateAfterBindDescriptorsInAllPools: Object.freeze({
+  },
+  maxUpdateAfterBindDescriptorsInAllPools: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shaderUniformBufferArrayNonUniformIndexingNative: Object.freeze({
+  },
+  shaderUniformBufferArrayNonUniformIndexingNative: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  shaderSampledImageArrayNonUniformIndexingNative: Object.freeze({
+  },
+  shaderSampledImageArrayNonUniformIndexingNative: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  shaderStorageBufferArrayNonUniformIndexingNative: Object.freeze({
+  },
+  shaderStorageBufferArrayNonUniformIndexingNative: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  shaderStorageImageArrayNonUniformIndexingNative: Object.freeze({
+  },
+  shaderStorageImageArrayNonUniformIndexingNative: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  shaderInputAttachmentArrayNonUniformIndexingNative: Object.freeze({
+  },
+  shaderInputAttachmentArrayNonUniformIndexingNative: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  robustBufferAccessUpdateAfterBind: Object.freeze({
+  },
+  robustBufferAccessUpdateAfterBind: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  quadDivergentImplicitLod: Object.freeze({
+  },
+  quadDivergentImplicitLod: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindSamplers: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindSamplers: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindUniformBuffers: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindUniformBuffers: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindStorageBuffers: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindStorageBuffers: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindSampledImages: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindSampledImages: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindStorageImages: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindStorageImages: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  maxPerStageDescriptorUpdateAfterBindInputAttachments: Object.freeze({
+  },
+  maxPerStageDescriptorUpdateAfterBindInputAttachments: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  maxPerStageUpdateAfterBindResources: Object.freeze({
+  },
+  maxPerStageUpdateAfterBindResources: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindSamplers: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindSamplers: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindUniformBuffers: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindUniformBuffers: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindUniformBuffersDynamic: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindUniformBuffersDynamic: {
     byteOffset: 0x54,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindStorageBuffers: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindStorageBuffers: {
     byteOffset: 0x58,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindStorageBuffersDynamic: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindStorageBuffersDynamic: {
     byteOffset: 0x5C,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindSampledImages: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindSampledImages: {
     byteOffset: 0x60,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindStorageImages: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindStorageImages: {
     byteOffset: 0x64,
     byteLength: 0x4
-  }),
-  maxDescriptorSetUpdateAfterBindInputAttachments: Object.freeze({
+  },
+  maxDescriptorSetUpdateAfterBindInputAttachments: {
     byteOffset: 0x68,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDescriptorSetLayoutBindingFlagsCreateInfoEXT **/
 class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
   constructor(opts) {
@@ -51142,24 +51142,24 @@ VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.reflect = function refl
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.byteLength = 0x20;
 
-VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  bindingCount: Object.freeze({
+  },
+  bindingCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pBindingFlags: Object.freeze({
+  },
+  pBindingFlags: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetVariableDescriptorCountAllocateInfoEXT **/
 class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
   constructor(opts) {
@@ -51254,24 +51254,24 @@ VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.reflect = functi
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.byteLength = 0x20;
 
-VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  descriptorSetCount: Object.freeze({
+  },
+  descriptorSetCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDescriptorCounts: Object.freeze({
+  },
+  pDescriptorCounts: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDescriptorSetVariableDescriptorCountLayoutSupportEXT **/
 class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
   constructor(opts) {
@@ -51347,20 +51347,20 @@ VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.reflect = funct
 
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.byteLength = 0x18;
 
-VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxVariableDescriptorCount: Object.freeze({
+  },
+  maxVariableDescriptorCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAttachmentDescription2KHR **/
 class VkAttachmentDescription2KHR {
   constructor(opts) {
@@ -51525,52 +51525,52 @@ VkAttachmentDescription2KHR.prototype.reflect = function reflect(memoryAddress) 
 
 VkAttachmentDescription2KHR.byteLength = 0x38;
 
-VkAttachmentDescription2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAttachmentDescription2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  format: Object.freeze({
+  },
+  format: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  samples: Object.freeze({
+  },
+  samples: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  loadOp: Object.freeze({
+  },
+  loadOp: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  storeOp: Object.freeze({
+  },
+  storeOp: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  stencilLoadOp: Object.freeze({
+  },
+  stencilLoadOp: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  stencilStoreOp: Object.freeze({
+  },
+  stencilStoreOp: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  initialLayout: Object.freeze({
+  },
+  initialLayout: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  finalLayout: Object.freeze({
+  },
+  finalLayout: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAttachmentReference2KHR **/
 class VkAttachmentReference2KHR {
   constructor(opts) {
@@ -51671,28 +51671,28 @@ VkAttachmentReference2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkAttachmentReference2KHR.byteLength = 0x20;
 
-VkAttachmentReference2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAttachmentReference2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  attachment: Object.freeze({
+  },
+  attachment: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  layout: Object.freeze({
+  },
+  layout: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  aspectMask: Object.freeze({
+  },
+  aspectMask: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubpassDescription2KHR **/
 class VkSubpassDescription2KHR {
   constructor(opts) {
@@ -51988,60 +51988,60 @@ VkSubpassDescription2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassDescription2KHR.byteLength = 0x58;
 
-VkSubpassDescription2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubpassDescription2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pipelineBindPoint: Object.freeze({
+  },
+  pipelineBindPoint: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  viewMask: Object.freeze({
+  },
+  viewMask: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  inputAttachmentCount: Object.freeze({
+  },
+  inputAttachmentCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pInputAttachments: Object.freeze({
+  },
+  pInputAttachments: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  colorAttachmentCount: Object.freeze({
+  },
+  colorAttachmentCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  pColorAttachments: Object.freeze({
+  },
+  pColorAttachments: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  pResolveAttachments: Object.freeze({
+  },
+  pResolveAttachments: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  pDepthStencilAttachment: Object.freeze({
+  },
+  pDepthStencilAttachment: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-  preserveAttachmentCount: Object.freeze({
+  },
+  preserveAttachmentCount: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  pPreserveAttachments: Object.freeze({
+  },
+  pPreserveAttachments: {
     byteOffset: 0x50,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSubpassDependency2KHR **/
 class VkSubpassDependency2KHR {
   constructor(opts) {
@@ -52197,48 +52197,48 @@ VkSubpassDependency2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassDependency2KHR.byteLength = 0x30;
 
-VkSubpassDependency2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubpassDependency2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  srcSubpass: Object.freeze({
+  },
+  srcSubpass: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  dstSubpass: Object.freeze({
+  },
+  dstSubpass: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  srcStageMask: Object.freeze({
+  },
+  srcStageMask: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  dstStageMask: Object.freeze({
+  },
+  dstStageMask: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  srcAccessMask: Object.freeze({
+  },
+  srcAccessMask: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  dstAccessMask: Object.freeze({
+  },
+  dstAccessMask: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  dependencyFlags: Object.freeze({
+  },
+  dependencyFlags: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  viewOffset: Object.freeze({
+  },
+  viewOffset: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRenderPassCreateInfo2KHR **/
 class VkRenderPassCreateInfo2KHR {
   constructor(opts) {
@@ -52488,52 +52488,52 @@ VkRenderPassCreateInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkRenderPassCreateInfo2KHR.byteLength = 0x50;
 
-VkRenderPassCreateInfo2KHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassCreateInfo2KHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  attachmentCount: Object.freeze({
+  },
+  attachmentCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pAttachments: Object.freeze({
+  },
+  pAttachments: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  subpassCount: Object.freeze({
+  },
+  subpassCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pSubpasses: Object.freeze({
+  },
+  pSubpasses: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  dependencyCount: Object.freeze({
+  },
+  dependencyCount: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  pDependencies: Object.freeze({
+  },
+  pDependencies: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  correlatedViewMaskCount: Object.freeze({
+  },
+  correlatedViewMaskCount: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  pCorrelatedViewMasks: Object.freeze({
+  },
+  pCorrelatedViewMasks: {
     byteOffset: 0x48,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkSubpassBeginInfoKHR **/
 class VkSubpassBeginInfoKHR {
   constructor(opts) {
@@ -52610,20 +52610,20 @@ VkSubpassBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassBeginInfoKHR.byteLength = 0x18;
 
-VkSubpassBeginInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubpassBeginInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  contents: Object.freeze({
+  },
+  contents: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubpassEndInfoKHR **/
 class VkSubpassEndInfoKHR {
   constructor(opts) {
@@ -52689,16 +52689,16 @@ VkSubpassEndInfoKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSubpassEndInfoKHR.byteLength = 0x10;
 
-VkSubpassEndInfoKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubpassEndInfoKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkVertexInputBindingDivisorDescriptionEXT **/
 class VkVertexInputBindingDivisorDescriptionEXT {
   constructor(opts) {
@@ -52758,16 +52758,16 @@ VkVertexInputBindingDivisorDescriptionEXT.prototype.reflect = function reflect(m
 
 VkVertexInputBindingDivisorDescriptionEXT.byteLength = 0x8;
 
-VkVertexInputBindingDivisorDescriptionEXT.memoryLayout = Object.freeze({
-  binding: Object.freeze({
+VkVertexInputBindingDivisorDescriptionEXT.memoryLayout = {
+  binding: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  divisor: Object.freeze({
+  },
+  divisor: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineVertexInputDivisorStateCreateInfoEXT **/
 class VkPipelineVertexInputDivisorStateCreateInfoEXT {
   constructor(opts) {
@@ -52883,24 +52883,24 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.reflect = function refl
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.byteLength = 0x20;
 
-VkPipelineVertexInputDivisorStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineVertexInputDivisorStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  vertexBindingDivisorCount: Object.freeze({
+  },
+  vertexBindingDivisorCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pVertexBindingDivisors: Object.freeze({
+  },
+  pVertexBindingDivisors: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT **/
 class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
   constructor(opts) {
@@ -52976,20 +52976,20 @@ VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.reflect = function
 
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxVertexAttribDivisor: Object.freeze({
+  },
+  maxVertexAttribDivisor: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevicePCIBusInfoPropertiesEXT **/
 class VkPhysicalDevicePCIBusInfoPropertiesEXT {
   constructor(opts) {
@@ -53077,32 +53077,32 @@ VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.reflect = function reflect(mem
 
 VkPhysicalDevicePCIBusInfoPropertiesEXT.byteLength = 0x20;
 
-VkPhysicalDevicePCIBusInfoPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevicePCIBusInfoPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  pciDomain: Object.freeze({
+  },
+  pciDomain: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pciBus: Object.freeze({
+  },
+  pciBus: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pciDevice: Object.freeze({
+  },
+  pciDevice: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pciFunction: Object.freeze({
+  },
+  pciFunction: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCommandBufferInheritanceConditionalRenderingInfoEXT **/
 class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
   constructor(opts) {
@@ -53178,20 +53178,20 @@ VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.reflect = functi
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.byteLength = 0x18;
 
-VkCommandBufferInheritanceConditionalRenderingInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCommandBufferInheritanceConditionalRenderingInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  conditionalRenderingEnable: Object.freeze({
+  },
+  conditionalRenderingEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDevice8BitStorageFeaturesKHR **/
 class VkPhysicalDevice8BitStorageFeaturesKHR {
   constructor(opts) {
@@ -53283,28 +53283,28 @@ VkPhysicalDevice8BitStorageFeaturesKHR.prototype.reflect = function reflect(memo
 
 VkPhysicalDevice8BitStorageFeaturesKHR.byteLength = 0x20;
 
-VkPhysicalDevice8BitStorageFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDevice8BitStorageFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  storageBuffer8BitAccess: Object.freeze({
+  },
+  storageBuffer8BitAccess: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  uniformAndStorageBuffer8BitAccess: Object.freeze({
+  },
+  uniformAndStorageBuffer8BitAccess: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  storagePushConstant8: Object.freeze({
+  },
+  storagePushConstant8: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceConditionalRenderingFeaturesEXT **/
 class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
   constructor(opts) {
@@ -53388,24 +53388,24 @@ VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.reflect = function ref
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  conditionalRendering: Object.freeze({
+  },
+  conditionalRendering: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  inheritedConditionalRendering: Object.freeze({
+  },
+  inheritedConditionalRendering: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceVulkanMemoryModelFeaturesKHR **/
 class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
   constructor(opts) {
@@ -53497,28 +53497,28 @@ VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.reflect = function reflec
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.byteLength = 0x20;
 
-VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  vulkanMemoryModel: Object.freeze({
+  },
+  vulkanMemoryModel: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  vulkanMemoryModelDeviceScope: Object.freeze({
+  },
+  vulkanMemoryModelDeviceScope: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  vulkanMemoryModelAvailabilityVisibilityChains: Object.freeze({
+  },
+  vulkanMemoryModelAvailabilityVisibilityChains: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShaderAtomicInt64FeaturesKHR **/
 class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
   constructor(opts) {
@@ -53602,24 +53602,24 @@ VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.reflect = function reflec
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.byteLength = 0x18;
 
-VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderBufferInt64Atomics: Object.freeze({
+  },
+  shaderBufferInt64Atomics: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shaderSharedInt64Atomics: Object.freeze({
+  },
+  shaderSharedInt64Atomics: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT **/
 class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
   constructor(opts) {
@@ -53703,24 +53703,24 @@ VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.reflect = function r
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  vertexAttributeInstanceRateDivisor: Object.freeze({
+  },
+  vertexAttributeInstanceRateDivisor: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  vertexAttributeInstanceRateZeroDivisor: Object.freeze({
+  },
+  vertexAttributeInstanceRateZeroDivisor: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkQueueFamilyCheckpointPropertiesNV **/
 class VkQueueFamilyCheckpointPropertiesNV {
   constructor(opts) {
@@ -53794,20 +53794,20 @@ VkQueueFamilyCheckpointPropertiesNV.prototype.reflect = function reflect(memoryA
 
 VkQueueFamilyCheckpointPropertiesNV.byteLength = 0x18;
 
-VkQueueFamilyCheckpointPropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkQueueFamilyCheckpointPropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  checkpointExecutionStageMask: Object.freeze({
+  },
+  checkpointExecutionStageMask: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCheckpointDataNV **/
 class VkCheckpointDataNV {
   constructor(opts) {
@@ -53897,24 +53897,24 @@ VkCheckpointDataNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkCheckpointDataNV.byteLength = 0x20;
 
-VkCheckpointDataNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCheckpointDataNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  stage: Object.freeze({
+  },
+  stage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pCheckpointMarker: Object.freeze({
+  },
+  pCheckpointMarker: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDepthStencilResolvePropertiesKHR **/
 class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
   constructor(opts) {
@@ -54002,32 +54002,32 @@ VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.reflect = function re
 
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.byteLength = 0x20;
 
-VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  supportedDepthResolveModes: Object.freeze({
+  },
+  supportedDepthResolveModes: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  supportedStencilResolveModes: Object.freeze({
+  },
+  supportedStencilResolveModes: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  independentResolveNone: Object.freeze({
+  },
+  independentResolveNone: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  independentResolve: Object.freeze({
+  },
+  independentResolve: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkSubpassDescriptionDepthStencilResolveKHR **/
 class VkSubpassDescriptionDepthStencilResolveKHR {
   constructor(opts) {
@@ -54133,28 +54133,28 @@ VkSubpassDescriptionDepthStencilResolveKHR.prototype.reflect = function reflect(
 
 VkSubpassDescriptionDepthStencilResolveKHR.byteLength = 0x20;
 
-VkSubpassDescriptionDepthStencilResolveKHR.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkSubpassDescriptionDepthStencilResolveKHR.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  depthResolveMode: Object.freeze({
+  },
+  depthResolveMode: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stencilResolveMode: Object.freeze({
+  },
+  stencilResolveMode: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pDepthStencilResolveAttachment: Object.freeze({
+  },
+  pDepthStencilResolveAttachment: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageViewASTCDecodeModeEXT **/
 class VkImageViewASTCDecodeModeEXT {
   constructor(opts) {
@@ -54231,20 +54231,20 @@ VkImageViewASTCDecodeModeEXT.prototype.reflect = function reflect(memoryAddress)
 
 VkImageViewASTCDecodeModeEXT.byteLength = 0x18;
 
-VkImageViewASTCDecodeModeEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageViewASTCDecodeModeEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  decodeMode: Object.freeze({
+  },
+  decodeMode: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceASTCDecodeFeaturesEXT **/
 class VkPhysicalDeviceASTCDecodeFeaturesEXT {
   constructor(opts) {
@@ -54320,20 +54320,20 @@ VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.reflect = function reflect(memor
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceASTCDecodeFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceASTCDecodeFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  decodeModeSharedExponent: Object.freeze({
+  },
+  decodeModeSharedExponent: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceTransformFeedbackFeaturesEXT **/
 class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
   constructor(opts) {
@@ -54417,24 +54417,24 @@ VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.reflect = function reflec
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceTransformFeedbackFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceTransformFeedbackFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  transformFeedback: Object.freeze({
+  },
+  transformFeedback: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  geometryStreams: Object.freeze({
+  },
+  geometryStreams: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceTransformFeedbackPropertiesEXT **/
 class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
   constructor(opts) {
@@ -54548,56 +54548,56 @@ VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.reflect = function refl
 
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.byteLength = 0x40;
 
-VkPhysicalDeviceTransformFeedbackPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceTransformFeedbackPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxTransformFeedbackStreams: Object.freeze({
+  },
+  maxTransformFeedbackStreams: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxTransformFeedbackBuffers: Object.freeze({
+  },
+  maxTransformFeedbackBuffers: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxTransformFeedbackBufferSize: Object.freeze({
+  },
+  maxTransformFeedbackBufferSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  maxTransformFeedbackStreamDataSize: Object.freeze({
+  },
+  maxTransformFeedbackStreamDataSize: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  maxTransformFeedbackBufferDataSize: Object.freeze({
+  },
+  maxTransformFeedbackBufferDataSize: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  maxTransformFeedbackBufferDataStride: Object.freeze({
+  },
+  maxTransformFeedbackBufferDataStride: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  transformFeedbackQueries: Object.freeze({
+  },
+  transformFeedbackQueries: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  transformFeedbackStreamsLinesTriangles: Object.freeze({
+  },
+  transformFeedbackStreamsLinesTriangles: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  transformFeedbackRasterizationStreamSelect: Object.freeze({
+  },
+  transformFeedbackRasterizationStreamSelect: {
     byteOffset: 0x34,
     byteLength: 0x4
-  }),
-  transformFeedbackDraw: Object.freeze({
+  },
+  transformFeedbackDraw: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineRasterizationStateStreamCreateInfoEXT **/
 class VkPipelineRasterizationStateStreamCreateInfoEXT {
   constructor(opts) {
@@ -54687,24 +54687,24 @@ VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.reflect = function ref
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.byteLength = 0x18;
 
-VkPipelineRasterizationStateStreamCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRasterizationStateStreamCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  rasterizationStream: Object.freeze({
+  },
+  rasterizationStream: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV **/
 class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
   constructor(opts) {
@@ -54780,20 +54780,20 @@ VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.reflect = functio
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  representativeFragmentTest: Object.freeze({
+  },
+  representativeFragmentTest: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineRepresentativeFragmentTestStateCreateInfoNV **/
 class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
   constructor(opts) {
@@ -54869,20 +54869,20 @@ VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.reflect = functi
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.byteLength = 0x18;
 
-VkPipelineRepresentativeFragmentTestStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRepresentativeFragmentTestStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  representativeFragmentTestEnable: Object.freeze({
+  },
+  representativeFragmentTestEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceExclusiveScissorFeaturesNV **/
 class VkPhysicalDeviceExclusiveScissorFeaturesNV {
   constructor(opts) {
@@ -54958,20 +54958,20 @@ VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.reflect = function reflect(
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceExclusiveScissorFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceExclusiveScissorFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exclusiveScissor: Object.freeze({
+  },
+  exclusiveScissor: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineViewportExclusiveScissorStateCreateInfoNV **/
 class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
   constructor(opts) {
@@ -55087,24 +55087,24 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.reflect = function
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineViewportExclusiveScissorStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportExclusiveScissorStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  exclusiveScissorCount: Object.freeze({
+  },
+  exclusiveScissorCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pExclusiveScissors: Object.freeze({
+  },
+  pExclusiveScissors: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceCornerSampledImageFeaturesNV **/
 class VkPhysicalDeviceCornerSampledImageFeaturesNV {
   constructor(opts) {
@@ -55180,20 +55180,20 @@ VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.reflect = function reflec
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceCornerSampledImageFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceCornerSampledImageFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  cornerSampledImage: Object.freeze({
+  },
+  cornerSampledImage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceComputeShaderDerivativesFeaturesNV **/
 class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
   constructor(opts) {
@@ -55277,24 +55277,24 @@ VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.reflect = function 
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  computeDerivativeGroupQuads: Object.freeze({
+  },
+  computeDerivativeGroupQuads: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  computeDerivativeGroupLinear: Object.freeze({
+  },
+  computeDerivativeGroupLinear: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV **/
 class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
   constructor(opts) {
@@ -55370,20 +55370,20 @@ VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.reflect = function
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fragmentShaderBarycentric: Object.freeze({
+  },
+  fragmentShaderBarycentric: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShaderImageFootprintFeaturesNV **/
 class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
   constructor(opts) {
@@ -55459,20 +55459,20 @@ VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.reflect = function refl
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceShaderImageFootprintFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShaderImageFootprintFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  imageFootprint: Object.freeze({
+  },
+  imageFootprint: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV **/
 class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
   constructor(opts) {
@@ -55548,20 +55548,20 @@ VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.reflect = f
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  dedicatedAllocationImageAliasing: Object.freeze({
+  },
+  dedicatedAllocationImageAliasing: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkShadingRatePaletteNV **/
 class VkShadingRatePaletteNV {
   constructor(opts) {
@@ -55628,16 +55628,16 @@ VkShadingRatePaletteNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkShadingRatePaletteNV.byteLength = 0x10;
 
-VkShadingRatePaletteNV.memoryLayout = Object.freeze({
-  shadingRatePaletteEntryCount: Object.freeze({
+VkShadingRatePaletteNV.memoryLayout = {
+  shadingRatePaletteEntryCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pShadingRatePaletteEntries: Object.freeze({
+  },
+  pShadingRatePaletteEntries: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineViewportShadingRateImageStateCreateInfoNV **/
 class VkPipelineViewportShadingRateImageStateCreateInfoNV {
   constructor(opts) {
@@ -55761,28 +55761,28 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.reflect = function
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineViewportShadingRateImageStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportShadingRateImageStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shadingRateImageEnable: Object.freeze({
+  },
+  shadingRateImageEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  viewportCount: Object.freeze({
+  },
+  viewportCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pShadingRatePalettes: Object.freeze({
+  },
+  pShadingRatePalettes: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShadingRateImageFeaturesNV **/
 class VkPhysicalDeviceShadingRateImageFeaturesNV {
   constructor(opts) {
@@ -55866,24 +55866,24 @@ VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.reflect = function reflect(
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceShadingRateImageFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShadingRateImageFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shadingRateImage: Object.freeze({
+  },
+  shadingRateImage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  shadingRateCoarseSampleOrder: Object.freeze({
+  },
+  shadingRateCoarseSampleOrder: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceShadingRateImagePropertiesNV **/
 class VkPhysicalDeviceShadingRateImagePropertiesNV {
   constructor(opts) {
@@ -55969,28 +55969,28 @@ VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.reflect = function reflec
 
 VkPhysicalDeviceShadingRateImagePropertiesNV.byteLength = 0x20;
 
-VkPhysicalDeviceShadingRateImagePropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceShadingRateImagePropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shadingRateTexelSize: Object.freeze({
+  },
+  shadingRateTexelSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  shadingRatePaletteSize: Object.freeze({
+  },
+  shadingRatePaletteSize: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  shadingRateMaxCoarseSamples: Object.freeze({
+  },
+  shadingRateMaxCoarseSamples: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCoarseSampleLocationNV **/
 class VkCoarseSampleLocationNV {
   constructor(opts) {
@@ -56061,20 +56061,20 @@ VkCoarseSampleLocationNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkCoarseSampleLocationNV.byteLength = 0xC;
 
-VkCoarseSampleLocationNV.memoryLayout = Object.freeze({
-  pixelX: Object.freeze({
+VkCoarseSampleLocationNV.memoryLayout = {
+  pixelX: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pixelY: Object.freeze({
+  },
+  pixelY: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  sample: Object.freeze({
+  },
+  sample: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCoarseSampleOrderCustomNV **/
 class VkCoarseSampleOrderCustomNV {
   constructor(opts) {
@@ -56184,24 +56184,24 @@ VkCoarseSampleOrderCustomNV.prototype.reflect = function reflect(memoryAddress) 
 
 VkCoarseSampleOrderCustomNV.byteLength = 0x18;
 
-VkCoarseSampleOrderCustomNV.memoryLayout = Object.freeze({
-  shadingRate: Object.freeze({
+VkCoarseSampleOrderCustomNV.memoryLayout = {
+  shadingRate: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  sampleCount: Object.freeze({
+  },
+  sampleCount: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-  sampleLocationCount: Object.freeze({
+  },
+  sampleLocationCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  pSampleLocations: Object.freeze({
+  },
+  pSampleLocations: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPipelineViewportCoarseSampleOrderStateCreateInfoNV **/
 class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
   constructor(opts) {
@@ -56328,28 +56328,28 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.reflect = functio
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.byteLength = 0x20;
 
-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  sampleOrderType: Object.freeze({
+  },
+  sampleOrderType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  customSampleOrderCount: Object.freeze({
+  },
+  customSampleOrderCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pCustomSampleOrders: Object.freeze({
+  },
+  pCustomSampleOrders: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMeshShaderFeaturesNV **/
 class VkPhysicalDeviceMeshShaderFeaturesNV {
   constructor(opts) {
@@ -56433,24 +56433,24 @@ VkPhysicalDeviceMeshShaderFeaturesNV.prototype.reflect = function reflect(memory
 
 VkPhysicalDeviceMeshShaderFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceMeshShaderFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMeshShaderFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  taskShader: Object.freeze({
+  },
+  taskShader: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  meshShader: Object.freeze({
+  },
+  meshShader: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMeshShaderPropertiesNV **/
 class VkPhysicalDeviceMeshShaderPropertiesNV {
   constructor(opts) {
@@ -56586,68 +56586,68 @@ VkPhysicalDeviceMeshShaderPropertiesNV.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceMeshShaderPropertiesNV.byteLength = 0x58;
 
-VkPhysicalDeviceMeshShaderPropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMeshShaderPropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  maxDrawMeshTasksCount: Object.freeze({
+  },
+  maxDrawMeshTasksCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxTaskWorkGroupInvocations: Object.freeze({
+  },
+  maxTaskWorkGroupInvocations: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxTaskWorkGroupSize: Object.freeze({
+  },
+  maxTaskWorkGroupSize: {
     byteOffset: 0x18,
     byteLength: 0xC
-  }),
-  maxTaskTotalMemorySize: Object.freeze({
+  },
+  maxTaskTotalMemorySize: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  maxTaskOutputCount: Object.freeze({
+  },
+  maxTaskOutputCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  maxMeshWorkGroupInvocations: Object.freeze({
+  },
+  maxMeshWorkGroupInvocations: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-  maxMeshWorkGroupSize: Object.freeze({
+  },
+  maxMeshWorkGroupSize: {
     byteOffset: 0x30,
     byteLength: 0xC
-  }),
-  maxMeshTotalMemorySize: Object.freeze({
+  },
+  maxMeshTotalMemorySize: {
     byteOffset: 0x3C,
     byteLength: 0x4
-  }),
-  maxMeshOutputVertices: Object.freeze({
+  },
+  maxMeshOutputVertices: {
     byteOffset: 0x40,
     byteLength: 0x4
-  }),
-  maxMeshOutputPrimitives: Object.freeze({
+  },
+  maxMeshOutputPrimitives: {
     byteOffset: 0x44,
     byteLength: 0x4
-  }),
-  maxMeshMultiviewViewCount: Object.freeze({
+  },
+  maxMeshMultiviewViewCount: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  meshOutputPerVertexGranularity: Object.freeze({
+  },
+  meshOutputPerVertexGranularity: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  meshOutputPerPrimitiveGranularity: Object.freeze({
+  },
+  meshOutputPerPrimitiveGranularity: {
     byteOffset: 0x50,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDrawMeshTasksIndirectCommandNV **/
 class VkDrawMeshTasksIndirectCommandNV {
   constructor(opts) {
@@ -56707,16 +56707,16 @@ VkDrawMeshTasksIndirectCommandNV.prototype.reflect = function reflect(memoryAddr
 
 VkDrawMeshTasksIndirectCommandNV.byteLength = 0x8;
 
-VkDrawMeshTasksIndirectCommandNV.memoryLayout = Object.freeze({
-  taskCount: Object.freeze({
+VkDrawMeshTasksIndirectCommandNV.memoryLayout = {
+  taskCount: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  firstTask: Object.freeze({
+  },
+  firstTask: {
     byteOffset: 0x4,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRayTracingShaderGroupCreateInfoNV **/
 class VkRayTracingShaderGroupCreateInfoNV {
   constructor(opts) {
@@ -56839,36 +56839,36 @@ VkRayTracingShaderGroupCreateInfoNV.prototype.reflect = function reflect(memoryA
 
 VkRayTracingShaderGroupCreateInfoNV.byteLength = 0x28;
 
-VkRayTracingShaderGroupCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRayTracingShaderGroupCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  generalShader: Object.freeze({
+  },
+  generalShader: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  closestHitShader: Object.freeze({
+  },
+  closestHitShader: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  anyHitShader: Object.freeze({
+  },
+  anyHitShader: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  intersectionShader: Object.freeze({
+  },
+  intersectionShader: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRayTracingPipelineCreateInfoNV **/
 class VkRayTracingPipelineCreateInfoNV {
   constructor(opts) {
@@ -57101,52 +57101,52 @@ VkRayTracingPipelineCreateInfoNV.prototype.reflect = function reflect(memoryAddr
 
 VkRayTracingPipelineCreateInfoNV.byteLength = 0x50;
 
-VkRayTracingPipelineCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRayTracingPipelineCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  stageCount: Object.freeze({
+  },
+  stageCount: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  pStages: Object.freeze({
+  },
+  pStages: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  groupCount: Object.freeze({
+  },
+  groupCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  pGroups: Object.freeze({
+  },
+  pGroups: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxRecursionDepth: Object.freeze({
+  },
+  maxRecursionDepth: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  layout: Object.freeze({
+  },
+  layout: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  basePipelineHandle: Object.freeze({
+  },
+  basePipelineHandle: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-  basePipelineIndex: Object.freeze({
+  },
+  basePipelineIndex: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkGeometryTrianglesNV **/
 class VkGeometryTrianglesNV {
   constructor(opts) {
@@ -57358,60 +57358,60 @@ VkGeometryTrianglesNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkGeometryTrianglesNV.byteLength = 0x60;
 
-VkGeometryTrianglesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkGeometryTrianglesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  vertexData: Object.freeze({
+  },
+  vertexData: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  vertexOffset: Object.freeze({
+  },
+  vertexOffset: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  vertexCount: Object.freeze({
+  },
+  vertexCount: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  vertexStride: Object.freeze({
+  },
+  vertexStride: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  vertexFormat: Object.freeze({
+  },
+  vertexFormat: {
     byteOffset: 0x30,
     byteLength: 0x4
-  }),
-  indexData: Object.freeze({
+  },
+  indexData: {
     byteOffset: 0x38,
     byteLength: 0x8
-  }),
-  indexOffset: Object.freeze({
+  },
+  indexOffset: {
     byteOffset: 0x40,
     byteLength: 0x8
-  }),
-  indexCount: Object.freeze({
+  },
+  indexCount: {
     byteOffset: 0x48,
     byteLength: 0x4
-  }),
-  indexType: Object.freeze({
+  },
+  indexType: {
     byteOffset: 0x4C,
     byteLength: 0x4
-  }),
-  transformData: Object.freeze({
+  },
+  transformData: {
     byteOffset: 0x50,
     byteLength: 0x8
-  }),
-  transformOffset: Object.freeze({
+  },
+  transformOffset: {
     byteOffset: 0x58,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkGeometryAABBNV **/
 class VkGeometryAABBNV {
   constructor(opts) {
@@ -57532,32 +57532,32 @@ VkGeometryAABBNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkGeometryAABBNV.byteLength = 0x28;
 
-VkGeometryAABBNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkGeometryAABBNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  aabbData: Object.freeze({
+  },
+  aabbData: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  numAABBs: Object.freeze({
+  },
+  numAABBs: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  stride: Object.freeze({
+  },
+  stride: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  offset: Object.freeze({
+  },
+  offset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkGeometryDataNV **/
 class VkGeometryDataNV {
   constructor(opts) {
@@ -57655,16 +57655,16 @@ VkGeometryDataNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkGeometryDataNV.byteLength = 0x88;
 
-VkGeometryDataNV.memoryLayout = Object.freeze({
-  triangles: Object.freeze({
+VkGeometryDataNV.memoryLayout = {
+  triangles: {
     byteOffset: 0x0,
     byteLength: 0x60
-  }),
-  aabbs: Object.freeze({
+  },
+  aabbs: {
     byteOffset: 0x60,
     byteLength: 0x28
-  }),
-});
+  },
+};
 /** VkGeometryNV **/
 class VkGeometryNV {
   constructor(opts) {
@@ -57783,28 +57783,28 @@ VkGeometryNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkGeometryNV.byteLength = 0xA8;
 
-VkGeometryNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkGeometryNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  geometryType: Object.freeze({
+  },
+  geometryType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  geometry: Object.freeze({
+  },
+  geometry: {
     byteOffset: 0x18,
     byteLength: 0x88
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0xA0,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkAccelerationStructureInfoNV **/
 class VkAccelerationStructureInfoNV {
   constructor(opts) {
@@ -57953,36 +57953,36 @@ VkAccelerationStructureInfoNV.prototype.reflect = function reflect(memoryAddress
 
 VkAccelerationStructureInfoNV.byteLength = 0x28;
 
-VkAccelerationStructureInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAccelerationStructureInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  instanceCount: Object.freeze({
+  },
+  instanceCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  geometryCount: Object.freeze({
+  },
+  geometryCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pGeometries: Object.freeze({
+  },
+  pGeometries: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkAccelerationStructureCreateInfoNV **/
 class VkAccelerationStructureCreateInfoNV {
   constructor(opts) {
@@ -58092,24 +58092,24 @@ VkAccelerationStructureCreateInfoNV.prototype.reflect = function reflect(memoryA
 
 VkAccelerationStructureCreateInfoNV.byteLength = 0x40;
 
-VkAccelerationStructureCreateInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAccelerationStructureCreateInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  compactedSize: Object.freeze({
+  },
+  compactedSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  info: Object.freeze({
+  },
+  info: {
     byteOffset: 0x18,
     byteLength: 0x28
-  }),
-});
+  },
+};
 /** VkBindAccelerationStructureMemoryInfoNV **/
 class VkBindAccelerationStructureMemoryInfoNV {
   constructor(opts) {
@@ -58253,36 +58253,36 @@ VkBindAccelerationStructureMemoryInfoNV.prototype.reflect = function reflect(mem
 
 VkBindAccelerationStructureMemoryInfoNV.byteLength = 0x38;
 
-VkBindAccelerationStructureMemoryInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBindAccelerationStructureMemoryInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  accelerationStructure: Object.freeze({
+  },
+  accelerationStructure: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  memory: Object.freeze({
+  },
+  memory: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  memoryOffset: Object.freeze({
+  },
+  memoryOffset: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  deviceIndexCount: Object.freeze({
+  },
+  deviceIndexCount: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  pDeviceIndices: Object.freeze({
+  },
+  pDeviceIndices: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkWriteDescriptorSetAccelerationStructureNV **/
 class VkWriteDescriptorSetAccelerationStructureNV {
   constructor(opts) {
@@ -58398,24 +58398,24 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.reflect = function reflect
 
 VkWriteDescriptorSetAccelerationStructureNV.byteLength = 0x20;
 
-VkWriteDescriptorSetAccelerationStructureNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkWriteDescriptorSetAccelerationStructureNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  accelerationStructureCount: Object.freeze({
+  },
+  accelerationStructureCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pAccelerationStructures: Object.freeze({
+  },
+  pAccelerationStructures: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkAccelerationStructureMemoryRequirementsInfoNV **/
 class VkAccelerationStructureMemoryRequirementsInfoNV {
   constructor(opts) {
@@ -58510,24 +58510,24 @@ VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reflect = function ref
 
 VkAccelerationStructureMemoryRequirementsInfoNV.byteLength = 0x20;
 
-VkAccelerationStructureMemoryRequirementsInfoNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkAccelerationStructureMemoryRequirementsInfoNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  type: Object.freeze({
+  },
+  type: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  accelerationStructure: Object.freeze({
+  },
+  accelerationStructure: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceRayTracingPropertiesNV **/
 class VkPhysicalDeviceRayTracingPropertiesNV {
   constructor(opts) {
@@ -58633,48 +58633,48 @@ VkPhysicalDeviceRayTracingPropertiesNV.prototype.reflect = function reflect(memo
 
 VkPhysicalDeviceRayTracingPropertiesNV.byteLength = 0x40;
 
-VkPhysicalDeviceRayTracingPropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceRayTracingPropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  shaderGroupHandleSize: Object.freeze({
+  },
+  shaderGroupHandleSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  maxRecursionDepth: Object.freeze({
+  },
+  maxRecursionDepth: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  maxShaderGroupStride: Object.freeze({
+  },
+  maxShaderGroupStride: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  shaderGroupBaseAlignment: Object.freeze({
+  },
+  shaderGroupBaseAlignment: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  maxGeometryCount: Object.freeze({
+  },
+  maxGeometryCount: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-  maxInstanceCount: Object.freeze({
+  },
+  maxInstanceCount: {
     byteOffset: 0x28,
     byteLength: 0x8
-  }),
-  maxTriangleCount: Object.freeze({
+  },
+  maxTriangleCount: {
     byteOffset: 0x30,
     byteLength: 0x8
-  }),
-  maxDescriptorSetAccelerationStructures: Object.freeze({
+  },
+  maxDescriptorSetAccelerationStructures: {
     byteOffset: 0x38,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDrmFormatModifierPropertiesListEXT **/
 class VkDrmFormatModifierPropertiesListEXT {
   constructor(opts) {
@@ -58757,24 +58757,24 @@ VkDrmFormatModifierPropertiesListEXT.prototype.reflect = function reflect(memory
 
 VkDrmFormatModifierPropertiesListEXT.byteLength = 0x20;
 
-VkDrmFormatModifierPropertiesListEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDrmFormatModifierPropertiesListEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  drmFormatModifierCount: Object.freeze({
+  },
+  drmFormatModifierCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDrmFormatModifierProperties: Object.freeze({
+  },
+  pDrmFormatModifierProperties: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkDrmFormatModifierPropertiesEXT **/
 class VkDrmFormatModifierPropertiesEXT {
   constructor(opts) {
@@ -58832,20 +58832,20 @@ VkDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memoryAddr
 
 VkDrmFormatModifierPropertiesEXT.byteLength = 0x10;
 
-VkDrmFormatModifierPropertiesEXT.memoryLayout = Object.freeze({
-  drmFormatModifier: Object.freeze({
+VkDrmFormatModifierPropertiesEXT.memoryLayout = {
+  drmFormatModifier: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-  drmFormatModifierPlaneCount: Object.freeze({
+  },
+  drmFormatModifierPlaneCount: {
     byteOffset: 0x8,
     byteLength: 0x4
-  }),
-  drmFormatModifierTilingFeatures: Object.freeze({
+  },
+  drmFormatModifierTilingFeatures: {
     byteOffset: 0xC,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceImageDrmFormatModifierInfoEXT **/
 class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
   constructor(opts) {
@@ -58964,32 +58964,32 @@ VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.reflect = function refle
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.byteLength = 0x28;
 
-VkPhysicalDeviceImageDrmFormatModifierInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceImageDrmFormatModifierInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  drmFormatModifier: Object.freeze({
+  },
+  drmFormatModifier: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  sharingMode: Object.freeze({
+  },
+  sharingMode: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  queueFamilyIndexCount: Object.freeze({
+  },
+  queueFamilyIndexCount: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  pQueueFamilyIndices: Object.freeze({
+  },
+  pQueueFamilyIndices: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageDrmFormatModifierListCreateInfoEXT **/
 class VkImageDrmFormatModifierListCreateInfoEXT {
   constructor(opts) {
@@ -59084,24 +59084,24 @@ VkImageDrmFormatModifierListCreateInfoEXT.prototype.reflect = function reflect(m
 
 VkImageDrmFormatModifierListCreateInfoEXT.byteLength = 0x20;
 
-VkImageDrmFormatModifierListCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageDrmFormatModifierListCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  drmFormatModifierCount: Object.freeze({
+  },
+  drmFormatModifierCount: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  pDrmFormatModifiers: Object.freeze({
+  },
+  pDrmFormatModifiers: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageDrmFormatModifierExplicitCreateInfoEXT **/
 class VkImageDrmFormatModifierExplicitCreateInfoEXT {
   constructor(opts) {
@@ -59230,28 +59230,28 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.reflect = function refle
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.byteLength = 0x28;
 
-VkImageDrmFormatModifierExplicitCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageDrmFormatModifierExplicitCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  drmFormatModifier: Object.freeze({
+  },
+  drmFormatModifier: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  drmFormatModifierPlaneCount: Object.freeze({
+  },
+  drmFormatModifierPlaneCount: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  pPlaneLayouts: Object.freeze({
+  },
+  pPlaneLayouts: {
     byteOffset: 0x20,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageDrmFormatModifierPropertiesEXT **/
 class VkImageDrmFormatModifierPropertiesEXT {
   constructor(opts) {
@@ -59327,20 +59327,20 @@ VkImageDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memor
 
 VkImageDrmFormatModifierPropertiesEXT.byteLength = 0x18;
 
-VkImageDrmFormatModifierPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageDrmFormatModifierPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  drmFormatModifier: Object.freeze({
+  },
+  drmFormatModifier: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkImageStencilUsageCreateInfoEXT **/
 class VkImageStencilUsageCreateInfoEXT {
   constructor(opts) {
@@ -59417,20 +59417,20 @@ VkImageStencilUsageCreateInfoEXT.prototype.reflect = function reflect(memoryAddr
 
 VkImageStencilUsageCreateInfoEXT.byteLength = 0x18;
 
-VkImageStencilUsageCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkImageStencilUsageCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  stencilUsage: Object.freeze({
+  },
+  stencilUsage: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkDeviceMemoryOverallocationCreateInfoAMD **/
 class VkDeviceMemoryOverallocationCreateInfoAMD {
   constructor(opts) {
@@ -59507,20 +59507,20 @@ VkDeviceMemoryOverallocationCreateInfoAMD.prototype.reflect = function reflect(m
 
 VkDeviceMemoryOverallocationCreateInfoAMD.byteLength = 0x18;
 
-VkDeviceMemoryOverallocationCreateInfoAMD.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkDeviceMemoryOverallocationCreateInfoAMD.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  overallocationBehavior: Object.freeze({
+  },
+  overallocationBehavior: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFragmentDensityMapFeaturesEXT **/
 class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
   constructor(opts) {
@@ -59604,28 +59604,28 @@ VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.reflect = function refle
 
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.byteLength = 0x20;
 
-VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fragmentDensityMap: Object.freeze({
+  },
+  fragmentDensityMap: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  fragmentDensityMapDynamic: Object.freeze({
+  },
+  fragmentDensityMapDynamic: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  fragmentDensityMapNonSubsampledImages: Object.freeze({
+  },
+  fragmentDensityMapNonSubsampledImages: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceFragmentDensityMapPropertiesEXT **/
 class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
   constructor(opts) {
@@ -59713,28 +59713,28 @@ VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.reflect = function ref
 
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.byteLength = 0x28;
 
-VkPhysicalDeviceFragmentDensityMapPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceFragmentDensityMapPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  minFragmentDensityTexelSize: Object.freeze({
+  },
+  minFragmentDensityTexelSize: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-  maxFragmentDensityTexelSize: Object.freeze({
+  },
+  maxFragmentDensityTexelSize: {
     byteOffset: 0x18,
     byteLength: 0x8
-  }),
-  fragmentDensityInvocations: Object.freeze({
+  },
+  fragmentDensityInvocations: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkRenderPassFragmentDensityMapCreateInfoEXT **/
 class VkRenderPassFragmentDensityMapCreateInfoEXT {
   constructor(opts) {
@@ -59831,20 +59831,20 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.reflect = function reflect
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.byteLength = 0x18;
 
-VkRenderPassFragmentDensityMapCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkRenderPassFragmentDensityMapCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  fragmentDensityMapAttachment: Object.freeze({
+  },
+  fragmentDensityMapAttachment: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceScalarBlockLayoutFeaturesEXT **/
 class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
   constructor(opts) {
@@ -59920,20 +59920,20 @@ VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.reflect = function reflec
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  scalarBlockLayout: Object.freeze({
+  },
+  scalarBlockLayout: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceDepthClipEnableFeaturesEXT **/
 class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
   constructor(opts) {
@@ -60009,20 +60009,20 @@ VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.reflect = function reflect(
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceDepthClipEnableFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceDepthClipEnableFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  depthClipEnable: Object.freeze({
+  },
+  depthClipEnable: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPipelineRasterizationDepthClipStateCreateInfoEXT **/
 class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
   constructor(opts) {
@@ -60109,24 +60109,24 @@ VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.reflect = function 
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.byteLength = 0x18;
 
-VkPipelineRasterizationDepthClipStateCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPipelineRasterizationDepthClipStateCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  flags: Object.freeze({
+  },
+  flags: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  depthClipEnable: Object.freeze({
+  },
+  depthClipEnable: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMemoryBudgetPropertiesEXT **/
 class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
   constructor(opts) {
@@ -60244,24 +60244,24 @@ VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.reflect = function reflect(m
 
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.byteLength = 0x110;
 
-VkPhysicalDeviceMemoryBudgetPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMemoryBudgetPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  heapBudget: Object.freeze({
+  },
+  heapBudget: {
     byteOffset: 0x10,
     byteLength: 0x80
-  }),
-  heapUsage: Object.freeze({
+  },
+  heapUsage: {
     byteOffset: 0x90,
     byteLength: 0x80
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceMemoryPriorityFeaturesEXT **/
 class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
   constructor(opts) {
@@ -60337,20 +60337,20 @@ VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.reflect = function reflect(m
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.byteLength = 0x18;
 
-VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  memoryPriority: Object.freeze({
+  },
+  memoryPriority: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkMemoryPriorityAllocateInfoEXT **/
 class VkMemoryPriorityAllocateInfoEXT {
   constructor(opts) {
@@ -60429,20 +60429,20 @@ VkMemoryPriorityAllocateInfoEXT.prototype.reflect = function reflect(memoryAddre
 
 VkMemoryPriorityAllocateInfoEXT.byteLength = 0x18;
 
-VkMemoryPriorityAllocateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkMemoryPriorityAllocateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  priority: Object.freeze({
+  },
+  priority: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceBufferAddressFeaturesEXT **/
 class VkPhysicalDeviceBufferAddressFeaturesEXT {
   constructor(opts) {
@@ -60534,28 +60534,28 @@ VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.reflect = function reflect(me
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.byteLength = 0x20;
 
-VkPhysicalDeviceBufferAddressFeaturesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceBufferAddressFeaturesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  bufferDeviceAddress: Object.freeze({
+  },
+  bufferDeviceAddress: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  bufferDeviceAddressCaptureReplay: Object.freeze({
+  },
+  bufferDeviceAddressCaptureReplay: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  bufferDeviceAddressMultiDevice: Object.freeze({
+  },
+  bufferDeviceAddressMultiDevice: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkBufferDeviceAddressInfoEXT **/
 class VkBufferDeviceAddressInfoEXT {
   constructor(opts) {
@@ -60639,20 +60639,20 @@ VkBufferDeviceAddressInfoEXT.prototype.reflect = function reflect(memoryAddress)
 
 VkBufferDeviceAddressInfoEXT.byteLength = 0x18;
 
-VkBufferDeviceAddressInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferDeviceAddressInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  buffer: Object.freeze({
+  },
+  buffer: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkBufferDeviceAddressCreateInfoEXT **/
 class VkBufferDeviceAddressCreateInfoEXT {
   constructor(opts) {
@@ -60731,20 +60731,20 @@ VkBufferDeviceAddressCreateInfoEXT.prototype.reflect = function reflect(memoryAd
 
 VkBufferDeviceAddressCreateInfoEXT.byteLength = 0x18;
 
-VkBufferDeviceAddressCreateInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkBufferDeviceAddressCreateInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  deviceAddress: Object.freeze({
+  },
+  deviceAddress: {
     byteOffset: 0x10,
     byteLength: 0x8
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceImageViewImageFormatInfoEXT **/
 class VkPhysicalDeviceImageViewImageFormatInfoEXT {
   constructor(opts) {
@@ -60821,20 +60821,20 @@ VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.reflect = function reflect
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.byteLength = 0x18;
 
-VkPhysicalDeviceImageViewImageFormatInfoEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceImageViewImageFormatInfoEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  imageViewType: Object.freeze({
+  },
+  imageViewType: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkFilterCubicImageViewImageFormatPropertiesEXT **/
 class VkFilterCubicImageViewImageFormatPropertiesEXT {
   constructor(opts) {
@@ -60914,24 +60914,24 @@ VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.reflect = function refl
 
 VkFilterCubicImageViewImageFormatPropertiesEXT.byteLength = 0x18;
 
-VkFilterCubicImageViewImageFormatPropertiesEXT.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkFilterCubicImageViewImageFormatPropertiesEXT.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  filterCubic: Object.freeze({
+  },
+  filterCubic: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  filterCubicMinmax: Object.freeze({
+  },
+  filterCubicMinmax: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceCooperativeMatrixFeaturesNV **/
 class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
   constructor(opts) {
@@ -61015,24 +61015,24 @@ VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.reflect = function reflect
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.byteLength = 0x18;
 
-VkPhysicalDeviceCooperativeMatrixFeaturesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceCooperativeMatrixFeaturesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  cooperativeMatrix: Object.freeze({
+  },
+  cooperativeMatrix: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  cooperativeMatrixRobustBufferAccess: Object.freeze({
+  },
+  cooperativeMatrixRobustBufferAccess: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkPhysicalDeviceCooperativeMatrixPropertiesNV **/
 class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
   constructor(opts) {
@@ -61106,20 +61106,20 @@ VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.reflect = function refle
 
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.byteLength = 0x18;
 
-VkPhysicalDeviceCooperativeMatrixPropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkPhysicalDeviceCooperativeMatrixPropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  cooperativeMatrixSupportedStages: Object.freeze({
+  },
+  cooperativeMatrixSupportedStages: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkCooperativeMatrixPropertiesNV **/
 class VkCooperativeMatrixPropertiesNV {
   constructor(opts) {
@@ -61275,48 +61275,48 @@ VkCooperativeMatrixPropertiesNV.prototype.reflect = function reflect(memoryAddre
 
 VkCooperativeMatrixPropertiesNV.byteLength = 0x30;
 
-VkCooperativeMatrixPropertiesNV.memoryLayout = Object.freeze({
-  sType: Object.freeze({
+VkCooperativeMatrixPropertiesNV.memoryLayout = {
+  sType: {
     byteOffset: 0x0,
     byteLength: 0x4
-  }),
-  pNext: Object.freeze({
+  },
+  pNext: {
     byteOffset: 0x8,
     byteLength: 0x8
-  }),
-  MSize: Object.freeze({
+  },
+  MSize: {
     byteOffset: 0x10,
     byteLength: 0x4
-  }),
-  NSize: Object.freeze({
+  },
+  NSize: {
     byteOffset: 0x14,
     byteLength: 0x4
-  }),
-  KSize: Object.freeze({
+  },
+  KSize: {
     byteOffset: 0x18,
     byteLength: 0x4
-  }),
-  AType: Object.freeze({
+  },
+  AType: {
     byteOffset: 0x1C,
     byteLength: 0x4
-  }),
-  BType: Object.freeze({
+  },
+  BType: {
     byteOffset: 0x20,
     byteLength: 0x4
-  }),
-  CType: Object.freeze({
+  },
+  CType: {
     byteOffset: 0x24,
     byteLength: 0x4
-  }),
-  DType: Object.freeze({
+  },
+  DType: {
     byteOffset: 0x28,
     byteLength: 0x4
-  }),
-  scope: Object.freeze({
+  },
+  scope: {
     byteOffset: 0x2C,
     byteLength: 0x4
-  }),
-});
+  },
+};
 /** VkClearColorValue **/
 class VkClearColorValue {
   constructor(opts) {
@@ -61472,20 +61472,20 @@ VkClearColorValue.prototype.reflect = function reflect(memoryAddress) {
 
 VkClearColorValue.byteLength = 0x10;
 
-VkClearColorValue.memoryLayout = Object.freeze({
-  float32: Object.freeze({
+VkClearColorValue.memoryLayout = {
+  float32: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  int32: Object.freeze({
+  },
+  int32: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  uint32: Object.freeze({
+  },
+  uint32: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-});
+  },
+};
 /** VkClearValue **/
 class VkClearValue {
   constructor(opts) {
@@ -61583,16 +61583,16 @@ VkClearValue.prototype.reflect = function reflect(memoryAddress) {
 
 VkClearValue.byteLength = 0x10;
 
-VkClearValue.memoryLayout = Object.freeze({
-  color: Object.freeze({
+VkClearValue.memoryLayout = {
+  color: {
     byteOffset: 0x0,
     byteLength: 0x10
-  }),
-  depthStencil: Object.freeze({
+  },
+  depthStencil: {
     byteOffset: 0x0,
     byteLength: 0x8
-  }),
-});
+  },
+};
 
 module.exports = {
   ...(nvk.$getVulkanEnumerations()),

@@ -76,13 +76,13 @@ class {{ struct.name }} {
 
 {{ struct.name }}.byteLength = {{ getStructureByteLength() | safe }};
 
-{{ struct.name }}.memoryLayout = Object.freeze({
+{{ struct.name }}.memoryLayout = {
   {%- for member in struct.children -%}
   {%- if isIgnoreableType(member) != true %}
-  {{ member.name }}: Object.freeze({
+  {{ member.name }}: {
     byteOffset: {{ getStructureMemberByteOffset(member) | safe }},
     byteLength: {{ getStructureMemberByteLength(member) | safe }}
-  }),
+  },
   {%- endif -%}
   {%- endfor %}
-});
+};
