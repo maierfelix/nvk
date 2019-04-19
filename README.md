@@ -115,9 +115,7 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
 
 ## TypeScript:
 
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/index.d.ts)).
-
-To use the definition file, simply follow the installation steps above or use [this](https://github.com/maierfelix/nvk-examples/tree/master/typescript) example. Afterwards in your `.ts` file, import and use *nvk* as follows:
+To use the TypeScript definition file, simply follow the installation steps above or use [this](https://github.com/maierfelix/nvk-examples/tree/master/typescript) example as a reference. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
 import * as nvk from "nvk/generated/1.1.101/index";
@@ -139,7 +137,7 @@ let appInfo = new VkApplicationInfo({
 });
 ````
 
-Also note, that it is recommended to enable the `--strict` mode in the compiler options.
+Also note, that it is recommended to enable the `--strict` mode in the TS compiler options and use the latest version of the TS compiler.
 
 ## Syntactic Sugar:
 
