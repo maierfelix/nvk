@@ -248,7 +248,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   }
   // generate js interface
   {
-    console.log("Generating Vk JavaScript interfaces..");
+    console.log("Generating Vk JavaScript interfaces (no validation checks)..");
     let out = generateJavaScriptInterfaces(ast, false, calls, handles, structs);
     writeAddonFile(`${generatePath}/interfaces-no-validation.js`, out, "utf-8", true);
   }

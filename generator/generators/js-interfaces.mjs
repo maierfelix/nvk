@@ -312,9 +312,10 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
       ${((member.isStructType && isReference) || member.isHandleType) ? `this.memoryView${instr}[${offset}] = BI0;` : ``}
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
-    }`;
+    }`: `` }
+    `;
     }
     case JavaScriptType.STRING: {
       let instr = "BigInt64";
@@ -327,9 +328,10 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + value.constructor.name + "'");
-    }`;
+    }` : `` }
+    `;
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `
@@ -337,9 +339,10 @@ function getSetterProcessor(member) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
-    }`;
+    }`: `` }
+    `;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
       return `
@@ -347,9 +350,10 @@ function getSetterProcessor(member) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
-    }`;
+    }` : `` }
+    `;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
       return `
@@ -357,9 +361,10 @@ function getSetterProcessor(member) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
-    }`;
+    } ` : `` }
+    `;
     }
     case JavaScriptType.TYPED_ARRAY: {
       let instr = "BigInt64";
@@ -372,9 +377,10 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + value.constructor.name + "'");
-    }`;
+    }` : `` }
+    `;
     }
   };
   if (isPNextMember(member)) {
@@ -408,9 +414,10 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;
-    } else {
+    } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
-    }`;
+    }` : `` }
+    `;
   }
   warn(`Cannot resolve setter processor for ${member.name} of type ${type}`);
   return ``;

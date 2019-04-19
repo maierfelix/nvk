@@ -962,6 +962,7 @@ class VkBaseOutStructure {
     } else {
       throw new TypeError("Invalid type for 'VkBaseOutStructure.pNext': Expected 'VkBaseOutStructure' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -1040,6 +1041,7 @@ class VkBaseInStructure {
     } else {
       throw new TypeError("Invalid type for 'VkBaseInStructure.pNext': Expected 'VkBaseInStructure' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -1540,6 +1542,7 @@ class VkRect2D {
     } else {
       throw new TypeError("Invalid type for 'VkRect2D.offset': Expected 'VkOffset2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get extent() {
     return this._extent;
@@ -1556,6 +1559,7 @@ class VkRect2D {
     } else {
       throw new TypeError("Invalid type for 'VkRect2D.extent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -1651,6 +1655,7 @@ class VkClearRect {
     } else {
       throw new TypeError("Invalid type for 'VkClearRect.rect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get baseArrayLayer() {
     return this.memoryViewUint32[0x4];
@@ -2168,6 +2173,7 @@ class VkApplicationInfo {
     } else {
       throw new TypeError("Invalid type for 'VkApplicationInfo.pApplicationName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get applicationVersion() {
     return this.memoryViewUint32[0x6];
@@ -2196,6 +2202,7 @@ class VkApplicationInfo {
     } else {
       throw new TypeError("Invalid type for 'VkApplicationInfo.pEngineName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get engineVersion() {
     return this.memoryViewUint32[0xA];
@@ -2304,6 +2311,7 @@ class VkAllocationCallbacks {
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pUserData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -2395,6 +2403,7 @@ class VkDeviceQueueCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -2436,6 +2445,7 @@ class VkDeviceQueueCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pQueuePriorities': Expected 'Float32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -2599,6 +2609,7 @@ class VkDeviceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -2628,7 +2639,8 @@ class VkDeviceCreateInfo {
       this._pQueueCreateInfos = null;
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pQueueCreateInfos': Expected 'Array VkDeviceQueueCreateInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get enabledLayerCount() {
     return this.memoryViewUint32[0x8];
@@ -2650,6 +2662,7 @@ class VkDeviceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.ppEnabledLayerNames': Expected 'Array char' but got '" + value.constructor.name + "'");
     }
+    
   }
   get enabledExtensionCount() {
     return this.memoryViewUint32[0xC];
@@ -2671,6 +2684,7 @@ class VkDeviceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.ppEnabledExtensionNames': Expected 'Array char' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pEnabledFeatures() {
     return this._pEnabledFeatures;
@@ -2687,6 +2701,7 @@ class VkDeviceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pEnabledFeatures': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -2904,6 +2919,7 @@ class VkInstanceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -2929,6 +2945,7 @@ class VkInstanceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pApplicationInfo': Expected 'VkApplicationInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get enabledLayerCount() {
     return this.memoryViewUint32[0x8];
@@ -2950,6 +2967,7 @@ class VkInstanceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkInstanceCreateInfo.ppEnabledLayerNames': Expected 'Array char' but got '" + value.constructor.name + "'");
     }
+    
   }
   get enabledExtensionCount() {
     return this.memoryViewUint32[0xC];
@@ -2971,6 +2989,7 @@ class VkInstanceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkInstanceCreateInfo.ppEnabledExtensionNames': Expected 'Array char' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -3315,6 +3334,7 @@ class VkMemoryAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.pNext'");
     }
+    
   }
   get allocationSize() {
     return this.memoryViewBigUint64[0x2];
@@ -3787,6 +3807,7 @@ class VkMappedMemoryRange {
     } else {
       throw new TypeError("Invalid type for 'VkMappedMemoryRange.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this.memoryViewBigUint64[0x3];
@@ -4051,6 +4072,7 @@ class VkDescriptorBufferInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this.memoryViewBigUint64[0x1];
@@ -4144,6 +4166,7 @@ class VkDescriptorImageInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorImageInfo.sampler': Expected 'VkSampler' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageView() {
     return this._imageView;
@@ -4160,6 +4183,7 @@ class VkDescriptorImageInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorImageInfo.imageView': Expected 'VkImageView' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageLayout() {
     return this.memoryViewInt32[0x4];
@@ -4280,6 +4304,7 @@ class VkWriteDescriptorSet {
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pNext'");
     }
+    
   }
   get dstSet() {
     return this._dstSet;
@@ -4296,6 +4321,7 @@ class VkWriteDescriptorSet {
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.dstSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstBinding() {
     return this.memoryViewUint32[0x6];
@@ -4343,7 +4369,8 @@ class VkWriteDescriptorSet {
       this._pImageInfo = null;
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pImageInfo': Expected 'Array VkDescriptorImageInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pBufferInfo() {
     return this._pBufferInfo;
@@ -4355,7 +4382,8 @@ class VkWriteDescriptorSet {
       this._pBufferInfo = null;
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pBufferInfo': Expected 'Array VkDescriptorBufferInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pTexelBufferView() {
     return this._pTexelBufferView;
@@ -4367,7 +4395,8 @@ class VkWriteDescriptorSet {
       this._pTexelBufferView = null;
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pTexelBufferView': Expected 'Array VkBufferView' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -4579,6 +4608,7 @@ class VkCopyDescriptorSet {
     } else {
       throw new TypeError("Invalid type for 'VkCopyDescriptorSet.srcSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
+    
   }
   get srcBinding() {
     return this.memoryViewUint32[0x6];
@@ -4613,6 +4643,7 @@ class VkCopyDescriptorSet {
     } else {
       throw new TypeError("Invalid type for 'VkCopyDescriptorSet.dstSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstBinding() {
     return this.memoryViewUint32[0xA];
@@ -4778,6 +4809,7 @@ class VkBufferCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBufferCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -4837,6 +4869,7 @@ class VkBufferCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBufferCreateInfo.pQueueFamilyIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -4973,6 +5006,7 @@ class VkBufferViewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get format() {
     return this.memoryViewInt32[0x8];
@@ -5573,6 +5607,7 @@ class VkBufferMemoryBarrier {
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this.memoryViewBigUint64[0x5];
@@ -5729,6 +5764,7 @@ class VkImageMemoryBarrier {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryBarrier.pNext'");
     }
+    
   }
   get srcAccessMask() {
     return this.memoryViewInt32[0x4];
@@ -5799,6 +5835,7 @@ class VkImageMemoryBarrier {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryBarrier.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get subresourceRange() {
     return this._subresourceRange;
@@ -5815,6 +5852,7 @@ class VkImageMemoryBarrier {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryBarrier.subresourceRange': Expected 'VkImageSubresourceRange' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -5988,6 +6026,7 @@ class VkImageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -6031,6 +6070,7 @@ class VkImageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageCreateInfo.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get mipLevels() {
     return this.memoryViewUint32[0xA];
@@ -6108,6 +6148,7 @@ class VkImageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageCreateInfo.pQueueFamilyIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get initialLayout() {
     return this.memoryViewInt32[0x14];
@@ -6371,6 +6412,7 @@ class VkImageViewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -6396,6 +6438,7 @@ class VkImageViewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get viewType() {
     return this.memoryViewInt32[0x8];
@@ -6430,6 +6473,7 @@ class VkImageViewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
+    
   }
   get subresourceRange() {
     return this._subresourceRange;
@@ -6446,6 +6490,7 @@ class VkImageViewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.subresourceRange': Expected 'VkImageSubresourceRange' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -6682,6 +6727,7 @@ class VkSparseMemoryBind {
     } else {
       throw new TypeError("Invalid type for 'VkSparseMemoryBind.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x3];
@@ -6791,6 +6837,7 @@ class VkSparseImageMemoryBind {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.subresource': Expected 'VkImageSubresource' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this._offset;
@@ -6807,6 +6854,7 @@ class VkSparseImageMemoryBind {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.offset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get extent() {
     return this._extent;
@@ -6823,6 +6871,7 @@ class VkSparseImageMemoryBind {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -6839,6 +6888,7 @@ class VkSparseImageMemoryBind {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x6];
@@ -6984,6 +7034,7 @@ class VkSparseBufferMemoryBindInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get bindCount() {
     return this.memoryViewUint32[0x2];
@@ -7004,7 +7055,8 @@ class VkSparseBufferMemoryBindInfo {
       this._pBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.pBinds': Expected 'Array VkSparseMemoryBind' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -7105,6 +7157,7 @@ class VkSparseImageOpaqueMemoryBindInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get bindCount() {
     return this.memoryViewUint32[0x2];
@@ -7125,7 +7178,8 @@ class VkSparseImageOpaqueMemoryBindInfo {
       this._pBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.pBinds': Expected 'Array VkSparseMemoryBind' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -7226,6 +7280,7 @@ class VkSparseImageMemoryBindInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get bindCount() {
     return this.memoryViewUint32[0x2];
@@ -7246,7 +7301,8 @@ class VkSparseImageMemoryBindInfo {
       this._pBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.pBinds': Expected 'Array VkSparseImageMemoryBind' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -7387,6 +7443,7 @@ class VkBindSparseInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pNext'");
     }
+    
   }
   get waitSemaphoreCount() {
     return this.memoryViewUint32[0x4];
@@ -7407,7 +7464,8 @@ class VkBindSparseInfo {
       this._pWaitSemaphores = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pWaitSemaphores': Expected 'Array VkSemaphore' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get bufferBindCount() {
     return this.memoryViewUint32[0x8];
@@ -7428,7 +7486,8 @@ class VkBindSparseInfo {
       this._pBufferBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pBufferBinds': Expected 'Array VkSparseBufferMemoryBindInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get imageOpaqueBindCount() {
     return this.memoryViewUint32[0xC];
@@ -7449,7 +7508,8 @@ class VkBindSparseInfo {
       this._pImageOpaqueBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageOpaqueBinds': Expected 'Array VkSparseImageOpaqueMemoryBindInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get imageBindCount() {
     return this.memoryViewUint32[0x10];
@@ -7470,7 +7530,8 @@ class VkBindSparseInfo {
       this._pImageBinds = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageBinds': Expected 'Array VkSparseImageMemoryBindInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get signalSemaphoreCount() {
     return this.memoryViewUint32[0x14];
@@ -7491,7 +7552,8 @@ class VkBindSparseInfo {
       this._pSignalSemaphores = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindSparseInfo.pSignalSemaphores': Expected 'Array VkSemaphore' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -7730,6 +7792,7 @@ class VkImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get srcOffset() {
     return this._srcOffset;
@@ -7746,6 +7809,7 @@ class VkImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.srcOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstSubresource() {
     return this._dstSubresource;
@@ -7762,6 +7826,7 @@ class VkImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstOffset() {
     return this._dstOffset;
@@ -7778,6 +7843,7 @@ class VkImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.dstOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get extent() {
     return this._extent;
@@ -7794,6 +7860,7 @@ class VkImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -7940,6 +8007,7 @@ class VkImageBlit {
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get srcOffsets() {
     return this._srcOffsets;
@@ -7951,7 +8019,8 @@ class VkImageBlit {
       this._srcOffsets = null;
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.srcOffsets': Expected 'Array VkOffset3D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get dstSubresource() {
     return this._dstSubresource;
@@ -7968,6 +8037,7 @@ class VkImageBlit {
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstOffsets() {
     return this._dstOffsets;
@@ -7979,7 +8049,8 @@ class VkImageBlit {
       this._dstOffsets = null;
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.dstOffsets': Expected 'Array VkOffset3D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -8174,6 +8245,7 @@ class VkBufferImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageOffset() {
     return this._imageOffset;
@@ -8190,6 +8262,7 @@ class VkBufferImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageExtent() {
     return this._imageExtent;
@@ -8206,6 +8279,7 @@ class VkBufferImageCopy {
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageExtent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -8332,6 +8406,7 @@ class VkImageResolve {
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get srcOffset() {
     return this._srcOffset;
@@ -8348,6 +8423,7 @@ class VkImageResolve {
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.srcOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstSubresource() {
     return this._dstSubresource;
@@ -8364,6 +8440,7 @@ class VkImageResolve {
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstOffset() {
     return this._dstOffset;
@@ -8380,6 +8457,7 @@ class VkImageResolve {
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.dstOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get extent() {
     return this._extent;
@@ -8396,6 +8474,7 @@ class VkImageResolve {
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -8564,6 +8643,7 @@ class VkShaderModuleCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -8596,6 +8676,7 @@ class VkShaderModuleCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pCode': Expected 'Uint8Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -8722,7 +8803,8 @@ class VkDescriptorSetLayoutBinding {
       this._pImmutableSamplers = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.pImmutableSamplers': Expected 'Array VkSampler' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -8853,6 +8935,7 @@ class VkDescriptorSetLayoutCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -8882,7 +8965,8 @@ class VkDescriptorSetLayoutCreateInfo {
       this._pBindings = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pBindings': Expected 'Array VkDescriptorSetLayoutBinding' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -9093,6 +9177,7 @@ class VkDescriptorPoolCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -9131,7 +9216,8 @@ class VkDescriptorPoolCreateInfo {
       this._pPoolSizes = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pPoolSizes': Expected 'Array VkDescriptorPoolSize' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -9273,6 +9359,7 @@ class VkDescriptorSetAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pNext'");
     }
+    
   }
   get descriptorPool() {
     return this._descriptorPool;
@@ -9289,6 +9376,7 @@ class VkDescriptorSetAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.descriptorPool': Expected 'VkDescriptorPool' but got '" + value.constructor.name + "'");
     }
+    
   }
   get descriptorSetCount() {
     return this.memoryViewUint32[0x6];
@@ -9309,7 +9397,8 @@ class VkDescriptorSetAllocateInfo {
       this._pSetLayouts = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pSetLayouts': Expected 'Array VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -9517,7 +9606,8 @@ class VkSpecializationInfo {
       this._pMapEntries = null;
     } else {
       throw new TypeError("Invalid type for 'VkSpecializationInfo.pMapEntries': Expected 'Array VkSpecializationMapEntry' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get dataSize() {
     return this.memoryViewBigInt64[0x2];
@@ -9541,6 +9631,7 @@ class VkSpecializationInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSpecializationInfo.pData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -9685,6 +9776,7 @@ class VkPipelineShaderStageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.module': Expected 'VkShaderModule' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pName() {
     if (this._pName !== null) {
@@ -9704,6 +9796,7 @@ class VkPipelineShaderStageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.pName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pSpecializationInfo() {
     return this._pSpecializationInfo;
@@ -9720,6 +9813,7 @@ class VkPipelineShaderStageCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo': Expected 'VkSpecializationInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -9850,6 +9944,7 @@ class VkComputePipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.stage': Expected 'VkPipelineShaderStageCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get layout() {
     return this._layout;
@@ -9866,6 +9961,7 @@ class VkComputePipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get basePipelineHandle() {
     return this._basePipelineHandle;
@@ -9882,6 +9978,7 @@ class VkComputePipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
+    
   }
   get basePipelineIndex() {
     return this.memoryViewInt32[0x16];
@@ -10217,6 +10314,7 @@ class VkPipelineVertexInputStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -10246,7 +10344,8 @@ class VkPipelineVertexInputStateCreateInfo {
       this._pVertexBindingDescriptions = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions': Expected 'Array VkVertexInputBindingDescription' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get vertexAttributeDescriptionCount() {
     return this.memoryViewUint32[0x8];
@@ -10267,7 +10366,8 @@ class VkPipelineVertexInputStateCreateInfo {
       this._pVertexAttributeDescriptions = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions': Expected 'Array VkVertexInputAttributeDescription' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -10553,6 +10653,7 @@ class VkPipelineTessellationStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -10689,6 +10790,7 @@ class VkPipelineViewportStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -10718,7 +10820,8 @@ class VkPipelineViewportStateCreateInfo {
       this._pViewports = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pViewports': Expected 'Array VkViewport' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get scissorCount() {
     return this.memoryViewUint32[0x8];
@@ -10739,7 +10842,8 @@ class VkPipelineViewportStateCreateInfo {
       this._pScissors = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pScissors': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -10929,6 +11033,7 @@ class VkPipelineRasterizationStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -11175,6 +11280,7 @@ class VkPipelineMultisampleStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -11222,6 +11328,7 @@ class VkPipelineMultisampleStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pSampleMask': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get alphaToCoverageEnable() {
     return this.memoryViewUint32[0xA] !== 0;
@@ -11529,6 +11636,7 @@ class VkPipelineColorBlendStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -11573,7 +11681,8 @@ class VkPipelineColorBlendStateCreateInfo {
       this._pAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pAttachments': Expected 'Array VkPipelineColorBlendAttachmentState' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get blendConstants() {
     return this._blendConstants;
@@ -11586,6 +11695,7 @@ class VkPipelineColorBlendStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.blendConstants': Expected 'Array float' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -11774,6 +11884,7 @@ class VkPipelineDynamicStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDynamicStateCreateInfo.pDynamicStates': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -12089,6 +12200,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.front': Expected 'VkStencilOpState' but got '" + value.constructor.name + "'");
     }
+    
   }
   get back() {
     return this._back;
@@ -12105,6 +12217,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.back': Expected 'VkStencilOpState' but got '" + value.constructor.name + "'");
     }
+    
   }
   get minDepthBounds() {
     return this.memoryViewFloat32[0x18];
@@ -12319,6 +12432,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -12348,7 +12462,8 @@ class VkGraphicsPipelineCreateInfo {
       this._pStages = null;
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pStages': Expected 'Array VkPipelineShaderStageCreateInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pVertexInputState() {
     return this._pVertexInputState;
@@ -12365,6 +12480,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pVertexInputState': Expected 'VkPipelineVertexInputStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pInputAssemblyState() {
     return this._pInputAssemblyState;
@@ -12381,6 +12497,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState': Expected 'VkPipelineInputAssemblyStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pTessellationState() {
     return this._pTessellationState;
@@ -12397,6 +12514,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pTessellationState': Expected 'VkPipelineTessellationStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pViewportState() {
     return this._pViewportState;
@@ -12413,6 +12531,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pViewportState': Expected 'VkPipelineViewportStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pRasterizationState() {
     return this._pRasterizationState;
@@ -12429,6 +12548,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pRasterizationState': Expected 'VkPipelineRasterizationStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pMultisampleState() {
     return this._pMultisampleState;
@@ -12445,6 +12565,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pMultisampleState': Expected 'VkPipelineMultisampleStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pDepthStencilState() {
     return this._pDepthStencilState;
@@ -12461,6 +12582,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pDepthStencilState': Expected 'VkPipelineDepthStencilStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pColorBlendState() {
     return this._pColorBlendState;
@@ -12477,6 +12599,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pColorBlendState': Expected 'VkPipelineColorBlendStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pDynamicState() {
     return this._pDynamicState;
@@ -12493,6 +12616,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pDynamicState': Expected 'VkPipelineDynamicStateCreateInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   get layout() {
     return this._layout;
@@ -12509,6 +12633,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get renderPass() {
     return this._renderPass;
@@ -12525,6 +12650,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
+    
   }
   get subpass() {
     return this.memoryViewUint32[0x1E];
@@ -12550,6 +12676,7 @@ class VkGraphicsPipelineCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
+    
   }
   get basePipelineIndex() {
     return this.memoryViewInt32[0x22];
@@ -12764,6 +12891,7 @@ class VkPipelineCacheCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.pInitialData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -12980,7 +13108,8 @@ class VkPipelineLayoutCreateInfo {
       this._pSetLayouts = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pSetLayouts': Expected 'Array VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pushConstantRangeCount() {
     return this.memoryViewUint32[0x8];
@@ -13001,7 +13130,8 @@ class VkPipelineLayoutCreateInfo {
       this._pPushConstantRanges = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pPushConstantRanges': Expected 'Array VkPushConstantRange' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -13199,6 +13329,7 @@ class VkSamplerCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -13604,6 +13735,7 @@ class VkCommandBufferAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferAllocateInfo.commandPool': Expected 'VkCommandPool' but got '" + value.constructor.name + "'");
     }
+    
   }
   get level() {
     return this.memoryViewInt32[0x6];
@@ -13740,6 +13872,7 @@ class VkCommandBufferInheritanceInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pNext'");
     }
+    
   }
   get renderPass() {
     return this._renderPass;
@@ -13756,6 +13889,7 @@ class VkCommandBufferInheritanceInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
+    
   }
   get subpass() {
     return this.memoryViewUint32[0x6];
@@ -13781,6 +13915,7 @@ class VkCommandBufferInheritanceInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.framebuffer': Expected 'VkFramebuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get occlusionQueryEnable() {
     return this.memoryViewUint32[0xA] !== 0;
@@ -13925,6 +14060,7 @@ class VkCommandBufferBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -13950,6 +14086,7 @@ class VkCommandBufferBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pInheritanceInfo': Expected 'VkCommandBufferInheritanceInfo' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -14064,6 +14201,7 @@ class VkRenderPassBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pNext'");
     }
+    
   }
   get renderPass() {
     return this._renderPass;
@@ -14080,6 +14218,7 @@ class VkRenderPassBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
+    
   }
   get framebuffer() {
     return this._framebuffer;
@@ -14096,6 +14235,7 @@ class VkRenderPassBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.framebuffer': Expected 'VkFramebuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get renderArea() {
     return this._renderArea;
@@ -14112,6 +14252,7 @@ class VkRenderPassBeginInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.renderArea': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get clearValueCount() {
     return this.memoryViewUint32[0xC];
@@ -14132,7 +14273,8 @@ class VkRenderPassBeginInfo {
       this._pClearValues = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pClearValues': Expected 'Array VkClearValue' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -14357,6 +14499,7 @@ class VkClearAttachment {
     } else {
       throw new TypeError("Invalid type for 'VkClearAttachment.clearValue': Expected 'VkClearValue' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -14731,7 +14874,8 @@ class VkSubpassDescription {
       this._pInputAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pInputAttachments': Expected 'Array VkAttachmentReference' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get colorAttachmentCount() {
     return this.memoryViewUint32[0x6];
@@ -14752,7 +14896,8 @@ class VkSubpassDescription {
       this._pColorAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pColorAttachments': Expected 'Array VkAttachmentReference' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pResolveAttachments() {
     return this._pResolveAttachments;
@@ -14764,7 +14909,8 @@ class VkSubpassDescription {
       this._pResolveAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pResolveAttachments': Expected 'Array VkAttachmentReference' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pDepthStencilAttachment() {
     return this._pDepthStencilAttachment;
@@ -14781,6 +14927,7 @@ class VkSubpassDescription {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pDepthStencilAttachment': Expected 'VkAttachmentReference' but got '" + value.constructor.name + "'");
     }
+    
   }
   get preserveAttachmentCount() {
     return this.memoryViewUint32[0xE];
@@ -14804,6 +14951,7 @@ class VkSubpassDescription {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pPreserveAttachments': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -15160,6 +15308,7 @@ class VkRenderPassCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -15189,7 +15338,8 @@ class VkRenderPassCreateInfo {
       this._pAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pAttachments': Expected 'Array VkAttachmentDescription' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get subpassCount() {
     return this.memoryViewUint32[0x8];
@@ -15210,7 +15360,8 @@ class VkRenderPassCreateInfo {
       this._pSubpasses = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pSubpasses': Expected 'Array VkSubpassDescription' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get dependencyCount() {
     return this.memoryViewUint32[0xC];
@@ -15231,7 +15382,8 @@ class VkRenderPassCreateInfo {
       this._pDependencies = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pDependencies': Expected 'Array VkSubpassDependency' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -15517,6 +15669,7 @@ class VkFenceCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkFenceCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -17338,6 +17491,7 @@ class VkSemaphoreCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -17605,6 +17759,7 @@ class VkFramebufferCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
+    
   }
   get attachmentCount() {
     return this.memoryViewUint32[0x8];
@@ -17625,7 +17780,8 @@ class VkFramebufferCreateInfo {
       this._pAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.pAttachments': Expected 'Array VkImageView' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get width() {
     return this.memoryViewUint32[0xC];
@@ -18119,6 +18275,7 @@ class VkSubmitInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
     }
+    
   }
   get waitSemaphoreCount() {
     return this.memoryViewUint32[0x4];
@@ -18139,7 +18296,8 @@ class VkSubmitInfo {
       this._pWaitSemaphores = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubmitInfo.pWaitSemaphores': Expected 'Array VkSemaphore' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pWaitDstStageMask() {
     return this._pWaitDstStageMask;
@@ -18154,6 +18312,7 @@ class VkSubmitInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSubmitInfo.pWaitDstStageMask': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get commandBufferCount() {
     return this.memoryViewUint32[0xA];
@@ -18174,7 +18333,8 @@ class VkSubmitInfo {
       this._pCommandBuffers = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubmitInfo.pCommandBuffers': Expected 'Array VkCommandBuffer' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get signalSemaphoreCount() {
     return this.memoryViewUint32[0xE];
@@ -18195,7 +18355,8 @@ class VkSubmitInfo {
       this._pSignalSemaphores = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubmitInfo.pSignalSemaphores': Expected 'Array VkSemaphore' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -18539,6 +18700,7 @@ class VkDisplayModeParametersKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplayModeParametersKHR.visibleRegion': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get refreshRate() {
     return this.memoryViewUint32[0x2];
@@ -18717,6 +18879,7 @@ class VkDisplayModeCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplayModeCreateInfoKHR.parameters': Expected 'VkDisplayModeParametersKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -18989,6 +19152,7 @@ class VkDisplaySurfaceCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.displayMode': Expected 'VkDisplayModeKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get planeIndex() {
     return this.memoryViewUint32[0x8];
@@ -19050,6 +19214,7 @@ class VkDisplaySurfaceCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.imageExtent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -19194,6 +19359,7 @@ class VkDisplayPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPresentInfoKHR.srcRect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dstRect() {
     return this._dstRect;
@@ -19210,6 +19376,7 @@ class VkDisplayPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPresentInfoKHR.dstRect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get persistent() {
     return this.memoryViewUint32[0xC] !== 0;
@@ -19692,6 +19859,7 @@ class VkSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -19717,6 +19885,7 @@ class VkSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.surface': Expected 'VkSurfaceKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get minImageCount() {
     return this.memoryViewUint32[0x8];
@@ -19760,6 +19929,7 @@ class VkSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageExtent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageArrayLayers() {
     return this.memoryViewUint32[0xD];
@@ -19810,6 +19980,7 @@ class VkSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pQueueFamilyIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get preTransform() {
     return this.memoryViewInt32[0x14];
@@ -19859,6 +20030,7 @@ class VkSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.oldSwapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20047,6 +20219,7 @@ class VkPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
     }
+    
   }
   get waitSemaphoreCount() {
     return this.memoryViewUint32[0x4];
@@ -20067,7 +20240,8 @@ class VkPresentInfoKHR {
       this._pWaitSemaphores = null;
     } else {
       throw new TypeError("Invalid type for 'VkPresentInfoKHR.pWaitSemaphores': Expected 'Array VkSemaphore' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get swapchainCount() {
     return this.memoryViewUint32[0x8];
@@ -20088,7 +20262,8 @@ class VkPresentInfoKHR {
       this._pSwapchains = null;
     } else {
       throw new TypeError("Invalid type for 'VkPresentInfoKHR.pSwapchains': Expected 'Array VkSwapchainKHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pImageIndices() {
     return this._pImageIndices;
@@ -20103,6 +20278,7 @@ class VkPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkPresentInfoKHR.pImageIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pResults() {
     return this._pResults;
@@ -20117,6 +20293,7 @@ class VkPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkPresentInfoKHR.pResults': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20291,6 +20468,7 @@ class VkDebugReportCallbackCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugReportCallbackCreateInfoEXT.pUserData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20403,6 +20581,7 @@ class VkValidationFlagsEXT {
     } else {
       throw new TypeError("Invalid type for 'VkValidationFlagsEXT.pDisabledValidationChecks': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20519,6 +20698,7 @@ class VkValidationFeaturesEXT {
     } else {
       throw new TypeError("Invalid type for 'VkValidationFeaturesEXT.pEnabledValidationFeatures': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get disabledValidationFeatureCount() {
     return this.memoryViewUint32[0x8];
@@ -20542,6 +20722,7 @@ class VkValidationFeaturesEXT {
     } else {
       throw new TypeError("Invalid type for 'VkValidationFeaturesEXT.pDisabledValidationFeatures': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20768,6 +20949,7 @@ class VkDebugMarkerObjectNameInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.pObjectName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -20917,6 +21099,7 @@ class VkDebugMarkerObjectTagInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.pTag': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -21037,6 +21220,7 @@ class VkDebugMarkerMarkerInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugMarkerMarkerInfoEXT.pMarkerName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get color() {
     return this._color;
@@ -21049,6 +21233,7 @@ class VkDebugMarkerMarkerInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugMarkerMarkerInfoEXT.color': Expected 'Array float' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -21355,6 +21540,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkDedicatedAllocationMemoryAllocateInfoNV.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get buffer() {
     return this._buffer;
@@ -21371,6 +21557,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkDedicatedAllocationMemoryAllocateInfoNV.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -21929,7 +22116,8 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
       this._pAcquireSyncs = null;
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs': Expected 'Array VkDeviceMemory' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pAcquireKeys() {
     return this._pAcquireKeys;
@@ -21944,6 +22132,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireKeys': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pAcquireTimeoutMilliseconds() {
     return this._pAcquireTimeoutMilliseconds;
@@ -21958,6 +22147,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireTimeoutMilliseconds': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get releaseCount() {
     return this.memoryViewUint32[0xC];
@@ -21978,7 +22168,8 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
       this._pReleaseSyncs = null;
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs': Expected 'Array VkDeviceMemory' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pReleaseKeys() {
     return this._pReleaseKeys;
@@ -21993,6 +22184,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseKeys': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -22399,6 +22591,7 @@ class VkIndirectCommandsTokenNVX {
     } else {
       throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this.memoryViewBigUint64[0x2];
@@ -22630,7 +22823,8 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
       this._pTokens = null;
     } else {
       throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens': Expected 'Array VkIndirectCommandsLayoutTokenNVX' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -22787,6 +22981,7 @@ class VkCmdProcessCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.objectTable': Expected 'VkObjectTableNVX' but got '" + value.constructor.name + "'");
     }
+    
   }
   get indirectCommandsLayout() {
     return this._indirectCommandsLayout;
@@ -22803,6 +22998,7 @@ class VkCmdProcessCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.indirectCommandsLayout': Expected 'VkIndirectCommandsLayoutNVX' but got '" + value.constructor.name + "'");
     }
+    
   }
   get indirectCommandsTokenCount() {
     return this.memoryViewUint32[0x8];
@@ -22823,7 +23019,8 @@ class VkCmdProcessCommandsInfoNVX {
       this._pIndirectCommandsTokens = null;
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens': Expected 'Array VkIndirectCommandsTokenNVX' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get maxSequencesCount() {
     return this.memoryViewUint32[0xC];
@@ -22849,6 +23046,7 @@ class VkCmdProcessCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.targetCommandBuffer': Expected 'VkCommandBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get sequencesCountBuffer() {
     return this._sequencesCountBuffer;
@@ -22865,6 +23063,7 @@ class VkCmdProcessCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesCountBuffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get sequencesCountOffset() {
     return this.memoryViewBigUint64[0x9];
@@ -22890,6 +23089,7 @@ class VkCmdProcessCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesIndexBuffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get sequencesIndexOffset() {
     return this.memoryViewBigUint64[0xB];
@@ -23062,6 +23262,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.objectTable': Expected 'VkObjectTableNVX' but got '" + value.constructor.name + "'");
     }
+    
   }
   get indirectCommandsLayout() {
     return this._indirectCommandsLayout;
@@ -23078,6 +23279,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.indirectCommandsLayout': Expected 'VkIndirectCommandsLayoutNVX' but got '" + value.constructor.name + "'");
     }
+    
   }
   get maxSequencesCount() {
     return this.memoryViewUint32[0x8];
@@ -23217,6 +23419,7 @@ class VkObjectTableCreateInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.pObjectEntryTypes': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pObjectEntryCounts() {
     return this._pObjectEntryCounts;
@@ -23231,6 +23434,7 @@ class VkObjectTableCreateInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.pObjectEntryCounts': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pObjectEntryUsageFlags() {
     return this._pObjectEntryUsageFlags;
@@ -23245,6 +23449,7 @@ class VkObjectTableCreateInfoNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.pObjectEntryUsageFlags': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get maxUniformBuffersPerDescriptor() {
     return this.memoryViewUint32[0xC];
@@ -23491,6 +23696,7 @@ class VkObjectTablePipelineEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTablePipelineEntryNVX.pipeline': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -23586,6 +23792,7 @@ class VkObjectTableDescriptorSetEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get descriptorSet() {
     return this._descriptorSet;
@@ -23602,6 +23809,7 @@ class VkObjectTableDescriptorSetEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.descriptorSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -23699,6 +23907,7 @@ class VkObjectTableVertexBufferEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableVertexBufferEntryNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -23794,6 +24003,7 @@ class VkObjectTableIndexBufferEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableIndexBufferEntryNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get indexType() {
     return this.memoryViewInt32[0x4];
@@ -23902,6 +24112,7 @@ class VkObjectTablePushConstantEntryNVX {
     } else {
       throw new TypeError("Invalid type for 'VkObjectTablePushConstantEntryNVX.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get stageFlags() {
     return this.memoryViewInt32[0x4];
@@ -24037,6 +24248,7 @@ class VkPhysicalDeviceFeatures2 {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
     }
+    
   }
   get features() {
     return this._features;
@@ -24053,6 +24265,7 @@ class VkPhysicalDeviceFeatures2 {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.features': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -24195,6 +24408,7 @@ class VkPhysicalDeviceFeatures2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
     }
+    
   }
   get features() {
     return this._features;
@@ -24211,6 +24425,7 @@ class VkPhysicalDeviceFeatures2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.features': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -24348,6 +24563,7 @@ class VkPhysicalDeviceProperties2 {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.pNext'");
     }
+    
   }
   get properties() {
     return this._properties;
@@ -24481,6 +24697,7 @@ class VkPhysicalDeviceProperties2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.pNext'");
     }
+    
   }
   get properties() {
     return this._properties;
@@ -24587,6 +24804,7 @@ class VkFormatProperties2 {
     } else {
       throw new TypeError("Invalid type for 'VkFormatProperties2.pNext'");
     }
+    
   }
   get formatProperties() {
     return this._formatProperties;
@@ -24693,6 +24911,7 @@ class VkFormatProperties2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkFormatProperties2KHR.pNext'");
     }
+    
   }
   get formatProperties() {
     return this._formatProperties;
@@ -24803,6 +25022,7 @@ class VkImageFormatProperties2 {
     } else {
       throw new TypeError("Invalid type for 'VkImageFormatProperties2.pNext'");
     }
+    
   }
   get imageFormatProperties() {
     return this._imageFormatProperties;
@@ -24913,6 +25133,7 @@ class VkImageFormatProperties2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.pNext'");
     }
+    
   }
   get imageFormatProperties() {
     return this._imageFormatProperties;
@@ -25032,6 +25253,7 @@ class VkPhysicalDeviceImageFormatInfo2 {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.pNext'");
     }
+    
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -25203,6 +25425,7 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.pNext'");
     }
+    
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -25361,6 +25584,7 @@ class VkQueueFamilyProperties2 {
     } else {
       throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.pNext'");
     }
+    
   }
   get queueFamilyProperties() {
     return this._queueFamilyProperties;
@@ -25467,6 +25691,7 @@ class VkQueueFamilyProperties2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.pNext'");
     }
+    
   }
   get queueFamilyProperties() {
     return this._queueFamilyProperties;
@@ -25573,6 +25798,7 @@ class VkPhysicalDeviceMemoryProperties2 {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.pNext'");
     }
+    
   }
   get memoryProperties() {
     return this._memoryProperties;
@@ -25679,6 +25905,7 @@ class VkPhysicalDeviceMemoryProperties2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.pNext'");
     }
+    
   }
   get memoryProperties() {
     return this._memoryProperties;
@@ -26577,7 +26804,8 @@ class VkPresentRegionsKHR {
       this._pRegions = null;
     } else {
       throw new TypeError("Invalid type for 'VkPresentRegionsKHR.pRegions': Expected 'Array VkPresentRegionKHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -26689,7 +26917,8 @@ class VkPresentRegionKHR {
       this._pRectangles = null;
     } else {
       throw new TypeError("Invalid type for 'VkPresentRegionKHR.pRectangles': Expected 'Array VkRectLayerKHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -26783,6 +27012,7 @@ class VkRectLayerKHR {
     } else {
       throw new TypeError("Invalid type for 'VkRectLayerKHR.offset': Expected 'VkOffset2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get extent() {
     return this._extent;
@@ -26799,6 +27029,7 @@ class VkRectLayerKHR {
     } else {
       throw new TypeError("Invalid type for 'VkRectLayerKHR.extent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get layer() {
     return this.memoryViewUint32[0x4];
@@ -28945,6 +29176,7 @@ class VkImportMemoryWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -29053,6 +29285,7 @@ class VkExportMemoryWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkExportMemoryWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -29241,6 +29474,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryGetWin32HandleInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -29547,6 +29781,7 @@ class VkMemoryGetFdInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryGetFdInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -29677,7 +29912,8 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
       this._pAcquireSyncs = null;
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs': Expected 'Array VkDeviceMemory' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pAcquireKeys() {
     return this._pAcquireKeys;
@@ -29692,6 +29928,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireKeys': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pAcquireTimeouts() {
     return this._pAcquireTimeouts;
@@ -29706,6 +29943,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireTimeouts': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get releaseCount() {
     return this.memoryViewUint32[0xC];
@@ -29726,7 +29964,8 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
       this._pReleaseSyncs = null;
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs': Expected 'Array VkDeviceMemory' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pReleaseKeys() {
     return this._pReleaseKeys;
@@ -29741,6 +29980,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseKeys': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -30484,6 +30724,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x6];
@@ -30530,6 +30771,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -30646,6 +30888,7 @@ class VkExportSemaphoreWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkExportSemaphoreWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -30758,6 +31001,7 @@ class VkD3D12FenceSubmitInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkD3D12FenceSubmitInfoKHR.pWaitSemaphoreValues': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get signalSemaphoreValuesCount() {
     return this.memoryViewUint32[0x8];
@@ -30781,6 +31025,7 @@ class VkD3D12FenceSubmitInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkD3D12FenceSubmitInfoKHR.pSignalSemaphoreValues': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -30892,6 +31137,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSemaphoreGetWin32HandleInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -31008,6 +31254,7 @@ class VkImportSemaphoreFdInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x6];
@@ -31146,6 +31393,7 @@ class VkSemaphoreGetFdInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSemaphoreGetFdInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -31830,6 +32078,7 @@ class VkImportFenceWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x6];
@@ -31876,6 +32125,7 @@ class VkImportFenceWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -31992,6 +32242,7 @@ class VkExportFenceWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkExportFenceWin32HandleInfoKHR.name': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -32091,6 +32342,7 @@ class VkFenceGetWin32HandleInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkFenceGetWin32HandleInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -32207,6 +32459,7 @@ class VkImportFenceFdInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x6];
@@ -32345,6 +32598,7 @@ class VkFenceGetFdInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkFenceGetFdInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
+    
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
@@ -32894,6 +33148,7 @@ class VkRenderPassMultiviewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.pViewMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dependencyCount() {
     return this.memoryViewUint32[0x8];
@@ -32917,6 +33172,7 @@ class VkRenderPassMultiviewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.pViewOffsets': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get correlationMaskCount() {
     return this.memoryViewUint32[0xC];
@@ -32940,6 +33196,7 @@ class VkRenderPassMultiviewCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.pCorrelationMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -33076,6 +33333,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.pViewMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get dependencyCount() {
     return this.memoryViewUint32[0x8];
@@ -33099,6 +33357,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.pViewOffsets': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get correlationMaskCount() {
     return this.memoryViewUint32[0xC];
@@ -33122,6 +33381,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.pCorrelationMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -34209,6 +34469,7 @@ class VkBindBufferMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.pNext'");
     }
+    
   }
   get buffer() {
     return this._buffer;
@@ -34225,6 +34486,7 @@ class VkBindBufferMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -34241,6 +34503,7 @@ class VkBindBufferMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x4];
@@ -34362,6 +34625,7 @@ class VkBindBufferMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.pNext'");
     }
+    
   }
   get buffer() {
     return this._buffer;
@@ -34378,6 +34642,7 @@ class VkBindBufferMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -34394,6 +34659,7 @@ class VkBindBufferMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x4];
@@ -34519,6 +34785,7 @@ class VkBindBufferMemoryDeviceGroupInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfo.pDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -34631,6 +34898,7 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfoKHR.pDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -34741,6 +35009,7 @@ class VkBindImageMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.pNext'");
     }
+    
   }
   get image() {
     return this._image;
@@ -34757,6 +35026,7 @@ class VkBindImageMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -34773,6 +35043,7 @@ class VkBindImageMemoryInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x4];
@@ -34896,6 +35167,7 @@ class VkBindImageMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.pNext'");
     }
+    
   }
   get image() {
     return this._image;
@@ -34912,6 +35184,7 @@ class VkBindImageMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -34928,6 +35201,7 @@ class VkBindImageMemoryInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x4];
@@ -35058,6 +35332,7 @@ class VkBindImageMemoryDeviceGroupInfo {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.pDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get splitInstanceBindRegionCount() {
     return this.memoryViewUint32[0x8];
@@ -35078,7 +35353,8 @@ class VkBindImageMemoryDeviceGroupInfo {
       this._pSplitInstanceBindRegions = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -35228,6 +35504,7 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.pDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get splitInstanceBindRegionCount() {
     return this.memoryViewUint32[0x8];
@@ -35248,7 +35525,8 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
       this._pSplitInstanceBindRegions = null;
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -35402,7 +35680,8 @@ class VkDeviceGroupRenderPassBeginInfo {
       this._pDeviceRenderAreas = null;
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -35552,7 +35831,8 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
       this._pDeviceRenderAreas = null;
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -35885,6 +36165,7 @@ class VkDeviceGroupSubmitInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.pWaitSemaphoreDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get commandBufferCount() {
     return this.memoryViewUint32[0x8];
@@ -35908,6 +36189,7 @@ class VkDeviceGroupSubmitInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.pCommandBufferDeviceMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get signalSemaphoreCount() {
     return this.memoryViewUint32[0xC];
@@ -35931,6 +36213,7 @@ class VkDeviceGroupSubmitInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.pSignalSemaphoreDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -36067,6 +36350,7 @@ class VkDeviceGroupSubmitInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.pWaitSemaphoreDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get commandBufferCount() {
     return this.memoryViewUint32[0x8];
@@ -36090,6 +36374,7 @@ class VkDeviceGroupSubmitInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.pCommandBufferDeviceMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get signalSemaphoreCount() {
     return this.memoryViewUint32[0xC];
@@ -36113,6 +36398,7 @@ class VkDeviceGroupSubmitInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.pSignalSemaphoreDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -36576,6 +36862,7 @@ class VkImageSwapchainCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageSwapchainCreateInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -36677,6 +36964,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemorySwapchainInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get imageIndex() {
     return this.memoryViewUint32[0x6];
@@ -36799,6 +37087,7 @@ class VkAcquireNextImageInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get timeout() {
     return this.memoryViewBigUint64[0x3];
@@ -36824,6 +37113,7 @@ class VkAcquireNextImageInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
+    
   }
   get fence() {
     return this._fence;
@@ -36840,6 +37130,7 @@ class VkAcquireNextImageInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
+    
   }
   get deviceMask() {
     return this.memoryViewUint32[0xC];
@@ -36975,6 +37266,7 @@ class VkDeviceGroupPresentInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupPresentInfoKHR.pDeviceMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   get mode() {
     return this.memoryViewInt32[0x8];
@@ -37098,7 +37390,8 @@ class VkDeviceGroupDeviceCreateInfo {
       this._pPhysicalDevices = null;
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices': Expected 'Array VkPhysicalDevice' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -37233,7 +37526,8 @@ class VkDeviceGroupDeviceCreateInfoKHR {
       this._pPhysicalDevices = null;
     } else {
       throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices': Expected 'Array VkPhysicalDevice' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -37745,7 +38039,8 @@ class VkDescriptorUpdateTemplateCreateInfo {
       this._pDescriptorUpdateEntries = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries': Expected 'Array VkDescriptorUpdateTemplateEntry' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get templateType() {
     return this.memoryViewInt32[0x8];
@@ -37771,6 +38066,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.descriptorSetLayout': Expected 'VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pipelineBindPoint() {
     return this.memoryViewInt32[0xC];
@@ -37796,6 +38092,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get set() {
     return this.memoryViewUint32[0x10];
@@ -37984,7 +38281,8 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
       this._pDescriptorUpdateEntries = null;
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries': Expected 'Array VkDescriptorUpdateTemplateEntry' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get templateType() {
     return this.memoryViewInt32[0x8];
@@ -38010,6 +38308,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.descriptorSetLayout': Expected 'VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get pipelineBindPoint() {
     return this.memoryViewInt32[0xC];
@@ -38035,6 +38334,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get set() {
     return this.memoryViewUint32[0x10];
@@ -38278,6 +38578,7 @@ class VkHdrMetadataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryRed': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   get displayPrimaryGreen() {
     return this._displayPrimaryGreen;
@@ -38294,6 +38595,7 @@ class VkHdrMetadataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryGreen': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   get displayPrimaryBlue() {
     return this._displayPrimaryBlue;
@@ -38310,6 +38612,7 @@ class VkHdrMetadataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryBlue': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   get whitePoint() {
     return this._whitePoint;
@@ -38326,6 +38629,7 @@ class VkHdrMetadataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.whitePoint': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   get maxLuminance() {
     return this.memoryViewFloat32[0xC];
@@ -38684,7 +38988,8 @@ class VkPresentTimesInfoGOOGLE {
       this._pTimes = null;
     } else {
       throw new TypeError("Invalid type for 'VkPresentTimesInfoGOOGLE.pTimes': Expected 'Array VkPresentTimeGOOGLE' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -38967,7 +39272,8 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
       this._pViewportWScalings = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings': Expected 'Array VkViewportWScalingNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -39216,7 +39522,8 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
       this._pViewportSwizzles = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles': Expected 'Array VkViewportSwizzleNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -39466,7 +39773,8 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
       this._pDiscardRectangles = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -39870,7 +40178,8 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
       this._pAspectReferences = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences': Expected 'Array VkInputAttachmentAspectReference' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -40005,7 +40314,8 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
       this._pAspectReferences = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences': Expected 'Array VkInputAttachmentAspectReference' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -40131,6 +40441,7 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceSurfaceInfo2KHR.surface': Expected 'VkSurfaceKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -40228,6 +40539,7 @@ class VkSurfaceCapabilities2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
     }
+    
   }
   get surfaceCapabilities() {
     return this._surfaceCapabilities;
@@ -40694,6 +41006,7 @@ class VkDisplayPlaneInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPlaneInfo2KHR.mode': Expected 'VkDisplayModeKHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get planeIndex() {
     return this.memoryViewUint32[0x6];
@@ -41343,6 +41656,7 @@ class VkBufferMemoryRequirementsInfo2 {
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41440,6 +41754,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2KHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41538,6 +41853,7 @@ class VkImageMemoryRequirementsInfo2 {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.pNext'");
     }
+    
   }
   get image() {
     return this._image;
@@ -41554,6 +41870,7 @@ class VkImageMemoryRequirementsInfo2 {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41652,6 +41969,7 @@ class VkImageMemoryRequirementsInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.pNext'");
     }
+    
   }
   get image() {
     return this._image;
@@ -41668,6 +41986,7 @@ class VkImageMemoryRequirementsInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41765,6 +42084,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
     } else {
       throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41862,6 +42182,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2KHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -41959,6 +42280,7 @@ class VkMemoryRequirements2 {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryRequirements2.pNext'");
     }
+    
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -42065,6 +42387,7 @@ class VkMemoryRequirements2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.pNext'");
     }
+    
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -42719,6 +43042,7 @@ class VkMemoryDedicatedAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get buffer() {
     return this._buffer;
@@ -42735,6 +43059,7 @@ class VkMemoryDedicatedAllocateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -42838,6 +43163,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfoKHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
+    
   }
   get buffer() {
     return this._buffer;
@@ -42854,6 +43180,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfoKHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -43315,6 +43642,7 @@ class VkSamplerYcbcrConversionInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfo.conversion': Expected 'VkSamplerYcbcrConversion' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -43412,6 +43740,7 @@ class VkSamplerYcbcrConversionInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfoKHR.conversion': Expected 'VkSamplerYcbcrConversion' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -43526,6 +43855,7 @@ class VkSamplerYcbcrConversionCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.pNext'");
     }
+    
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -43569,6 +43899,7 @@ class VkSamplerYcbcrConversionCreateInfo {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
+    
   }
   get xChromaOffset() {
     return this.memoryViewInt32[0xB];
@@ -43757,6 +44088,7 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.pNext'");
     }
+    
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -43800,6 +44132,7 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
+    
   }
   get xChromaOffset() {
     return this.memoryViewInt32[0xB];
@@ -44782,6 +45115,7 @@ class VkConditionalRenderingBeginInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get offset() {
     return this.memoryViewBigUint64[0x3];
@@ -45597,6 +45931,7 @@ class VkSampleLocationsInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.sampleLocationGridSize': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
+    
   }
   get sampleLocationsCount() {
     return this.memoryViewUint32[0x7];
@@ -45617,7 +45952,8 @@ class VkSampleLocationsInfoEXT {
       this._pSampleLocations = null;
     } else {
       throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.pSampleLocations': Expected 'Array VkSampleLocationEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -45754,6 +46090,7 @@ class VkAttachmentSampleLocationsEXT {
     } else {
       throw new TypeError("Invalid type for 'VkAttachmentSampleLocationsEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -45843,6 +46180,7 @@ class VkSubpassSampleLocationsEXT {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassSampleLocationsEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -45956,7 +46294,8 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
       this._pAttachmentInitialSampleLocations = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations': Expected 'Array VkAttachmentSampleLocationsEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get postSubpassSampleLocationsCount() {
     return this.memoryViewUint32[0x8];
@@ -45977,7 +46316,8 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
       this._pPostSubpassSampleLocations = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations': Expected 'Array VkSubpassSampleLocationsEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -46145,6 +46485,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineSampleLocationsStateCreateInfoEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -47135,6 +47476,7 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSetInlineUniformBlockEXT.pData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -47369,6 +47711,7 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkPipelineCoverageModulationStateCreateInfoNV.pCoverageModulationTable': Expected 'Float32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -47493,6 +47836,7 @@ class VkImageFormatListCreateInfoKHR {
     } else {
       throw new TypeError("Invalid type for 'VkImageFormatListCreateInfoKHR.pViewFormats': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -47614,6 +47958,7 @@ class VkValidationCacheCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.pInitialData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -47719,6 +48064,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkShaderModuleValidationCacheCreateInfoEXT.validationCache': Expected 'VkValidationCacheEXT' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -48016,6 +48362,7 @@ class VkDescriptorSetLayoutSupport {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.pNext'");
     }
+    
   }
   get supported() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48122,6 +48469,7 @@ class VkDescriptorSetLayoutSupportKHR {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.pNext'");
     }
+    
   }
   get supported() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48944,6 +49292,7 @@ class VkDebugUtilsObjectNameInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.pObjectName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -49093,6 +49442,7 @@ class VkDebugUtilsObjectTagInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.pTag': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -49213,6 +49563,7 @@ class VkDebugUtilsLabelEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsLabelEXT.pLabelName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get color() {
     return this._color;
@@ -49225,6 +49576,7 @@ class VkDebugUtilsLabelEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsLabelEXT.color': Expected 'Array float' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -49382,6 +49734,7 @@ class VkDebugUtilsMessengerCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.pUserData': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -49526,6 +49879,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pMessageIdName': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get messageIdNumber() {
     return this.memoryViewInt32[0x8];
@@ -49554,6 +49908,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pMessage': Expected 'String' but got '" + value.constructor.name + "'");
     }
+    
   }
   get queueLabelCount() {
     return this.memoryViewUint32[0xC];
@@ -49574,7 +49929,8 @@ class VkDebugUtilsMessengerCallbackDataEXT {
       this._pQueueLabels = null;
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels': Expected 'Array VkDebugUtilsLabelEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get cmdBufLabelCount() {
     return this.memoryViewUint32[0x10];
@@ -49595,7 +49951,8 @@ class VkDebugUtilsMessengerCallbackDataEXT {
       this._pCmdBufLabels = null;
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels': Expected 'Array VkDebugUtilsLabelEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get objectCount() {
     return this.memoryViewUint32[0x14];
@@ -49616,7 +49973,8 @@ class VkDebugUtilsMessengerCallbackDataEXT {
       this._pObjects = null;
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects': Expected 'Array VkDebugUtilsObjectNameInfoEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -49831,6 +50189,7 @@ class VkImportMemoryHostPointerInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkImportMemoryHostPointerInfoEXT.pHostPointer': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -51263,6 +51622,7 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.pBindingFlags': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -51375,6 +51735,7 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.pDescriptorCounts': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -51923,6 +52284,7 @@ class VkSubpassDescription2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pNext'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -51970,7 +52332,8 @@ class VkSubpassDescription2KHR {
       this._pInputAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pInputAttachments': Expected 'Array VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get colorAttachmentCount() {
     return this.memoryViewUint32[0xA];
@@ -51991,7 +52354,8 @@ class VkSubpassDescription2KHR {
       this._pColorAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pColorAttachments': Expected 'Array VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pResolveAttachments() {
     return this._pResolveAttachments;
@@ -52003,7 +52367,8 @@ class VkSubpassDescription2KHR {
       this._pResolveAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pResolveAttachments': Expected 'Array VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get pDepthStencilAttachment() {
     return this._pDepthStencilAttachment;
@@ -52020,6 +52385,7 @@ class VkSubpassDescription2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pDepthStencilAttachment': Expected 'VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   get preserveAttachmentCount() {
     return this.memoryViewUint32[0x12];
@@ -52043,6 +52409,7 @@ class VkSubpassDescription2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pPreserveAttachments': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -52483,7 +52850,8 @@ class VkRenderPassCreateInfo2KHR {
       this._pAttachments = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pAttachments': Expected 'Array VkAttachmentDescription2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get subpassCount() {
     return this.memoryViewUint32[0x8];
@@ -52504,7 +52872,8 @@ class VkRenderPassCreateInfo2KHR {
       this._pSubpasses = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pSubpasses': Expected 'Array VkSubpassDescription2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get dependencyCount() {
     return this.memoryViewUint32[0xC];
@@ -52525,7 +52894,8 @@ class VkRenderPassCreateInfo2KHR {
       this._pDependencies = null;
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pDependencies': Expected 'Array VkSubpassDependency2KHR' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get correlatedViewMaskCount() {
     return this.memoryViewUint32[0x10];
@@ -52549,6 +52919,7 @@ class VkRenderPassCreateInfo2KHR {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pCorrelatedViewMasks': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -52993,7 +53364,8 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
       this._pVertexBindingDivisors = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors': Expected 'Array VkVertexInputBindingDivisorDescriptionEXT' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -54028,6 +54400,7 @@ class VkCheckpointDataNV {
     } else {
       throw new TypeError("Invalid type for 'VkCheckpointDataNV.pCheckpointMarker': Expected 'ArrayBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -54268,6 +54641,7 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescriptionDepthStencilResolveKHR.pDepthStencilResolveAttachment': Expected 'VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -55199,7 +55573,8 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
       this._pExclusiveScissors = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors': Expected 'Array VkRect2D' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -55772,6 +56147,7 @@ class VkShadingRatePaletteNV {
     } else {
       throw new TypeError("Invalid type for 'VkShadingRatePaletteNV.pShadingRatePaletteEntries': Expected 'Int32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -55875,7 +56251,8 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
       this._pShadingRatePalettes = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes': Expected 'Array VkShadingRatePaletteNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -56307,7 +56684,8 @@ class VkCoarseSampleOrderCustomNV {
       this._pSampleLocations = null;
     } else {
       throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.pSampleLocations': Expected 'Array VkCoarseSampleLocationNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -56446,7 +56824,8 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
       this._pCustomSampleOrders = null;
     } else {
       throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders': Expected 'Array VkCoarseSampleOrderCustomNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -57128,7 +57507,8 @@ class VkRayTracingPipelineCreateInfoNV {
       this._pStages = null;
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pStages': Expected 'Array VkPipelineShaderStageCreateInfo' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get groupCount() {
     return this.memoryViewUint32[0x8];
@@ -57149,7 +57529,8 @@ class VkRayTracingPipelineCreateInfoNV {
       this._pGroups = null;
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pGroups': Expected 'Array VkRayTracingShaderGroupCreateInfoNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   get maxRecursionDepth() {
     return this.memoryViewUint32[0xC];
@@ -57175,6 +57556,7 @@ class VkRayTracingPipelineCreateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
+    
   }
   get basePipelineHandle() {
     return this._basePipelineHandle;
@@ -57191,6 +57573,7 @@ class VkRayTracingPipelineCreateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
+    
   }
   get basePipelineIndex() {
     return this.memoryViewInt32[0x12];
@@ -57401,6 +57784,7 @@ class VkGeometryTrianglesNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get vertexOffset() {
     return this.memoryViewBigUint64[0x3];
@@ -57453,6 +57837,7 @@ class VkGeometryTrianglesNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get indexOffset() {
     return this.memoryViewBigUint64[0x8];
@@ -57496,6 +57881,7 @@ class VkGeometryTrianglesNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.transformData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get transformOffset() {
     return this.memoryViewBigUint64[0xB];
@@ -57652,6 +58038,7 @@ class VkGeometryAABBNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryAABBNV.aabbData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   get numAABBs() {
     return this.memoryViewUint32[0x6];
@@ -57767,6 +58154,7 @@ class VkGeometryDataNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryDataNV.triangles': Expected 'VkGeometryTrianglesNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   get aabbs() {
     return this._aabbs;
@@ -57783,6 +58171,7 @@ class VkGeometryDataNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryDataNV.aabbs': Expected 'VkGeometryAABBNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -57908,6 +58297,7 @@ class VkGeometryNV {
     } else {
       throw new TypeError("Invalid type for 'VkGeometryNV.geometry': Expected 'VkGeometryDataNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   get flags() {
     return this.memoryViewInt32[0x28];
@@ -58077,7 +58467,8 @@ class VkAccelerationStructureInfoNV {
       this._pGeometries = null;
     } else {
       throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.pGeometries': Expected 'Array VkGeometryNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -58228,6 +58619,7 @@ class VkAccelerationStructureCreateInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.info': Expected 'VkAccelerationStructureInfoNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -58354,6 +58746,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.accelerationStructure': Expected 'VkAccelerationStructureNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memory() {
     return this._memory;
@@ -58370,6 +58763,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
+    
   }
   get memoryOffset() {
     return this.memoryViewBigUint64[0x4];
@@ -58402,6 +58796,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.pDeviceIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -58524,7 +58919,8 @@ class VkWriteDescriptorSetAccelerationStructureNV {
       this._pAccelerationStructures = null;
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures': Expected 'Array VkAccelerationStructureNV' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -58661,6 +59057,7 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
     } else {
       throw new TypeError("Invalid type for 'VkAccelerationStructureMemoryRequirementsInfoNV.accelerationStructure': Expected 'VkAccelerationStructureNV' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -59115,6 +59512,7 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.pQueueFamilyIndices': Expected 'Uint32Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -59235,6 +59633,7 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkImageDrmFormatModifierListCreateInfoEXT.pDrmFormatModifiers': Expected 'BigUint64Array' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -59358,7 +59757,8 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
       this._pPlaneLayouts = null;
     } else {
       throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts': Expected 'Array VkSubresourceLayout' but got '" + value.constructor.name + "'");
-    }
+    } 
+    
   }
   
 };
@@ -59971,6 +60371,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment': Expected 'VkAttachmentReference' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -60792,6 +61193,7 @@ class VkBufferDeviceAddressInfoEXT {
     } else {
       throw new TypeError("Invalid type for 'VkBufferDeviceAddressInfoEXT.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -61536,6 +61938,7 @@ class VkClearColorValue {
     } else {
       throw new TypeError("Invalid type for 'VkClearColorValue.float32': Expected 'Array float' but got '" + value.constructor.name + "'");
     }
+    
   }
   get int32() {
     return this._int32;
@@ -61548,6 +61951,7 @@ class VkClearColorValue {
     } else {
       throw new TypeError("Invalid type for 'VkClearColorValue.int32': Expected 'Array int32_t' but got '" + value.constructor.name + "'");
     }
+    
   }
   get uint32() {
     return this._uint32;
@@ -61560,6 +61964,7 @@ class VkClearColorValue {
     } else {
       throw new TypeError("Invalid type for 'VkClearColorValue.uint32': Expected 'Array uint32_t' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
@@ -61704,6 +62109,7 @@ class VkClearValue {
     } else {
       throw new TypeError("Invalid type for 'VkClearValue.color': Expected 'VkClearColorValue' but got '" + value.constructor.name + "'");
     }
+    
   }
   get depthStencil() {
     return this._depthStencil;
@@ -61720,6 +62126,7 @@ class VkClearValue {
     } else {
       throw new TypeError("Invalid type for 'VkClearValue.depthStencil': Expected 'VkClearDepthStencilValue' but got '" + value.constructor.name + "'");
     }
+    
   }
   
 };
