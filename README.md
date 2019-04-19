@@ -14,7 +14,7 @@
 
 #
 
-This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
+This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
 
 ### Platforms:
 
@@ -39,6 +39,7 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
   * [Syntactic Sugar](#syntactic-sugar)
       - [sType auto-filling](#stype-auto-filling)
       - [Structure creation shortcut](#structure-creation-shortcut)
+      - [Nested structures](#nested-structures)
   * [Project Structure](#project-structure)
   * [Binding Code Generator](#binding-code-generator)
   * [Build Instructions](#build-instructions)
@@ -66,7 +67,7 @@ npm install nvk
 
 In most cases the bindings match the C99 style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
 
-Also note that *nvk* performs type validation and bounding checks to help you catching bugs early.
+Also note that *nvk* performs type validation and bounding checks to help you catching bugs early. In future, these checks can be disabled using the `--disable-validation-checks` flag for better performance.
 
 JavaScript/TypeScript:
 ````js
@@ -116,7 +117,7 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
 
 When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/index.d.ts)).
 
-To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
+To use the definition file, simply follow the installation steps above or use [this](https://github.com/maierfelix/nvk-examples/tree/master/typescript) example. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
 import * as nvk from "nvk/generated/1.1.101/index";
@@ -180,6 +181,31 @@ let renderArea = new VkRect2D({
 });
 ````
 
+#### Nested structures
+
+*nvk* allows to use nested structures to improve memory usage and performance. A nested structure is pre-allocated automatically and shares the native memory of it's top-level structure.
+You can use the `--enable-shared-memory-hints` flag, to get hints where you could've used a nested structure in your code.
+
+Instead of:
+````js
+let scissor = new VkRect2D();
+scissor.offset = new VkOffset2D();
+scissor.extent = new VkExtent2D();
+scissor.offset.x = 0;
+scissor.offset.y = 0;
+scissor.extent.width = 480;
+scissor.extent.height = 320;
+````
+
+You can write:
+````js
+let scissor = new VkRect2D();
+scissor.offset.x = 0;
+scissor.offset.y = 0;
+scissor.extent.width = 480;
+scissor.extent.height = 320;
+````
+
 ## Project Structure:
  - `docs`: generated vulkan documentation files
  - `generator`: code for binding generation
@@ -192,11 +218,13 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~150.000` lines are C++ and `~40.000` lines are TypeScript code.
+The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~150.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript and `~40.000` lines are C++ code.
+
+Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. This results in better performance and reduced memory usage. This is achieved by only calling C++ when a Vulkan function is called. The native memory layouts of Structures and Handles are filled within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/interfaces.js)).
 
 ## Build Instructions:
 
-**Warning**: You may want to **skip this section**, as *nvk* uses [NAPI](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which again is likely not your intention!
+**Warning**: You may want to **skip this section**, as *nvk* uses [N-API](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which again is likely not your intention!
 
 ### Requirements:
  - node.js >= v10.9.0 recommended
@@ -293,10 +321,6 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 ````
 
 ## TODOs:
- - [ ] Struct generation (~98%)
- - [x] Handle generation (~100%)
- - [x] Enum generation (100%)
  - [ ] Function generation (~95%)
- - [ ] Deallocation (~95%)
- - [ ] Vulkan API fill V8 reflection (~95%)
  - [ ] Documentation generator (95%)
+ 
