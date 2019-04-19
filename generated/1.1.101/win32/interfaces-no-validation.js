@@ -942,16 +942,14 @@ class VkBaseOutStructure {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBaseOutStructure.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && value.constructor === VkBaseOutStructure) {
+    if (value !== null ) {
       value.flush();
       this._pNext = value;
       this.memoryViewBigInt64[0x1] = value.memoryAddress;
@@ -1020,16 +1018,14 @@ class VkBaseInStructure {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBaseInStructure.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && value.constructor === VkBaseInStructure) {
+    if (value !== null ) {
       value.flush();
       this._pNext = value;
       this.memoryViewBigInt64[0x1] = value.memoryAddress;
@@ -1096,18 +1092,14 @@ class VkOffset2D {
     return this.memoryViewInt32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkOffset2D.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get y() {
     return this.memoryViewInt32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkOffset2D.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   
@@ -1167,27 +1159,21 @@ class VkOffset3D {
     return this.memoryViewInt32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkOffset3D.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get y() {
     return this.memoryViewInt32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkOffset3D.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get z() {
     return this.memoryViewInt32[0x2];
   }
   set z(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkOffset3D.z': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   
@@ -1249,18 +1235,14 @@ class VkExtent2D {
     return this.memoryViewUint32[0x0];
   }
   set width(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExtent2D.width': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get height() {
     return this.memoryViewUint32[0x1];
   }
   set height(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExtent2D.height': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   
@@ -1320,27 +1302,21 @@ class VkExtent3D {
     return this.memoryViewUint32[0x0];
   }
   set width(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExtent3D.width': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get height() {
     return this.memoryViewUint32[0x1];
   }
   set height(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExtent3D.height': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get depth() {
     return this.memoryViewUint32[0x2];
   }
   set depth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExtent3D.depth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -1410,54 +1386,42 @@ class VkViewport {
     return this.memoryViewFloat32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x0] = value;
   }
   get y() {
     return this.memoryViewFloat32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x1] = value;
   }
   get width() {
     return this.memoryViewFloat32[0x2];
   }
   set width(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.width': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x2] = value;
   }
   get height() {
     return this.memoryViewFloat32[0x3];
   }
   set height(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.height': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x3] = value;
   }
   get minDepth() {
     return this.memoryViewFloat32[0x4];
   }
   set minDepth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.minDepth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x4] = value;
   }
   get maxDepth() {
     return this.memoryViewFloat32[0x5];
   }
   set maxDepth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewport.maxDepth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x5] = value;
   }
   
@@ -1529,7 +1493,7 @@ class VkRect2D {
     return this._offset;
   }
   set offset(value) {
-    if (value !== null && value.constructor === VkOffset2D) {
+    if (value !== null ) {
       value.flush();
       this._offset = value;
       
@@ -1545,7 +1509,7 @@ class VkRect2D {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -1569,7 +1533,7 @@ VkRect2D.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._offset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRect2D.offset' isn't used as shared-memory");
+      
     }
   }
   
@@ -1580,7 +1544,7 @@ VkRect2D.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRect2D.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -1640,7 +1604,7 @@ class VkClearRect {
     return this._rect;
   }
   set rect(value) {
-    if (value !== null && value.constructor === VkRect2D) {
+    if (value !== null ) {
       value.flush();
       this._rect = value;
       
@@ -1656,18 +1620,14 @@ class VkClearRect {
     return this.memoryViewUint32[0x4];
   }
   set baseArrayLayer(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearRect.baseArrayLayer': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get layerCount() {
     return this.memoryViewUint32[0x5];
   }
   set layerCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearRect.layerCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -1682,7 +1642,7 @@ VkClearRect.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._rect.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearRect.rect' isn't used as shared-memory");
+      
     }
   }
   
@@ -1746,36 +1706,28 @@ class VkComponentMapping {
     return this.memoryViewInt32[0x0];
   }
   set r(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComponentMapping.r': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get g() {
     return this.memoryViewInt32[0x1];
   }
   set g(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComponentMapping.g': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get b() {
     return this.memoryViewInt32[0x2];
   }
   set b(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComponentMapping.b': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get a() {
     return this.memoryViewInt32[0x3];
   }
   set a(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComponentMapping.a': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   
@@ -2139,9 +2091,7 @@ class VkApplicationInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkApplicationInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -2159,7 +2109,7 @@ class VkApplicationInfo {
     }
   }
   set pApplicationName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pApplicationName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x2] = getAddressFromArrayBuffer(this._pApplicationName);
     } else if (value === null) {
@@ -2173,9 +2123,7 @@ class VkApplicationInfo {
     return this.memoryViewUint32[0x6];
   }
   set applicationVersion(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkApplicationInfo.applicationVersion': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pEngineName() {
@@ -2187,7 +2135,7 @@ class VkApplicationInfo {
     }
   }
   set pEngineName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pEngineName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._pEngineName);
     } else if (value === null) {
@@ -2201,18 +2149,14 @@ class VkApplicationInfo {
     return this.memoryViewUint32[0xA];
   }
   set engineVersion(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkApplicationInfo.engineVersion': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get apiVersion() {
     return this.memoryViewUint32[0xB];
   }
   set apiVersion(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkApplicationInfo.apiVersion': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xB] = value;
   }
   
@@ -2295,7 +2239,7 @@ class VkAllocationCallbacks {
     return this._pUserData;
   }
   set pUserData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pUserData = value;
       this.memoryViewBigInt64[0x0] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -2368,18 +2312,16 @@ class VkDeviceQueueCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D71B0:
@@ -2400,34 +2342,28 @@ class VkDeviceQueueCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get queueFamilyIndex() {
     return this.memoryViewUint32[0x5];
   }
   set queueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.queueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get queueCount() {
     return this.memoryViewUint32[0x6];
   }
   set queueCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.queueCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pQueuePriorities() {
     return this._pQueuePriorities;
   }
   set pQueuePriorities(value) {
-    if (value !== null && value.constructor === Float32Array) {
+    if (value !== null ) {
       this._pQueuePriorities = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -2538,18 +2474,16 @@ class VkDeviceCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB078:
@@ -2604,25 +2538,21 @@ class VkDeviceCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get queueCreateInfoCount() {
     return this.memoryViewUint32[0x5];
   }
   set queueCreateInfoCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.queueCreateInfoCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pQueueCreateInfos() {
     return this._pQueueCreateInfos;
   }
   set pQueueCreateInfos(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pQueueCreateInfos = value;
     } else if (value === null) {
       this._pQueueCreateInfos = null;
@@ -2634,16 +2564,14 @@ class VkDeviceCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set enabledLayerCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.enabledLayerCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get ppEnabledLayerNames() {
     return this._ppEnabledLayerNames;
   }
   set ppEnabledLayerNames(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._ppEnabledLayerNames = value;
     } else if (value === null) {
       this._ppEnabledLayerNames = null;
@@ -2655,16 +2583,14 @@ class VkDeviceCreateInfo {
     return this.memoryViewUint32[0xC];
   }
   set enabledExtensionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.enabledExtensionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get ppEnabledExtensionNames() {
     return this._ppEnabledExtensionNames;
   }
   set ppEnabledExtensionNames(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._ppEnabledExtensionNames = value;
     } else if (value === null) {
       this._ppEnabledExtensionNames = null;
@@ -2676,7 +2602,7 @@ class VkDeviceCreateInfo {
     return this._pEnabledFeatures;
   }
   set pEnabledFeatures(value) {
-    if (value !== null && value.constructor === VkPhysicalDeviceFeatures) {
+    if (value !== null ) {
       value.flush();
       this._pEnabledFeatures = value;
       this.memoryViewBigInt64[0x8] = value.memoryAddress;
@@ -2702,16 +2628,8 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
   if (this._pQueueCreateInfos !== null) {
     let array = this._pQueueCreateInfos;
     
-    if (array.length !== this.queueCreateInfoCount) {
-      throw new RangeError("Invalid array length, expected length of 'queueCreateInfoCount' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDeviceQueueCreateInfo) {
-        throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pQueueCreateInfos[" + ii + "]': Expected 'VkDeviceQueueCreateInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -2724,18 +2642,6 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
   if (this._ppEnabledLayerNames !== null) {
     let array = this._ppEnabledLayerNames;
     
-    // validate length
-    if (array.length !== this.enabledLayerCount) {
-      throw new RangeError("Invalid array length, expected length of 'enabledLayerCount' for 'VkDeviceCreateInfo.ppEnabledLayerNames'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== String) {
-        throw new TypeError("Invalid type for 'VkDeviceCreateInfo.ppEnabledLayerNames[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     let nativeArray = new NativeStringArray(this._ppEnabledLayerNames);
     this._ppEnabledLayerNamesNative = nativeArray;
     this.memoryViewBigInt64[0x5] = nativeArray.address;
@@ -2747,18 +2653,6 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
   if (this._ppEnabledExtensionNames !== null) {
     let array = this._ppEnabledExtensionNames;
     
-    // validate length
-    if (array.length !== this.enabledExtensionCount) {
-      throw new RangeError("Invalid array length, expected length of 'enabledExtensionCount' for 'VkDeviceCreateInfo.ppEnabledExtensionNames'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== String) {
-        throw new TypeError("Invalid type for 'VkDeviceCreateInfo.ppEnabledExtensionNames[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     let nativeArray = new NativeStringArray(this._ppEnabledExtensionNames);
     this._ppEnabledExtensionNamesNative = nativeArray;
     this.memoryViewBigInt64[0x7] = nativeArray.address;
@@ -2874,18 +2768,16 @@ class VkInstanceCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInstanceCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9AF4F8:
@@ -2909,16 +2801,14 @@ class VkInstanceCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInstanceCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pApplicationInfo() {
     return this._pApplicationInfo;
   }
   set pApplicationInfo(value) {
-    if (value !== null && value.constructor === VkApplicationInfo) {
+    if (value !== null ) {
       value.flush();
       this._pApplicationInfo = value;
       this.memoryViewBigInt64[0x3] = value.memoryAddress;
@@ -2934,16 +2824,14 @@ class VkInstanceCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set enabledLayerCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInstanceCreateInfo.enabledLayerCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get ppEnabledLayerNames() {
     return this._ppEnabledLayerNames;
   }
   set ppEnabledLayerNames(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._ppEnabledLayerNames = value;
     } else if (value === null) {
       this._ppEnabledLayerNames = null;
@@ -2955,16 +2843,14 @@ class VkInstanceCreateInfo {
     return this.memoryViewUint32[0xC];
   }
   set enabledExtensionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInstanceCreateInfo.enabledExtensionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get ppEnabledExtensionNames() {
     return this._ppEnabledExtensionNames;
   }
   set ppEnabledExtensionNames(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._ppEnabledExtensionNames = value;
     } else if (value === null) {
       this._ppEnabledExtensionNames = null;
@@ -2986,18 +2872,6 @@ VkInstanceCreateInfo.prototype.flush = function flush() {
   if (this._ppEnabledLayerNames !== null) {
     let array = this._ppEnabledLayerNames;
     
-    // validate length
-    if (array.length !== this.enabledLayerCount) {
-      throw new RangeError("Invalid array length, expected length of 'enabledLayerCount' for 'VkInstanceCreateInfo.ppEnabledLayerNames'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== String) {
-        throw new TypeError("Invalid type for 'VkInstanceCreateInfo.ppEnabledLayerNames[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     let nativeArray = new NativeStringArray(this._ppEnabledLayerNames);
     this._ppEnabledLayerNamesNative = nativeArray;
     this.memoryViewBigInt64[0x5] = nativeArray.address;
@@ -3009,18 +2883,6 @@ VkInstanceCreateInfo.prototype.flush = function flush() {
   if (this._ppEnabledExtensionNames !== null) {
     let array = this._ppEnabledExtensionNames;
     
-    // validate length
-    if (array.length !== this.enabledExtensionCount) {
-      throw new RangeError("Invalid array length, expected length of 'enabledExtensionCount' for 'VkInstanceCreateInfo.ppEnabledExtensionNames'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== String) {
-        throw new TypeError("Invalid type for 'VkInstanceCreateInfo.ppEnabledExtensionNames[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     let nativeArray = new NativeStringArray(this._ppEnabledExtensionNames);
     this._ppEnabledExtensionNamesNative = nativeArray;
     this.memoryViewBigInt64[0x7] = nativeArray.address;
@@ -3276,18 +3138,16 @@ class VkMemoryAllocateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9B2F92:
@@ -3320,18 +3180,14 @@ class VkMemoryAllocateInfo {
     return this.memoryViewBigUint64[0x2];
   }
   set allocationSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.allocationSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get memoryTypeIndex() {
     return this.memoryViewUint32[0x6];
   }
   set memoryTypeIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.memoryTypeIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -3761,9 +3617,7 @@ class VkMappedMemoryRange {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMappedMemoryRange.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -3776,7 +3630,7 @@ class VkMappedMemoryRange {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -3792,18 +3646,14 @@ class VkMappedMemoryRange {
     return this.memoryViewBigUint64[0x3];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMappedMemoryRange.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x4];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMappedMemoryRange.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -4040,7 +3890,7 @@ class VkDescriptorBufferInfo {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -4056,18 +3906,14 @@ class VkDescriptorBufferInfo {
     return this.memoryViewBigUint64[0x1];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get range() {
     return this.memoryViewBigUint64[0x2];
   }
   set range(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.range': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
@@ -4133,7 +3979,7 @@ class VkDescriptorImageInfo {
     return this._sampler;
   }
   set sampler(value) {
-    if (value !== null && value.constructor === VkSampler) {
+    if (value !== null ) {
       
       this._sampler = value;
       
@@ -4149,7 +3995,7 @@ class VkDescriptorImageInfo {
     return this._imageView;
   }
   set imageView(value) {
-    if (value !== null && value.constructor === VkImageView) {
+    if (value !== null ) {
       
       this._imageView = value;
       
@@ -4165,9 +4011,7 @@ class VkDescriptorImageInfo {
     return this.memoryViewInt32[0x4];
   }
   set imageLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorImageInfo.imageLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -4252,18 +4096,16 @@ class VkWriteDescriptorSet {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CE512:
@@ -4285,7 +4127,7 @@ class VkWriteDescriptorSet {
     return this._dstSet;
   }
   set dstSet(value) {
-    if (value !== null && value.constructor === VkDescriptorSet) {
+    if (value !== null ) {
       
       this._dstSet = value;
       
@@ -4301,43 +4143,35 @@ class VkWriteDescriptorSet {
     return this.memoryViewUint32[0x6];
   }
   set dstBinding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.dstBinding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get dstArrayElement() {
     return this.memoryViewUint32[0x7];
   }
   set dstArrayElement(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.dstArrayElement': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0x8];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get descriptorType() {
     return this.memoryViewInt32[0x9];
   }
   set descriptorType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.descriptorType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get pImageInfo() {
     return this._pImageInfo;
   }
   set pImageInfo(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pImageInfo = value;
     } else if (value === null) {
       this._pImageInfo = null;
@@ -4349,7 +4183,7 @@ class VkWriteDescriptorSet {
     return this._pBufferInfo;
   }
   set pBufferInfo(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBufferInfo = value;
     } else if (value === null) {
       this._pBufferInfo = null;
@@ -4361,7 +4195,7 @@ class VkWriteDescriptorSet {
     return this._pTexelBufferView;
   }
   set pTexelBufferView(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pTexelBufferView = value;
     } else if (value === null) {
       this._pTexelBufferView = null;
@@ -4383,16 +4217,8 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   if (this._pImageInfo !== null) {
     let array = this._pImageInfo;
     
-    if (array.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pImageInfo'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorImageInfo) {
-        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pImageInfo[" + ii + "]': Expected 'VkDescriptorImageInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -4405,16 +4231,8 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   if (this._pBufferInfo !== null) {
     let array = this._pBufferInfo;
     
-    if (array.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pBufferInfo'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorBufferInfo) {
-        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pBufferInfo[" + ii + "]': Expected 'VkDescriptorBufferInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -4427,16 +4245,8 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   if (this._pTexelBufferView !== null) {
     let array = this._pTexelBufferView;
     
-    if (array.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pTexelBufferView'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkBufferView) {
-        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pTexelBufferView[" + ii + "]': Expected 'VkBufferView' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -4553,9 +4363,7 @@ class VkCopyDescriptorSet {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -4568,7 +4376,7 @@ class VkCopyDescriptorSet {
     return this._srcSet;
   }
   set srcSet(value) {
-    if (value !== null && value.constructor === VkDescriptorSet) {
+    if (value !== null ) {
       
       this._srcSet = value;
       
@@ -4584,25 +4392,21 @@ class VkCopyDescriptorSet {
     return this.memoryViewUint32[0x6];
   }
   set srcBinding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.srcBinding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get srcArrayElement() {
     return this.memoryViewUint32[0x7];
   }
   set srcArrayElement(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.srcArrayElement': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get dstSet() {
     return this._dstSet;
   }
   set dstSet(value) {
-    if (value !== null && value.constructor === VkDescriptorSet) {
+    if (value !== null ) {
       
       this._dstSet = value;
       
@@ -4618,27 +4422,21 @@ class VkCopyDescriptorSet {
     return this.memoryViewUint32[0xA];
   }
   set dstBinding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.dstBinding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get dstArrayElement() {
     return this.memoryViewUint32[0xB];
   }
   set dstArrayElement(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.dstArrayElement': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xB] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0xC];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCopyDescriptorSet.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   
@@ -4749,18 +4547,16 @@ class VkBufferCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBufferCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9B2F91:
@@ -4783,52 +4579,42 @@ class VkBufferCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get size() {
     return this.memoryViewBigUint64[0x3];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get usage() {
     return this.memoryViewInt32[0x8];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get sharingMode() {
     return this.memoryViewInt32[0x9];
   }
   set sharingMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.sharingMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get queueFamilyIndexCount() {
     return this.memoryViewUint32[0xA];
   }
   set queueFamilyIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCreateInfo.queueFamilyIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get pQueueFamilyIndices() {
     return this._pQueueFamilyIndices;
   }
   set pQueueFamilyIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pQueueFamilyIndices = value;
       this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -4938,9 +4724,7 @@ class VkBufferViewCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -4953,16 +4737,14 @@ class VkBufferViewCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get buffer() {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -4978,27 +4760,21 @@ class VkBufferViewCreateInfo {
     return this.memoryViewInt32[0x8];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get offset() {
     return this.memoryViewBigUint64[0x5];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get range() {
     return this.memoryViewBigUint64[0x6];
   }
   set range(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.range': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   
@@ -5087,27 +4863,21 @@ class VkImageSubresource {
     return this.memoryViewInt32[0x0];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresource.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get mipLevel() {
     return this.memoryViewUint32[0x1];
   }
   set mipLevel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresource.mipLevel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get arrayLayer() {
     return this.memoryViewUint32[0x2];
   }
   set arrayLayer(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresource.arrayLayer': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -5175,36 +4945,28 @@ class VkImageSubresourceLayers {
     return this.memoryViewInt32[0x0];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceLayers.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get mipLevel() {
     return this.memoryViewUint32[0x1];
   }
   set mipLevel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceLayers.mipLevel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get baseArrayLayer() {
     return this.memoryViewUint32[0x2];
   }
   set baseArrayLayer(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceLayers.baseArrayLayer': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get layerCount() {
     return this.memoryViewUint32[0x3];
   }
   set layerCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceLayers.layerCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   
@@ -5278,45 +5040,35 @@ class VkImageSubresourceRange {
     return this.memoryViewInt32[0x0];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceRange.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get baseMipLevel() {
     return this.memoryViewUint32[0x1];
   }
   set baseMipLevel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceRange.baseMipLevel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get levelCount() {
     return this.memoryViewUint32[0x2];
   }
   set levelCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceRange.levelCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get baseArrayLayer() {
     return this.memoryViewUint32[0x3];
   }
   set baseArrayLayer(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceRange.baseArrayLayer': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   get layerCount() {
     return this.memoryViewUint32[0x4];
   }
   set layerCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSubresourceRange.layerCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -5392,9 +5144,7 @@ class VkMemoryBarrier {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryBarrier.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -5407,18 +5157,14 @@ class VkMemoryBarrier {
     return this.memoryViewInt32[0x4];
   }
   set srcAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryBarrier.srcAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dstAccessMask() {
     return this.memoryViewInt32[0x5];
   }
   set dstAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryBarrier.dstAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   
@@ -5511,9 +5257,7 @@ class VkBufferMemoryBarrier {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -5526,43 +5270,35 @@ class VkBufferMemoryBarrier {
     return this.memoryViewInt32[0x4];
   }
   set srcAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.srcAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dstAccessMask() {
     return this.memoryViewInt32[0x5];
   }
   set dstAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.dstAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get srcQueueFamilyIndex() {
     return this.memoryViewUint32[0x6];
   }
   set srcQueueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.srcQueueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get dstQueueFamilyIndex() {
     return this.memoryViewUint32[0x7];
   }
   set dstQueueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.dstQueueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get buffer() {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -5578,18 +5314,14 @@ class VkBufferMemoryBarrier {
     return this.memoryViewBigUint64[0x5];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x6];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   
@@ -5702,18 +5434,16 @@ class VkImageMemoryBarrier {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryBarrier.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CF898:
@@ -5734,61 +5464,49 @@ class VkImageMemoryBarrier {
     return this.memoryViewInt32[0x4];
   }
   set srcAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.srcAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dstAccessMask() {
     return this.memoryViewInt32[0x5];
   }
   set dstAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.dstAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get oldLayout() {
     return this.memoryViewInt32[0x6];
   }
   set oldLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.oldLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get newLayout() {
     return this.memoryViewInt32[0x7];
   }
   set newLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.newLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get srcQueueFamilyIndex() {
     return this.memoryViewUint32[0x8];
   }
   set srcQueueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.srcQueueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get dstQueueFamilyIndex() {
     return this.memoryViewUint32[0x9];
   }
   set dstQueueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.dstQueueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x9] = value;
   }
   get image() {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -5804,7 +5522,7 @@ class VkImageMemoryBarrier {
     return this._subresourceRange;
   }
   set subresourceRange(value) {
-    if (value !== null && value.constructor === VkImageSubresourceRange) {
+    if (value !== null ) {
       value.flush();
       this._subresourceRange = value;
       
@@ -5833,7 +5551,7 @@ VkImageMemoryBarrier.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._subresourceRange.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x30);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageMemoryBarrier.subresourceRange' isn't used as shared-memory");
+      
     }
   }
   
@@ -5953,18 +5671,16 @@ class VkImageCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9B2F90:
@@ -5993,34 +5709,28 @@ class VkImageCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get imageType() {
     return this.memoryViewInt32[0x5];
   }
   set imageType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.imageType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get format() {
     return this.memoryViewInt32[0x6];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get extent() {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent3D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -6036,70 +5746,56 @@ class VkImageCreateInfo {
     return this.memoryViewUint32[0xA];
   }
   set mipLevels(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.mipLevels': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get arrayLayers() {
     return this.memoryViewUint32[0xB];
   }
   set arrayLayers(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.arrayLayers': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xB] = value;
   }
   get samples() {
     return this.memoryViewInt32[0xC];
   }
   set samples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.samples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get tiling() {
     return this.memoryViewInt32[0xD];
   }
   set tiling(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.tiling': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xD] = value;
   }
   get usage() {
     return this.memoryViewInt32[0xE];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xE] = value;
   }
   get sharingMode() {
     return this.memoryViewInt32[0xF];
   }
   set sharingMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.sharingMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xF] = value;
   }
   get queueFamilyIndexCount() {
     return this.memoryViewUint32[0x10];
   }
   set queueFamilyIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.queueFamilyIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   get pQueueFamilyIndices() {
     return this._pQueueFamilyIndices;
   }
   set pQueueFamilyIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pQueueFamilyIndices = value;
       this.memoryViewBigInt64[0x9] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -6113,9 +5809,7 @@ class VkImageCreateInfo {
     return this.memoryViewInt32[0x14];
   }
   set initialLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageCreateInfo.initialLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x14] = value;
   }
   
@@ -6135,7 +5829,7 @@ VkImageCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCreateInfo.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -6342,18 +6036,16 @@ class VkImageViewCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageViewCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C930A:
@@ -6376,16 +6068,14 @@ class VkImageViewCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get image() {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -6401,25 +6091,21 @@ class VkImageViewCreateInfo {
     return this.memoryViewInt32[0x8];
   }
   set viewType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewCreateInfo.viewType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get format() {
     return this.memoryViewInt32[0x9];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewCreateInfo.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get components() {
     return this._components;
   }
   set components(value) {
-    if (value !== null && value.constructor === VkComponentMapping) {
+    if (value !== null ) {
       value.flush();
       this._components = value;
       
@@ -6435,7 +6121,7 @@ class VkImageViewCreateInfo {
     return this._subresourceRange;
   }
   set subresourceRange(value) {
-    if (value !== null && value.constructor === VkImageSubresourceRange) {
+    if (value !== null ) {
       value.flush();
       this._subresourceRange = value;
       
@@ -6464,7 +6150,7 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._components.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageViewCreateInfo.components' isn't used as shared-memory");
+      
     }
   }
   
@@ -6475,7 +6161,7 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._subresourceRange.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageViewCreateInfo.subresourceRange' isn't used as shared-memory");
+      
     }
   }
   
@@ -6561,27 +6247,21 @@ class VkBufferCopy {
     return this.memoryViewBigUint64[0x0];
   }
   set srcOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.srcOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get dstOffset() {
     return this.memoryViewBigUint64[0x1];
   }
   set dstOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.dstOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x2];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferCopy.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
@@ -6653,25 +6333,21 @@ class VkSparseMemoryBind {
     return this.memoryViewBigUint64[0x0];
   }
   set resourceOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.resourceOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get size() {
     return this.memoryViewBigUint64[0x1];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   get memory() {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -6687,18 +6363,14 @@ class VkSparseMemoryBind {
     return this.memoryViewBigUint64[0x3];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0x8];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseMemoryBind.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -6780,7 +6452,7 @@ class VkSparseImageMemoryBind {
     return this._subresource;
   }
   set subresource(value) {
-    if (value !== null && value.constructor === VkImageSubresource) {
+    if (value !== null ) {
       value.flush();
       this._subresource = value;
       
@@ -6796,7 +6468,7 @@ class VkSparseImageMemoryBind {
     return this._offset;
   }
   set offset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._offset = value;
       
@@ -6812,7 +6484,7 @@ class VkSparseImageMemoryBind {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent3D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -6828,7 +6500,7 @@ class VkSparseImageMemoryBind {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -6844,18 +6516,14 @@ class VkSparseImageMemoryBind {
     return this.memoryViewBigUint64[0x6];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x6] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0xE];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xE] = value;
   }
   
@@ -6870,7 +6538,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._subresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.subresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -6881,7 +6549,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._offset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0xC);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.offset' isn't used as shared-memory");
+      
     }
   }
   
@@ -6892,7 +6560,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -6973,7 +6641,7 @@ class VkSparseBufferMemoryBindInfo {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -6989,16 +6657,14 @@ class VkSparseBufferMemoryBindInfo {
     return this.memoryViewUint32[0x2];
   }
   set bindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.bindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get pBinds() {
     return this._pBinds;
   }
   set pBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBinds = value;
     } else if (value === null) {
       this._pBinds = null;
@@ -7015,16 +6681,8 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     let array = this._pBinds;
     
-    if (array.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseBufferMemoryBindInfo.pBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseMemoryBind) {
-        throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseMemoryBind' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7094,7 +6752,7 @@ class VkSparseImageOpaqueMemoryBindInfo {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -7110,16 +6768,14 @@ class VkSparseImageOpaqueMemoryBindInfo {
     return this.memoryViewUint32[0x2];
   }
   set bindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.bindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get pBinds() {
     return this._pBinds;
   }
   set pBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBinds = value;
     } else if (value === null) {
       this._pBinds = null;
@@ -7136,16 +6792,8 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     let array = this._pBinds;
     
-    if (array.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseImageOpaqueMemoryBindInfo.pBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseMemoryBind) {
-        throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseMemoryBind' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7215,7 +6863,7 @@ class VkSparseImageMemoryBindInfo {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -7231,16 +6879,14 @@ class VkSparseImageMemoryBindInfo {
     return this.memoryViewUint32[0x2];
   }
   set bindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.bindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get pBinds() {
     return this._pBinds;
   }
   set pBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBinds = value;
     } else if (value === null) {
       this._pBinds = null;
@@ -7257,16 +6903,8 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     let array = this._pBinds;
     
-    if (array.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseImageMemoryBindInfo.pBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseImageMemoryBind) {
-        throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseImageMemoryBind' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7360,18 +6998,16 @@ class VkBindSparseInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBindSparseInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB466:
@@ -7392,16 +7028,14 @@ class VkBindSparseInfo {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.waitSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphores() {
     return this._pWaitSemaphores;
   }
   set pWaitSemaphores(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pWaitSemaphores = value;
     } else if (value === null) {
       this._pWaitSemaphores = null;
@@ -7413,16 +7047,14 @@ class VkBindSparseInfo {
     return this.memoryViewUint32[0x8];
   }
   set bufferBindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.bufferBindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pBufferBinds() {
     return this._pBufferBinds;
   }
   set pBufferBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBufferBinds = value;
     } else if (value === null) {
       this._pBufferBinds = null;
@@ -7434,16 +7066,14 @@ class VkBindSparseInfo {
     return this.memoryViewUint32[0xC];
   }
   set imageOpaqueBindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.imageOpaqueBindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pImageOpaqueBinds() {
     return this._pImageOpaqueBinds;
   }
   set pImageOpaqueBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pImageOpaqueBinds = value;
     } else if (value === null) {
       this._pImageOpaqueBinds = null;
@@ -7455,16 +7085,14 @@ class VkBindSparseInfo {
     return this.memoryViewUint32[0x10];
   }
   set imageBindCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.imageBindCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   get pImageBinds() {
     return this._pImageBinds;
   }
   set pImageBinds(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pImageBinds = value;
     } else if (value === null) {
       this._pImageBinds = null;
@@ -7476,16 +7104,14 @@ class VkBindSparseInfo {
     return this.memoryViewUint32[0x14];
   }
   set signalSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindSparseInfo.signalSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x14] = value;
   }
   get pSignalSemaphores() {
     return this._pSignalSemaphores;
   }
   set pSignalSemaphores(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSignalSemaphores = value;
     } else if (value === null) {
       this._pSignalSemaphores = null;
@@ -7507,16 +7133,8 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pWaitSemaphores !== null) {
     let array = this._pWaitSemaphores;
     
-    if (array.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkBindSparseInfo.pWaitSemaphores'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSemaphore) {
-        throw new TypeError("Invalid type for 'VkBindSparseInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -7529,16 +7147,8 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pBufferBinds !== null) {
     let array = this._pBufferBinds;
     
-    if (array.length !== this.bufferBindCount) {
-      throw new RangeError("Invalid array length, expected length of 'bufferBindCount' for 'VkBindSparseInfo.pBufferBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseBufferMemoryBindInfo) {
-        throw new TypeError("Invalid type for 'VkBindSparseInfo.pBufferBinds[" + ii + "]': Expected 'VkSparseBufferMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7551,16 +7161,8 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pImageOpaqueBinds !== null) {
     let array = this._pImageOpaqueBinds;
     
-    if (array.length !== this.imageOpaqueBindCount) {
-      throw new RangeError("Invalid array length, expected length of 'imageOpaqueBindCount' for 'VkBindSparseInfo.pImageOpaqueBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseImageOpaqueMemoryBindInfo) {
-        throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageOpaqueBinds[" + ii + "]': Expected 'VkSparseImageOpaqueMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7573,16 +7175,8 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pImageBinds !== null) {
     let array = this._pImageBinds;
     
-    if (array.length !== this.imageBindCount) {
-      throw new RangeError("Invalid array length, expected length of 'imageBindCount' for 'VkBindSparseInfo.pImageBinds'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSparseImageMemoryBindInfo) {
-        throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageBinds[" + ii + "]': Expected 'VkSparseImageMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -7595,16 +7189,8 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pSignalSemaphores !== null) {
     let array = this._pSignalSemaphores;
     
-    if (array.length !== this.signalSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected length of 'signalSemaphoreCount' for 'VkBindSparseInfo.pSignalSemaphores'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSemaphore) {
-        throw new TypeError("Invalid type for 'VkBindSparseInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -7719,7 +7305,7 @@ class VkImageCopy {
     return this._srcSubresource;
   }
   set srcSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._srcSubresource = value;
       
@@ -7735,7 +7321,7 @@ class VkImageCopy {
     return this._srcOffset;
   }
   set srcOffset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._srcOffset = value;
       
@@ -7751,7 +7337,7 @@ class VkImageCopy {
     return this._dstSubresource;
   }
   set dstSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._dstSubresource = value;
       
@@ -7767,7 +7353,7 @@ class VkImageCopy {
     return this._dstOffset;
   }
   set dstOffset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._dstOffset = value;
       
@@ -7783,7 +7369,7 @@ class VkImageCopy {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent3D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -7807,7 +7393,7 @@ VkImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.srcSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -7818,7 +7404,7 @@ VkImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcOffset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.srcOffset' isn't used as shared-memory");
+      
     }
   }
   
@@ -7829,7 +7415,7 @@ VkImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.dstSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -7840,7 +7426,7 @@ VkImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstOffset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.dstOffset' isn't used as shared-memory");
+      
     }
   }
   
@@ -7851,7 +7437,7 @@ VkImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -7929,7 +7515,7 @@ class VkImageBlit {
     return this._srcSubresource;
   }
   set srcSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._srcSubresource = value;
       
@@ -7945,7 +7531,7 @@ class VkImageBlit {
     return this._srcOffsets;
   }
   set srcOffsets(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._srcOffsets = value;
     } else if (value === null) {
       this._srcOffsets = null;
@@ -7957,7 +7543,7 @@ class VkImageBlit {
     return this._dstSubresource;
   }
   set dstSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._dstSubresource = value;
       
@@ -7973,7 +7559,7 @@ class VkImageBlit {
     return this._dstOffsets;
   }
   set dstOffsets(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._dstOffsets = value;
     } else if (value === null) {
       this._dstOffsets = null;
@@ -7993,7 +7579,7 @@ VkImageBlit.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageBlit.srcSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -8001,16 +7587,8 @@ VkImageBlit.prototype.flush = function flush() {
   if (this._srcOffsets !== null) {
     let array = this._srcOffsets;
     
-    if (array.length !== 2) {
-      throw new RangeError("Invalid array length, expected length of '2' for 'VkImageBlit.srcOffsets'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkOffset3D) {
-        throw new TypeError("Invalid type for 'VkImageBlit.srcOffsets[" + ii + "]': Expected 'VkOffset3D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -8030,7 +7608,7 @@ VkImageBlit.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageBlit.dstSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -8038,16 +7616,8 @@ VkImageBlit.prototype.flush = function flush() {
   if (this._dstOffsets !== null) {
     let array = this._dstOffsets;
     
-    if (array.length !== 2) {
-      throw new RangeError("Invalid array length, expected length of '2' for 'VkImageBlit.dstOffsets'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkOffset3D) {
-        throw new TypeError("Invalid type for 'VkImageBlit.dstOffsets[" + ii + "]': Expected 'VkOffset3D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -8136,34 +7706,28 @@ class VkBufferImageCopy {
     return this.memoryViewBigUint64[0x0];
   }
   set bufferOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferImageCopy.bufferOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x0] = BigInt(value);
   }
   get bufferRowLength() {
     return this.memoryViewUint32[0x2];
   }
   set bufferRowLength(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferImageCopy.bufferRowLength': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get bufferImageHeight() {
     return this.memoryViewUint32[0x3];
   }
   set bufferImageHeight(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferImageCopy.bufferImageHeight': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   get imageSubresource() {
     return this._imageSubresource;
   }
   set imageSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._imageSubresource = value;
       
@@ -8179,7 +7743,7 @@ class VkBufferImageCopy {
     return this._imageOffset;
   }
   set imageOffset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._imageOffset = value;
       
@@ -8195,7 +7759,7 @@ class VkBufferImageCopy {
     return this._imageExtent;
   }
   set imageExtent(value) {
-    if (value !== null && value.constructor === VkExtent3D) {
+    if (value !== null ) {
       value.flush();
       this._imageExtent = value;
       
@@ -8219,7 +7783,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._imageSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -8230,7 +7794,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._imageOffset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageOffset' isn't used as shared-memory");
+      
     }
   }
   
@@ -8241,7 +7805,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._imageExtent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageExtent' isn't used as shared-memory");
+      
     }
   }
   
@@ -8321,7 +7885,7 @@ class VkImageResolve {
     return this._srcSubresource;
   }
   set srcSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._srcSubresource = value;
       
@@ -8337,7 +7901,7 @@ class VkImageResolve {
     return this._srcOffset;
   }
   set srcOffset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._srcOffset = value;
       
@@ -8353,7 +7917,7 @@ class VkImageResolve {
     return this._dstSubresource;
   }
   set dstSubresource(value) {
-    if (value !== null && value.constructor === VkImageSubresourceLayers) {
+    if (value !== null ) {
       value.flush();
       this._dstSubresource = value;
       
@@ -8369,7 +7933,7 @@ class VkImageResolve {
     return this._dstOffset;
   }
   set dstOffset(value) {
-    if (value !== null && value.constructor === VkOffset3D) {
+    if (value !== null ) {
       value.flush();
       this._dstOffset = value;
       
@@ -8385,7 +7949,7 @@ class VkImageResolve {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent3D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -8409,7 +7973,7 @@ VkImageResolve.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.srcSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -8420,7 +7984,7 @@ VkImageResolve.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcOffset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.srcOffset' isn't used as shared-memory");
+      
     }
   }
   
@@ -8431,7 +7995,7 @@ VkImageResolve.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstSubresource.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.dstSubresource' isn't used as shared-memory");
+      
     }
   }
   
@@ -8442,7 +8006,7 @@ VkImageResolve.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstOffset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.dstOffset' isn't used as shared-memory");
+      
     }
   }
   
@@ -8453,7 +8017,7 @@ VkImageResolve.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -8537,18 +8101,16 @@ class VkShaderModuleCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3B01:
@@ -8569,25 +8131,21 @@ class VkShaderModuleCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get codeSize() {
     return this.memoryViewBigInt64[0x3];
   }
   set codeSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.codeSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pCode() {
     return this._pCode;
   }
   set pCode(value) {
-    if (value !== null && value.constructor === Uint8Array) {
+    if (value !== null ) {
       this._pCode = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -8680,43 +8238,35 @@ class VkDescriptorSetLayoutBinding {
     return this.memoryViewUint32[0x0];
   }
   set binding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.binding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get descriptorType() {
     return this.memoryViewInt32[0x1];
   }
   set descriptorType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.descriptorType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0x2];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get stageFlags() {
     return this.memoryViewInt32[0x3];
   }
   set stageFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.stageFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get pImmutableSamplers() {
     return this._pImmutableSamplers;
   }
   set pImmutableSamplers(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pImmutableSamplers = value;
     } else if (value === null) {
       this._pImmutableSamplers = null;
@@ -8733,16 +8283,8 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
   if (this._pImmutableSamplers !== null) {
     let array = this._pImmutableSamplers;
     
-    if (array.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSampler) {
-        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.pImmutableSamplers[" + ii + "]': Expected 'VkSampler' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -8826,18 +8368,16 @@ class VkDescriptorSetLayoutCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3EE8:
@@ -8858,25 +8398,21 @@ class VkDescriptorSetLayoutCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get bindingCount() {
     return this.memoryViewUint32[0x5];
   }
   set bindingCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.bindingCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pBindings() {
     return this._pBindings;
   }
   set pBindings(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pBindings = value;
     } else if (value === null) {
       this._pBindings = null;
@@ -8898,16 +8434,8 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
   if (this._pBindings !== null) {
     let array = this._pBindings;
     
-    if (array.length !== this.bindingCount) {
-      throw new RangeError("Invalid array length, expected length of 'bindingCount' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorSetLayoutBinding) {
-        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pBindings[" + ii + "]': Expected 'VkDescriptorSetLayoutBinding' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -8984,18 +8512,14 @@ class VkDescriptorPoolSize {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolSize.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0x1];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolSize.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   
@@ -9066,18 +8590,16 @@ class VkDescriptorPoolCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CE513:
@@ -9098,34 +8620,28 @@ class VkDescriptorPoolCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get maxSets() {
     return this.memoryViewUint32[0x5];
   }
   set maxSets(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.maxSets': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get poolSizeCount() {
     return this.memoryViewUint32[0x6];
   }
   set poolSizeCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.poolSizeCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pPoolSizes() {
     return this._pPoolSizes;
   }
   set pPoolSizes(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPoolSizes = value;
     } else if (value === null) {
       this._pPoolSizes = null;
@@ -9147,16 +8663,8 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
   if (this._pPoolSizes !== null) {
     let array = this._pPoolSizes;
     
-    if (array.length !== this.poolSizeCount) {
-      throw new RangeError("Invalid array length, expected length of 'poolSizeCount' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorPoolSize) {
-        throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pPoolSizes[" + ii + "]': Expected 'VkDescriptorPoolSize' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -9246,18 +8754,16 @@ class VkDescriptorSetAllocateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3EEB:
@@ -9278,7 +8784,7 @@ class VkDescriptorSetAllocateInfo {
     return this._descriptorPool;
   }
   set descriptorPool(value) {
-    if (value !== null && value.constructor === VkDescriptorPool) {
+    if (value !== null ) {
       
       this._descriptorPool = value;
       
@@ -9294,16 +8800,14 @@ class VkDescriptorSetAllocateInfo {
     return this.memoryViewUint32[0x6];
   }
   set descriptorSetCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.descriptorSetCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pSetLayouts() {
     return this._pSetLayouts;
   }
   set pSetLayouts(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSetLayouts = value;
     } else if (value === null) {
       this._pSetLayouts = null;
@@ -9325,16 +8829,8 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
   if (this._pSetLayouts !== null) {
     let array = this._pSetLayouts;
     
-    if (array.length !== this.descriptorSetCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorSetCount' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorSetLayout) {
-        throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -9413,27 +8909,21 @@ class VkSpecializationMapEntry {
     return this.memoryViewUint32[0x0];
   }
   set constantID(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSpecializationMapEntry.constantID': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get offset() {
     return this.memoryViewUint32[0x1];
   }
   set offset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSpecializationMapEntry.offset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get size() {
     return this.memoryViewBigInt64[0x1];
   }
   set size(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSpecializationMapEntry.size': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x1] = BigInt(value);
   }
   
@@ -9502,16 +8992,14 @@ class VkSpecializationInfo {
     return this.memoryViewUint32[0x0];
   }
   set mapEntryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSpecializationInfo.mapEntryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get pMapEntries() {
     return this._pMapEntries;
   }
   set pMapEntries(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pMapEntries = value;
     } else if (value === null) {
       this._pMapEntries = null;
@@ -9523,16 +9011,14 @@ class VkSpecializationInfo {
     return this.memoryViewBigInt64[0x2];
   }
   set dataSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSpecializationInfo.dataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get pData() {
     return this._pData;
   }
   set pData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pData = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -9551,16 +9037,8 @@ VkSpecializationInfo.prototype.flush = function flush() {
   if (this._pMapEntries !== null) {
     let array = this._pMapEntries;
     
-    if (array.length !== this.mapEntryCount) {
-      throw new RangeError("Invalid array length, expected length of 'mapEntryCount' for 'VkSpecializationInfo.pMapEntries'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSpecializationMapEntry) {
-        throw new TypeError("Invalid type for 'VkSpecializationInfo.pMapEntries[" + ii + "]': Expected 'VkSpecializationMapEntry' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -9641,9 +9119,7 @@ class VkPipelineShaderStageCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -9656,25 +9132,21 @@ class VkPipelineShaderStageCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stage() {
     return this.memoryViewInt32[0x5];
   }
   set stage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.stage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get module() {
     return this._module;
   }
   set module(value) {
-    if (value !== null && value.constructor === VkShaderModule) {
+    if (value !== null ) {
       
       this._module = value;
       
@@ -9695,7 +9167,7 @@ class VkPipelineShaderStageCreateInfo {
     }
   }
   set pName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._pName);
     } else if (value === null) {
@@ -9709,7 +9181,7 @@ class VkPipelineShaderStageCreateInfo {
     return this._pSpecializationInfo;
   }
   set pSpecializationInfo(value) {
-    if (value !== null && value.constructor === VkSpecializationInfo) {
+    if (value !== null ) {
       value.flush();
       this._pSpecializationInfo = value;
       this.memoryViewBigInt64[0x5] = value.memoryAddress;
@@ -9815,9 +9287,7 @@ class VkComputePipelineCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -9830,16 +9300,14 @@ class VkComputePipelineCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stage() {
     return this._stage;
   }
   set stage(value) {
-    if (value !== null && value.constructor === VkPipelineShaderStageCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._stage = value;
       
@@ -9855,7 +9323,7 @@ class VkComputePipelineCreateInfo {
     return this._layout;
   }
   set layout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._layout = value;
       
@@ -9871,7 +9339,7 @@ class VkComputePipelineCreateInfo {
     return this._basePipelineHandle;
   }
   set basePipelineHandle(value) {
-    if (value !== null && value.constructor === VkPipeline) {
+    if (value !== null ) {
       
       this._basePipelineHandle = value;
       
@@ -9887,9 +9355,7 @@ class VkComputePipelineCreateInfo {
     return this.memoryViewInt32[0x16];
   }
   set basePipelineIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.basePipelineIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x16] = value;
   }
   
@@ -9909,7 +9375,7 @@ VkComputePipelineCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._stage.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkComputePipelineCreateInfo.stage' isn't used as shared-memory");
+      
     }
   }
   
@@ -9991,27 +9457,21 @@ class VkVertexInputBindingDescription {
     return this.memoryViewUint32[0x0];
   }
   set binding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputBindingDescription.binding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get stride() {
     return this.memoryViewUint32[0x1];
   }
   set stride(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputBindingDescription.stride': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get inputRate() {
     return this.memoryViewInt32[0x2];
   }
   set inputRate(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputBindingDescription.inputRate': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   
@@ -10079,36 +9539,28 @@ class VkVertexInputAttributeDescription {
     return this.memoryViewUint32[0x0];
   }
   set location(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputAttributeDescription.location': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get binding() {
     return this.memoryViewUint32[0x1];
   }
   set binding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputAttributeDescription.binding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get format() {
     return this.memoryViewInt32[0x2];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputAttributeDescription.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get offset() {
     return this.memoryViewUint32[0x3];
   }
   set offset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputAttributeDescription.offset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   
@@ -10190,18 +9642,16 @@ class VkPipelineVertexInputStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9DB031:
@@ -10222,25 +9672,21 @@ class VkPipelineVertexInputStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get vertexBindingDescriptionCount() {
     return this.memoryViewUint32[0x5];
   }
   set vertexBindingDescriptionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pVertexBindingDescriptions() {
     return this._pVertexBindingDescriptions;
   }
   set pVertexBindingDescriptions(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pVertexBindingDescriptions = value;
     } else if (value === null) {
       this._pVertexBindingDescriptions = null;
@@ -10252,16 +9698,14 @@ class VkPipelineVertexInputStateCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set vertexAttributeDescriptionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pVertexAttributeDescriptions() {
     return this._pVertexAttributeDescriptions;
   }
   set pVertexAttributeDescriptions(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pVertexAttributeDescriptions = value;
     } else if (value === null) {
       this._pVertexAttributeDescriptions = null;
@@ -10283,16 +9727,8 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   if (this._pVertexBindingDescriptions !== null) {
     let array = this._pVertexBindingDescriptions;
     
-    if (array.length !== this.vertexBindingDescriptionCount) {
-      throw new RangeError("Invalid array length, expected length of 'vertexBindingDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkVertexInputBindingDescription) {
-        throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions[" + ii + "]': Expected 'VkVertexInputBindingDescription' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -10305,16 +9741,8 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   if (this._pVertexAttributeDescriptions !== null) {
     let array = this._pVertexAttributeDescriptions;
     
-    if (array.length !== this.vertexAttributeDescriptionCount) {
-      throw new RangeError("Invalid array length, expected length of 'vertexAttributeDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkVertexInputAttributeDescription) {
-        throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions[" + ii + "]': Expected 'VkVertexInputAttributeDescription' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -10409,9 +9837,7 @@ class VkPipelineInputAssemblyStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineInputAssemblyStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -10424,18 +9850,14 @@ class VkPipelineInputAssemblyStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineInputAssemblyStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get topology() {
     return this.memoryViewInt32[0x5];
   }
   set topology(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineInputAssemblyStateCreateInfo.topology': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get primitiveRestartEnable() {
@@ -10526,18 +9948,16 @@ class VkPipelineTessellationStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C930B:
@@ -10558,18 +9978,14 @@ class VkPipelineTessellationStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get patchControlPoints() {
     return this.memoryViewUint32[0x5];
   }
   set patchControlPoints(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.patchControlPoints': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -10658,18 +10074,16 @@ class VkPipelineViewportStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C1DD8:
@@ -10694,25 +10108,21 @@ class VkPipelineViewportStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get viewportCount() {
     return this.memoryViewUint32[0x5];
   }
   set viewportCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.viewportCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pViewports() {
     return this._pViewports;
   }
   set pViewports(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pViewports = value;
     } else if (value === null) {
       this._pViewports = null;
@@ -10724,16 +10134,14 @@ class VkPipelineViewportStateCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set scissorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.scissorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pScissors() {
     return this._pScissors;
   }
   set pScissors(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pScissors = value;
     } else if (value === null) {
       this._pScissors = null;
@@ -10755,16 +10163,8 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   if (this._pViewports !== null) {
     let array = this._pViewports;
     
-    if (array.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportStateCreateInfo.pViewports'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkViewport) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pViewports[" + ii + "]': Expected 'VkViewport' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -10777,16 +10177,8 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   if (this._pScissors !== null) {
     let array = this._pScissors;
     
-    if (array.length !== this.scissorCount) {
-      throw new RangeError("Invalid array length, expected length of 'scissorCount' for 'VkPipelineViewportStateCreateInfo.pScissors'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pScissors[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -10899,18 +10291,16 @@ class VkPipelineRasterizationStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9B1050:
@@ -10934,9 +10324,7 @@ class VkPipelineRasterizationStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get depthClampEnable() {
@@ -10955,27 +10343,21 @@ class VkPipelineRasterizationStateCreateInfo {
     return this.memoryViewInt32[0x7];
   }
   set polygonMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.polygonMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get cullMode() {
     return this.memoryViewInt32[0x8];
   }
   set cullMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.cullMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get frontFace() {
     return this.memoryViewInt32[0x9];
   }
   set frontFace(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.frontFace': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get depthBiasEnable() {
@@ -10988,36 +10370,28 @@ class VkPipelineRasterizationStateCreateInfo {
     return this.memoryViewFloat32[0xB];
   }
   set depthBiasConstantFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.depthBiasConstantFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xB] = value;
   }
   get depthBiasClamp() {
     return this.memoryViewFloat32[0xC];
   }
   set depthBiasClamp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.depthBiasClamp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xC] = value;
   }
   get depthBiasSlopeFactor() {
     return this.memoryViewFloat32[0xD];
   }
   set depthBiasSlopeFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.depthBiasSlopeFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xD] = value;
   }
   get lineWidth() {
     return this.memoryViewFloat32[0xE];
   }
   set lineWidth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.lineWidth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xE] = value;
   }
   
@@ -11146,18 +10520,16 @@ class VkPipelineMultisampleStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D1008:
@@ -11180,18 +10552,14 @@ class VkPipelineMultisampleStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get rasterizationSamples() {
     return this.memoryViewInt32[0x5];
   }
   set rasterizationSamples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.rasterizationSamples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get sampleShadingEnable() {
@@ -11204,16 +10572,14 @@ class VkPipelineMultisampleStateCreateInfo {
     return this.memoryViewFloat32[0x7];
   }
   set minSampleShading(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.minSampleShading': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x7] = value;
   }
   get pSampleMask() {
     return this._pSampleMask;
   }
   set pSampleMask(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pSampleMask = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -11345,63 +10711,49 @@ class VkPipelineColorBlendAttachmentState {
     return this.memoryViewInt32[0x1];
   }
   set srcColorBlendFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.srcColorBlendFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get dstColorBlendFactor() {
     return this.memoryViewInt32[0x2];
   }
   set dstColorBlendFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.dstColorBlendFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get colorBlendOp() {
     return this.memoryViewInt32[0x3];
   }
   set colorBlendOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.colorBlendOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get srcAlphaBlendFactor() {
     return this.memoryViewInt32[0x4];
   }
   set srcAlphaBlendFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.srcAlphaBlendFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dstAlphaBlendFactor() {
     return this.memoryViewInt32[0x5];
   }
   set dstAlphaBlendFactor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.dstAlphaBlendFactor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get alphaBlendOp() {
     return this.memoryViewInt32[0x6];
   }
   set alphaBlendOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.alphaBlendOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get colorWriteMask() {
     return this.memoryViewInt32[0x7];
   }
   set colorWriteMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAttachmentState.colorWriteMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   
@@ -11502,18 +10854,16 @@ class VkPipelineColorBlendStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D0C22:
@@ -11534,9 +10884,7 @@ class VkPipelineColorBlendStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get logicOpEnable() {
@@ -11549,25 +10897,21 @@ class VkPipelineColorBlendStateCreateInfo {
     return this.memoryViewInt32[0x6];
   }
   set logicOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.logicOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get attachmentCount() {
     return this.memoryViewUint32[0x7];
   }
   set attachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.attachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pAttachments() {
     return this._pAttachments;
   }
   set pAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAttachments = value;
     } else if (value === null) {
       this._pAttachments = null;
@@ -11579,7 +10923,7 @@ class VkPipelineColorBlendStateCreateInfo {
     return this._blendConstants;
   }
   set blendConstants(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._blendConstants = value;
     } else if (value === null) {
       this._blendConstants = null;
@@ -11601,16 +10945,8 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
   if (this._pAttachments !== null) {
     let array = this._pAttachments;
     
-    if (array.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPipelineColorBlendAttachmentState) {
-        throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pAttachments[" + ii + "]': Expected 'VkPipelineColorBlendAttachmentState' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -11623,18 +10959,6 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
   if (this._blendConstants !== null) {
     let array = this._blendConstants;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.blendConstants[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewFloat32[0xA + ii] = array[ii];
     };
@@ -11732,9 +11056,7 @@ class VkPipelineDynamicStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDynamicStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -11747,25 +11069,21 @@ class VkPipelineDynamicStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDynamicStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dynamicStateCount() {
     return this.memoryViewUint32[0x5];
   }
   set dynamicStateCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDynamicStateCreateInfo.dynamicStateCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pDynamicStates() {
     return this._pDynamicStates;
   }
   set pDynamicStates(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pDynamicStates = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -11861,63 +11179,49 @@ class VkStencilOpState {
     return this.memoryViewInt32[0x0];
   }
   set failOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.failOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get passOp() {
     return this.memoryViewInt32[0x1];
   }
   set passOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.passOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get depthFailOp() {
     return this.memoryViewInt32[0x2];
   }
   set depthFailOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.depthFailOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get compareOp() {
     return this.memoryViewInt32[0x3];
   }
   set compareOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.compareOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get compareMask() {
     return this.memoryViewUint32[0x4];
   }
   set compareMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.compareMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get writeMask() {
     return this.memoryViewUint32[0x5];
   }
   set writeMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.writeMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get reference() {
     return this.memoryViewUint32[0x6];
   }
   set reference(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkStencilOpState.reference': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -12021,9 +11325,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -12036,9 +11338,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get depthTestEnable() {
@@ -12057,9 +11357,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this.memoryViewInt32[0x7];
   }
   set depthCompareOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.depthCompareOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get depthBoundsTestEnable() {
@@ -12078,7 +11376,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this._front;
   }
   set front(value) {
-    if (value !== null && value.constructor === VkStencilOpState) {
+    if (value !== null ) {
       value.flush();
       this._front = value;
       
@@ -12094,7 +11392,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this._back;
   }
   set back(value) {
-    if (value !== null && value.constructor === VkStencilOpState) {
+    if (value !== null ) {
       value.flush();
       this._back = value;
       
@@ -12110,18 +11408,14 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this.memoryViewFloat32[0x18];
   }
   set minDepthBounds(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.minDepthBounds': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x18] = value;
   }
   get maxDepthBounds() {
     return this.memoryViewFloat32[0x19];
   }
   set maxDepthBounds(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.maxDepthBounds': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x19] = value;
   }
   
@@ -12141,7 +11435,7 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._front.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineDepthStencilStateCreateInfo.front' isn't used as shared-memory");
+      
     }
   }
   
@@ -12152,7 +11446,7 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._back.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x44);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineDepthStencilStateCreateInfo.back' isn't used as shared-memory");
+      
     }
   }
   
@@ -12291,18 +11585,16 @@ class VkGraphicsPipelineCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C4CB9:
@@ -12324,25 +11616,21 @@ class VkGraphicsPipelineCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stageCount() {
     return this.memoryViewUint32[0x5];
   }
   set stageCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.stageCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pStages() {
     return this._pStages;
   }
   set pStages(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pStages = value;
     } else if (value === null) {
       this._pStages = null;
@@ -12354,7 +11642,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pVertexInputState;
   }
   set pVertexInputState(value) {
-    if (value !== null && value.constructor === VkPipelineVertexInputStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pVertexInputState = value;
       this.memoryViewBigInt64[0x4] = value.memoryAddress;
@@ -12370,7 +11658,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pInputAssemblyState;
   }
   set pInputAssemblyState(value) {
-    if (value !== null && value.constructor === VkPipelineInputAssemblyStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pInputAssemblyState = value;
       this.memoryViewBigInt64[0x5] = value.memoryAddress;
@@ -12386,7 +11674,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pTessellationState;
   }
   set pTessellationState(value) {
-    if (value !== null && value.constructor === VkPipelineTessellationStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pTessellationState = value;
       this.memoryViewBigInt64[0x6] = value.memoryAddress;
@@ -12402,7 +11690,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pViewportState;
   }
   set pViewportState(value) {
-    if (value !== null && value.constructor === VkPipelineViewportStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pViewportState = value;
       this.memoryViewBigInt64[0x7] = value.memoryAddress;
@@ -12418,7 +11706,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pRasterizationState;
   }
   set pRasterizationState(value) {
-    if (value !== null && value.constructor === VkPipelineRasterizationStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pRasterizationState = value;
       this.memoryViewBigInt64[0x8] = value.memoryAddress;
@@ -12434,7 +11722,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pMultisampleState;
   }
   set pMultisampleState(value) {
-    if (value !== null && value.constructor === VkPipelineMultisampleStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pMultisampleState = value;
       this.memoryViewBigInt64[0x9] = value.memoryAddress;
@@ -12450,7 +11738,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pDepthStencilState;
   }
   set pDepthStencilState(value) {
-    if (value !== null && value.constructor === VkPipelineDepthStencilStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pDepthStencilState = value;
       this.memoryViewBigInt64[0xA] = value.memoryAddress;
@@ -12466,7 +11754,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pColorBlendState;
   }
   set pColorBlendState(value) {
-    if (value !== null && value.constructor === VkPipelineColorBlendStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pColorBlendState = value;
       this.memoryViewBigInt64[0xB] = value.memoryAddress;
@@ -12482,7 +11770,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._pDynamicState;
   }
   set pDynamicState(value) {
-    if (value !== null && value.constructor === VkPipelineDynamicStateCreateInfo) {
+    if (value !== null ) {
       value.flush();
       this._pDynamicState = value;
       this.memoryViewBigInt64[0xC] = value.memoryAddress;
@@ -12498,7 +11786,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._layout;
   }
   set layout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._layout = value;
       
@@ -12514,7 +11802,7 @@ class VkGraphicsPipelineCreateInfo {
     return this._renderPass;
   }
   set renderPass(value) {
-    if (value !== null && value.constructor === VkRenderPass) {
+    if (value !== null ) {
       
       this._renderPass = value;
       
@@ -12530,16 +11818,14 @@ class VkGraphicsPipelineCreateInfo {
     return this.memoryViewUint32[0x1E];
   }
   set subpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.subpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1E] = value;
   }
   get basePipelineHandle() {
     return this._basePipelineHandle;
   }
   set basePipelineHandle(value) {
-    if (value !== null && value.constructor === VkPipeline) {
+    if (value !== null ) {
       
       this._basePipelineHandle = value;
       
@@ -12555,9 +11841,7 @@ class VkGraphicsPipelineCreateInfo {
     return this.memoryViewInt32[0x22];
   }
   set basePipelineIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.basePipelineIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x22] = value;
   }
   
@@ -12574,16 +11858,8 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
   if (this._pStages !== null) {
     let array = this._pStages;
     
-    if (array.length !== this.stageCount) {
-      throw new RangeError("Invalid array length, expected length of 'stageCount' for 'VkGraphicsPipelineCreateInfo.pStages'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPipelineShaderStageCreateInfo) {
-        throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pStages[" + ii + "]': Expected 'VkPipelineShaderStageCreateInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -12722,9 +11998,7 @@ class VkPipelineCacheCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -12737,25 +12011,21 @@ class VkPipelineCacheCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get initialDataSize() {
     return this.memoryViewBigInt64[0x3];
   }
   set initialDataSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCacheCreateInfo.initialDataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pInitialData() {
     return this._pInitialData;
   }
   set pInitialData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pInitialData = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -12843,27 +12113,21 @@ class VkPushConstantRange {
     return this.memoryViewInt32[0x0];
   }
   set stageFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPushConstantRange.stageFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get offset() {
     return this.memoryViewUint32[0x1];
   }
   set offset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPushConstantRange.offset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get size() {
     return this.memoryViewUint32[0x2];
   }
   set size(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPushConstantRange.size': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -12941,9 +12205,7 @@ class VkPipelineLayoutCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -12956,25 +12218,21 @@ class VkPipelineLayoutCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get setLayoutCount() {
     return this.memoryViewUint32[0x5];
   }
   set setLayoutCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.setLayoutCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pSetLayouts() {
     return this._pSetLayouts;
   }
   set pSetLayouts(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSetLayouts = value;
     } else if (value === null) {
       this._pSetLayouts = null;
@@ -12986,16 +12244,14 @@ class VkPipelineLayoutCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set pushConstantRangeCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pushConstantRangeCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pPushConstantRanges() {
     return this._pPushConstantRanges;
   }
   set pPushConstantRanges(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPushConstantRanges = value;
     } else if (value === null) {
       this._pPushConstantRanges = null;
@@ -13017,16 +12273,8 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   if (this._pSetLayouts !== null) {
     let array = this._pSetLayouts;
     
-    if (array.length !== this.setLayoutCount) {
-      throw new RangeError("Invalid array length, expected length of 'setLayoutCount' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorSetLayout) {
-        throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -13039,16 +12287,8 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   if (this._pPushConstantRanges !== null) {
     let array = this._pPushConstantRanges;
     
-    if (array.length !== this.pushConstantRangeCount) {
-      throw new RangeError("Invalid array length, expected length of 'pushConstantRangeCount' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPushConstantRange) {
-        throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pPushConstantRanges[" + ii + "]': Expected 'VkPushConstantRange' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -13171,18 +12411,16 @@ class VkSamplerCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSamplerCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D2B61:
@@ -13204,72 +12442,56 @@ class VkSamplerCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get magFilter() {
     return this.memoryViewInt32[0x5];
   }
   set magFilter(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.magFilter': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get minFilter() {
     return this.memoryViewInt32[0x6];
   }
   set minFilter(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.minFilter': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get mipmapMode() {
     return this.memoryViewInt32[0x7];
   }
   set mipmapMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.mipmapMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get addressModeU() {
     return this.memoryViewInt32[0x8];
   }
   set addressModeU(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.addressModeU': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get addressModeV() {
     return this.memoryViewInt32[0x9];
   }
   set addressModeV(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.addressModeV': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get addressModeW() {
     return this.memoryViewInt32[0xA];
   }
   set addressModeW(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.addressModeW': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get mipLodBias() {
     return this.memoryViewFloat32[0xB];
   }
   set mipLodBias(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.mipLodBias': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xB] = value;
   }
   get anisotropyEnable() {
@@ -13282,9 +12504,7 @@ class VkSamplerCreateInfo {
     return this.memoryViewFloat32[0xD];
   }
   set maxAnisotropy(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.maxAnisotropy': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xD] = value;
   }
   get compareEnable() {
@@ -13297,36 +12517,28 @@ class VkSamplerCreateInfo {
     return this.memoryViewInt32[0xF];
   }
   set compareOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.compareOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xF] = value;
   }
   get minLod() {
     return this.memoryViewFloat32[0x10];
   }
   set minLod(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.minLod': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x10] = value;
   }
   get maxLod() {
     return this.memoryViewFloat32[0x11];
   }
   set maxLod(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.maxLod': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x11] = value;
   }
   get borderColor() {
     return this.memoryViewInt32[0x12];
   }
   set borderColor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.borderColor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x12] = value;
   }
   get unnormalizedCoordinates() {
@@ -13469,9 +12681,7 @@ class VkCommandPoolCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandPoolCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -13484,18 +12694,14 @@ class VkCommandPoolCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandPoolCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get queueFamilyIndex() {
     return this.memoryViewUint32[0x5];
   }
   set queueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandPoolCreateInfo.queueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -13578,9 +12784,7 @@ class VkCommandBufferAllocateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferAllocateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -13593,7 +12797,7 @@ class VkCommandBufferAllocateInfo {
     return this._commandPool;
   }
   set commandPool(value) {
-    if (value !== null && value.constructor === VkCommandPool) {
+    if (value !== null ) {
       
       this._commandPool = value;
       
@@ -13609,18 +12813,14 @@ class VkCommandBufferAllocateInfo {
     return this.memoryViewInt32[0x6];
   }
   set level(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferAllocateInfo.level': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get commandBufferCount() {
     return this.memoryViewUint32[0x7];
   }
   set commandBufferCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferAllocateInfo.commandBufferCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   
@@ -13713,18 +12913,16 @@ class VkCommandBufferInheritanceInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C0668:
@@ -13745,7 +12943,7 @@ class VkCommandBufferInheritanceInfo {
     return this._renderPass;
   }
   set renderPass(value) {
-    if (value !== null && value.constructor === VkRenderPass) {
+    if (value !== null ) {
       
       this._renderPass = value;
       
@@ -13761,16 +12959,14 @@ class VkCommandBufferInheritanceInfo {
     return this.memoryViewUint32[0x6];
   }
   set subpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.subpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get framebuffer() {
     return this._framebuffer;
   }
   set framebuffer(value) {
-    if (value !== null && value.constructor === VkFramebuffer) {
+    if (value !== null ) {
       
       this._framebuffer = value;
       
@@ -13792,18 +12988,14 @@ class VkCommandBufferInheritanceInfo {
     return this.memoryViewInt32[0xB];
   }
   set queryFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.queryFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   get pipelineStatistics() {
     return this.memoryViewInt32[0xC];
   }
   set pipelineStatistics(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pipelineStatistics': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   
@@ -13898,18 +13090,16 @@ class VkCommandBufferBeginInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB464:
@@ -13930,16 +13120,14 @@ class VkCommandBufferBeginInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pInheritanceInfo() {
     return this._pInheritanceInfo;
   }
   set pInheritanceInfo(value) {
-    if (value !== null && value.constructor === VkCommandBufferInheritanceInfo) {
+    if (value !== null ) {
       value.flush();
       this._pInheritanceInfo = value;
       this.memoryViewBigInt64[0x3] = value.memoryAddress;
@@ -14036,18 +13224,16 @@ class VkRenderPassBeginInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB463:
@@ -14069,7 +13255,7 @@ class VkRenderPassBeginInfo {
     return this._renderPass;
   }
   set renderPass(value) {
-    if (value !== null && value.constructor === VkRenderPass) {
+    if (value !== null ) {
       
       this._renderPass = value;
       
@@ -14085,7 +13271,7 @@ class VkRenderPassBeginInfo {
     return this._framebuffer;
   }
   set framebuffer(value) {
-    if (value !== null && value.constructor === VkFramebuffer) {
+    if (value !== null ) {
       
       this._framebuffer = value;
       
@@ -14101,7 +13287,7 @@ class VkRenderPassBeginInfo {
     return this._renderArea;
   }
   set renderArea(value) {
-    if (value !== null && value.constructor === VkRect2D) {
+    if (value !== null ) {
       value.flush();
       this._renderArea = value;
       
@@ -14117,16 +13303,14 @@ class VkRenderPassBeginInfo {
     return this.memoryViewUint32[0xC];
   }
   set clearValueCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.clearValueCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pClearValues() {
     return this._pClearValues;
   }
   set pClearValues(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pClearValues = value;
     } else if (value === null) {
       this._pClearValues = null;
@@ -14151,7 +13335,7 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._renderArea.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRenderPassBeginInfo.renderArea' isn't used as shared-memory");
+      
     }
   }
   
@@ -14159,16 +13343,8 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
   if (this._pClearValues !== null) {
     let array = this._pClearValues;
     
-    if (array.length !== this.clearValueCount) {
-      throw new RangeError("Invalid array length, expected length of 'clearValueCount' for 'VkRenderPassBeginInfo.pClearValues'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkClearValue) {
-        throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pClearValues[" + ii + "]': Expected 'VkClearValue' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -14255,18 +13431,14 @@ class VkClearDepthStencilValue {
     return this.memoryViewFloat32[0x0];
   }
   set depth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearDepthStencilValue.depth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x0] = value;
   }
   get stencil() {
     return this.memoryViewUint32[0x1];
   }
   set stencil(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearDepthStencilValue.stencil': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   
@@ -14328,25 +13500,21 @@ class VkClearAttachment {
     return this.memoryViewInt32[0x0];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearAttachment.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get colorAttachment() {
     return this.memoryViewUint32[0x1];
   }
   set colorAttachment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkClearAttachment.colorAttachment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get clearValue() {
     return this._clearValue;
   }
   set clearValue(value) {
-    if (value !== null && value.constructor === VkClearValue) {
+    if (value !== null ) {
       value.flush();
       this._clearValue = value;
       
@@ -14370,7 +13538,7 @@ VkClearAttachment.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._clearValue.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearAttachment.clearValue' isn't used as shared-memory");
+      
     }
   }
   
@@ -14444,81 +13612,63 @@ class VkAttachmentDescription {
     return this.memoryViewInt32[0x0];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get format() {
     return this.memoryViewInt32[0x1];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get samples() {
     return this.memoryViewInt32[0x2];
   }
   set samples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.samples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get loadOp() {
     return this.memoryViewInt32[0x3];
   }
   set loadOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.loadOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get storeOp() {
     return this.memoryViewInt32[0x4];
   }
   set storeOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.storeOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stencilLoadOp() {
     return this.memoryViewInt32[0x5];
   }
   set stencilLoadOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.stencilLoadOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get stencilStoreOp() {
     return this.memoryViewInt32[0x6];
   }
   set stencilStoreOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.stencilStoreOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get initialLayout() {
     return this.memoryViewInt32[0x7];
   }
   set initialLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.initialLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get finalLayout() {
     return this.memoryViewInt32[0x8];
   }
   set finalLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription.finalLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -14606,18 +13756,14 @@ class VkAttachmentReference {
     return this.memoryViewUint32[0x0];
   }
   set attachment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference.attachment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get layout() {
     return this.memoryViewInt32[0x1];
   }
   set layout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference.layout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   
@@ -14698,34 +13844,28 @@ class VkSubpassDescription {
     return this.memoryViewInt32[0x0];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pipelineBindPoint() {
     return this.memoryViewInt32[0x1];
   }
   set pipelineBindPoint(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription.pipelineBindPoint': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get inputAttachmentCount() {
     return this.memoryViewUint32[0x2];
   }
   set inputAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription.inputAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get pInputAttachments() {
     return this._pInputAttachments;
   }
   set pInputAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pInputAttachments = value;
     } else if (value === null) {
       this._pInputAttachments = null;
@@ -14737,16 +13877,14 @@ class VkSubpassDescription {
     return this.memoryViewUint32[0x6];
   }
   set colorAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription.colorAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pColorAttachments() {
     return this._pColorAttachments;
   }
   set pColorAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pColorAttachments = value;
     } else if (value === null) {
       this._pColorAttachments = null;
@@ -14758,7 +13896,7 @@ class VkSubpassDescription {
     return this._pResolveAttachments;
   }
   set pResolveAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pResolveAttachments = value;
     } else if (value === null) {
       this._pResolveAttachments = null;
@@ -14770,7 +13908,7 @@ class VkSubpassDescription {
     return this._pDepthStencilAttachment;
   }
   set pDepthStencilAttachment(value) {
-    if (value !== null && value.constructor === VkAttachmentReference) {
+    if (value !== null ) {
       value.flush();
       this._pDepthStencilAttachment = value;
       this.memoryViewBigInt64[0x6] = value.memoryAddress;
@@ -14786,16 +13924,14 @@ class VkSubpassDescription {
     return this.memoryViewUint32[0xE];
   }
   set preserveAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription.preserveAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xE] = value;
   }
   get pPreserveAttachments() {
     return this._pPreserveAttachments;
   }
   set pPreserveAttachments(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pPreserveAttachments = value;
       this.memoryViewBigInt64[0x8] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -14814,16 +13950,8 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pInputAttachments !== null) {
     let array = this._pInputAttachments;
     
-    if (array.length !== this.inputAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'inputAttachmentCount' for 'VkSubpassDescription.pInputAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription.pInputAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -14836,16 +13964,8 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pColorAttachments !== null) {
     let array = this._pColorAttachments;
     
-    if (array.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription.pColorAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription.pColorAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -14858,16 +13978,8 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pResolveAttachments !== null) {
     let array = this._pResolveAttachments;
     
-    if (array.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription.pResolveAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription.pResolveAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -14976,63 +14088,49 @@ class VkSubpassDependency {
     return this.memoryViewUint32[0x0];
   }
   set srcSubpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.srcSubpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get dstSubpass() {
     return this.memoryViewUint32[0x1];
   }
   set dstSubpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.dstSubpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get srcStageMask() {
     return this.memoryViewInt32[0x2];
   }
   set srcStageMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.srcStageMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get dstStageMask() {
     return this.memoryViewInt32[0x3];
   }
   set dstStageMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.dstStageMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get srcAccessMask() {
     return this.memoryViewInt32[0x4];
   }
   set srcAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.srcAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get dstAccessMask() {
     return this.memoryViewInt32[0x5];
   }
   set dstAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.dstAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get dependencyFlags() {
     return this.memoryViewInt32[0x6];
   }
   set dependencyFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency.dependencyFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -15131,18 +14229,16 @@ class VkRenderPassCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9B9908:
@@ -15165,25 +14261,21 @@ class VkRenderPassCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get attachmentCount() {
     return this.memoryViewUint32[0x5];
   }
   set attachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.attachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pAttachments() {
     return this._pAttachments;
   }
   set pAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAttachments = value;
     } else if (value === null) {
       this._pAttachments = null;
@@ -15195,16 +14287,14 @@ class VkRenderPassCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set subpassCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.subpassCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSubpasses() {
     return this._pSubpasses;
   }
   set pSubpasses(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSubpasses = value;
     } else if (value === null) {
       this._pSubpasses = null;
@@ -15216,16 +14306,14 @@ class VkRenderPassCreateInfo {
     return this.memoryViewUint32[0xC];
   }
   set dependencyCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.dependencyCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pDependencies() {
     return this._pDependencies;
   }
   set pDependencies(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDependencies = value;
     } else if (value === null) {
       this._pDependencies = null;
@@ -15247,16 +14335,8 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   if (this._pAttachments !== null) {
     let array = this._pAttachments;
     
-    if (array.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkRenderPassCreateInfo.pAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentDescription) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pAttachments[" + ii + "]': Expected 'VkAttachmentDescription' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -15269,16 +14349,8 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   if (this._pSubpasses !== null) {
     let array = this._pSubpasses;
     
-    if (array.length !== this.subpassCount) {
-      throw new RangeError("Invalid array length, expected length of 'subpassCount' for 'VkRenderPassCreateInfo.pSubpasses'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubpassDescription) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pSubpasses[" + ii + "]': Expected 'VkSubpassDescription' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -15291,16 +14363,8 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   if (this._pDependencies !== null) {
     let array = this._pDependencies;
     
-    if (array.length !== this.dependencyCount) {
-      throw new RangeError("Invalid array length, expected length of 'dependencyCount' for 'VkRenderPassCreateInfo.pDependencies'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubpassDependency) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pDependencies[" + ii + "]': Expected 'VkSubpassDependency' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -15399,9 +14463,7 @@ class VkEventCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkEventCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -15414,9 +14476,7 @@ class VkEventCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkEventCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -15489,18 +14549,16 @@ class VkFenceCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkFenceCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C8368:
@@ -15522,9 +14580,7 @@ class VkFenceCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -17310,18 +16366,16 @@ class VkSemaphoreCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BF6C8:
@@ -17343,9 +16397,7 @@ class VkSemaphoreCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -17426,9 +16478,7 @@ class VkQueryPoolCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueryPoolCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -17441,36 +16491,28 @@ class VkQueryPoolCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueryPoolCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get queryType() {
     return this.memoryViewInt32[0x5];
   }
   set queryType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueryPoolCreateInfo.queryType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get queryCount() {
     return this.memoryViewUint32[0x6];
   }
   set queryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueryPoolCreateInfo.queryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pipelineStatistics() {
     return this.memoryViewInt32[0x7];
   }
   set pipelineStatistics(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueryPoolCreateInfo.pipelineStatistics': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   
@@ -17570,9 +16612,7 @@ class VkFramebufferCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -17585,16 +16625,14 @@ class VkFramebufferCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get renderPass() {
     return this._renderPass;
   }
   set renderPass(value) {
-    if (value !== null && value.constructor === VkRenderPass) {
+    if (value !== null ) {
       
       this._renderPass = value;
       
@@ -17610,16 +16648,14 @@ class VkFramebufferCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set attachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.attachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pAttachments() {
     return this._pAttachments;
   }
   set pAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAttachments = value;
     } else if (value === null) {
       this._pAttachments = null;
@@ -17631,27 +16667,21 @@ class VkFramebufferCreateInfo {
     return this.memoryViewUint32[0xC];
   }
   set width(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.width': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get height() {
     return this.memoryViewUint32[0xD];
   }
   set height(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.height': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xD] = value;
   }
   get layers() {
     return this.memoryViewUint32[0xE];
   }
   set layers(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.layers': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xE] = value;
   }
   
@@ -17668,16 +16698,8 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
   if (this._pAttachments !== null) {
     let array = this._pAttachments;
     
-    if (array.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkFramebufferCreateInfo.pAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkImageView) {
-        throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.pAttachments[" + ii + "]': Expected 'VkImageView' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -17772,36 +16794,28 @@ class VkDrawIndirectCommand {
     return this.memoryViewUint32[0x0];
   }
   set vertexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndirectCommand.vertexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get instanceCount() {
     return this.memoryViewUint32[0x1];
   }
   set instanceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndirectCommand.instanceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get firstVertex() {
     return this.memoryViewUint32[0x2];
   }
   set firstVertex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndirectCommand.firstVertex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get firstInstance() {
     return this.memoryViewUint32[0x3];
   }
   set firstInstance(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndirectCommand.firstInstance': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   
@@ -17875,45 +16889,35 @@ class VkDrawIndexedIndirectCommand {
     return this.memoryViewUint32[0x0];
   }
   set indexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndexedIndirectCommand.indexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get instanceCount() {
     return this.memoryViewUint32[0x1];
   }
   set instanceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndexedIndirectCommand.instanceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get firstIndex() {
     return this.memoryViewUint32[0x2];
   }
   set firstIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndexedIndirectCommand.firstIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get vertexOffset() {
     return this.memoryViewInt32[0x3];
   }
   set vertexOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndexedIndirectCommand.vertexOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get firstInstance() {
     return this.memoryViewUint32[0x4];
   }
   set firstInstance(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawIndexedIndirectCommand.firstInstance': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -17985,27 +16989,21 @@ class VkDispatchIndirectCommand {
     return this.memoryViewUint32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDispatchIndirectCommand.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get y() {
     return this.memoryViewUint32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDispatchIndirectCommand.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get z() {
     return this.memoryViewUint32[0x2];
   }
   set z(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDispatchIndirectCommand.z': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -18088,18 +17086,16 @@ class VkSubmitInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubmitInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BAC90:
@@ -18124,16 +17120,14 @@ class VkSubmitInfo {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubmitInfo.waitSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphores() {
     return this._pWaitSemaphores;
   }
   set pWaitSemaphores(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pWaitSemaphores = value;
     } else if (value === null) {
       this._pWaitSemaphores = null;
@@ -18145,7 +17139,7 @@ class VkSubmitInfo {
     return this._pWaitDstStageMask;
   }
   set pWaitDstStageMask(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pWaitDstStageMask = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -18159,16 +17153,14 @@ class VkSubmitInfo {
     return this.memoryViewUint32[0xA];
   }
   set commandBufferCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubmitInfo.commandBufferCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get pCommandBuffers() {
     return this._pCommandBuffers;
   }
   set pCommandBuffers(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pCommandBuffers = value;
     } else if (value === null) {
       this._pCommandBuffers = null;
@@ -18180,16 +17172,14 @@ class VkSubmitInfo {
     return this.memoryViewUint32[0xE];
   }
   set signalSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubmitInfo.signalSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xE] = value;
   }
   get pSignalSemaphores() {
     return this._pSignalSemaphores;
   }
   set pSignalSemaphores(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSignalSemaphores = value;
     } else if (value === null) {
       this._pSignalSemaphores = null;
@@ -18211,16 +17201,8 @@ VkSubmitInfo.prototype.flush = function flush() {
   if (this._pWaitSemaphores !== null) {
     let array = this._pWaitSemaphores;
     
-    if (array.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkSubmitInfo.pWaitSemaphores'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSemaphore) {
-        throw new TypeError("Invalid type for 'VkSubmitInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -18233,16 +17215,8 @@ VkSubmitInfo.prototype.flush = function flush() {
   if (this._pCommandBuffers !== null) {
     let array = this._pCommandBuffers;
     
-    if (array.length !== this.commandBufferCount) {
-      throw new RangeError("Invalid array length, expected length of 'commandBufferCount' for 'VkSubmitInfo.pCommandBuffers'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkCommandBuffer) {
-        throw new TypeError("Invalid type for 'VkSubmitInfo.pCommandBuffers[" + ii + "]': Expected 'VkCommandBuffer' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -18255,16 +17229,8 @@ VkSubmitInfo.prototype.flush = function flush() {
   if (this._pSignalSemaphores !== null) {
     let array = this._pSignalSemaphores;
     
-    if (array.length !== this.signalSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected length of 'signalSemaphoreCount' for 'VkSubmitInfo.pSignalSemaphores'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSemaphore) {
-        throw new TypeError("Invalid type for 'VkSubmitInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -18528,7 +17494,7 @@ class VkDisplayModeParametersKHR {
     return this._visibleRegion;
   }
   set visibleRegion(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._visibleRegion = value;
       
@@ -18544,9 +17510,7 @@ class VkDisplayModeParametersKHR {
     return this.memoryViewUint32[0x2];
   }
   set refreshRate(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayModeParametersKHR.refreshRate': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -18561,7 +17525,7 @@ VkDisplayModeParametersKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._visibleRegion.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayModeParametersKHR.visibleRegion' isn't used as shared-memory");
+      
     }
   }
   
@@ -18682,9 +17646,7 @@ class VkDisplayModeCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayModeCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -18697,16 +17659,14 @@ class VkDisplayModeCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayModeCreateInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get parameters() {
     return this._parameters;
   }
   set parameters(value) {
-    if (value !== null && value.constructor === VkDisplayModeParametersKHR) {
+    if (value !== null ) {
       value.flush();
       this._parameters = value;
       
@@ -18735,7 +17695,7 @@ VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._parameters.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x14);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayModeCreateInfoKHR.parameters' isn't used as shared-memory");
+      
     }
   }
   
@@ -18954,9 +17914,7 @@ class VkDisplaySurfaceCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -18969,16 +17927,14 @@ class VkDisplaySurfaceCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get displayMode() {
     return this._displayMode;
   }
   set displayMode(value) {
-    if (value !== null && value.constructor === VkDisplayModeKHR) {
+    if (value !== null ) {
       
       this._displayMode = value;
       
@@ -18994,52 +17950,42 @@ class VkDisplaySurfaceCreateInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set planeIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.planeIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get planeStackIndex() {
     return this.memoryViewUint32[0x9];
   }
   set planeStackIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.planeStackIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x9] = value;
   }
   get transform() {
     return this.memoryViewInt32[0xA];
   }
   set transform(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.transform': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get globalAlpha() {
     return this.memoryViewFloat32[0xB];
   }
   set globalAlpha(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.globalAlpha': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xB] = value;
   }
   get alphaMode() {
     return this.memoryViewInt32[0xC];
   }
   set alphaMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.alphaMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get imageExtent() {
     return this._imageExtent;
   }
   set imageExtent(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._imageExtent = value;
       
@@ -19068,7 +18014,7 @@ VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._imageExtent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x34);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplaySurfaceCreateInfoKHR.imageExtent' isn't used as shared-memory");
+      
     }
   }
   
@@ -19168,9 +18114,7 @@ class VkDisplayPresentInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPresentInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -19183,7 +18127,7 @@ class VkDisplayPresentInfoKHR {
     return this._srcRect;
   }
   set srcRect(value) {
-    if (value !== null && value.constructor === VkRect2D) {
+    if (value !== null ) {
       value.flush();
       this._srcRect = value;
       
@@ -19199,7 +18143,7 @@ class VkDisplayPresentInfoKHR {
     return this._dstRect;
   }
   set dstRect(value) {
-    if (value !== null && value.constructor === VkRect2D) {
+    if (value !== null ) {
       value.flush();
       this._dstRect = value;
       
@@ -19234,7 +18178,7 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._srcRect.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayPresentInfoKHR.srcRect' isn't used as shared-memory");
+      
     }
   }
   
@@ -19245,7 +18189,7 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._dstRect.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayPresentInfoKHR.dstRect' isn't used as shared-memory");
+      
     }
   }
   
@@ -19456,9 +18400,7 @@ class VkWin32SurfaceCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -19471,27 +18413,21 @@ class VkWin32SurfaceCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get hinstance() {
     return this.memoryViewBigInt64[0x3];
   }
   set hinstance(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hinstance': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get hwnd() {
     return this.memoryViewBigInt64[0x4];
   }
   set hwnd(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32SurfaceCreateInfoKHR.hwnd': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   
@@ -19663,18 +18599,16 @@ class VkSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C2D7B:
@@ -19697,16 +18631,14 @@ class VkSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get surface() {
     return this._surface;
   }
   set surface(value) {
-    if (value !== null && value.constructor === VkSurfaceKHR) {
+    if (value !== null ) {
       
       this._surface = value;
       
@@ -19722,34 +18654,28 @@ class VkSwapchainCreateInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set minImageCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.minImageCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get imageFormat() {
     return this.memoryViewInt32[0x9];
   }
   set imageFormat(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageFormat': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get imageColorSpace() {
     return this.memoryViewInt32[0xA];
   }
   set imageColorSpace(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageColorSpace': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get imageExtent() {
     return this._imageExtent;
   }
   set imageExtent(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._imageExtent = value;
       
@@ -19765,43 +18691,35 @@ class VkSwapchainCreateInfoKHR {
     return this.memoryViewUint32[0xD];
   }
   set imageArrayLayers(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageArrayLayers': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xD] = value;
   }
   get imageUsage() {
     return this.memoryViewInt32[0xE];
   }
   set imageUsage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageUsage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xE] = value;
   }
   get imageSharingMode() {
     return this.memoryViewInt32[0xF];
   }
   set imageSharingMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageSharingMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xF] = value;
   }
   get queueFamilyIndexCount() {
     return this.memoryViewUint32[0x10];
   }
   set queueFamilyIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.queueFamilyIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   get pQueueFamilyIndices() {
     return this._pQueueFamilyIndices;
   }
   set pQueueFamilyIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pQueueFamilyIndices = value;
       this.memoryViewBigInt64[0x9] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -19815,27 +18733,21 @@ class VkSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x14];
   }
   set preTransform(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.preTransform': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x14] = value;
   }
   get compositeAlpha() {
     return this.memoryViewInt32[0x15];
   }
   set compositeAlpha(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.compositeAlpha': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x15] = value;
   }
   get presentMode() {
     return this.memoryViewInt32[0x16];
   }
   set presentMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.presentMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x16] = value;
   }
   get clipped() {
@@ -19848,7 +18760,7 @@ class VkSwapchainCreateInfoKHR {
     return this._oldSwapchain;
   }
   set oldSwapchain(value) {
-    if (value !== null && value.constructor === VkSwapchainKHR) {
+    if (value !== null ) {
       
       this._oldSwapchain = value;
       
@@ -19877,7 +18789,7 @@ VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._imageExtent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSwapchainCreateInfoKHR.imageExtent' isn't used as shared-memory");
+      
     }
   }
   
@@ -20017,18 +18929,16 @@ class VkPresentInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9AD5B8:
@@ -20052,16 +18962,14 @@ class VkPresentInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentInfoKHR.waitSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphores() {
     return this._pWaitSemaphores;
   }
   set pWaitSemaphores(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pWaitSemaphores = value;
     } else if (value === null) {
       this._pWaitSemaphores = null;
@@ -20073,16 +18981,14 @@ class VkPresentInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set swapchainCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentInfoKHR.swapchainCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSwapchains() {
     return this._pSwapchains;
   }
   set pSwapchains(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSwapchains = value;
     } else if (value === null) {
       this._pSwapchains = null;
@@ -20094,7 +19000,7 @@ class VkPresentInfoKHR {
     return this._pImageIndices;
   }
   set pImageIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pImageIndices = value;
       this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20108,7 +19014,7 @@ class VkPresentInfoKHR {
     return this._pResults;
   }
   set pResults(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pResults = value;
       this.memoryViewBigInt64[0x7] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20132,16 +19038,8 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   if (this._pWaitSemaphores !== null) {
     let array = this._pWaitSemaphores;
     
-    if (array.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkPresentInfoKHR.pWaitSemaphores'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSemaphore) {
-        throw new TypeError("Invalid type for 'VkPresentInfoKHR.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -20154,16 +19052,8 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   if (this._pSwapchains !== null) {
     let array = this._pSwapchains;
     
-    if (array.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentInfoKHR.pSwapchains'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSwapchainKHR) {
-        throw new TypeError("Invalid type for 'VkPresentInfoKHR.pSwapchains[" + ii + "]': Expected 'VkSwapchainKHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -20258,9 +19148,7 @@ class VkDebugReportCallbackCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugReportCallbackCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20273,16 +19161,14 @@ class VkDebugReportCallbackCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugReportCallbackCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pUserData() {
     return this._pUserData;
   }
   set pUserData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pUserData = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20370,9 +19256,7 @@ class VkValidationFlagsEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationFlagsEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20385,16 +19269,14 @@ class VkValidationFlagsEXT {
     return this.memoryViewUint32[0x4];
   }
   set disabledValidationCheckCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationFlagsEXT.disabledValidationCheckCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDisabledValidationChecks() {
     return this._pDisabledValidationChecks;
   }
   set pDisabledValidationChecks(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pDisabledValidationChecks = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20486,9 +19368,7 @@ class VkValidationFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20501,16 +19381,14 @@ class VkValidationFeaturesEXT {
     return this.memoryViewUint32[0x4];
   }
   set enabledValidationFeatureCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationFeaturesEXT.enabledValidationFeatureCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pEnabledValidationFeatures() {
     return this._pEnabledValidationFeatures;
   }
   set pEnabledValidationFeatures(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pEnabledValidationFeatures = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20524,16 +19402,14 @@ class VkValidationFeaturesEXT {
     return this.memoryViewUint32[0x8];
   }
   set disabledValidationFeatureCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationFeaturesEXT.disabledValidationFeatureCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pDisabledValidationFeatures() {
     return this._pDisabledValidationFeatures;
   }
   set pDisabledValidationFeatures(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pDisabledValidationFeatures = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -20625,9 +19501,7 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateRasterizationOrderAMD.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20640,9 +19514,7 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
     return this.memoryViewInt32[0x4];
   }
   set rasterizationOrder(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateRasterizationOrderAMD.rasterizationOrder': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -20721,9 +19593,7 @@ class VkDebugMarkerObjectNameInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20736,18 +19606,14 @@ class VkDebugMarkerObjectNameInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set objectType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.objectType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get object() {
     return this.memoryViewBigUint64[0x3];
   }
   set object(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectNameInfoEXT.object': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get pObjectName() {
@@ -20759,7 +19625,7 @@ class VkDebugMarkerObjectNameInfoEXT {
     }
   }
   set pObjectName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pObjectName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._pObjectName);
     } else if (value === null) {
@@ -20857,9 +19723,7 @@ class VkDebugMarkerObjectTagInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -20872,43 +19736,35 @@ class VkDebugMarkerObjectTagInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set objectType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.objectType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get object() {
     return this.memoryViewBigUint64[0x3];
   }
   set object(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.object': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get tagName() {
     return this.memoryViewBigUint64[0x4];
   }
   set tagName(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagName': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get tagSize() {
     return this.memoryViewBigInt64[0x5];
   }
   set tagSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerObjectTagInfoEXT.tagSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x5] = BigInt(value);
   }
   get pTag() {
     return this._pTag;
   }
   set pTag(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pTag = value;
       this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -21008,9 +19864,7 @@ class VkDebugMarkerMarkerInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugMarkerMarkerInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21028,7 +19882,7 @@ class VkDebugMarkerMarkerInfoEXT {
     }
   }
   set pMarkerName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pMarkerName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x2] = getAddressFromArrayBuffer(this._pMarkerName);
     } else if (value === null) {
@@ -21042,7 +19896,7 @@ class VkDebugMarkerMarkerInfoEXT {
     return this._color;
   }
   set color(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._color = value;
     } else if (value === null) {
       this._color = null;
@@ -21064,18 +19918,6 @@ VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
   if (this._color !== null) {
     let array = this._color;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkDebugMarkerMarkerInfoEXT.color'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkDebugMarkerMarkerInfoEXT.color[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewFloat32[0x6 + ii] = array[ii];
     };
@@ -21151,9 +19993,7 @@ class VkDedicatedAllocationImageCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDedicatedAllocationImageCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21240,9 +20080,7 @@ class VkDedicatedAllocationBufferCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDedicatedAllocationBufferCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21329,9 +20167,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDedicatedAllocationMemoryAllocateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21344,7 +20180,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -21360,7 +20196,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -21523,9 +20359,7 @@ class VkExternalMemoryImageCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21538,9 +20372,7 @@ class VkExternalMemoryImageCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfoNV.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -21613,9 +20445,7 @@ class VkExportMemoryAllocateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21628,9 +20458,7 @@ class VkExportMemoryAllocateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfoNV.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -21705,9 +20533,7 @@ class VkImportMemoryWin32HandleInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21720,18 +20546,14 @@ class VkImportMemoryWin32HandleInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoNV.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get handle() {
     return this.memoryViewBigInt64[0x3];
   }
   set handle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoNV.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
@@ -21806,9 +20628,7 @@ class VkExportMemoryWin32HandleInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryWin32HandleInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21899,9 +20719,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -21914,16 +20732,14 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this.memoryViewUint32[0x4];
   }
   set acquireCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.acquireCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAcquireSyncs() {
     return this._pAcquireSyncs;
   }
   set pAcquireSyncs(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAcquireSyncs = value;
     } else if (value === null) {
       this._pAcquireSyncs = null;
@@ -21935,7 +20751,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this._pAcquireKeys;
   }
   set pAcquireKeys(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pAcquireKeys = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -21949,7 +20765,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this._pAcquireTimeoutMilliseconds;
   }
   set pAcquireTimeoutMilliseconds(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pAcquireTimeoutMilliseconds = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -21963,16 +20779,14 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this.memoryViewUint32[0xC];
   }
   set releaseCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.releaseCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pReleaseSyncs() {
     return this._pReleaseSyncs;
   }
   set pReleaseSyncs(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pReleaseSyncs = value;
     } else if (value === null) {
       this._pReleaseSyncs = null;
@@ -21984,7 +20798,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this._pReleaseKeys;
   }
   set pReleaseKeys(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pReleaseKeys = value;
       this.memoryViewBigInt64[0x8] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -22008,16 +20822,8 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   if (this._pAcquireSyncs !== null) {
     let array = this._pAcquireSyncs;
     
-    if (array.length !== this.acquireCount) {
-      throw new RangeError("Invalid array length, expected length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDeviceMemory) {
-        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -22030,16 +20836,8 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   if (this._pReleaseSyncs !== null) {
     let array = this._pReleaseSyncs;
     
-    if (array.length !== this.releaseCount) {
-      throw new RangeError("Invalid array length, expected length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDeviceMemory) {
-        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -22138,9 +20936,7 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsFeaturesNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -22235,9 +21031,7 @@ class VkDeviceGeneratedCommandsLimitsNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -22250,45 +21044,35 @@ class VkDeviceGeneratedCommandsLimitsNVX {
     return this.memoryViewUint32[0x4];
   }
   set maxIndirectCommandsLayoutTokenCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.maxIndirectCommandsLayoutTokenCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get maxObjectEntryCounts() {
     return this.memoryViewUint32[0x5];
   }
   set maxObjectEntryCounts(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.maxObjectEntryCounts': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get minSequenceCountBufferOffsetAlignment() {
     return this.memoryViewUint32[0x6];
   }
   set minSequenceCountBufferOffsetAlignment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.minSequenceCountBufferOffsetAlignment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get minSequenceIndexBufferOffsetAlignment() {
     return this.memoryViewUint32[0x7];
   }
   set minSequenceIndexBufferOffsetAlignment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.minSequenceIndexBufferOffsetAlignment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get minCommandsTokenBufferOffsetAlignment() {
     return this.memoryViewUint32[0x8];
   }
   set minCommandsTokenBufferOffsetAlignment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGeneratedCommandsLimitsNVX.minCommandsTokenBufferOffsetAlignment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   
@@ -22379,16 +21163,14 @@ class VkIndirectCommandsTokenNVX {
     return this.memoryViewInt32[0x0];
   }
   set tokenType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.tokenType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get buffer() {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -22404,9 +21186,7 @@ class VkIndirectCommandsTokenNVX {
     return this.memoryViewBigUint64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
@@ -22474,36 +21254,28 @@ class VkIndirectCommandsLayoutTokenNVX {
     return this.memoryViewInt32[0x0];
   }
   set tokenType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutTokenNVX.tokenType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get bindingUnit() {
     return this.memoryViewUint32[0x1];
   }
   set bindingUnit(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutTokenNVX.bindingUnit': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get dynamicCount() {
     return this.memoryViewUint32[0x2];
   }
   set dynamicCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutTokenNVX.dynamicCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get divisor() {
     return this.memoryViewUint32[0x3];
   }
   set divisor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutTokenNVX.divisor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x3] = value;
   }
   
@@ -22582,9 +21354,7 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -22597,34 +21367,28 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
     return this.memoryViewInt32[0x4];
   }
   set pipelineBindPoint(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.pipelineBindPoint': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x5];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get tokenCount() {
     return this.memoryViewUint32[0x6];
   }
   set tokenCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.tokenCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pTokens() {
     return this._pTokens;
   }
   set pTokens(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pTokens = value;
     } else if (value === null) {
       this._pTokens = null;
@@ -22646,16 +21410,8 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
   if (this._pTokens !== null) {
     let array = this._pTokens;
     
-    if (array.length !== this.tokenCount) {
-      throw new RangeError("Invalid array length, expected length of 'tokenCount' for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkIndirectCommandsLayoutTokenNVX) {
-        throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens[" + ii + "]': Expected 'VkIndirectCommandsLayoutTokenNVX' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -22761,9 +21517,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -22776,7 +21530,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this._objectTable;
   }
   set objectTable(value) {
-    if (value !== null && value.constructor === VkObjectTableNVX) {
+    if (value !== null ) {
       
       this._objectTable = value;
       
@@ -22792,7 +21546,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this._indirectCommandsLayout;
   }
   set indirectCommandsLayout(value) {
-    if (value !== null && value.constructor === VkIndirectCommandsLayoutNVX) {
+    if (value !== null ) {
       
       this._indirectCommandsLayout = value;
       
@@ -22808,16 +21562,14 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewUint32[0x8];
   }
   set indirectCommandsTokenCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.indirectCommandsTokenCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pIndirectCommandsTokens() {
     return this._pIndirectCommandsTokens;
   }
   set pIndirectCommandsTokens(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pIndirectCommandsTokens = value;
     } else if (value === null) {
       this._pIndirectCommandsTokens = null;
@@ -22829,16 +21581,14 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewUint32[0xC];
   }
   set maxSequencesCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.maxSequencesCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get targetCommandBuffer() {
     return this._targetCommandBuffer;
   }
   set targetCommandBuffer(value) {
-    if (value !== null && value.constructor === VkCommandBuffer) {
+    if (value !== null ) {
       
       this._targetCommandBuffer = value;
       
@@ -22854,7 +21604,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this._sequencesCountBuffer;
   }
   set sequencesCountBuffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._sequencesCountBuffer = value;
       
@@ -22870,16 +21620,14 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewBigUint64[0x9];
   }
   set sequencesCountOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesCountOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x9] = BigInt(value);
   }
   get sequencesIndexBuffer() {
     return this._sequencesIndexBuffer;
   }
   set sequencesIndexBuffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._sequencesIndexBuffer = value;
       
@@ -22895,9 +21643,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this.memoryViewBigUint64[0xB];
   }
   set sequencesIndexOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesIndexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0xB] = BigInt(value);
   }
   
@@ -22914,16 +21660,8 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
   if (this._pIndirectCommandsTokens !== null) {
     let array = this._pIndirectCommandsTokens;
     
-    if (array.length !== this.indirectCommandsTokenCount) {
-      throw new RangeError("Invalid array length, expected length of 'indirectCommandsTokenCount' for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkIndirectCommandsTokenNVX) {
-        throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens[" + ii + "]': Expected 'VkIndirectCommandsTokenNVX' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -23036,9 +21774,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -23051,7 +21787,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this._objectTable;
   }
   set objectTable(value) {
-    if (value !== null && value.constructor === VkObjectTableNVX) {
+    if (value !== null ) {
       
       this._objectTable = value;
       
@@ -23067,7 +21803,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this._indirectCommandsLayout;
   }
   set indirectCommandsLayout(value) {
-    if (value !== null && value.constructor === VkIndirectCommandsLayoutNVX) {
+    if (value !== null ) {
       
       this._indirectCommandsLayout = value;
       
@@ -23083,9 +21819,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this.memoryViewUint32[0x8];
   }
   set maxSequencesCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.maxSequencesCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   
@@ -23184,9 +21918,7 @@ class VkObjectTableCreateInfoNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -23199,16 +21931,14 @@ class VkObjectTableCreateInfoNVX {
     return this.memoryViewUint32[0x4];
   }
   set objectCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.objectCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pObjectEntryTypes() {
     return this._pObjectEntryTypes;
   }
   set pObjectEntryTypes(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pObjectEntryTypes = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -23222,7 +21952,7 @@ class VkObjectTableCreateInfoNVX {
     return this._pObjectEntryCounts;
   }
   set pObjectEntryCounts(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pObjectEntryCounts = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -23236,7 +21966,7 @@ class VkObjectTableCreateInfoNVX {
     return this._pObjectEntryUsageFlags;
   }
   set pObjectEntryUsageFlags(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pObjectEntryUsageFlags = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -23250,45 +21980,35 @@ class VkObjectTableCreateInfoNVX {
     return this.memoryViewUint32[0xC];
   }
   set maxUniformBuffersPerDescriptor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.maxUniformBuffersPerDescriptor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get maxStorageBuffersPerDescriptor() {
     return this.memoryViewUint32[0xD];
   }
   set maxStorageBuffersPerDescriptor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.maxStorageBuffersPerDescriptor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xD] = value;
   }
   get maxStorageImagesPerDescriptor() {
     return this.memoryViewUint32[0xE];
   }
   set maxStorageImagesPerDescriptor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.maxStorageImagesPerDescriptor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xE] = value;
   }
   get maxSampledImagesPerDescriptor() {
     return this.memoryViewUint32[0xF];
   }
   set maxSampledImagesPerDescriptor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.maxSampledImagesPerDescriptor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xF] = value;
   }
   get maxPipelineLayouts() {
     return this.memoryViewUint32[0x10];
   }
   set maxPipelineLayouts(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableCreateInfoNVX.maxPipelineLayouts': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   
@@ -23389,18 +22109,14 @@ class VkObjectTableEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   
@@ -23462,25 +22178,21 @@ class VkObjectTablePipelineEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTablePipelineEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTablePipelineEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get pipeline() {
     return this._pipeline;
   }
   set pipeline(value) {
-    if (value !== null && value.constructor === VkPipeline) {
+    if (value !== null ) {
       
       this._pipeline = value;
       
@@ -23557,25 +22269,21 @@ class VkObjectTableDescriptorSetEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get pipelineLayout() {
     return this._pipelineLayout;
   }
   set pipelineLayout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._pipelineLayout = value;
       
@@ -23591,7 +22299,7 @@ class VkObjectTableDescriptorSetEntryNVX {
     return this._descriptorSet;
   }
   set descriptorSet(value) {
-    if (value !== null && value.constructor === VkDescriptorSet) {
+    if (value !== null ) {
       
       this._descriptorSet = value;
       
@@ -23670,25 +22378,21 @@ class VkObjectTableVertexBufferEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableVertexBufferEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableVertexBufferEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get buffer() {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -23765,25 +22469,21 @@ class VkObjectTableIndexBufferEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableIndexBufferEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableIndexBufferEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get buffer() {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -23799,9 +22499,7 @@ class VkObjectTableIndexBufferEntryNVX {
     return this.memoryViewInt32[0x4];
   }
   set indexType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTableIndexBufferEntryNVX.indexType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -23873,25 +22571,21 @@ class VkObjectTablePushConstantEntryNVX {
     return this.memoryViewInt32[0x0];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTablePushConstantEntryNVX.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x1];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTablePushConstantEntryNVX.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get pipelineLayout() {
     return this._pipelineLayout;
   }
   set pipelineLayout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._pipelineLayout = value;
       
@@ -23907,9 +22601,7 @@ class VkObjectTablePushConstantEntryNVX {
     return this.memoryViewInt32[0x4];
   }
   set stageFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkObjectTablePushConstantEntryNVX.stageFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -23979,18 +22671,16 @@ class VkPhysicalDeviceFeatures2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C9EC0:
@@ -24042,7 +22732,7 @@ class VkPhysicalDeviceFeatures2 {
     return this._features;
   }
   set features(value) {
-    if (value !== null && value.constructor === VkPhysicalDeviceFeatures) {
+    if (value !== null ) {
       value.flush();
       this._features = value;
       
@@ -24071,7 +22761,7 @@ VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._features.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPhysicalDeviceFeatures2.features' isn't used as shared-memory");
+      
     }
   }
   
@@ -24137,18 +22827,16 @@ class VkPhysicalDeviceFeatures2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C9EC0:
@@ -24200,7 +22888,7 @@ class VkPhysicalDeviceFeatures2KHR {
     return this._features;
   }
   set features(value) {
-    if (value !== null && value.constructor === VkPhysicalDeviceFeatures) {
+    if (value !== null ) {
       value.flush();
       this._features = value;
       
@@ -24229,7 +22917,7 @@ VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._features.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPhysicalDeviceFeatures2KHR.features' isn't used as shared-memory");
+      
     }
   }
   
@@ -24294,18 +22982,16 @@ class VkPhysicalDeviceProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C0280:
@@ -24427,18 +23113,16 @@ class VkPhysicalDeviceProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C0280:
@@ -24560,18 +23244,16 @@ class VkFormatProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFormatProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkFormatProperties2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3330:
@@ -24666,18 +23348,16 @@ class VkFormatProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFormatProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkFormatProperties2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3330:
@@ -24772,18 +23452,16 @@ class VkImageFormatProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageFormatProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageFormatProperties2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BDF59:
@@ -24882,18 +23560,16 @@ class VkImageFormatProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BDF59:
@@ -25001,18 +23677,16 @@ class VkPhysicalDeviceImageFormatInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BDF58:
@@ -25037,45 +23711,35 @@ class VkPhysicalDeviceImageFormatInfo2 {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get type() {
     return this.memoryViewInt32[0x5];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get tiling() {
     return this.memoryViewInt32[0x6];
   }
   set tiling(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.tiling': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x7];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x8];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -25172,18 +23836,16 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BDF58:
@@ -25208,45 +23870,35 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get type() {
     return this.memoryViewInt32[0x5];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get tiling() {
     return this.memoryViewInt32[0x6];
   }
   set tiling(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.tiling': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x7];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x8];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -25334,18 +23986,16 @@ class VkQueueFamilyProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9DEEB1:
@@ -25440,18 +24090,16 @@ class VkQueueFamilyProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9DEEB1:
@@ -25546,18 +24194,16 @@ class VkPhysicalDeviceMemoryProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9E67C8:
@@ -25652,18 +24298,16 @@ class VkPhysicalDeviceMemoryProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9E67C8:
@@ -25758,9 +24402,7 @@ class VkSparseImageFormatProperties2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageFormatProperties2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -25847,9 +24489,7 @@ class VkSparseImageFormatProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageFormatProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -25945,9 +24585,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -25960,45 +24598,35 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get type() {
     return this.memoryViewInt32[0x5];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get samples() {
     return this.memoryViewInt32[0x6];
   }
   set samples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.samples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x7];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get tiling() {
     return this.memoryViewInt32[0x8];
   }
   set tiling(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2.tiling': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -26095,9 +24723,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -26110,45 +24736,35 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get type() {
     return this.memoryViewInt32[0x5];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get samples() {
     return this.memoryViewInt32[0x6];
   }
   set samples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.samples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x7];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get tiling() {
     return this.memoryViewInt32[0x8];
   }
   set tiling(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSparseImageFormatInfo2KHR.tiling': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -26238,9 +24854,7 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevicePushDescriptorPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -26326,36 +24940,28 @@ class VkConformanceVersionKHR {
     return this.memoryViewUint8[0x0];
   }
   set major(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConformanceVersionKHR.major': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint8[0x0] = value;
   }
   get minor() {
     return this.memoryViewUint8[0x1];
   }
   set minor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConformanceVersionKHR.minor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint8[0x1] = value;
   }
   get subminor() {
     return this.memoryViewUint8[0x2];
   }
   set subminor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConformanceVersionKHR.subminor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint8[0x2] = value;
   }
   get patch() {
     return this.memoryViewUint8[0x3];
   }
   set patch(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConformanceVersionKHR.patch': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint8[0x3] = value;
   }
   
@@ -26427,9 +25033,7 @@ class VkPhysicalDeviceDriverPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDriverPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -26547,9 +25151,7 @@ class VkPresentRegionsKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentRegionsKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -26562,16 +25164,14 @@ class VkPresentRegionsKHR {
     return this.memoryViewUint32[0x4];
   }
   set swapchainCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentRegionsKHR.swapchainCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pRegions() {
     return this._pRegions;
   }
   set pRegions(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pRegions = value;
     } else if (value === null) {
       this._pRegions = null;
@@ -26593,16 +25193,8 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
   if (this._pRegions !== null) {
     let array = this._pRegions;
     
-    if (array.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentRegionsKHR.pRegions'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPresentRegionKHR) {
-        throw new TypeError("Invalid type for 'VkPresentRegionsKHR.pRegions[" + ii + "]': Expected 'VkPresentRegionKHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -26674,16 +25266,14 @@ class VkPresentRegionKHR {
     return this.memoryViewUint32[0x0];
   }
   set rectangleCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentRegionKHR.rectangleCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get pRectangles() {
     return this._pRectangles;
   }
   set pRectangles(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pRectangles = value;
     } else if (value === null) {
       this._pRectangles = null;
@@ -26700,16 +25290,8 @@ VkPresentRegionKHR.prototype.flush = function flush() {
   if (this._pRectangles !== null) {
     let array = this._pRectangles;
     
-    if (array.length !== this.rectangleCount) {
-      throw new RangeError("Invalid array length, expected length of 'rectangleCount' for 'VkPresentRegionKHR.pRectangles'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRectLayerKHR) {
-        throw new TypeError("Invalid type for 'VkPresentRegionKHR.pRectangles[" + ii + "]': Expected 'VkRectLayerKHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -26772,7 +25354,7 @@ class VkRectLayerKHR {
     return this._offset;
   }
   set offset(value) {
-    if (value !== null && value.constructor === VkOffset2D) {
+    if (value !== null ) {
       value.flush();
       this._offset = value;
       
@@ -26788,7 +25370,7 @@ class VkRectLayerKHR {
     return this._extent;
   }
   set extent(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._extent = value;
       
@@ -26804,9 +25386,7 @@ class VkRectLayerKHR {
     return this.memoryViewUint32[0x4];
   }
   set layer(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRectLayerKHR.layer': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -26821,7 +25401,7 @@ VkRectLayerKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._offset.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRectLayerKHR.offset' isn't used as shared-memory");
+      
     }
   }
   
@@ -26832,7 +25412,7 @@ VkRectLayerKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._extent.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRectLayerKHR.extent' isn't used as shared-memory");
+      
     }
   }
   
@@ -26902,9 +25482,7 @@ class VkPhysicalDeviceVariablePointerFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceVariablePointerFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27003,9 +25581,7 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceVariablePointerFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27234,9 +25810,7 @@ class VkPhysicalDeviceExternalImageFormatInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalImageFormatInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27249,9 +25823,7 @@ class VkPhysicalDeviceExternalImageFormatInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalImageFormatInfo.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -27324,9 +25896,7 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalImageFormatInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27339,9 +25909,7 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalImageFormatInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -27413,9 +25981,7 @@ class VkExternalImageFormatProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalImageFormatProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27502,9 +26068,7 @@ class VkExternalImageFormatPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalImageFormatPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27596,9 +26160,7 @@ class VkPhysicalDeviceExternalBufferInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27611,27 +26173,21 @@ class VkPhysicalDeviceExternalBufferInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x5];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfo.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfo.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -27716,9 +26272,7 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27731,27 +26285,21 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get usage() {
     return this.memoryViewInt32[0x5];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfoKHR.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalBufferInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -27831,9 +26379,7 @@ class VkExternalBufferProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalBufferProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -27920,9 +26466,7 @@ class VkExternalBufferPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalBufferPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28017,9 +26561,7 @@ class VkPhysicalDeviceIDProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceIDProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28189,9 +26731,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceIDPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28354,9 +26894,7 @@ class VkExternalMemoryImageCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28369,9 +26907,7 @@ class VkExternalMemoryImageCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfo.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28444,9 +26980,7 @@ class VkExternalMemoryImageCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28459,9 +26993,7 @@ class VkExternalMemoryImageCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryImageCreateInfoKHR.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28534,9 +27066,7 @@ class VkExternalMemoryBufferCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryBufferCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28549,9 +27079,7 @@ class VkExternalMemoryBufferCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryBufferCreateInfo.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28624,9 +27152,7 @@ class VkExternalMemoryBufferCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryBufferCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28639,9 +27165,7 @@ class VkExternalMemoryBufferCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalMemoryBufferCreateInfoKHR.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28714,9 +27238,7 @@ class VkExportMemoryAllocateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28729,9 +27251,7 @@ class VkExportMemoryAllocateInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfo.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28804,9 +27324,7 @@ class VkExportMemoryAllocateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28819,9 +27337,7 @@ class VkExportMemoryAllocateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryAllocateInfoKHR.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -28898,9 +27414,7 @@ class VkImportMemoryWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -28913,18 +27427,14 @@ class VkImportMemoryWin32HandleInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get handle() {
     return this.memoryViewBigInt64[0x3];
   }
   set handle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get name() {
@@ -28936,7 +27446,7 @@ class VkImportMemoryWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -29024,9 +27534,7 @@ class VkExportMemoryWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportMemoryWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29044,7 +27552,7 @@ class VkExportMemoryWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -29125,9 +27633,7 @@ class VkMemoryWin32HandlePropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryWin32HandlePropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29215,9 +27721,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryGetWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29230,7 +27734,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -29246,9 +27750,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryGetWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -29327,9 +27829,7 @@ class VkImportMemoryFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29342,18 +27842,14 @@ class VkImportMemoryFdInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get fd() {
     return this.memoryViewInt32[0x5];
   }
   set fd(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryFdInfoKHR.fd': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   
@@ -29431,9 +27927,7 @@ class VkMemoryFdPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryFdPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29521,9 +28015,7 @@ class VkMemoryGetFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryGetFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29536,7 +28028,7 @@ class VkMemoryGetFdInfoKHR {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -29552,9 +28044,7 @@ class VkMemoryGetFdInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryGetFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -29647,9 +28137,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29662,16 +28150,14 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set acquireCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.acquireCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAcquireSyncs() {
     return this._pAcquireSyncs;
   }
   set pAcquireSyncs(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAcquireSyncs = value;
     } else if (value === null) {
       this._pAcquireSyncs = null;
@@ -29683,7 +28169,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this._pAcquireKeys;
   }
   set pAcquireKeys(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pAcquireKeys = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -29697,7 +28183,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this._pAcquireTimeouts;
   }
   set pAcquireTimeouts(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pAcquireTimeouts = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -29711,16 +28197,14 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this.memoryViewUint32[0xC];
   }
   set releaseCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.releaseCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pReleaseSyncs() {
     return this._pReleaseSyncs;
   }
   set pReleaseSyncs(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pReleaseSyncs = value;
     } else if (value === null) {
       this._pReleaseSyncs = null;
@@ -29732,7 +28216,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this._pReleaseKeys;
   }
   set pReleaseKeys(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pReleaseKeys = value;
       this.memoryViewBigInt64[0x8] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -29756,16 +28240,8 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   if (this._pAcquireSyncs !== null) {
     let array = this._pAcquireSyncs;
     
-    if (array.length !== this.acquireCount) {
-      throw new RangeError("Invalid array length, expected length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDeviceMemory) {
-        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -29778,16 +28254,8 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   if (this._pReleaseSyncs !== null) {
     let array = this._pReleaseSyncs;
     
-    if (array.length !== this.releaseCount) {
-      throw new RangeError("Invalid array length, expected length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDeviceMemory) {
-        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -29884,9 +28352,7 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalSemaphoreInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29899,9 +28365,7 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalSemaphoreInfo.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -29974,9 +28438,7 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalSemaphoreInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -29989,9 +28451,7 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalSemaphoreInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -30065,9 +28525,7 @@ class VkExternalSemaphoreProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalSemaphoreProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30168,9 +28626,7 @@ class VkExternalSemaphorePropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalSemaphorePropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30270,9 +28726,7 @@ class VkExportSemaphoreCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportSemaphoreCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30285,9 +28739,7 @@ class VkExportSemaphoreCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportSemaphoreCreateInfo.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -30360,9 +28812,7 @@ class VkExportSemaphoreCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportSemaphoreCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30375,9 +28825,7 @@ class VkExportSemaphoreCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportSemaphoreCreateInfoKHR.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -30458,9 +28906,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30473,7 +28919,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this._semaphore;
   }
   set semaphore(value) {
-    if (value !== null && value.constructor === VkSemaphore) {
+    if (value !== null ) {
       
       this._semaphore = value;
       
@@ -30489,27 +28935,21 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x7];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get handle() {
     return this.memoryViewBigInt64[0x4];
   }
   set handle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   get name() {
@@ -30521,7 +28961,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -30617,9 +29057,7 @@ class VkExportSemaphoreWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportSemaphoreWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30637,7 +29075,7 @@ class VkExportSemaphoreWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -30725,9 +29163,7 @@ class VkD3D12FenceSubmitInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkD3D12FenceSubmitInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30740,16 +29176,14 @@ class VkD3D12FenceSubmitInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreValuesCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkD3D12FenceSubmitInfoKHR.waitSemaphoreValuesCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphoreValues() {
     return this._pWaitSemaphoreValues;
   }
   set pWaitSemaphoreValues(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pWaitSemaphoreValues = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -30763,16 +29197,14 @@ class VkD3D12FenceSubmitInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set signalSemaphoreValuesCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkD3D12FenceSubmitInfoKHR.signalSemaphoreValuesCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSignalSemaphoreValues() {
     return this._pSignalSemaphoreValues;
   }
   set pSignalSemaphoreValues(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pSignalSemaphoreValues = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -30866,9 +29298,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreGetWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30881,7 +29311,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     return this._semaphore;
   }
   set semaphore(value) {
-    if (value !== null && value.constructor === VkSemaphore) {
+    if (value !== null ) {
       
       this._semaphore = value;
       
@@ -30897,9 +29327,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreGetWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -30982,9 +29410,7 @@ class VkImportSemaphoreFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -30997,7 +29423,7 @@ class VkImportSemaphoreFdInfoKHR {
     return this._semaphore;
   }
   set semaphore(value) {
-    if (value !== null && value.constructor === VkSemaphore) {
+    if (value !== null ) {
       
       this._semaphore = value;
       
@@ -31013,27 +29439,21 @@ class VkImportSemaphoreFdInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x7];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get fd() {
     return this.memoryViewInt32[0x8];
   }
   set fd(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.fd': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -31120,9 +29540,7 @@ class VkSemaphoreGetFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreGetFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31135,7 +29553,7 @@ class VkSemaphoreGetFdInfoKHR {
     return this._semaphore;
   }
   set semaphore(value) {
-    if (value !== null && value.constructor === VkSemaphore) {
+    if (value !== null ) {
       
       this._semaphore = value;
       
@@ -31151,9 +29569,7 @@ class VkSemaphoreGetFdInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSemaphoreGetFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -31230,9 +29646,7 @@ class VkPhysicalDeviceExternalFenceInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalFenceInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31245,9 +29659,7 @@ class VkPhysicalDeviceExternalFenceInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalFenceInfo.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -31320,9 +29732,7 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalFenceInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31335,9 +29745,7 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalFenceInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -31411,9 +29819,7 @@ class VkExternalFenceProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalFenceProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31514,9 +29920,7 @@ class VkExternalFencePropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExternalFencePropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31616,9 +30020,7 @@ class VkExportFenceCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportFenceCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31631,9 +30033,7 @@ class VkExportFenceCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportFenceCreateInfo.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -31706,9 +30106,7 @@ class VkExportFenceCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportFenceCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31721,9 +30119,7 @@ class VkExportFenceCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set handleTypes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportFenceCreateInfoKHR.handleTypes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -31804,9 +30200,7 @@ class VkImportFenceWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31819,7 +30213,7 @@ class VkImportFenceWin32HandleInfoKHR {
     return this._fence;
   }
   set fence(value) {
-    if (value !== null && value.constructor === VkFence) {
+    if (value !== null ) {
       
       this._fence = value;
       
@@ -31835,27 +30229,21 @@ class VkImportFenceWin32HandleInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x7];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get handle() {
     return this.memoryViewBigInt64[0x4];
   }
   set handle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.handle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x4] = BigInt(value);
   }
   get name() {
@@ -31867,7 +30255,7 @@ class VkImportFenceWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -31963,9 +30351,7 @@ class VkExportFenceWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkExportFenceWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -31983,7 +30369,7 @@ class VkExportFenceWin32HandleInfoKHR {
     }
   }
   set name(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._name = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._name);
     } else if (value === null) {
@@ -32065,9 +30451,7 @@ class VkFenceGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceGetWin32HandleInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32080,7 +30464,7 @@ class VkFenceGetWin32HandleInfoKHR {
     return this._fence;
   }
   set fence(value) {
-    if (value !== null && value.constructor === VkFence) {
+    if (value !== null ) {
       
       this._fence = value;
       
@@ -32096,9 +30480,7 @@ class VkFenceGetWin32HandleInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceGetWin32HandleInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -32181,9 +30563,7 @@ class VkImportFenceFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32196,7 +30576,7 @@ class VkImportFenceFdInfoKHR {
     return this._fence;
   }
   set fence(value) {
-    if (value !== null && value.constructor === VkFence) {
+    if (value !== null ) {
       
       this._fence = value;
       
@@ -32212,27 +30592,21 @@ class VkImportFenceFdInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get handleType() {
     return this.memoryViewInt32[0x7];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get fd() {
     return this.memoryViewInt32[0x8];
   }
   set fd(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.fd': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -32319,9 +30693,7 @@ class VkFenceGetFdInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceGetFdInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32334,7 +30706,7 @@ class VkFenceGetFdInfoKHR {
     return this._fence;
   }
   set fence(value) {
-    if (value !== null && value.constructor === VkFence) {
+    if (value !== null ) {
       
       this._fence = value;
       
@@ -32350,9 +30722,7 @@ class VkFenceGetFdInfoKHR {
     return this.memoryViewInt32[0x6];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFenceGetFdInfoKHR.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -32435,9 +30805,7 @@ class VkPhysicalDeviceMultiviewFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMultiviewFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32548,9 +30916,7 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMultiviewFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32657,9 +31023,7 @@ class VkPhysicalDeviceMultiviewProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMultiviewProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32754,9 +31118,7 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMultiviewPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32861,9 +31223,7 @@ class VkRenderPassMultiviewCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -32876,16 +31236,14 @@ class VkRenderPassMultiviewCreateInfo {
     return this.memoryViewUint32[0x4];
   }
   set subpassCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.subpassCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pViewMasks() {
     return this._pViewMasks;
   }
   set pViewMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pViewMasks = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -32899,16 +31257,14 @@ class VkRenderPassMultiviewCreateInfo {
     return this.memoryViewUint32[0x8];
   }
   set dependencyCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.dependencyCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pViewOffsets() {
     return this._pViewOffsets;
   }
   set pViewOffsets(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pViewOffsets = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -32922,16 +31278,14 @@ class VkRenderPassMultiviewCreateInfo {
     return this.memoryViewUint32[0xC];
   }
   set correlationMaskCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfo.correlationMaskCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pCorrelationMasks() {
     return this._pCorrelationMasks;
   }
   set pCorrelationMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pCorrelationMasks = value;
       this.memoryViewBigInt64[0x7] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -33043,9 +31397,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33058,16 +31410,14 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set subpassCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.subpassCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pViewMasks() {
     return this._pViewMasks;
   }
   set pViewMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pViewMasks = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -33081,16 +31431,14 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set dependencyCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.dependencyCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pViewOffsets() {
     return this._pViewOffsets;
   }
   set pViewOffsets(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pViewOffsets = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -33104,16 +31452,14 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this.memoryViewUint32[0xC];
   }
   set correlationMaskCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassMultiviewCreateInfoKHR.correlationMaskCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pCorrelationMasks() {
     return this._pCorrelationMasks;
   }
   set pCorrelationMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pCorrelationMasks = value;
       this.memoryViewBigInt64[0x7] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -33224,9 +31570,7 @@ class VkSurfaceCapabilities2EXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSurfaceCapabilities2EXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33388,9 +31732,7 @@ class VkDisplayPowerInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPowerInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33403,9 +31745,7 @@ class VkDisplayPowerInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set powerState(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPowerInfoEXT.powerState': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -33478,9 +31818,7 @@ class VkDeviceEventInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceEventInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33493,9 +31831,7 @@ class VkDeviceEventInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set deviceEvent(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceEventInfoEXT.deviceEvent': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -33568,9 +31904,7 @@ class VkDisplayEventInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayEventInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33583,9 +31917,7 @@ class VkDisplayEventInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set displayEvent(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayEventInfoEXT.displayEvent': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -33658,9 +31990,7 @@ class VkSwapchainCounterCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCounterCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33673,9 +32003,7 @@ class VkSwapchainCounterCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set surfaceCounters(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSwapchainCounterCreateInfoEXT.surfaceCounters': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -33751,9 +32079,7 @@ class VkPhysicalDeviceGroupProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceGroupProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33858,9 +32184,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceGroupPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33966,9 +32290,7 @@ class VkMemoryAllocateFlagsInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -33981,18 +32303,14 @@ class VkMemoryAllocateFlagsInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get deviceMask() {
     return this.memoryViewUint32[0x5];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfo.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -34073,9 +32391,7 @@ class VkMemoryAllocateFlagsInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -34088,18 +32404,14 @@ class VkMemoryAllocateFlagsInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get deviceMask() {
     return this.memoryViewUint32[0x5];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryAllocateFlagsInfoKHR.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -34182,18 +32494,16 @@ class VkBindBufferMemoryInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB46D:
@@ -34214,7 +32524,7 @@ class VkBindBufferMemoryInfo {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -34230,7 +32540,7 @@ class VkBindBufferMemoryInfo {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -34246,9 +32556,7 @@ class VkBindBufferMemoryInfo {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -34335,18 +32643,16 @@ class VkBindBufferMemoryInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB46D:
@@ -34367,7 +32673,7 @@ class VkBindBufferMemoryInfoKHR {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -34383,7 +32689,7 @@ class VkBindBufferMemoryInfoKHR {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -34399,9 +32705,7 @@ class VkBindBufferMemoryInfoKHR {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -34486,9 +32790,7 @@ class VkBindBufferMemoryDeviceGroupInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -34501,16 +32803,14 @@ class VkBindBufferMemoryDeviceGroupInfo {
     return this.memoryViewUint32[0x4];
   }
   set deviceIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfo.deviceIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDeviceIndices() {
     return this._pDeviceIndices;
   }
   set pDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -34598,9 +32898,7 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -34613,16 +32911,14 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set deviceIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindBufferMemoryDeviceGroupInfoKHR.deviceIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDeviceIndices() {
     return this._pDeviceIndices;
   }
   set pDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -34712,18 +33008,16 @@ class VkBindImageMemoryInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB46E:
@@ -34746,7 +33040,7 @@ class VkBindImageMemoryInfo {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -34762,7 +33056,7 @@ class VkBindImageMemoryInfo {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -34778,9 +33072,7 @@ class VkBindImageMemoryInfo {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -34867,18 +33159,16 @@ class VkBindImageMemoryInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9BB46E:
@@ -34901,7 +33191,7 @@ class VkBindImageMemoryInfoKHR {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -34917,7 +33207,7 @@ class VkBindImageMemoryInfoKHR {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -34933,9 +33223,7 @@ class VkBindImageMemoryInfoKHR {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -35025,9 +33313,7 @@ class VkBindImageMemoryDeviceGroupInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35040,16 +33326,14 @@ class VkBindImageMemoryDeviceGroupInfo {
     return this.memoryViewUint32[0x4];
   }
   set deviceIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.deviceIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDeviceIndices() {
     return this._pDeviceIndices;
   }
   set pDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -35063,16 +33347,14 @@ class VkBindImageMemoryDeviceGroupInfo {
     return this.memoryViewUint32[0x8];
   }
   set splitInstanceBindRegionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.splitInstanceBindRegionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSplitInstanceBindRegions() {
     return this._pSplitInstanceBindRegions;
   }
   set pSplitInstanceBindRegions(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSplitInstanceBindRegions = value;
     } else if (value === null) {
       this._pSplitInstanceBindRegions = null;
@@ -35094,16 +33376,8 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
   if (this._pSplitInstanceBindRegions !== null) {
     let array = this._pSplitInstanceBindRegions;
     
-    if (array.length !== this.splitInstanceBindRegionCount) {
-      throw new RangeError("Invalid array length, expected length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -35195,9 +33469,7 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35210,16 +33482,14 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set deviceIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.deviceIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDeviceIndices() {
     return this._pDeviceIndices;
   }
   set pDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -35233,16 +33503,14 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set splitInstanceBindRegionCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.splitInstanceBindRegionCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSplitInstanceBindRegions() {
     return this._pSplitInstanceBindRegions;
   }
   set pSplitInstanceBindRegions(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSplitInstanceBindRegions = value;
     } else if (value === null) {
       this._pSplitInstanceBindRegions = null;
@@ -35264,16 +33532,8 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
   if (this._pSplitInstanceBindRegions !== null) {
     let array = this._pSplitInstanceBindRegions;
     
-    if (array.length !== this.splitInstanceBindRegionCount) {
-      throw new RangeError("Invalid array length, expected length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -35363,9 +33623,7 @@ class VkDeviceGroupRenderPassBeginInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35378,25 +33636,21 @@ class VkDeviceGroupRenderPassBeginInfo {
     return this.memoryViewUint32[0x4];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get deviceRenderAreaCount() {
     return this.memoryViewUint32[0x5];
   }
   set deviceRenderAreaCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.deviceRenderAreaCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pDeviceRenderAreas() {
     return this._pDeviceRenderAreas;
   }
   set pDeviceRenderAreas(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDeviceRenderAreas = value;
     } else if (value === null) {
       this._pDeviceRenderAreas = null;
@@ -35418,16 +33672,8 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
   if (this._pDeviceRenderAreas !== null) {
     let array = this._pDeviceRenderAreas;
     
-    if (array.length !== this.deviceRenderAreaCount) {
-      throw new RangeError("Invalid array length, expected length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -35513,9 +33759,7 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35528,25 +33772,21 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get deviceRenderAreaCount() {
     return this.memoryViewUint32[0x5];
   }
   set deviceRenderAreaCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.deviceRenderAreaCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pDeviceRenderAreas() {
     return this._pDeviceRenderAreas;
   }
   set pDeviceRenderAreas(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDeviceRenderAreas = value;
     } else if (value === null) {
       this._pDeviceRenderAreas = null;
@@ -35568,16 +33808,8 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
   if (this._pDeviceRenderAreas !== null) {
     let array = this._pDeviceRenderAreas;
     
-    if (array.length !== this.deviceRenderAreaCount) {
-      throw new RangeError("Invalid array length, expected length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -35658,9 +33890,7 @@ class VkDeviceGroupCommandBufferBeginInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupCommandBufferBeginInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35673,9 +33903,7 @@ class VkDeviceGroupCommandBufferBeginInfo {
     return this.memoryViewUint32[0x4];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupCommandBufferBeginInfo.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -35750,9 +33978,7 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupCommandBufferBeginInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35765,9 +33991,7 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupCommandBufferBeginInfoKHR.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -35852,9 +34076,7 @@ class VkDeviceGroupSubmitInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -35867,16 +34089,14 @@ class VkDeviceGroupSubmitInfo {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.waitSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphoreDeviceIndices() {
     return this._pWaitSemaphoreDeviceIndices;
   }
   set pWaitSemaphoreDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pWaitSemaphoreDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -35890,16 +34110,14 @@ class VkDeviceGroupSubmitInfo {
     return this.memoryViewUint32[0x8];
   }
   set commandBufferCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.commandBufferCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pCommandBufferDeviceMasks() {
     return this._pCommandBufferDeviceMasks;
   }
   set pCommandBufferDeviceMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pCommandBufferDeviceMasks = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -35913,16 +34131,14 @@ class VkDeviceGroupSubmitInfo {
     return this.memoryViewUint32[0xC];
   }
   set signalSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfo.signalSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pSignalSemaphoreDeviceIndices() {
     return this._pSignalSemaphoreDeviceIndices;
   }
   set pSignalSemaphoreDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pSignalSemaphoreDeviceIndices = value;
       this.memoryViewBigInt64[0x7] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -36034,9 +34250,7 @@ class VkDeviceGroupSubmitInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36049,16 +34263,14 @@ class VkDeviceGroupSubmitInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set waitSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.waitSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pWaitSemaphoreDeviceIndices() {
     return this._pWaitSemaphoreDeviceIndices;
   }
   set pWaitSemaphoreDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pWaitSemaphoreDeviceIndices = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -36072,16 +34284,14 @@ class VkDeviceGroupSubmitInfoKHR {
     return this.memoryViewUint32[0x8];
   }
   set commandBufferCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.commandBufferCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pCommandBufferDeviceMasks() {
     return this._pCommandBufferDeviceMasks;
   }
   set pCommandBufferDeviceMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pCommandBufferDeviceMasks = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -36095,16 +34305,14 @@ class VkDeviceGroupSubmitInfoKHR {
     return this.memoryViewUint32[0xC];
   }
   set signalSemaphoreCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSubmitInfoKHR.signalSemaphoreCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pSignalSemaphoreDeviceIndices() {
     return this._pSignalSemaphoreDeviceIndices;
   }
   set pSignalSemaphoreDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pSignalSemaphoreDeviceIndices = value;
       this.memoryViewBigInt64[0x7] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -36208,9 +34416,7 @@ class VkDeviceGroupBindSparseInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36223,18 +34429,14 @@ class VkDeviceGroupBindSparseInfo {
     return this.memoryViewUint32[0x4];
   }
   set resourceDeviceIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfo.resourceDeviceIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get memoryDeviceIndex() {
     return this.memoryViewUint32[0x5];
   }
   set memoryDeviceIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfo.memoryDeviceIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -36315,9 +34517,7 @@ class VkDeviceGroupBindSparseInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36330,18 +34530,14 @@ class VkDeviceGroupBindSparseInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set resourceDeviceIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfoKHR.resourceDeviceIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get memoryDeviceIndex() {
     return this.memoryViewUint32[0x5];
   }
   set memoryDeviceIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupBindSparseInfoKHR.memoryDeviceIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -36420,9 +34616,7 @@ class VkDeviceGroupPresentCapabilitiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupPresentCapabilitiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36550,9 +34744,7 @@ class VkImageSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSwapchainCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36565,7 +34757,7 @@ class VkImageSwapchainCreateInfoKHR {
     return this._swapchain;
   }
   set swapchain(value) {
-    if (value !== null && value.constructor === VkSwapchainKHR) {
+    if (value !== null ) {
       
       this._swapchain = value;
       
@@ -36651,9 +34843,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemorySwapchainInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36666,7 +34856,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     return this._swapchain;
   }
   set swapchain(value) {
-    if (value !== null && value.constructor === VkSwapchainKHR) {
+    if (value !== null ) {
       
       this._swapchain = value;
       
@@ -36682,9 +34872,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     return this.memoryViewUint32[0x6];
   }
   set imageIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImageMemorySwapchainInfoKHR.imageIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -36773,9 +34961,7 @@ class VkAcquireNextImageInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36788,7 +34974,7 @@ class VkAcquireNextImageInfoKHR {
     return this._swapchain;
   }
   set swapchain(value) {
-    if (value !== null && value.constructor === VkSwapchainKHR) {
+    if (value !== null ) {
       
       this._swapchain = value;
       
@@ -36804,16 +34990,14 @@ class VkAcquireNextImageInfoKHR {
     return this.memoryViewBigUint64[0x3];
   }
   set timeout(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.timeout': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get semaphore() {
     return this._semaphore;
   }
   set semaphore(value) {
-    if (value !== null && value.constructor === VkSemaphore) {
+    if (value !== null ) {
       
       this._semaphore = value;
       
@@ -36829,7 +35013,7 @@ class VkAcquireNextImageInfoKHR {
     return this._fence;
   }
   set fence(value) {
-    if (value !== null && value.constructor === VkFence) {
+    if (value !== null ) {
       
       this._fence = value;
       
@@ -36845,9 +35029,7 @@ class VkAcquireNextImageInfoKHR {
     return this.memoryViewUint32[0xC];
   }
   set deviceMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.deviceMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   
@@ -36942,9 +35124,7 @@ class VkDeviceGroupPresentInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupPresentInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -36957,16 +35137,14 @@ class VkDeviceGroupPresentInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set swapchainCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupPresentInfoKHR.swapchainCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDeviceMasks() {
     return this._pDeviceMasks;
   }
   set pDeviceMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceMasks = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -36980,9 +35158,7 @@ class VkDeviceGroupPresentInfoKHR {
     return this.memoryViewInt32[0x8];
   }
   set mode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupPresentInfoKHR.mode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -37068,9 +35244,7 @@ class VkDeviceGroupDeviceCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -37083,16 +35257,14 @@ class VkDeviceGroupDeviceCreateInfo {
     return this.memoryViewUint32[0x4];
   }
   set physicalDeviceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.physicalDeviceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pPhysicalDevices() {
     return this._pPhysicalDevices;
   }
   set pPhysicalDevices(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPhysicalDevices = value;
     } else if (value === null) {
       this._pPhysicalDevices = null;
@@ -37114,16 +35286,8 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
   if (this._pPhysicalDevices !== null) {
     let array = this._pPhysicalDevices;
     
-    if (array.length !== this.physicalDeviceCount) {
-      throw new RangeError("Invalid array length, expected length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPhysicalDevice) {
-        throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -37203,9 +35367,7 @@ class VkDeviceGroupDeviceCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -37218,16 +35380,14 @@ class VkDeviceGroupDeviceCreateInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set physicalDeviceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.physicalDeviceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pPhysicalDevices() {
     return this._pPhysicalDevices;
   }
   set pPhysicalDevices(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPhysicalDevices = value;
     } else if (value === null) {
       this._pPhysicalDevices = null;
@@ -37249,16 +35409,8 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
   if (this._pPhysicalDevices !== null) {
     let array = this._pPhysicalDevices;
     
-    if (array.length !== this.physicalDeviceCount) {
-      throw new RangeError("Invalid array length, expected length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPhysicalDevice) {
-        throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -37333,9 +35485,7 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSwapchainCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -37348,9 +35498,7 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set modes(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceGroupSwapchainCreateInfoKHR.modes': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -37431,54 +35579,42 @@ class VkDescriptorUpdateTemplateEntry {
     return this.memoryViewUint32[0x0];
   }
   set dstBinding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.dstBinding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get dstArrayElement() {
     return this.memoryViewUint32[0x1];
   }
   set dstArrayElement(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.dstArrayElement': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0x2];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get descriptorType() {
     return this.memoryViewInt32[0x3];
   }
   set descriptorType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.descriptorType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get offset() {
     return this.memoryViewBigInt64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get stride() {
     return this.memoryViewBigInt64[0x3];
   }
   set stride(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntry.stride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
@@ -37564,54 +35700,42 @@ class VkDescriptorUpdateTemplateEntryKHR {
     return this.memoryViewUint32[0x0];
   }
   set dstBinding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.dstBinding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get dstArrayElement() {
     return this.memoryViewUint32[0x1];
   }
   set dstArrayElement(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.dstArrayElement': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get descriptorCount() {
     return this.memoryViewUint32[0x2];
   }
   set descriptorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.descriptorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get descriptorType() {
     return this.memoryViewInt32[0x3];
   }
   set descriptorType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.descriptorType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   get offset() {
     return this.memoryViewBigInt64[0x2];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x2] = BigInt(value);
   }
   get stride() {
     return this.memoryViewBigInt64[0x3];
   }
   set stride(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateEntryKHR.stride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   
@@ -37706,9 +35830,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -37721,25 +35843,21 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get descriptorUpdateEntryCount() {
     return this.memoryViewUint32[0x5];
   }
   set descriptorUpdateEntryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.descriptorUpdateEntryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pDescriptorUpdateEntries() {
     return this._pDescriptorUpdateEntries;
   }
   set pDescriptorUpdateEntries(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDescriptorUpdateEntries = value;
     } else if (value === null) {
       this._pDescriptorUpdateEntries = null;
@@ -37751,16 +35869,14 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this.memoryViewInt32[0x8];
   }
   set templateType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.templateType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get descriptorSetLayout() {
     return this._descriptorSetLayout;
   }
   set descriptorSetLayout(value) {
-    if (value !== null && value.constructor === VkDescriptorSetLayout) {
+    if (value !== null ) {
       
       this._descriptorSetLayout = value;
       
@@ -37776,16 +35892,14 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this.memoryViewInt32[0xC];
   }
   set pipelineBindPoint(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pipelineBindPoint': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get pipelineLayout() {
     return this._pipelineLayout;
   }
   set pipelineLayout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._pipelineLayout = value;
       
@@ -37801,9 +35915,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this.memoryViewUint32[0x10];
   }
   set set(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.set': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   
@@ -37820,16 +35932,8 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
   if (this._pDescriptorUpdateEntries !== null) {
     let array = this._pDescriptorUpdateEntries;
     
-    if (array.length !== this.descriptorUpdateEntryCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorUpdateTemplateEntry) {
-        throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries[" + ii + "]': Expected 'VkDescriptorUpdateTemplateEntry' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -37945,9 +36049,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -37960,25 +36062,21 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get descriptorUpdateEntryCount() {
     return this.memoryViewUint32[0x5];
   }
   set descriptorUpdateEntryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.descriptorUpdateEntryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pDescriptorUpdateEntries() {
     return this._pDescriptorUpdateEntries;
   }
   set pDescriptorUpdateEntries(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDescriptorUpdateEntries = value;
     } else if (value === null) {
       this._pDescriptorUpdateEntries = null;
@@ -37990,16 +36088,14 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this.memoryViewInt32[0x8];
   }
   set templateType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.templateType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get descriptorSetLayout() {
     return this._descriptorSetLayout;
   }
   set descriptorSetLayout(value) {
-    if (value !== null && value.constructor === VkDescriptorSetLayout) {
+    if (value !== null ) {
       
       this._descriptorSetLayout = value;
       
@@ -38015,16 +36111,14 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this.memoryViewInt32[0xC];
   }
   set pipelineBindPoint(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pipelineBindPoint': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get pipelineLayout() {
     return this._pipelineLayout;
   }
   set pipelineLayout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._pipelineLayout = value;
       
@@ -38040,9 +36134,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this.memoryViewUint32[0x10];
   }
   set set(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.set': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   
@@ -38059,16 +36151,8 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
   if (this._pDescriptorUpdateEntries !== null) {
     let array = this._pDescriptorUpdateEntries;
     
-    if (array.length !== this.descriptorUpdateEntryCount) {
-      throw new RangeError("Invalid array length, expected length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDescriptorUpdateTemplateEntry) {
-        throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries[" + ii + "]': Expected 'VkDescriptorUpdateTemplateEntry' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -38163,18 +36247,14 @@ class VkXYColorEXT {
     return this.memoryViewFloat32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkXYColorEXT.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x0] = value;
   }
   get y() {
     return this.memoryViewFloat32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkXYColorEXT.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x1] = value;
   }
   
@@ -38252,9 +36332,7 @@ class VkHdrMetadataEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkHdrMetadataEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -38267,7 +36345,7 @@ class VkHdrMetadataEXT {
     return this._displayPrimaryRed;
   }
   set displayPrimaryRed(value) {
-    if (value !== null && value.constructor === VkXYColorEXT) {
+    if (value !== null ) {
       value.flush();
       this._displayPrimaryRed = value;
       
@@ -38283,7 +36361,7 @@ class VkHdrMetadataEXT {
     return this._displayPrimaryGreen;
   }
   set displayPrimaryGreen(value) {
-    if (value !== null && value.constructor === VkXYColorEXT) {
+    if (value !== null ) {
       value.flush();
       this._displayPrimaryGreen = value;
       
@@ -38299,7 +36377,7 @@ class VkHdrMetadataEXT {
     return this._displayPrimaryBlue;
   }
   set displayPrimaryBlue(value) {
-    if (value !== null && value.constructor === VkXYColorEXT) {
+    if (value !== null ) {
       value.flush();
       this._displayPrimaryBlue = value;
       
@@ -38315,7 +36393,7 @@ class VkHdrMetadataEXT {
     return this._whitePoint;
   }
   set whitePoint(value) {
-    if (value !== null && value.constructor === VkXYColorEXT) {
+    if (value !== null ) {
       value.flush();
       this._whitePoint = value;
       
@@ -38331,36 +36409,28 @@ class VkHdrMetadataEXT {
     return this.memoryViewFloat32[0xC];
   }
   set maxLuminance(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkHdrMetadataEXT.maxLuminance': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xC] = value;
   }
   get minLuminance() {
     return this.memoryViewFloat32[0xD];
   }
   set minLuminance(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkHdrMetadataEXT.minLuminance': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xD] = value;
   }
   get maxContentLightLevel() {
     return this.memoryViewFloat32[0xE];
   }
   set maxContentLightLevel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkHdrMetadataEXT.maxContentLightLevel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xE] = value;
   }
   get maxFrameAverageLightLevel() {
     return this.memoryViewFloat32[0xF];
   }
   set maxFrameAverageLightLevel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkHdrMetadataEXT.maxFrameAverageLightLevel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0xF] = value;
   }
   
@@ -38380,7 +36450,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._displayPrimaryRed.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryRed' isn't used as shared-memory");
+      
     }
   }
   
@@ -38391,7 +36461,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._displayPrimaryGreen.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryGreen' isn't used as shared-memory");
+      
     }
   }
   
@@ -38402,7 +36472,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._displayPrimaryBlue.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryBlue' isn't used as shared-memory");
+      
     }
   }
   
@@ -38413,7 +36483,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._whitePoint.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.whitePoint' isn't used as shared-memory");
+      
     }
   }
   
@@ -38654,9 +36724,7 @@ class VkPresentTimesInfoGOOGLE {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentTimesInfoGOOGLE.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -38669,16 +36737,14 @@ class VkPresentTimesInfoGOOGLE {
     return this.memoryViewUint32[0x4];
   }
   set swapchainCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentTimesInfoGOOGLE.swapchainCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pTimes() {
     return this._pTimes;
   }
   set pTimes(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pTimes = value;
     } else if (value === null) {
       this._pTimes = null;
@@ -38700,16 +36766,8 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
   if (this._pTimes !== null) {
     let array = this._pTimes;
     
-    if (array.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentTimesInfoGOOGLE.pTimes'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPresentTimeGOOGLE) {
-        throw new TypeError("Invalid type for 'VkPresentTimesInfoGOOGLE.pTimes[" + ii + "]': Expected 'VkPresentTimeGOOGLE' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -38782,18 +36840,14 @@ class VkPresentTimeGOOGLE {
     return this.memoryViewUint32[0x0];
   }
   set presentID(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentTimeGOOGLE.presentID': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get desiredPresentTime() {
     return this.memoryViewBigUint64[0x1];
   }
   set desiredPresentTime(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPresentTimeGOOGLE.desiredPresentTime': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x1] = BigInt(value);
   }
   
@@ -38851,18 +36905,14 @@ class VkViewportWScalingNV {
     return this.memoryViewFloat32[0x0];
   }
   set xcoeff(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportWScalingNV.xcoeff': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x0] = value;
   }
   get ycoeff() {
     return this.memoryViewFloat32[0x1];
   }
   set ycoeff(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportWScalingNV.ycoeff': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x1] = value;
   }
   
@@ -38931,9 +36981,7 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportWScalingStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -38952,16 +37000,14 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
     return this.memoryViewUint32[0x5];
   }
   set viewportCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportWScalingStateCreateInfoNV.viewportCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pViewportWScalings() {
     return this._pViewportWScalings;
   }
   set pViewportWScalings(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pViewportWScalings = value;
     } else if (value === null) {
       this._pViewportWScalings = null;
@@ -38983,16 +37029,8 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
   if (this._pViewportWScalings !== null) {
     let array = this._pViewportWScalings;
     
-    if (array.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkViewportWScalingNV) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings[" + ii + "]': Expected 'VkViewportWScalingNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -39071,36 +37109,28 @@ class VkViewportSwizzleNV {
     return this.memoryViewInt32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportSwizzleNV.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get y() {
     return this.memoryViewInt32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportSwizzleNV.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x1] = value;
   }
   get z() {
     return this.memoryViewInt32[0x2];
   }
   set z(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportSwizzleNV.z': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   get w() {
     return this.memoryViewInt32[0x3];
   }
   set w(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkViewportSwizzleNV.w': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x3] = value;
   }
   
@@ -39177,9 +37207,7 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39192,25 +37220,21 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get viewportCount() {
     return this.memoryViewUint32[0x5];
   }
   set viewportCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.viewportCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pViewportSwizzles() {
     return this._pViewportSwizzles;
   }
   set pViewportSwizzles(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pViewportSwizzles = value;
     } else if (value === null) {
       this._pViewportSwizzles = null;
@@ -39232,16 +37256,8 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
   if (this._pViewportSwizzles !== null) {
     let array = this._pViewportSwizzles;
     
-    if (array.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkViewportSwizzleNV) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles[" + ii + "]': Expected 'VkViewportSwizzleNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -39321,9 +37337,7 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDiscardRectanglePropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39418,9 +37432,7 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39433,34 +37445,28 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get discardRectangleMode() {
     return this.memoryViewInt32[0x5];
   }
   set discardRectangleMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.discardRectangleMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get discardRectangleCount() {
     return this.memoryViewUint32[0x6];
   }
   set discardRectangleCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.discardRectangleCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pDiscardRectangles() {
     return this._pDiscardRectangles;
   }
   set pDiscardRectangles(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDiscardRectangles = value;
     } else if (value === null) {
       this._pDiscardRectangles = null;
@@ -39482,16 +37488,8 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
   if (this._pDiscardRectangles !== null) {
     let array = this._pDiscardRectangles;
     
-    if (array.length !== this.discardRectangleCount) {
-      throw new RangeError("Invalid array length, expected length of 'discardRectangleCount' for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -39575,9 +37573,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39663,27 +37659,21 @@ class VkInputAttachmentAspectReference {
     return this.memoryViewUint32[0x0];
   }
   set subpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReference.subpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get inputAttachmentIndex() {
     return this.memoryViewUint32[0x1];
   }
   set inputAttachmentIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReference.inputAttachmentIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get aspectMask() {
     return this.memoryViewInt32[0x2];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReference.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   
@@ -39749,27 +37739,21 @@ class VkInputAttachmentAspectReferenceKHR {
     return this.memoryViewUint32[0x0];
   }
   set subpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReferenceKHR.subpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get inputAttachmentIndex() {
     return this.memoryViewUint32[0x1];
   }
   set inputAttachmentIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReferenceKHR.inputAttachmentIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get aspectMask() {
     return this.memoryViewInt32[0x2];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkInputAttachmentAspectReferenceKHR.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x2] = value;
   }
   
@@ -39840,9 +37824,7 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39855,16 +37837,14 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
     return this.memoryViewUint32[0x4];
   }
   set aspectReferenceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfo.aspectReferenceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAspectReferences() {
     return this._pAspectReferences;
   }
   set pAspectReferences(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAspectReferences = value;
     } else if (value === null) {
       this._pAspectReferences = null;
@@ -39886,16 +37866,8 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
   if (this._pAspectReferences !== null) {
     let array = this._pAspectReferences;
     
-    if (array.length !== this.aspectReferenceCount) {
-      throw new RangeError("Invalid array length, expected length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkInputAttachmentAspectReference) {
-        throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences[" + ii + "]': Expected 'VkInputAttachmentAspectReference' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -39975,9 +37947,7 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -39990,16 +37960,14 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set aspectReferenceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.aspectReferenceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAspectReferences() {
     return this._pAspectReferences;
   }
   set pAspectReferences(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAspectReferences = value;
     } else if (value === null) {
       this._pAspectReferences = null;
@@ -40021,16 +37989,8 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
   if (this._pAspectReferences !== null) {
     let array = this._pAspectReferences;
     
-    if (array.length !== this.aspectReferenceCount) {
-      throw new RangeError("Invalid array length, expected length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkInputAttachmentAspectReference) {
-        throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences[" + ii + "]': Expected 'VkInputAttachmentAspectReference' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -40105,9 +38065,7 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSurfaceInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40120,7 +38078,7 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
     return this._surface;
   }
   set surface(value) {
-    if (value !== null && value.constructor === VkSurfaceKHR) {
+    if (value !== null ) {
       
       this._surface = value;
       
@@ -40201,18 +38159,16 @@ class VkSurfaceCapabilities2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9C7B98:
@@ -40307,9 +38263,7 @@ class VkSurfaceFormat2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSurfaceFormat2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40396,9 +38350,7 @@ class VkDisplayProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40485,9 +38437,7 @@ class VkDisplayPlaneProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPlaneProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40574,9 +38524,7 @@ class VkDisplayModeProperties2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayModeProperties2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40668,9 +38616,7 @@ class VkDisplayPlaneInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPlaneInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40683,7 +38629,7 @@ class VkDisplayPlaneInfo2KHR {
     return this._mode;
   }
   set mode(value) {
-    if (value !== null && value.constructor === VkDisplayModeKHR) {
+    if (value !== null ) {
       
       this._mode = value;
       
@@ -40699,9 +38645,7 @@ class VkDisplayPlaneInfo2KHR {
     return this.memoryViewUint32[0x6];
   }
   set planeIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPlaneInfo2KHR.planeIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -40777,9 +38721,7 @@ class VkDisplayPlaneCapabilities2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDisplayPlaneCapabilities2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40866,9 +38808,7 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSharedPresentSurfaceCapabilitiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -40962,9 +38902,7 @@ class VkPhysicalDevice16BitStorageFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevice16BitStorageFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41087,9 +39025,7 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevice16BitStorageFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41208,9 +39144,7 @@ class VkPhysicalDeviceSubgroupProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSubgroupProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41317,9 +39251,7 @@ class VkBufferMemoryRequirementsInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41332,7 +39264,7 @@ class VkBufferMemoryRequirementsInfo2 {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -41414,9 +39346,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41429,7 +39359,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -41511,18 +39441,16 @@ class VkImageMemoryRequirementsInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D2B63:
@@ -41543,7 +39471,7 @@ class VkImageMemoryRequirementsInfo2 {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -41625,18 +39553,16 @@ class VkImageMemoryRequirementsInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D2B63:
@@ -41657,7 +39583,7 @@ class VkImageMemoryRequirementsInfo2KHR {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -41739,9 +39665,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41754,7 +39678,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -41836,9 +39760,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -41851,7 +39773,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -41932,18 +39854,16 @@ class VkMemoryRequirements2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryRequirements2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkMemoryRequirements2.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CBA18:
@@ -42038,18 +39958,16 @@ class VkMemoryRequirements2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CBA18:
@@ -42144,9 +40062,7 @@ class VkSparseImageMemoryRequirements2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryRequirements2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42233,9 +40149,7 @@ class VkSparseImageMemoryRequirements2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSparseImageMemoryRequirements2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42322,9 +40236,7 @@ class VkPhysicalDevicePointClippingProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevicePointClippingProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42409,9 +40321,7 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevicePointClippingPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42499,9 +40409,7 @@ class VkMemoryDedicatedRequirements {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryDedicatedRequirements.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42596,9 +40504,7 @@ class VkMemoryDedicatedRequirementsKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryDedicatedRequirementsKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42693,9 +40599,7 @@ class VkMemoryDedicatedAllocateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42708,7 +40612,7 @@ class VkMemoryDedicatedAllocateInfo {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -42724,7 +40628,7 @@ class VkMemoryDedicatedAllocateInfo {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -42812,9 +40716,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42827,7 +40729,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     return this._image;
   }
   set image(value) {
-    if (value !== null && value.constructor === VkImage) {
+    if (value !== null ) {
       
       this._image = value;
       
@@ -42843,7 +40745,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -42929,9 +40831,7 @@ class VkImageViewUsageCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewUsageCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -42944,9 +40844,7 @@ class VkImageViewUsageCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewUsageCreateInfo.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -43019,9 +40917,7 @@ class VkImageViewUsageCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewUsageCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43034,9 +40930,7 @@ class VkImageViewUsageCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set usage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewUsageCreateInfoKHR.usage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -43109,9 +41003,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationDomainOriginStateCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43124,9 +41016,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set domainOrigin(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationDomainOriginStateCreateInfo.domainOrigin': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -43199,9 +41089,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationDomainOriginStateCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43214,9 +41102,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set domainOrigin(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineTessellationDomainOriginStateCreateInfoKHR.domainOrigin': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -43289,9 +41175,7 @@ class VkSamplerYcbcrConversionInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43304,7 +41188,7 @@ class VkSamplerYcbcrConversionInfo {
     return this._conversion;
   }
   set conversion(value) {
-    if (value !== null && value.constructor === VkSamplerYcbcrConversion) {
+    if (value !== null ) {
       
       this._conversion = value;
       
@@ -43386,9 +41270,7 @@ class VkSamplerYcbcrConversionInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43401,7 +41283,7 @@ class VkSamplerYcbcrConversionInfoKHR {
     return this._conversion;
   }
   set conversion(value) {
-    if (value !== null && value.constructor === VkSamplerYcbcrConversion) {
+    if (value !== null ) {
       
       this._conversion = value;
       
@@ -43499,18 +41381,16 @@ class VkSamplerYcbcrConversionCreateInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CC1ED:
@@ -43531,34 +41411,28 @@ class VkSamplerYcbcrConversionCreateInfo {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get ycbcrModel() {
     return this.memoryViewInt32[0x5];
   }
   set ycbcrModel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.ycbcrModel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get ycbcrRange() {
     return this.memoryViewInt32[0x6];
   }
   set ycbcrRange(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.ycbcrRange': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get components() {
     return this._components;
   }
   set components(value) {
-    if (value !== null && value.constructor === VkComponentMapping) {
+    if (value !== null ) {
       value.flush();
       this._components = value;
       
@@ -43574,27 +41448,21 @@ class VkSamplerYcbcrConversionCreateInfo {
     return this.memoryViewInt32[0xB];
   }
   set xChromaOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.xChromaOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   get yChromaOffset() {
     return this.memoryViewInt32[0xC];
   }
   set yChromaOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.yChromaOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get chromaFilter() {
     return this.memoryViewInt32[0xD];
   }
   set chromaFilter(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.chromaFilter': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xD] = value;
   }
   get forceExplicitReconstruction() {
@@ -43620,7 +41488,7 @@ VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._components.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSamplerYcbcrConversionCreateInfo.components' isn't used as shared-memory");
+      
     }
   }
   
@@ -43730,18 +41598,16 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9CC1ED:
@@ -43762,34 +41628,28 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get ycbcrModel() {
     return this.memoryViewInt32[0x5];
   }
   set ycbcrModel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.ycbcrModel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get ycbcrRange() {
     return this.memoryViewInt32[0x6];
   }
   set ycbcrRange(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.ycbcrRange': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get components() {
     return this._components;
   }
   set components(value) {
-    if (value !== null && value.constructor === VkComponentMapping) {
+    if (value !== null ) {
       value.flush();
       this._components = value;
       
@@ -43805,27 +41665,21 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     return this.memoryViewInt32[0xB];
   }
   set xChromaOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.xChromaOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   get yChromaOffset() {
     return this.memoryViewInt32[0xC];
   }
   set yChromaOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.yChromaOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get chromaFilter() {
     return this.memoryViewInt32[0xD];
   }
   set chromaFilter(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.chromaFilter': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xD] = value;
   }
   get forceExplicitReconstruction() {
@@ -43851,7 +41705,7 @@ VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._components.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSamplerYcbcrConversionCreateInfoKHR.components' isn't used as shared-memory");
+      
     }
   }
   
@@ -43945,9 +41799,7 @@ class VkBindImagePlaneMemoryInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImagePlaneMemoryInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -43960,9 +41812,7 @@ class VkBindImagePlaneMemoryInfo {
     return this.memoryViewInt32[0x4];
   }
   set planeAspect(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImagePlaneMemoryInfo.planeAspect': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -44035,9 +41885,7 @@ class VkBindImagePlaneMemoryInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImagePlaneMemoryInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44050,9 +41898,7 @@ class VkBindImagePlaneMemoryInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set planeAspect(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindImagePlaneMemoryInfoKHR.planeAspect': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -44125,9 +41971,7 @@ class VkImagePlaneMemoryRequirementsInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImagePlaneMemoryRequirementsInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44140,9 +41984,7 @@ class VkImagePlaneMemoryRequirementsInfo {
     return this.memoryViewInt32[0x4];
   }
   set planeAspect(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImagePlaneMemoryRequirementsInfo.planeAspect': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -44215,9 +42057,7 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImagePlaneMemoryRequirementsInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44230,9 +42070,7 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set planeAspect(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImagePlaneMemoryRequirementsInfoKHR.planeAspect': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -44307,9 +42145,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSamplerYcbcrConversionFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44396,9 +42232,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44484,9 +42318,7 @@ class VkSamplerYcbcrConversionImageFormatProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionImageFormatProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44573,9 +42405,7 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionImageFormatPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44662,9 +42492,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkTextureLODGatherFormatPropertiesAMD.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44756,9 +42584,7 @@ class VkConditionalRenderingBeginInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44771,7 +42597,7 @@ class VkConditionalRenderingBeginInfoEXT {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -44787,18 +42613,14 @@ class VkConditionalRenderingBeginInfoEXT {
     return this.memoryViewBigUint64[0x3];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get flags() {
     return this.memoryViewInt32[0x8];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   
@@ -44881,9 +42703,7 @@ class VkProtectedSubmitInfo {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkProtectedSubmitInfo.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -44970,9 +42790,7 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceProtectedMemoryFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45058,9 +42876,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceProtectedMemoryProperties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45152,9 +42968,7 @@ class VkDeviceQueueInfo2 {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueInfo2.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45167,27 +42981,21 @@ class VkDeviceQueueInfo2 {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueInfo2.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get queueFamilyIndex() {
     return this.memoryViewUint32[0x5];
   }
   set queueFamilyIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueInfo2.queueFamilyIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get queueIndex() {
     return this.memoryViewUint32[0x6];
   }
   set queueIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueInfo2.queueIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -45274,9 +43082,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageToColorStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45289,9 +43095,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageToColorStateCreateInfoNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get coverageToColorEnable() {
@@ -45304,9 +43108,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     return this.memoryViewUint32[0x6];
   }
   set coverageToColorLocation(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageToColorStateCreateInfoNV.coverageToColorLocation': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   
@@ -45389,9 +43191,7 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45480,18 +43280,14 @@ class VkSampleLocationEXT {
     return this.memoryViewFloat32[0x0];
   }
   set x(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSampleLocationEXT.x': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x0] = value;
   }
   get y() {
     return this.memoryViewFloat32[0x1];
   }
   set y(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSampleLocationEXT.y': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x1] = value;
   }
   
@@ -45562,9 +43358,7 @@ class VkSampleLocationsInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45577,16 +43371,14 @@ class VkSampleLocationsInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set sampleLocationsPerPixel(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.sampleLocationsPerPixel': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get sampleLocationGridSize() {
     return this._sampleLocationGridSize;
   }
   set sampleLocationGridSize(value) {
-    if (value !== null && value.constructor === VkExtent2D) {
+    if (value !== null ) {
       value.flush();
       this._sampleLocationGridSize = value;
       
@@ -45602,16 +43394,14 @@ class VkSampleLocationsInfoEXT {
     return this.memoryViewUint32[0x7];
   }
   set sampleLocationsCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.sampleLocationsCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pSampleLocations() {
     return this._pSampleLocations;
   }
   set pSampleLocations(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSampleLocations = value;
     } else if (value === null) {
       this._pSampleLocations = null;
@@ -45636,7 +43426,7 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._sampleLocationGridSize.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x14);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSampleLocationsInfoEXT.sampleLocationGridSize' isn't used as shared-memory");
+      
     }
   }
   
@@ -45644,16 +43434,8 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
   if (this._pSampleLocations !== null) {
     let array = this._pSampleLocations;
     
-    if (array.length !== this.sampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected length of 'sampleLocationsCount' for 'VkSampleLocationsInfoEXT.pSampleLocations'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSampleLocationEXT) {
-        throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.pSampleLocations[" + ii + "]': Expected 'VkSampleLocationEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -45734,16 +43516,14 @@ class VkAttachmentSampleLocationsEXT {
     return this.memoryViewUint32[0x0];
   }
   set attachmentIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentSampleLocationsEXT.attachmentIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get sampleLocationsInfo() {
     return this._sampleLocationsInfo;
   }
   set sampleLocationsInfo(value) {
-    if (value !== null && value.constructor === VkSampleLocationsInfoEXT) {
+    if (value !== null ) {
       value.flush();
       this._sampleLocationsInfo = value;
       
@@ -45767,7 +43547,7 @@ VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._sampleLocationsInfo.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkAttachmentSampleLocationsEXT.sampleLocationsInfo' isn't used as shared-memory");
+      
     }
   }
   
@@ -45823,16 +43603,14 @@ class VkSubpassSampleLocationsEXT {
     return this.memoryViewUint32[0x0];
   }
   set subpassIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassSampleLocationsEXT.subpassIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get sampleLocationsInfo() {
     return this._sampleLocationsInfo;
   }
   set sampleLocationsInfo(value) {
-    if (value !== null && value.constructor === VkSampleLocationsInfoEXT) {
+    if (value !== null ) {
       value.flush();
       this._sampleLocationsInfo = value;
       
@@ -45856,7 +43634,7 @@ VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._sampleLocationsInfo.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSubpassSampleLocationsEXT.sampleLocationsInfo' isn't used as shared-memory");
+      
     }
   }
   
@@ -45926,9 +43704,7 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -45941,16 +43717,14 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set attachmentInitialSampleLocationsCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.attachmentInitialSampleLocationsCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAttachmentInitialSampleLocations() {
     return this._pAttachmentInitialSampleLocations;
   }
   set pAttachmentInitialSampleLocations(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAttachmentInitialSampleLocations = value;
     } else if (value === null) {
       this._pAttachmentInitialSampleLocations = null;
@@ -45962,16 +43736,14 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     return this.memoryViewUint32[0x8];
   }
   set postSubpassSampleLocationsCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.postSubpassSampleLocationsCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pPostSubpassSampleLocations() {
     return this._pPostSubpassSampleLocations;
   }
   set pPostSubpassSampleLocations(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPostSubpassSampleLocations = value;
     } else if (value === null) {
       this._pPostSubpassSampleLocations = null;
@@ -45993,16 +43765,8 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   if (this._pAttachmentInitialSampleLocations !== null) {
     let array = this._pAttachmentInitialSampleLocations;
     
-    if (array.length !== this.attachmentInitialSampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected length of 'attachmentInitialSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentSampleLocationsEXT) {
-        throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations[" + ii + "]': Expected 'VkAttachmentSampleLocationsEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -46015,16 +43779,8 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   if (this._pPostSubpassSampleLocations !== null) {
     let array = this._pPostSubpassSampleLocations;
     
-    if (array.length !== this.postSubpassSampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected length of 'postSubpassSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubpassSampleLocationsEXT) {
-        throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations[" + ii + "]': Expected 'VkSubpassSampleLocationsEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -46113,9 +43869,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineSampleLocationsStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46134,7 +43888,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     return this._sampleLocationsInfo;
   }
   set sampleLocationsInfo(value) {
-    if (value !== null && value.constructor === VkSampleLocationsInfoEXT) {
+    if (value !== null ) {
       value.flush();
       this._sampleLocationsInfo = value;
       
@@ -46163,7 +43917,7 @@ VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._sampleLocationsInfo.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineSampleLocationsStateCreateInfoEXT.sampleLocationsInfo' isn't used as shared-memory");
+      
     }
   }
   
@@ -46240,9 +43994,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceSampleLocationsPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46362,9 +44114,7 @@ class VkMultisamplePropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMultisamplePropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46452,9 +44202,7 @@ class VkSamplerReductionModeCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerReductionModeCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46467,9 +44215,7 @@ class VkSamplerReductionModeCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set reductionMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSamplerReductionModeCreateInfoEXT.reductionMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -46544,9 +44290,7 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46637,9 +44381,7 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46766,9 +44508,7 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAdvancedStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46793,9 +44533,7 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
     return this.memoryViewInt32[0x6];
   }
   set blendOverlap(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineColorBlendAdvancedStateCreateInfoEXT.blendOverlap': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -46880,9 +44618,7 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceInlineUniformBlockFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -46982,9 +44718,7 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceInlineUniformBlockPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47102,9 +44836,7 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSetInlineUniformBlockEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47117,16 +44849,14 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
     return this.memoryViewUint32[0x4];
   }
   set dataSize(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSetInlineUniformBlockEXT.dataSize': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pData() {
     return this._pData;
   }
   set pData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pData = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -47212,9 +44942,7 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolInlineUniformBlockCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47227,9 +44955,7 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set maxInlineUniformBlockBindings(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorPoolInlineUniformBlockCreateInfoEXT.maxInlineUniformBlockBindings': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   
@@ -47312,9 +45038,7 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageModulationStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47327,18 +45051,14 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageModulationStateCreateInfoNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get coverageModulationMode() {
     return this.memoryViewInt32[0x5];
   }
   set coverageModulationMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageModulationStateCreateInfoNV.coverageModulationMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get coverageModulationTableEnable() {
@@ -47351,16 +45071,14 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     return this.memoryViewUint32[0x7];
   }
   set coverageModulationTableCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineCoverageModulationStateCreateInfoNV.coverageModulationTableCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pCoverageModulationTable() {
     return this._pCoverageModulationTable;
   }
   set pCoverageModulationTable(value) {
-    if (value !== null && value.constructor === Float32Array) {
+    if (value !== null ) {
       this._pCoverageModulationTable = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -47460,9 +45178,7 @@ class VkImageFormatListCreateInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageFormatListCreateInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47475,16 +45191,14 @@ class VkImageFormatListCreateInfoKHR {
     return this.memoryViewUint32[0x4];
   }
   set viewFormatCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageFormatListCreateInfoKHR.viewFormatCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pViewFormats() {
     return this._pViewFormats;
   }
   set pViewFormats(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pViewFormats = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -47572,9 +45286,7 @@ class VkValidationCacheCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47587,25 +45299,21 @@ class VkValidationCacheCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get initialDataSize() {
     return this.memoryViewBigInt64[0x3];
   }
   set initialDataSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkValidationCacheCreateInfoEXT.initialDataSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x3] = BigInt(value);
   }
   get pInitialData() {
     return this._pInitialData;
   }
   set pInitialData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pInitialData = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -47693,9 +45401,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkShaderModuleValidationCacheCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47708,7 +45414,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     return this._validationCache;
   }
   set validationCache(value) {
-    if (value !== null && value.constructor === VkValidationCacheEXT) {
+    if (value !== null ) {
       
       this._validationCache = value;
       
@@ -47794,9 +45500,7 @@ class VkPhysicalDeviceMaintenance3Properties {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMaintenance3Properties.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47893,9 +45597,7 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMaintenance3PropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -47989,18 +45691,16 @@ class VkDescriptorSetLayoutSupport {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3EEC:
@@ -48095,18 +45795,16 @@ class VkDescriptorSetLayoutSupportKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9D3EEC:
@@ -48202,9 +45900,7 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShaderDrawParameterFeatures.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -48293,9 +45989,7 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFloat16Int8FeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -48407,9 +46101,7 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFloatControlsPropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -48801,9 +46493,7 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueGlobalPriorityCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -48816,9 +46506,7 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set globalPriority(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceQueueGlobalPriorityCreateInfoEXT.globalPriority': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -48897,9 +46585,7 @@ class VkDebugUtilsObjectNameInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -48912,18 +46598,14 @@ class VkDebugUtilsObjectNameInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set objectType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.objectType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get objectHandle() {
     return this.memoryViewBigUint64[0x3];
   }
   set objectHandle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectNameInfoEXT.objectHandle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get pObjectName() {
@@ -48935,7 +46617,7 @@ class VkDebugUtilsObjectNameInfoEXT {
     }
   }
   set pObjectName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pObjectName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(this._pObjectName);
     } else if (value === null) {
@@ -49033,9 +46715,7 @@ class VkDebugUtilsObjectTagInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49048,43 +46728,35 @@ class VkDebugUtilsObjectTagInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set objectType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.objectType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get objectHandle() {
     return this.memoryViewBigUint64[0x3];
   }
   set objectHandle(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.objectHandle': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get tagName() {
     return this.memoryViewBigUint64[0x4];
   }
   set tagName(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagName': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get tagSize() {
     return this.memoryViewBigInt64[0x5];
   }
   set tagSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsObjectTagInfoEXT.tagSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigInt64[0x5] = BigInt(value);
   }
   get pTag() {
     return this._pTag;
   }
   set pTag(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pTag = value;
       this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -49184,9 +46856,7 @@ class VkDebugUtilsLabelEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsLabelEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49204,7 +46874,7 @@ class VkDebugUtilsLabelEXT {
     }
   }
   set pLabelName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pLabelName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x2] = getAddressFromArrayBuffer(this._pLabelName);
     } else if (value === null) {
@@ -49218,7 +46888,7 @@ class VkDebugUtilsLabelEXT {
     return this._color;
   }
   set color(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._color = value;
     } else if (value === null) {
       this._color = null;
@@ -49240,18 +46910,6 @@ VkDebugUtilsLabelEXT.prototype.flush = function flush() {
   if (this._color !== null) {
     let array = this._color;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkDebugUtilsLabelEXT.color'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkDebugUtilsLabelEXT.color[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewFloat32[0x6 + ii] = array[ii];
     };
@@ -49331,9 +46989,7 @@ class VkDebugUtilsMessengerCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49346,34 +47002,28 @@ class VkDebugUtilsMessengerCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get messageSeverity() {
     return this.memoryViewInt32[0x5];
   }
   set messageSeverity(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.messageSeverity': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get messageType() {
     return this.memoryViewInt32[0x6];
   }
   set messageType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.messageType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get pUserData() {
     return this._pUserData;
   }
   set pUserData(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pUserData = value;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -49488,9 +47138,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49503,9 +47151,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pMessageIdName() {
@@ -49517,7 +47163,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     }
   }
   set pMessageIdName(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pMessageIdName = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(this._pMessageIdName);
     } else if (value === null) {
@@ -49531,9 +47177,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewInt32[0x8];
   }
   set messageIdNumber(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.messageIdNumber': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get pMessage() {
@@ -49545,7 +47189,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     }
   }
   set pMessage(value) {
-    if (value !== null && value.constructor === String) {
+    if (value !== null ) {
       this._pMessage = textEncoder.encode(value + NULLT).buffer;
       this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(this._pMessage);
     } else if (value === null) {
@@ -49559,16 +47203,14 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewUint32[0xC];
   }
   set queueLabelCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.queueLabelCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pQueueLabels() {
     return this._pQueueLabels;
   }
   set pQueueLabels(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pQueueLabels = value;
     } else if (value === null) {
       this._pQueueLabels = null;
@@ -49580,16 +47222,14 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewUint32[0x10];
   }
   set cmdBufLabelCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.cmdBufLabelCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   get pCmdBufLabels() {
     return this._pCmdBufLabels;
   }
   set pCmdBufLabels(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pCmdBufLabels = value;
     } else if (value === null) {
       this._pCmdBufLabels = null;
@@ -49601,16 +47241,14 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this.memoryViewUint32[0x14];
   }
   set objectCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.objectCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x14] = value;
   }
   get pObjects() {
     return this._pObjects;
   }
   set pObjects(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pObjects = value;
     } else if (value === null) {
       this._pObjects = null;
@@ -49632,16 +47270,8 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   if (this._pQueueLabels !== null) {
     let array = this._pQueueLabels;
     
-    if (array.length !== this.queueLabelCount) {
-      throw new RangeError("Invalid array length, expected length of 'queueLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDebugUtilsLabelEXT) {
-        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels[" + ii + "]': Expected 'VkDebugUtilsLabelEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -49654,16 +47284,8 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   if (this._pCmdBufLabels !== null) {
     let array = this._pCmdBufLabels;
     
-    if (array.length !== this.cmdBufLabelCount) {
-      throw new RangeError("Invalid array length, expected length of 'cmdBufLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDebugUtilsLabelEXT) {
-        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels[" + ii + "]': Expected 'VkDebugUtilsLabelEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -49676,16 +47298,8 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   if (this._pObjects !== null) {
     let array = this._pObjects;
     
-    if (array.length !== this.objectCount) {
-      throw new RangeError("Invalid array length, expected length of 'objectCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkDebugUtilsObjectNameInfoEXT) {
-        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects[" + ii + "]': Expected 'VkDebugUtilsObjectNameInfoEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -49798,9 +47412,7 @@ class VkImportMemoryHostPointerInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryHostPointerInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49813,16 +47425,14 @@ class VkImportMemoryHostPointerInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set handleType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImportMemoryHostPointerInfoEXT.handleType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pHostPointer() {
     return this._pHostPointer;
   }
   set pHostPointer(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pHostPointer = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -49907,9 +47517,7 @@ class VkMemoryHostPointerPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryHostPointerPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -49996,9 +47604,7 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExternalMemoryHostPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50095,9 +47701,7 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceConservativeRasterizationPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50239,9 +47843,7 @@ class VkCalibratedTimestampInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCalibratedTimestampInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50254,9 +47856,7 @@ class VkCalibratedTimestampInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set timeDomain(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCalibratedTimestampInfoEXT.timeDomain': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -50343,9 +47943,7 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShaderCorePropertiesAMD.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50528,9 +48126,7 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationConservativeStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50543,27 +48139,21 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationConservativeStateCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get conservativeRasterizationMode() {
     return this.memoryViewInt32[0x5];
   }
   set conservativeRasterizationMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationConservativeStateCreateInfoEXT.conservativeRasterizationMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get extraPrimitiveOverestimationSize() {
     return this.memoryViewFloat32[0x6];
   }
   set extraPrimitiveOverestimationSize(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationConservativeStateCreateInfoEXT.extraPrimitiveOverestimationSize': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x6] = value;
   }
   
@@ -50684,9 +48274,7 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDescriptorIndexingFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -50984,9 +48572,7 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDescriptorIndexingPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51230,9 +48816,7 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51245,16 +48829,14 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set bindingCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.bindingCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pBindingFlags() {
     return this._pBindingFlags;
   }
   set pBindingFlags(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pBindingFlags = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -51342,9 +48924,7 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51357,16 +48937,14 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set descriptorSetCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.descriptorSetCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDescriptorCounts() {
     return this._pDescriptorCounts;
   }
   set pDescriptorCounts(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDescriptorCounts = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -51451,9 +49029,7 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51555,9 +49131,7 @@ class VkAttachmentDescription2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51570,81 +49144,63 @@ class VkAttachmentDescription2KHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get format() {
     return this.memoryViewInt32[0x5];
   }
   set format(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.format': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get samples() {
     return this.memoryViewInt32[0x6];
   }
   set samples(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.samples': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get loadOp() {
     return this.memoryViewInt32[0x7];
   }
   set loadOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.loadOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get storeOp() {
     return this.memoryViewInt32[0x8];
   }
   set storeOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.storeOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get stencilLoadOp() {
     return this.memoryViewInt32[0x9];
   }
   set stencilLoadOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.stencilLoadOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get stencilStoreOp() {
     return this.memoryViewInt32[0xA];
   }
   set stencilStoreOp(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.stencilStoreOp': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get initialLayout() {
     return this.memoryViewInt32[0xB];
   }
   set initialLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.initialLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   get finalLayout() {
     return this.memoryViewInt32[0xC];
   }
   set finalLayout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentDescription2KHR.finalLayout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   
@@ -51755,9 +49311,7 @@ class VkAttachmentReference2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -51770,27 +49324,21 @@ class VkAttachmentReference2KHR {
     return this.memoryViewUint32[0x4];
   }
   set attachment(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference2KHR.attachment': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get layout() {
     return this.memoryViewInt32[0x5];
   }
   set layout(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference2KHR.layout': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get aspectMask() {
     return this.memoryViewInt32[0x6];
   }
   set aspectMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAttachmentReference2KHR.aspectMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   
@@ -51896,18 +49444,16 @@ class VkSubpassDescription2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
     return this._pNext;
   }
   set pNext(value) {
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pNext'");
+      
       switch (sType) {
           
         case 0x3B9DD359:
@@ -51928,43 +49474,35 @@ class VkSubpassDescription2KHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get pipelineBindPoint() {
     return this.memoryViewInt32[0x5];
   }
   set pipelineBindPoint(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pipelineBindPoint': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get viewMask() {
     return this.memoryViewUint32[0x6];
   }
   set viewMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.viewMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get inputAttachmentCount() {
     return this.memoryViewUint32[0x7];
   }
   set inputAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.inputAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pInputAttachments() {
     return this._pInputAttachments;
   }
   set pInputAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pInputAttachments = value;
     } else if (value === null) {
       this._pInputAttachments = null;
@@ -51976,16 +49514,14 @@ class VkSubpassDescription2KHR {
     return this.memoryViewUint32[0xA];
   }
   set colorAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.colorAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get pColorAttachments() {
     return this._pColorAttachments;
   }
   set pColorAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pColorAttachments = value;
     } else if (value === null) {
       this._pColorAttachments = null;
@@ -51997,7 +49533,7 @@ class VkSubpassDescription2KHR {
     return this._pResolveAttachments;
   }
   set pResolveAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pResolveAttachments = value;
     } else if (value === null) {
       this._pResolveAttachments = null;
@@ -52009,7 +49545,7 @@ class VkSubpassDescription2KHR {
     return this._pDepthStencilAttachment;
   }
   set pDepthStencilAttachment(value) {
-    if (value !== null && value.constructor === VkAttachmentReference2KHR) {
+    if (value !== null ) {
       value.flush();
       this._pDepthStencilAttachment = value;
       this.memoryViewBigInt64[0x8] = value.memoryAddress;
@@ -52025,16 +49561,14 @@ class VkSubpassDescription2KHR {
     return this.memoryViewUint32[0x12];
   }
   set preserveAttachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.preserveAttachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x12] = value;
   }
   get pPreserveAttachments() {
     return this._pPreserveAttachments;
   }
   set pPreserveAttachments(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pPreserveAttachments = value;
       this.memoryViewBigInt64[0xA] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -52058,16 +49592,8 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   if (this._pInputAttachments !== null) {
     let array = this._pInputAttachments;
     
-    if (array.length !== this.inputAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'inputAttachmentCount' for 'VkSubpassDescription2KHR.pInputAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference2KHR) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pInputAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52080,16 +49606,8 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   if (this._pColorAttachments !== null) {
     let array = this._pColorAttachments;
     
-    if (array.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pColorAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference2KHR) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pColorAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52102,16 +49620,8 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   if (this._pResolveAttachments !== null) {
     let array = this._pResolveAttachments;
     
-    if (array.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pResolveAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentReference2KHR) {
-        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pResolveAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52242,9 +49752,7 @@ class VkSubpassDependency2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -52257,72 +49765,56 @@ class VkSubpassDependency2KHR {
     return this.memoryViewUint32[0x4];
   }
   set srcSubpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.srcSubpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get dstSubpass() {
     return this.memoryViewUint32[0x5];
   }
   set dstSubpass(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.dstSubpass': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get srcStageMask() {
     return this.memoryViewInt32[0x6];
   }
   set srcStageMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.srcStageMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get dstStageMask() {
     return this.memoryViewInt32[0x7];
   }
   set dstStageMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.dstStageMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get srcAccessMask() {
     return this.memoryViewInt32[0x8];
   }
   set srcAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.srcAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get dstAccessMask() {
     return this.memoryViewInt32[0x9];
   }
   set dstAccessMask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.dstAccessMask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get dependencyFlags() {
     return this.memoryViewInt32[0xA];
   }
   set dependencyFlags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.dependencyFlags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get viewOffset() {
     return this.memoryViewInt32[0xB];
   }
   set viewOffset(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDependency2KHR.viewOffset': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   
@@ -52444,9 +49936,7 @@ class VkRenderPassCreateInfo2KHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -52459,25 +49949,21 @@ class VkRenderPassCreateInfo2KHR {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get attachmentCount() {
     return this.memoryViewUint32[0x5];
   }
   set attachmentCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.attachmentCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pAttachments() {
     return this._pAttachments;
   }
   set pAttachments(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAttachments = value;
     } else if (value === null) {
       this._pAttachments = null;
@@ -52489,16 +49975,14 @@ class VkRenderPassCreateInfo2KHR {
     return this.memoryViewUint32[0x8];
   }
   set subpassCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.subpassCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pSubpasses() {
     return this._pSubpasses;
   }
   set pSubpasses(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSubpasses = value;
     } else if (value === null) {
       this._pSubpasses = null;
@@ -52510,16 +49994,14 @@ class VkRenderPassCreateInfo2KHR {
     return this.memoryViewUint32[0xC];
   }
   set dependencyCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.dependencyCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get pDependencies() {
     return this._pDependencies;
   }
   set pDependencies(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pDependencies = value;
     } else if (value === null) {
       this._pDependencies = null;
@@ -52531,16 +50013,14 @@ class VkRenderPassCreateInfo2KHR {
     return this.memoryViewUint32[0x10];
   }
   set correlatedViewMaskCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.correlatedViewMaskCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x10] = value;
   }
   get pCorrelatedViewMasks() {
     return this._pCorrelatedViewMasks;
   }
   set pCorrelatedViewMasks(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pCorrelatedViewMasks = value;
       this.memoryViewBigInt64[0x9] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -52564,16 +50044,8 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   if (this._pAttachments !== null) {
     let array = this._pAttachments;
     
-    if (array.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkRenderPassCreateInfo2KHR.pAttachments'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAttachmentDescription2KHR) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pAttachments[" + ii + "]': Expected 'VkAttachmentDescription2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52586,16 +50058,8 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   if (this._pSubpasses !== null) {
     let array = this._pSubpasses;
     
-    if (array.length !== this.subpassCount) {
-      throw new RangeError("Invalid array length, expected length of 'subpassCount' for 'VkRenderPassCreateInfo2KHR.pSubpasses'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubpassDescription2KHR) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pSubpasses[" + ii + "]': Expected 'VkSubpassDescription2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52608,16 +50072,8 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   if (this._pDependencies !== null) {
     let array = this._pDependencies;
     
-    if (array.length !== this.dependencyCount) {
-      throw new RangeError("Invalid array length, expected length of 'dependencyCount' for 'VkRenderPassCreateInfo2KHR.pDependencies'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubpassDependency2KHR) {
-        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pDependencies[" + ii + "]': Expected 'VkSubpassDependency2KHR' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -52724,9 +50180,7 @@ class VkSubpassBeginInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassBeginInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -52739,9 +50193,7 @@ class VkSubpassBeginInfoKHR {
     return this.memoryViewInt32[0x4];
   }
   set contents(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassBeginInfoKHR.contents': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -52812,9 +50264,7 @@ class VkSubpassEndInfoKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassEndInfoKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -52885,18 +50335,14 @@ class VkVertexInputBindingDivisorDescriptionEXT {
     return this.memoryViewUint32[0x0];
   }
   set binding(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputBindingDivisorDescriptionEXT.binding': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get divisor() {
     return this.memoryViewUint32[0x1];
   }
   set divisor(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkVertexInputBindingDivisorDescriptionEXT.divisor': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   
@@ -52963,9 +50409,7 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -52978,16 +50422,14 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set vertexBindingDivisorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.vertexBindingDivisorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pVertexBindingDivisors() {
     return this._pVertexBindingDivisors;
   }
   set pVertexBindingDivisors(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pVertexBindingDivisors = value;
     } else if (value === null) {
       this._pVertexBindingDivisors = null;
@@ -53009,16 +50451,8 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
   if (this._pVertexBindingDivisors !== null) {
     let array = this._pVertexBindingDivisors;
     
-    if (array.length !== this.vertexBindingDivisorCount) {
-      throw new RangeError("Invalid array length, expected length of 'vertexBindingDivisorCount' for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkVertexInputBindingDivisorDescriptionEXT) {
-        throw new TypeError("Invalid type for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors[" + ii + "]': Expected 'VkVertexInputBindingDivisorDescriptionEXT' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -53094,9 +50528,7 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53186,9 +50618,7 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevicePCIBusInfoPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53297,9 +50727,7 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceConditionalRenderingInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53390,9 +50818,7 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDevice8BitStorageFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53501,9 +50927,7 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceConditionalRenderingFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53604,9 +51028,7 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53715,9 +51137,7 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53816,9 +51236,7 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -53912,9 +51330,7 @@ class VkQueueFamilyCheckpointPropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkQueueFamilyCheckpointPropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54001,9 +51417,7 @@ class VkCheckpointDataNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCheckpointDataNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54019,7 +51433,7 @@ class VkCheckpointDataNV {
     return this._pCheckpointMarker;
   }
   set pCheckpointMarker(value) {
-    if (value !== null && value.constructor === ArrayBuffer) {
+    if (value !== null ) {
       this._pCheckpointMarker = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -54111,9 +51525,7 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDepthStencilResolvePropertiesKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54224,9 +51636,7 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescriptionDepthStencilResolveKHR.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54239,25 +51649,21 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
     return this.memoryViewInt32[0x4];
   }
   set depthResolveMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescriptionDepthStencilResolveKHR.depthResolveMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stencilResolveMode() {
     return this.memoryViewInt32[0x5];
   }
   set stencilResolveMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkSubpassDescriptionDepthStencilResolveKHR.stencilResolveMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get pDepthStencilResolveAttachment() {
     return this._pDepthStencilResolveAttachment;
   }
   set pDepthStencilResolveAttachment(value) {
-    if (value !== null && value.constructor === VkAttachmentReference2KHR) {
+    if (value !== null ) {
       value.flush();
       this._pDepthStencilResolveAttachment = value;
       this.memoryViewBigInt64[0x3] = value.memoryAddress;
@@ -54347,9 +51753,7 @@ class VkImageViewASTCDecodeModeEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewASTCDecodeModeEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54362,9 +51766,7 @@ class VkImageViewASTCDecodeModeEXT {
     return this.memoryViewInt32[0x4];
   }
   set decodeMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageViewASTCDecodeModeEXT.decodeMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -54439,9 +51841,7 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceASTCDecodeFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54530,9 +51930,7 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceTransformFeedbackFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54639,9 +52037,7 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceTransformFeedbackPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54794,9 +52190,7 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateStreamCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54809,18 +52203,14 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateStreamCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get rasterizationStream() {
     return this.memoryViewUint32[0x5];
   }
   set rasterizationStream(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateStreamCreateInfoEXT.rasterizationStream': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   
@@ -54899,9 +52289,7 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -54988,9 +52376,7 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRepresentativeFragmentTestStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55077,9 +52463,7 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceExclusiveScissorFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55169,9 +52553,7 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55184,16 +52566,14 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
     return this.memoryViewUint32[0x4];
   }
   set exclusiveScissorCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.exclusiveScissorCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pExclusiveScissors() {
     return this._pExclusiveScissors;
   }
   set pExclusiveScissors(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pExclusiveScissors = value;
     } else if (value === null) {
       this._pExclusiveScissors = null;
@@ -55215,16 +52595,8 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
   if (this._pExclusiveScissors !== null) {
     let array = this._pExclusiveScissors;
     
-    if (array.length !== this.exclusiveScissorCount) {
-      throw new RangeError("Invalid array length, expected length of 'exclusiveScissorCount' for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRect2D) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -55301,9 +52673,7 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceCornerSampledImageFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55392,9 +52762,7 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55491,9 +52859,7 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55580,9 +52946,7 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShaderImageFootprintFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55669,9 +53033,7 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55754,16 +53116,14 @@ class VkShadingRatePaletteNV {
     return this.memoryViewUint32[0x0];
   }
   set shadingRatePaletteEntryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkShadingRatePaletteNV.shadingRatePaletteEntryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get pShadingRatePaletteEntries() {
     return this._pShadingRatePaletteEntries;
   }
   set pShadingRatePaletteEntries(value) {
-    if (value !== null && value.constructor === Int32Array) {
+    if (value !== null ) {
       this._pShadingRatePaletteEntries = value;
       this.memoryViewBigInt64[0x1] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -55839,9 +53199,7 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -55860,16 +53218,14 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
     return this.memoryViewUint32[0x5];
   }
   set viewportCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.viewportCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pShadingRatePalettes() {
     return this._pShadingRatePalettes;
   }
   set pShadingRatePalettes(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pShadingRatePalettes = value;
     } else if (value === null) {
       this._pShadingRatePalettes = null;
@@ -55891,16 +53247,8 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
   if (this._pShadingRatePalettes !== null) {
     let array = this._pShadingRatePalettes;
     
-    if (array.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkShadingRatePaletteNV) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes[" + ii + "]': Expected 'VkShadingRatePaletteNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -55983,9 +53331,7 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShadingRateImageFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56083,9 +53429,7 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceShadingRateImagePropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56185,27 +53529,21 @@ class VkCoarseSampleLocationNV {
     return this.memoryViewUint32[0x0];
   }
   set pixelX(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleLocationNV.pixelX': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get pixelY() {
     return this.memoryViewUint32[0x1];
   }
   set pixelY(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleLocationNV.pixelY': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get sample() {
     return this.memoryViewUint32[0x2];
   }
   set sample(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleLocationNV.sample': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   
@@ -56274,34 +53612,28 @@ class VkCoarseSampleOrderCustomNV {
     return this.memoryViewInt32[0x0];
   }
   set shadingRate(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.shadingRate': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get sampleCount() {
     return this.memoryViewUint32[0x1];
   }
   set sampleCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.sampleCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   get sampleLocationCount() {
     return this.memoryViewUint32[0x2];
   }
   set sampleLocationCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.sampleLocationCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x2] = value;
   }
   get pSampleLocations() {
     return this._pSampleLocations;
   }
   set pSampleLocations(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pSampleLocations = value;
     } else if (value === null) {
       this._pSampleLocations = null;
@@ -56318,16 +53650,8 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
   if (this._pSampleLocations !== null) {
     let array = this._pSampleLocations;
     
-    if (array.length !== this.sampleLocationCount) {
-      throw new RangeError("Invalid array length, expected length of 'sampleLocationCount' for 'VkCoarseSampleOrderCustomNV.pSampleLocations'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkCoarseSampleLocationNV) {
-        throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.pSampleLocations[" + ii + "]': Expected 'VkCoarseSampleLocationNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -56407,9 +53731,7 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56422,25 +53744,21 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set sampleOrderType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.sampleOrderType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get customSampleOrderCount() {
     return this.memoryViewUint32[0x5];
   }
   set customSampleOrderCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.customSampleOrderCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pCustomSampleOrders() {
     return this._pCustomSampleOrders;
   }
   set pCustomSampleOrders(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pCustomSampleOrders = value;
     } else if (value === null) {
       this._pCustomSampleOrders = null;
@@ -56462,16 +53780,8 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
   if (this._pCustomSampleOrders !== null) {
     let array = this._pCustomSampleOrders;
     
-    if (array.length !== this.customSampleOrderCount) {
-      throw new RangeError("Invalid array length, expected length of 'customSampleOrderCount' for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkCoarseSampleOrderCustomNV) {
-        throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders[" + ii + "]': Expected 'VkCoarseSampleOrderCustomNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -56554,9 +53864,7 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMeshShaderFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56664,9 +53972,7 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMeshShaderPropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56844,18 +54150,14 @@ class VkDrawMeshTasksIndirectCommandNV {
     return this.memoryViewUint32[0x0];
   }
   set taskCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawMeshTasksIndirectCommandNV.taskCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x0] = value;
   }
   get firstTask() {
     return this.memoryViewUint32[0x1];
   }
   set firstTask(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrawMeshTasksIndirectCommandNV.firstTask': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x1] = value;
   }
   
@@ -56927,9 +54229,7 @@ class VkRayTracingShaderGroupCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -56942,45 +54242,35 @@ class VkRayTracingShaderGroupCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get generalShader() {
     return this.memoryViewUint32[0x5];
   }
   set generalShader(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.generalShader': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get closestHitShader() {
     return this.memoryViewUint32[0x6];
   }
   set closestHitShader(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.closestHitShader': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get anyHitShader() {
     return this.memoryViewUint32[0x7];
   }
   set anyHitShader(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.anyHitShader': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get intersectionShader() {
     return this.memoryViewUint32[0x8];
   }
   set intersectionShader(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingShaderGroupCreateInfoNV.intersectionShader': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   
@@ -57089,9 +54379,7 @@ class VkRayTracingPipelineCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -57104,25 +54392,21 @@ class VkRayTracingPipelineCreateInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get stageCount() {
     return this.memoryViewUint32[0x5];
   }
   set stageCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.stageCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get pStages() {
     return this._pStages;
   }
   set pStages(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pStages = value;
     } else if (value === null) {
       this._pStages = null;
@@ -57134,16 +54418,14 @@ class VkRayTracingPipelineCreateInfoNV {
     return this.memoryViewUint32[0x8];
   }
   set groupCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.groupCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get pGroups() {
     return this._pGroups;
   }
   set pGroups(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pGroups = value;
     } else if (value === null) {
       this._pGroups = null;
@@ -57155,16 +54437,14 @@ class VkRayTracingPipelineCreateInfoNV {
     return this.memoryViewUint32[0xC];
   }
   set maxRecursionDepth(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.maxRecursionDepth': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xC] = value;
   }
   get layout() {
     return this._layout;
   }
   set layout(value) {
-    if (value !== null && value.constructor === VkPipelineLayout) {
+    if (value !== null ) {
       
       this._layout = value;
       
@@ -57180,7 +54460,7 @@ class VkRayTracingPipelineCreateInfoNV {
     return this._basePipelineHandle;
   }
   set basePipelineHandle(value) {
-    if (value !== null && value.constructor === VkPipeline) {
+    if (value !== null ) {
       
       this._basePipelineHandle = value;
       
@@ -57196,9 +54476,7 @@ class VkRayTracingPipelineCreateInfoNV {
     return this.memoryViewInt32[0x12];
   }
   set basePipelineIndex(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.basePipelineIndex': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x12] = value;
   }
   
@@ -57215,16 +54493,8 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   if (this._pStages !== null) {
     let array = this._pStages;
     
-    if (array.length !== this.stageCount) {
-      throw new RangeError("Invalid array length, expected length of 'stageCount' for 'VkRayTracingPipelineCreateInfoNV.pStages'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkPipelineShaderStageCreateInfo) {
-        throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pStages[" + ii + "]': Expected 'VkPipelineShaderStageCreateInfo' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -57237,16 +54507,8 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   if (this._pGroups !== null) {
     let array = this._pGroups;
     
-    if (array.length !== this.groupCount) {
-      throw new RangeError("Invalid array length, expected length of 'groupCount' for 'VkRayTracingPipelineCreateInfoNV.pGroups'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkRayTracingShaderGroupCreateInfoNV) {
-        throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pGroups[" + ii + "]': Expected 'VkRayTracingShaderGroupCreateInfoNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -57375,9 +54637,7 @@ class VkGeometryTrianglesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -57390,7 +54650,7 @@ class VkGeometryTrianglesNV {
     return this._vertexData;
   }
   set vertexData(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._vertexData = value;
       
@@ -57406,43 +54666,35 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0x3];
   }
   set vertexOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x3] = BigInt(value);
   }
   get vertexCount() {
     return this.memoryViewUint32[0x8];
   }
   set vertexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x8] = value;
   }
   get vertexStride() {
     return this.memoryViewBigUint64[0x5];
   }
   set vertexStride(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexStride': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x5] = BigInt(value);
   }
   get vertexFormat() {
     return this.memoryViewInt32[0xC];
   }
   set vertexFormat(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexFormat': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xC] = value;
   }
   get indexData() {
     return this._indexData;
   }
   set indexData(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._indexData = value;
       
@@ -57458,34 +54710,28 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0x8];
   }
   set indexOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x8] = BigInt(value);
   }
   get indexCount() {
     return this.memoryViewUint32[0x12];
   }
   set indexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x12] = value;
   }
   get indexType() {
     return this.memoryViewInt32[0x13];
   }
   set indexType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x13] = value;
   }
   get transformData() {
     return this._transformData;
   }
   set transformData(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._transformData = value;
       
@@ -57501,9 +54747,7 @@ class VkGeometryTrianglesNV {
     return this.memoryViewBigUint64[0xB];
   }
   set transformOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.transformOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0xB] = BigInt(value);
   }
   
@@ -57626,9 +54870,7 @@ class VkGeometryAABBNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryAABBNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -57641,7 +54883,7 @@ class VkGeometryAABBNV {
     return this._aabbData;
   }
   set aabbData(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._aabbData = value;
       
@@ -57657,27 +54899,21 @@ class VkGeometryAABBNV {
     return this.memoryViewUint32[0x6];
   }
   set numAABBs(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryAABBNV.numAABBs': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get stride() {
     return this.memoryViewUint32[0x7];
   }
   set stride(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryAABBNV.stride': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get offset() {
     return this.memoryViewBigUint64[0x4];
   }
   set offset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryAABBNV.offset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   
@@ -57756,7 +54992,7 @@ class VkGeometryDataNV {
     return this._triangles;
   }
   set triangles(value) {
-    if (value !== null && value.constructor === VkGeometryTrianglesNV) {
+    if (value !== null ) {
       value.flush();
       this._triangles = value;
       
@@ -57772,7 +55008,7 @@ class VkGeometryDataNV {
     return this._aabbs;
   }
   set aabbs(value) {
-    if (value !== null && value.constructor === VkGeometryAABBNV) {
+    if (value !== null ) {
       value.flush();
       this._aabbs = value;
       
@@ -57796,7 +55032,7 @@ VkGeometryDataNV.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._triangles.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryDataNV.triangles' isn't used as shared-memory");
+      
     }
   }
   
@@ -57807,7 +55043,7 @@ VkGeometryDataNV.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._aabbs.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x60);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryDataNV.aabbs' isn't used as shared-memory");
+      
     }
   }
   
@@ -57873,9 +55109,7 @@ class VkGeometryNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -57888,16 +55122,14 @@ class VkGeometryNV {
     return this.memoryViewInt32[0x4];
   }
   set geometryType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryNV.geometryType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get geometry() {
     return this._geometry;
   }
   set geometry(value) {
-    if (value !== null && value.constructor === VkGeometryDataNV) {
+    if (value !== null ) {
       value.flush();
       this._geometry = value;
       
@@ -57913,9 +55145,7 @@ class VkGeometryNV {
     return this.memoryViewInt32[0x28];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkGeometryNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x28] = value;
   }
   
@@ -57935,7 +55165,7 @@ VkGeometryNV.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._geometry.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryNV.geometry' isn't used as shared-memory");
+      
     }
   }
   
@@ -58020,9 +55250,7 @@ class VkAccelerationStructureInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58035,43 +55263,35 @@ class VkAccelerationStructureInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get flags() {
     return this.memoryViewInt32[0x5];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x5] = value;
   }
   get instanceCount() {
     return this.memoryViewUint32[0x6];
   }
   set instanceCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.instanceCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get geometryCount() {
     return this.memoryViewUint32[0x7];
   }
   set geometryCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.geometryCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pGeometries() {
     return this._pGeometries;
   }
   set pGeometries(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pGeometries = value;
     } else if (value === null) {
       this._pGeometries = null;
@@ -58093,16 +55313,8 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
   if (this._pGeometries !== null) {
     let array = this._pGeometries;
     
-    if (array.length !== this.geometryCount) {
-      throw new RangeError("Invalid array length, expected length of 'geometryCount' for 'VkAccelerationStructureInfoNV.pGeometries'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkGeometryNV) {
-        throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.pGeometries[" + ii + "]': Expected 'VkGeometryNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -58193,9 +55405,7 @@ class VkAccelerationStructureCreateInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58208,16 +55418,14 @@ class VkAccelerationStructureCreateInfoNV {
     return this.memoryViewBigUint64[0x2];
   }
   set compactedSize(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.compactedSize': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get info() {
     return this._info;
   }
   set info(value) {
-    if (value !== null && value.constructor === VkAccelerationStructureInfoNV) {
+    if (value !== null ) {
       value.flush();
       this._info = value;
       
@@ -58246,7 +55454,7 @@ VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._info.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkAccelerationStructureCreateInfoNV.info' isn't used as shared-memory");
+      
     }
   }
   
@@ -58328,9 +55536,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58343,7 +55549,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this._accelerationStructure;
   }
   set accelerationStructure(value) {
-    if (value !== null && value.constructor === VkAccelerationStructureNV) {
+    if (value !== null ) {
       
       this._accelerationStructure = value;
       
@@ -58359,7 +55565,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this._memory;
   }
   set memory(value) {
-    if (value !== null && value.constructor === VkDeviceMemory) {
+    if (value !== null ) {
       
       this._memory = value;
       
@@ -58375,25 +55581,21 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this.memoryViewBigUint64[0x4];
   }
   set memoryOffset(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.memoryOffset': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x4] = BigInt(value);
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0xA];
   }
   set deviceIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.deviceIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0xA] = value;
   }
   get pDeviceIndices() {
     return this._pDeviceIndices;
   }
   set pDeviceIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pDeviceIndices = value;
       this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -58494,9 +55696,7 @@ class VkWriteDescriptorSetAccelerationStructureNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58509,16 +55709,14 @@ class VkWriteDescriptorSetAccelerationStructureNV {
     return this.memoryViewUint32[0x4];
   }
   set accelerationStructureCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.accelerationStructureCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pAccelerationStructures() {
     return this._pAccelerationStructures;
   }
   set pAccelerationStructures(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pAccelerationStructures = value;
     } else if (value === null) {
       this._pAccelerationStructures = null;
@@ -58540,16 +55738,8 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
   if (this._pAccelerationStructures !== null) {
     let array = this._pAccelerationStructures;
     
-    if (array.length !== this.accelerationStructureCount) {
-      throw new RangeError("Invalid array length, expected length of 'accelerationStructureCount' for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkAccelerationStructureNV) {
-        throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures[" + ii + "]': Expected 'VkAccelerationStructureNV' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       
     };
     
@@ -58626,9 +55816,7 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureMemoryRequirementsInfoNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58641,16 +55829,14 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
     return this.memoryViewInt32[0x4];
   }
   set type(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkAccelerationStructureMemoryRequirementsInfoNV.type': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get accelerationStructure() {
     return this._accelerationStructure;
   }
   set accelerationStructure(value) {
-    if (value !== null && value.constructor === VkAccelerationStructureNV) {
+    if (value !== null ) {
       
       this._accelerationStructure = value;
       
@@ -58746,9 +55932,7 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceRayTracingPropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -58886,9 +56070,7 @@ class VkDrmFormatModifierPropertiesListEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDrmFormatModifierPropertiesListEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59064,9 +56246,7 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59079,34 +56259,28 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set drmFormatModifier(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.drmFormatModifier': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get sharingMode() {
     return this.memoryViewInt32[0x6];
   }
   set sharingMode(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.sharingMode': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x6] = value;
   }
   get queueFamilyIndexCount() {
     return this.memoryViewUint32[0x7];
   }
   set queueFamilyIndexCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.queueFamilyIndexCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x7] = value;
   }
   get pQueueFamilyIndices() {
     return this._pQueueFamilyIndices;
   }
   set pQueueFamilyIndices(value) {
-    if (value !== null && value.constructor === Uint32Array) {
+    if (value !== null ) {
       this._pQueueFamilyIndices = value;
       this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -59202,9 +56376,7 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierListCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59217,16 +56389,14 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
     return this.memoryViewUint32[0x4];
   }
   set drmFormatModifierCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierListCreateInfoEXT.drmFormatModifierCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get pDrmFormatModifiers() {
     return this._pDrmFormatModifiers;
   }
   set pDrmFormatModifiers(value) {
-    if (value !== null && value.constructor === BigUint64Array) {
+    if (value !== null ) {
       this._pDrmFormatModifiers = value;
       this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -59319,9 +56489,7 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59334,25 +56502,21 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set drmFormatModifier(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.drmFormatModifier': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   get drmFormatModifierPlaneCount() {
     return this.memoryViewUint32[0x6];
   }
   set drmFormatModifierPlaneCount(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.drmFormatModifierPlaneCount': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get pPlaneLayouts() {
     return this._pPlaneLayouts;
   }
   set pPlaneLayouts(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._pPlaneLayouts = value;
     } else if (value === null) {
       this._pPlaneLayouts = null;
@@ -59374,16 +56538,8 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
   if (this._pPlaneLayouts !== null) {
     let array = this._pPlaneLayouts;
     
-    if (array.length !== this.drmFormatModifierPlaneCount) {
-      throw new RangeError("Invalid array length, expected length of 'drmFormatModifierPlaneCount' for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts'");
-      return false;
-    }
     for (let ii = 0; ii < array.length; ++ii) {
       
-      if (array[ii].constructor !== VkSubresourceLayout) {
-        throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts[" + ii + "]': Expected 'VkSubresourceLayout' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
       if (!array[ii].flush()) return false;
     };
     
@@ -59463,9 +56619,7 @@ class VkImageDrmFormatModifierPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageDrmFormatModifierPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59551,9 +56705,7 @@ class VkImageStencilUsageCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageStencilUsageCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59566,9 +56718,7 @@ class VkImageStencilUsageCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set stencilUsage(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkImageStencilUsageCreateInfoEXT.stencilUsage': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -59641,9 +56791,7 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceMemoryOverallocationCreateInfoAMD.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59656,9 +56804,7 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
     return this.memoryViewInt32[0x4];
   }
   set overallocationBehavior(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkDeviceMemoryOverallocationCreateInfoAMD.overallocationBehavior': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -59734,9 +56880,7 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFragmentDensityMapFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59839,9 +56983,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceFragmentDensityMapPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59945,9 +57087,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkRenderPassFragmentDensityMapCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -59960,7 +57100,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
     return this._fragmentDensityMapAttachment;
   }
   set fragmentDensityMapAttachment(value) {
-    if (value !== null && value.constructor === VkAttachmentReference) {
+    if (value !== null ) {
       value.flush();
       this._fragmentDensityMapAttachment = value;
       
@@ -59989,7 +57129,7 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._fragmentDensityMapAttachment.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment' isn't used as shared-memory");
+      
     }
   }
   
@@ -60057,9 +57197,7 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60146,9 +57284,7 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceDepthClipEnableFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60237,9 +57373,7 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationDepthClipStateCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60252,9 +57386,7 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set flags(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPipelineRasterizationDepthClipStateCreateInfoEXT.flags': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   get depthClipEnable() {
@@ -60339,9 +57471,7 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryBudgetPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60474,9 +57604,7 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryPriorityFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60563,9 +57691,7 @@ class VkMemoryPriorityAllocateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryPriorityAllocateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60578,9 +57704,7 @@ class VkMemoryPriorityAllocateInfoEXT {
     return this.memoryViewFloat32[0x4];
   }
   set priority(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkMemoryPriorityAllocateInfoEXT.priority': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewFloat32[0x4] = value;
   }
   
@@ -60659,9 +57783,7 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceBufferAddressFeaturesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60766,9 +57888,7 @@ class VkBufferDeviceAddressInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferDeviceAddressInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60781,7 +57901,7 @@ class VkBufferDeviceAddressInfoEXT {
     return this._buffer;
   }
   set buffer(value) {
-    if (value !== null && value.constructor === VkBuffer) {
+    if (value !== null ) {
       
       this._buffer = value;
       
@@ -60865,9 +57985,7 @@ class VkBufferDeviceAddressCreateInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferDeviceAddressCreateInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60880,9 +57998,7 @@ class VkBufferDeviceAddressCreateInfoEXT {
     return this.memoryViewBigUint64[0x2];
   }
   set deviceAddress(value) {
-    if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkBufferDeviceAddressCreateInfoEXT.deviceAddress': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewBigUint64[0x2] = BigInt(value);
   }
   
@@ -60955,9 +58071,7 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageViewImageFormatInfoEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -60970,9 +58084,7 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
     return this.memoryViewInt32[0x4];
   }
   set imageViewType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageViewImageFormatInfoEXT.imageViewType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x4] = value;
   }
   
@@ -61047,9 +58159,7 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkFilterCubicImageViewImageFormatPropertiesEXT.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -61146,9 +58256,7 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceCooperativeMatrixFeaturesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -61242,9 +58350,7 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkPhysicalDeviceCooperativeMatrixPropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -61346,9 +58452,7 @@ class VkCooperativeMatrixPropertiesNV {
     return this.memoryViewInt32[0x0];
   }
   set sType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.sType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x0] = value;
   }
   get pNext() {
@@ -61361,72 +58465,56 @@ class VkCooperativeMatrixPropertiesNV {
     return this.memoryViewUint32[0x4];
   }
   set MSize(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.MSize': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x4] = value;
   }
   get NSize() {
     return this.memoryViewUint32[0x5];
   }
   set NSize(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.NSize': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x5] = value;
   }
   get KSize() {
     return this.memoryViewUint32[0x6];
   }
   set KSize(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.KSize': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewUint32[0x6] = value;
   }
   get AType() {
     return this.memoryViewInt32[0x7];
   }
   set AType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.AType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x7] = value;
   }
   get BType() {
     return this.memoryViewInt32[0x8];
   }
   set BType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.BType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x8] = value;
   }
   get CType() {
     return this.memoryViewInt32[0x9];
   }
   set CType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.CType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0x9] = value;
   }
   get DType() {
     return this.memoryViewInt32[0xA];
   }
   set DType(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.DType': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xA] = value;
   }
   get scope() {
     return this.memoryViewInt32[0xB];
   }
   set scope(value) {
-    if (typeof value !== "number") {
-      throw new TypeError("Invalid type for 'VkCooperativeMatrixPropertiesNV.scope': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    
     this.memoryViewInt32[0xB] = value;
   }
   
@@ -61529,7 +58617,7 @@ class VkClearColorValue {
     return this._float32;
   }
   set float32(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._float32 = value;
     } else if (value === null) {
       this._float32 = null;
@@ -61541,7 +58629,7 @@ class VkClearColorValue {
     return this._int32;
   }
   set int32(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._int32 = value;
     } else if (value === null) {
       this._int32 = null;
@@ -61553,7 +58641,7 @@ class VkClearColorValue {
     return this._uint32;
   }
   set uint32(value) {
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ) {
       this._uint32 = value;
     } else if (value === null) {
       this._uint32 = null;
@@ -61570,18 +58658,6 @@ VkClearColorValue.prototype.flush = function flush() {
   if (this._float32 !== null) {
     let array = this._float32;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkClearColorValue.float32'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkClearColorValue.float32[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewFloat32[0x0 + ii] = array[ii];
     };
@@ -61593,18 +58669,6 @@ VkClearColorValue.prototype.flush = function flush() {
   if (this._int32 !== null) {
     let array = this._int32;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkClearColorValue.int32'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkClearColorValue.int32[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewInt32[0x0 + ii] = array[ii];
     };
@@ -61616,18 +58680,6 @@ VkClearColorValue.prototype.flush = function flush() {
   if (this._uint32 !== null) {
     let array = this._uint32;
     
-    // validate length
-    if (array.length !== 4) {
-      throw new RangeError("Invalid array length, expected length of '4' for 'VkClearColorValue.uint32'");
-      return false;
-    }
-    // validate type
-    for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for 'VkClearColorValue.uint32[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
-        return false;
-      }
-    };
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryViewUint32[0x0 + ii] = array[ii];
     };
@@ -61693,7 +58745,7 @@ class VkClearValue {
     return this._color;
   }
   set color(value) {
-    if (value !== null && value.constructor === VkClearColorValue) {
+    if (value !== null ) {
       value.flush();
       this._color = value;
       
@@ -61709,7 +58761,7 @@ class VkClearValue {
     return this._depthStencil;
   }
   set depthStencil(value) {
-    if (value !== null && value.constructor === VkClearDepthStencilValue) {
+    if (value !== null ) {
       value.flush();
       this._depthStencil = value;
       
@@ -61733,7 +58785,7 @@ VkClearValue.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._color.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearValue.color' isn't used as shared-memory");
+      
     }
   }
   
@@ -61744,7 +58796,7 @@ VkClearValue.prototype.flush = function flush() {
       let srcView = new Uint8Array(this._depthStencil.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearValue.depthStencil' isn't used as shared-memory");
+      
     }
   }
   

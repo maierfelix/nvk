@@ -36,15 +36,15 @@ if (!vkVersion) {
 
 if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
-// gather type-validation disable flag
-let disableTypeValidations = process.env.npm_config_disable_type_validations;
+// gather disable-validation-checks flag
+let disableValidationChecks = process.env.npm_config_disable_validation_checks;
 // attempt npm version
-disableTypeValidations = disableTypeValidations || null;
+disableValidationChecks = disableValidationChecks || null;
 // attempt node argv
-if (!disableTypeValidations) {
+if (!disableValidationChecks) {
   process.argv.map(arg => {
-    if (arg.match("disable-type-validations")) {
-      disableTypeValidations = true;
+    if (arg.match("disable-validation-checks")) {
+      disableValidationChecks = true;
     }
   });
 }
@@ -86,6 +86,8 @@ if (platform === "darwin") {
   process.env.VK_ICD_FILENAMES = path.join(__dirname, `${releasePath}/${pkg.config.MAC_ICD_PATH}`);
 }
 
-const out = require(bindingsPath + `${vkVersion}/${platform}/interfaces.js`);
-
-module.exports = out;
+if (disableValidationChecks) {
+  module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces-no-validation.js`);
+} else {
+  module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces.js`);
+}

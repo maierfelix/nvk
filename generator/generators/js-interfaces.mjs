@@ -22,6 +22,7 @@ import {
 } from "../javascript-type";
 
 let ast = null;
+let validate = false;
 let currentHandle = null;
 let currentStruct = null;
 
@@ -276,9 +277,9 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (typeof value !== "number") {
+    ${ validate ? `if (typeof value !== "number") {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Number' but got '" + value.constructor.name + "'");
-    }
+    }` : `` }
     this.memoryView${instr}[${offset}] = value;`;
     }
     case JavaScriptType.BIGINT: {
@@ -286,9 +287,9 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (typeof value !== "bigint" && typeof value !== "number") {
+    ${ validate ? `if (typeof value !== "bigint" && typeof value !== "number") {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
-    }
+    }` : `` }
     this.memoryView${instr}[${offset}] = BigInt(value);`;
     }
     case JavaScriptType.BOOLEAN: {
@@ -303,7 +304,7 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (value !== null && value.constructor === ${member.type}) {
+    if (value !== null ${ validate ? `&& value.constructor === ${member.type}` : ``}) {
       ${member.isStructType ? `value.flush();` : ``}
       this._${member.name} = value;
       ${member.isStructType && isReference ? `this.memoryView${instr}[${offset}] = value.memoryAddress;` : ``}
@@ -320,7 +321,7 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (value !== null && value.constructor === String) {
+    if (value !== null ${ validate ? `&& value.constructor === String` : `` }) {
       this._${member.name} = textEncoder.encode(value + NULLT).buffer;
       this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(this._${member.name});
     } else if (value === null) {
@@ -332,7 +333,7 @@ function getSetterProcessor(member) {
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ${ validate ? `&& value.constructor === Array` : `` }) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
@@ -342,7 +343,7 @@ function getSetterProcessor(member) {
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
       return `
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ${ validate ? `&& value.constructor === Array` : `` }) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
@@ -352,7 +353,7 @@ function getSetterProcessor(member) {
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
       return `
-    if (value !== null && value.constructor === Array) {
+    if (value !== null ${ validate ? `&& value.constructor === Array` : `` }) {
       this._${member.name} = value;
     } else if (value === null) {
       this._${member.name} = null;
@@ -365,7 +366,7 @@ function getSetterProcessor(member) {
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
-    if (value !== null && value.constructor === ${member.jsTypedArrayName}) {
+    if (value !== null ${ validate ? `&& value.constructor === ${member.jsTypedArrayName}` : `` }) {
       this._${member.name} = value;
       this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
@@ -393,9 +394,9 @@ function getSetterProcessor(member) {
     let byteStride = getDataViewInstructionStride(instr);
     let offset = getHexaByteOffset(byteOffset / byteStride);
     return `
-    if (value !== null && (value instanceof Object)) {
+    if (value !== null ${ validate ? `&& (value instanceof Object)` : `` }) {
       let {sType} = value;
-      if (sType <= -1) throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
+      ${ validate ? `if (sType <= -1) throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");` : `` }
       switch (sType) {
           ${conditions}
           break;
@@ -436,7 +437,7 @@ function getFlusherProcessor(member) {
       let srcView = new Uint8Array(this._${member.name}.memoryBuffer);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, ${byteOffset});
-      if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'${currentStruct.name}.${member.name}' isn't used as shared-memory");
+      ${ validate ? `if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'${currentStruct.name}.${member.name}' isn't used as shared-memory");` : `` }
     }
   }`;
       }
@@ -454,6 +455,7 @@ function getFlusherProcessor(member) {
       return `
   if (this._${member.name} !== null) {
     let array = this._${member.name};
+    ${ validate ? `
     // validate length
     if (array.length !== ${isNumber ? length : `this.${length}`}) {
       throw new RangeError("Invalid array length, expected length of '${length}' for '${currentStruct.name}.${member.name}'");
@@ -465,7 +467,7 @@ function getFlusherProcessor(member) {
         throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-    };
+    };` : `` }
     let nativeArray = new NativeStringArray(this._${member.name});
     this._${member.name}Native = nativeArray;
     this.memoryView${instr}[${offset}] = nativeArray.address;
@@ -482,6 +484,7 @@ function getFlusherProcessor(member) {
       return `
   if (this._${member.name} !== null) {
     let array = this._${member.name};
+    ${ validate ? `
     // validate length
     if (array.length !== ${isNumber ? length : `this.${length}`}) {
       throw new RangeError("Invalid array length, expected length of '${length}' for '${currentStruct.name}.${member.name}'");
@@ -493,7 +496,7 @@ function getFlusherProcessor(member) {
         throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-    };
+    };` : `` }
     for (let ii = 0; ii < array.length; ++ii) {
       this.memoryView${instr}[${offset} + ii] = array[ii];
     };
@@ -530,15 +533,17 @@ function getFlusherProcessor(member) {
       return `
   if (this._${member.name} !== null) {
     let array = this._${member.name};
+    ${ validate ? `
     if (array.length !== ${isNumber ? length : `this.${length}`}) {
       throw new RangeError("Invalid array length, expected length of '${length}' for '${currentStruct.name}.${member.name}'");
       return false;
-    }
+    }` : `` }
     for (let ii = 0; ii < array.length; ++ii) {
+      ${ validate ? `
       if (array[ii].constructor !== ${member.type}) {
         throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + array[ii].constructor.name + "'");
         return false;
-      }
+      }` : `` }
       ${member.isStructType ? `if (!array[ii].flush()) return false;` : ``}
     };
     ${write}
@@ -649,12 +654,106 @@ The code generater can only inline required memory layout offets after second co
   return null;
 };
 
-export default function(astReference, handles, structs) {
+export default function(astReference, includeValidations, calls, handles, structs) {
   ast = astReference;
+  validate = includeValidations;
   enumLayouts = getEnumLayouts();
   enumLayoutTable = getEnumLayoutTable();
   memoryLayouts = getMemoryLayouts();
-  let output = ``;
+  let output = `
+"use strict";
+
+const {platform} = process;
+const nvk = require("./build/Release/addon-" + platform + ".node");
+
+let ENABLE_SHARED_MEMORY_HINTS = !!process.env.npm_config_enable_shared_memory_hints;
+if (!ENABLE_SHARED_MEMORY_HINTS) {
+  process.argv.map(arg => {
+    if (arg.match("enable-shared-memory-hints")) ENABLE_SHARED_MEMORY_HINTS = true;
+  });
+}
+
+const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
+const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
+
+global.ArrayBuffer.prototype.getAddress = function() {
+  return getAddressFromArrayBuffer(this);
+};
+
+global.ArrayBuffer.fromAddress = function(address, byteLength) {
+  return getArrayBufferFromAddress(address, BigInt(byteLength));
+};
+
+const BI0 = BigInt(0);
+const NULLT = String.fromCharCode(0x0);
+
+const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
+
+function decodeNullTerminatedUTF8String(view) {
+  let terminator = view.indexOf(0x0);
+  let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
+  return textDecoder.decode(subview);
+};
+
+class NativeStringArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let stringBuffers = [];
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let strBuffer = textEncoder.encode(array[ii] + NULLT).buffer;
+      addressView[ii] = getAddressFromArrayBuffer(strBuffer);
+      stringBuffers.push(strBuffer);
+    };
+    this.address = addressBufferAddress;
+    // keep references to prevent deallocation
+    this.addressBuffer = addressBuffer;
+    this.stringBuffers = stringBuffers;
+  }
+};
+
+class NativeObjectArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let byteStride = array[0].memoryBuffer.byteLength;
+    let objectBuffer = new ArrayBuffer(array.length * byteStride);
+    let objectBufferView = new Uint8Array(objectBuffer);
+    let objectBufferAddress = getAddressFromArrayBuffer(objectBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let byteOffset = ii * byteStride;
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
+      dstView.set(srcView, 0x0);
+    };
+    this.address = objectBufferAddress;
+    // keep reference to prevent deallocation
+    this.objectBuffer = objectBuffer;
+  }
+};
+
+class NativeObjectReferenceArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let object = array[ii];
+      let objectAddress = object.address;
+      addressView[ii] = objectAddress;
+    };
+    this.address = addressBufferAddress;
+    // keep reference to prevent deallocation
+    this.addressBuffer = addressBuffer;
+  }
+};
+`;
   handles.map(handle => {
     currentHandle = handle;
     output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {
@@ -681,5 +780,29 @@ export default function(astReference, handles, structs) {
       getStructureMemberByteLength
     });
   });
+  output += `\nmodule.exports = {\n`;
+  // add additional c++ content
+  output += `  ...(nvk.$getVulkanEnumerations()),\n`;
+  output += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
+  output += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
+  output += `  VK_VERSION_MINOR: nvk.VK_VERSION_MINOR,\n`;
+  output += `  VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,\n`;
+  output += `  VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,\n`;
+  output += `  VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,\n`;
+  output += `  vkUseDevice: nvk.vkUseDevice,\n`;
+  output += `  vkUseInstance: nvk.vkUseInstance,\n`;
+  // add VulkanWindow
+  output += `  VulkanWindow: nvk.VulkanWindow,\n`;
+  calls.map(call => {
+    output += `  ${call.name}: nvk.${call.name},\n`;
+  });
+  handles.map(handle => {
+    output += `  ${handle.name},\n`;
+  });
+  structs.map((struct, index) => {
+    let comma = index < structs.length - 1 ? `,\n` : ``;
+    output += `  ${struct.name}${comma}`;
+  });
+  output += `\n};\n`;
   return output;
 };

@@ -243,129 +243,14 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate js interface
   {
     console.log("Generating Vk JavaScript interfaces..");
-    let out = `
-"use strict";
-
-const {platform} = process;
-const nvk = require("./build/Release/addon-" + platform + ".node");
-
-let ENABLE_SHARED_MEMORY_HINTS = !!process.env.npm_config_enable_shared_memory_hints;
-if (!ENABLE_SHARED_MEMORY_HINTS) {
-  process.argv.map(arg => {
-    if (arg.match("enable-shared-memory-hints")) ENABLE_SHARED_MEMORY_HINTS = true;
-  });
-}
-
-const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
-const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
-
-global.ArrayBuffer.prototype.getAddress = function() {
-  return getAddressFromArrayBuffer(this);
-};
-
-global.ArrayBuffer.fromAddress = function(address, byteLength) {
-  return getArrayBufferFromAddress(address, BigInt(byteLength));
-};
-
-const BI0 = BigInt(0);
-const NULLT = String.fromCharCode(0x0);
-
-const textEncoder = new TextEncoder();
-const textDecoder = new TextDecoder();
-
-function decodeNullTerminatedUTF8String(view) {
-  let terminator = view.indexOf(0x0);
-  let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
-  return textDecoder.decode(subview);
-};
-
-class NativeStringArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let stringBuffers = [];
-    let addressView = new BigInt64Array(array.length);
-    let addressBuffer = addressView.buffer;
-    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let strBuffer = textEncoder.encode(array[ii] + NULLT).buffer;
-      addressView[ii] = getAddressFromArrayBuffer(strBuffer);
-      stringBuffers.push(strBuffer);
-    };
-    this.address = addressBufferAddress;
-    // keep references to prevent deallocation
-    this.addressBuffer = addressBuffer;
-    this.stringBuffers = stringBuffers;
-  }
-};
-
-class NativeObjectArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let byteStride = array[0].memoryBuffer.byteLength;
-    let objectBuffer = new ArrayBuffer(array.length * byteStride);
-    let objectBufferView = new Uint8Array(objectBuffer);
-    let objectBufferAddress = getAddressFromArrayBuffer(objectBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let byteOffset = ii * byteStride;
-      let srcView = new Uint8Array(array[ii].memoryBuffer);
-      let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
-      dstView.set(srcView, 0x0);
-    };
-    this.address = objectBufferAddress;
-    // keep reference to prevent deallocation
-    this.objectBuffer = objectBuffer;
-  }
-};
-
-class NativeObjectReferenceArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let addressView = new BigInt64Array(array.length);
-    let addressBuffer = addressView.buffer;
-    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let object = array[ii];
-      let objectAddress = object.address;
-      addressView[ii] = objectAddress;
-    };
-    this.address = addressBufferAddress;
-    // keep reference to prevent deallocation
-    this.addressBuffer = addressBuffer;
-  }
-};
-`;
-    out += generateJavaScriptInterfaces(ast, handles, structs);
-    out += `\nmodule.exports = {\n`;
-    // add exports
-    {
-      // add additional c++ content
-      out += `  ...(nvk.$getVulkanEnumerations()),\n`;
-      out += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
-      out += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
-      out += `  VK_VERSION_MINOR: nvk.VK_VERSION_MINOR,\n`;
-      out += `  VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,\n`;
-      out += `  VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,\n`;
-      out += `  VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,\n`;
-      out += `  vkUseDevice: nvk.vkUseDevice,\n`;
-      out += `  vkUseInstance: nvk.vkUseInstance,\n`;
-      // add VulkanWindow
-      out += `  VulkanWindow: nvk.VulkanWindow,\n`;
-      calls.map(call => {
-        out += `  ${call.name}: nvk.${call.name},\n`;
-      });
-      handles.map(handle => {
-        out += `  ${handle.name},\n`;
-      });
-      structs.map((struct, index) => {
-        let comma = index < structs.length - 1 ? `,\n` : ``;
-        out += `  ${struct.name}${comma}`;
-      });
-    }
-    out += `\n};\n`;
+    let out = generateJavaScriptInterfaces(ast, true, calls, handles, structs);
     writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
+  }
+  // generate js interface
+  {
+    console.log("Generating Vk JavaScript interfaces..");
+    let out = generateJavaScriptInterfaces(ast, false, calls, handles, structs);
+    writeAddonFile(`${generatePath}/interfaces-no-validation.js`, out, "utf-8", true);
   }
   // generate enums
   {
