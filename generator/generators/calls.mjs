@@ -288,6 +288,15 @@ function getCallBodyBefore(call) {
       return env.Undefined();
     }`;
     }
+    else if (param.baseType === "VkBool32") {
+      let type = param.enumType || param.type;
+      return `
+  if (!info[${index}].IsBoolean() && !info[${index}].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Boolean' or 'Number' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  ${type} $p${index} = static_cast<${type}>(info[${index}].IsBoolean() ? info[${index}].As<Napi::Boolean>().Value() : info[${index}].As<Napi::Number>().Int32Value());`;
+    }
     switch (rawType) {
       case "size_t":
       case "uint64_t": {
