@@ -284,13 +284,19 @@ npm run [script] [flag] [value]
 
 ### Usage:
 
-#### Generation:
+#### General:
+````
+[--disable-validation-checks]: Disables type and bounding checks for better performance
+[--enable-shared-memory-hints]: Enables console hints reporting to use nested structures when possible - useful for performance optimization
+````
+
+#### Generator:
 You can generate bindings with:
 ````
 npm run generate --vkversion=1.1.101
 ````
 
-The generated bindings can then be found in `generated/{vkversion}/`
+The generated bindings can then be found in `generated/{vkversion}/${platform}`
 
  - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
  - The binding specification file gets auto-downloaded and is stored in `generate/specifications/{vkversion}.xml`<br/>
@@ -300,7 +306,6 @@ The generated bindings can then be found in `generated/{vkversion}/`
 ````
 [--vkversion]: The Vulkan version to generate bindings for
 [--incremental]: Enables incremental builds when building the bindings
-[--enable-shared-memory-hints]: Enables console hints reporting to use nested structures when possible - useful for performance optimization
 [--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
 
