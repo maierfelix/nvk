@@ -42,7 +42,18 @@ imageSparseMemoryRequirementsInfo2Info = new VkImageSparseMemoryRequirementsInfo
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let imageSparseMemoryRequirementsInfo2Info = new VkImageSparseMemoryRequirementsInfo2();
+imageSparseMemoryRequirementsInfo2Info.sType = VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2;
+imageSparseMemoryRequirementsInfo2Info.pNext = ;
+imageSparseMemoryRequirementsInfo2Info.image = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let imageSparseMemoryRequirementsInfo2Info = new VkImageSparseMemoryRequirementsInfo2();
 imageSparseMemoryRequirementsInfo2Info.sType = VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2;
 imageSparseMemoryRequirementsInfo2Info.pNext = ;

@@ -42,7 +42,22 @@ applicationInfo = new VkApplicationInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let applicationInfo = new VkApplicationInfo();
+applicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+applicationInfo.pNext = ;
+applicationInfo.pApplicationName = ;
+applicationInfo.applicationVersion = ;
+applicationInfo.pEngineName = ;
+applicationInfo.engineVersion = ;
+applicationInfo.apiVersion = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let applicationInfo = new VkApplicationInfo();
 applicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 applicationInfo.pNext = ;

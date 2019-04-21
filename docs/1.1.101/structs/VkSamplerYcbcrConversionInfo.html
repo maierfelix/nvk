@@ -42,7 +42,18 @@ samplerYcbcrConversionInfo = new VkSamplerYcbcrConversionInfo(object);</code></p
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let samplerYcbcrConversionInfo = new VkSamplerYcbcrConversionInfo();
+samplerYcbcrConversionInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO;
+samplerYcbcrConversionInfo.pNext = ;
+samplerYcbcrConversionInfo.conversion = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let samplerYcbcrConversionInfo = new VkSamplerYcbcrConversionInfo();
 samplerYcbcrConversionInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO;
 samplerYcbcrConversionInfo.pNext = ;

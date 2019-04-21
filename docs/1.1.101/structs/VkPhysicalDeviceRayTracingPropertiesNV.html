@@ -41,7 +41,25 @@
     </vk-syntax>
 
     <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceRayTracingPropertiesNV = new VkPhysicalDeviceRayTracingPropertiesNV();
+physicalDeviceRayTracingPropertiesNV.sType;
+physicalDeviceRayTracingPropertiesNV.pNext;
+physicalDeviceRayTracingPropertiesNV.shaderGroupHandleSize;
+physicalDeviceRayTracingPropertiesNV.maxRecursionDepth;
+physicalDeviceRayTracingPropertiesNV.maxShaderGroupStride;
+physicalDeviceRayTracingPropertiesNV.shaderGroupBaseAlignment;
+physicalDeviceRayTracingPropertiesNV.maxGeometryCount;
+physicalDeviceRayTracingPropertiesNV.maxInstanceCount;
+physicalDeviceRayTracingPropertiesNV.maxTriangleCount;
+physicalDeviceRayTracingPropertiesNV.maxDescriptorSetAccelerationStructures;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceRayTracingPropertiesNV = new VkPhysicalDeviceRayTracingPropertiesNV();
 physicalDeviceRayTracingPropertiesNV.sType;
 physicalDeviceRayTracingPropertiesNV.pNext;

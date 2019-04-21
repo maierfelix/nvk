@@ -42,7 +42,19 @@ pipelineSampleLocationsStateEXTInfo = new VkPipelineSampleLocationsStateCreateIn
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineSampleLocationsStateEXTInfo = new VkPipelineSampleLocationsStateCreateInfoEXT();
+pipelineSampleLocationsStateEXTInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT;
+pipelineSampleLocationsStateEXTInfo.pNext = ;
+pipelineSampleLocationsStateEXTInfo.sampleLocationsEnable = ;
+pipelineSampleLocationsStateEXTInfo.sampleLocationsInfo = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let pipelineSampleLocationsStateEXTInfo = new VkPipelineSampleLocationsStateCreateInfoEXT();
 pipelineSampleLocationsStateEXTInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT;
 pipelineSampleLocationsStateEXTInfo.pNext = ;

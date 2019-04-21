@@ -42,7 +42,23 @@ pipelineColorBlendAttachmentState = new VkPipelineColorBlendAttachmentState(obje
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineColorBlendAttachmentState = new VkPipelineColorBlendAttachmentState();
+pipelineColorBlendAttachmentState.blendEnable = ;
+pipelineColorBlendAttachmentState.srcColorBlendFactor = ;
+pipelineColorBlendAttachmentState.dstColorBlendFactor = ;
+pipelineColorBlendAttachmentState.colorBlendOp = ;
+pipelineColorBlendAttachmentState.srcAlphaBlendFactor = ;
+pipelineColorBlendAttachmentState.dstAlphaBlendFactor = ;
+pipelineColorBlendAttachmentState.alphaBlendOp = ;
+pipelineColorBlendAttachmentState.colorWriteMask = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let pipelineColorBlendAttachmentState = new VkPipelineColorBlendAttachmentState();
 pipelineColorBlendAttachmentState.blendEnable = ;
 pipelineColorBlendAttachmentState.srcColorBlendFactor = ;

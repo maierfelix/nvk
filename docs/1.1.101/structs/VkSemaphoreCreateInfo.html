@@ -42,7 +42,18 @@ semaphoreInfo = new VkSemaphoreCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let semaphoreInfo = new VkSemaphoreCreateInfo();
+semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+semaphoreInfo.pNext = ;
+semaphoreInfo.flags = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let semaphoreInfo = new VkSemaphoreCreateInfo();
 semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
 semaphoreInfo.pNext = ;

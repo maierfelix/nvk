@@ -42,7 +42,21 @@ validationFeaturesEXT = new VkValidationFeaturesEXT(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let validationFeaturesEXT = new VkValidationFeaturesEXT();
+validationFeaturesEXT.sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT;
+validationFeaturesEXT.pNext = ;
+validationFeaturesEXT.enabledValidationFeatureCount = ;
+validationFeaturesEXT.pEnabledValidationFeatures = ;
+validationFeaturesEXT.disabledValidationFeatureCount = ;
+validationFeaturesEXT.pDisabledValidationFeatures = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let validationFeaturesEXT = new VkValidationFeaturesEXT();
 validationFeaturesEXT.sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT;
 validationFeaturesEXT.pNext = ;

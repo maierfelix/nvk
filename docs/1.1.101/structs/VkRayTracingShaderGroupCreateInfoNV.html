@@ -42,7 +42,22 @@ rayTracingShaderGroupNVInfo = new VkRayTracingShaderGroupCreateInfoNV(object);</
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let rayTracingShaderGroupNVInfo = new VkRayTracingShaderGroupCreateInfoNV();
+rayTracingShaderGroupNVInfo.sType = VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV;
+rayTracingShaderGroupNVInfo.pNext = ;
+rayTracingShaderGroupNVInfo.type = ;
+rayTracingShaderGroupNVInfo.generalShader = ;
+rayTracingShaderGroupNVInfo.closestHitShader = ;
+rayTracingShaderGroupNVInfo.anyHitShader = ;
+rayTracingShaderGroupNVInfo.intersectionShader = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let rayTracingShaderGroupNVInfo = new VkRayTracingShaderGroupCreateInfoNV();
 rayTracingShaderGroupNVInfo.sType = VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV;
 rayTracingShaderGroupNVInfo.pNext = ;

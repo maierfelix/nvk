@@ -42,7 +42,21 @@ indirectCommandsLayoutNVXInfo = new VkIndirectCommandsLayoutCreateInfoNVX(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let indirectCommandsLayoutNVXInfo = new VkIndirectCommandsLayoutCreateInfoNVX();
+indirectCommandsLayoutNVXInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX;
+indirectCommandsLayoutNVXInfo.pNext = ;
+indirectCommandsLayoutNVXInfo.pipelineBindPoint = ;
+indirectCommandsLayoutNVXInfo.flags = ;
+indirectCommandsLayoutNVXInfo.tokenCount = ;
+indirectCommandsLayoutNVXInfo.pTokens = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let indirectCommandsLayoutNVXInfo = new VkIndirectCommandsLayoutCreateInfoNVX();
 indirectCommandsLayoutNVXInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX;
 indirectCommandsLayoutNVXInfo.pNext = ;

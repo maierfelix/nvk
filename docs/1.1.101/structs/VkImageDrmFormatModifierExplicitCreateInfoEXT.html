@@ -42,7 +42,20 @@ imageDrmFormatModifierExplicitEXTInfo = new VkImageDrmFormatModifierExplicitCrea
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let imageDrmFormatModifierExplicitEXTInfo = new VkImageDrmFormatModifierExplicitCreateInfoEXT();
+imageDrmFormatModifierExplicitEXTInfo.sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT;
+imageDrmFormatModifierExplicitEXTInfo.pNext = ;
+imageDrmFormatModifierExplicitEXTInfo.drmFormatModifier = ;
+imageDrmFormatModifierExplicitEXTInfo.drmFormatModifierPlaneCount = ;
+imageDrmFormatModifierExplicitEXTInfo.pPlaneLayouts = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let imageDrmFormatModifierExplicitEXTInfo = new VkImageDrmFormatModifierExplicitCreateInfoEXT();
 imageDrmFormatModifierExplicitEXTInfo.sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT;
 imageDrmFormatModifierExplicitEXTInfo.pNext = ;

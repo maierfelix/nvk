@@ -41,7 +41,23 @@
     </vk-syntax>
 
     <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceBlendOperationAdvancedPropertiesEXT = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();
+physicalDeviceBlendOperationAdvancedPropertiesEXT.sType;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.pNext;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendMaxColorAttachments;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendIndependentBlend;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendNonPremultipliedSrcColor;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendNonPremultipliedDstColor;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendCorrelatedOverlap;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendAllOperations;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceBlendOperationAdvancedPropertiesEXT = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();
 physicalDeviceBlendOperationAdvancedPropertiesEXT.sType;
 physicalDeviceBlendOperationAdvancedPropertiesEXT.pNext;

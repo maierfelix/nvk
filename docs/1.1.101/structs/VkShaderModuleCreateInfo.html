@@ -42,7 +42,20 @@ shaderModuleInfo = new VkShaderModuleCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let shaderModuleInfo = new VkShaderModuleCreateInfo();
+shaderModuleInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+shaderModuleInfo.pNext = ;
+shaderModuleInfo.flags = ;
+shaderModuleInfo.codeSize = ;
+shaderModuleInfo.pCode = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let shaderModuleInfo = new VkShaderModuleCreateInfo();
 shaderModuleInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 shaderModuleInfo.pNext = ;

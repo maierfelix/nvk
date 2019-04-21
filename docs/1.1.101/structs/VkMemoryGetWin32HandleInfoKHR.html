@@ -42,7 +42,19 @@ memoryGetWin32HandleInfoKHRInfo = new VkMemoryGetWin32HandleInfoKHR(object);</co
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let memoryGetWin32HandleInfoKHRInfo = new VkMemoryGetWin32HandleInfoKHR();
+memoryGetWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR;
+memoryGetWin32HandleInfoKHRInfo.pNext = ;
+memoryGetWin32HandleInfoKHRInfo.memory = ;
+memoryGetWin32HandleInfoKHRInfo.handleType = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let memoryGetWin32HandleInfoKHRInfo = new VkMemoryGetWin32HandleInfoKHR();
 memoryGetWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR;
 memoryGetWin32HandleInfoKHRInfo.pNext = ;

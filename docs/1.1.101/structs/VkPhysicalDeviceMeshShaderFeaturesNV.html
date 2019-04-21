@@ -42,7 +42,19 @@ physicalDeviceMeshShaderFeaturesNV = new VkPhysicalDeviceMeshShaderFeaturesNV(ob
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceMeshShaderFeaturesNV = new VkPhysicalDeviceMeshShaderFeaturesNV();
+physicalDeviceMeshShaderFeaturesNV.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV;
+physicalDeviceMeshShaderFeaturesNV.pNext = ;
+physicalDeviceMeshShaderFeaturesNV.taskShader = ;
+physicalDeviceMeshShaderFeaturesNV.meshShader = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceMeshShaderFeaturesNV = new VkPhysicalDeviceMeshShaderFeaturesNV();
 physicalDeviceMeshShaderFeaturesNV.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV;
 physicalDeviceMeshShaderFeaturesNV.pNext = ;

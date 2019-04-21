@@ -41,7 +41,24 @@
     </vk-syntax>
 
     <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let displayPlaneCapabilitiesKHR = new VkDisplayPlaneCapabilitiesKHR();
+displayPlaneCapabilitiesKHR.supportedAlpha;
+displayPlaneCapabilitiesKHR.minSrcPosition;
+displayPlaneCapabilitiesKHR.maxSrcPosition;
+displayPlaneCapabilitiesKHR.minSrcExtent;
+displayPlaneCapabilitiesKHR.maxSrcExtent;
+displayPlaneCapabilitiesKHR.minDstPosition;
+displayPlaneCapabilitiesKHR.maxDstPosition;
+displayPlaneCapabilitiesKHR.minDstExtent;
+displayPlaneCapabilitiesKHR.maxDstExtent;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let displayPlaneCapabilitiesKHR = new VkDisplayPlaneCapabilitiesKHR();
 displayPlaneCapabilitiesKHR.supportedAlpha;
 displayPlaneCapabilitiesKHR.minSrcPosition;

@@ -9,6 +9,17 @@ body {
   float: none;
 }
 
+.expand-btn {
+  position: absolute;
+  cursor: pointer;
+  margin: .75em 0.75em;
+  overflow: auto;
+  right: 0;
+  z-index: 1;
+  user-select: none;
+  background: rgba(221,221,221,0.125);
+}
+
 vk-search {
   /* background-color: green; */
   /* margin: 0 auto; */

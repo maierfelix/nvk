@@ -42,7 +42,18 @@ physicalDeviceDepthClipEnableFeaturesEXT = new VkPhysicalDeviceDepthClipEnableFe
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceDepthClipEnableFeaturesEXT = new VkPhysicalDeviceDepthClipEnableFeaturesEXT();
+physicalDeviceDepthClipEnableFeaturesEXT.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT;
+physicalDeviceDepthClipEnableFeaturesEXT.pNext = ;
+physicalDeviceDepthClipEnableFeaturesEXT.depthClipEnable = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceDepthClipEnableFeaturesEXT = new VkPhysicalDeviceDepthClipEnableFeaturesEXT();
 physicalDeviceDepthClipEnableFeaturesEXT.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT;
 physicalDeviceDepthClipEnableFeaturesEXT.pNext = ;

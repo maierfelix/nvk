@@ -42,7 +42,18 @@ shaderModuleValidationCacheEXTInfo = new VkShaderModuleValidationCacheCreateInfo
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let shaderModuleValidationCacheEXTInfo = new VkShaderModuleValidationCacheCreateInfoEXT();
+shaderModuleValidationCacheEXTInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT;
+shaderModuleValidationCacheEXTInfo.pNext = ;
+shaderModuleValidationCacheEXTInfo.validationCache = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let shaderModuleValidationCacheEXTInfo = new VkShaderModuleValidationCacheCreateInfoEXT();
 shaderModuleValidationCacheEXTInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT;
 shaderModuleValidationCacheEXTInfo.pNext = ;

@@ -42,7 +42,22 @@ deviceGeneratedCommandsLimitsNVX = new VkDeviceGeneratedCommandsLimitsNVX(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let deviceGeneratedCommandsLimitsNVX = new VkDeviceGeneratedCommandsLimitsNVX();
+deviceGeneratedCommandsLimitsNVX.sType = VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX;
+deviceGeneratedCommandsLimitsNVX.pNext = ;
+deviceGeneratedCommandsLimitsNVX.maxIndirectCommandsLayoutTokenCount = ;
+deviceGeneratedCommandsLimitsNVX.maxObjectEntryCounts = ;
+deviceGeneratedCommandsLimitsNVX.minSequenceCountBufferOffsetAlignment = ;
+deviceGeneratedCommandsLimitsNVX.minSequenceIndexBufferOffsetAlignment = ;
+deviceGeneratedCommandsLimitsNVX.minCommandsTokenBufferOffsetAlignment = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let deviceGeneratedCommandsLimitsNVX = new VkDeviceGeneratedCommandsLimitsNVX();
 deviceGeneratedCommandsLimitsNVX.sType = VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX;
 deviceGeneratedCommandsLimitsNVX.pNext = ;

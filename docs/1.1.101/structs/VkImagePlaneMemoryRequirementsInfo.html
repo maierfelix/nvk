@@ -42,7 +42,18 @@ imagePlaneMemoryRequirementsInfo = new VkImagePlaneMemoryRequirementsInfo(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let imagePlaneMemoryRequirementsInfo = new VkImagePlaneMemoryRequirementsInfo();
+imagePlaneMemoryRequirementsInfo.sType = VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO;
+imagePlaneMemoryRequirementsInfo.pNext = ;
+imagePlaneMemoryRequirementsInfo.planeAspect = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let imagePlaneMemoryRequirementsInfo = new VkImagePlaneMemoryRequirementsInfo();
 imagePlaneMemoryRequirementsInfo.sType = VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO;
 imagePlaneMemoryRequirementsInfo.pNext = ;

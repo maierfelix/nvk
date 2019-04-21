@@ -42,7 +42,18 @@ renderPassFragmentDensityMapEXTInfo = new VkRenderPassFragmentDensityMapCreateIn
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let renderPassFragmentDensityMapEXTInfo = new VkRenderPassFragmentDensityMapCreateInfoEXT();
+renderPassFragmentDensityMapEXTInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT;
+renderPassFragmentDensityMapEXTInfo.pNext = ;
+renderPassFragmentDensityMapEXTInfo.fragmentDensityMapAttachment = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let renderPassFragmentDensityMapEXTInfo = new VkRenderPassFragmentDensityMapCreateInfoEXT();
 renderPassFragmentDensityMapEXTInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT;
 renderPassFragmentDensityMapEXTInfo.pNext = ;

@@ -42,7 +42,19 @@ semaphoreGetWin32HandleInfoKHRInfo = new VkSemaphoreGetWin32HandleInfoKHR(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let semaphoreGetWin32HandleInfoKHRInfo = new VkSemaphoreGetWin32HandleInfoKHR();
+semaphoreGetWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR;
+semaphoreGetWin32HandleInfoKHRInfo.pNext = ;
+semaphoreGetWin32HandleInfoKHRInfo.semaphore = ;
+semaphoreGetWin32HandleInfoKHRInfo.handleType = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let semaphoreGetWin32HandleInfoKHRInfo = new VkSemaphoreGetWin32HandleInfoKHR();
 semaphoreGetWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR;
 semaphoreGetWin32HandleInfoKHRInfo.pNext = ;

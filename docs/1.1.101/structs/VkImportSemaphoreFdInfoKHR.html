@@ -42,7 +42,21 @@ importSemaphoreFdInfoKHRInfo = new VkImportSemaphoreFdInfoKHR(object);</code></p
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let importSemaphoreFdInfoKHRInfo = new VkImportSemaphoreFdInfoKHR();
+importSemaphoreFdInfoKHRInfo.sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR;
+importSemaphoreFdInfoKHRInfo.pNext = ;
+importSemaphoreFdInfoKHRInfo.semaphore = ;
+importSemaphoreFdInfoKHRInfo.flags = ;
+importSemaphoreFdInfoKHRInfo.handleType = ;
+importSemaphoreFdInfoKHRInfo.fd = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let importSemaphoreFdInfoKHRInfo = new VkImportSemaphoreFdInfoKHR();
 importSemaphoreFdInfoKHRInfo.sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR;
 importSemaphoreFdInfoKHRInfo.pNext = ;

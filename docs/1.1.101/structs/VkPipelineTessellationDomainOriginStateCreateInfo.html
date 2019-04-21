@@ -42,7 +42,18 @@ pipelineTessellationDomainOriginStateInfo = new VkPipelineTessellationDomainOrig
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineTessellationDomainOriginStateInfo = new VkPipelineTessellationDomainOriginStateCreateInfo();
+pipelineTessellationDomainOriginStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO;
+pipelineTessellationDomainOriginStateInfo.pNext = ;
+pipelineTessellationDomainOriginStateInfo.domainOrigin = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let pipelineTessellationDomainOriginStateInfo = new VkPipelineTessellationDomainOriginStateCreateInfo();
 pipelineTessellationDomainOriginStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO;
 pipelineTessellationDomainOriginStateInfo.pNext = ;

@@ -19,10 +19,21 @@
     </vk-syntax>
 
     <vk-section-title>Stub{%- if struct.returnedonly %} <vk-property-type type="read-only">read-only</vk-property-type>{%- endif -%}</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let {{ instantiationName | safe }} = new {{ struct.name }}();
 {% for member in members -%}
-{{ getStructMemberStub(struct, member) | safe }}
+{{ getStructMemberStub(struct, member, false) | safe }}
+{% endfor -%}
+      </code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let {{ instantiationName | safe }} = new {{ struct.name }}();
+{% for member in members -%}
+{{ getStructMemberStub(struct, member, true) | safe }}
 {% endfor -%}
       </code></pre>
     </vk-stub>

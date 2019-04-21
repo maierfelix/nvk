@@ -109,6 +109,36 @@ window.onmousedown = e => {
   el.onblur();
 };
 
+let codeExpandQuery = "nvk-code-expand";
+let codeNeedsExpansion = localStorage.getItem(codeExpandQuery) === "true";
+
+let expandCodeBtn = $(`#expand-code`);
+let expandedCode = $(`#code-expanded`);
+let nonExpandedCode = $(`#code-no-expand`);
+
+function updateCodeExpandState() {
+  if (!expandedCode || !nonExpandedCode || !expandCodeBtn) return;
+  if (codeNeedsExpansion) {
+    expandedCode.style.display = "block";
+    nonExpandedCode.style.display = "none";
+  }
+  else {
+    expandedCode.style.display = "none";
+    nonExpandedCode.style.display = "block";
+  }
+  expandCodeBtn.innerHTML = codeNeedsExpansion ? "Implicit" : "Explicit";
+};
+
+updateCodeExpandState();
+
+if (expandCodeBtn) {
+  expandCodeBtn.onclick = e => {
+    codeNeedsExpansion = !!!codeNeedsExpansion;
+    updateCodeExpandState();
+    localStorage.setItem(codeExpandQuery, codeNeedsExpansion + "");
+  };
+}
+
 document.title = $(`vk-title`).innerHTML;
 
 loadSearchBar();

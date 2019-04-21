@@ -42,7 +42,19 @@ deviceGroupBindSparseInfoKHRInfo = new VkDeviceGroupBindSparseInfoKHR(object);</
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let deviceGroupBindSparseInfoKHRInfo = new VkDeviceGroupBindSparseInfoKHR();
+deviceGroupBindSparseInfoKHRInfo.sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO_KHR;
+deviceGroupBindSparseInfoKHRInfo.pNext = ;
+deviceGroupBindSparseInfoKHRInfo.resourceDeviceIndex = ;
+deviceGroupBindSparseInfoKHRInfo.memoryDeviceIndex = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let deviceGroupBindSparseInfoKHRInfo = new VkDeviceGroupBindSparseInfoKHR();
 deviceGroupBindSparseInfoKHRInfo.sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO_KHR;
 deviceGroupBindSparseInfoKHRInfo.pNext = ;

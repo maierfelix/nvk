@@ -42,7 +42,18 @@ dedicatedAllocationBufferNVInfo = new VkDedicatedAllocationBufferCreateInfoNV(ob
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let dedicatedAllocationBufferNVInfo = new VkDedicatedAllocationBufferCreateInfoNV();
+dedicatedAllocationBufferNVInfo.sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV;
+dedicatedAllocationBufferNVInfo.pNext = ;
+dedicatedAllocationBufferNVInfo.dedicatedAllocation = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let dedicatedAllocationBufferNVInfo = new VkDedicatedAllocationBufferCreateInfoNV();
 dedicatedAllocationBufferNVInfo.sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV;
 dedicatedAllocationBufferNVInfo.pNext = ;

@@ -42,7 +42,20 @@ exportMemoryWin32HandleInfoKHRInfo = new VkExportMemoryWin32HandleInfoKHR(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let exportMemoryWin32HandleInfoKHRInfo = new VkExportMemoryWin32HandleInfoKHR();
+exportMemoryWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
+exportMemoryWin32HandleInfoKHRInfo.pNext = ;
+exportMemoryWin32HandleInfoKHRInfo.pAttributes = ;
+exportMemoryWin32HandleInfoKHRInfo.dwAccess = ;
+exportMemoryWin32HandleInfoKHRInfo.name = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let exportMemoryWin32HandleInfoKHRInfo = new VkExportMemoryWin32HandleInfoKHR();
 exportMemoryWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
 exportMemoryWin32HandleInfoKHRInfo.pNext = ;

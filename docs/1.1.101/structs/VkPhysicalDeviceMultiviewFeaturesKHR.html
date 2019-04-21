@@ -42,7 +42,20 @@ physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR(ob
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR();
+physicalDeviceMultiviewFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR;
+physicalDeviceMultiviewFeaturesKHR.pNext = ;
+physicalDeviceMultiviewFeaturesKHR.multiview = ;
+physicalDeviceMultiviewFeaturesKHR.multiviewGeometryShader = ;
+physicalDeviceMultiviewFeaturesKHR.multiviewTessellationShader = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR();
 physicalDeviceMultiviewFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR;
 physicalDeviceMultiviewFeaturesKHR.pNext = ;

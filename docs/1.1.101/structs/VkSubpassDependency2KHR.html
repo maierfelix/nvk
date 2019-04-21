@@ -42,7 +42,25 @@ subpassDependency2KHR = new VkSubpassDependency2KHR(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let subpassDependency2KHR = new VkSubpassDependency2KHR();
+subpassDependency2KHR.sType = VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR;
+subpassDependency2KHR.pNext = ;
+subpassDependency2KHR.srcSubpass = ;
+subpassDependency2KHR.dstSubpass = ;
+subpassDependency2KHR.srcStageMask = ;
+subpassDependency2KHR.dstStageMask = ;
+subpassDependency2KHR.srcAccessMask = ;
+subpassDependency2KHR.dstAccessMask = ;
+subpassDependency2KHR.dependencyFlags = ;
+subpassDependency2KHR.viewOffset = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let subpassDependency2KHR = new VkSubpassDependency2KHR();
 subpassDependency2KHR.sType = VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR;
 subpassDependency2KHR.pNext = ;

@@ -42,7 +42,20 @@ pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInf
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInfoNV();
+pipelineCoverageToColorStateNVInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
+pipelineCoverageToColorStateNVInfo.pNext = ;
+pipelineCoverageToColorStateNVInfo.flags = ;
+pipelineCoverageToColorStateNVInfo.coverageToColorEnable = ;
+pipelineCoverageToColorStateNVInfo.coverageToColorLocation = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInfoNV();
 pipelineCoverageToColorStateNVInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
 pipelineCoverageToColorStateNVInfo.pNext = ;

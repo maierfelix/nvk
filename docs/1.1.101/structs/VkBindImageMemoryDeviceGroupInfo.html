@@ -42,7 +42,21 @@ bindImageMemoryDeviceGroupInfo = new VkBindImageMemoryDeviceGroupInfo(object);</
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let bindImageMemoryDeviceGroupInfo = new VkBindImageMemoryDeviceGroupInfo();
+bindImageMemoryDeviceGroupInfo.sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO;
+bindImageMemoryDeviceGroupInfo.pNext = ;
+bindImageMemoryDeviceGroupInfo.deviceIndexCount = ;
+bindImageMemoryDeviceGroupInfo.pDeviceIndices = ;
+bindImageMemoryDeviceGroupInfo.splitInstanceBindRegionCount = ;
+bindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let bindImageMemoryDeviceGroupInfo = new VkBindImageMemoryDeviceGroupInfo();
 bindImageMemoryDeviceGroupInfo.sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO;
 bindImageMemoryDeviceGroupInfo.pNext = ;

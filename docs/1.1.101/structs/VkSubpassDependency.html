@@ -42,7 +42,22 @@ subpassDependency = new VkSubpassDependency(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let subpassDependency = new VkSubpassDependency();
+subpassDependency.srcSubpass = ;
+subpassDependency.dstSubpass = ;
+subpassDependency.srcStageMask = ;
+subpassDependency.dstStageMask = ;
+subpassDependency.srcAccessMask = ;
+subpassDependency.dstAccessMask = ;
+subpassDependency.dependencyFlags = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let subpassDependency = new VkSubpassDependency();
 subpassDependency.srcSubpass = ;
 subpassDependency.dstSubpass = ;

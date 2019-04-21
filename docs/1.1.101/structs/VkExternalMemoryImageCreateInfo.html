@@ -42,7 +42,18 @@ externalMemoryImageInfo = new VkExternalMemoryImageCreateInfo(object);</code></p
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let externalMemoryImageInfo = new VkExternalMemoryImageCreateInfo();
+externalMemoryImageInfo.sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
+externalMemoryImageInfo.pNext = ;
+externalMemoryImageInfo.handleTypes = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let externalMemoryImageInfo = new VkExternalMemoryImageCreateInfo();
 externalMemoryImageInfo.sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
 externalMemoryImageInfo.pNext = ;

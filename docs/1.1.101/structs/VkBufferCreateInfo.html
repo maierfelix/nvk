@@ -42,7 +42,23 @@ bufferInfo = new VkBufferCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let bufferInfo = new VkBufferCreateInfo();
+bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+bufferInfo.pNext = ;
+bufferInfo.flags = ;
+bufferInfo.size = ;
+bufferInfo.usage = ;
+bufferInfo.sharingMode = ;
+bufferInfo.queueFamilyIndexCount = ;
+bufferInfo.pQueueFamilyIndices = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let bufferInfo = new VkBufferCreateInfo();
 bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 bufferInfo.pNext = ;

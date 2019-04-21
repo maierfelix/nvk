@@ -42,7 +42,19 @@ accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV(object);</
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV();
+accelerationStructureNVInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
+accelerationStructureNVInfo.pNext = ;
+accelerationStructureNVInfo.compactedSize = ;
+accelerationStructureNVInfo.info = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV();
 accelerationStructureNVInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
 accelerationStructureNVInfo.pNext = ;

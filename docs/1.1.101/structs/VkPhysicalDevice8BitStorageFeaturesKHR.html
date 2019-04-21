@@ -42,7 +42,20 @@ physicalDevice8BitStorageFeaturesKHR = new VkPhysicalDevice8BitStorageFeaturesKH
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDevice8BitStorageFeaturesKHR = new VkPhysicalDevice8BitStorageFeaturesKHR();
+physicalDevice8BitStorageFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR;
+physicalDevice8BitStorageFeaturesKHR.pNext = ;
+physicalDevice8BitStorageFeaturesKHR.storageBuffer8BitAccess = ;
+physicalDevice8BitStorageFeaturesKHR.uniformAndStorageBuffer8BitAccess = ;
+physicalDevice8BitStorageFeaturesKHR.storagePushConstant8 = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDevice8BitStorageFeaturesKHR = new VkPhysicalDevice8BitStorageFeaturesKHR();
 physicalDevice8BitStorageFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR;
 physicalDevice8BitStorageFeaturesKHR.pNext = ;

@@ -42,7 +42,21 @@ physicalDevice16BitStorageFeaturesKHR = new VkPhysicalDevice16BitStorageFeatures
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDevice16BitStorageFeaturesKHR = new VkPhysicalDevice16BitStorageFeaturesKHR();
+physicalDevice16BitStorageFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR;
+physicalDevice16BitStorageFeaturesKHR.pNext = ;
+physicalDevice16BitStorageFeaturesKHR.storageBuffer16BitAccess = ;
+physicalDevice16BitStorageFeaturesKHR.uniformAndStorageBuffer16BitAccess = ;
+physicalDevice16BitStorageFeaturesKHR.storagePushConstant16 = ;
+physicalDevice16BitStorageFeaturesKHR.storageInputOutput16 = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDevice16BitStorageFeaturesKHR = new VkPhysicalDevice16BitStorageFeaturesKHR();
 physicalDevice16BitStorageFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR;
 physicalDevice16BitStorageFeaturesKHR.pNext = ;

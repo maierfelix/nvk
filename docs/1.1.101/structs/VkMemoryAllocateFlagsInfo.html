@@ -42,7 +42,19 @@ memoryAllocateFlagsInfo = new VkMemoryAllocateFlagsInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let memoryAllocateFlagsInfo = new VkMemoryAllocateFlagsInfo();
+memoryAllocateFlagsInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO;
+memoryAllocateFlagsInfo.pNext = ;
+memoryAllocateFlagsInfo.flags = ;
+memoryAllocateFlagsInfo.deviceMask = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let memoryAllocateFlagsInfo = new VkMemoryAllocateFlagsInfo();
 memoryAllocateFlagsInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO;
 memoryAllocateFlagsInfo.pNext = ;

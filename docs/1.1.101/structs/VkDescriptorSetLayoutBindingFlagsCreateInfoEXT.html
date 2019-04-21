@@ -42,7 +42,19 @@ descriptorSetLayoutBindingFlagsEXTInfo = new VkDescriptorSetLayoutBindingFlagsCr
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let descriptorSetLayoutBindingFlagsEXTInfo = new VkDescriptorSetLayoutBindingFlagsCreateInfoEXT();
+descriptorSetLayoutBindingFlagsEXTInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT;
+descriptorSetLayoutBindingFlagsEXTInfo.pNext = ;
+descriptorSetLayoutBindingFlagsEXTInfo.bindingCount = ;
+descriptorSetLayoutBindingFlagsEXTInfo.pBindingFlags = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let descriptorSetLayoutBindingFlagsEXTInfo = new VkDescriptorSetLayoutBindingFlagsCreateInfoEXT();
 descriptorSetLayoutBindingFlagsEXTInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT;
 descriptorSetLayoutBindingFlagsEXTInfo.pNext = ;

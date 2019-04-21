@@ -42,7 +42,22 @@ physicalDeviceImageFormatInfo2Info = new VkPhysicalDeviceImageFormatInfo2(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceImageFormatInfo2Info = new VkPhysicalDeviceImageFormatInfo2();
+physicalDeviceImageFormatInfo2Info.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
+physicalDeviceImageFormatInfo2Info.pNext = ;
+physicalDeviceImageFormatInfo2Info.format = ;
+physicalDeviceImageFormatInfo2Info.type = ;
+physicalDeviceImageFormatInfo2Info.tiling = ;
+physicalDeviceImageFormatInfo2Info.usage = ;
+physicalDeviceImageFormatInfo2Info.flags = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceImageFormatInfo2Info = new VkPhysicalDeviceImageFormatInfo2();
 physicalDeviceImageFormatInfo2Info.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
 physicalDeviceImageFormatInfo2Info.pNext = ;

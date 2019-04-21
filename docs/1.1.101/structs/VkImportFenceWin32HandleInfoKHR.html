@@ -42,7 +42,22 @@ importFenceWin32HandleInfoKHRInfo = new VkImportFenceWin32HandleInfoKHR(object);
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let importFenceWin32HandleInfoKHRInfo = new VkImportFenceWin32HandleInfoKHR();
+importFenceWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR;
+importFenceWin32HandleInfoKHRInfo.pNext = ;
+importFenceWin32HandleInfoKHRInfo.fence = ;
+importFenceWin32HandleInfoKHRInfo.flags = ;
+importFenceWin32HandleInfoKHRInfo.handleType = ;
+importFenceWin32HandleInfoKHRInfo.handle = ;
+importFenceWin32HandleInfoKHRInfo.name = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let importFenceWin32HandleInfoKHRInfo = new VkImportFenceWin32HandleInfoKHR();
 importFenceWin32HandleInfoKHRInfo.sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR;
 importFenceWin32HandleInfoKHRInfo.pNext = ;

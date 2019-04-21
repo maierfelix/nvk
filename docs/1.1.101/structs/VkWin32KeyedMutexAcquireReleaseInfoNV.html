@@ -42,7 +42,24 @@ win32KeyedMutexAcquireReleaseInfoNVInfo = new VkWin32KeyedMutexAcquireReleaseInf
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let win32KeyedMutexAcquireReleaseInfoNVInfo = new VkWin32KeyedMutexAcquireReleaseInfoNV();
+win32KeyedMutexAcquireReleaseInfoNVInfo.sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pNext = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.acquireCount = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pAcquireSyncs = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pAcquireKeys = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pAcquireTimeoutMilliseconds = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.releaseCount = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pReleaseSyncs = ;
+win32KeyedMutexAcquireReleaseInfoNVInfo.pReleaseKeys = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let win32KeyedMutexAcquireReleaseInfoNVInfo = new VkWin32KeyedMutexAcquireReleaseInfoNV();
 win32KeyedMutexAcquireReleaseInfoNVInfo.sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
 win32KeyedMutexAcquireReleaseInfoNVInfo.pNext = ;

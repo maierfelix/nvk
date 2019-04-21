@@ -42,7 +42,24 @@ framebufferInfo = new VkFramebufferCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let framebufferInfo = new VkFramebufferCreateInfo();
+framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+framebufferInfo.pNext = ;
+framebufferInfo.flags = ;
+framebufferInfo.renderPass = ;
+framebufferInfo.attachmentCount = ;
+framebufferInfo.pAttachments = ;
+framebufferInfo.width = ;
+framebufferInfo.height = ;
+framebufferInfo.layers = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let framebufferInfo = new VkFramebufferCreateInfo();
 framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
 framebufferInfo.pNext = ;

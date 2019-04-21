@@ -41,7 +41,30 @@
     </vk-syntax>
 
     <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceMeshShaderPropertiesNV = new VkPhysicalDeviceMeshShaderPropertiesNV();
+physicalDeviceMeshShaderPropertiesNV.sType;
+physicalDeviceMeshShaderPropertiesNV.pNext;
+physicalDeviceMeshShaderPropertiesNV.maxDrawMeshTasksCount;
+physicalDeviceMeshShaderPropertiesNV.maxTaskWorkGroupInvocations;
+physicalDeviceMeshShaderPropertiesNV.maxTaskWorkGroupSize;
+physicalDeviceMeshShaderPropertiesNV.maxTaskTotalMemorySize;
+physicalDeviceMeshShaderPropertiesNV.maxTaskOutputCount;
+physicalDeviceMeshShaderPropertiesNV.maxMeshWorkGroupInvocations;
+physicalDeviceMeshShaderPropertiesNV.maxMeshWorkGroupSize;
+physicalDeviceMeshShaderPropertiesNV.maxMeshTotalMemorySize;
+physicalDeviceMeshShaderPropertiesNV.maxMeshOutputVertices;
+physicalDeviceMeshShaderPropertiesNV.maxMeshOutputPrimitives;
+physicalDeviceMeshShaderPropertiesNV.maxMeshMultiviewViewCount;
+physicalDeviceMeshShaderPropertiesNV.meshOutputPerVertexGranularity;
+physicalDeviceMeshShaderPropertiesNV.meshOutputPerPrimitiveGranularity;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceMeshShaderPropertiesNV = new VkPhysicalDeviceMeshShaderPropertiesNV();
 physicalDeviceMeshShaderPropertiesNV.sType;
 physicalDeviceMeshShaderPropertiesNV.pNext;

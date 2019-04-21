@@ -278,13 +278,16 @@ function getObjectDescription(obj) {
   return description;
 };
 
-function getStructMemberStub(struct, member) {
+function getStructMemberStub(struct, member, explicit) {
   let instantiationName = getObjectInstantiationName(struct);
   if (struct.returnedonly) {
     return `${instantiationName}.${member.name};`;
   }
   if (member.name === `sType` && struct.sType) {
     return `${instantiationName}.${member.name} = ${struct.sType};`;
+  }
+  if (explicit) {
+    
   }
   return `${instantiationName}.${member.name} = ;`;
 };
