@@ -13,6 +13,7 @@ import {
   warn,
   getNodeByName,
   isIgnoreableType,
+  getStructByStructName,
   getObjectInstantiationName
 } from "../utils";
 
@@ -278,16 +279,27 @@ function getObjectDescription(obj) {
   return description;
 };
 
-function getStructMemberStub(struct, member, explicit) {
+function getStructMemberStub(struct, member, explicit, noInstantiationName) {
   let instantiationName = getObjectInstantiationName(struct);
+  if (noInstantiationName) instantiationName = "";
   if (struct.returnedonly) {
     return `${instantiationName}.${member.name};`;
   }
   if (member.name === `sType` && struct.sType) {
     return `${instantiationName}.${member.name} = ${struct.sType};`;
   }
-  if (explicit) {
-    
+  if (explicit && member.isStructType) {
+    let jsType = getJavaScriptType(ast, member);
+    let {type, value, isReference} = jsType;
+    if (!isReference && type === JavaScriptType.OBJECT) {
+      let memberStruct = getStructByStructName(ast, member.type);
+      let out = ``;
+      memberStruct.children.map((subMember, index) => {
+        let addNewLine = index < memberStruct.children.length - 1 ? `\n` : ``;
+        out += `${instantiationName}.${member.name}${getStructMemberStub(memberStruct, subMember, false, true)}${addNewLine}`;
+      });
+      return out;
+    }
   }
   return `${instantiationName}.${member.name} = ;`;
 };

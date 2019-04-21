@@ -54,8 +54,25 @@ geometryDataNV.aabbs = ;
 
     <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let geometryDataNV = new VkGeometryDataNV();
-geometryDataNV.triangles = ;
-geometryDataNV.aabbs = ;
+geometryDataNV.triangles.sType = VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV;
+geometryDataNV.triangles.pNext = ;
+geometryDataNV.triangles.vertexData = ;
+geometryDataNV.triangles.vertexOffset = ;
+geometryDataNV.triangles.vertexCount = ;
+geometryDataNV.triangles.vertexStride = ;
+geometryDataNV.triangles.vertexFormat = ;
+geometryDataNV.triangles.indexData = ;
+geometryDataNV.triangles.indexOffset = ;
+geometryDataNV.triangles.indexCount = ;
+geometryDataNV.triangles.indexType = ;
+geometryDataNV.triangles.transformData = ;
+geometryDataNV.triangles.transformOffset = ;
+geometryDataNV.aabbs.sType = VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV;
+geometryDataNV.aabbs.pNext = ;
+geometryDataNV.aabbs.aabbData = ;
+geometryDataNV.aabbs.numAABBs = ;
+geometryDataNV.aabbs.stride = ;
+geometryDataNV.aabbs.offset = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
 
