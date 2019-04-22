@@ -42,11 +42,29 @@ imageBlit = new VkImageBlit(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let imageBlit = new VkImageBlit();
 imageBlit.srcSubresource = ;
 imageBlit.srcOffsets = ;
 imageBlit.dstSubresource = ;
+imageBlit.dstOffsets = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let imageBlit = new VkImageBlit();
+imageBlit.srcSubresource.aspectMask = ;
+imageBlit.srcSubresource.mipLevel = ;
+imageBlit.srcSubresource.baseArrayLayer = ;
+imageBlit.srcSubresource.layerCount = ;
+imageBlit.srcOffsets = ;
+imageBlit.dstSubresource.aspectMask = ;
+imageBlit.dstSubresource.mipLevel = ;
+imageBlit.dstSubresource.baseArrayLayer = ;
+imageBlit.dstSubresource.layerCount = ;
 imageBlit.dstOffsets = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
@@ -88,12 +106,17 @@ imageBlit.dstOffsets = ;
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageBlit.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

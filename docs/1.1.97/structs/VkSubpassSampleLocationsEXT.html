@@ -42,10 +42,25 @@ subpassSampleLocationsEXT = new VkSubpassSampleLocationsEXT(object);</code></pre
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let subpassSampleLocationsEXT = new VkSubpassSampleLocationsEXT();
 subpassSampleLocationsEXT.subpassIndex = ;
 subpassSampleLocationsEXT.sampleLocationsInfo = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let subpassSampleLocationsEXT = new VkSubpassSampleLocationsEXT();
+subpassSampleLocationsEXT.subpassIndex = ;
+subpassSampleLocationsEXT.sampleLocationsInfo.sType = VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT;
+subpassSampleLocationsEXT.sampleLocationsInfo.pNext = ;
+subpassSampleLocationsEXT.sampleLocationsInfo.sampleLocationsPerPixel = ;
+subpassSampleLocationsEXT.sampleLocationsInfo.sampleLocationGridSize = ;
+subpassSampleLocationsEXT.sampleLocationsInfo.sampleLocationsCount = ;
+subpassSampleLocationsEXT.sampleLocationsInfo.pSampleLocations = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
 
@@ -76,12 +91,17 @@ subpassSampleLocationsEXT.sampleLocationsInfo = ;
       <vk-property-entry>
         <vk-property-prototype>VkSubpassSampleLocationsEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSubpassSampleLocationsEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassSampleLocationsEXT.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

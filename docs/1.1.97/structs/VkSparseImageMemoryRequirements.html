@@ -41,7 +41,20 @@
     </vk-syntax>
 
     <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let sparseImageMemoryRequirements = new VkSparseImageMemoryRequirements();
+sparseImageMemoryRequirements.formatProperties;
+sparseImageMemoryRequirements.imageMipTailFirstLod;
+sparseImageMemoryRequirements.imageMipTailSize;
+sparseImageMemoryRequirements.imageMipTailOffset;
+sparseImageMemoryRequirements.imageMipTailStride;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let sparseImageMemoryRequirements = new VkSparseImageMemoryRequirements();
 sparseImageMemoryRequirements.formatProperties;
 sparseImageMemoryRequirements.imageMipTailFirstLod;
@@ -64,17 +77,20 @@ sparseImageMemoryRequirements.imageMipTailStride;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailSize</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the memory size (in bytes) of the mip tail region. If <b>formatProperties.flags</b> contains <b>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</b>, this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailOffset</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the opaque memory offset used with <b><a href="../structs/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a></b> to bind the mip tail region(s).</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailStride</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset stride between each array-layer's mip tail, if <b>formatProperties.flags</b> does not contain <b>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</b> (otherwise the value is <b style="text-decoration:underline;">undefined</b>).</vk-property-description>
       </vk-property-entry>
       
@@ -86,12 +102,17 @@ sparseImageMemoryRequirements.imageMipTailStride;
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSparseImageMemoryRequirements.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

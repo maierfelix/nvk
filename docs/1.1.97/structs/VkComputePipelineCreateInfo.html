@@ -42,12 +42,33 @@ computePipelineInfo = new VkComputePipelineCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let computePipelineInfo = new VkComputePipelineCreateInfo();
 computePipelineInfo.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
 computePipelineInfo.pNext = ;
 computePipelineInfo.flags = ;
 computePipelineInfo.stage = ;
+computePipelineInfo.layout = ;
+computePipelineInfo.basePipelineHandle = ;
+computePipelineInfo.basePipelineIndex = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let computePipelineInfo = new VkComputePipelineCreateInfo();
+computePipelineInfo.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
+computePipelineInfo.pNext = ;
+computePipelineInfo.flags = ;
+computePipelineInfo.stage.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
+computePipelineInfo.stage.pNext = ;
+computePipelineInfo.stage.flags = ;
+computePipelineInfo.stage.stage = ;
+computePipelineInfo.stage.module = ;
+computePipelineInfo.stage.pName = ;
+computePipelineInfo.stage.pSpecializationInfo = ;
 computePipelineInfo.layout = ;
 computePipelineInfo.basePipelineHandle = ;
 computePipelineInfo.basePipelineIndex = ;
@@ -106,12 +127,17 @@ computePipelineInfo.basePipelineIndex = ;
       <vk-property-entry>
         <vk-property-prototype>VkComputePipelineCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkComputePipelineCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComputePipelineCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

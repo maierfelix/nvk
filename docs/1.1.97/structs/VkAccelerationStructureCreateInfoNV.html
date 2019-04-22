@@ -42,12 +42,30 @@ accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV(object);</
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV();
 accelerationStructureNVInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
 accelerationStructureNVInfo.pNext = ;
 accelerationStructureNVInfo.compactedSize = ;
 accelerationStructureNVInfo.info = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let accelerationStructureNVInfo = new VkAccelerationStructureCreateInfoNV();
+accelerationStructureNVInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
+accelerationStructureNVInfo.pNext = ;
+accelerationStructureNVInfo.compactedSize = ;
+accelerationStructureNVInfo.info.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV;
+accelerationStructureNVInfo.info.pNext = ;
+accelerationStructureNVInfo.info.type = ;
+accelerationStructureNVInfo.info.flags = ;
+accelerationStructureNVInfo.info.instanceCount = ;
+accelerationStructureNVInfo.info.geometryCount = ;
+accelerationStructureNVInfo.info.pGeometries = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
 
@@ -71,7 +89,8 @@ accelerationStructureNVInfo.info = ;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureCreateInfoNV.prototype.<vk-prototype-name>compactedSize</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the size from the result of <b><a href="../calls/vkCmdWriteAccelerationStructuresPropertiesNV.html">vkCmdWriteAccelerationStructuresPropertiesNV</a></b> if this acceleration structure is going to be the target of a compacting copy.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -88,12 +107,17 @@ accelerationStructureNVInfo.info = ;
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureCreateInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureCreateInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureCreateInfoNV.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

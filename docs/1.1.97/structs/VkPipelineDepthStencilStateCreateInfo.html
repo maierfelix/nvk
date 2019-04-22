@@ -42,7 +42,10 @@ pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo(object
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo();
 pipelineDepthStencilStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
 pipelineDepthStencilStateInfo.pNext = ;
@@ -54,6 +57,35 @@ pipelineDepthStencilStateInfo.depthBoundsTestEnable = ;
 pipelineDepthStencilStateInfo.stencilTestEnable = ;
 pipelineDepthStencilStateInfo.front = ;
 pipelineDepthStencilStateInfo.back = ;
+pipelineDepthStencilStateInfo.minDepthBounds = ;
+pipelineDepthStencilStateInfo.maxDepthBounds = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo();
+pipelineDepthStencilStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+pipelineDepthStencilStateInfo.pNext = ;
+pipelineDepthStencilStateInfo.flags = ;
+pipelineDepthStencilStateInfo.depthTestEnable = ;
+pipelineDepthStencilStateInfo.depthWriteEnable = ;
+pipelineDepthStencilStateInfo.depthCompareOp = ;
+pipelineDepthStencilStateInfo.depthBoundsTestEnable = ;
+pipelineDepthStencilStateInfo.stencilTestEnable = ;
+pipelineDepthStencilStateInfo.front.failOp = ;
+pipelineDepthStencilStateInfo.front.passOp = ;
+pipelineDepthStencilStateInfo.front.depthFailOp = ;
+pipelineDepthStencilStateInfo.front.compareOp = ;
+pipelineDepthStencilStateInfo.front.compareMask = ;
+pipelineDepthStencilStateInfo.front.writeMask = ;
+pipelineDepthStencilStateInfo.front.reference = ;
+pipelineDepthStencilStateInfo.back.failOp = ;
+pipelineDepthStencilStateInfo.back.passOp = ;
+pipelineDepthStencilStateInfo.back.depthFailOp = ;
+pipelineDepthStencilStateInfo.back.compareOp = ;
+pipelineDepthStencilStateInfo.back.compareMask = ;
+pipelineDepthStencilStateInfo.back.writeMask = ;
+pipelineDepthStencilStateInfo.back.reference = ;
 pipelineDepthStencilStateInfo.minDepthBounds = ;
 pipelineDepthStencilStateInfo.maxDepthBounds = ;
 </code></pre>
@@ -136,12 +168,17 @@ pipelineDepthStencilStateInfo.maxDepthBounds = ;
       <vk-property-entry>
         <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

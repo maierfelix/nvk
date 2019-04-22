@@ -18,8 +18,7 @@
     },
     {
       "sources": [
-        "./src/index.cpp",
-"./src/source.cpp"
+        "./src/index.cpp"
       ],
       "conditions": [
         [
@@ -129,11 +128,7 @@
             "xcode_settings": {
               "OTHER_CPLUSPLUSFLAGS": [
                 "-std=c++11",
-                "-stdlib=libc++",
-                "-fexceptions",
-                "-Wno-switch",
-                "-Wno-unused",
-                "-Wno-uninitialized"
+                "-stdlib=libc++"
               ],
               "OTHER_LDFLAGS": [
                 "-Wl,-rpath,<(release)",

@@ -42,7 +42,10 @@ imageViewInfo = new VkImageViewCreateInfo(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let imageViewInfo = new VkImageViewCreateInfo();
 imageViewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 imageViewInfo.pNext = ;
@@ -52,6 +55,26 @@ imageViewInfo.viewType = ;
 imageViewInfo.format = ;
 imageViewInfo.components = ;
 imageViewInfo.subresourceRange = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let imageViewInfo = new VkImageViewCreateInfo();
+imageViewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+imageViewInfo.pNext = ;
+imageViewInfo.flags = ;
+imageViewInfo.image = ;
+imageViewInfo.viewType = ;
+imageViewInfo.format = ;
+imageViewInfo.components.r = ;
+imageViewInfo.components.g = ;
+imageViewInfo.components.b = ;
+imageViewInfo.components.a = ;
+imageViewInfo.subresourceRange.aspectMask = ;
+imageViewInfo.subresourceRange.baseMipLevel = ;
+imageViewInfo.subresourceRange.levelCount = ;
+imageViewInfo.subresourceRange.baseArrayLayer = ;
+imageViewInfo.subresourceRange.layerCount = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
 
@@ -112,12 +135,17 @@ imageViewInfo.subresourceRange = ;
       <vk-property-entry>
         <vk-property-prototype>VkImageViewCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImageViewCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageViewCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

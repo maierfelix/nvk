@@ -42,7 +42,18 @@ bufferCopy = new VkBufferCopy(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let bufferCopy = new VkBufferCopy();
+bufferCopy.srcOffset = ;
+bufferCopy.dstOffset = ;
+bufferCopy.size = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let bufferCopy = new VkBufferCopy();
 bufferCopy.srcOffset = ;
 bufferCopy.dstOffset = ;
@@ -60,17 +71,20 @@ bufferCopy.size = ;
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype>VkBufferCopy.prototype.<vk-prototype-name>srcOffset</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the starting offset in bytes from the start of <b>srcBuffer</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkBufferCopy.prototype.<vk-prototype-name>dstOffset</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the starting offset in bytes from the start of <b>dstBuffer</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkBufferCopy.prototype.<vk-prototype-name>size</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of bytes to copy.</vk-property-description>
       </vk-property-entry>
       
@@ -82,12 +96,17 @@ bufferCopy.size = ;
       <vk-property-entry>
         <vk-property-prototype>VkBufferCopy.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkBufferCopy.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBufferCopy.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

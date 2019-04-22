@@ -42,7 +42,34 @@ physicalDeviceFloatControlsPropertiesKHR = new VkPhysicalDeviceFloatControlsProp
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFloatControlsPropertiesKHR = new VkPhysicalDeviceFloatControlsPropertiesKHR();
+physicalDeviceFloatControlsPropertiesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR;
+physicalDeviceFloatControlsPropertiesKHR.pNext = ;
+physicalDeviceFloatControlsPropertiesKHR.separateDenormSettings = ;
+physicalDeviceFloatControlsPropertiesKHR.separateRoundingModeSettings = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat16 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat32 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat64 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat16 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat32 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat64 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat16 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat32 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat64 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat16 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat32 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat64 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat16 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat32 = ;
+physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat64 = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let physicalDeviceFloatControlsPropertiesKHR = new VkPhysicalDeviceFloatControlsPropertiesKHR();
 physicalDeviceFloatControlsPropertiesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR;
 physicalDeviceFloatControlsPropertiesKHR.pNext = ;
@@ -178,12 +205,17 @@ physicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat64 = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFloatControlsPropertiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFloatControlsPropertiesKHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

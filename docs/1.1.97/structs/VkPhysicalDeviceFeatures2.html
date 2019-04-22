@@ -42,11 +42,76 @@ physicalDeviceFeatures2 = new VkPhysicalDeviceFeatures2(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
       <pre><code class="language-js">let physicalDeviceFeatures2 = new VkPhysicalDeviceFeatures2();
 physicalDeviceFeatures2.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
 physicalDeviceFeatures2.pNext = ;
 physicalDeviceFeatures2.features = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFeatures2 = new VkPhysicalDeviceFeatures2();
+physicalDeviceFeatures2.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2;
+physicalDeviceFeatures2.pNext = ;
+physicalDeviceFeatures2.features.robustBufferAccess = ;
+physicalDeviceFeatures2.features.fullDrawIndexUint32 = ;
+physicalDeviceFeatures2.features.imageCubeArray = ;
+physicalDeviceFeatures2.features.independentBlend = ;
+physicalDeviceFeatures2.features.geometryShader = ;
+physicalDeviceFeatures2.features.tessellationShader = ;
+physicalDeviceFeatures2.features.sampleRateShading = ;
+physicalDeviceFeatures2.features.dualSrcBlend = ;
+physicalDeviceFeatures2.features.logicOp = ;
+physicalDeviceFeatures2.features.multiDrawIndirect = ;
+physicalDeviceFeatures2.features.drawIndirectFirstInstance = ;
+physicalDeviceFeatures2.features.depthClamp = ;
+physicalDeviceFeatures2.features.depthBiasClamp = ;
+physicalDeviceFeatures2.features.fillModeNonSolid = ;
+physicalDeviceFeatures2.features.depthBounds = ;
+physicalDeviceFeatures2.features.wideLines = ;
+physicalDeviceFeatures2.features.largePoints = ;
+physicalDeviceFeatures2.features.alphaToOne = ;
+physicalDeviceFeatures2.features.multiViewport = ;
+physicalDeviceFeatures2.features.samplerAnisotropy = ;
+physicalDeviceFeatures2.features.textureCompressionETC2 = ;
+physicalDeviceFeatures2.features.textureCompressionASTC_LDR = ;
+physicalDeviceFeatures2.features.textureCompressionBC = ;
+physicalDeviceFeatures2.features.occlusionQueryPrecise = ;
+physicalDeviceFeatures2.features.pipelineStatisticsQuery = ;
+physicalDeviceFeatures2.features.vertexPipelineStoresAndAtomics = ;
+physicalDeviceFeatures2.features.fragmentStoresAndAtomics = ;
+physicalDeviceFeatures2.features.shaderTessellationAndGeometryPointSize = ;
+physicalDeviceFeatures2.features.shaderImageGatherExtended = ;
+physicalDeviceFeatures2.features.shaderStorageImageExtendedFormats = ;
+physicalDeviceFeatures2.features.shaderStorageImageMultisample = ;
+physicalDeviceFeatures2.features.shaderStorageImageReadWithoutFormat = ;
+physicalDeviceFeatures2.features.shaderStorageImageWriteWithoutFormat = ;
+physicalDeviceFeatures2.features.shaderUniformBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures2.features.shaderSampledImageArrayDynamicIndexing = ;
+physicalDeviceFeatures2.features.shaderStorageBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures2.features.shaderStorageImageArrayDynamicIndexing = ;
+physicalDeviceFeatures2.features.shaderClipDistance = ;
+physicalDeviceFeatures2.features.shaderCullDistance = ;
+physicalDeviceFeatures2.features.shaderFloat64 = ;
+physicalDeviceFeatures2.features.shaderInt64 = ;
+physicalDeviceFeatures2.features.shaderInt16 = ;
+physicalDeviceFeatures2.features.shaderResourceResidency = ;
+physicalDeviceFeatures2.features.shaderResourceMinLod = ;
+physicalDeviceFeatures2.features.sparseBinding = ;
+physicalDeviceFeatures2.features.sparseResidencyBuffer = ;
+physicalDeviceFeatures2.features.sparseResidencyImage2D = ;
+physicalDeviceFeatures2.features.sparseResidencyImage3D = ;
+physicalDeviceFeatures2.features.sparseResidency2Samples = ;
+physicalDeviceFeatures2.features.sparseResidency4Samples = ;
+physicalDeviceFeatures2.features.sparseResidency8Samples = ;
+physicalDeviceFeatures2.features.sparseResidency16Samples = ;
+physicalDeviceFeatures2.features.sparseResidencyAliased = ;
+physicalDeviceFeatures2.features.variableMultisampleRate = ;
+physicalDeviceFeatures2.features.inheritedQueries = ;
 </code></pre>
     </vk-stub><vk-section-title>Parameters</vk-section-title>
 
@@ -82,12 +147,17 @@ physicalDeviceFeatures2.features = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFeatures2.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFeatures2.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

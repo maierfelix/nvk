@@ -42,7 +42,19 @@ importMemoryWin32HandleInfoNVInfo = new VkImportMemoryWin32HandleInfoNV(object);
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let importMemoryWin32HandleInfoNVInfo = new VkImportMemoryWin32HandleInfoNV();
+importMemoryWin32HandleInfoNVInfo.sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV;
+importMemoryWin32HandleInfoNVInfo.pNext = ;
+importMemoryWin32HandleInfoNVInfo.handleType = ;
+importMemoryWin32HandleInfoNVInfo.handle = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let importMemoryWin32HandleInfoNVInfo = new VkImportMemoryWin32HandleInfoNV();
 importMemoryWin32HandleInfoNVInfo.sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV;
 importMemoryWin32HandleInfoNVInfo.pNext = ;
@@ -77,6 +89,7 @@ importMemoryWin32HandleInfoNVInfo.handle = ;
       <vk-property-entry>
         <vk-property-prototype>VkImportMemoryWin32HandleInfoNV.prototype.<vk-prototype-name>handle</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a Windows <i>HANDLE</i> referring to the memory.</vk-property-description>
       </vk-property-entry>
       
@@ -88,12 +101,17 @@ importMemoryWin32HandleInfoNVInfo.handle = ;
       <vk-property-entry>
         <vk-property-prototype>VkImportMemoryWin32HandleInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImportMemoryWin32HandleInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImportMemoryWin32HandleInfoNV.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 

@@ -42,7 +42,17 @@ presentTimeGOOGLE = new VkPresentTimeGOOGLE(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
-    <vk-stub>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let presentTimeGOOGLE = new VkPresentTimeGOOGLE();
+presentTimeGOOGLE.presentID = ;
+presentTimeGOOGLE.desiredPresentTime = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
       <pre><code class="language-js">let presentTimeGOOGLE = new VkPresentTimeGOOGLE();
 presentTimeGOOGLE.presentID = ;
 presentTimeGOOGLE.desiredPresentTime = ;
@@ -64,7 +74,8 @@ presentTimeGOOGLE.desiredPresentTime = ;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>desiredPresentTime</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies that the image given <i>should</i> not be displayed to the user any earlier than this time. <b>desiredPresentTime</b> is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine <i>may</i> display the image at any time. This is useful when the application desires to provide <b>presentID</b>, but doesn't need a specific <b>desiredPresentTime</b>.</vk-property-description>
       </vk-property-entry>
       
@@ -76,12 +87,17 @@ presentTimeGOOGLE.desiredPresentTime = ;
       <vk-property-entry>
         <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
-        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 
