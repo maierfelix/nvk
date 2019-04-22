@@ -50,9 +50,14 @@
 
     <vk-properties>
       <vk-property-entry>
-        <vk-property-prototype>VkFramebuffer.prototype.<vk-prototype-name>address</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
-        <vk-property-description>Memory reference to the original vulkan handle.</vk-property-description>
+        <vk-property-prototype>VkFramebuffer.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the handle.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFramebuffer.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this handle.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
 
