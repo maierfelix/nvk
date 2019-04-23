@@ -1,0 +1,89 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>vkCmdClearColorImage | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>vkCmdClearColorImage</vk-name>
+
+    <vk-description>Clear regions of a color image</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdClearColorImage();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>image</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
+        <vk-property-description> is the image to be cleared.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>imageLayout</vk-property-parameter>
+        <vk-property-type type="number"><a href="../enums/VkImageLayout.html">VkImageLayout</a></vk-property-type>
+        <vk-property-description> specifies the current layout of the image subresource ranges to be cleared, and <i>must</i> be <b>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</b>,</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pColor</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkClearColorValue.html">VkClearColorValue</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>rangeCount</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pRanges</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkImageSubresourceRange.html">VkImageSubresourceRange]</a></vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

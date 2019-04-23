@@ -1,0 +1,194 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPipelineDepthStencilStateCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPipelineDepthStencilStateCreateInfo</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created pipeline depth stencil state</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo();
+pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo();
+pipelineDepthStencilStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+pipelineDepthStencilStateInfo.pNext = ;
+pipelineDepthStencilStateInfo.flags = ;
+pipelineDepthStencilStateInfo.depthTestEnable = ;
+pipelineDepthStencilStateInfo.depthWriteEnable = ;
+pipelineDepthStencilStateInfo.depthCompareOp = ;
+pipelineDepthStencilStateInfo.depthBoundsTestEnable = ;
+pipelineDepthStencilStateInfo.stencilTestEnable = ;
+pipelineDepthStencilStateInfo.front = ;
+pipelineDepthStencilStateInfo.back = ;
+pipelineDepthStencilStateInfo.minDepthBounds = ;
+pipelineDepthStencilStateInfo.maxDepthBounds = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let pipelineDepthStencilStateInfo = new VkPipelineDepthStencilStateCreateInfo();
+pipelineDepthStencilStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+pipelineDepthStencilStateInfo.pNext = ;
+pipelineDepthStencilStateInfo.flags = ;
+pipelineDepthStencilStateInfo.depthTestEnable = ;
+pipelineDepthStencilStateInfo.depthWriteEnable = ;
+pipelineDepthStencilStateInfo.depthCompareOp = ;
+pipelineDepthStencilStateInfo.depthBoundsTestEnable = ;
+pipelineDepthStencilStateInfo.stencilTestEnable = ;
+pipelineDepthStencilStateInfo.front.failOp = ;
+pipelineDepthStencilStateInfo.front.passOp = ;
+pipelineDepthStencilStateInfo.front.depthFailOp = ;
+pipelineDepthStencilStateInfo.front.compareOp = ;
+pipelineDepthStencilStateInfo.front.compareMask = ;
+pipelineDepthStencilStateInfo.front.writeMask = ;
+pipelineDepthStencilStateInfo.front.reference = ;
+pipelineDepthStencilStateInfo.back.failOp = ;
+pipelineDepthStencilStateInfo.back.passOp = ;
+pipelineDepthStencilStateInfo.back.depthFailOp = ;
+pipelineDepthStencilStateInfo.back.compareOp = ;
+pipelineDepthStencilStateInfo.back.compareMask = ;
+pipelineDepthStencilStateInfo.back.writeMask = ;
+pipelineDepthStencilStateInfo.back.reference = ;
+pipelineDepthStencilStateInfo.minDepthBounds = ;
+pipelineDepthStencilStateInfo.maxDepthBounds = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>depthTestEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> controls whether <<fragops-depth,depth testing>> is enabled.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>depthWriteEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> controls whether <<fragops-depth-write,depth writes>> are enabled when <b>depthTestEnable</b> is <b>VK_TRUE</b>. Depth writes are always disabled when <b>depthTestEnable</b> is <b>VK_FALSE</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>depthCompareOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkCompareOp.html">VkCompareOp</a></vk-property-type>
+        <vk-property-description> is the comparison operator used in the <<fragops-depth,depth test>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>depthBoundsTestEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> controls whether <<fragops-dbt,depth bounds testing>> is enabled.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>stencilTestEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> controls whether <<fragops-stencil,stencil testing>> is enabled.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>front</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkStencilOpState.html">VkStencilOpState</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>back</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkStencilOpState.html">VkStencilOpState</a></vk-property-type>
+        <vk-property-description> control the parameters of the <<fragops-stencil,stencil test>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>minDepthBounds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>maxDepthBounds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> define the range of values used in the <<fragops-dbt,depth bounds test>>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineDepthStencilStateCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

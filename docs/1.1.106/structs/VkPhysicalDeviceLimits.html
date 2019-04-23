@@ -1,0 +1,841 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPhysicalDeviceLimits | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceLimits</vk-name>
+
+    <vk-description>Structure reporting implementation-dependent physical device limits</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">physicalDeviceLimits = new VkPhysicalDeviceLimits();</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceLimits = new VkPhysicalDeviceLimits();
+physicalDeviceLimits.maxImageDimension1D;
+physicalDeviceLimits.maxImageDimension2D;
+physicalDeviceLimits.maxImageDimension3D;
+physicalDeviceLimits.maxImageDimensionCube;
+physicalDeviceLimits.maxImageArrayLayers;
+physicalDeviceLimits.maxTexelBufferElements;
+physicalDeviceLimits.maxUniformBufferRange;
+physicalDeviceLimits.maxStorageBufferRange;
+physicalDeviceLimits.maxPushConstantsSize;
+physicalDeviceLimits.maxMemoryAllocationCount;
+physicalDeviceLimits.maxSamplerAllocationCount;
+physicalDeviceLimits.bufferImageGranularity;
+physicalDeviceLimits.sparseAddressSpaceSize;
+physicalDeviceLimits.maxBoundDescriptorSets;
+physicalDeviceLimits.maxPerStageDescriptorSamplers;
+physicalDeviceLimits.maxPerStageDescriptorUniformBuffers;
+physicalDeviceLimits.maxPerStageDescriptorStorageBuffers;
+physicalDeviceLimits.maxPerStageDescriptorSampledImages;
+physicalDeviceLimits.maxPerStageDescriptorStorageImages;
+physicalDeviceLimits.maxPerStageDescriptorInputAttachments;
+physicalDeviceLimits.maxPerStageResources;
+physicalDeviceLimits.maxDescriptorSetSamplers;
+physicalDeviceLimits.maxDescriptorSetUniformBuffers;
+physicalDeviceLimits.maxDescriptorSetUniformBuffersDynamic;
+physicalDeviceLimits.maxDescriptorSetStorageBuffers;
+physicalDeviceLimits.maxDescriptorSetStorageBuffersDynamic;
+physicalDeviceLimits.maxDescriptorSetSampledImages;
+physicalDeviceLimits.maxDescriptorSetStorageImages;
+physicalDeviceLimits.maxDescriptorSetInputAttachments;
+physicalDeviceLimits.maxVertexInputAttributes;
+physicalDeviceLimits.maxVertexInputBindings;
+physicalDeviceLimits.maxVertexInputAttributeOffset;
+physicalDeviceLimits.maxVertexInputBindingStride;
+physicalDeviceLimits.maxVertexOutputComponents;
+physicalDeviceLimits.maxTessellationGenerationLevel;
+physicalDeviceLimits.maxTessellationPatchSize;
+physicalDeviceLimits.maxTessellationControlPerVertexInputComponents;
+physicalDeviceLimits.maxTessellationControlPerVertexOutputComponents;
+physicalDeviceLimits.maxTessellationControlPerPatchOutputComponents;
+physicalDeviceLimits.maxTessellationControlTotalOutputComponents;
+physicalDeviceLimits.maxTessellationEvaluationInputComponents;
+physicalDeviceLimits.maxTessellationEvaluationOutputComponents;
+physicalDeviceLimits.maxGeometryShaderInvocations;
+physicalDeviceLimits.maxGeometryInputComponents;
+physicalDeviceLimits.maxGeometryOutputComponents;
+physicalDeviceLimits.maxGeometryOutputVertices;
+physicalDeviceLimits.maxGeometryTotalOutputComponents;
+physicalDeviceLimits.maxFragmentInputComponents;
+physicalDeviceLimits.maxFragmentOutputAttachments;
+physicalDeviceLimits.maxFragmentDualSrcAttachments;
+physicalDeviceLimits.maxFragmentCombinedOutputResources;
+physicalDeviceLimits.maxComputeSharedMemorySize;
+physicalDeviceLimits.maxComputeWorkGroupCount;
+physicalDeviceLimits.maxComputeWorkGroupInvocations;
+physicalDeviceLimits.maxComputeWorkGroupSize;
+physicalDeviceLimits.subPixelPrecisionBits;
+physicalDeviceLimits.subTexelPrecisionBits;
+physicalDeviceLimits.mipmapPrecisionBits;
+physicalDeviceLimits.maxDrawIndexedIndexValue;
+physicalDeviceLimits.maxDrawIndirectCount;
+physicalDeviceLimits.maxSamplerLodBias;
+physicalDeviceLimits.maxSamplerAnisotropy;
+physicalDeviceLimits.maxViewports;
+physicalDeviceLimits.maxViewportDimensions;
+physicalDeviceLimits.viewportBoundsRange;
+physicalDeviceLimits.viewportSubPixelBits;
+physicalDeviceLimits.minMemoryMapAlignment;
+physicalDeviceLimits.minTexelBufferOffsetAlignment;
+physicalDeviceLimits.minUniformBufferOffsetAlignment;
+physicalDeviceLimits.minStorageBufferOffsetAlignment;
+physicalDeviceLimits.minTexelOffset;
+physicalDeviceLimits.maxTexelOffset;
+physicalDeviceLimits.minTexelGatherOffset;
+physicalDeviceLimits.maxTexelGatherOffset;
+physicalDeviceLimits.minInterpolationOffset;
+physicalDeviceLimits.maxInterpolationOffset;
+physicalDeviceLimits.subPixelInterpolationOffsetBits;
+physicalDeviceLimits.maxFramebufferWidth;
+physicalDeviceLimits.maxFramebufferHeight;
+physicalDeviceLimits.maxFramebufferLayers;
+physicalDeviceLimits.framebufferColorSampleCounts;
+physicalDeviceLimits.framebufferDepthSampleCounts;
+physicalDeviceLimits.framebufferStencilSampleCounts;
+physicalDeviceLimits.framebufferNoAttachmentsSampleCounts;
+physicalDeviceLimits.maxColorAttachments;
+physicalDeviceLimits.sampledImageColorSampleCounts;
+physicalDeviceLimits.sampledImageIntegerSampleCounts;
+physicalDeviceLimits.sampledImageDepthSampleCounts;
+physicalDeviceLimits.sampledImageStencilSampleCounts;
+physicalDeviceLimits.storageImageSampleCounts;
+physicalDeviceLimits.maxSampleMaskWords;
+physicalDeviceLimits.timestampComputeAndGraphics;
+physicalDeviceLimits.timestampPeriod;
+physicalDeviceLimits.maxClipDistances;
+physicalDeviceLimits.maxCullDistances;
+physicalDeviceLimits.maxCombinedClipAndCullDistances;
+physicalDeviceLimits.discreteQueuePriorities;
+physicalDeviceLimits.pointSizeRange;
+physicalDeviceLimits.lineWidthRange;
+physicalDeviceLimits.pointSizeGranularity;
+physicalDeviceLimits.lineWidthGranularity;
+physicalDeviceLimits.strictLines;
+physicalDeviceLimits.standardSampleLocations;
+physicalDeviceLimits.optimalBufferCopyOffsetAlignment;
+physicalDeviceLimits.optimalBufferCopyRowPitchAlignment;
+physicalDeviceLimits.nonCoherentAtomSize;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceLimits = new VkPhysicalDeviceLimits();
+physicalDeviceLimits.maxImageDimension1D;
+physicalDeviceLimits.maxImageDimension2D;
+physicalDeviceLimits.maxImageDimension3D;
+physicalDeviceLimits.maxImageDimensionCube;
+physicalDeviceLimits.maxImageArrayLayers;
+physicalDeviceLimits.maxTexelBufferElements;
+physicalDeviceLimits.maxUniformBufferRange;
+physicalDeviceLimits.maxStorageBufferRange;
+physicalDeviceLimits.maxPushConstantsSize;
+physicalDeviceLimits.maxMemoryAllocationCount;
+physicalDeviceLimits.maxSamplerAllocationCount;
+physicalDeviceLimits.bufferImageGranularity;
+physicalDeviceLimits.sparseAddressSpaceSize;
+physicalDeviceLimits.maxBoundDescriptorSets;
+physicalDeviceLimits.maxPerStageDescriptorSamplers;
+physicalDeviceLimits.maxPerStageDescriptorUniformBuffers;
+physicalDeviceLimits.maxPerStageDescriptorStorageBuffers;
+physicalDeviceLimits.maxPerStageDescriptorSampledImages;
+physicalDeviceLimits.maxPerStageDescriptorStorageImages;
+physicalDeviceLimits.maxPerStageDescriptorInputAttachments;
+physicalDeviceLimits.maxPerStageResources;
+physicalDeviceLimits.maxDescriptorSetSamplers;
+physicalDeviceLimits.maxDescriptorSetUniformBuffers;
+physicalDeviceLimits.maxDescriptorSetUniformBuffersDynamic;
+physicalDeviceLimits.maxDescriptorSetStorageBuffers;
+physicalDeviceLimits.maxDescriptorSetStorageBuffersDynamic;
+physicalDeviceLimits.maxDescriptorSetSampledImages;
+physicalDeviceLimits.maxDescriptorSetStorageImages;
+physicalDeviceLimits.maxDescriptorSetInputAttachments;
+physicalDeviceLimits.maxVertexInputAttributes;
+physicalDeviceLimits.maxVertexInputBindings;
+physicalDeviceLimits.maxVertexInputAttributeOffset;
+physicalDeviceLimits.maxVertexInputBindingStride;
+physicalDeviceLimits.maxVertexOutputComponents;
+physicalDeviceLimits.maxTessellationGenerationLevel;
+physicalDeviceLimits.maxTessellationPatchSize;
+physicalDeviceLimits.maxTessellationControlPerVertexInputComponents;
+physicalDeviceLimits.maxTessellationControlPerVertexOutputComponents;
+physicalDeviceLimits.maxTessellationControlPerPatchOutputComponents;
+physicalDeviceLimits.maxTessellationControlTotalOutputComponents;
+physicalDeviceLimits.maxTessellationEvaluationInputComponents;
+physicalDeviceLimits.maxTessellationEvaluationOutputComponents;
+physicalDeviceLimits.maxGeometryShaderInvocations;
+physicalDeviceLimits.maxGeometryInputComponents;
+physicalDeviceLimits.maxGeometryOutputComponents;
+physicalDeviceLimits.maxGeometryOutputVertices;
+physicalDeviceLimits.maxGeometryTotalOutputComponents;
+physicalDeviceLimits.maxFragmentInputComponents;
+physicalDeviceLimits.maxFragmentOutputAttachments;
+physicalDeviceLimits.maxFragmentDualSrcAttachments;
+physicalDeviceLimits.maxFragmentCombinedOutputResources;
+physicalDeviceLimits.maxComputeSharedMemorySize;
+physicalDeviceLimits.maxComputeWorkGroupCount;
+physicalDeviceLimits.maxComputeWorkGroupInvocations;
+physicalDeviceLimits.maxComputeWorkGroupSize;
+physicalDeviceLimits.subPixelPrecisionBits;
+physicalDeviceLimits.subTexelPrecisionBits;
+physicalDeviceLimits.mipmapPrecisionBits;
+physicalDeviceLimits.maxDrawIndexedIndexValue;
+physicalDeviceLimits.maxDrawIndirectCount;
+physicalDeviceLimits.maxSamplerLodBias;
+physicalDeviceLimits.maxSamplerAnisotropy;
+physicalDeviceLimits.maxViewports;
+physicalDeviceLimits.maxViewportDimensions;
+physicalDeviceLimits.viewportBoundsRange;
+physicalDeviceLimits.viewportSubPixelBits;
+physicalDeviceLimits.minMemoryMapAlignment;
+physicalDeviceLimits.minTexelBufferOffsetAlignment;
+physicalDeviceLimits.minUniformBufferOffsetAlignment;
+physicalDeviceLimits.minStorageBufferOffsetAlignment;
+physicalDeviceLimits.minTexelOffset;
+physicalDeviceLimits.maxTexelOffset;
+physicalDeviceLimits.minTexelGatherOffset;
+physicalDeviceLimits.maxTexelGatherOffset;
+physicalDeviceLimits.minInterpolationOffset;
+physicalDeviceLimits.maxInterpolationOffset;
+physicalDeviceLimits.subPixelInterpolationOffsetBits;
+physicalDeviceLimits.maxFramebufferWidth;
+physicalDeviceLimits.maxFramebufferHeight;
+physicalDeviceLimits.maxFramebufferLayers;
+physicalDeviceLimits.framebufferColorSampleCounts;
+physicalDeviceLimits.framebufferDepthSampleCounts;
+physicalDeviceLimits.framebufferStencilSampleCounts;
+physicalDeviceLimits.framebufferNoAttachmentsSampleCounts;
+physicalDeviceLimits.maxColorAttachments;
+physicalDeviceLimits.sampledImageColorSampleCounts;
+physicalDeviceLimits.sampledImageIntegerSampleCounts;
+physicalDeviceLimits.sampledImageDepthSampleCounts;
+physicalDeviceLimits.sampledImageStencilSampleCounts;
+physicalDeviceLimits.storageImageSampleCounts;
+physicalDeviceLimits.maxSampleMaskWords;
+physicalDeviceLimits.timestampComputeAndGraphics;
+physicalDeviceLimits.timestampPeriod;
+physicalDeviceLimits.maxClipDistances;
+physicalDeviceLimits.maxCullDistances;
+physicalDeviceLimits.maxCombinedClipAndCullDistances;
+physicalDeviceLimits.discreteQueuePriorities;
+physicalDeviceLimits.pointSizeRange;
+physicalDeviceLimits.lineWidthRange;
+physicalDeviceLimits.pointSizeGranularity;
+physicalDeviceLimits.lineWidthGranularity;
+physicalDeviceLimits.strictLines;
+physicalDeviceLimits.standardSampleLocations;
+physicalDeviceLimits.optimalBufferCopyOffsetAlignment;
+physicalDeviceLimits.optimalBufferCopyRowPitchAlignment;
+physicalDeviceLimits.nonCoherentAtomSize;
+</code></pre>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxImageDimension1D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxImageDimension2D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxImageDimension3D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxImageDimensionCube</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxImageArrayLayers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTexelBufferElements</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxUniformBufferRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxStorageBufferRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPushConstantsSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxMemoryAllocationCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of device memory allocations, as created by <b><a href="../calls/vkAllocateMemory.html">vkAllocateMemory</a></b>, which <i>can</i> simultaneously exist.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxSamplerAllocationCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of sampler objects, as created by <b><a href="../calls/vkCreateSampler.html">vkCreateSampler</a></b>, which <i>can</i> simultaneously exist on a device.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>bufferImageGranularity</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the granularity, in bytes, at which buffer or linear image resources, and optimal image resources <i>can</i> be bound to adjacent offsets in the same <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> object without aliasing. See <<resources-bufferimagegranularity,Buffer-Image Granularity>> for more details.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>sparseAddressSpaceSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the total amount of address space available, in bytes, for sparse memory resources. This is an upper bound on the sum of the size of all sparse resources, regardless of whether any memory is bound to them.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxBoundDescriptorSets</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of descriptor sets that <i>can</i> be simultaneously used by a pipeline. All <i>DescriptorSet</i> decorations in shader modules <i>must</i> have a value less than <b>maxBoundDescriptorSets</b>. See <<descriptorsets-sets>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorSamplers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of samplers that <i>can</i> be accessible to a single shader stage in a pipeline layout. Descriptors with a type of <b>VK_DESCRIPTOR_TYPE_SAMPLER</b> or <b>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</b> count against this limit. Only descriptors in descriptor set layouts created without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set count against this limit.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorUniformBuffers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorStorageBuffers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorSampledImages</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorStorageImages</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageDescriptorInputAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxPerStageResources</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetSamplers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetUniformBuffers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetUniformBuffersDynamic</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetStorageBuffers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetStorageBuffersDynamic</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetSampledImages</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetStorageImages</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDescriptorSetInputAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxVertexInputAttributes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxVertexInputBindings</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxVertexInputAttributeOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxVertexInputBindingStride</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxVertexOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationGenerationLevel</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationPatchSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationControlPerVertexInputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationControlPerVertexOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationControlPerPatchOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationControlTotalOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationEvaluationInputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTessellationEvaluationOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxGeometryShaderInvocations</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxGeometryInputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxGeometryOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxGeometryOutputVertices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxGeometryTotalOutputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFragmentInputComponents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFragmentOutputAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFragmentDualSrcAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFragmentCombinedOutputResources</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxComputeSharedMemorySize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxComputeWorkGroupCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxComputeWorkGroupInvocations</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxComputeWorkGroupSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>subPixelPrecisionBits</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>subTexelPrecisionBits</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>mipmapPrecisionBits</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDrawIndexedIndexValue</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxDrawIndirectCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxSamplerLodBias</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxSamplerAnisotropy</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxViewports</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxViewportDimensions</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>viewportBoundsRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>viewportSubPixelBits</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minMemoryMapAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minTexelBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minUniformBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minStorageBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minTexelOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTexelOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minTexelGatherOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxTexelGatherOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>minInterpolationOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxInterpolationOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>subPixelInterpolationOffsetBits</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFramebufferWidth</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFramebufferHeight</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxFramebufferLayers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>framebufferColorSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>framebufferDepthSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>framebufferStencilSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>framebufferNoAttachmentsSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxColorAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>sampledImageColorSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>sampledImageIntegerSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>sampledImageDepthSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>sampledImageStencilSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>storageImageSampleCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxSampleMaskWords</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>timestampComputeAndGraphics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>timestampPeriod</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxClipDistances</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxCullDistances</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>maxCombinedClipAndCullDistances</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>discreteQueuePriorities</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>pointSizeRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>lineWidthRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>pointSizeGranularity</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>lineWidthGranularity</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>strictLines</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>standardSampleLocations</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>optimalBufferCopyOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>optimalBufferCopyRowPitchAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>nonCoherentAtomSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceLimits.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

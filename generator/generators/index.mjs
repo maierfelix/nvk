@@ -8,6 +8,7 @@ import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 import {
+  warn,
   getSortedIncludes,
   getPlatformRelevantIncludes
 } from "../utils";
@@ -19,14 +20,20 @@ const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-cpp.njk`,
 
 nunjucks.configure({ autoescape: true });
 
-export default function(astReference, includes, calls) {
+export default function(astReference, includes, calls, includeMemoryLayouts) {
   ast = astReference;
+  if (includeMemoryLayouts) {
+    warn(`Including memoryLayouts in build for later bootstrapping..`);
+  } else {
+    warn(`Excluding memoryLayouts from build, to reduce package size. Make sure that the module got recompiled, before publishing!`);
+  }
   let vars = {
     calls,
     includes,
     getPlatformRelevantIncludes: () => {
       return getPlatformRelevantIncludes(ast);
-    }
+    },
+    includeMemoryLayouts
   };
   let out = {
     header: null,

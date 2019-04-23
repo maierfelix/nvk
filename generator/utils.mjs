@@ -245,7 +245,8 @@ export function isIgnoreableType(obj) {
     type === "xcb_visualid_t" ||
     type === "Display *" ||
     type === "const SECURITY_ATTRIBUTES *" ||
-    type === "DWORD"
+    type === "DWORD" ||
+    type === "HMONITOR"
   );
 };
 

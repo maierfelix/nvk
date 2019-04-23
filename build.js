@@ -136,6 +136,7 @@ function buildFiles() {
  */
 function inlineEnumLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  if (!addon.$getVulkanEnumerations) return;
   process.stdout.write(`Inlining enum layouts..\n`);
   let enumLayouts = addon.$getVulkanEnumerations();
   if (!fs.existsSync(`${generatePath}/enumLayouts.json`)) {
@@ -150,6 +151,7 @@ function inlineEnumLayouts() {
  */
 function inlineMemoryLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  if (!addon.$getMemoryLayouts) return;
   process.stdout.write(`Inlining memory layouts..\n`);
   let memoryLayouts = addon.$getMemoryLayouts();
   if (!fs.existsSync(`${generatePath}/memoryLayouts.json`)) {

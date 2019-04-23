@@ -26,6 +26,7 @@ let validate = false;
 let currentHandle = null;
 let currentStruct = null;
 
+const JS_INDEX_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/index-js.njk`, "utf-8");
 const JS_HANDLE_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/handle-js.njk`, "utf-8");
 const JS_STRUCT_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/struct-js.njk`, "utf-8");
 
@@ -667,100 +668,8 @@ export default function(astReference, includeValidations, calls, handles, struct
   enumLayouts = getEnumLayouts();
   enumLayoutTable = getEnumLayoutTable();
   memoryLayouts = getMemoryLayouts();
-  let output = `
-"use strict";
-
-const {platform} = process;
-const nvk = require("./build/Release/addon-" + platform + ".node");
-
-let ENABLE_SHARED_MEMORY_HINTS = !!process.env.npm_config_enable_shared_memory_hints;
-if (!ENABLE_SHARED_MEMORY_HINTS) {
-  process.argv.map(arg => {
-    if (arg.match("enable-shared-memory-hints")) ENABLE_SHARED_MEMORY_HINTS = true;
-  });
-}
-
-const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
-const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
-
-global.ArrayBuffer.prototype.getAddress = function() {
-  return getAddressFromArrayBuffer(this);
-};
-
-global.ArrayBuffer.fromAddress = function(address, byteLength) {
-  return getArrayBufferFromAddress(address, BigInt(byteLength));
-};
-
-const BI0 = BigInt(0);
-const NULLT = String.fromCharCode(0x0);
-
-const textEncoder = new TextEncoder();
-const textDecoder = new TextDecoder();
-
-function decodeNullTerminatedUTF8String(view) {
-  let terminator = view.indexOf(0x0);
-  let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
-  return textDecoder.decode(subview);
-};
-
-class NativeStringArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let stringBuffers = [];
-    let addressView = new BigInt64Array(array.length);
-    let addressBuffer = addressView.buffer;
-    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let strBuffer = textEncoder.encode(array[ii] + NULLT).buffer;
-      addressView[ii] = getAddressFromArrayBuffer(strBuffer);
-      stringBuffers.push(strBuffer);
-    };
-    this.address = addressBufferAddress;
-    // keep references to prevent deallocation
-    this.addressBuffer = addressBuffer;
-    this.stringBuffers = stringBuffers;
-  }
-};
-
-class NativeObjectArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let byteStride = array[0].memoryBuffer.byteLength;
-    let objectBuffer = new ArrayBuffer(array.length * byteStride);
-    let objectBufferView = new Uint8Array(objectBuffer);
-    let objectBufferAddress = getAddressFromArrayBuffer(objectBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let byteOffset = ii * byteStride;
-      let srcView = new Uint8Array(array[ii].memoryBuffer);
-      let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
-      dstView.set(srcView, 0x0);
-    };
-    this.address = objectBufferAddress;
-    // keep reference to prevent deallocation
-    this.objectBuffer = objectBuffer;
-  }
-};
-
-class NativeObjectReferenceArray {
-  constructor(array) {
-    this.array = array;
-    this.address = BI0;
-    let addressView = new BigInt64Array(array.length);
-    let addressBuffer = addressView.buffer;
-    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
-    for (let ii = 0; ii < array.length; ++ii) {
-      let object = array[ii];
-      let objectAddress = object.address;
-      addressView[ii] = objectAddress;
-    };
-    this.address = addressBufferAddress;
-    // keep reference to prevent deallocation
-    this.addressBuffer = addressBuffer;
-  }
-};
-`;
+  let output = ``;
+  output += nunjucks.renderString(JS_INDEX_TEMPLATE, {});
   handles.map(handle => {
     currentHandle = handle;
     output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {

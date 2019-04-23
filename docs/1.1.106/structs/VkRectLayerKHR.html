@@ -1,0 +1,121 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkRectLayerKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkRectLayerKHR</vk-name>
+
+    <vk-description>Structure containing a rectangle, including layer, changed by vkQueuePresentKHR for a given VkImage</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">rectLayerKHR = new VkRectLayerKHR();
+rectLayerKHR = new VkRectLayerKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let rectLayerKHR = new VkRectLayerKHR();
+rectLayerKHR.offset = ;
+rectLayerKHR.extent = ;
+rectLayerKHR.layer = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let rectLayerKHR = new VkRectLayerKHR();
+rectLayerKHR.offset.x = ;
+rectLayerKHR.offset.y = ;
+rectLayerKHR.extent.width = ;
+rectLayerKHR.extent.height = ;
+rectLayerKHR.layer = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.prototype.<vk-prototype-name>offset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkOffset2D.html">VkOffset2D</a></vk-property-type>
+        <vk-property-description> is the origin of the rectangle, in pixels.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.prototype.<vk-prototype-name>extent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description> is the size of the rectangle, in pixels.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.prototype.<vk-prototype-name>layer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the layer of the image. For images with only one layer, the value of <b>layer</b> <i>must</i> be 0.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRectLayerKHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

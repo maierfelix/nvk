@@ -297,16 +297,9 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate indices
   {
     console.log("Generating indices..");
-    let indexFile = generateIndex(ast, sortedIncludes, calls);
+    let indexFile = generateIndex(ast, sortedIncludes, calls, !fs.existsSync(`${generatePath}/memoryLayouts.json`));
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
-  }
-  // generate enum layouts
-  {
-    let data = { structs };
-    let result = generateMemoryLayouts(ast, data);
-    console.log("Generating Memory layouts..");
-    writeAddonFile(`${generateSrcPath}/memoryLayouts.h`, result, "utf-8", true);
   }
   // generate memory layouts
   {
