@@ -6813,33 +6813,60 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkRectLayerKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkRectLayerKHR)));
   out.Set(Napi::String::New(env, "VkRectLayerKHR"), sVkRectLayerKHR);
-  Napi::Object sVkPhysicalDeviceVariablePointerFeatures = Napi::Object::New(env);
+  Napi::Object sVkPhysicalDeviceVariablePointersFeatures = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
-    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, sType)));
-    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::sType)));
-    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "sType"), obj);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeatures, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeatures::sType)));
+    sVkPhysicalDeviceVariablePointersFeatures.Set(Napi::String::New(env, "sType"), obj);
   }
   {
     Napi::Object obj = Napi::Object::New(env);
-    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, pNext)));
-    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::pNext)));
-    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "pNext"), obj);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeatures, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeatures::pNext)));
+    sVkPhysicalDeviceVariablePointersFeatures.Set(Napi::String::New(env, "pNext"), obj);
   }
   {
     Napi::Object obj = Napi::Object::New(env);
-    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, variablePointersStorageBuffer)));
-    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::variablePointersStorageBuffer)));
-    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "variablePointersStorageBuffer"), obj);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeatures, variablePointersStorageBuffer)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeatures::variablePointersStorageBuffer)));
+    sVkPhysicalDeviceVariablePointersFeatures.Set(Napi::String::New(env, "variablePointersStorageBuffer"), obj);
   }
   {
     Napi::Object obj = Napi::Object::New(env);
-    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, variablePointers)));
-    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::variablePointers)));
-    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "variablePointers"), obj);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeatures, variablePointers)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeatures::variablePointers)));
+    sVkPhysicalDeviceVariablePointersFeatures.Set(Napi::String::New(env, "variablePointers"), obj);
   }
-  sVkPhysicalDeviceVariablePointerFeatures.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures)));
-  out.Set(Napi::String::New(env, "VkPhysicalDeviceVariablePointerFeatures"), sVkPhysicalDeviceVariablePointerFeatures);
+  sVkPhysicalDeviceVariablePointersFeatures.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeatures)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceVariablePointersFeatures"), sVkPhysicalDeviceVariablePointersFeatures);
+  Napi::Object sVkPhysicalDeviceVariablePointersFeaturesKHR = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeaturesKHR, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeaturesKHR::sType)));
+    sVkPhysicalDeviceVariablePointersFeaturesKHR.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeaturesKHR, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeaturesKHR::pNext)));
+    sVkPhysicalDeviceVariablePointersFeaturesKHR.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeaturesKHR, variablePointersStorageBuffer)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeaturesKHR::variablePointersStorageBuffer)));
+    sVkPhysicalDeviceVariablePointersFeaturesKHR.Set(Napi::String::New(env, "variablePointersStorageBuffer"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointersFeaturesKHR, variablePointers)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeaturesKHR::variablePointers)));
+    sVkPhysicalDeviceVariablePointersFeaturesKHR.Set(Napi::String::New(env, "variablePointers"), obj);
+  }
+  sVkPhysicalDeviceVariablePointersFeaturesKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointersFeaturesKHR)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceVariablePointersFeaturesKHR"), sVkPhysicalDeviceVariablePointersFeaturesKHR);
   Napi::Object sVkPhysicalDeviceVariablePointerFeaturesKHR = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -6867,6 +6894,33 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkPhysicalDeviceVariablePointerFeaturesKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeaturesKHR)));
   out.Set(Napi::String::New(env, "VkPhysicalDeviceVariablePointerFeaturesKHR"), sVkPhysicalDeviceVariablePointerFeaturesKHR);
+  Napi::Object sVkPhysicalDeviceVariablePointerFeatures = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::sType)));
+    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::pNext)));
+    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, variablePointersStorageBuffer)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::variablePointersStorageBuffer)));
+    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "variablePointersStorageBuffer"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceVariablePointerFeatures, variablePointers)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures::variablePointers)));
+    sVkPhysicalDeviceVariablePointerFeatures.Set(Napi::String::New(env, "variablePointers"), obj);
+  }
+  sVkPhysicalDeviceVariablePointerFeatures.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceVariablePointerFeatures)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceVariablePointerFeatures"), sVkPhysicalDeviceVariablePointerFeatures);
   Napi::Object sVkExternalMemoryProperties = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -9369,6 +9423,48 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkHdrMetadataEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkHdrMetadataEXT)));
   out.Set(Napi::String::New(env, "VkHdrMetadataEXT"), sVkHdrMetadataEXT);
+  Napi::Object sVkDisplayNativeHdrSurfaceCapabilitiesAMD = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkDisplayNativeHdrSurfaceCapabilitiesAMD, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkDisplayNativeHdrSurfaceCapabilitiesAMD::sType)));
+    sVkDisplayNativeHdrSurfaceCapabilitiesAMD.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkDisplayNativeHdrSurfaceCapabilitiesAMD, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkDisplayNativeHdrSurfaceCapabilitiesAMD::pNext)));
+    sVkDisplayNativeHdrSurfaceCapabilitiesAMD.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkDisplayNativeHdrSurfaceCapabilitiesAMD, localDimmingSupport)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkDisplayNativeHdrSurfaceCapabilitiesAMD::localDimmingSupport)));
+    sVkDisplayNativeHdrSurfaceCapabilitiesAMD.Set(Napi::String::New(env, "localDimmingSupport"), obj);
+  }
+  sVkDisplayNativeHdrSurfaceCapabilitiesAMD.Set(strByteLength, Napi::Number::New(env, sizeof(VkDisplayNativeHdrSurfaceCapabilitiesAMD)));
+  out.Set(Napi::String::New(env, "VkDisplayNativeHdrSurfaceCapabilitiesAMD"), sVkDisplayNativeHdrSurfaceCapabilitiesAMD);
+  Napi::Object sVkSwapchainDisplayNativeHdrCreateInfoAMD = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSwapchainDisplayNativeHdrCreateInfoAMD, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSwapchainDisplayNativeHdrCreateInfoAMD::sType)));
+    sVkSwapchainDisplayNativeHdrCreateInfoAMD.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSwapchainDisplayNativeHdrCreateInfoAMD, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSwapchainDisplayNativeHdrCreateInfoAMD::pNext)));
+    sVkSwapchainDisplayNativeHdrCreateInfoAMD.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSwapchainDisplayNativeHdrCreateInfoAMD, localDimmingEnable)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSwapchainDisplayNativeHdrCreateInfoAMD::localDimmingEnable)));
+    sVkSwapchainDisplayNativeHdrCreateInfoAMD.Set(Napi::String::New(env, "localDimmingEnable"), obj);
+  }
+  sVkSwapchainDisplayNativeHdrCreateInfoAMD.Set(strByteLength, Napi::Number::New(env, sizeof(VkSwapchainDisplayNativeHdrCreateInfoAMD)));
+  out.Set(Napi::String::New(env, "VkSwapchainDisplayNativeHdrCreateInfoAMD"), sVkSwapchainDisplayNativeHdrCreateInfoAMD);
   Napi::Object sVkRefreshCycleDurationGOOGLE = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -11724,6 +11820,27 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkDescriptorSetLayoutSupportKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkDescriptorSetLayoutSupportKHR)));
   out.Set(Napi::String::New(env, "VkDescriptorSetLayoutSupportKHR"), sVkDescriptorSetLayoutSupportKHR);
+  Napi::Object sVkPhysicalDeviceShaderDrawParametersFeatures = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceShaderDrawParametersFeatures, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceShaderDrawParametersFeatures::sType)));
+    sVkPhysicalDeviceShaderDrawParametersFeatures.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceShaderDrawParametersFeatures, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceShaderDrawParametersFeatures::pNext)));
+    sVkPhysicalDeviceShaderDrawParametersFeatures.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceShaderDrawParametersFeatures, shaderDrawParameters)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceShaderDrawParametersFeatures::shaderDrawParameters)));
+    sVkPhysicalDeviceShaderDrawParametersFeatures.Set(Napi::String::New(env, "shaderDrawParameters"), obj);
+  }
+  sVkPhysicalDeviceShaderDrawParametersFeatures.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceShaderDrawParametersFeatures)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceShaderDrawParametersFeatures"), sVkPhysicalDeviceShaderDrawParametersFeatures);
   Napi::Object sVkPhysicalDeviceShaderDrawParameterFeatures = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -11889,6 +12006,27 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkPhysicalDeviceFloatControlsPropertiesKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceFloatControlsPropertiesKHR)));
   out.Set(Napi::String::New(env, "VkPhysicalDeviceFloatControlsPropertiesKHR"), sVkPhysicalDeviceFloatControlsPropertiesKHR);
+  Napi::Object sVkPhysicalDeviceHostQueryResetFeaturesEXT = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceHostQueryResetFeaturesEXT, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceHostQueryResetFeaturesEXT::sType)));
+    sVkPhysicalDeviceHostQueryResetFeaturesEXT.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceHostQueryResetFeaturesEXT, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceHostQueryResetFeaturesEXT::pNext)));
+    sVkPhysicalDeviceHostQueryResetFeaturesEXT.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceHostQueryResetFeaturesEXT, hostQueryReset)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceHostQueryResetFeaturesEXT::hostQueryReset)));
+    sVkPhysicalDeviceHostQueryResetFeaturesEXT.Set(Napi::String::New(env, "hostQueryReset"), obj);
+  }
+  sVkPhysicalDeviceHostQueryResetFeaturesEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceHostQueryResetFeaturesEXT)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceHostQueryResetFeaturesEXT"), sVkPhysicalDeviceHostQueryResetFeaturesEXT);
   Napi::Object sVkShaderResourceUsageAMD = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -15138,6 +15276,27 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkPhysicalDeviceScalarBlockLayoutFeaturesEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceScalarBlockLayoutFeaturesEXT)));
   out.Set(Napi::String::New(env, "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT"), sVkPhysicalDeviceScalarBlockLayoutFeaturesEXT);
+  Napi::Object sVkSurfaceProtectedCapabilitiesKHR = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSurfaceProtectedCapabilitiesKHR, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSurfaceProtectedCapabilitiesKHR::sType)));
+    sVkSurfaceProtectedCapabilitiesKHR.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSurfaceProtectedCapabilitiesKHR, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSurfaceProtectedCapabilitiesKHR::pNext)));
+    sVkSurfaceProtectedCapabilitiesKHR.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkSurfaceProtectedCapabilitiesKHR, supportsProtected)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkSurfaceProtectedCapabilitiesKHR::supportsProtected)));
+    sVkSurfaceProtectedCapabilitiesKHR.Set(Napi::String::New(env, "supportsProtected"), obj);
+  }
+  sVkSurfaceProtectedCapabilitiesKHR.Set(strByteLength, Napi::Number::New(env, sizeof(VkSurfaceProtectedCapabilitiesKHR)));
+  out.Set(Napi::String::New(env, "VkSurfaceProtectedCapabilitiesKHR"), sVkSurfaceProtectedCapabilitiesKHR);
   Napi::Object sVkPhysicalDeviceDepthClipEnableFeaturesEXT = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -15255,6 +15414,39 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkMemoryPriorityAllocateInfoEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkMemoryPriorityAllocateInfoEXT)));
   out.Set(Napi::String::New(env, "VkMemoryPriorityAllocateInfoEXT"), sVkMemoryPriorityAllocateInfoEXT);
+  Napi::Object sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT::sType)));
+    sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT::pNext)));
+    sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, bufferDeviceAddress)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT::bufferDeviceAddress)));
+    sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(Napi::String::New(env, "bufferDeviceAddress"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, bufferDeviceAddressCaptureReplay)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT::bufferDeviceAddressCaptureReplay)));
+    sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(Napi::String::New(env, "bufferDeviceAddressCaptureReplay"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, bufferDeviceAddressMultiDevice)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT::bufferDeviceAddressMultiDevice)));
+    sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(Napi::String::New(env, "bufferDeviceAddressMultiDevice"), obj);
+  }
+  sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceBufferDeviceAddressFeaturesEXT"), sVkPhysicalDeviceBufferDeviceAddressFeaturesEXT);
   Napi::Object sVkPhysicalDeviceBufferAddressFeaturesEXT = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);
@@ -15489,6 +15681,108 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   }
   sVkCooperativeMatrixPropertiesNV.Set(strByteLength, Napi::Number::New(env, sizeof(VkCooperativeMatrixPropertiesNV)));
   out.Set(Napi::String::New(env, "VkCooperativeMatrixPropertiesNV"), sVkCooperativeMatrixPropertiesNV);
+  Napi::Object sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT::sType)));
+    sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT::pNext)));
+    sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT, ycbcrImageArrays)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT::ycbcrImageArrays)));
+    sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT.Set(Napi::String::New(env, "ycbcrImageArrays"), obj);
+  }
+  sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT)));
+  out.Set(Napi::String::New(env, "VkPhysicalDeviceYcbcrImageArraysFeaturesEXT"), sVkPhysicalDeviceYcbcrImageArraysFeaturesEXT);
+  Napi::Object sVkImageViewHandleInfoNVX = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkImageViewHandleInfoNVX, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX::sType)));
+    sVkImageViewHandleInfoNVX.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkImageViewHandleInfoNVX, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX::pNext)));
+    sVkImageViewHandleInfoNVX.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkImageViewHandleInfoNVX, imageView)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX::imageView)));
+    sVkImageViewHandleInfoNVX.Set(Napi::String::New(env, "imageView"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkImageViewHandleInfoNVX, descriptorType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX::descriptorType)));
+    sVkImageViewHandleInfoNVX.Set(Napi::String::New(env, "descriptorType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkImageViewHandleInfoNVX, sampler)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX::sampler)));
+    sVkImageViewHandleInfoNVX.Set(Napi::String::New(env, "sampler"), obj);
+  }
+  sVkImageViewHandleInfoNVX.Set(strByteLength, Napi::Number::New(env, sizeof(VkImageViewHandleInfoNVX)));
+  out.Set(Napi::String::New(env, "VkImageViewHandleInfoNVX"), sVkImageViewHandleInfoNVX);
+  Napi::Object sVkPipelineCreationFeedbackEXT = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackEXT, flags)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackEXT::flags)));
+    sVkPipelineCreationFeedbackEXT.Set(Napi::String::New(env, "flags"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackEXT, duration)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackEXT::duration)));
+    sVkPipelineCreationFeedbackEXT.Set(Napi::String::New(env, "duration"), obj);
+  }
+  sVkPipelineCreationFeedbackEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackEXT)));
+  out.Set(Napi::String::New(env, "VkPipelineCreationFeedbackEXT"), sVkPipelineCreationFeedbackEXT);
+  Napi::Object sVkPipelineCreationFeedbackCreateInfoEXT = Napi::Object::New(env);
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackCreateInfoEXT, sType)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT::sType)));
+    sVkPipelineCreationFeedbackCreateInfoEXT.Set(Napi::String::New(env, "sType"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pNext)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT::pNext)));
+    sVkPipelineCreationFeedbackCreateInfoEXT.Set(Napi::String::New(env, "pNext"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT::pPipelineCreationFeedback)));
+    sVkPipelineCreationFeedbackCreateInfoEXT.Set(Napi::String::New(env, "pPipelineCreationFeedback"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pipelineStageCreationFeedbackCount)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT::pipelineStageCreationFeedbackCount)));
+    sVkPipelineCreationFeedbackCreateInfoEXT.Set(Napi::String::New(env, "pipelineStageCreationFeedbackCount"), obj);
+  }
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set(strByteOffset, Napi::Number::New(env, offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineStageCreationFeedbacks)));
+    obj.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT::pPipelineStageCreationFeedbacks)));
+    sVkPipelineCreationFeedbackCreateInfoEXT.Set(Napi::String::New(env, "pPipelineStageCreationFeedbacks"), obj);
+  }
+  sVkPipelineCreationFeedbackCreateInfoEXT.Set(strByteLength, Napi::Number::New(env, sizeof(VkPipelineCreationFeedbackCreateInfoEXT)));
+  out.Set(Napi::String::New(env, "VkPipelineCreationFeedbackCreateInfoEXT"), sVkPipelineCreationFeedbackCreateInfoEXT);
   Napi::Object sVkClearColorValue = Napi::Object::New(env);
   {
     Napi::Object obj = Napi::Object::New(env);

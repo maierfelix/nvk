@@ -2484,8 +2484,9 @@ class VkDeviceCreateInfo {
         case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
         case 0x3B9C0A50:
+        case 0x3B9EC588:
         case 0x3B9D3EE9:
         case 0x3B9D7D68:
         case 0x3B9C0669:
@@ -2510,6 +2511,7 @@ class VkDeviceCreateInfo {
         case 0x3B9E6BB0:
         case 0x3B9E8320:
         case 0x3B9E96A8:
+        case 0x3B9EA260:
           break;
         default:
           throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
@@ -9199,7 +9201,23 @@ class VkComputePipelineCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkComputePipelineCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null ) {
+      let {sType} = value;
+      
+      switch (sType) {
+          
+        case 0x3B9DB800:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryViewBigInt64[0x1] = value.memoryAddress;
+    } else if (value === null) {
+      this._pNext = null;
+      this.memoryViewBigInt64[0x1] = BI0;
+    } 
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -11485,6 +11503,7 @@ class VkGraphicsPipelineCreateInfo {
           
         case 0x3B9C4CB9:
         case 0x3B9D5271:
+        case 0x3B9DB800:
           break;
         default:
           throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
@@ -18333,7 +18352,10 @@ class VkSwapchainCreateInfoKHR {
           
         case 0x3B9C2D7B:
         case 0x3B9BB46C:
+        case 0x3B9E0A09:
         case 0x3B9D0838:
+        case 0x3B9EAE18:
+        case 0x3B9EAE19:
           break;
         default:
           throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
@@ -18660,6 +18682,7 @@ class VkPresentInfoKHR {
         case 0x3B9C1220:
         case 0x3B9BB46B:
         case 0x3B9C3160:
+        case 0x3B9DB418:
           break;
         default:
           throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
@@ -21968,8 +21991,9 @@ class VkPhysicalDeviceFeatures2 {
         case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
         case 0x3B9C0A50:
+        case 0x3B9EC588:
         case 0x3B9D3EE9:
         case 0x3B9D7D68:
         case 0x3B9C0669:
@@ -21993,6 +22017,7 @@ class VkPhysicalDeviceFeatures2 {
         case 0x3B9E6BB0:
         case 0x3B9E8320:
         case 0x3B9E96A8:
+        case 0x3B9EA260:
           break;
         default:
           throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
@@ -22122,8 +22147,9 @@ class VkPhysicalDeviceFeatures2KHR {
         case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
         case 0x3B9C0A50:
+        case 0x3B9EC588:
         case 0x3B9D3EE9:
         case 0x3B9D7D68:
         case 0x3B9C0669:
@@ -22147,6 +22173,7 @@ class VkPhysicalDeviceFeatures2KHR {
         case 0x3B9E6BB0:
         case 0x3B9E8320:
         case 0x3B9E96A8:
+        case 0x3B9EA260:
           break;
         default:
           throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
@@ -24701,8 +24728,8 @@ VkRectLayerKHR.memoryLayout = {
     byteLength: 0x4
   },
 };
-/** VkPhysicalDeviceVariablePointerFeatures **/
-class VkPhysicalDeviceVariablePointerFeatures {
+/** VkPhysicalDeviceVariablePointersFeatures **/
+class VkPhysicalDeviceVariablePointersFeatures {
   constructor(opts) {
     this.memoryBuffer = null;
     this.memoryAddress = BI0;
@@ -24747,7 +24774,7 @@ class VkPhysicalDeviceVariablePointerFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
+    throw new TypeError("'VkPhysicalDeviceVariablePointersFeatures.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -24764,7 +24791,7 @@ class VkPhysicalDeviceVariablePointerFeatures {
   
 };
 
-VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
+VkPhysicalDeviceVariablePointersFeatures.prototype.flush = function flush() {
   
   
   if (this._pNext !== null) {
@@ -24774,15 +24801,114 @@ VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
   return true;
 };
 
-VkPhysicalDeviceVariablePointerFeatures.prototype.reflect = function reflect(memoryAddress) {
+VkPhysicalDeviceVariablePointersFeatures.prototype.reflect = function reflect(memoryAddress) {
   
   
   
 };
 
-VkPhysicalDeviceVariablePointerFeatures.byteLength = 0x18;
+VkPhysicalDeviceVariablePointersFeatures.byteLength = 0x18;
 
-VkPhysicalDeviceVariablePointerFeatures.memoryLayout = {
+VkPhysicalDeviceVariablePointersFeatures.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  variablePointersStorageBuffer: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+  variablePointers: {
+    byteOffset: 0x14,
+    byteLength: 0x4
+  },
+};
+/** VkPhysicalDeviceVariablePointersFeaturesKHR **/
+class VkPhysicalDeviceVariablePointersFeaturesKHR {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    
+    this.sType = 0x3B9C9EC0;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.variablePointersStorageBuffer !== void 0) this.variablePointersStorageBuffer = opts.variablePointersStorageBuffer;
+      if (opts.variablePointers !== void 0) this.variablePointers = opts.variablePointers;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVariablePointersFeaturesKHR.pNext' isn't allowed to be filled");
+  }
+  get variablePointersStorageBuffer() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set variablePointersStorageBuffer(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  get variablePointers() {
+    return this.memoryViewUint32[0x5] !== 0;
+  }
+  set variablePointers(value) {
+    this.memoryViewUint32[0x5] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceVariablePointersFeaturesKHR.byteLength = 0x18;
+
+VkPhysicalDeviceVariablePointersFeaturesKHR.memoryLayout = {
   sType: {
     byteOffset: 0x0,
     byteLength: 0x4
@@ -24882,6 +25008,105 @@ VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.reflect = function reflect(
 VkPhysicalDeviceVariablePointerFeaturesKHR.byteLength = 0x18;
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  variablePointersStorageBuffer: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+  variablePointers: {
+    byteOffset: 0x14,
+    byteLength: 0x4
+  },
+};
+/** VkPhysicalDeviceVariablePointerFeatures **/
+class VkPhysicalDeviceVariablePointerFeatures {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    
+    this.sType = 0x3B9C9EC0;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.variablePointersStorageBuffer !== void 0) this.variablePointersStorageBuffer = opts.variablePointersStorageBuffer;
+      if (opts.variablePointers !== void 0) this.variablePointers = opts.variablePointers;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
+  }
+  get variablePointersStorageBuffer() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set variablePointersStorageBuffer(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  get variablePointers() {
+    return this.memoryViewUint32[0x5] !== 0;
+  }
+  set variablePointers(value) {
+    this.memoryViewUint32[0x5] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceVariablePointerFeatures.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceVariablePointerFeatures.byteLength = 0x18;
+
+VkPhysicalDeviceVariablePointerFeatures.memoryLayout = {
   sType: {
     byteOffset: 0x0,
     byteLength: 0x4
@@ -34232,6 +34457,180 @@ VkHdrMetadataEXT.memoryLayout = {
     byteLength: 0x4
   },
 };
+/** VkDisplayNativeHdrSurfaceCapabilitiesAMD **/
+class VkDisplayNativeHdrSurfaceCapabilitiesAMD {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = 0x3B9E0A08;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkDisplayNativeHdrSurfaceCapabilitiesAMD.pNext' isn't allowed to be filled");
+  }
+  get localDimmingSupport() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  
+};
+
+VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype.reflect = function reflect(memoryAddress) {
+  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
+  let dstBuffer = this.memoryBuffer;
+  let srcView = new Uint8Array(srcBuffer);
+  let dstView = new Uint8Array(dstBuffer);
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
+  
+  
+};
+
+VkDisplayNativeHdrSurfaceCapabilitiesAMD.byteLength = 0x18;
+
+VkDisplayNativeHdrSurfaceCapabilitiesAMD.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  localDimmingSupport: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
+/** VkSwapchainDisplayNativeHdrCreateInfoAMD **/
+class VkSwapchainDisplayNativeHdrCreateInfoAMD {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = 0x3B9E0A09;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.localDimmingEnable !== void 0) this.localDimmingEnable = opts.localDimmingEnable;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkSwapchainDisplayNativeHdrCreateInfoAMD.pNext' isn't allowed to be filled");
+  }
+  get localDimmingEnable() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set localDimmingEnable(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  
+};
+
+VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkSwapchainDisplayNativeHdrCreateInfoAMD.byteLength = 0x18;
+
+VkSwapchainDisplayNativeHdrCreateInfoAMD.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  localDimmingEnable: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
 /** VkRefreshCycleDurationGOOGLE **/
 class VkRefreshCycleDurationGOOGLE {
   constructor(opts) {
@@ -35750,7 +36149,24 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSurfaceInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null ) {
+      let {sType} = value;
+      
+      switch (sType) {
+          
+        case 0x3B9EAE18:
+        case 0x3B9EAE19:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceSurfaceInfo2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryViewBigInt64[0x1] = value.memoryAddress;
+    } else if (value === null) {
+      this._pNext = null;
+      this.memoryViewBigInt64[0x1] = BI0;
+    } 
+    
   }
   get surface() {
     return this._surface;
@@ -35848,7 +36264,10 @@ class VkSurfaceCapabilities2KHR {
       
       switch (sType) {
           
+        case 0x3B9E0A08:
         case 0x3B9C7B98:
+        case 0x3B9E6F98:
+        case 0x3B9EAE1A:
           break;
         default:
           throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
@@ -43503,6 +43922,93 @@ VkDescriptorSetLayoutSupportKHR.memoryLayout = {
     byteLength: 0x4
   },
 };
+/** VkPhysicalDeviceShaderDrawParametersFeatures **/
+class VkPhysicalDeviceShaderDrawParametersFeatures {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.shaderDrawParameters !== void 0) this.shaderDrawParameters = opts.shaderDrawParameters;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShaderDrawParametersFeatures.pNext' isn't allowed to be filled");
+  }
+  get shaderDrawParameters() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set shaderDrawParameters(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceShaderDrawParametersFeatures.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceShaderDrawParametersFeatures.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceShaderDrawParametersFeatures.byteLength = 0x18;
+
+VkPhysicalDeviceShaderDrawParametersFeatures.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  shaderDrawParameters: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
 /** VkPhysicalDeviceShaderDrawParameterFeatures **/
 class VkPhysicalDeviceShaderDrawParameterFeatures {
   constructor(opts) {
@@ -43901,6 +44407,93 @@ VkPhysicalDeviceFloatControlsPropertiesKHR.memoryLayout = {
   },
   shaderRoundingModeRTZFloat64: {
     byteOffset: 0x50,
+    byteLength: 0x4
+  },
+};
+/** VkPhysicalDeviceHostQueryResetFeaturesEXT **/
+class VkPhysicalDeviceHostQueryResetFeaturesEXT {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = 0x3B9EC588;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.hostQueryReset !== void 0) this.hostQueryReset = opts.hostQueryReset;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceHostQueryResetFeaturesEXT.pNext' isn't allowed to be filled");
+  }
+  get hostQueryReset() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set hostQueryReset(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceHostQueryResetFeaturesEXT.byteLength = 0x18;
+
+VkPhysicalDeviceHostQueryResetFeaturesEXT.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  hostQueryReset: {
+    byteOffset: 0x10,
     byteLength: 0x4
   },
 };
@@ -51995,7 +52588,23 @@ class VkRayTracingPipelineCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRayTracingPipelineCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null ) {
+      let {sType} = value;
+      
+      switch (sType) {
+          
+        case 0x3B9DB800:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pNext'");
+      };
+      this._pNext = value;
+      this.memoryViewBigInt64[0x1] = value.memoryAddress;
+    } else if (value === null) {
+      this._pNext = null;
+      this.memoryViewBigInt64[0x1] = BI0;
+    } 
+    
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -54834,6 +55443,93 @@ VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryLayout = {
     byteLength: 0x4
   },
 };
+/** VkSurfaceProtectedCapabilitiesKHR **/
+class VkSurfaceProtectedCapabilitiesKHR {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = 0x3B9E6F98;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.supportsProtected !== void 0) this.supportsProtected = opts.supportsProtected;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkSurfaceProtectedCapabilitiesKHR.pNext' isn't allowed to be filled");
+  }
+  get supportsProtected() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set supportsProtected(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  
+};
+
+VkSurfaceProtectedCapabilitiesKHR.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkSurfaceProtectedCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkSurfaceProtectedCapabilitiesKHR.byteLength = 0x18;
+
+VkSurfaceProtectedCapabilitiesKHR.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  supportsProtected: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
 /** VkPhysicalDeviceDepthClipEnableFeaturesEXT **/
 class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
   constructor(opts) {
@@ -55326,6 +56022,117 @@ VkMemoryPriorityAllocateInfoEXT.memoryLayout = {
   },
   priority: {
     byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
+/** VkPhysicalDeviceBufferDeviceAddressFeaturesEXT **/
+class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x20);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    
+    
+    this.sType = 0x3B9E8320;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.bufferDeviceAddress !== void 0) this.bufferDeviceAddress = opts.bufferDeviceAddress;
+      if (opts.bufferDeviceAddressCaptureReplay !== void 0) this.bufferDeviceAddressCaptureReplay = opts.bufferDeviceAddressCaptureReplay;
+      if (opts.bufferDeviceAddressMultiDevice !== void 0) this.bufferDeviceAddressMultiDevice = opts.bufferDeviceAddressMultiDevice;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.pNext' isn't allowed to be filled");
+  }
+  get bufferDeviceAddress() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set bufferDeviceAddress(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  get bufferDeviceAddressCaptureReplay() {
+    return this.memoryViewUint32[0x5] !== 0;
+  }
+  set bufferDeviceAddressCaptureReplay(value) {
+    this.memoryViewUint32[0x5] = value | 0;
+  }
+  get bufferDeviceAddressMultiDevice() {
+    return this.memoryViewUint32[0x6] !== 0;
+  }
+  set bufferDeviceAddressMultiDevice(value) {
+    this.memoryViewUint32[0x6] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.byteLength = 0x20;
+
+VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  bufferDeviceAddress: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+  bufferDeviceAddressCaptureReplay: {
+    byteOffset: 0x14,
+    byteLength: 0x4
+  },
+  bufferDeviceAddressMultiDevice: {
+    byteOffset: 0x18,
     byteLength: 0x4
   },
 };
@@ -56166,6 +56973,425 @@ VkCooperativeMatrixPropertiesNV.memoryLayout = {
     byteLength: 0x4
   },
 };
+/** VkPhysicalDeviceYcbcrImageArraysFeaturesEXT **/
+class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x18);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    
+    this.sType = 0x3B9EA260;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.ycbcrImageArrays !== void 0) this.ycbcrImageArrays = opts.ycbcrImageArrays;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.pNext' isn't allowed to be filled");
+  }
+  get ycbcrImageArrays() {
+    return this.memoryViewUint32[0x4] !== 0;
+  }
+  set ycbcrImageArrays(value) {
+    this.memoryViewUint32[0x4] = value | 0;
+  }
+  
+};
+
+VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.byteLength = 0x18;
+
+VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  ycbcrImageArrays: {
+    byteOffset: 0x10,
+    byteLength: 0x4
+  },
+};
+/** VkImageViewHandleInfoNVX **/
+class VkImageViewHandleInfoNVX {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x28);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    this._imageView = null;
+    
+    this._sampler = null;
+    this.sType = 0x3B9B3F30;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.imageView !== void 0) this.imageView = opts.imageView;
+      if (opts.descriptorType !== void 0) this.descriptorType = opts.descriptorType;
+      if (opts.sampler !== void 0) this.sampler = opts.sampler;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkImageViewHandleInfoNVX.pNext' isn't allowed to be filled");
+  }
+  get imageView() {
+    return this._imageView;
+  }
+  set imageView(value) {
+    if (value !== null ) {
+      
+      this._imageView = value;
+      
+      this.memoryViewBigInt64[0x2] = value.memoryViewBigInt64[0];
+    } else if (value === null) {
+      this._imageView = null;
+      this.memoryViewBigInt64[0x2] = BI0;
+    } 
+    
+  }
+  get descriptorType() {
+    return this.memoryViewInt32[0x6];
+  }
+  set descriptorType(value) {
+    
+    this.memoryViewInt32[0x6] = value;
+  }
+  get sampler() {
+    return this._sampler;
+  }
+  set sampler(value) {
+    if (value !== null ) {
+      
+      this._sampler = value;
+      
+      this.memoryViewBigInt64[0x4] = value.memoryViewBigInt64[0];
+    } else if (value === null) {
+      this._sampler = null;
+      this.memoryViewBigInt64[0x4] = BI0;
+    } 
+    
+  }
+  
+};
+
+VkImageViewHandleInfoNVX.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  return true;
+};
+
+VkImageViewHandleInfoNVX.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+};
+
+VkImageViewHandleInfoNVX.byteLength = 0x28;
+
+VkImageViewHandleInfoNVX.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  imageView: {
+    byteOffset: 0x10,
+    byteLength: 0x8
+  },
+  descriptorType: {
+    byteOffset: 0x18,
+    byteLength: 0x4
+  },
+  sampler: {
+    byteOffset: 0x20,
+    byteLength: 0x8
+  },
+};
+/** VkPipelineCreationFeedbackEXT **/
+class VkPipelineCreationFeedbackEXT {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+      this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x10);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer);
+
+    }
+    
+    
+    
+    if (typeof opts === "object") {
+      
+    }
+  }
+  get flags() {
+    return this.memoryViewInt32[0x0];
+  }
+  get duration() {
+    return this.memoryViewBigUint64[0x1];
+  }
+  
+};
+
+VkPipelineCreationFeedbackEXT.prototype.flush = function flush() {
+  
+  return true;
+};
+
+VkPipelineCreationFeedbackEXT.prototype.reflect = function reflect(memoryAddress) {
+  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
+  let dstBuffer = this.memoryBuffer;
+  let srcView = new Uint8Array(srcBuffer);
+  let dstView = new Uint8Array(dstBuffer);
+  dstView.set(srcView.subarray(0x0, 0x10), 0x0);
+};
+
+VkPipelineCreationFeedbackEXT.byteLength = 0x10;
+
+VkPipelineCreationFeedbackEXT.memoryLayout = {
+  flags: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  duration: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+};
+/** VkPipelineCreationFeedbackCreateInfoEXT **/
+class VkPipelineCreationFeedbackCreateInfoEXT {
+  constructor(opts) {
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    this.$memoryOffset = 0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+      this.$memoryOffset = opts.$memoryOffset | 0;
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+
+    } else {
+      this.memoryBuffer = new ArrayBuffer(0x28);
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
+      this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+      this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
+
+    }
+    
+    this._pNext = null;
+    this._pPipelineCreationFeedback = null;
+    
+    this._pPipelineStageCreationFeedbacks = null;
+    this._pPipelineStageCreationFeedbacksNative = null;
+    this.sType = 0x3B9DB800;
+    if (typeof opts === "object") {
+      if (opts.sType !== void 0) this.sType = opts.sType;
+      if (opts.pNext !== void 0) this.pNext = opts.pNext;
+      if (opts.pPipelineCreationFeedback !== void 0) this.pPipelineCreationFeedback = opts.pPipelineCreationFeedback;
+      if (opts.pipelineStageCreationFeedbackCount !== void 0) this.pipelineStageCreationFeedbackCount = opts.pipelineStageCreationFeedbackCount;
+      if (opts.pPipelineStageCreationFeedbacks !== void 0) this.pPipelineStageCreationFeedbacks = opts.pPipelineStageCreationFeedbacks;
+      
+    }
+  }
+  get sType() {
+    return this.memoryViewInt32[0x0];
+  }
+  set sType(value) {
+    
+    this.memoryViewInt32[0x0] = value;
+  }
+  get pNext() {
+    return this._pNext;
+  }
+  set pNext(value) {
+    throw new TypeError("'VkPipelineCreationFeedbackCreateInfoEXT.pNext' isn't allowed to be filled");
+  }
+  get pPipelineCreationFeedback() {
+    return this._pPipelineCreationFeedback;
+  }
+  set pPipelineCreationFeedback(value) {
+    if (value !== null ) {
+      value.flush();
+      this._pPipelineCreationFeedback = value;
+      this.memoryViewBigInt64[0x2] = value.memoryAddress;
+      
+    } else if (value === null) {
+      this._pPipelineCreationFeedback = null;
+      this.memoryViewBigInt64[0x2] = BI0;
+    } 
+    
+  }
+  get pipelineStageCreationFeedbackCount() {
+    return this.memoryViewUint32[0x6];
+  }
+  set pipelineStageCreationFeedbackCount(value) {
+    
+    this.memoryViewUint32[0x6] = value;
+  }
+  get pPipelineStageCreationFeedbacks() {
+    return this._pPipelineStageCreationFeedbacks;
+  }
+  set pPipelineStageCreationFeedbacks(value) {
+    if (value !== null ) {
+      this._pPipelineStageCreationFeedbacks = value;
+    } else if (value === null) {
+      this._pPipelineStageCreationFeedbacks = null;
+    } 
+    
+  }
+  
+};
+
+VkPipelineCreationFeedbackCreateInfoEXT.prototype.flush = function flush() {
+  
+  
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
+  
+  
+  if (this._pPipelineStageCreationFeedbacks !== null) {
+    let array = this._pPipelineStageCreationFeedbacks;
+    
+    for (let ii = 0; ii < array.length; ++ii) {
+      
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
+    this._pPipelineStageCreationFeedbacksNative = nativeArray;
+    this.memoryViewBigInt64[0x4] = nativeArray.address;
+  }
+  
+  return true;
+};
+
+VkPipelineCreationFeedbackCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
+  
+  
+  
+  
+  
+};
+
+VkPipelineCreationFeedbackCreateInfoEXT.byteLength = 0x28;
+
+VkPipelineCreationFeedbackCreateInfoEXT.memoryLayout = {
+  sType: {
+    byteOffset: 0x0,
+    byteLength: 0x4
+  },
+  pNext: {
+    byteOffset: 0x8,
+    byteLength: 0x8
+  },
+  pPipelineCreationFeedback: {
+    byteOffset: 0x10,
+    byteLength: 0x8
+  },
+  pipelineStageCreationFeedbackCount: {
+    byteOffset: 0x18,
+    byteLength: 0x4
+  },
+  pPipelineStageCreationFeedbacks: {
+    byteOffset: 0x20,
+    byteLength: 0x8
+  },
+};
 /** VkClearColorValue **/
 class VkClearColorValue {
   constructor(opts) {
@@ -56467,6 +57693,7 @@ module.exports = {
   vkCreateQueryPool: nvk.vkCreateQueryPool,
   vkDestroyQueryPool: nvk.vkDestroyQueryPool,
   vkGetQueryPoolResults: nvk.vkGetQueryPoolResults,
+  vkResetQueryPoolEXT: nvk.vkResetQueryPoolEXT,
   vkCreateBuffer: nvk.vkCreateBuffer,
   vkDestroyBuffer: nvk.vkDestroyBuffer,
   vkCreateBufferView: nvk.vkCreateBufferView,
@@ -56658,6 +57885,7 @@ module.exports = {
   vkMergeValidationCachesEXT: nvk.vkMergeValidationCachesEXT,
   vkGetDescriptorSetLayoutSupport: nvk.vkGetDescriptorSetLayoutSupport,
   vkGetShaderInfoAMD: nvk.vkGetShaderInfoAMD,
+  vkSetLocalDimmingAMD: nvk.vkSetLocalDimmingAMD,
   vkGetPhysicalDeviceCalibrateableTimeDomainsEXT: nvk.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT,
   vkGetCalibratedTimestampsEXT: nvk.vkGetCalibratedTimestampsEXT,
   vkSetDebugUtilsObjectNameEXT: nvk.vkSetDebugUtilsObjectNameEXT,
@@ -56709,6 +57937,7 @@ module.exports = {
   vkGetImageDrmFormatModifierPropertiesEXT: nvk.vkGetImageDrmFormatModifierPropertiesEXT,
   vkGetBufferDeviceAddressEXT: nvk.vkGetBufferDeviceAddressEXT,
   vkGetPhysicalDeviceCooperativeMatrixPropertiesNV: nvk.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV,
+  vkGetImageViewHandleNVX: nvk.vkGetImageViewHandleNVX,
   VkInstance,
   VkPhysicalDevice,
   VkDevice,
@@ -56916,8 +58145,10 @@ module.exports = {
   VkPresentRegionsKHR,
   VkPresentRegionKHR,
   VkRectLayerKHR,
-  VkPhysicalDeviceVariablePointerFeatures,
+  VkPhysicalDeviceVariablePointersFeatures,
+  VkPhysicalDeviceVariablePointersFeaturesKHR,
   VkPhysicalDeviceVariablePointerFeaturesKHR,
+  VkPhysicalDeviceVariablePointerFeatures,
   VkExternalMemoryProperties,
   VkExternalMemoryPropertiesKHR,
   VkPhysicalDeviceExternalImageFormatInfo,
@@ -57000,6 +58231,8 @@ module.exports = {
   VkDescriptorUpdateTemplateCreateInfoKHR,
   VkXYColorEXT,
   VkHdrMetadataEXT,
+  VkDisplayNativeHdrSurfaceCapabilitiesAMD,
+  VkSwapchainDisplayNativeHdrCreateInfoAMD,
   VkRefreshCycleDurationGOOGLE,
   VkPastPresentationTimingGOOGLE,
   VkPresentTimesInfoGOOGLE,
@@ -57091,9 +58324,11 @@ module.exports = {
   VkPhysicalDeviceMaintenance3PropertiesKHR,
   VkDescriptorSetLayoutSupport,
   VkDescriptorSetLayoutSupportKHR,
+  VkPhysicalDeviceShaderDrawParametersFeatures,
   VkPhysicalDeviceShaderDrawParameterFeatures,
   VkPhysicalDeviceFloat16Int8FeaturesKHR,
   VkPhysicalDeviceFloatControlsPropertiesKHR,
+  VkPhysicalDeviceHostQueryResetFeaturesEXT,
   VkShaderResourceUsageAMD,
   VkShaderStatisticsInfoAMD,
   VkDeviceQueueGlobalPriorityCreateInfoEXT,
@@ -57183,11 +58418,13 @@ module.exports = {
   VkPhysicalDeviceFragmentDensityMapPropertiesEXT,
   VkRenderPassFragmentDensityMapCreateInfoEXT,
   VkPhysicalDeviceScalarBlockLayoutFeaturesEXT,
+  VkSurfaceProtectedCapabilitiesKHR,
   VkPhysicalDeviceDepthClipEnableFeaturesEXT,
   VkPipelineRasterizationDepthClipStateCreateInfoEXT,
   VkPhysicalDeviceMemoryBudgetPropertiesEXT,
   VkPhysicalDeviceMemoryPriorityFeaturesEXT,
   VkMemoryPriorityAllocateInfoEXT,
+  VkPhysicalDeviceBufferDeviceAddressFeaturesEXT,
   VkPhysicalDeviceBufferAddressFeaturesEXT,
   VkBufferDeviceAddressInfoEXT,
   VkBufferDeviceAddressCreateInfoEXT,
@@ -57196,6 +58433,10 @@ module.exports = {
   VkPhysicalDeviceCooperativeMatrixFeaturesNV,
   VkPhysicalDeviceCooperativeMatrixPropertiesNV,
   VkCooperativeMatrixPropertiesNV,
+  VkPhysicalDeviceYcbcrImageArraysFeaturesEXT,
+  VkImageViewHandleInfoNVX,
+  VkPipelineCreationFeedbackEXT,
+  VkPipelineCreationFeedbackCreateInfoEXT,
   VkClearColorValue,
   VkClearValue
 };

@@ -27,6 +27,7 @@ VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
 
 
+static PFN_vkResetQueryPoolEXT $vkResetQueryPoolEXT = nullptr;
 static PFN_vkCmdBeginConditionalRenderingEXT $vkCmdBeginConditionalRenderingEXT = nullptr;
 static PFN_vkCmdEndConditionalRenderingEXT $vkCmdEndConditionalRenderingEXT = nullptr;
 static PFN_vkGetPhysicalDeviceDisplayPropertiesKHR $vkGetPhysicalDeviceDisplayPropertiesKHR = nullptr;
@@ -104,6 +105,7 @@ static PFN_vkDestroyValidationCacheEXT $vkDestroyValidationCacheEXT = nullptr;
 static PFN_vkGetValidationCacheDataEXT $vkGetValidationCacheDataEXT = nullptr;
 static PFN_vkMergeValidationCachesEXT $vkMergeValidationCachesEXT = nullptr;
 static PFN_vkGetShaderInfoAMD $vkGetShaderInfoAMD = nullptr;
+static PFN_vkSetLocalDimmingAMD $vkSetLocalDimmingAMD = nullptr;
 static PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT $vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = nullptr;
 static PFN_vkGetCalibratedTimestampsEXT $vkGetCalibratedTimestampsEXT = nullptr;
 static PFN_vkSetDebugUtilsObjectNameEXT $vkSetDebugUtilsObjectNameEXT = nullptr;
@@ -155,9 +157,11 @@ static PFN_vkCreateRayTracingPipelinesNV $vkCreateRayTracingPipelinesNV = nullpt
 static PFN_vkGetImageDrmFormatModifierPropertiesEXT $vkGetImageDrmFormatModifierPropertiesEXT = nullptr;
 static PFN_vkGetBufferDeviceAddressEXT $vkGetBufferDeviceAddressEXT = nullptr;
 static PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV $vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = nullptr;
+static PFN_vkGetImageViewHandleNVX $vkGetImageViewHandleNVX = nullptr;
 
 void vkUseDevice(VkDevice pDevice) {
   currentDevice = pDevice;
+  $vkResetQueryPoolEXT = (PFN_vkResetQueryPoolEXT) vkGetDeviceProcAddr(currentDevice, "vkResetQueryPoolEXT");
   $vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginConditionalRenderingEXT");
   $vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdEndConditionalRenderingEXT");
   $vkCreateSharedSwapchainsKHR = (PFN_vkCreateSharedSwapchainsKHR) vkGetDeviceProcAddr(currentDevice, "vkCreateSharedSwapchainsKHR");
@@ -211,6 +215,7 @@ void vkUseDevice(VkDevice pDevice) {
   $vkGetValidationCacheDataEXT = (PFN_vkGetValidationCacheDataEXT) vkGetDeviceProcAddr(currentDevice, "vkGetValidationCacheDataEXT");
   $vkMergeValidationCachesEXT = (PFN_vkMergeValidationCachesEXT) vkGetDeviceProcAddr(currentDevice, "vkMergeValidationCachesEXT");
   $vkGetShaderInfoAMD = (PFN_vkGetShaderInfoAMD) vkGetDeviceProcAddr(currentDevice, "vkGetShaderInfoAMD");
+  $vkSetLocalDimmingAMD = (PFN_vkSetLocalDimmingAMD) vkGetDeviceProcAddr(currentDevice, "vkSetLocalDimmingAMD");
   $vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = (PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
   $vkGetCalibratedTimestampsEXT = (PFN_vkGetCalibratedTimestampsEXT) vkGetDeviceProcAddr(currentDevice, "vkGetCalibratedTimestampsEXT");
   $vkGetMemoryHostPointerPropertiesEXT = (PFN_vkGetMemoryHostPointerPropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryHostPointerPropertiesEXT");
@@ -251,6 +256,7 @@ void vkUseDevice(VkDevice pDevice) {
   $vkGetImageDrmFormatModifierPropertiesEXT = (PFN_vkGetImageDrmFormatModifierPropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetImageDrmFormatModifierPropertiesEXT");
   $vkGetBufferDeviceAddressEXT = (PFN_vkGetBufferDeviceAddressEXT) vkGetDeviceProcAddr(currentDevice, "vkGetBufferDeviceAddressEXT");
   $vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+  $vkGetImageViewHandleNVX = (PFN_vkGetImageViewHandleNVX) vkGetDeviceProcAddr(currentDevice, "vkGetImageViewHandleNVX");
 };
 
 void vkUseInstance(VkInstance pInstance) {
@@ -3693,6 +3699,68 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
+  
+};
+
+Napi::Value _vkResetQueryPoolEXT(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  
+  Napi::Object obj0;
+  VkDevice *$p0 = nullptr;
+  if (info[0].IsObject()) {
+    Napi::Object obj = info[0].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
+      return env.Undefined();
+    }
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
+  } else if (info[0].IsNull()) {
+    $p0 = VK_NULL_HANDLE;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkResetQueryPoolEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
+  Napi::Object obj1;
+  VkQueryPool *$p1 = nullptr;
+  if (info[1].IsObject()) {
+    Napi::Object obj = info[1].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
+      NapiObjectTypeError(info[1], "argument 2", "VkQueryPool");
+      return env.Undefined();
+    }
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
+  } else if (info[1].IsNull()) {
+    $p1 = VK_NULL_HANDLE;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkResetQueryPoolEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstQuery' in 'vkResetQueryPoolEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
+
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'queryCount' in 'vkResetQueryPoolEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
+$vkResetQueryPoolEXT(
+    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
+    info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
+    $p2,
+    $p3
+  );
+  
+  
+  return env.Undefined();
   
 };
 
@@ -17795,6 +17863,61 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   
 };
 
+Napi::Value _vkSetLocalDimmingAMD(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  
+  Napi::Object obj0;
+  VkDevice *$p0 = nullptr;
+  if (info[0].IsObject()) {
+    Napi::Object obj = info[0].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
+      return env.Undefined();
+    }
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
+  } else if (info[0].IsNull()) {
+    $p0 = VK_NULL_HANDLE;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkSetLocalDimmingAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
+  Napi::Object obj1;
+  VkSwapchainKHR *$p1 = nullptr;
+  if (info[1].IsObject()) {
+    Napi::Object obj = info[1].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
+      NapiObjectTypeError(info[1], "argument 2", "VkSwapchainKHR");
+      return env.Undefined();
+    }
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
+  } else if (info[1].IsNull()) {
+    $p1 = VK_NULL_HANDLE;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapChain' in 'vkSetLocalDimmingAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
+  if (!info[2].IsBoolean() && !info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Boolean' or 'Number' for argument 3 'localDimmingEnable' in 'vkSetLocalDimmingAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  uint32_t $p2 = static_cast<uint32_t>(info[2].IsBoolean() ? info[2].As<Napi::Boolean>().Value() : info[2].As<Napi::Number>().Int32Value());
+$vkSetLocalDimmingAMD(
+    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
+    info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
+    $p2
+  );
+  
+  
+  return env.Undefined();
+  
+};
+
 Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
@@ -21655,6 +21778,56 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
       obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
+  
+  
+  return Napi::Number::New(env, static_cast<int32_t>(out));
+  
+};
+
+Napi::Value _vkGetImageViewHandleNVX(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  
+  Napi::Object obj0;
+  VkDevice *$p0 = nullptr;
+  if (info[0].IsObject()) {
+    Napi::Object obj = info[0].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
+      NapiObjectTypeError(info[0], "argument 1", "VkDevice");
+      return env.Undefined();
+    }
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
+  } else if (info[0].IsNull()) {
+    $p0 = VK_NULL_HANDLE;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageViewHandleNVX'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
+  Napi::Object obj1;
+  VkImageViewHandleInfoNVX *$p1 = nullptr;
+  if (info[1].IsObject()) {
+    Napi::Object obj = info[1].As<Napi::Object>();
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX) {
+      NapiObjectTypeError(info[1], "argument 2", "VkImageViewHandleInfoNVX");
+      return env.Undefined();
+    }
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageViewHandleInfoNVX* instance = reinterpret_cast<VkImageViewHandleInfoNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
+  } else if (info[1].IsNull()) {
+    $p1 = nullptr;
+  } else {
+    Napi::TypeError::New(env, "Expected 'VkImageViewHandleInfoNVX' or 'null' for argument 2 'pInfo' in 'vkGetImageViewHandleNVX'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  uint32_t out = $vkGetImageViewHandleNVX(
+    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
+    $p1
+  );
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));

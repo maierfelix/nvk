@@ -146,6 +146,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["vkCreateQueryPool"] = Napi::Function::New(env, _vkCreateQueryPool, "vkCreateQueryPool");
   exports["vkDestroyQueryPool"] = Napi::Function::New(env, _vkDestroyQueryPool, "vkDestroyQueryPool");
   exports["vkGetQueryPoolResults"] = Napi::Function::New(env, _vkGetQueryPoolResults, "vkGetQueryPoolResults");
+  exports["vkResetQueryPoolEXT"] = Napi::Function::New(env, _vkResetQueryPoolEXT, "vkResetQueryPoolEXT");
   exports["vkCreateBuffer"] = Napi::Function::New(env, _vkCreateBuffer, "vkCreateBuffer");
   exports["vkDestroyBuffer"] = Napi::Function::New(env, _vkDestroyBuffer, "vkDestroyBuffer");
   exports["vkCreateBufferView"] = Napi::Function::New(env, _vkCreateBufferView, "vkCreateBufferView");
@@ -337,6 +338,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["vkMergeValidationCachesEXT"] = Napi::Function::New(env, _vkMergeValidationCachesEXT, "vkMergeValidationCachesEXT");
   exports["vkGetDescriptorSetLayoutSupport"] = Napi::Function::New(env, _vkGetDescriptorSetLayoutSupport, "vkGetDescriptorSetLayoutSupport");
   exports["vkGetShaderInfoAMD"] = Napi::Function::New(env, _vkGetShaderInfoAMD, "vkGetShaderInfoAMD");
+  exports["vkSetLocalDimmingAMD"] = Napi::Function::New(env, _vkSetLocalDimmingAMD, "vkSetLocalDimmingAMD");
   exports["vkGetPhysicalDeviceCalibrateableTimeDomainsEXT"] = Napi::Function::New(env, _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
   exports["vkGetCalibratedTimestampsEXT"] = Napi::Function::New(env, _vkGetCalibratedTimestampsEXT, "vkGetCalibratedTimestampsEXT");
   exports["vkSetDebugUtilsObjectNameEXT"] = Napi::Function::New(env, _vkSetDebugUtilsObjectNameEXT, "vkSetDebugUtilsObjectNameEXT");
@@ -388,6 +390,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["vkGetImageDrmFormatModifierPropertiesEXT"] = Napi::Function::New(env, _vkGetImageDrmFormatModifierPropertiesEXT, "vkGetImageDrmFormatModifierPropertiesEXT");
   exports["vkGetBufferDeviceAddressEXT"] = Napi::Function::New(env, _vkGetBufferDeviceAddressEXT, "vkGetBufferDeviceAddressEXT");
   exports["vkGetPhysicalDeviceCooperativeMatrixPropertiesNV"] = Napi::Function::New(env, _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+  exports["vkGetImageViewHandleNVX"] = Napi::Function::New(env, _vkGetImageViewHandleNVX, "vkGetImageViewHandleNVX");
   
   return exports;
 }

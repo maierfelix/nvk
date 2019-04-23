@@ -57,7 +57,7 @@ declare global {
    * @member VK_EXT_EXTENSION_28_EXTENSION_NAME
    * @member VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME
    * @member VK_NVX_EXTENSION_30_EXTENSION_NAME
-   * @member VK_NVX_EXTENSION_31_EXTENSION_NAME
+   * @member VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME
    * @member VK_AMD_EXTENSION_32_EXTENSION_NAME
    * @member VK_AMD_EXTENSION_33_EXTENSION_NAME
    * @member VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME
@@ -76,7 +76,7 @@ declare global {
    * @member VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME
    * @member VK_NVX_EXTENSION_48_EXTENSION_NAME
    * @member VK_GOOGLE_EXTENSION_49_EXTENSION_NAME
-   * @member VK_GOOGLE_EXTENSION_50_EXTENSION_NAME
+   * @member VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME
    * @member VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME
    * @member VK_NVX_EXTENSION_52_EXTENSION_NAME
    * @member VK_NV_EXTENSION_53_EXTENSION_NAME
@@ -216,8 +216,8 @@ declare global {
    * @member VK_KHR_EXTENSION_189_EXTENSION_NAME
    * @member VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME
    * @member VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME
-   * @member VK_GOOGLE_EXTENSION_192_EXTENSION_NAME
-   * @member VK_GOOGLE_EXTENSION_193_EXTENSION_NAME
+   * @member VK_GGP_FRAME_TOKEN_EXTENSION_NAME
+   * @member VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME
    * @member VK_GOOGLE_EXTENSION_194_EXTENSION_NAME
    * @member VK_GOOGLE_EXTENSION_195_EXTENSION_NAME
    * @member VK_GOOGLE_EXTENSION_196_EXTENSION_NAME
@@ -238,11 +238,11 @@ declare global {
    * @member VK_KHR_EXTENSION_211_EXTENSION_NAME
    * @member VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME
    * @member VK_EXT_PCI_BUS_INFO_EXTENSION_NAME
-   * @member VK_KHR_EXTENSION_214_EXTENSION_NAME
+   * @member VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME
    * @member VK_FUCHSIA_IMAGEPIPE_SURFACE_EXTENSION_NAME
    * @member VK_KHR_EXTENSION_216_EXTENSION_NAME
    * @member VK_KHR_EXTENSION_217_EXTENSION_NAME
-   * @member VK_EXT_MACOS_IOS_WINDOW_EXTENSION_NAME
+   * @member VK_EXT_METAL_SURFACE_EXTENSION_NAME
    * @member VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME
    * @member VK_EXT_EXTENSION_220_EXTENSION_NAME
    * @member VK_KHR_EXTENSION_221_EXTENSION_NAME
@@ -264,7 +264,7 @@ declare global {
    * @member VK_KHR_EXTENSION_237_EXTENSION_NAME
    * @member VK_EXT_MEMORY_BUDGET_EXTENSION_NAME
    * @member VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME
-   * @member VK_KHR_EXTENSION_240_EXTENSION_NAME
+   * @member VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME
    * @member VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME
    * @member VK_NV_EXTENSION_242_EXTENSION_NAME
    * @member VK_INTEL_EXTENSION_243_EXTENSION_NAME
@@ -277,10 +277,16 @@ declare global {
    * @member VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME
    * @member VK_NV_EXTENSION_251_EXTENSION_NAME
    * @member VK_NV_EXTENSION_252_EXTENSION_NAME
-   * @member VK_NV_EXTENSION_253_EXTENSION_NAME
+   * @member VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME
    * @member VK_EXT_EXTENSION_254_EXTENSION_NAME
    * @member VK_EXT_EXTENSION_255_EXTENSION_NAME
-   * @member VK_EXT_EXTENSION_256_EXTENSION_NAME
+   * @member VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME
+   * @member VK_EXT_EXTENSION_257_EXTENSION_NAME
+   * @member VK_EXT_EXTENSION_258_EXTENSION_NAME
+   * @member VK_EXT_EXTENSION_259_EXTENSION_NAME
+   * @member VK_EXT_extension_260
+   * @member VK_NV_EXTENSION_261_EXTENSION_NAME
+   * @member VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME
    */
   enum API_Extensions_Strings {
     VK_KHR_SURFACE_EXTENSION_NAME,
@@ -313,7 +319,7 @@ declare global {
     VK_EXT_EXTENSION_28_EXTENSION_NAME,
     VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME,
     VK_NVX_EXTENSION_30_EXTENSION_NAME,
-    VK_NVX_EXTENSION_31_EXTENSION_NAME,
+    VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME,
     VK_AMD_EXTENSION_32_EXTENSION_NAME,
     VK_AMD_EXTENSION_33_EXTENSION_NAME,
     VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME,
@@ -332,7 +338,7 @@ declare global {
     VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME,
     VK_NVX_EXTENSION_48_EXTENSION_NAME,
     VK_GOOGLE_EXTENSION_49_EXTENSION_NAME,
-    VK_GOOGLE_EXTENSION_50_EXTENSION_NAME,
+    VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME,
     VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME,
     VK_NVX_EXTENSION_52_EXTENSION_NAME,
     VK_NV_EXTENSION_53_EXTENSION_NAME,
@@ -472,8 +478,8 @@ declare global {
     VK_KHR_EXTENSION_189_EXTENSION_NAME,
     VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME,
     VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME,
-    VK_GOOGLE_EXTENSION_192_EXTENSION_NAME,
-    VK_GOOGLE_EXTENSION_193_EXTENSION_NAME,
+    VK_GGP_FRAME_TOKEN_EXTENSION_NAME,
+    VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME,
     VK_GOOGLE_EXTENSION_194_EXTENSION_NAME,
     VK_GOOGLE_EXTENSION_195_EXTENSION_NAME,
     VK_GOOGLE_EXTENSION_196_EXTENSION_NAME,
@@ -494,11 +500,11 @@ declare global {
     VK_KHR_EXTENSION_211_EXTENSION_NAME,
     VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME,
     VK_EXT_PCI_BUS_INFO_EXTENSION_NAME,
-    VK_KHR_EXTENSION_214_EXTENSION_NAME,
+    VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME,
     VK_FUCHSIA_IMAGEPIPE_SURFACE_EXTENSION_NAME,
     VK_KHR_EXTENSION_216_EXTENSION_NAME,
     VK_KHR_EXTENSION_217_EXTENSION_NAME,
-    VK_EXT_MACOS_IOS_WINDOW_EXTENSION_NAME,
+    VK_EXT_METAL_SURFACE_EXTENSION_NAME,
     VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME,
     VK_EXT_EXTENSION_220_EXTENSION_NAME,
     VK_KHR_EXTENSION_221_EXTENSION_NAME,
@@ -520,7 +526,7 @@ declare global {
     VK_KHR_EXTENSION_237_EXTENSION_NAME,
     VK_EXT_MEMORY_BUDGET_EXTENSION_NAME,
     VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME,
-    VK_KHR_EXTENSION_240_EXTENSION_NAME,
+    VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME,
     VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME,
     VK_NV_EXTENSION_242_EXTENSION_NAME,
     VK_INTEL_EXTENSION_243_EXTENSION_NAME,
@@ -533,10 +539,16 @@ declare global {
     VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME,
     VK_NV_EXTENSION_251_EXTENSION_NAME,
     VK_NV_EXTENSION_252_EXTENSION_NAME,
-    VK_NV_EXTENSION_253_EXTENSION_NAME,
+    VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME,
     VK_EXT_EXTENSION_254_EXTENSION_NAME,
     VK_EXT_EXTENSION_255_EXTENSION_NAME,
-    VK_EXT_EXTENSION_256_EXTENSION_NAME,
+    VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME,
+    VK_EXT_EXTENSION_257_EXTENSION_NAME,
+    VK_EXT_EXTENSION_258_EXTENSION_NAME,
+    VK_EXT_EXTENSION_259_EXTENSION_NAME,
+    VK_EXT_extension_260,
+    VK_NV_EXTENSION_261_EXTENSION_NAME,
+    VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME,
     
   }
   
@@ -574,7 +586,7 @@ declare global {
    * @member VK_EXT_EXTENSION_28_SPEC_VERSION
    * @member VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION
    * @member VK_NVX_EXTENSION_30_SPEC_VERSION
-   * @member VK_NVX_EXTENSION_31_SPEC_VERSION
+   * @member VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION
    * @member VK_AMD_EXTENSION_32_SPEC_VERSION
    * @member VK_AMD_EXTENSION_33_SPEC_VERSION
    * @member VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION
@@ -593,7 +605,7 @@ declare global {
    * @member VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION
    * @member VK_NVX_EXTENSION_48_SPEC_VERSION
    * @member VK_GOOGLE_EXTENSION_49_SPEC_VERSION
-   * @member VK_GOOGLE_EXTENSION_50_SPEC_VERSION
+   * @member VK_GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION
    * @member VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION
    * @member VK_NVX_EXTENSION_52_SPEC_VERSION
    * @member VK_NV_EXTENSION_53_SPEC_VERSION
@@ -734,8 +746,8 @@ declare global {
    * @member VK_KHR_EXTENSION_189_SPEC_VERSION
    * @member VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION
    * @member VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION
-   * @member VK_GOOGLE_EXTENSION_192_SPEC_VERSION
-   * @member VK_GOOGLE_EXTENSION_193_SPEC_VERSION
+   * @member VK_GGP_FRAME_TOKEN_SPEC_VERSION
+   * @member VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION
    * @member VK_GOOGLE_EXTENSION_194_SPEC_VERSION
    * @member VK_GOOGLE_EXTENSION_195_SPEC_VERSION
    * @member VK_GOOGLE_EXTENSION_196_SPEC_VERSION
@@ -756,11 +768,11 @@ declare global {
    * @member VK_KHR_EXTENSION_211_SPEC_VERSION
    * @member VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION
    * @member VK_EXT_PCI_BUS_INFO_SPEC_VERSION
-   * @member VK_KHR_EXTENSION_214_SPEC_VERSION
+   * @member VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION
    * @member VK_FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION
    * @member VK_KHR_EXTENSION_216_SPEC_VERSION
    * @member VK_KHR_EXTENSION_217_SPEC_VERSION
-   * @member VK_EXT_MACOS_IOS_WINDOW_SPEC_VERSION
+   * @member VK_EXT_METAL_SURFACE_SPEC_VERSION
    * @member VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION
    * @member VK_EXT_EXTENSION_220_SPEC_VERSION
    * @member VK_KHR_EXTENSION_221_SPEC_VERSION
@@ -782,7 +794,7 @@ declare global {
    * @member VK_KHR_EXTENSION_237_SPEC_VERSION
    * @member VK_EXT_MEMORY_BUDGET_SPEC_VERSION
    * @member VK_EXT_MEMORY_PRIORITY_SPEC_VERSION
-   * @member VK_KHR_EXTENSION_240_SPEC_VERSION
+   * @member VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION
    * @member VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION
    * @member VK_NV_EXTENSION_242_SPEC_VERSION
    * @member VK_INTEL_EXTENSION_243_SPEC_VERSION
@@ -795,10 +807,16 @@ declare global {
    * @member VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION
    * @member VK_NV_EXTENSION_251_SPEC_VERSION
    * @member VK_NV_EXTENSION_252_SPEC_VERSION
-   * @member VK_NV_EXTENSION_253_SPEC_VERSION
+   * @member VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION
    * @member VK_EXT_EXTENSION_254_SPEC_VERSION
    * @member VK_EXT_EXTENSION_255_SPEC_VERSION
-   * @member VK_EXT_EXTENSION_256_SPEC_VERSION
+   * @member VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION
+   * @member VK_EXT_EXTENSION_257_SPEC_VERSION
+   * @member VK_EXT_EXTENSION_258_SPEC_VERSION
+   * @member VK_EXT_EXTENSION_259_SPEC_VERSION
+   * @member VK_EXT_EXTENSION_260_SPEC_VERSION
+   * @member VK_NV_EXTENSION_261_SPEC_VERSION
+   * @member VK_EXT_HOST_QUERY_RESET_SPEC_VERSION
    */
   enum API_Extensions {
     VK_KHR_SURFACE_SPEC_VERSION,
@@ -833,7 +851,7 @@ declare global {
     VK_EXT_EXTENSION_28_SPEC_VERSION,
     VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION,
     VK_NVX_EXTENSION_30_SPEC_VERSION,
-    VK_NVX_EXTENSION_31_SPEC_VERSION,
+    VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION,
     VK_AMD_EXTENSION_32_SPEC_VERSION,
     VK_AMD_EXTENSION_33_SPEC_VERSION,
     VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION,
@@ -852,7 +870,7 @@ declare global {
     VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION,
     VK_NVX_EXTENSION_48_SPEC_VERSION,
     VK_GOOGLE_EXTENSION_49_SPEC_VERSION,
-    VK_GOOGLE_EXTENSION_50_SPEC_VERSION,
+    VK_GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION,
     VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION,
     VK_NVX_EXTENSION_52_SPEC_VERSION,
     VK_NV_EXTENSION_53_SPEC_VERSION,
@@ -993,8 +1011,8 @@ declare global {
     VK_KHR_EXTENSION_189_SPEC_VERSION,
     VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION,
     VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION,
-    VK_GOOGLE_EXTENSION_192_SPEC_VERSION,
-    VK_GOOGLE_EXTENSION_193_SPEC_VERSION,
+    VK_GGP_FRAME_TOKEN_SPEC_VERSION,
+    VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION,
     VK_GOOGLE_EXTENSION_194_SPEC_VERSION,
     VK_GOOGLE_EXTENSION_195_SPEC_VERSION,
     VK_GOOGLE_EXTENSION_196_SPEC_VERSION,
@@ -1015,11 +1033,11 @@ declare global {
     VK_KHR_EXTENSION_211_SPEC_VERSION,
     VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION,
     VK_EXT_PCI_BUS_INFO_SPEC_VERSION,
-    VK_KHR_EXTENSION_214_SPEC_VERSION,
+    VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION,
     VK_FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION,
     VK_KHR_EXTENSION_216_SPEC_VERSION,
     VK_KHR_EXTENSION_217_SPEC_VERSION,
-    VK_EXT_MACOS_IOS_WINDOW_SPEC_VERSION,
+    VK_EXT_METAL_SURFACE_SPEC_VERSION,
     VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION,
     VK_EXT_EXTENSION_220_SPEC_VERSION,
     VK_KHR_EXTENSION_221_SPEC_VERSION,
@@ -1041,7 +1059,7 @@ declare global {
     VK_KHR_EXTENSION_237_SPEC_VERSION,
     VK_EXT_MEMORY_BUDGET_SPEC_VERSION,
     VK_EXT_MEMORY_PRIORITY_SPEC_VERSION,
-    VK_KHR_EXTENSION_240_SPEC_VERSION,
+    VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION,
     VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION,
     VK_NV_EXTENSION_242_SPEC_VERSION,
     VK_INTEL_EXTENSION_243_SPEC_VERSION,
@@ -1054,10 +1072,16 @@ declare global {
     VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION,
     VK_NV_EXTENSION_251_SPEC_VERSION,
     VK_NV_EXTENSION_252_SPEC_VERSION,
-    VK_NV_EXTENSION_253_SPEC_VERSION,
+    VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION,
     VK_EXT_EXTENSION_254_SPEC_VERSION,
     VK_EXT_EXTENSION_255_SPEC_VERSION,
-    VK_EXT_EXTENSION_256_SPEC_VERSION,
+    VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION,
+    VK_EXT_EXTENSION_257_SPEC_VERSION,
+    VK_EXT_EXTENSION_258_SPEC_VERSION,
+    VK_EXT_EXTENSION_259_SPEC_VERSION,
+    VK_EXT_EXTENSION_260_SPEC_VERSION,
+    VK_NV_EXTENSION_261_SPEC_VERSION,
+    VK_EXT_HOST_QUERY_RESET_SPEC_VERSION,
     
   }
   
@@ -1243,7 +1267,7 @@ declare global {
    * Specify how a component is swizzled
    * @member VK_COMPONENT_SWIZZLE_IDENTITY specifies that the component is set to the identity swizzle.
    * @member VK_COMPONENT_SWIZZLE_ZERO specifies that the component is set to zero.
-   * @member VK_COMPONENT_SWIZZLE_ONE specifies that the component is set to either 1 or 1.0, depending on whether the type of the image view format is integer or floating-point respectively, as determined by the <<features-formats-definition,Format Definition>> section for each 'VkFormat'.
+   * @member VK_COMPONENT_SWIZZLE_ONE specifies that the component is set to either 1 or 1.0, depending on whether the type of the image view format is integer or floating-point respectively, as determined by the <<formats-definition,Format Definition>> section for each 'VkFormat'.
    * @member VK_COMPONENT_SWIZZLE_R specifies that the component is set to the value of the R component of the image.
    * @member VK_COMPONENT_SWIZZLE_G specifies that the component is set to the value of the G component of the image.
    * @member VK_COMPONENT_SWIZZLE_B specifies that the component is set to the value of the B component of the image.
@@ -1357,17 +1381,17 @@ declare global {
   
   /**
    * Supported primitive topologies
-   * @member VK_PRIMITIVE_TOPOLOGY_POINT_LIST
-   * @member VK_PRIMITIVE_TOPOLOGY_LINE_LIST
-   * @member VK_PRIMITIVE_TOPOLOGY_LINE_STRIP
-   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST
-   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP
-   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN
-   * @member VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY
-   * @member VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY
-   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY
-   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY
-   * @member VK_PRIMITIVE_TOPOLOGY_PATCH_LIST
+   * @member VK_PRIMITIVE_TOPOLOGY_POINT_LIST specifies a series of <<drawing-point-lists,separate point primitives>>.
+   * @member VK_PRIMITIVE_TOPOLOGY_LINE_LIST specifies a series of <<drawing-line-lists,separate line primitives>>.
+   * @member VK_PRIMITIVE_TOPOLOGY_LINE_STRIP specifies a series of <<drawing-line-strips,connected line primitives>> with consecutive lines sharing a vertex.
+   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST specifies a series of <<drawing-triangle-lists,separate triangle primitives>>.
+   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP specifies a series of <<drawing-triangle-strips,connected triangle primitives>> with consecutive triangles sharing an edge.
+   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN specifies a series of <<drawing-triangle-fans,connected triangle primitives>> with all triangles sharing a common vertex.
+   * @member VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY specifies a series <<drawing-line-lists-with-adjacency,separate line primitives with adjacency>>.
+   * @member VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY specifies a series <<drawing-line-strips-with-adjacency,connected line primitives with adjacency>>, with consecutive primitives sharing three vertices.
+   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY specifies a series <<drawing-line-lists-with-adjacency,separate triangle primitives with adjacency>>.
+   * @member VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY specifies <<drawing-line-lists-with-adjacency,connected triangle primitives with adjacency>>, with consecutive triangles sharing an edge.
+   * @member VK_PRIMITIVE_TOPOLOGY_PATCH_LIST specifies <<drawing-patch-lists,separate patch primitives>>.
    */
   enum VkPrimitiveTopology {
     VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
@@ -2309,7 +2333,9 @@ declare global {
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT
    * @member VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT
+   * @member VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX
    * @member VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD
+   * @member VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV
    * @member VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR
@@ -2421,6 +2447,7 @@ declare global {
    * @member VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR
    * @member VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR
+   * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR
    * @member VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR
    * @member VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR
    * @member VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR
@@ -2517,6 +2544,8 @@ declare global {
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT
    * @member VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT
+   * @member VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP
+   * @member VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR
@@ -2532,7 +2561,10 @@ declare global {
    * @member VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT
+   * @member VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD
+   * @member VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD
    * @member VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA
+   * @member VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT
    * @member VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT
@@ -2540,7 +2572,9 @@ declare global {
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT
    * @member VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT
+   * @member VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV
+   * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT
    * @member VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT
    * @member VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT
@@ -2549,6 +2583,11 @@ declare global {
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV
    * @member VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV
    * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV
+   * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT
+   * @member VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT
+   * @member VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT
+   * @member VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT
+   * @member VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT
    */
   enum VkStructureType {
     VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -2629,7 +2668,9 @@ declare global {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT,
     VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT,
+    VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX,
     VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD,
+    VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV,
     VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR,
@@ -2741,6 +2782,7 @@ declare global {
     VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR,
     VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR,
     VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR,
     VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR,
     VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR,
@@ -2837,6 +2879,8 @@ declare global {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT,
     VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT,
+    VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP,
+    VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR,
@@ -2852,7 +2896,10 @@ declare global {
     VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT,
+    VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD,
+    VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD,
     VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA,
+    VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT,
     VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT,
@@ -2860,7 +2907,9 @@ declare global {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT,
     VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT,
+    VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT,
     VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT,
     VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT,
@@ -2869,6 +2918,11 @@ declare global {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV,
     VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV,
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT,
+    VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT,
+    VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT,
+    VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT,
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT,
     
   }
   
@@ -2916,6 +2970,7 @@ declare global {
    * @member VK_ERROR_FRAGMENTATION_EXT
    * @member VK_ERROR_NOT_PERMITTED_EXT
    * @member VK_ERROR_INVALID_DEVICE_ADDRESS_EXT
+   * @member VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT
    */
   enum VkResult {
     VK_SUCCESS,
@@ -2949,6 +3004,7 @@ declare global {
     VK_ERROR_FRAGMENTATION_EXT,
     VK_ERROR_NOT_PERMITTED_EXT,
     VK_ERROR_INVALID_DEVICE_ADDRESS_EXT,
+    VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT,
     
   }
   
@@ -3120,6 +3176,7 @@ declare global {
    * @member VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT
    * @member VK_COLOR_SPACE_PASS_THROUGH_EXT
    * @member VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT
+   * @member VK_COLOR_SPACE_DISPLAY_NATIVE_AMD
    */
   enum VkColorSpaceKHR {
     VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
@@ -3138,6 +3195,7 @@ declare global {
     VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT,
     VK_COLOR_SPACE_PASS_THROUGH_EXT,
     VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT,
+    VK_COLOR_SPACE_DISPLAY_NATIVE_AMD,
     
   }
   
@@ -3607,6 +3665,7 @@ declare global {
    * @member VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR
    * @member VK_DRIVER_ID_ARM_PROPRIETARY_KHR
    * @member VK_DRIVER_ID_GOOGLE_PASTEL_KHR
+   * @member VK_DRIVER_ID_GGP_PROPRIETARY_KHR
    */
   enum VkDriverIdKHR {
     VK_DRIVER_ID_AMD_PROPRIETARY_KHR,
@@ -3619,6 +3678,7 @@ declare global {
     VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR,
     VK_DRIVER_ID_ARM_PROPRIETARY_KHR,
     VK_DRIVER_ID_GOOGLE_PASTEL_KHR,
+    VK_DRIVER_ID_GGP_PROPRIETARY_KHR,
     
   }
   
@@ -3781,6 +3841,21 @@ declare global {
     VK_COMPONENT_TYPE_UINT16_NV,
     VK_COMPONENT_TYPE_UINT32_NV,
     VK_COMPONENT_TYPE_UINT64_NV,
+    
+  }
+  
+  /**
+   * Hint values an application can specify affecting full-screen transition behavior
+   * @member VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT indicates the implementation 'should' determine the appropriate full-screen method by whatever means it deems appropriate.
+   * @member VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT indicates the implementation 'may' use full-screen exclusive mechanisms when available. Such mechanisms 'may' result in better performance and/or the availability of different presentation capabilities, but 'may' require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
+   * @member VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT indicates the implementation 'should' avoid using full-screen mechanisms which rely on disruptive transitions.
+   * @member VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT indicates the application will manage full-screen exclusive mode by using the 'vkAcquireFullScreenExclusiveModeEXT' and 'vkReleaseFullScreenExclusiveModeEXT' commands.
+   */
+  enum VkFullScreenExclusiveEXT {
+    VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT,
+    VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT,
+    VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT,
+    VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT,
     
   }
   
@@ -4074,7 +4149,7 @@ declare global {
    * @member VK_IMAGE_CREATE_SPARSE_BINDING_BIT specifies that the image will be backed using sparse memory binding.
    * @member VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT specifies that the image 'can' be partially backed using sparse memory binding. Images created with this flag 'must' also be created with the 'VK_IMAGE_CREATE_SPARSE_BINDING_BIT' flag.
    * @member VK_IMAGE_CREATE_SPARSE_ALIASED_BIT specifies that the image will be backed using sparse memory binding with memory ranges that might also simultaneously be backing another image (or another portion of the same image). Images created with this flag 'must' also be created with the 'VK_IMAGE_CREATE_SPARSE_BINDING_BIT' flag
-   * @member VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT specifies that the image 'can' be used to create a 'VkImageView' with a different format from the image. For <<features-formats-requiring-sampler-ycbcr-conversion,multi-planar>> formats, 'VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT' specifies that a 'VkImageView' can be created of a _plane_ of the image.
+   * @member VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT specifies that the image 'can' be used to create a 'VkImageView' with a different format from the image. For <<formats-requiring-sampler-ycbcr-conversion,multi-planar>> formats, 'VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT' specifies that a 'VkImageView' can be created of a _plane_ of the image.
    * @member VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT
    * @member VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV
    * @member VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR
@@ -4445,13 +4520,13 @@ declare global {
   
   /**
    * Bitmask specifying sample counts supported for an image used for storage operations
-   * @member VK_SAMPLE_COUNT_1_BIT specifies an image with one sample per pixel.
-   * @member VK_SAMPLE_COUNT_2_BIT specifies an image with 2 samples per pixel.
-   * @member VK_SAMPLE_COUNT_4_BIT specifies an image with 4 samples per pixel.
-   * @member VK_SAMPLE_COUNT_8_BIT specifies an image with 8 samples per pixel.
-   * @member VK_SAMPLE_COUNT_16_BIT specifies an image with 16 samples per pixel.
-   * @member VK_SAMPLE_COUNT_32_BIT specifies an image with 32 samples per pixel.
-   * @member VK_SAMPLE_COUNT_64_BIT specifies an image with 64 samples per pixel.
+   * @member VK_SAMPLE_COUNT_1_BIT
+   * @member VK_SAMPLE_COUNT_2_BIT
+   * @member VK_SAMPLE_COUNT_4_BIT
+   * @member VK_SAMPLE_COUNT_8_BIT
+   * @member VK_SAMPLE_COUNT_16_BIT
+   * @member VK_SAMPLE_COUNT_32_BIT
+   * @member VK_SAMPLE_COUNT_64_BIT
    */
   enum VkSampleCountFlagBits {
     VK_SAMPLE_COUNT_1_BIT,
@@ -4570,7 +4645,7 @@ declare global {
    * @member VK_DEBUG_REPORT_INFORMATION_BIT_EXT specifies an informational message such as resource details that may be handy when debugging an application.
    * @member VK_DEBUG_REPORT_WARNING_BIT_EXT specifies use of Vulkan that 'may' expose an app bug. Such cases may not be immediately harmful, such as a fragment shader outputting to a location with no attachment. Other cases 'may' point to behavior that is almost certainly bad when unintended such as using an image whose memory has not been filled. In general if you see a warning but you know that the behavior is intended/desired, then simply ignore the warning.
    * @member VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT specifies a potentially non-optimal use of Vulkan, e.g. using 'vkCmdClearColorImage' when setting 'VkAttachmentDescription'::'loadOp' to 'VK_ATTACHMENT_LOAD_OP_CLEAR' would have worked.
-   * @member VK_DEBUG_REPORT_ERROR_BIT_EXT specifies that an error that may cause 'undefined' results, including an application crash.
+   * @member VK_DEBUG_REPORT_ERROR_BIT_EXT specifies that the application has violated a valid usage condition of the specification.
    * @member VK_DEBUG_REPORT_DEBUG_BIT_EXT specifies diagnostic information from the implementation and layers.
    */
   enum VkDebugReportFlagBitsEXT {
@@ -4763,8 +4838,8 @@ declare global {
   
   /**
    * Bitfield describing features of an external semaphore handle type
-   * @member VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT specifies that handles of this type 'can' be exported from Vulkan semaphore objects.
-   * @member VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT specifies that handles of this type 'can' be imported as Vulkan semaphore objects.
+   * @member VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT
+   * @member VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT
    * @member VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR
    * @member VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR
    */
@@ -4911,10 +4986,14 @@ declare global {
    * Bitmask specifying usage of a subpass
    * @member VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX
    * @member VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX
+   * @member VK_SUBPASS_DESCRIPTION_RESERVED_2_BIT_QCOM
+   * @member VK_SUBPASS_DESCRIPTION_RESERVED_3_BIT_QCOM
    */
   enum VkSubpassDescriptionFlagBits {
     VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX,
     VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX,
+    VK_SUBPASS_DESCRIPTION_RESERVED_2_BIT_QCOM,
+    VK_SUBPASS_DESCRIPTION_RESERVED_3_BIT_QCOM,
     
   }
   
@@ -4923,7 +5002,7 @@ declare global {
    * @member VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT specifies the most verbose output indicating all diagnostic messages from the Vulkan loader, layers, and drivers should be captured.
    * @member VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT specifies an informational message such as resource details that may be handy when debugging an application.
    * @member VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT specifies use of Vulkan that 'may' expose an app bug. Such cases may not be immediately harmful, such as a fragment shader outputting to a location with no attachment. Other cases 'may' point to behavior that is almost certainly bad when unintended such as using an image whose memory has not been filled. In general if you see a warning but you know that the behavior is intended/desired, then simply ignore the warning.
-   * @member VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT specifies that an error that may cause 'undefined' results, including an application crash.
+   * @member VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT specifies that the application has violated a valid usage condition of the specification.
    */
   enum VkDebugUtilsMessageSeverityFlagBitsEXT {
     VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
@@ -5027,6 +5106,19 @@ declare global {
     VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV,
     VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV,
     VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV,
+    
+  }
+  
+  /**
+   * Bitmask specifying pipeline or pipeline stage creation feedback
+   * @member VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT indicates that the feedback information is valid.
+   * @member VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT indicates that a readily usable pipeline or pipeline stage was found in the 'pipelineCache' specified by the application in the pipeline creation command.+An implementation 'should' set the'VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXTbit' if it was able to avoid the large majority of pipeline or pipeline stagecreation work by using the 'pipelineCache' parameter of'vkCreateGraphicsPipelines','vkCreateRayTracingPipelinesNV',
+   * @member VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT
+   */
+  enum VkPipelineCreationFeedbackFlagBitsEXT {
+    VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT,
+    VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT,
+    VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT,
     
   }
   
@@ -5918,7 +6010,7 @@ declare global {
     memoryBuffer: ArrayBuffer;
     
     /**
-     * are the color clear values when the format of the image or attachment is one of the formats in the <<features-formats-numericformat, Interpretation of Numeric Format>> table other than signed integer ('SINT') or unsigned integer ('UINT'). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.
+     * are the color clear values when the format of the image or attachment is one of the formats in the <<formats-numericformat, Interpretation of Numeric Format>> table other than signed integer ('SINT') or unsigned integer ('UINT'). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.
      */
     float32: number[] | null;
 
@@ -5937,7 +6029,7 @@ declare global {
   interface VkClearColorValueInitializer {
     
     /**
-     * are the color clear values when the format of the image or attachment is one of the formats in the <<features-formats-numericformat, Interpretation of Numeric Format>> table other than signed integer ('SINT') or unsigned integer ('UINT'). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.
+     * are the color clear values when the format of the image or attachment is one of the formats in the <<formats-numericformat, Interpretation of Numeric Format>> table other than signed integer ('SINT') or unsigned integer ('UINT'). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.
      */
     float32?: number[] | null;
 
@@ -5964,6 +6056,292 @@ declare global {
   }
 
   var VkClearColorValue: VkClearColorValueConstructor;
+
+  
+  
+  /**
+   * Request for feedback about the creation of a pipeline
+   */
+  interface VkPipelineCreationFeedbackCreateInfoEXT {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is the type of this structure.
+     */
+    sType: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext: null;
+
+    /**
+     * is a reference to a 'VkPipelineCreationFeedbackEXT' structure.
+     */
+    pPipelineCreationFeedback: VkPipelineCreationFeedbackEXT | null;
+
+    /**
+     * is the number of elements in 'pPipelineStageCreationFeedbacks'.
+     */
+    pipelineStageCreationFeedbackCount: number;
+
+    /**
+     * is an array of size 'pipelineStageCreationFeedbackCount' of 'VkPipelineCreationFeedbackEXT' structures.
+     */
+    pPipelineStageCreationFeedbacks: VkPipelineCreationFeedbackEXT[] | null;
+
+  }
+
+  interface VkPipelineCreationFeedbackCreateInfoEXTInitializer {
+    
+    /**
+     * is the type of this structure.
+     */
+    sType?: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext?: null;
+
+    /**
+     * is a reference to a 'VkPipelineCreationFeedbackEXT' structure.
+     */
+    pPipelineCreationFeedback?: VkPipelineCreationFeedbackEXT | null;
+
+    /**
+     * is the number of elements in 'pPipelineStageCreationFeedbacks'.
+     */
+    pipelineStageCreationFeedbackCount?: number;
+
+    /**
+     * is an array of size 'pipelineStageCreationFeedbackCount' of 'VkPipelineCreationFeedbackEXT' structures.
+     */
+    pPipelineStageCreationFeedbacks?: VkPipelineCreationFeedbackEXT[] | null;
+  }
+
+  interface VkPipelineCreationFeedbackCreateInfoEXTConstructor {
+    readonly prototype: VkPipelineCreationFeedbackCreateInfoEXT;
+    new(param?: VkPipelineCreationFeedbackCreateInfoEXTInitializer | null): VkPipelineCreationFeedbackCreateInfoEXT;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPipelineCreationFeedbackCreateInfoEXT: VkPipelineCreationFeedbackCreateInfoEXTConstructor;
+
+  
+  
+  /**
+   * Feedback about the creation of a pipeline or pipeline stage
+   */
+  interface VkPipelineCreationFeedbackEXT {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is a bitmask of 'VkPipelineCreationFeedbackFlagBitsEXT' providing feedback about the creation of a pipeline or of a pipeline stage.
+     */
+    readonly flags: VkPipelineCreationFeedbackFlagBitsEXT;
+
+    /**
+     * is the duration spent creating a pipeline or pipeline stage in nanoseconds.
+     */
+    readonly duration: bigint;
+
+  }
+
+  interface VkPipelineCreationFeedbackEXTInitializer {
+    
+    /**
+     * is a bitmask of 'VkPipelineCreationFeedbackFlagBitsEXT' providing feedback about the creation of a pipeline or of a pipeline stage.
+     */
+    readonly flags?: VkPipelineCreationFeedbackFlagBitsEXT;
+
+    /**
+     * is the duration spent creating a pipeline or pipeline stage in nanoseconds.
+     */
+    readonly duration?: bigint;
+  }
+
+  interface VkPipelineCreationFeedbackEXTConstructor {
+    readonly prototype: VkPipelineCreationFeedbackEXT;
+    new(param?: VkPipelineCreationFeedbackEXTInitializer | null): VkPipelineCreationFeedbackEXT;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPipelineCreationFeedbackEXT: VkPipelineCreationFeedbackEXTConstructor;
+
+  
+  
+  /**
+   * Structure specifying the image view for handle queries
+   */
+  interface VkImageViewHandleInfoNVX {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is the type of this structure.
+     */
+    sType: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext: null;
+
+    /**
+     * is the image view to query.
+     */
+    imageView: VkImageView | null;
+
+    /**
+     * is the type of descriptor for which to query a handle.
+     */
+    descriptorType: VkDescriptorType;
+
+    /**
+     * is the sampler to combine with the image view when generating the handle. 
+     */
+    sampler: VkSampler | null;
+
+  }
+
+  interface VkImageViewHandleInfoNVXInitializer {
+    
+    /**
+     * is the type of this structure.
+     */
+    sType?: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext?: null;
+
+    /**
+     * is the image view to query.
+     */
+    imageView?: VkImageView | null;
+
+    /**
+     * is the type of descriptor for which to query a handle.
+     */
+    descriptorType?: VkDescriptorType;
+
+    /**
+     * is the sampler to combine with the image view when generating the handle. 
+     */
+    sampler?: VkSampler | null;
+  }
+
+  interface VkImageViewHandleInfoNVXConstructor {
+    readonly prototype: VkImageViewHandleInfoNVX;
+    new(param?: VkImageViewHandleInfoNVXInitializer | null): VkImageViewHandleInfoNVX;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkImageViewHandleInfoNVX: VkImageViewHandleInfoNVXConstructor;
+
+  
+  
+  /**
+   * Structure describing extended Y
+   */
+  interface VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     * indicates that the implementation supports creating images with a format that requires <<formats-requiring-sampler-ycbcr-conversion, Y'C~B~C~R~ conversion>> and has multiple array layers.
+     */
+    ycbcrImageArrays: boolean;
+
+  }
+
+  interface VkPhysicalDeviceYcbcrImageArraysFeaturesEXTInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     * indicates that the implementation supports creating images with a format that requires <<formats-requiring-sampler-ycbcr-conversion, Y'C~B~C~R~ conversion>> and has multiple array layers.
+     */
+    ycbcrImageArrays?: boolean;
+  }
+
+  interface VkPhysicalDeviceYcbcrImageArraysFeaturesEXTConstructor {
+    readonly prototype: VkPhysicalDeviceYcbcrImageArraysFeaturesEXT;
+    new(param?: VkPhysicalDeviceYcbcrImageArraysFeaturesEXTInitializer | null): VkPhysicalDeviceYcbcrImageArraysFeaturesEXT;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceYcbcrImageArraysFeaturesEXT: VkPhysicalDeviceYcbcrImageArraysFeaturesEXTConstructor;
 
   
   
@@ -6506,7 +6884,7 @@ declare global {
   
   
   /**
-   * Structure describing buffer address features that can be supported by an implementation
+   * 
    */
   interface VkPhysicalDeviceBufferAddressFeaturesEXT {
     /**
@@ -6530,17 +6908,17 @@ declare global {
     pNext: null;
 
     /**
-     * indicates that the implementation supports accessing buffer memory in shaders as storage buffers via an address queried from 'vkGetBufferDeviceAddressEXT'.
+     *
      */
     bufferDeviceAddress: boolean;
 
     /**
-     * indicates that the implementation supports saving and reusing buffer addresses, e.g. for trace capture and replay.
+     *
      */
     bufferDeviceAddressCaptureReplay: boolean;
 
     /**
-     * indicates that the implementation supports the 'bufferDeviceAddress' feature for logical devices created with multiple physical devices. If this feature is not supported, buffer addresses 'must' not be queried on a logical device created with more than one physical device.
+     *
      */
     bufferDeviceAddressMultiDevice: boolean;
 
@@ -6559,17 +6937,17 @@ declare global {
     pNext?: null;
 
     /**
-     * indicates that the implementation supports accessing buffer memory in shaders as storage buffers via an address queried from 'vkGetBufferDeviceAddressEXT'.
+     *
      */
     bufferDeviceAddress?: boolean;
 
     /**
-     * indicates that the implementation supports saving and reusing buffer addresses, e.g. for trace capture and replay.
+     *
      */
     bufferDeviceAddressCaptureReplay?: boolean;
 
     /**
-     * indicates that the implementation supports the 'bufferDeviceAddress' feature for logical devices created with multiple physical devices. If this feature is not supported, buffer addresses 'must' not be queried on a logical device created with more than one physical device.
+     *
      */
     bufferDeviceAddressMultiDevice?: boolean;
   }
@@ -6586,6 +6964,90 @@ declare global {
   }
 
   var VkPhysicalDeviceBufferAddressFeaturesEXT: VkPhysicalDeviceBufferAddressFeaturesEXTConstructor;
+
+  
+  
+  /**
+   * Structure describing buffer address features that can be supported by an implementation
+   */
+  interface VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     *
+     */
+    bufferDeviceAddress: boolean;
+
+    /**
+     *
+     */
+    bufferDeviceAddressCaptureReplay: boolean;
+
+    /**
+     *
+     */
+    bufferDeviceAddressMultiDevice: boolean;
+
+  }
+
+  interface VkPhysicalDeviceBufferDeviceAddressFeaturesEXTInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     *
+     */
+    bufferDeviceAddress?: boolean;
+
+    /**
+     *
+     */
+    bufferDeviceAddressCaptureReplay?: boolean;
+
+    /**
+     *
+     */
+    bufferDeviceAddressMultiDevice?: boolean;
+  }
+
+  interface VkPhysicalDeviceBufferDeviceAddressFeaturesEXTConstructor {
+    readonly prototype: VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;
+    new(param?: VkPhysicalDeviceBufferDeviceAddressFeaturesEXTInitializer | null): VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceBufferDeviceAddressFeaturesEXT: VkPhysicalDeviceBufferDeviceAddressFeaturesEXTConstructor;
 
   
   
@@ -6930,6 +7392,70 @@ declare global {
   
   
   /**
+   * Structure describing capability of a surface to be protected
+   */
+  interface VkSurfaceProtectedCapabilitiesKHR {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is the type of this structure.
+     */
+    sType: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext: null;
+
+    /**
+     * specifies whether a protected swapchain created from 'VkPhysicalDeviceSurfaceInfo2KHR'::'surface' for a particular windowing system 'can' be displayed on screen or not. If 'supportsProtected' is 'VK_TRUE', then creation of swapchains with the 'VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR' flag set 'must' be supported for 'surface'.
+     */
+    supportsProtected: boolean;
+
+  }
+
+  interface VkSurfaceProtectedCapabilitiesKHRInitializer {
+    
+    /**
+     * is the type of this structure.
+     */
+    sType?: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext?: null;
+
+    /**
+     * specifies whether a protected swapchain created from 'VkPhysicalDeviceSurfaceInfo2KHR'::'surface' for a particular windowing system 'can' be displayed on screen or not. If 'supportsProtected' is 'VK_TRUE', then creation of swapchains with the 'VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR' flag set 'must' be supported for 'surface'.
+     */
+    supportsProtected?: boolean;
+  }
+
+  interface VkSurfaceProtectedCapabilitiesKHRConstructor {
+    readonly prototype: VkSurfaceProtectedCapabilitiesKHR;
+    new(param?: VkSurfaceProtectedCapabilitiesKHRInitializer | null): VkSurfaceProtectedCapabilitiesKHR;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkSurfaceProtectedCapabilitiesKHR: VkSurfaceProtectedCapabilitiesKHRConstructor;
+
+  
+  
+  /**
    * Structure indicating support for scalar block layouts
    */
   interface VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
@@ -7082,7 +7608,7 @@ declare global {
     readonly pNext: null;
 
     /**
-     *
+     * is the minimum <<glossary-fragment-density-texel-size,fragment density texel size>>.
      */
     readonly minFragmentDensityTexelSize: VkExtent2D | null;
 
@@ -7111,7 +7637,7 @@ declare global {
     readonly pNext?: null;
 
     /**
-     *
+     * is the minimum <<glossary-fragment-density-texel-size,fragment density texel size>>.
      */
     readonly minFragmentDensityTexelSize?: VkExtent2D | null;
 
@@ -9998,7 +10524,7 @@ declare global {
     pNext: null;
 
     /**
-     *
+     * indicates that the implementation supports the 'BaryCoordNV' and 'BaryCoordNoPerspNV' SPIR-V fragment shader built-ins and supports the 'PerVertexNV' SPIR-V decoration on fragment shader input variables.
      */
     fragmentShaderBarycentric: boolean;
 
@@ -10017,7 +10543,7 @@ declare global {
     pNext?: null;
 
     /**
-     *
+     * indicates that the implementation supports the 'BaryCoordNV' and 'BaryCoordNoPerspNV' SPIR-V fragment shader built-ins and supports the 'PerVertexNV' SPIR-V decoration on fragment shader input variables.
      */
     fragmentShaderBarycentric?: boolean;
   }
@@ -10402,7 +10928,7 @@ declare global {
     pNext: null;
 
     /**
-     *
+     * indicates whether the implementation supports the representative fragment test. See <<fragops-rep-frag-test, Representative Fragment Test>>.
      */
     representativeFragmentTest: boolean;
 
@@ -10421,7 +10947,7 @@ declare global {
     pNext?: null;
 
     /**
-     *
+     * indicates whether the implementation supports the representative fragment test. See <<fragops-rep-frag-test, Representative Fragment Test>>.
      */
     representativeFragmentTest?: boolean;
   }
@@ -10990,7 +11516,7 @@ declare global {
     readonly supportedStencilResolveModes: VkResolveModeFlagBitsKHR;
 
     /**
-     *
+     * is 'VK_TRUE' if the implementation supports setting the depth and stencil resolve modes to different values when one of those modes is 'VK_RESOLVE_MODE_NONE_KHR'. Otherwise the implementation only supports setting both modes to the same value.
      */
     readonly independentResolveNone: boolean;
 
@@ -11024,7 +11550,7 @@ declare global {
     readonly supportedStencilResolveModes?: VkResolveModeFlagBitsKHR;
 
     /**
-     *
+     * is 'VK_TRUE' if the implementation supports setting the depth and stencil resolve modes to different values when one of those modes is 'VK_RESOLVE_MODE_NONE_KHR'. Otherwise the implementation only supports setting both modes to the same value.
      */
     readonly independentResolveNone?: boolean;
 
@@ -11893,7 +12419,7 @@ declare global {
     binding: number;
 
     /**
-     * is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using 'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT'::'maxVertexAttribDivisor'. A value of `0` 'can' be used for the divisor if the <<features-features-vertexAttributeInstanceRateZeroDivisor,'vertexAttributeInstanceRateZeroDivisor'>> feature is enabled. In this case, the same vertex attribute will be applied to all instances.
+     * is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using 'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT'::'maxVertexAttribDivisor'. A value of `0` 'can' be used for the divisor if the <<features-vertexAttributeInstanceRateZeroDivisor,'vertexAttributeInstanceRateZeroDivisor'>> feature is enabled. In this case, the same vertex attribute will be applied to all instances.
      */
     divisor: number;
 
@@ -11907,7 +12433,7 @@ declare global {
     binding?: number;
 
     /**
-     * is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using 'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT'::'maxVertexAttribDivisor'. A value of `0` 'can' be used for the divisor if the <<features-features-vertexAttributeInstanceRateZeroDivisor,'vertexAttributeInstanceRateZeroDivisor'>> feature is enabled. In this case, the same vertex attribute will be applied to all instances.
+     * is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using 'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT'::'maxVertexAttribDivisor'. A value of `0` 'can' be used for the divisor if the <<features-vertexAttributeInstanceRateZeroDivisor,'vertexAttributeInstanceRateZeroDivisor'>> feature is enabled. In this case, the same vertex attribute will be applied to all instances.
      */
     divisor?: number;
   }
@@ -12982,7 +13508,7 @@ declare global {
     readonly shaderInputAttachmentArrayNonUniformIndexingNative: boolean;
 
     /**
-     * is a boolean value indicating whether <<features-features-robustBufferAccess, 'robustBufferAccess'>> 'can' be enabled in a device simultaneously with 'descriptorBindingUniformBufferUpdateAfterBind', 'descriptorBindingStorageBufferUpdateAfterBind', 'descriptorBindingUniformTexelBufferUpdateAfterBind', and/or 'descriptorBindingStorageTexelBufferUpdateAfterBind'. If this is 'VK_FALSE', then either 'robustBufferAccess' 'must' be disabled or all of these update-after-bind features 'must' be disabled.
+     * is a boolean value indicating whether <<features-robustBufferAccess, 'robustBufferAccess'>> 'can' be enabled in a device simultaneously with 'descriptorBindingUniformBufferUpdateAfterBind', 'descriptorBindingStorageBufferUpdateAfterBind', 'descriptorBindingUniformTexelBufferUpdateAfterBind', and/or 'descriptorBindingStorageTexelBufferUpdateAfterBind'. If this is 'VK_FALSE', then either 'robustBufferAccess' 'must' be disabled or all of these update-after-bind features 'must' be disabled.
      */
     readonly robustBufferAccessUpdateAfterBind: boolean;
 
@@ -13111,7 +13637,7 @@ declare global {
     readonly shaderInputAttachmentArrayNonUniformIndexingNative?: boolean;
 
     /**
-     * is a boolean value indicating whether <<features-features-robustBufferAccess, 'robustBufferAccess'>> 'can' be enabled in a device simultaneously with 'descriptorBindingUniformBufferUpdateAfterBind', 'descriptorBindingStorageBufferUpdateAfterBind', 'descriptorBindingUniformTexelBufferUpdateAfterBind', and/or 'descriptorBindingStorageTexelBufferUpdateAfterBind'. If this is 'VK_FALSE', then either 'robustBufferAccess' 'must' be disabled or all of these update-after-bind features 'must' be disabled.
+     * is a boolean value indicating whether <<features-robustBufferAccess, 'robustBufferAccess'>> 'can' be enabled in a device simultaneously with 'descriptorBindingUniformBufferUpdateAfterBind', 'descriptorBindingStorageBufferUpdateAfterBind', 'descriptorBindingUniformTexelBufferUpdateAfterBind', and/or 'descriptorBindingStorageTexelBufferUpdateAfterBind'. If this is 'VK_FALSE', then either 'robustBufferAccess' 'must' be disabled or all of these update-after-bind features 'must' be disabled.
      */
     readonly robustBufferAccessUpdateAfterBind?: boolean;
 
@@ -13331,7 +13857,7 @@ declare global {
     descriptorBindingVariableDescriptorCount: boolean;
 
     /**
-     *
+     * indicates whether the implementation supports the SPIR-V 'RuntimeDescriptorArrayEXT' capability. If this feature is not enabled, descriptors 'must' not be declared in runtime arrays.
      */
     runtimeDescriptorArray: boolean;
 
@@ -13445,7 +13971,7 @@ declare global {
     descriptorBindingVariableDescriptorCount?: boolean;
 
     /**
-     *
+     * indicates whether the implementation supports the SPIR-V 'RuntimeDescriptorArrayEXT' capability. If this feature is not enabled, descriptors 'must' not be declared in runtime arrays.
      */
     runtimeDescriptorArray?: boolean;
   }
@@ -14926,6 +15452,70 @@ declare global {
   
   
   /**
+   * Structure describing whether queries can be reset from the host
+   */
+  interface VkPhysicalDeviceHostQueryResetFeaturesEXT {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     * indicates that the implementation supports resetting queries from the host with 'vkResetQueryPoolEXT'.
+     */
+    hostQueryReset: boolean;
+
+  }
+
+  interface VkPhysicalDeviceHostQueryResetFeaturesEXTInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     * indicates that the implementation supports resetting queries from the host with 'vkResetQueryPoolEXT'.
+     */
+    hostQueryReset?: boolean;
+  }
+
+  interface VkPhysicalDeviceHostQueryResetFeaturesEXTConstructor {
+    readonly prototype: VkPhysicalDeviceHostQueryResetFeaturesEXT;
+    new(param?: VkPhysicalDeviceHostQueryResetFeaturesEXTInitializer | null): VkPhysicalDeviceHostQueryResetFeaturesEXT;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceHostQueryResetFeaturesEXT: VkPhysicalDeviceHostQueryResetFeaturesEXTConstructor;
+
+  
+  
+  /**
    * Structure describing properties supported by VK_KHR_shader_float_controls
    */
   interface VkPhysicalDeviceFloatControlsPropertiesKHR {
@@ -14950,87 +15540,87 @@ declare global {
     readonly pNext: null;
 
     /**
-     *
+     * is a boolean value indicating whether the implementation supports separate settings for 16-bit and 64-bit denormals.
      */
     readonly separateDenormSettings: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether the implementation supports separate rounding modes for 16-bit and 64-bit floating point instructions.
      */
     readonly separateRoundingModeSettings: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 16-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat16: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 32-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat32: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 64-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat64: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 16-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat16: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 32-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat32: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 64-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat64: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 16-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat16: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 32-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat32: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 64-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat64: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 16-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat16: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 32-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat32: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 64-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat64: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 16-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat16: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 32-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat32: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 64-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat64: boolean;
 
@@ -15049,87 +15639,87 @@ declare global {
     readonly pNext?: null;
 
     /**
-     *
+     * is a boolean value indicating whether the implementation supports separate settings for 16-bit and 64-bit denormals.
      */
     readonly separateDenormSettings?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether the implementation supports separate rounding modes for 16-bit and 64-bit floating point instructions.
      */
     readonly separateRoundingModeSettings?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 16-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat16?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 32-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat32?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether sign of a zero, [eq]##Nan##s and latexmath:[\pm\infty] 'can' be preserved in 64-bit floating-point computations. It also indicates whether the 'SignedZeroInfNanPreserve' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderSignedZeroInfNanPreserveFloat64?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 16-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat16?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 32-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat32?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be preserved in 64-bit floating-point computations. It also indicates whether the 'DenormPreserve' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderDenormPreserveFloat64?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 16-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat16?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 32-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat32?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether denormals 'can' be flushed to zero in 64-bit floating-point computations. It also indicates whether the 'DenormFlushToZero' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderDenormFlushToZeroFloat64?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 16-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat16?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 32-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat32?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-to-nearest-even rounding mode for 64-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTE' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderRoundingModeRTEFloat64?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 16-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 16-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat16?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 32-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 32-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat32?: boolean;
 
     /**
-     *
+     * is a boolean value indicating whether an implementation supports the round-towards-zero rounding mode for 64-bit floating-point arithmetic and conversion instructions. It also indicates whether the 'RoundingModeRTZ' execution mode 'can' be used for 64-bit floating-point types.
      */
     readonly shaderRoundingModeRTZFloat64?: boolean;
   }
@@ -15224,7 +15814,7 @@ declare global {
   
   
   /**
-   * Structure describing shader draw parameter features that can be supported by an implementation
+   * 
    */
   interface VkPhysicalDeviceShaderDrawParameterFeatures {
     /**
@@ -15248,7 +15838,7 @@ declare global {
     pNext: null;
 
     /**
-     * specifies whether shader draw parameters are supported.
+     *
      */
     shaderDrawParameters: boolean;
 
@@ -15267,7 +15857,7 @@ declare global {
     pNext?: null;
 
     /**
-     * specifies whether shader draw parameters are supported.
+     *
      */
     shaderDrawParameters?: boolean;
   }
@@ -15284,6 +15874,70 @@ declare global {
   }
 
   var VkPhysicalDeviceShaderDrawParameterFeatures: VkPhysicalDeviceShaderDrawParameterFeaturesConstructor;
+
+  
+  
+  /**
+   * Structure describing shader draw parameter features that can be supported by an implementation
+   */
+  interface VkPhysicalDeviceShaderDrawParametersFeatures {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     *
+     */
+    shaderDrawParameters: boolean;
+
+  }
+
+  interface VkPhysicalDeviceShaderDrawParametersFeaturesInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     *
+     */
+    shaderDrawParameters?: boolean;
+  }
+
+  interface VkPhysicalDeviceShaderDrawParametersFeaturesConstructor {
+    readonly prototype: VkPhysicalDeviceShaderDrawParametersFeatures;
+    new(param?: VkPhysicalDeviceShaderDrawParametersFeaturesInitializer | null): VkPhysicalDeviceShaderDrawParametersFeatures;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceShaderDrawParametersFeatures: VkPhysicalDeviceShaderDrawParametersFeaturesConstructor;
 
   
   
@@ -15416,7 +16070,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Structure reporting implementation-dependent physical device limits
    */
   interface VkPhysicalDeviceMaintenance3PropertiesKHR {
     /**
@@ -17390,7 +18044,7 @@ declare global {
     readonly pNext: null;
 
     /**
-     * specifies whether the 'undefined' behavior 'may' include process termination or device loss. If 'protectedNoFault' is 'VK_FALSE', 'undefined' behavior 'may' include process termination or device loss. If 'protectedNoFault' is 'VK_TRUE', 'undefined' behavior will not include process termination or device loss.
+     * specifies the behavior of the implementation when <<memory-protected-access-rules, protected memory access rules>> are broken. If 'protectedNoFault' is 'VK_TRUE', breaking those rules will not result in process termination or device loss.
      */
     readonly protectedNoFault: boolean;
 
@@ -17409,7 +18063,7 @@ declare global {
     readonly pNext?: null;
 
     /**
-     * specifies whether the 'undefined' behavior 'may' include process termination or device loss. If 'protectedNoFault' is 'VK_FALSE', 'undefined' behavior 'may' include process termination or device loss. If 'protectedNoFault' is 'VK_TRUE', 'undefined' behavior will not include process termination or device loss.
+     * specifies the behavior of the implementation when <<memory-protected-access-rules, protected memory access rules>> are broken. If 'protectedNoFault' is 'VK_TRUE', breaking those rules will not result in process termination or device loss.
      */
     readonly protectedNoFault?: boolean;
   }
@@ -17706,7 +18360,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkSamplerYcbcrConversionImageFormatPropertiesKHR {
     /**
@@ -17858,7 +18512,7 @@ declare global {
     pNext: null;
 
     /**
-     *
+     * specifies whether the implementation supports <<samplers-YCbCr-conversion,sampler Y'C~B~C~R~ conversion>>. If 'samplerYcbcrConversion' is 'VK_FALSE', sampler Y'C~B~C~R~ conversion is not supported, and samplers using sampler Y'C~B~C~R~ conversion 'must' not be used.
      */
     samplerYcbcrConversion: boolean;
 
@@ -17877,7 +18531,7 @@ declare global {
     pNext?: null;
 
     /**
-     *
+     * specifies whether the implementation supports <<samplers-YCbCr-conversion,sampler Y'C~B~C~R~ conversion>>. If 'samplerYcbcrConversion' is 'VK_FALSE', sampler Y'C~B~C~R~ conversion is not supported, and samplers using sampler Y'C~B~C~R~ conversion 'must' not be used.
      */
     samplerYcbcrConversion?: boolean;
   }
@@ -17922,7 +18576,7 @@ declare global {
     pNext: null;
 
     /**
-     *
+     * specifies whether the implementation supports <<samplers-YCbCr-conversion,sampler Y'C~B~C~R~ conversion>>. If 'samplerYcbcrConversion' is 'VK_FALSE', sampler Y'C~B~C~R~ conversion is not supported, and samplers using sampler Y'C~B~C~R~ conversion 'must' not be used.
      */
     samplerYcbcrConversion: boolean;
 
@@ -17941,7 +18595,7 @@ declare global {
     pNext?: null;
 
     /**
-     *
+     * specifies whether the implementation supports <<samplers-YCbCr-conversion,sampler Y'C~B~C~R~ conversion>>. If 'samplerYcbcrConversion' is 'VK_FALSE', sampler Y'C~B~C~R~ conversion is not supported, and samplers using sampler Y'C~B~C~R~ conversion 'must' not be used.
      */
     samplerYcbcrConversion?: boolean;
   }
@@ -19166,7 +19820,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Structure reporting implementation-dependent physical device limits
    */
   interface VkPhysicalDevicePointClippingPropertiesKHR {
     /**
@@ -19973,7 +20627,7 @@ declare global {
     readonly supportedOperations: VkSubgroupFeatureFlagBits;
 
     /**
-     * is a boolean that specifies whether <<features-features-subgroup-quad,quad subgroup operations>> are available in all stages, or are restricted to fragment and compute stages.
+     * is a boolean that specifies whether <<features-subgroup-quad,quad subgroup operations>> are available in all stages, or are restricted to fragment and compute stages.
      */
     readonly quadOperationsInAllStages: boolean;
 
@@ -20007,7 +20661,7 @@ declare global {
     readonly supportedOperations?: VkSubgroupFeatureFlagBits;
 
     /**
-     * is a boolean that specifies whether <<features-features-subgroup-quad,quad subgroup operations>> are available in all stages, or are restricted to fragment and compute stages.
+     * is a boolean that specifies whether <<features-subgroup-quad,quad subgroup operations>> are available in all stages, or are restricted to fragment and compute stages.
      */
     readonly quadOperationsInAllStages?: boolean;
   }
@@ -21615,7 +22269,7 @@ declare global {
     presentID: number;
 
     /**
-     * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but doesn't need a specific 'desiredPresentTime'.
+     * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but does not need a specific 'desiredPresentTime'.
      */
     desiredPresentTime: bigint;
 
@@ -21629,7 +22283,7 @@ declare global {
     presentID?: number;
 
     /**
-     * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but doesn't need a specific 'desiredPresentTime'.
+     * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but does not need a specific 'desiredPresentTime'.
      */
     desiredPresentTime?: bigint;
   }
@@ -21848,6 +22502,134 @@ declare global {
   }
 
   var VkRefreshCycleDurationGOOGLE: VkRefreshCycleDurationGOOGLEConstructor;
+
+  
+  
+  /**
+   * Structure specifying display native HDR parameters of a newly created swapchain object
+   */
+  interface VkSwapchainDisplayNativeHdrCreateInfoAMD {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is the type of this structure.
+     */
+    sType: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext: null;
+
+    /**
+     * specifies whether local dimming is enabled for the swapchain.
+     */
+    localDimmingEnable: boolean;
+
+  }
+
+  interface VkSwapchainDisplayNativeHdrCreateInfoAMDInitializer {
+    
+    /**
+     * is the type of this structure.
+     */
+    sType?: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    pNext?: null;
+
+    /**
+     * specifies whether local dimming is enabled for the swapchain.
+     */
+    localDimmingEnable?: boolean;
+  }
+
+  interface VkSwapchainDisplayNativeHdrCreateInfoAMDConstructor {
+    readonly prototype: VkSwapchainDisplayNativeHdrCreateInfoAMD;
+    new(param?: VkSwapchainDisplayNativeHdrCreateInfoAMDInitializer | null): VkSwapchainDisplayNativeHdrCreateInfoAMD;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkSwapchainDisplayNativeHdrCreateInfoAMD: VkSwapchainDisplayNativeHdrCreateInfoAMDConstructor;
+
+  
+  
+  /**
+   * Structure describing display native HDR specific capabilities of a surface
+   */
+  interface VkDisplayNativeHdrSurfaceCapabilitiesAMD {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     * is the type of this structure.
+     */
+    readonly sType: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    readonly pNext: null;
+
+    /**
+     * specifies whether the surface supports local dimming. If this is 'VK_TRUE', 'VkSwapchainDisplayNativeHdrCreateInfoAMD' 'can' be used to explicitly enable or disable local dimming for the surface. Local dimming may also be overriden by 'vkSetLocalDimmingAMD' during the lifetime of the swapchain.
+     */
+    readonly localDimmingSupport: boolean;
+
+  }
+
+  interface VkDisplayNativeHdrSurfaceCapabilitiesAMDInitializer {
+    
+    /**
+     * is the type of this structure.
+     */
+    readonly sType?: VkStructureType;
+
+    /**
+     * is <i>null</i> or a reference to an extension-specific structure.
+     */
+    readonly pNext?: null;
+
+    /**
+     * specifies whether the surface supports local dimming. If this is 'VK_TRUE', 'VkSwapchainDisplayNativeHdrCreateInfoAMD' 'can' be used to explicitly enable or disable local dimming for the surface. Local dimming may also be overriden by 'vkSetLocalDimmingAMD' during the lifetime of the swapchain.
+     */
+    readonly localDimmingSupport?: boolean;
+  }
+
+  interface VkDisplayNativeHdrSurfaceCapabilitiesAMDConstructor {
+    readonly prototype: VkDisplayNativeHdrSurfaceCapabilitiesAMD;
+    new(param?: VkDisplayNativeHdrSurfaceCapabilitiesAMDInitializer | null): VkDisplayNativeHdrSurfaceCapabilitiesAMD;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkDisplayNativeHdrSurfaceCapabilitiesAMD: VkDisplayNativeHdrSurfaceCapabilitiesAMDConstructor;
 
   
   
@@ -25416,7 +26198,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Structure reporting implementation-dependent physical device limits
    */
   interface VkPhysicalDeviceMultiviewPropertiesKHR {
     /**
@@ -26028,7 +26810,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkExternalFencePropertiesKHR {
     /**
@@ -26196,7 +26978,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkPhysicalDeviceExternalFenceInfoKHR {
     /**
@@ -26620,7 +27402,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkExternalSemaphorePropertiesKHR {
     /**
@@ -26788,7 +27570,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkPhysicalDeviceExternalSemaphoreInfoKHR {
     /**
@@ -27720,7 +28502,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkExternalBufferPropertiesKHR {
     /**
@@ -27848,7 +28630,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkPhysicalDeviceExternalBufferInfoKHR {
     /**
@@ -27872,12 +28654,12 @@ declare global {
     pNext: null;
 
     /**
-     * is a bitmask of 'VkBufferCreateFlagBits' describing additional parameters of the buffer, corresponding to 'VkBufferCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags: VkBufferCreateFlagBits;
 
     /**
-     * is a bitmask of 'VkBufferUsageFlagBits' describing the intended usage of the buffer, corresponding to 'VkBufferCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage: VkBufferUsageFlagBits;
 
@@ -27901,12 +28683,12 @@ declare global {
     pNext?: null;
 
     /**
-     * is a bitmask of 'VkBufferCreateFlagBits' describing additional parameters of the buffer, corresponding to 'VkBufferCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags?: VkBufferCreateFlagBits;
 
     /**
-     * is a bitmask of 'VkBufferUsageFlagBits' describing the intended usage of the buffer, corresponding to 'VkBufferCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage?: VkBufferUsageFlagBits;
 
@@ -27956,12 +28738,12 @@ declare global {
     pNext: null;
 
     /**
-     * is a bitmask of 'VkBufferCreateFlagBits' describing additional parameters of the buffer, corresponding to 'VkBufferCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags: VkBufferCreateFlagBits;
 
     /**
-     * is a bitmask of 'VkBufferUsageFlagBits' describing the intended usage of the buffer, corresponding to 'VkBufferCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage: VkBufferUsageFlagBits;
 
@@ -27985,12 +28767,12 @@ declare global {
     pNext?: null;
 
     /**
-     * is a bitmask of 'VkBufferCreateFlagBits' describing additional parameters of the buffer, corresponding to 'VkBufferCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags?: VkBufferCreateFlagBits;
 
     /**
-     * is a bitmask of 'VkBufferUsageFlagBits' describing the intended usage of the buffer, corresponding to 'VkBufferCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage?: VkBufferUsageFlagBits;
 
@@ -28016,7 +28798,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkExternalImageFormatPropertiesKHR {
     /**
@@ -28144,7 +28926,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkPhysicalDeviceExternalImageFormatInfoKHR {
     /**
@@ -28272,7 +29054,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkExternalMemoryPropertiesKHR {
     /**
@@ -28400,81 +29182,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
-   */
-  interface VkPhysicalDeviceVariablePointerFeaturesKHR {
-    /**
-     * Object describing the memory layout for this structure.
-     */
-    readonly memoryLayout: object;
-
-    /**
-     * Memory representation of the original vulkan structure instance.
-     */
-    memoryBuffer: ArrayBuffer;
-    
-    /**
-     *
-     */
-    sType: VkStructureType;
-
-    /**
-     *
-     */
-    pNext: null;
-
-    /**
-     *
-     */
-    variablePointersStorageBuffer: boolean;
-
-    /**
-     * specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules 'must' not declare the `VariablePointers` capability.
-     */
-    variablePointers: boolean;
-
-  }
-
-  interface VkPhysicalDeviceVariablePointerFeaturesKHRInitializer {
-    
-    /**
-     *
-     */
-    sType?: VkStructureType;
-
-    /**
-     *
-     */
-    pNext?: null;
-
-    /**
-     *
-     */
-    variablePointersStorageBuffer?: boolean;
-
-    /**
-     * specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules 'must' not declare the `VariablePointers` capability.
-     */
-    variablePointers?: boolean;
-  }
-
-  interface VkPhysicalDeviceVariablePointerFeaturesKHRConstructor {
-    readonly prototype: VkPhysicalDeviceVariablePointerFeaturesKHR;
-    new(param?: VkPhysicalDeviceVariablePointerFeaturesKHRInitializer | null): VkPhysicalDeviceVariablePointerFeaturesKHR;
-
-    /**
-     * Object describing the memory layout for this structure.
-     */
-    readonly memoryLayout: object;
-
-  }
-
-  var VkPhysicalDeviceVariablePointerFeaturesKHR: VkPhysicalDeviceVariablePointerFeaturesKHRConstructor;
-
-  
-  
-  /**
-   * Structure describing variable references features that can be supported by an implementation
+   * 
    */
   interface VkPhysicalDeviceVariablePointerFeatures {
     /**
@@ -28503,7 +29211,7 @@ declare global {
     variablePointersStorageBuffer: boolean;
 
     /**
-     * specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules 'must' not declare the `VariablePointers` capability.
+     *
      */
     variablePointers: boolean;
 
@@ -28527,7 +29235,7 @@ declare global {
     variablePointersStorageBuffer?: boolean;
 
     /**
-     * specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules 'must' not declare the `VariablePointers` capability.
+     *
      */
     variablePointers?: boolean;
   }
@@ -28544,6 +29252,228 @@ declare global {
   }
 
   var VkPhysicalDeviceVariablePointerFeatures: VkPhysicalDeviceVariablePointerFeaturesConstructor;
+
+  
+  
+  /**
+   * 
+   */
+  interface VkPhysicalDeviceVariablePointerFeaturesKHR {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer: boolean;
+
+    /**
+     *
+     */
+    variablePointers: boolean;
+
+  }
+
+  interface VkPhysicalDeviceVariablePointerFeaturesKHRInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer?: boolean;
+
+    /**
+     *
+     */
+    variablePointers?: boolean;
+  }
+
+  interface VkPhysicalDeviceVariablePointerFeaturesKHRConstructor {
+    readonly prototype: VkPhysicalDeviceVariablePointerFeaturesKHR;
+    new(param?: VkPhysicalDeviceVariablePointerFeaturesKHRInitializer | null): VkPhysicalDeviceVariablePointerFeaturesKHR;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceVariablePointerFeaturesKHR: VkPhysicalDeviceVariablePointerFeaturesKHRConstructor;
+
+  
+  
+  /**
+   * Reports capabilities of a physical device
+   */
+  interface VkPhysicalDeviceVariablePointersFeaturesKHR {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer: boolean;
+
+    /**
+     *
+     */
+    variablePointers: boolean;
+
+  }
+
+  interface VkPhysicalDeviceVariablePointersFeaturesKHRInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer?: boolean;
+
+    /**
+     *
+     */
+    variablePointers?: boolean;
+  }
+
+  interface VkPhysicalDeviceVariablePointersFeaturesKHRConstructor {
+    readonly prototype: VkPhysicalDeviceVariablePointersFeaturesKHR;
+    new(param?: VkPhysicalDeviceVariablePointersFeaturesKHRInitializer | null): VkPhysicalDeviceVariablePointersFeaturesKHR;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceVariablePointersFeaturesKHR: VkPhysicalDeviceVariablePointersFeaturesKHRConstructor;
+
+  
+  
+  /**
+   * Structure describing variable references features that can be supported by an implementation
+   */
+  interface VkPhysicalDeviceVariablePointersFeatures {
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+    /**
+     * Memory representation of the original vulkan structure instance.
+     */
+    memoryBuffer: ArrayBuffer;
+    
+    /**
+     *
+     */
+    sType: VkStructureType;
+
+    /**
+     *
+     */
+    pNext: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer: boolean;
+
+    /**
+     *
+     */
+    variablePointers: boolean;
+
+  }
+
+  interface VkPhysicalDeviceVariablePointersFeaturesInitializer {
+    
+    /**
+     *
+     */
+    sType?: VkStructureType;
+
+    /**
+     *
+     */
+    pNext?: null;
+
+    /**
+     *
+     */
+    variablePointersStorageBuffer?: boolean;
+
+    /**
+     *
+     */
+    variablePointers?: boolean;
+  }
+
+  interface VkPhysicalDeviceVariablePointersFeaturesConstructor {
+    readonly prototype: VkPhysicalDeviceVariablePointersFeatures;
+    new(param?: VkPhysicalDeviceVariablePointersFeaturesInitializer | null): VkPhysicalDeviceVariablePointersFeatures;
+
+    /**
+     * Object describing the memory layout for this structure.
+     */
+    readonly memoryLayout: object;
+
+  }
+
+  var VkPhysicalDeviceVariablePointersFeatures: VkPhysicalDeviceVariablePointersFeaturesConstructor;
 
   
   
@@ -29564,7 +30494,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkPhysicalDeviceImageFormatInfo2KHR {
     /**
@@ -29588,27 +30518,27 @@ declare global {
     pNext: null;
 
     /**
-     * is a 'VkFormat' value indicating the image format, corresponding to 'VkImageCreateInfo'::'format'.
+     * is a 'VkFormat' value specifying the image format, corresponding to 'VkImageCreateInfo'::'format'.
      */
     format: VkFormat;
 
     /**
-     * is a 'VkImageType' value indicating the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
+     * is a 'VkImageType' value specifying the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
      */
     type: VkImageType;
 
     /**
-     * is a 'VkImageTiling' value indicating the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
+     * is a 'VkImageTiling' value specifying the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
      */
     tiling: VkImageTiling;
 
     /**
-     * is a bitmask of 'VkImageUsageFlagBits' indicating the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage: VkImageUsageFlagBits;
 
     /**
-     * is a bitmask of 'VkImageCreateFlagBits' indicating additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags: VkImageCreateFlagBits;
 
@@ -29627,27 +30557,27 @@ declare global {
     pNext?: null;
 
     /**
-     * is a 'VkFormat' value indicating the image format, corresponding to 'VkImageCreateInfo'::'format'.
+     * is a 'VkFormat' value specifying the image format, corresponding to 'VkImageCreateInfo'::'format'.
      */
     format?: VkFormat;
 
     /**
-     * is a 'VkImageType' value indicating the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
+     * is a 'VkImageType' value specifying the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
      */
     type?: VkImageType;
 
     /**
-     * is a 'VkImageTiling' value indicating the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
+     * is a 'VkImageTiling' value specifying the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
      */
     tiling?: VkImageTiling;
 
     /**
-     * is a bitmask of 'VkImageUsageFlagBits' indicating the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage?: VkImageUsageFlagBits;
 
     /**
-     * is a bitmask of 'VkImageCreateFlagBits' indicating additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags?: VkImageCreateFlagBits;
   }
@@ -29692,27 +30622,27 @@ declare global {
     pNext: null;
 
     /**
-     * is a 'VkFormat' value indicating the image format, corresponding to 'VkImageCreateInfo'::'format'.
+     * is a 'VkFormat' value specifying the image format, corresponding to 'VkImageCreateInfo'::'format'.
      */
     format: VkFormat;
 
     /**
-     * is a 'VkImageType' value indicating the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
+     * is a 'VkImageType' value specifying the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
      */
     type: VkImageType;
 
     /**
-     * is a 'VkImageTiling' value indicating the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
+     * is a 'VkImageTiling' value specifying the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
      */
     tiling: VkImageTiling;
 
     /**
-     * is a bitmask of 'VkImageUsageFlagBits' indicating the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage: VkImageUsageFlagBits;
 
     /**
-     * is a bitmask of 'VkImageCreateFlagBits' indicating additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags: VkImageCreateFlagBits;
 
@@ -29731,27 +30661,27 @@ declare global {
     pNext?: null;
 
     /**
-     * is a 'VkFormat' value indicating the image format, corresponding to 'VkImageCreateInfo'::'format'.
+     * is a 'VkFormat' value specifying the image format, corresponding to 'VkImageCreateInfo'::'format'.
      */
     format?: VkFormat;
 
     /**
-     * is a 'VkImageType' value indicating the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
+     * is a 'VkImageType' value specifying the image type, corresponding to 'VkImageCreateInfo'::'imageType'.
      */
     type?: VkImageType;
 
     /**
-     * is a 'VkImageTiling' value indicating the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
+     * is a 'VkImageTiling' value specifying the image tiling, corresponding to 'VkImageCreateInfo'::'tiling'.
      */
     tiling?: VkImageTiling;
 
     /**
-     * is a bitmask of 'VkImageUsageFlagBits' indicating the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
+     * is a bitmask of 'VkImageUsageFlagBits' specifying the intended usage of the image, corresponding to 'VkImageCreateInfo'::'usage'.
      */
     usage?: VkImageUsageFlagBits;
 
     /**
-     * is a bitmask of 'VkImageCreateFlagBits' indicating additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
+     * is a bitmask of 'VkImageCreateFlagBits' specifying additional parameters of the image, corresponding to 'VkImageCreateInfo'::'flags'.
      */
     flags?: VkImageCreateFlagBits;
   }
@@ -29772,7 +30702,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Lists physical device\
    */
   interface VkImageFormatProperties2KHR {
     /**
@@ -29900,7 +30830,7 @@ declare global {
   
   
   /**
-   * Reports capabilities of a physical device
+   * Available image formats
    */
   interface VkFormatProperties2KHR {
     /**
@@ -34337,12 +35267,12 @@ declare global {
     readonly maxPushConstantsSize: number;
 
     /**
-     *
+     * is the maximum number of device memory allocations, as created by 'vkAllocateMemory', which 'can' simultaneously exist.
      */
     readonly maxMemoryAllocationCount: number;
 
     /**
-     *
+     * is the maximum number of sampler objects, as created by 'vkCreateSampler', which 'can' simultaneously exist on a device.
      */
     readonly maxSamplerAllocationCount: number;
 
@@ -34871,12 +35801,12 @@ declare global {
     readonly maxPushConstantsSize?: number;
 
     /**
-     *
+     * is the maximum number of device memory allocations, as created by 'vkAllocateMemory', which 'can' simultaneously exist.
      */
     readonly maxMemoryAllocationCount?: number;
 
     /**
-     *
+     * is the maximum number of sampler objects, as created by 'vkCreateSampler', which 'can' simultaneously exist on a device.
      */
     readonly maxSamplerAllocationCount?: number;
 
@@ -37305,7 +38235,7 @@ declare global {
     flags: VkSamplerCreateFlagBits;
 
     /**
-     * 'must' be equal.
+     * is a 'VkFilter' value specifying the magnification filter to apply to lookups.
      */
     magFilter: VkFilter;
 
@@ -37325,7 +38255,7 @@ declare global {
     addressModeU: VkSamplerAddressMode;
 
     /**
-     * 'must' each be either 'VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE' or 'VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER'.
+     * is a 'VkSamplerAddressMode' value specifying the addressing mode for outside [0..1] range for V coordinate.
      */
     addressModeV: VkSamplerAddressMode;
 
@@ -37365,7 +38295,7 @@ declare global {
     minLod: number;
 
     /**
-     * 'must' be zero.
+     * are the values used to clamp the computed LOD value, as described in the <<textures-level-of-detail-operation, Level-of-Detail Operation>> section.
      */
     maxLod: number;
 
@@ -37375,7 +38305,7 @@ declare global {
     borderColor: VkBorderColor;
 
     /**
-     * controls whether to use unnormalized or normalized texel coordinates to address texels of the image. When set to 'VK_TRUE', the range of the image coordinates used to lookup the texel is in the range of zero to the image dimensions for x, y and z. When set to 'VK_FALSE' the range of image coordinates is zero to one. When 'unnormalizedCoordinates' is 'VK_TRUE', samplers have the following requirements:
+     * controls whether to use unnormalized or normalized texel coordinates to address texels of the image. When set to 'VK_TRUE', the range of the image coordinates used to lookup the texel is in the range of zero to the image dimensions for x, y and z. When set to 'VK_FALSE' the range of image coordinates is zero to one.+When 'unnormalizedCoordinates' is 'VK_TRUE', images the sampler isused with in the shader have the following requirements:+
      */
     unnormalizedCoordinates: boolean;
 
@@ -37399,7 +38329,7 @@ declare global {
     flags?: VkSamplerCreateFlagBits;
 
     /**
-     * 'must' be equal.
+     * is a 'VkFilter' value specifying the magnification filter to apply to lookups.
      */
     magFilter?: VkFilter;
 
@@ -37419,7 +38349,7 @@ declare global {
     addressModeU?: VkSamplerAddressMode;
 
     /**
-     * 'must' each be either 'VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE' or 'VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER'.
+     * is a 'VkSamplerAddressMode' value specifying the addressing mode for outside [0..1] range for V coordinate.
      */
     addressModeV?: VkSamplerAddressMode;
 
@@ -37459,7 +38389,7 @@ declare global {
     minLod?: number;
 
     /**
-     * 'must' be zero.
+     * are the values used to clamp the computed LOD value, as described in the <<textures-level-of-detail-operation, Level-of-Detail Operation>> section.
      */
     maxLod?: number;
 
@@ -37469,7 +38399,7 @@ declare global {
     borderColor?: VkBorderColor;
 
     /**
-     * controls whether to use unnormalized or normalized texel coordinates to address texels of the image. When set to 'VK_TRUE', the range of the image coordinates used to lookup the texel is in the range of zero to the image dimensions for x, y and z. When set to 'VK_FALSE' the range of image coordinates is zero to one. When 'unnormalizedCoordinates' is 'VK_TRUE', samplers have the following requirements:
+     * controls whether to use unnormalized or normalized texel coordinates to address texels of the image. When set to 'VK_TRUE', the range of the image coordinates used to lookup the texel is in the range of zero to the image dimensions for x, y and z. When set to 'VK_FALSE' the range of image coordinates is zero to one.+When 'unnormalizedCoordinates' is 'VK_TRUE', images the sampler isused with in the shader have the following requirements:+
      */
     unnormalizedCoordinates?: boolean;
   }
@@ -43569,7 +44499,7 @@ declare global {
     ppEnabledExtensionNames: string[] | null;
 
     /**
-     * is <i>null</i> or a reference to a 'VkPhysicalDeviceFeatures' structure that contains boolean indicators of all the features to be enabled. Refer to the <<features-features,Features>> section for further details.
+     * is <i>null</i> or a reference to a 'VkPhysicalDeviceFeatures' structure that contains boolean indicators of all the features to be enabled. Refer to the <<features,Features>> section for further details.
      */
     pEnabledFeatures: VkPhysicalDeviceFeatures | null;
 
@@ -43623,7 +44553,7 @@ declare global {
     ppEnabledExtensionNames?: string[] | null;
 
     /**
-     * is <i>null</i> or a reference to a 'VkPhysicalDeviceFeatures' structure that contains boolean indicators of all the features to be enabled. Refer to the <<features-features,Features>> section for further details.
+     * is <i>null</i> or a reference to a 'VkPhysicalDeviceFeatures' structure that contains boolean indicators of all the features to be enabled. Refer to the <<features,Features>> section for further details.
      */
     pEnabledFeatures?: VkPhysicalDeviceFeatures | null;
   }
@@ -44113,7 +45043,7 @@ declare global {
     readonly pipelineCacheUUID: number[] | null;
 
     /**
-     * is the 'VkPhysicalDeviceLimits' structure which specifies device-specific limits of the physical device. See <<features-limits,Limits>> for details.
+     * is the 'VkPhysicalDeviceLimits' structure which specifies device-specific limits of the physical device. See <<limits,Limits>> for details.
      */
     readonly limits: VkPhysicalDeviceLimits | null;
 
@@ -44162,7 +45092,7 @@ declare global {
     readonly pipelineCacheUUID?: number[] | null;
 
     /**
-     * is the 'VkPhysicalDeviceLimits' structure which specifies device-specific limits of the physical device. See <<features-limits,Limits>> for details.
+     * is the 'VkPhysicalDeviceLimits' structure which specifies device-specific limits of the physical device. See <<limits,Limits>> for details.
      */
     readonly limits?: VkPhysicalDeviceLimits | null;
 
@@ -45227,6 +46157,15 @@ declare global {
    * @param flags is a bitmask of 'VkQueryResultFlagBits' specifying how and when results are returned.
    */
   function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: bigint, pData: ArrayBuffer | null, stride: bigint, flags: VkQueryResultFlagBits): VkResult;
+  
+  /**
+   * Reset queries in a query pool
+   * @param device
+   * @param queryPool is the handle of the query pool managing the queries being reset.
+   * @param firstQuery is the initial query index to reset.
+   * @param queryCount is the number of queries to reset.
+   */
+  function vkResetQueryPoolEXT(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number): void;
   
   /**
    * Create a new buffer object
@@ -46907,6 +47846,14 @@ declare global {
   function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: VkShaderStageFlagBits, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInout | null, pInfo: ArrayBuffer | null): VkResult;
   
   /**
+   * Set Local Dimming
+   * @param device
+   * @param swapChain handle to enable local dimming.
+   * @param localDimmingEnable specifies whether local dimming is enabled for the swapchain.
+   */
+  function vkSetLocalDimmingAMD(device: VkDevice | null, swapChain: VkSwapchainKHR | null, localDimmingEnable: boolean): void;
+  
+  /**
    * Query calibrateable time domains
    * @param physicalDevice is the physical device from which to query the set of calibrateable time domains.
    * @param pTimeDomainCount is a reference to a number related to the number of calibrateable time domains available or queried, as described below.
@@ -47320,7 +48267,7 @@ declare global {
    * Query ray tracing pipeline shader group handles
    * @param device is the logical device that contains the ray tracing pipeline.
    * @param pipeline is the ray tracing pipeline object that contains the shaders.
-   * @param firstGroup is the index of the first group to retrieve a handle for from the 'VkPipelineShaderStageCreateInfo'::'pGroups' array.
+   * @param firstGroup is the index of the first group to retrieve a handle for from the 'VkRayTracingShaderGroupCreateInfoNV'::'pGroups' array.
    * @param groupCount is the number of shader handles to retrieve.
    * @param dataSize is the size in bytes of the buffer pointed to by 'pData'.
    * @param pData is a reference to a user-allocated buffer where the results will be written.
@@ -47369,6 +48316,13 @@ declare global {
    * @param pProperties is either <i>null</i> or a reference to an array of 'VkCooperativeMatrixPropertiesNV' structures.
    */
   function vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout | null, pProperties: VkCooperativeMatrixPropertiesNV[] | null): VkResult;
+  
+  /**
+   * Get the handle for an image view for a specific descriptor type
+   * @param device is the logical device that owns the image view.
+   * @param pInfo describes the image view to query and type of handle.
+   */
+  function vkGetImageViewHandleNVX(device: VkDevice | null, pInfo: VkImageViewHandleInfoNVX | null): number;
   
 
   function createV8ArrayBufferFromMemory(
