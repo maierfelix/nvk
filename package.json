@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -39,18 +39,16 @@
     "targz": "^1.0.1"
   },
   "dependencies": {},
-  "description": "Vulkan rendering API for node",
+  "description": "Vulkan JavaScript API",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maierfelix/nvk.git"
   },
   "keywords": [
     "vulkan",
-    "opengl",
-    "bindings",
-    "3d",
-    "2d",
-    "rendering"
+    "gpgpu",
+    "compute",
+    "graphics"
   ],
   "author": "Felix Maier",
   "license": "MIT",
