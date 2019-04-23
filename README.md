@@ -216,9 +216,9 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~150.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript and `~40.000` lines are C++ code.
+The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript, `~40.000` lines are C++ code and the rest code for the documentation and AST.
 
-Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. This results in better performance and reduced memory usage. This is achieved by only calling C++ when a Vulkan function is called. The native memory layouts of Structures and Handles are filled within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/interfaces.js)).
+Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
 
 ## Build Instructions:
 
