@@ -286,7 +286,6 @@ npm run [script] [flag] [value]
 
 #### General:
 ````
-[--vkversion]: The Vulkan version to use
 [--disable-validation-checks]: Disables type and bounding checks for better performance
 [--enable-shared-memory-hints]: Enables console hints, reporting to use nested structures when possible - useful for performance optimization
 ````
