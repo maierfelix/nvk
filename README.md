@@ -327,4 +327,5 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 ## TODOs:
  - [ ] Function generation (~95%)
  - [ ] Documentation generator (95%)
- 
+ - [ ] Make `--vkversion=x` optional
+ - [ ] Validate enum values when setting a Structure member
