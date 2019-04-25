@@ -157,6 +157,20 @@ export function getHandleByHandleName(ast, name) {
   return null;
 };
 
+export function getEnumBoundings(object) {
+  let min = Number.MAX_SAFE_INTEGER;
+  let max = -Number.MAX_SAFE_INTEGER;
+  for (let key in object) {
+    let value = parseInt(object[key]);
+    if (!Number.isInteger(value)) {
+      warn(`Cannot resolve enum value for ${key}`);
+    }
+    if (value >= max) max = value;
+    if (value <= min) min = value;
+  };
+  return { min, max };
+};
+
 // auto-generates the sType name by a struct's name
 export function getAutoStructureType(name) {
   let out = ``;
@@ -554,11 +568,15 @@ export function getDataViewInstructionStride(instr) {
 };
 
 export function getHexa(num) {
-  return `0x` + (num.toString(16).toUpperCase());
+  let sign = `0x`;
+  if (num < 0) sign = `-0x`;
+  return sign + (Math.abs(num).toString(16).toUpperCase());
 };
 
 export function getHexaByteOffset(num) {
-  return `0x` + (Math.round(num).toString(16).toUpperCase());
+  let sign = `0x`;
+  if (num < 0) sign = `-0x`;
+  return sign + (Math.round(Math.abs(num)).toString(16).toUpperCase());
 };
 
 export function stringifyJSONQuoteless(obj) {

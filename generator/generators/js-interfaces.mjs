@@ -1,11 +1,14 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
+import Terser from "terser";
+
 import pkg from "../../package.json";
 
 import {
   warn,
   isPNextMember,
   getNodeByName,
+  getEnumBoundings,
   isFillableMember,
   isIgnoreableType,
   isFlushableMember,
@@ -128,6 +131,39 @@ function getEnumInlineStypeValue(name) {
   let value = getEnumInlineValue(name);
   if (Number.isNaN(parseInt(value))) return `VkStructureType.${value}`;
   return value;
+};
+
+function getEnumRangeValidationFunctions() {
+  if (!enumLayouts) return ``;
+  let out = ``;
+  let table = enumLayoutTable;
+  for (let enumName in table) {
+    // can be ignored
+    if (enumName === `API_Extensions_Strings`) continue;
+    let values = [];
+    out += `
+function $VAL_R_${enumName}(value) {`;
+    if (Object.keys(table[enumName]) <= 0) {
+      out += `\n  return false;
+};\n`;
+    continue;
+    }
+    out += `
+  switch (value) {\n    `;
+    for (let memberName in table[enumName]) {
+      let value = table[enumName][memberName];
+      if (values.indexOf(value) > -1) continue;
+      values.push(value);
+      out += `case ${getHexaByteOffset(value)}: `;
+    };
+    out += `
+      return true;`;
+    out += `
+  };
+  return false;
+};\n`;
+  };
+  return out;
 };
 
 function getStructureMemoryViews(passedByReference) {
@@ -277,11 +313,28 @@ function getSetterProcessor(member) {
       let instr = getDataViewInstruction(member);
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
-      return `
-    ${ validate ? `if (typeof value !== "number") {
+      let out = ``;
+      // validate type
+      if (validate) {
+        out += `
+    if (typeof value !== "number") {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Number' but got '" + value.constructor.name + "'");
-    }` : `` }
+    }`;
+      }
+      // validate enum boundings
+      if (validate && enumLayouts && member.enumType) {
+        let enumObject = enumLayouts[member.enumType];
+        if (!enumObject) warn(`Cannot resolve bounding check enum for ${currentStruct.name}.${member.name}`);
+        else {
+          out += `
+    if (!$VAL_R_${member.enumType}(value)) {
+      throw new RangeError("Invalid value for '${currentStruct.name}.${member.name}': '" + value + "' is not a value of '${member.enumType}'");
+    }`;
+        }
+      }
+      out += `
     this.memoryView${instr}[${offset}] = value;`;
+      return out;
     }
     case JavaScriptType.BIGINT: {
       let instr = getDataViewInstruction(member);
@@ -669,7 +722,13 @@ export default function(astReference, includeValidations, calls, handles, struct
   enumLayoutTable = getEnumLayoutTable();
   memoryLayouts = getMemoryLayouts();
   let output = ``;
+  // header
   output += nunjucks.renderString(JS_INDEX_TEMPLATE, {});
+  // enum range checks
+  if (validate) {
+    output += getEnumRangeValidationFunctions();
+  }
+  // handles
   handles.map(handle => {
     currentHandle = handle;
     output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {
@@ -677,6 +736,7 @@ export default function(astReference, includeValidations, calls, handles, struct
       getHandleByteLength
     });
   });
+  // structs
   structs.map(struct => {
     currentStruct = struct;
     output += nunjucks.renderString(JS_STRUCT_TEMPLATE, {
@@ -696,8 +756,9 @@ export default function(astReference, includeValidations, calls, handles, struct
       getStructureMemberByteLength
     });
   });
+  // exports
   output += `\nmodule.exports = {\n`;
-  // add additional c++ content
+  // add c++ stuff
   output += `  ...(nvk.$getVulkanEnumerations()),\n`;
   output += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
   output += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
@@ -720,5 +781,10 @@ export default function(astReference, includeValidations, calls, handles, struct
     output += `  ${struct.name}${comma}`;
   });
   output += `\n};\n`;
-  return output;
+  let minified = Terser.minify(output);
+  if (minified.error) {
+    warn(`Failed to minify code: ${minified.error.toString()}`);
+    return output;
+  }
+  return minified.code;
 };

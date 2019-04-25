@@ -34,7 +34,9 @@ if (!vkVersion) {
   });
 }
 
-if (!vkVersion) throw `No vulkan version --vkversion specified!`;
+if (!vkVersion) vkVersion = pkg.config.POST_DEFAULT_BINDING_VERSION;
+
+process.stdout.write(`(nvk) Using Vulkan v${vkVersion}\n`);
 
 // gather disable-validation-checks flag
 let disableValidationChecks = process.env.npm_config_disable_validation_checks;
@@ -52,7 +54,6 @@ if (!disableValidationChecks) {
 let {platform} = process;
 
 // strictly dissallow older versions
-// TODO: make this less harsh?
 if (pkg.config.OUTDATED.indexOf(vkVersion) > -1) {
   throw `${vkVersion} is outdated and no longer supported!
 Please use v${pkg.config.POST_DEFAULT_BINDING_VERSION} from now on!`;
