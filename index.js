@@ -36,8 +36,6 @@ if (!vkVersion) {
 
 if (!vkVersion) vkVersion = pkg.config.POST_DEFAULT_BINDING_VERSION;
 
-process.stdout.write(`(nvk) Using Vulkan v${vkVersion}\n`);
-
 // gather disable-validation-checks flag
 let disableValidationChecks = process.env.npm_config_disable_validation_checks;
 // attempt npm version
@@ -50,6 +48,8 @@ if (!disableValidationChecks) {
     }
   });
 }
+
+process.stdout.write(`(nvk) Using Vulkan v${vkVersion}\n`);
 
 let {platform} = process;
 
@@ -88,7 +88,9 @@ if (platform === "darwin") {
 }
 
 if (disableValidationChecks) {
+  process.stdout.write(`(nvk) Validation checks are disabled\n`);
   module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces-no-validation.js`);
 } else {
+  process.stdout.write(`(nvk) Validation checks are enabled\n`);
   module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces.js`);
 }
