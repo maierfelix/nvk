@@ -67,7 +67,7 @@ npm install nvk
 
 In most cases the bindings match the C99 style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
 
-Also note that *nvk* performs type validation and bounding checks to help you catching bugs early. In future, these checks can be disabled using the `--disable-validation-checks` flag for better performance.
+Also note that *nvk* performs type validation and bounding checks to help you catching bugs early. These checks can be disabled using the `--disable-validation-checks` flag.
 
 JavaScript/TypeScript:
 ````js
