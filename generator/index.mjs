@@ -20,6 +20,7 @@ import generateDocs from "./generators/docs";
 
 import {
   warn,
+  getPlatform,
   isSupportedWSI,
   formatVkVersion,
   getSortedIncludes,
@@ -160,10 +161,16 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   let includes = [];
   let includeNames = [];
   let sortedIncludes = [];
+  let fakePlatform = process.env.npm_config_fake_platform;
+  // let the user know when he uses a fake platform
+  if (fakePlatform) {
+    console.log(`Fake platform enabled!`);
+    console.log(`Fake platform: '${fakePlatform}' - Real platform: '${process.platform}'`);
+  }
   // write paths
   const baseGeneratePath = pkg.config.GEN_OUT_DIR;
   const generateVersionPath = `${baseGeneratePath}/${version}`;
-  const generatePath = `${generateVersionPath}/${process.platform}`;
+  const generatePath = `${generateVersionPath}/${getPlatform()}`;
   const generateSrcPath = `${generatePath}/src`;
   // reserve write dirs
   {
@@ -333,7 +340,7 @@ vkVersion = formatVkVersion(vkVersion);
 global.vkVersion = vkVersion;
 
 let WSI = process.env.npm_config_wsi;
-if (process.platform === "linux") {
+if (getPlatform() === "linux") {
   if (WSI && !isSupportedWSI(WSI)) throw `Invalid or unsupported WSI: ${WSI}`;
 }
 

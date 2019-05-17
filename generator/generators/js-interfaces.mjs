@@ -6,6 +6,7 @@ import pkg from "../../package.json";
 
 import {
   warn,
+  getPlatform,
   isPNextMember,
   getNodeByName,
   getEnumBoundings,
@@ -684,7 +685,7 @@ function getEnumLayoutTable() {
 };
 
 function getEnumLayouts() {
-  let enumLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/enumLayouts.json`;
+  let enumLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${getPlatform()}/enumLayouts.json`;
   if (!fs.existsSync(enumLayoutsPath)) {
     if (!global.ENUM_LAYOUT_NEEDS_RECOMPILATION) {
       warn(`Module needs recompilation:
@@ -700,7 +701,7 @@ The code generater can only inline required enum layouts after second compilatio
 };
 
 function getMemoryLayouts() {
-  let memoryLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/memoryLayouts.json`;
+  let memoryLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${getPlatform()}/memoryLayouts.json`;
   if (!fs.existsSync(memoryLayoutsPath)) {
     if (!global.MEMORY_LAYOUT_NEEDS_RECOMPILATION) {
       warn(`Module needs recompilation:
