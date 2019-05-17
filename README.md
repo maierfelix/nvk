@@ -305,6 +305,7 @@ The generated bindings can then be found in `generated/{vkversion}/${platform}`
 ##### Flags:
 ````
 [--vkversion]: The Vulkan version to generate bindings for
+[--fake-platform]: Allows to specify a fake platform to generate bindings for. Only use this when the native bindings don't have to be recompiled! A useful but dangerous flag
 [--incremental]: Enables incremental builds when building the bindings
 [--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
