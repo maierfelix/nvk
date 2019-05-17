@@ -113,7 +113,7 @@ function getTypescriptType(object) {
       return `bigint`;
     }
     case JavaScriptType.OBJECT_INOUT: {
-      return `VkInout | null`;
+      return (jsType.value === `BigInt` ? `VkInoutAddress` : `VkInout`) + ` | null`;
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `string[] | null`;

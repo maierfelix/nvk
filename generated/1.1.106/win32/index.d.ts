@@ -47529,7 +47529,7 @@ declare global {
    * @param flags is reserved for future use.
    * @param ppData is a reference in which is returned a host-accessible reference to the beginning of the mapped range. This reference minus 'offset' 'must' be aligned to at least 'VkPhysicalDeviceLimits'::'minMemoryMapAlignment'.
    */
-  function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: bigint, size: bigint, flags: number, ppData: VkInout | null): VkResult;
+  function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: bigint, size: bigint, flags: number, ppData: VkInoutAddress | null): VkResult;
   
   /**
    * Unmap a previously mapped memory object
@@ -47560,7 +47560,7 @@ declare global {
    * @param memory is the memory object being queried.
    * @param pCommittedMemoryInBytes is a reference to a 'VkDeviceSize' value in which the number of bytes currently committed is returned, on success.
    */
-  function vkGetDeviceMemoryCommitment(device: VkDevice | null, memory: VkDeviceMemory | null, pCommittedMemoryInBytes: VkInout | null): void;
+  function vkGetDeviceMemoryCommitment(device: VkDevice | null, memory: VkDeviceMemory | null, pCommittedMemoryInBytes: VkInoutAddress | null): void;
   
   /**
    * Returns the memory requirements for specified Vulkan object
@@ -47881,7 +47881,7 @@ declare global {
    * @param pDataSize is a reference to a value related to the amount of data in the pipeline cache, as described below.
    * @param pData is either <i>null</i> or a reference to a buffer.
    */
-  function vkGetPipelineCacheData(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pDataSize: VkInout | null, pData: ArrayBuffer | null): VkResult;
+  function vkGetPipelineCacheData(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pDataSize: VkInoutAddress | null, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Combine the data stores of pipeline caches
@@ -48828,7 +48828,7 @@ declare global {
    * @param handleType is a bitmask of 'VkExternalMemoryHandleTypeFlagBitsNV' containing a single bit specifying the type of handle requested.
    * @param pHandle
    */
-  function vkGetMemoryWin32HandleNV(device: VkDevice | null, memory: VkDeviceMemory | null, handleType: VkExternalMemoryHandleTypeFlagBitsNV, pHandle: VkInout | null): VkResult;
+  function vkGetMemoryWin32HandleNV(device: VkDevice | null, memory: VkDeviceMemory | null, handleType: VkExternalMemoryHandleTypeFlagBitsNV, pHandle: VkInoutAddress | null): VkResult;
   
   /**
    * Perform an indirect draw with the draw count sourced from a buffer
@@ -49017,7 +49017,7 @@ declare global {
    * @param pGetWin32HandleInfo is a reference to an instance of the 'VkMemoryGetWin32HandleInfoKHR' structure containing parameters of the export operation.
    * @param pHandle will return the Windows handle representing the underlying resources of the device memory object.
    */
-  function vkGetMemoryWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkMemoryGetWin32HandleInfoKHR | null, pHandle: VkInout | null): VkResult;
+  function vkGetMemoryWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkMemoryGetWin32HandleInfoKHR | null, pHandle: VkInoutAddress | null): VkResult;
   
   /**
    * Get Properties of External Memory Win32 Handles
@@ -49059,7 +49059,7 @@ declare global {
    * @param pGetWin32HandleInfo is a reference to an instance of the 'VkSemaphoreGetWin32HandleInfoKHR' structure containing parameters of the export operation.
    * @param pHandle will return the Windows handle representing the semaphore state.
    */
-  function vkGetSemaphoreWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkSemaphoreGetWin32HandleInfoKHR | null, pHandle: VkInout | null): VkResult;
+  function vkGetSemaphoreWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkSemaphoreGetWin32HandleInfoKHR | null, pHandle: VkInoutAddress | null): VkResult;
   
   /**
    * Import a semaphore from a Windows HANDLE
@@ -49097,7 +49097,7 @@ declare global {
    * @param pGetWin32HandleInfo is a reference to an instance of the 'VkFenceGetWin32HandleInfoKHR' structure containing parameters of the export operation.
    * @param pHandle will return the Windows handle representing the fence state.
    */
-  function vkGetFenceWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkFenceGetWin32HandleInfoKHR | null, pHandle: VkInout | null): VkResult;
+  function vkGetFenceWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkFenceGetWin32HandleInfoKHR | null, pHandle: VkInoutAddress | null): VkResult;
   
   /**
    * Import a fence from a Windows HANDLE
@@ -49162,7 +49162,7 @@ declare global {
    * @param counter is the counter to query.
    * @param pCounterValue will return the current value of the counter.
    */
-  function vkGetSwapchainCounterEXT(device: VkDevice | null, swapchain: VkSwapchainKHR | null, counter: VkSurfaceCounterFlagBitsEXT, pCounterValue: VkInout | null): VkResult;
+  function vkGetSwapchainCounterEXT(device: VkDevice | null, swapchain: VkSwapchainKHR | null, counter: VkSurfaceCounterFlagBitsEXT, pCounterValue: VkInoutAddress | null): VkResult;
   
   /**
    * Query surface capabilities
@@ -49483,7 +49483,7 @@ declare global {
    * @param pDataSize is a reference to a value related to the amount of data in the validation cache, as described below.
    * @param pData is either <i>null</i> or a reference to a buffer.
    */
-  function vkGetValidationCacheDataEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pDataSize: VkInout | null, pData: ArrayBuffer | null): VkResult;
+  function vkGetValidationCacheDataEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pDataSize: VkInoutAddress | null, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Combine the data stores of validation caches
@@ -49511,7 +49511,7 @@ declare global {
    * @param pInfoSize is a reference to a value related to the amount of data the query returns, as described below.
    * @param pInfo is either <i>null</i> or a reference to a buffer.
    */
-  function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: VkShaderStageFlagBits, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInout | null, pInfo: ArrayBuffer | null): VkResult;
+  function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: VkShaderStageFlagBits, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInoutAddress | null, pInfo: ArrayBuffer | null): VkResult;
   
   /**
    * Set Local Dimming
@@ -49537,7 +49537,7 @@ declare global {
    * @param pTimestamps
    * @param pMaxDeviation is a reference to a 64-bit unsigned integer value in which the strictly positive maximum deviation, in nanoseconds, of the calibrated timestamp values is returned.
    */
-  function vkGetCalibratedTimestampsEXT(device: VkDevice | null, timestampCount: number, pTimestampInfos: VkCalibratedTimestampInfoEXT[] | null, pTimestamps: BigUint64Array | null, pMaxDeviation: VkInout | null): VkResult;
+  function vkGetCalibratedTimestampsEXT(device: VkDevice | null, timestampCount: number, pTimestampInfos: VkCalibratedTimestampInfoEXT[] | null, pTimestamps: BigUint64Array | null, pMaxDeviation: VkInoutAddress | null): VkResult;
   
   /**
    * Give a user-friendly name to an object
