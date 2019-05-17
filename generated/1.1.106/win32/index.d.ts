@@ -551,6 +551,269 @@ declare global {
     VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME,
     
   }
+
+  const VK_KHR_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SWAPCHAIN_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DISPLAY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_XLIB_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_XCB_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_MIR_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_ANDROID_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_WIN32_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_ANDROID_NATIVE_BUFFER_NAME: API_Extensions_Strings;
+  const VK_EXT_DEBUG_REPORT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_GLSL_SHADER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_FILTER_CUBIC_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_17_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_18_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_20_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DEBUG_MARKER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_24_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_25_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_GCN_SHADER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_28_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_EXTENSION_30_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_32_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_33_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_35_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_BALLOT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_39_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_40_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_41_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_TEXTURE_GATHER_BIAS_LOD_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_INFO_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_44_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_45_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_46_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_EXTENSION_48_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_EXTENSION_49_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_CORNER_SAMPLED_IMAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_EXTENSION_52_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_53_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_MULTIVIEW_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_FORMAT_PVRTC_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DEVICE_GROUP_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NN_VI_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SHADER_SUBGROUP_BALLOT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_ARM_EXTENSION_01_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_EXTENSION_69_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_MAINTENANCE1_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_WIN32_KEYED_MUTEX_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_16BIT_STORAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DISPLAY_CONTROL_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_GEOMETRY_SHADER_PASSTHROUGH_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_VIEWPORT_ARRAY2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DISCARD_RECTANGLES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_101_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DEPTH_CLIP_ENABLE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_104_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_HDR_METADATA_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_EXTENSION_107_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_EXTENSION_108_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_EXTENSION_109_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_IMG_EXTENSION_111_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTERNAL_FENCE_FD_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_117_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_MAINTENANCE2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_119_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_MVK_IOS_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_MVK_MACOS_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_MVK_MOLTENVK_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DEBUG_UTILS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_134_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_135_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_136_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_MIXED_ATTACHMENT_SAMPLES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_INLINE_UNIFORM_BLOCK_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_140_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_142_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_143_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_RELAXED_BLOCK_LAYOUT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_GET_MEMORY_REQUIREMENTS_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_FRAGMENT_COVERAGE_TO_COLOR_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_151_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_152_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_FRAMEBUFFER_MIXED_SAMPLES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_FILL_RECTANGLE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_155_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_POST_DEPTH_COVERAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_BIND_MEMORY_2_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_160_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_VALIDATION_CACHE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_164_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_SHADING_RATE_IMAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_RAY_TRACING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_168_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_MAINTENANCE3_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_FILTER_CUBIC_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_QCOM_extension_172_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_QCOM_extension_173_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_QCOM_extension_174_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_176_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_177_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_8BIT_STORAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_BUFFER_MARKER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SHADER_ATOMIC_INT64_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_182_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_183_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_184_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_187_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_188_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_189_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GGP_FRAME_TOKEN_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_EXTENSION_194_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_EXTENSION_195_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_EXTENSION_196_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_MESH_SHADER_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_208_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_209_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_210_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_211_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_VULKAN_MEMORY_MODEL_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_PCI_BUS_INFO_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_FUCHSIA_IMAGEPIPE_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_216_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_217_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_METAL_SURFACE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_220_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_221_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_223_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_HLSL_FUNCTIONALITY1_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_226_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_227_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_228_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_229_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_230_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_231_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_232_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_233_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_234_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_235_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_AMD_EXTENSION_236_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_237_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_MEMORY_BUDGET_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_242_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_INTEL_EXTENSION_243_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_MESA_EXTENSION_244_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_246_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_KHR_EXTENSION_249_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_251_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_NV_EXTENSION_252_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_254_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_255_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_257_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_258_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_EXTENSION_259_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_extension_260: API_Extensions_Strings;
+  const VK_NV_EXTENSION_261_EXTENSION_NAME: API_Extensions_Strings;
+  const VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME: API_Extensions_Strings;
+  
+
   
   /**
    * 
@@ -1084,6 +1347,9 @@ declare global {
     VK_EXT_HOST_QUERY_RESET_SPEC_VERSION,
     
   }
+  const VK_EXT_HOST_QUERY_RESET_SPEC_VERSION: API_Extensions;
+  
+
   
   /**
    * 
@@ -1143,6 +1409,35 @@ declare global {
     VK_NULL_HANDLE,
     
   }
+
+  const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE: API_Constants;
+  const VK_UUID_SIZE: API_Constants;
+  const VK_LUID_SIZE: API_Constants;
+  const VK_LUID_SIZE_KHR: API_Constants;
+  const VK_MAX_EXTENSION_NAME_SIZE: API_Constants;
+  const VK_MAX_DESCRIPTION_SIZE: API_Constants;
+  const VK_MAX_MEMORY_TYPES: API_Constants;
+  const VK_MAX_MEMORY_HEAPS: API_Constants;
+  const VK_LOD_CLAMP_NONE: API_Constants;
+  const VK_REMAINING_MIP_LEVELS: API_Constants;
+  const VK_REMAINING_ARRAY_LAYERS: API_Constants;
+  const VK_WHOLE_SIZE: API_Constants;
+  const VK_ATTACHMENT_UNUSED: API_Constants;
+  const VK_TRUE: API_Constants;
+  const VK_FALSE: API_Constants;
+  const VK_QUEUE_FAMILY_IGNORED: API_Constants;
+  const VK_QUEUE_FAMILY_EXTERNAL: API_Constants;
+  const VK_QUEUE_FAMILY_EXTERNAL_KHR: API_Constants;
+  const VK_QUEUE_FAMILY_FOREIGN_EXT: API_Constants;
+  const VK_SUBPASS_EXTERNAL: API_Constants;
+  const VK_MAX_DEVICE_GROUP_SIZE: API_Constants;
+  const VK_MAX_DEVICE_GROUP_SIZE_KHR: API_Constants;
+  const VK_MAX_DRIVER_NAME_SIZE_KHR: API_Constants;
+  const VK_MAX_DRIVER_INFO_SIZE_KHR: API_Constants;
+  const VK_SHADER_UNUSED_NV: API_Constants;
+  const VK_NULL_HANDLE: API_Constants;
+  
+
   
   /**
    * Layout of image and image subresources
@@ -1180,6 +1475,23 @@ declare global {
     VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT,
     
   }
+
+  const VK_IMAGE_LAYOUT_UNDEFINED: VkImageLayout;
+  const VK_IMAGE_LAYOUT_GENERAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL: VkImageLayout;
+  const VK_IMAGE_LAYOUT_PREINITIALIZED: VkImageLayout;
+  const VK_IMAGE_LAYOUT_PRESENT_SRC_KHR: VkImageLayout;
+  const VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR: VkImageLayout;
+  const VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR: VkImageLayout;
+  const VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR: VkImageLayout;
+  const VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV: VkImageLayout;
+  const VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT: VkImageLayout;
+  
+
   
   /**
    * Specify how contents of an attachment are treated at the beginning of a subpass
@@ -1193,6 +1505,12 @@ declare global {
     VK_ATTACHMENT_LOAD_OP_DONT_CARE,
     
   }
+
+  const VK_ATTACHMENT_LOAD_OP_LOAD: VkAttachmentLoadOp;
+  const VK_ATTACHMENT_LOAD_OP_CLEAR: VkAttachmentLoadOp;
+  const VK_ATTACHMENT_LOAD_OP_DONT_CARE: VkAttachmentLoadOp;
+  
+
   
   /**
    * Specify how contents of an attachment are treated at the end of a subpass
@@ -1204,6 +1522,11 @@ declare global {
     VK_ATTACHMENT_STORE_OP_DONT_CARE,
     
   }
+
+  const VK_ATTACHMENT_STORE_OP_STORE: VkAttachmentStoreOp;
+  const VK_ATTACHMENT_STORE_OP_DONT_CARE: VkAttachmentStoreOp;
+  
+
   
   /**
    * Specifies the type of an image object
@@ -1217,6 +1540,12 @@ declare global {
     VK_IMAGE_TYPE_3D,
     
   }
+
+  const VK_IMAGE_TYPE_1D: VkImageType;
+  const VK_IMAGE_TYPE_2D: VkImageType;
+  const VK_IMAGE_TYPE_3D: VkImageType;
+  
+
   
   /**
    * Specifies the tiling arrangement of data in an image
@@ -1230,6 +1559,12 @@ declare global {
     VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT,
     
   }
+
+  const VK_IMAGE_TILING_OPTIMAL: VkImageTiling;
+  const VK_IMAGE_TILING_LINEAR: VkImageTiling;
+  const VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT: VkImageTiling;
+  
+
   
   /**
    * Image view types
@@ -1251,6 +1586,16 @@ declare global {
     VK_IMAGE_VIEW_TYPE_CUBE_ARRAY,
     
   }
+
+  const VK_IMAGE_VIEW_TYPE_1D: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_2D: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_3D: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_CUBE: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_1D_ARRAY: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_2D_ARRAY: VkImageViewType;
+  const VK_IMAGE_VIEW_TYPE_CUBE_ARRAY: VkImageViewType;
+  
+
   
   /**
    * Enumerant specifying a command buffer level
@@ -1262,6 +1607,11 @@ declare global {
     VK_COMMAND_BUFFER_LEVEL_SECONDARY,
     
   }
+
+  const VK_COMMAND_BUFFER_LEVEL_PRIMARY: VkCommandBufferLevel;
+  const VK_COMMAND_BUFFER_LEVEL_SECONDARY: VkCommandBufferLevel;
+  
+
   
   /**
    * Specify how a component is swizzled
@@ -1283,6 +1633,16 @@ declare global {
     VK_COMPONENT_SWIZZLE_A,
     
   }
+
+  const VK_COMPONENT_SWIZZLE_IDENTITY: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_ZERO: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_ONE: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_R: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_G: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_B: VkComponentSwizzle;
+  const VK_COMPONENT_SWIZZLE_A: VkComponentSwizzle;
+  
+
   
   /**
    * Specifies the type of a descriptor in a descriptor set
@@ -1316,6 +1676,22 @@ declare global {
     VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV,
     
   }
+
+  const VK_DESCRIPTOR_TYPE_SAMPLER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_STORAGE_IMAGE: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_STORAGE_BUFFER: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT: VkDescriptorType;
+  const VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV: VkDescriptorType;
+  
+
   
   /**
    * Specify the type of queries managed by a query pool
@@ -1337,6 +1713,16 @@ declare global {
     VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV,
     
   }
+
+  const VK_QUERY_TYPE_OCCLUSION: VkQueryType;
+  const VK_QUERY_TYPE_PIPELINE_STATISTICS: VkQueryType;
+  const VK_QUERY_TYPE_TIMESTAMP: VkQueryType;
+  const VK_QUERY_TYPE_RESERVED_8: VkQueryType;
+  const VK_QUERY_TYPE_RESERVED_4: VkQueryType;
+  const VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT: VkQueryType;
+  const VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV: VkQueryType;
+  
+
   
   /**
    * Specify border color used for texture lookups
@@ -1356,6 +1742,15 @@ declare global {
     VK_BORDER_COLOR_INT_OPAQUE_WHITE,
     
   }
+
+  const VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK: VkBorderColor;
+  const VK_BORDER_COLOR_INT_TRANSPARENT_BLACK: VkBorderColor;
+  const VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK: VkBorderColor;
+  const VK_BORDER_COLOR_INT_OPAQUE_BLACK: VkBorderColor;
+  const VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE: VkBorderColor;
+  const VK_BORDER_COLOR_INT_OPAQUE_WHITE: VkBorderColor;
+  
+
   
   /**
    * Specify the bind point of a pipeline object to a command buffer
@@ -1369,6 +1764,12 @@ declare global {
     VK_PIPELINE_BIND_POINT_RAY_TRACING_NV,
     
   }
+
+  const VK_PIPELINE_BIND_POINT_GRAPHICS: VkPipelineBindPoint;
+  const VK_PIPELINE_BIND_POINT_COMPUTE: VkPipelineBindPoint;
+  const VK_PIPELINE_BIND_POINT_RAY_TRACING_NV: VkPipelineBindPoint;
+  
+
   
   /**
    * Encode pipeline cache version
@@ -1378,6 +1779,10 @@ declare global {
     VK_PIPELINE_CACHE_HEADER_VERSION_ONE,
     
   }
+
+  const VK_PIPELINE_CACHE_HEADER_VERSION_ONE: VkPipelineCacheHeaderVersion;
+  
+
   
   /**
    * Supported primitive topologies
@@ -1407,6 +1812,20 @@ declare global {
     VK_PRIMITIVE_TOPOLOGY_PATCH_LIST,
     
   }
+
+  const VK_PRIMITIVE_TOPOLOGY_POINT_LIST: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_LINE_LIST: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_LINE_STRIP: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY: VkPrimitiveTopology;
+  const VK_PRIMITIVE_TOPOLOGY_PATCH_LIST: VkPrimitiveTopology;
+  
+
   
   /**
    * Buffer and image sharing modes
@@ -1418,6 +1837,11 @@ declare global {
     VK_SHARING_MODE_CONCURRENT,
     
   }
+
+  const VK_SHARING_MODE_EXCLUSIVE: VkSharingMode;
+  const VK_SHARING_MODE_CONCURRENT: VkSharingMode;
+  
+
   
   /**
    * Type of index buffer indices
@@ -1431,6 +1855,12 @@ declare global {
     VK_INDEX_TYPE_NONE_NV,
     
   }
+
+  const VK_INDEX_TYPE_UINT16: VkIndexType;
+  const VK_INDEX_TYPE_UINT32: VkIndexType;
+  const VK_INDEX_TYPE_NONE_NV: VkIndexType;
+  
+
   
   /**
    * Specify filters used for texture lookups
@@ -1446,6 +1876,13 @@ declare global {
     VK_FILTER_CUBIC_EXT,
     
   }
+
+  const VK_FILTER_NEAREST: VkFilter;
+  const VK_FILTER_LINEAR: VkFilter;
+  const VK_FILTER_CUBIC_IMG: VkFilter;
+  const VK_FILTER_CUBIC_EXT: VkFilter;
+  
+
   
   /**
    * Specify mipmap mode used for texture lookups
@@ -1457,6 +1894,11 @@ declare global {
     VK_SAMPLER_MIPMAP_MODE_LINEAR,
     
   }
+
+  const VK_SAMPLER_MIPMAP_MODE_NEAREST: VkSamplerMipmapMode;
+  const VK_SAMPLER_MIPMAP_MODE_LINEAR: VkSamplerMipmapMode;
+  
+
   
   /**
    * Specify behavior of sampling with texture coordinates outside an image
@@ -1472,6 +1914,13 @@ declare global {
     VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER,
     
   }
+
+  const VK_SAMPLER_ADDRESS_MODE_REPEAT: VkSamplerAddressMode;
+  const VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT: VkSamplerAddressMode;
+  const VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE: VkSamplerAddressMode;
+  const VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER: VkSamplerAddressMode;
+  
+
   
   /**
    * Stencil comparison function
@@ -1495,6 +1944,17 @@ declare global {
     VK_COMPARE_OP_ALWAYS,
     
   }
+
+  const VK_COMPARE_OP_NEVER: VkCompareOp;
+  const VK_COMPARE_OP_LESS: VkCompareOp;
+  const VK_COMPARE_OP_EQUAL: VkCompareOp;
+  const VK_COMPARE_OP_LESS_OR_EQUAL: VkCompareOp;
+  const VK_COMPARE_OP_GREATER: VkCompareOp;
+  const VK_COMPARE_OP_NOT_EQUAL: VkCompareOp;
+  const VK_COMPARE_OP_GREATER_OR_EQUAL: VkCompareOp;
+  const VK_COMPARE_OP_ALWAYS: VkCompareOp;
+  
+
   
   /**
    * Control polygon rasterization mode
@@ -1510,6 +1970,13 @@ declare global {
     VK_POLYGON_MODE_FILL_RECTANGLE_NV,
     
   }
+
+  const VK_POLYGON_MODE_FILL: VkPolygonMode;
+  const VK_POLYGON_MODE_LINE: VkPolygonMode;
+  const VK_POLYGON_MODE_POINT: VkPolygonMode;
+  const VK_POLYGON_MODE_FILL_RECTANGLE_NV: VkPolygonMode;
+  
+
   
   /**
    * Interpret polygon front-facing orientation
@@ -1521,6 +1988,11 @@ declare global {
     VK_FRONT_FACE_CLOCKWISE,
     
   }
+
+  const VK_FRONT_FACE_COUNTER_CLOCKWISE: VkFrontFace;
+  const VK_FRONT_FACE_CLOCKWISE: VkFrontFace;
+  
+
   
   /**
    * Framebuffer blending factors
@@ -1566,6 +2038,28 @@ declare global {
     VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA,
     
   }
+
+  const VK_BLEND_FACTOR_ZERO: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE: VkBlendFactor;
+  const VK_BLEND_FACTOR_SRC_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_DST_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_SRC_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_DST_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_CONSTANT_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_CONSTANT_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_SRC_ALPHA_SATURATE: VkBlendFactor;
+  const VK_BLEND_FACTOR_SRC1_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR: VkBlendFactor;
+  const VK_BLEND_FACTOR_SRC1_ALPHA: VkBlendFactor;
+  const VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA: VkBlendFactor;
+  
+
   
   /**
    * Framebuffer blending operations
@@ -1675,6 +2169,60 @@ declare global {
     VK_BLEND_OP_BLUE_EXT,
     
   }
+
+  const VK_BLEND_OP_ADD: VkBlendOp;
+  const VK_BLEND_OP_SUBTRACT: VkBlendOp;
+  const VK_BLEND_OP_REVERSE_SUBTRACT: VkBlendOp;
+  const VK_BLEND_OP_MIN: VkBlendOp;
+  const VK_BLEND_OP_MAX: VkBlendOp;
+  const VK_BLEND_OP_ZERO_EXT: VkBlendOp;
+  const VK_BLEND_OP_SRC_EXT: VkBlendOp;
+  const VK_BLEND_OP_DST_EXT: VkBlendOp;
+  const VK_BLEND_OP_SRC_OVER_EXT: VkBlendOp;
+  const VK_BLEND_OP_DST_OVER_EXT: VkBlendOp;
+  const VK_BLEND_OP_SRC_IN_EXT: VkBlendOp;
+  const VK_BLEND_OP_DST_IN_EXT: VkBlendOp;
+  const VK_BLEND_OP_SRC_OUT_EXT: VkBlendOp;
+  const VK_BLEND_OP_DST_OUT_EXT: VkBlendOp;
+  const VK_BLEND_OP_SRC_ATOP_EXT: VkBlendOp;
+  const VK_BLEND_OP_DST_ATOP_EXT: VkBlendOp;
+  const VK_BLEND_OP_XOR_EXT: VkBlendOp;
+  const VK_BLEND_OP_MULTIPLY_EXT: VkBlendOp;
+  const VK_BLEND_OP_SCREEN_EXT: VkBlendOp;
+  const VK_BLEND_OP_OVERLAY_EXT: VkBlendOp;
+  const VK_BLEND_OP_DARKEN_EXT: VkBlendOp;
+  const VK_BLEND_OP_LIGHTEN_EXT: VkBlendOp;
+  const VK_BLEND_OP_COLORDODGE_EXT: VkBlendOp;
+  const VK_BLEND_OP_COLORBURN_EXT: VkBlendOp;
+  const VK_BLEND_OP_HARDLIGHT_EXT: VkBlendOp;
+  const VK_BLEND_OP_SOFTLIGHT_EXT: VkBlendOp;
+  const VK_BLEND_OP_DIFFERENCE_EXT: VkBlendOp;
+  const VK_BLEND_OP_EXCLUSION_EXT: VkBlendOp;
+  const VK_BLEND_OP_INVERT_EXT: VkBlendOp;
+  const VK_BLEND_OP_INVERT_RGB_EXT: VkBlendOp;
+  const VK_BLEND_OP_LINEARDODGE_EXT: VkBlendOp;
+  const VK_BLEND_OP_LINEARBURN_EXT: VkBlendOp;
+  const VK_BLEND_OP_VIVIDLIGHT_EXT: VkBlendOp;
+  const VK_BLEND_OP_LINEARLIGHT_EXT: VkBlendOp;
+  const VK_BLEND_OP_PINLIGHT_EXT: VkBlendOp;
+  const VK_BLEND_OP_HARDMIX_EXT: VkBlendOp;
+  const VK_BLEND_OP_HSL_HUE_EXT: VkBlendOp;
+  const VK_BLEND_OP_HSL_SATURATION_EXT: VkBlendOp;
+  const VK_BLEND_OP_HSL_COLOR_EXT: VkBlendOp;
+  const VK_BLEND_OP_HSL_LUMINOSITY_EXT: VkBlendOp;
+  const VK_BLEND_OP_PLUS_EXT: VkBlendOp;
+  const VK_BLEND_OP_PLUS_CLAMPED_EXT: VkBlendOp;
+  const VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT: VkBlendOp;
+  const VK_BLEND_OP_PLUS_DARKER_EXT: VkBlendOp;
+  const VK_BLEND_OP_MINUS_EXT: VkBlendOp;
+  const VK_BLEND_OP_MINUS_CLAMPED_EXT: VkBlendOp;
+  const VK_BLEND_OP_CONTRAST_EXT: VkBlendOp;
+  const VK_BLEND_OP_INVERT_OVG_EXT: VkBlendOp;
+  const VK_BLEND_OP_RED_EXT: VkBlendOp;
+  const VK_BLEND_OP_GREEN_EXT: VkBlendOp;
+  const VK_BLEND_OP_BLUE_EXT: VkBlendOp;
+  
+
   
   /**
    * Stencil comparison function
@@ -1698,6 +2246,17 @@ declare global {
     VK_STENCIL_OP_DECREMENT_AND_WRAP,
     
   }
+
+  const VK_STENCIL_OP_KEEP: VkStencilOp;
+  const VK_STENCIL_OP_ZERO: VkStencilOp;
+  const VK_STENCIL_OP_REPLACE: VkStencilOp;
+  const VK_STENCIL_OP_INCREMENT_AND_CLAMP: VkStencilOp;
+  const VK_STENCIL_OP_DECREMENT_AND_CLAMP: VkStencilOp;
+  const VK_STENCIL_OP_INVERT: VkStencilOp;
+  const VK_STENCIL_OP_INCREMENT_AND_WRAP: VkStencilOp;
+  const VK_STENCIL_OP_DECREMENT_AND_WRAP: VkStencilOp;
+  
+
   
   /**
    * Framebuffer logical operations
@@ -1737,6 +2296,25 @@ declare global {
     VK_LOGIC_OP_SET,
     
   }
+
+  const VK_LOGIC_OP_CLEAR: VkLogicOp;
+  const VK_LOGIC_OP_AND: VkLogicOp;
+  const VK_LOGIC_OP_AND_REVERSE: VkLogicOp;
+  const VK_LOGIC_OP_COPY: VkLogicOp;
+  const VK_LOGIC_OP_AND_INVERTED: VkLogicOp;
+  const VK_LOGIC_OP_NO_OP: VkLogicOp;
+  const VK_LOGIC_OP_XOR: VkLogicOp;
+  const VK_LOGIC_OP_OR: VkLogicOp;
+  const VK_LOGIC_OP_NOR: VkLogicOp;
+  const VK_LOGIC_OP_EQUIVALENT: VkLogicOp;
+  const VK_LOGIC_OP_INVERT: VkLogicOp;
+  const VK_LOGIC_OP_OR_REVERSE: VkLogicOp;
+  const VK_LOGIC_OP_COPY_INVERTED: VkLogicOp;
+  const VK_LOGIC_OP_OR_INVERTED: VkLogicOp;
+  const VK_LOGIC_OP_NAND: VkLogicOp;
+  const VK_LOGIC_OP_SET: VkLogicOp;
+  
+
   
   /**
    * Allocation type
@@ -1746,6 +2324,10 @@ declare global {
     VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE,
     
   }
+
+  const VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE: VkInternalAllocationType;
+  
+
   
   /**
    * Allocation scope
@@ -1763,6 +2345,14 @@ declare global {
     VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE,
     
   }
+
+  const VK_SYSTEM_ALLOCATION_SCOPE_COMMAND: VkSystemAllocationScope;
+  const VK_SYSTEM_ALLOCATION_SCOPE_OBJECT: VkSystemAllocationScope;
+  const VK_SYSTEM_ALLOCATION_SCOPE_CACHE: VkSystemAllocationScope;
+  const VK_SYSTEM_ALLOCATION_SCOPE_DEVICE: VkSystemAllocationScope;
+  const VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE: VkSystemAllocationScope;
+  
+
   
   /**
    * Supported physical device types
@@ -1780,6 +2370,14 @@ declare global {
     VK_PHYSICAL_DEVICE_TYPE_CPU,
     
   }
+
+  const VK_PHYSICAL_DEVICE_TYPE_OTHER: VkPhysicalDeviceType;
+  const VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU: VkPhysicalDeviceType;
+  const VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU: VkPhysicalDeviceType;
+  const VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU: VkPhysicalDeviceType;
+  const VK_PHYSICAL_DEVICE_TYPE_CPU: VkPhysicalDeviceType;
+  
+
   
   /**
    * Specify rate at which vertex attributes are pulled from buffers
@@ -1791,6 +2389,11 @@ declare global {
     VK_VERTEX_INPUT_RATE_INSTANCE,
     
   }
+
+  const VK_VERTEX_INPUT_RATE_VERTEX: VkVertexInputRate;
+  const VK_VERTEX_INPUT_RATE_INSTANCE: VkVertexInputRate;
+  
+
   
   /**
    * Available image formats
@@ -2252,6 +2855,236 @@ declare global {
     VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR,
     
   }
+
+  const VK_FORMAT_UNDEFINED: VkFormat;
+  const VK_FORMAT_R4G4_UNORM_PACK8: VkFormat;
+  const VK_FORMAT_R4G4B4A4_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_B4G4R4A4_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_R5G6B5_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_B5G6R5_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_R5G5B5A1_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_B5G5R5A1_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_A1R5G5B5_UNORM_PACK16: VkFormat;
+  const VK_FORMAT_R8_UNORM: VkFormat;
+  const VK_FORMAT_R8_SNORM: VkFormat;
+  const VK_FORMAT_R8_USCALED: VkFormat;
+  const VK_FORMAT_R8_SSCALED: VkFormat;
+  const VK_FORMAT_R8_UINT: VkFormat;
+  const VK_FORMAT_R8_SINT: VkFormat;
+  const VK_FORMAT_R8_SRGB: VkFormat;
+  const VK_FORMAT_R8G8_UNORM: VkFormat;
+  const VK_FORMAT_R8G8_SNORM: VkFormat;
+  const VK_FORMAT_R8G8_USCALED: VkFormat;
+  const VK_FORMAT_R8G8_SSCALED: VkFormat;
+  const VK_FORMAT_R8G8_UINT: VkFormat;
+  const VK_FORMAT_R8G8_SINT: VkFormat;
+  const VK_FORMAT_R8G8_SRGB: VkFormat;
+  const VK_FORMAT_R8G8B8_UNORM: VkFormat;
+  const VK_FORMAT_R8G8B8_SNORM: VkFormat;
+  const VK_FORMAT_R8G8B8_USCALED: VkFormat;
+  const VK_FORMAT_R8G8B8_SSCALED: VkFormat;
+  const VK_FORMAT_R8G8B8_UINT: VkFormat;
+  const VK_FORMAT_R8G8B8_SINT: VkFormat;
+  const VK_FORMAT_R8G8B8_SRGB: VkFormat;
+  const VK_FORMAT_B8G8R8_UNORM: VkFormat;
+  const VK_FORMAT_B8G8R8_SNORM: VkFormat;
+  const VK_FORMAT_B8G8R8_USCALED: VkFormat;
+  const VK_FORMAT_B8G8R8_SSCALED: VkFormat;
+  const VK_FORMAT_B8G8R8_UINT: VkFormat;
+  const VK_FORMAT_B8G8R8_SINT: VkFormat;
+  const VK_FORMAT_B8G8R8_SRGB: VkFormat;
+  const VK_FORMAT_R8G8B8A8_UNORM: VkFormat;
+  const VK_FORMAT_R8G8B8A8_SNORM: VkFormat;
+  const VK_FORMAT_R8G8B8A8_USCALED: VkFormat;
+  const VK_FORMAT_R8G8B8A8_SSCALED: VkFormat;
+  const VK_FORMAT_R8G8B8A8_UINT: VkFormat;
+  const VK_FORMAT_R8G8B8A8_SINT: VkFormat;
+  const VK_FORMAT_R8G8B8A8_SRGB: VkFormat;
+  const VK_FORMAT_B8G8R8A8_UNORM: VkFormat;
+  const VK_FORMAT_B8G8R8A8_SNORM: VkFormat;
+  const VK_FORMAT_B8G8R8A8_USCALED: VkFormat;
+  const VK_FORMAT_B8G8R8A8_SSCALED: VkFormat;
+  const VK_FORMAT_B8G8R8A8_UINT: VkFormat;
+  const VK_FORMAT_B8G8R8A8_SINT: VkFormat;
+  const VK_FORMAT_B8G8R8A8_SRGB: VkFormat;
+  const VK_FORMAT_A8B8G8R8_UNORM_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_SNORM_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_USCALED_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_SSCALED_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_UINT_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_SINT_PACK32: VkFormat;
+  const VK_FORMAT_A8B8G8R8_SRGB_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_UNORM_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_SNORM_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_USCALED_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_SSCALED_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_UINT_PACK32: VkFormat;
+  const VK_FORMAT_A2R10G10B10_SINT_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_UNORM_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_SNORM_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_USCALED_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_SSCALED_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_UINT_PACK32: VkFormat;
+  const VK_FORMAT_A2B10G10R10_SINT_PACK32: VkFormat;
+  const VK_FORMAT_R16_UNORM: VkFormat;
+  const VK_FORMAT_R16_SNORM: VkFormat;
+  const VK_FORMAT_R16_USCALED: VkFormat;
+  const VK_FORMAT_R16_SSCALED: VkFormat;
+  const VK_FORMAT_R16_UINT: VkFormat;
+  const VK_FORMAT_R16_SINT: VkFormat;
+  const VK_FORMAT_R16_SFLOAT: VkFormat;
+  const VK_FORMAT_R16G16_UNORM: VkFormat;
+  const VK_FORMAT_R16G16_SNORM: VkFormat;
+  const VK_FORMAT_R16G16_USCALED: VkFormat;
+  const VK_FORMAT_R16G16_SSCALED: VkFormat;
+  const VK_FORMAT_R16G16_UINT: VkFormat;
+  const VK_FORMAT_R16G16_SINT: VkFormat;
+  const VK_FORMAT_R16G16_SFLOAT: VkFormat;
+  const VK_FORMAT_R16G16B16_UNORM: VkFormat;
+  const VK_FORMAT_R16G16B16_SNORM: VkFormat;
+  const VK_FORMAT_R16G16B16_USCALED: VkFormat;
+  const VK_FORMAT_R16G16B16_SSCALED: VkFormat;
+  const VK_FORMAT_R16G16B16_UINT: VkFormat;
+  const VK_FORMAT_R16G16B16_SINT: VkFormat;
+  const VK_FORMAT_R16G16B16_SFLOAT: VkFormat;
+  const VK_FORMAT_R16G16B16A16_UNORM: VkFormat;
+  const VK_FORMAT_R16G16B16A16_SNORM: VkFormat;
+  const VK_FORMAT_R16G16B16A16_USCALED: VkFormat;
+  const VK_FORMAT_R16G16B16A16_SSCALED: VkFormat;
+  const VK_FORMAT_R16G16B16A16_UINT: VkFormat;
+  const VK_FORMAT_R16G16B16A16_SINT: VkFormat;
+  const VK_FORMAT_R16G16B16A16_SFLOAT: VkFormat;
+  const VK_FORMAT_R32_UINT: VkFormat;
+  const VK_FORMAT_R32_SINT: VkFormat;
+  const VK_FORMAT_R32_SFLOAT: VkFormat;
+  const VK_FORMAT_R32G32_UINT: VkFormat;
+  const VK_FORMAT_R32G32_SINT: VkFormat;
+  const VK_FORMAT_R32G32_SFLOAT: VkFormat;
+  const VK_FORMAT_R32G32B32_UINT: VkFormat;
+  const VK_FORMAT_R32G32B32_SINT: VkFormat;
+  const VK_FORMAT_R32G32B32_SFLOAT: VkFormat;
+  const VK_FORMAT_R32G32B32A32_UINT: VkFormat;
+  const VK_FORMAT_R32G32B32A32_SINT: VkFormat;
+  const VK_FORMAT_R32G32B32A32_SFLOAT: VkFormat;
+  const VK_FORMAT_R64_UINT: VkFormat;
+  const VK_FORMAT_R64_SINT: VkFormat;
+  const VK_FORMAT_R64_SFLOAT: VkFormat;
+  const VK_FORMAT_R64G64_UINT: VkFormat;
+  const VK_FORMAT_R64G64_SINT: VkFormat;
+  const VK_FORMAT_R64G64_SFLOAT: VkFormat;
+  const VK_FORMAT_R64G64B64_UINT: VkFormat;
+  const VK_FORMAT_R64G64B64_SINT: VkFormat;
+  const VK_FORMAT_R64G64B64_SFLOAT: VkFormat;
+  const VK_FORMAT_R64G64B64A64_UINT: VkFormat;
+  const VK_FORMAT_R64G64B64A64_SINT: VkFormat;
+  const VK_FORMAT_R64G64B64A64_SFLOAT: VkFormat;
+  const VK_FORMAT_B10G11R11_UFLOAT_PACK32: VkFormat;
+  const VK_FORMAT_E5B9G9R9_UFLOAT_PACK32: VkFormat;
+  const VK_FORMAT_D16_UNORM: VkFormat;
+  const VK_FORMAT_X8_D24_UNORM_PACK32: VkFormat;
+  const VK_FORMAT_D32_SFLOAT: VkFormat;
+  const VK_FORMAT_S8_UINT: VkFormat;
+  const VK_FORMAT_D16_UNORM_S8_UINT: VkFormat;
+  const VK_FORMAT_D24_UNORM_S8_UINT: VkFormat;
+  const VK_FORMAT_D32_SFLOAT_S8_UINT: VkFormat;
+  const VK_FORMAT_BC1_RGB_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC1_RGB_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_BC1_RGBA_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC1_RGBA_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_BC2_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC2_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_BC3_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC3_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_BC4_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC4_SNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC5_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC5_SNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC6H_UFLOAT_BLOCK: VkFormat;
+  const VK_FORMAT_BC6H_SFLOAT_BLOCK: VkFormat;
+  const VK_FORMAT_BC7_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_BC7_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_EAC_R11_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_EAC_R11_SNORM_BLOCK: VkFormat;
+  const VK_FORMAT_EAC_R11G11_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_EAC_R11G11_SNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_4x4_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_4x4_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_5x4_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_5x4_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_5x5_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_5x5_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_6x5_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_6x5_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_6x6_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_6x6_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x5_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x5_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x6_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x6_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x8_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_8x8_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x5_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x5_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x6_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x6_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x8_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x8_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x10_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_10x10_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_12x10_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_12x10_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_12x12_UNORM_BLOCK: VkFormat;
+  const VK_FORMAT_ASTC_12x12_SRGB_BLOCK: VkFormat;
+  const VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG: VkFormat;
+  const VK_FORMAT_G8B8G8R8_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_B8G8R8G8_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR: VkFormat;
+  const VK_FORMAT_R10X6_UNORM_PACK16_KHR: VkFormat;
+  const VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR: VkFormat;
+  const VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_R12X4_UNORM_PACK16_KHR: VkFormat;
+  const VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR: VkFormat;
+  const VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR: VkFormat;
+  const VK_FORMAT_G16B16G16R16_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_B16G16R16G16_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR: VkFormat;
+  const VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR: VkFormat;
+  
+
   
   /**
    * Vulkan structure types ({#0#})
@@ -2925,6 +3758,342 @@ declare global {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT,
     
   }
+
+  const VK_STRUCTURE_TYPE_APPLICATION_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBMIT_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_SPARSE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_FENCE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_EVENT_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET: VkStructureType;
+  const VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET: VkStructureType;
+  const VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_BARRIER: VkStructureType;
+  const VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO: VkStructureType;
+  const VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PRESENT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_NATIVE_BUFFER_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_HDR_METADATA_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK: VkStructureType;
+  const VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_GEOMETRY_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA: VkStructureType;
+  const VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT: VkStructureType;
+  const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT: VkStructureType;
+  
+
   
   /**
    * Specify how commands in the first subpass of a render pass are provided
@@ -2936,6 +4105,11 @@ declare global {
     VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS,
     
   }
+
+  const VK_SUBPASS_CONTENTS_INLINE: VkSubpassContents;
+  const VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS: VkSubpassContents;
+  
+
   
   /**
    * Vulkan command return codes
@@ -3007,6 +4181,41 @@ declare global {
     VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT,
     
   }
+
+  const VK_SUCCESS: VkResult;
+  const VK_NOT_READY: VkResult;
+  const VK_TIMEOUT: VkResult;
+  const VK_EVENT_SET: VkResult;
+  const VK_EVENT_RESET: VkResult;
+  const VK_INCOMPLETE: VkResult;
+  const VK_ERROR_OUT_OF_HOST_MEMORY: VkResult;
+  const VK_ERROR_OUT_OF_DEVICE_MEMORY: VkResult;
+  const VK_ERROR_INITIALIZATION_FAILED: VkResult;
+  const VK_ERROR_DEVICE_LOST: VkResult;
+  const VK_ERROR_MEMORY_MAP_FAILED: VkResult;
+  const VK_ERROR_LAYER_NOT_PRESENT: VkResult;
+  const VK_ERROR_EXTENSION_NOT_PRESENT: VkResult;
+  const VK_ERROR_FEATURE_NOT_PRESENT: VkResult;
+  const VK_ERROR_INCOMPATIBLE_DRIVER: VkResult;
+  const VK_ERROR_TOO_MANY_OBJECTS: VkResult;
+  const VK_ERROR_FORMAT_NOT_SUPPORTED: VkResult;
+  const VK_ERROR_FRAGMENTED_POOL: VkResult;
+  const VK_ERROR_SURFACE_LOST_KHR: VkResult;
+  const VK_ERROR_NATIVE_WINDOW_IN_USE_KHR: VkResult;
+  const VK_SUBOPTIMAL_KHR: VkResult;
+  const VK_ERROR_OUT_OF_DATE_KHR: VkResult;
+  const VK_ERROR_INCOMPATIBLE_DISPLAY_KHR: VkResult;
+  const VK_ERROR_VALIDATION_FAILED_EXT: VkResult;
+  const VK_ERROR_INVALID_SHADER_NV: VkResult;
+  const VK_ERROR_OUT_OF_POOL_MEMORY_KHR: VkResult;
+  const VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR: VkResult;
+  const VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT: VkResult;
+  const VK_ERROR_FRAGMENTATION_EXT: VkResult;
+  const VK_ERROR_NOT_PERMITTED_EXT: VkResult;
+  const VK_ERROR_INVALID_DEVICE_ADDRESS_EXT: VkResult;
+  const VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT: VkResult;
+  
+
   
   /**
    * Indicate which dynamic state is taken from dynamic state commands
@@ -3044,6 +4253,24 @@ declare global {
     VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV,
     
   }
+
+  const VK_DYNAMIC_STATE_VIEWPORT: VkDynamicState;
+  const VK_DYNAMIC_STATE_SCISSOR: VkDynamicState;
+  const VK_DYNAMIC_STATE_LINE_WIDTH: VkDynamicState;
+  const VK_DYNAMIC_STATE_DEPTH_BIAS: VkDynamicState;
+  const VK_DYNAMIC_STATE_BLEND_CONSTANTS: VkDynamicState;
+  const VK_DYNAMIC_STATE_DEPTH_BOUNDS: VkDynamicState;
+  const VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK: VkDynamicState;
+  const VK_DYNAMIC_STATE_STENCIL_WRITE_MASK: VkDynamicState;
+  const VK_DYNAMIC_STATE_STENCIL_REFERENCE: VkDynamicState;
+  const VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV: VkDynamicState;
+  const VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT: VkDynamicState;
+  const VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT: VkDynamicState;
+  const VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV: VkDynamicState;
+  const VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV: VkDynamicState;
+  const VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV: VkDynamicState;
+  
+
   
   /**
    * Indicates the valid usage of the descriptor update template
@@ -3055,6 +4282,11 @@ declare global {
     VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR,
     
   }
+
+  const VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET: VkDescriptorUpdateTemplateType;
+  const VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR: VkDescriptorUpdateTemplateType;
+  
+
   
   /**
    * Specify an enumeration to track object handle types
@@ -3138,6 +4370,47 @@ declare global {
     VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV,
     
   }
+
+  const VK_OBJECT_TYPE_UNKNOWN: VkObjectType;
+  const VK_OBJECT_TYPE_INSTANCE: VkObjectType;
+  const VK_OBJECT_TYPE_PHYSICAL_DEVICE: VkObjectType;
+  const VK_OBJECT_TYPE_DEVICE: VkObjectType;
+  const VK_OBJECT_TYPE_QUEUE: VkObjectType;
+  const VK_OBJECT_TYPE_SEMAPHORE: VkObjectType;
+  const VK_OBJECT_TYPE_COMMAND_BUFFER: VkObjectType;
+  const VK_OBJECT_TYPE_FENCE: VkObjectType;
+  const VK_OBJECT_TYPE_DEVICE_MEMORY: VkObjectType;
+  const VK_OBJECT_TYPE_BUFFER: VkObjectType;
+  const VK_OBJECT_TYPE_IMAGE: VkObjectType;
+  const VK_OBJECT_TYPE_EVENT: VkObjectType;
+  const VK_OBJECT_TYPE_QUERY_POOL: VkObjectType;
+  const VK_OBJECT_TYPE_BUFFER_VIEW: VkObjectType;
+  const VK_OBJECT_TYPE_IMAGE_VIEW: VkObjectType;
+  const VK_OBJECT_TYPE_SHADER_MODULE: VkObjectType;
+  const VK_OBJECT_TYPE_PIPELINE_CACHE: VkObjectType;
+  const VK_OBJECT_TYPE_PIPELINE_LAYOUT: VkObjectType;
+  const VK_OBJECT_TYPE_RENDER_PASS: VkObjectType;
+  const VK_OBJECT_TYPE_PIPELINE: VkObjectType;
+  const VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT: VkObjectType;
+  const VK_OBJECT_TYPE_SAMPLER: VkObjectType;
+  const VK_OBJECT_TYPE_DESCRIPTOR_POOL: VkObjectType;
+  const VK_OBJECT_TYPE_DESCRIPTOR_SET: VkObjectType;
+  const VK_OBJECT_TYPE_FRAMEBUFFER: VkObjectType;
+  const VK_OBJECT_TYPE_COMMAND_POOL: VkObjectType;
+  const VK_OBJECT_TYPE_SURFACE_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_SWAPCHAIN_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_DISPLAY_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_DISPLAY_MODE_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT: VkObjectType;
+  const VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_OBJECT_TABLE_NVX: VkObjectType;
+  const VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX: VkObjectType;
+  const VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT: VkObjectType;
+  const VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR: VkObjectType;
+  const VK_OBJECT_TYPE_VALIDATION_CACHE_EXT: VkObjectType;
+  const VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV: VkObjectType;
+  
+
   
   /**
    * presentation mode supported for a surface
@@ -3157,6 +4430,15 @@ declare global {
     VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR,
     
   }
+
+  const VK_PRESENT_MODE_IMMEDIATE_KHR: VkPresentModeKHR;
+  const VK_PRESENT_MODE_MAILBOX_KHR: VkPresentModeKHR;
+  const VK_PRESENT_MODE_FIFO_KHR: VkPresentModeKHR;
+  const VK_PRESENT_MODE_FIFO_RELAXED_KHR: VkPresentModeKHR;
+  const VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR: VkPresentModeKHR;
+  const VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR: VkPresentModeKHR;
+  
+
   
   /**
    * supported color space of the presentation engine
@@ -3198,6 +4480,26 @@ declare global {
     VK_COLOR_SPACE_DISPLAY_NATIVE_AMD,
     
   }
+
+  const VK_COLOR_SPACE_SRGB_NONLINEAR_KHR: VkColorSpaceKHR;
+  const VK_COLORSPACE_SRGB_NONLINEAR_KHR: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_DCI_P3_LINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_BT709_LINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_BT709_NONLINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_BT2020_LINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_HDR10_ST2084_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_DOLBYVISION_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_HDR10_HLG_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_PASS_THROUGH_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT: VkColorSpaceKHR;
+  const VK_COLOR_SPACE_DISPLAY_NATIVE_AMD: VkColorSpaceKHR;
+  
+
   
   /**
    * Supported time domains
@@ -3213,6 +4515,13 @@ declare global {
     VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT,
     
   }
+
+  const VK_TIME_DOMAIN_DEVICE_EXT: VkTimeDomainEXT;
+  const VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT: VkTimeDomainEXT;
+  const VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT: VkTimeDomainEXT;
+  const VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT: VkTimeDomainEXT;
+  
+
   
   /**
    * Specify the type of an object handle
@@ -3302,6 +4611,50 @@ declare global {
     VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT,
     
   }
+
+  const VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_OBJECT_TABLE_NVX_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT: VkDebugReportObjectTypeEXT;
+  const VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT: VkDebugReportObjectTypeEXT;
+  
+
   
   /**
    * Specify rasterization order for a graphics pipeline
@@ -3313,6 +4666,11 @@ declare global {
     VK_RASTERIZATION_ORDER_RELAXED_AMD,
     
   }
+
+  const VK_RASTERIZATION_ORDER_STRICT_AMD: VkRasterizationOrderAMD;
+  const VK_RASTERIZATION_ORDER_RELAXED_AMD: VkRasterizationOrderAMD;
+  
+
   
   /**
    * Specify validation checks to disable
@@ -3324,6 +4682,11 @@ declare global {
     VK_VALIDATION_CHECK_SHADERS_EXT,
     
   }
+
+  const VK_VALIDATION_CHECK_ALL_EXT: VkValidationCheckEXT;
+  const VK_VALIDATION_CHECK_SHADERS_EXT: VkValidationCheckEXT;
+  
+
   
   /**
    * Specify validation features to enable
@@ -3335,6 +4698,11 @@ declare global {
     VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT,
     
   }
+
+  const VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT: VkValidationFeatureEnableEXT;
+  const VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT: VkValidationFeatureEnableEXT;
+  
+
   
   /**
    * Specify validation features to disable
@@ -3356,6 +4724,16 @@ declare global {
     VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT,
     
   }
+
+  const VK_VALIDATION_FEATURE_DISABLE_ALL_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT: VkValidationFeatureDisableEXT;
+  const VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT: VkValidationFeatureDisableEXT;
+  
+
   
   /**
    * Enum specifying
@@ -3379,6 +4757,17 @@ declare global {
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX,
     
   }
+
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_DESCRIPTOR_SET_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NVX: VkIndirectCommandsTokenTypeNVX;
+  const VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX: VkIndirectCommandsTokenTypeNVX;
+  
+
   
   /**
    * Enum specifying object table entry type
@@ -3396,6 +4785,14 @@ declare global {
     VK_OBJECT_ENTRY_TYPE_PUSH_CONSTANT_NVX,
     
   }
+
+  const VK_OBJECT_ENTRY_TYPE_DESCRIPTOR_SET_NVX: VkObjectEntryTypeNVX;
+  const VK_OBJECT_ENTRY_TYPE_PIPELINE_NVX: VkObjectEntryTypeNVX;
+  const VK_OBJECT_ENTRY_TYPE_INDEX_BUFFER_NVX: VkObjectEntryTypeNVX;
+  const VK_OBJECT_ENTRY_TYPE_VERTEX_BUFFER_NVX: VkObjectEntryTypeNVX;
+  const VK_OBJECT_ENTRY_TYPE_PUSH_CONSTANT_NVX: VkObjectEntryTypeNVX;
+  
+
   
   /**
    * Possible power states for a display
@@ -3409,6 +4806,12 @@ declare global {
     VK_DISPLAY_POWER_STATE_ON_EXT,
     
   }
+
+  const VK_DISPLAY_POWER_STATE_OFF_EXT: VkDisplayPowerStateEXT;
+  const VK_DISPLAY_POWER_STATE_SUSPEND_EXT: VkDisplayPowerStateEXT;
+  const VK_DISPLAY_POWER_STATE_ON_EXT: VkDisplayPowerStateEXT;
+  
+
   
   /**
    * Events that can occur on a device object
@@ -3418,6 +4821,10 @@ declare global {
     VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT,
     
   }
+
+  const VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT: VkDeviceEventTypeEXT;
+  
+
   
   /**
    * Events that can occur on a display object
@@ -3427,6 +4834,10 @@ declare global {
     VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT,
     
   }
+
+  const VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT: VkDisplayEventTypeEXT;
+  
+
   
   /**
    * Specify how a viewport coordinate is swizzled
@@ -3450,6 +4861,17 @@ declare global {
     VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV,
     
   }
+
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Y_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Z_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV: VkViewportCoordinateSwizzleNV;
+  const VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV: VkViewportCoordinateSwizzleNV;
+  
+
   
   /**
    * Specify the discard rectangle mode
@@ -3461,6 +4883,11 @@ declare global {
     VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT,
     
   }
+
+  const VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT: VkDiscardRectangleModeEXT;
+  const VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT: VkDiscardRectangleModeEXT;
+  
+
   
   /**
    * Enum specifying the point clipping behavior
@@ -3476,6 +4903,13 @@ declare global {
     VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR,
     
   }
+
+  const VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES: VkPointClippingBehavior;
+  const VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY: VkPointClippingBehavior;
+  const VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR: VkPointClippingBehavior;
+  const VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR: VkPointClippingBehavior;
+  
+
   
   /**
    * Specify reduction mode for texture filtering
@@ -3489,6 +4923,12 @@ declare global {
     VK_SAMPLER_REDUCTION_MODE_MAX_EXT,
     
   }
+
+  const VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT: VkSamplerReductionModeEXT;
+  const VK_SAMPLER_REDUCTION_MODE_MIN_EXT: VkSamplerReductionModeEXT;
+  const VK_SAMPLER_REDUCTION_MODE_MAX_EXT: VkSamplerReductionModeEXT;
+  
+
   
   /**
    * Enum describing tessellation domain origin
@@ -3504,6 +4944,13 @@ declare global {
     VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR,
     
   }
+
+  const VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT: VkTessellationDomainOrigin;
+  const VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT: VkTessellationDomainOrigin;
+  const VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR: VkTessellationDomainOrigin;
+  const VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR: VkTessellationDomainOrigin;
+  
+
   
   /**
    * Color model component of a color space
@@ -3531,6 +4978,19 @@ declare global {
     VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020_KHR,
     
   }
+
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY_KHR: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY_KHR: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709_KHR: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601_KHR: VkSamplerYcbcrModelConversion;
+  const VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020_KHR: VkSamplerYcbcrModelConversion;
+  
+
   
   /**
    * Range of encoded values in a color space
@@ -3546,6 +5006,13 @@ declare global {
     VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR,
     
   }
+
+  const VK_SAMPLER_YCBCR_RANGE_ITU_FULL: VkSamplerYcbcrRange;
+  const VK_SAMPLER_YCBCR_RANGE_ITU_NARROW: VkSamplerYcbcrRange;
+  const VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR: VkSamplerYcbcrRange;
+  const VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR: VkSamplerYcbcrRange;
+  
+
   
   /**
    * Position of downsampled chroma samples
@@ -3561,6 +5028,13 @@ declare global {
     VK_CHROMA_LOCATION_MIDPOINT_KHR,
     
   }
+
+  const VK_CHROMA_LOCATION_COSITED_EVEN: VkChromaLocation;
+  const VK_CHROMA_LOCATION_MIDPOINT: VkChromaLocation;
+  const VK_CHROMA_LOCATION_COSITED_EVEN_KHR: VkChromaLocation;
+  const VK_CHROMA_LOCATION_MIDPOINT_KHR: VkChromaLocation;
+  
+
   
   /**
    * Enumerant specifying the blend overlap parameter
@@ -3574,6 +5048,12 @@ declare global {
     VK_BLEND_OVERLAP_CONJOINT_EXT,
     
   }
+
+  const VK_BLEND_OVERLAP_UNCORRELATED_EXT: VkBlendOverlapEXT;
+  const VK_BLEND_OVERLAP_DISJOINT_EXT: VkBlendOverlapEXT;
+  const VK_BLEND_OVERLAP_CONJOINT_EXT: VkBlendOverlapEXT;
+  
+
   
   /**
    * Specify the discard rectangle mode
@@ -3589,6 +5069,13 @@ declare global {
     VK_COVERAGE_MODULATION_MODE_RGBA_NV,
     
   }
+
+  const VK_COVERAGE_MODULATION_MODE_NONE_NV: VkCoverageModulationModeNV;
+  const VK_COVERAGE_MODULATION_MODE_RGB_NV: VkCoverageModulationModeNV;
+  const VK_COVERAGE_MODULATION_MODE_ALPHA_NV: VkCoverageModulationModeNV;
+  const VK_COVERAGE_MODULATION_MODE_RGBA_NV: VkCoverageModulationModeNV;
+  
+
   
   /**
    * Encode validation cache version
@@ -3598,6 +5085,10 @@ declare global {
     VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT,
     
   }
+
+  const VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT: VkValidationCacheHeaderVersionEXT;
+  
+
   
   /**
    * Enum specifying which type of shader info to query
@@ -3611,6 +5102,12 @@ declare global {
     VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD,
     
   }
+
+  const VK_SHADER_INFO_TYPE_STATISTICS_AMD: VkShaderInfoTypeAMD;
+  const VK_SHADER_INFO_TYPE_BINARY_AMD: VkShaderInfoTypeAMD;
+  const VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD: VkShaderInfoTypeAMD;
+  
+
   
   /**
    * Values specifying a system-wide queue priority
@@ -3626,6 +5123,13 @@ declare global {
     VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT,
     
   }
+
+  const VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT: VkQueueGlobalPriorityEXT;
+  const VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT: VkQueueGlobalPriorityEXT;
+  const VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT: VkQueueGlobalPriorityEXT;
+  const VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT: VkQueueGlobalPriorityEXT;
+  
+
   
   /**
    * Specify the conservative rasterization mode
@@ -3639,6 +5143,12 @@ declare global {
     VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT,
     
   }
+
+  const VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT: VkConservativeRasterizationModeEXT;
+  const VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT: VkConservativeRasterizationModeEXT;
+  const VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT: VkConservativeRasterizationModeEXT;
+  
+
   
   /**
    * Khronos vendor IDs
@@ -3652,6 +5162,12 @@ declare global {
     VK_VENDOR_ID_KAZAN,
     
   }
+
+  const VK_VENDOR_ID_VIV: VkVendorId;
+  const VK_VENDOR_ID_VSI: VkVendorId;
+  const VK_VENDOR_ID_KAZAN: VkVendorId;
+  
+
   
   /**
    * Khronos driver IDs
@@ -3681,6 +5197,20 @@ declare global {
     VK_DRIVER_ID_GGP_PROPRIETARY_KHR,
     
   }
+
+  const VK_DRIVER_ID_AMD_PROPRIETARY_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_MESA_RADV_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_ARM_PROPRIETARY_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_GOOGLE_PASTEL_KHR: VkDriverIdKHR;
+  const VK_DRIVER_ID_GGP_PROPRIETARY_KHR: VkDriverIdKHR;
+  
+
   
   /**
    * Shading rate image palette entry types
@@ -3712,6 +5242,21 @@ declare global {
     VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV,
     
   }
+
+  const VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  const VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV: VkShadingRatePaletteEntryNV;
+  
+
   
   /**
    * Shading rate image sample ordering types
@@ -3727,6 +5272,13 @@ declare global {
     VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV,
     
   }
+
+  const VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV: VkCoarseSampleOrderTypeNV;
+  const VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV: VkCoarseSampleOrderTypeNV;
+  const VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV: VkCoarseSampleOrderTypeNV;
+  const VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV: VkCoarseSampleOrderTypeNV;
+  
+
   
   /**
    * Acceleration structure copy mode
@@ -3738,6 +5290,11 @@ declare global {
     VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV,
     
   }
+
+  const VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV: VkCopyAccelerationStructureModeNV;
+  const VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV: VkCopyAccelerationStructureModeNV;
+  
+
   
   /**
    * Type of acceleration structure
@@ -3749,6 +5306,11 @@ declare global {
     VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV,
     
   }
+
+  const VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV: VkAccelerationStructureTypeNV;
+  const VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV: VkAccelerationStructureTypeNV;
+  
+
   
   /**
    * Enum specifying which type of geometry is provided
@@ -3760,6 +5322,11 @@ declare global {
     VK_GEOMETRY_TYPE_AABBS_NV,
     
   }
+
+  const VK_GEOMETRY_TYPE_TRIANGLES_NV: VkGeometryTypeNV;
+  const VK_GEOMETRY_TYPE_AABBS_NV: VkGeometryTypeNV;
+  
+
   
   /**
    * Acceleration structure memory requirement type
@@ -3773,6 +5340,12 @@ declare global {
     VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV,
     
   }
+
+  const VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV: VkAccelerationStructureMemoryRequirementsTypeNV;
+  const VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV: VkAccelerationStructureMemoryRequirementsTypeNV;
+  const VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV: VkAccelerationStructureMemoryRequirementsTypeNV;
+  
+
   
   /**
    * Shader group types
@@ -3786,6 +5359,12 @@ declare global {
     VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV,
     
   }
+
+  const VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV: VkRayTracingShaderGroupTypeNV;
+  const VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV: VkRayTracingShaderGroupTypeNV;
+  const VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV: VkRayTracingShaderGroupTypeNV;
+  
+
   
   /**
    * Specify memory overallocation behavior
@@ -3799,6 +5378,12 @@ declare global {
     VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD,
     
   }
+
+  const VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD: VkMemoryOverallocationBehaviorAMD;
+  const VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD: VkMemoryOverallocationBehaviorAMD;
+  const VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD: VkMemoryOverallocationBehaviorAMD;
+  
+
   
   /**
    * Specify SPIR-V scope
@@ -3814,6 +5399,13 @@ declare global {
     VK_SCOPE_QUEUE_FAMILY_NV,
     
   }
+
+  const VK_SCOPE_DEVICE_NV: VkScopeNV;
+  const VK_SCOPE_WORKGROUP_NV: VkScopeNV;
+  const VK_SCOPE_SUBGROUP_NV: VkScopeNV;
+  const VK_SCOPE_QUEUE_FAMILY_NV: VkScopeNV;
+  
+
   
   /**
    * Specify SPIR-V cooperative matrix component type
@@ -3843,6 +5435,20 @@ declare global {
     VK_COMPONENT_TYPE_UINT64_NV,
     
   }
+
+  const VK_COMPONENT_TYPE_FLOAT16_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_FLOAT32_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_FLOAT64_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_SINT8_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_SINT16_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_SINT32_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_SINT64_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_UINT8_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_UINT16_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_UINT32_NV: VkComponentTypeNV;
+  const VK_COMPONENT_TYPE_UINT64_NV: VkComponentTypeNV;
+  
+
   
   /**
    * Hint values an application can specify affecting full-screen transition behavior
@@ -3858,6 +5464,13 @@ declare global {
     VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT,
     
   }
+
+  const VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT: VkFullScreenExclusiveEXT;
+  const VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT: VkFullScreenExclusiveEXT;
+  const VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT: VkFullScreenExclusiveEXT;
+  const VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT: VkFullScreenExclusiveEXT;
+  
+
   
   /**
    * Bitmask controlling triangle culling
@@ -3873,6 +5486,13 @@ declare global {
     VK_CULL_MODE_FRONT_AND_BACK,
     
   }
+
+  const VK_CULL_MODE_NONE: VkCullModeFlagBits;
+  const VK_CULL_MODE_FRONT_BIT: VkCullModeFlagBits;
+  const VK_CULL_MODE_BACK_BIT: VkCullModeFlagBits;
+  const VK_CULL_MODE_FRONT_AND_BACK: VkCullModeFlagBits;
+  
+
   
   /**
    * Bitmask specifying capabilities of queues in a queue family
@@ -3892,6 +5512,15 @@ declare global {
     VK_QUEUE_RESERVED_5_BIT_KHR,
     
   }
+
+  const VK_QUEUE_GRAPHICS_BIT: VkQueueFlagBits;
+  const VK_QUEUE_COMPUTE_BIT: VkQueueFlagBits;
+  const VK_QUEUE_TRANSFER_BIT: VkQueueFlagBits;
+  const VK_QUEUE_SPARSE_BINDING_BIT: VkQueueFlagBits;
+  const VK_QUEUE_RESERVED_6_BIT_KHR: VkQueueFlagBits;
+  const VK_QUEUE_RESERVED_5_BIT_KHR: VkQueueFlagBits;
+  
+
   
   /**
    * 
@@ -3901,6 +5530,10 @@ declare global {
     VK_RENDER_PASS_CREATE_RESERVED_0_BIT_KHR,
     
   }
+
+  const VK_RENDER_PASS_CREATE_RESERVED_0_BIT_KHR: VkRenderPassCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying behavior of the queue
@@ -3908,6 +5541,9 @@ declare global {
   enum VkDeviceQueueCreateFlagBits {
     
   }
+
+  
+
   
   /**
    * Bitmask specifying properties for a memory type
@@ -3925,6 +5561,14 @@ declare global {
     VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT,
     
   }
+
+  const VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT: VkMemoryPropertyFlagBits;
+  const VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT: VkMemoryPropertyFlagBits;
+  const VK_MEMORY_PROPERTY_HOST_COHERENT_BIT: VkMemoryPropertyFlagBits;
+  const VK_MEMORY_PROPERTY_HOST_CACHED_BIT: VkMemoryPropertyFlagBits;
+  const VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT: VkMemoryPropertyFlagBits;
+  
+
   
   /**
    * Bitmask specifying attribute flags for a heap
@@ -3936,6 +5580,11 @@ declare global {
     VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR,
     
   }
+
+  const VK_MEMORY_HEAP_DEVICE_LOCAL_BIT: VkMemoryHeapFlagBits;
+  const VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR: VkMemoryHeapFlagBits;
+  
+
   
   /**
    * Bitmask specifying memory access types that will participate in a memory dependency
@@ -4007,6 +5656,41 @@ declare global {
     VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT,
     
   }
+
+  const VK_ACCESS_INDIRECT_COMMAND_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_INDEX_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_UNIFORM_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_INPUT_ATTACHMENT_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_SHADER_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_SHADER_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_COLOR_ATTACHMENT_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_TRANSFER_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_TRANSFER_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_HOST_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_HOST_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_MEMORY_READ_BIT: VkAccessFlagBits;
+  const VK_ACCESS_MEMORY_WRITE_BIT: VkAccessFlagBits;
+  const VK_ACCESS_RESERVED_30_BIT_KHR: VkAccessFlagBits;
+  const VK_ACCESS_RESERVED_31_BIT_KHR: VkAccessFlagBits;
+  const VK_ACCESS_RESERVED_28_BIT_KHR: VkAccessFlagBits;
+  const VK_ACCESS_RESERVED_29_BIT_KHR: VkAccessFlagBits;
+  const VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT: VkAccessFlagBits;
+  const VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT: VkAccessFlagBits;
+  const VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT: VkAccessFlagBits;
+  const VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT: VkAccessFlagBits;
+  const VK_ACCESS_COMMAND_PROCESS_READ_BIT_NVX: VkAccessFlagBits;
+  const VK_ACCESS_COMMAND_PROCESS_WRITE_BIT_NVX: VkAccessFlagBits;
+  const VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT: VkAccessFlagBits;
+  const VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV: VkAccessFlagBits;
+  const VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV: VkAccessFlagBits;
+  const VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV: VkAccessFlagBits;
+  const VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT: VkAccessFlagBits;
+  
+
   
   /**
    * Bitmask specifying allowed usage of a buffer
@@ -4050,6 +5734,27 @@ declare global {
     VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT,
     
   }
+
+  const VK_BUFFER_USAGE_TRANSFER_SRC_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_TRANSFER_DST_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_STORAGE_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_INDEX_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_VERTEX_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_RESERVED_15_BIT_KHR: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_RESERVED_16_BIT_KHR: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_RESERVED_13_BIT_KHR: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_RESERVED_14_BIT_KHR: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_RAY_TRACING_BIT_NV: VkBufferUsageFlagBits;
+  const VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT: VkBufferUsageFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of a buffer
@@ -4065,6 +5770,13 @@ declare global {
     VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT,
     
   }
+
+  const VK_BUFFER_CREATE_SPARSE_BINDING_BIT: VkBufferCreateFlagBits;
+  const VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT: VkBufferCreateFlagBits;
+  const VK_BUFFER_CREATE_SPARSE_ALIASED_BIT: VkBufferCreateFlagBits;
+  const VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT: VkBufferCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying a pipeline stage
@@ -4104,6 +5816,25 @@ declare global {
     VK_SHADER_STAGE_MESH_BIT_NV,
     
   }
+
+  const VK_SHADER_STAGE_VERTEX_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_GEOMETRY_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_FRAGMENT_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_COMPUTE_BIT: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_ALL_GRAPHICS: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_ALL: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_RAYGEN_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_ANY_HIT_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_MISS_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_INTERSECTION_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_CALLABLE_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_TASK_BIT_NV: VkShaderStageFlagBits;
+  const VK_SHADER_STAGE_MESH_BIT_NV: VkShaderStageFlagBits;
+  
+
   
   /**
    * Bitmask specifying intended usage of an image
@@ -4143,6 +5874,25 @@ declare global {
     VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT,
     
   }
+
+  const VK_IMAGE_USAGE_TRANSFER_SRC_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_TRANSFER_DST_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_SAMPLED_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_STORAGE_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_13_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_14_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_15_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_10_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_11_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_RESERVED_12_BIT_KHR: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV: VkImageUsageFlagBits;
+  const VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT: VkImageUsageFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of an image
@@ -4178,6 +5928,23 @@ declare global {
     VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT,
     
   }
+
+  const VK_IMAGE_CREATE_SPARSE_BINDING_BIT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_SPARSE_ALIASED_BIT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_DISJOINT_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_ALIAS_BIT_KHR: VkImageCreateFlagBits;
+  const VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT: VkImageCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of an image view
@@ -4187,6 +5954,10 @@ declare global {
     VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
     
   }
+
+  const VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT: VkImageViewCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of sampler
@@ -4198,6 +5969,11 @@ declare global {
     VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT,
     
   }
+
+  const VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT: VkSamplerCreateFlagBits;
+  const VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT: VkSamplerCreateFlagBits;
+  
+
   
   /**
    * Bitmask controlling how a pipeline is created
@@ -4217,6 +5993,15 @@ declare global {
     VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV,
     
   }
+
+  const VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT: VkPipelineCreateFlagBits;
+  const VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT: VkPipelineCreateFlagBits;
+  const VK_PIPELINE_CREATE_DERIVATIVE_BIT: VkPipelineCreateFlagBits;
+  const VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR: VkPipelineCreateFlagBits;
+  const VK_PIPELINE_CREATE_DISPATCH_BASE_KHR: VkPipelineCreateFlagBits;
+  const VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV: VkPipelineCreateFlagBits;
+  
+
   
   /**
    * Bitmask controlling which components are written to the framebuffer
@@ -4232,6 +6017,13 @@ declare global {
     VK_COLOR_COMPONENT_A_BIT,
     
   }
+
+  const VK_COLOR_COMPONENT_R_BIT: VkColorComponentFlagBits;
+  const VK_COLOR_COMPONENT_G_BIT: VkColorComponentFlagBits;
+  const VK_COLOR_COMPONENT_B_BIT: VkColorComponentFlagBits;
+  const VK_COLOR_COMPONENT_A_BIT: VkColorComponentFlagBits;
+  
+
   
   /**
    * Bitmask specifying initial state and behavior of a fence
@@ -4241,6 +6033,10 @@ declare global {
     VK_FENCE_CREATE_SIGNALED_BIT,
     
   }
+
+  const VK_FENCE_CREATE_SIGNALED_BIT: VkFenceCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying features supported by a buffer
@@ -4308,6 +6104,39 @@ declare global {
     VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT,
     
   }
+
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_BLIT_SRC_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_BLIT_DST_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_RESERVED_27_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_RESERVED_28_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_RESERVED_25_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_RESERVED_26_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_DISJOINT_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT: VkFormatFeatureFlagBits;
+  const VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT: VkFormatFeatureFlagBits;
+  
+
   
   /**
    * Bitmask specifying constraints on a query
@@ -4317,6 +6146,10 @@ declare global {
     VK_QUERY_CONTROL_PRECISE_BIT,
     
   }
+
+  const VK_QUERY_CONTROL_PRECISE_BIT: VkQueryControlFlagBits;
+  
+
   
   /**
    * Bitmask specifying how and when query results are returned
@@ -4332,6 +6165,13 @@ declare global {
     VK_QUERY_RESULT_PARTIAL_BIT,
     
   }
+
+  const VK_QUERY_RESULT_64_BIT: VkQueryResultFlagBits;
+  const VK_QUERY_RESULT_WAIT_BIT: VkQueryResultFlagBits;
+  const VK_QUERY_RESULT_WITH_AVAILABILITY_BIT: VkQueryResultFlagBits;
+  const VK_QUERY_RESULT_PARTIAL_BIT: VkQueryResultFlagBits;
+  
+
   
   /**
    * Bitmask specifying usage behavior for command buffer
@@ -4345,6 +6185,12 @@ declare global {
     VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT,
     
   }
+
+  const VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT: VkCommandBufferUsageFlagBits;
+  const VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT: VkCommandBufferUsageFlagBits;
+  const VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT: VkCommandBufferUsageFlagBits;
+  
+
   
   /**
    * Bitmask specifying queried pipeline statistics
@@ -4374,6 +6220,20 @@ declare global {
     VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT,
     
   }
+
+  const VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  const VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT: VkQueryPipelineStatisticFlagBits;
+  
+
   
   /**
    * Bitmask specifying which aspects of an image are included in a view
@@ -4403,6 +6263,20 @@ declare global {
     VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT,
     
   }
+
+  const VK_IMAGE_ASPECT_COLOR_BIT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_DEPTH_BIT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_STENCIL_BIT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_METADATA_BIT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_PLANE_0_BIT_KHR: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_PLANE_1_BIT_KHR: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_PLANE_2_BIT_KHR: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT: VkImageAspectFlagBits;
+  const VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT: VkImageAspectFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional information about a sparse image resource
@@ -4416,6 +6290,12 @@ declare global {
     VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT,
     
   }
+
+  const VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT: VkSparseImageFormatFlagBits;
+  const VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT: VkSparseImageFormatFlagBits;
+  const VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT: VkSparseImageFormatFlagBits;
+  
+
   
   /**
    * Bitmask specifying usage of a sparse memory binding operation
@@ -4425,6 +6305,10 @@ declare global {
     VK_SPARSE_MEMORY_BIND_METADATA_BIT,
     
   }
+
+  const VK_SPARSE_MEMORY_BIND_METADATA_BIT: VkSparseMemoryBindFlagBits;
+  
+
   
   /**
    * Bitmask specifying pipeline stages
@@ -4488,6 +6372,37 @@ declare global {
     VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT,
     
   }
+
+  const VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_VERTEX_INPUT_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_VERTEX_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_TRANSFER_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_HOST_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_ALL_COMMANDS_BIT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_RESERVED_27_BIT_KHR: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_RESERVED_26_BIT_KHR: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_COMMAND_PROCESS_BIT_NVX: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV: VkPipelineStageFlagBits;
+  const VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT: VkPipelineStageFlagBits;
+  
+
   
   /**
    * Bitmask specifying usage behavior for a command pool
@@ -4499,6 +6414,11 @@ declare global {
     VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
     
   }
+
+  const VK_COMMAND_POOL_CREATE_TRANSIENT_BIT: VkCommandPoolCreateFlagBits;
+  const VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT: VkCommandPoolCreateFlagBits;
+  
+
   
   /**
    * Bitmask controlling behavior of a command pool reset
@@ -4508,6 +6428,10 @@ declare global {
     VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT,
     
   }
+
+  const VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT: VkCommandPoolResetFlagBits;
+  
+
   
   /**
    * Bitmask controlling behavior of a command buffer reset
@@ -4517,6 +6441,10 @@ declare global {
     VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT,
     
   }
+
+  const VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT: VkCommandBufferResetFlagBits;
+  
+
   
   /**
    * Bitmask specifying sample counts supported for an image used for storage operations
@@ -4538,6 +6466,16 @@ declare global {
     VK_SAMPLE_COUNT_64_BIT,
     
   }
+
+  const VK_SAMPLE_COUNT_1_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_2_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_4_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_8_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_16_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_32_BIT: VkSampleCountFlagBits;
+  const VK_SAMPLE_COUNT_64_BIT: VkSampleCountFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional properties of an attachment
@@ -4547,6 +6485,10 @@ declare global {
     VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT,
     
   }
+
+  const VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT: VkAttachmentDescriptionFlagBits;
+  
+
   
   /**
    * Bitmask specifying sets of stencil state for which to update the compare mask
@@ -4560,6 +6502,12 @@ declare global {
     VK_STENCIL_FRONT_AND_BACK,
     
   }
+
+  const VK_STENCIL_FACE_FRONT_BIT: VkStencilFaceFlagBits;
+  const VK_STENCIL_FACE_BACK_BIT: VkStencilFaceFlagBits;
+  const VK_STENCIL_FRONT_AND_BACK: VkStencilFaceFlagBits;
+  
+
   
   /**
    * Bitmask specifying certain supported operations on a descriptor pool
@@ -4571,6 +6519,11 @@ declare global {
     VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT,
     
   }
+
+  const VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT: VkDescriptorPoolCreateFlagBits;
+  const VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT: VkDescriptorPoolCreateFlagBits;
+  
+
   
   /**
    * Bitmask specifying how execution and memory dependencies are formed
@@ -4584,6 +6537,12 @@ declare global {
     VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR,
     
   }
+
+  const VK_DEPENDENCY_BY_REGION_BIT: VkDependencyFlagBits;
+  const VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR: VkDependencyFlagBits;
+  const VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR: VkDependencyFlagBits;
+  
+
   
   /**
    * Alpha blending type
@@ -4599,6 +6558,13 @@ declare global {
     VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR,
     
   }
+
+  const VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR: VkDisplayPlaneAlphaFlagBitsKHR;
+  const VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR: VkDisplayPlaneAlphaFlagBitsKHR;
+  const VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR: VkDisplayPlaneAlphaFlagBitsKHR;
+  const VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR: VkDisplayPlaneAlphaFlagBitsKHR;
+  
+
   
   /**
    * alpha compositing modes supported on a device
@@ -4614,6 +6580,13 @@ declare global {
     VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR,
     
   }
+
+  const VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR: VkCompositeAlphaFlagBitsKHR;
+  const VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR: VkCompositeAlphaFlagBitsKHR;
+  const VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR: VkCompositeAlphaFlagBitsKHR;
+  const VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR: VkCompositeAlphaFlagBitsKHR;
+  
+
   
   /**
    * presentation transforms supported on a device
@@ -4639,6 +6612,18 @@ declare global {
     VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR,
     
   }
+
+  const VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  const VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR: VkSurfaceTransformFlagBitsKHR;
+  
+
   
   /**
    * Bitmask specifying events which cause a debug report callback
@@ -4656,6 +6641,14 @@ declare global {
     VK_DEBUG_REPORT_DEBUG_BIT_EXT,
     
   }
+
+  const VK_DEBUG_REPORT_INFORMATION_BIT_EXT: VkDebugReportFlagBitsEXT;
+  const VK_DEBUG_REPORT_WARNING_BIT_EXT: VkDebugReportFlagBitsEXT;
+  const VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: VkDebugReportFlagBitsEXT;
+  const VK_DEBUG_REPORT_ERROR_BIT_EXT: VkDebugReportFlagBitsEXT;
+  const VK_DEBUG_REPORT_DEBUG_BIT_EXT: VkDebugReportFlagBitsEXT;
+  
+
   
   /**
    * Bitmask specifying external memory handle types
@@ -4671,6 +6664,13 @@ declare global {
     VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV,
     
   }
+
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV: VkExternalMemoryHandleTypeFlagBitsNV;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV: VkExternalMemoryHandleTypeFlagBitsNV;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV: VkExternalMemoryHandleTypeFlagBitsNV;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV: VkExternalMemoryHandleTypeFlagBitsNV;
+  
+
   
   /**
    * Bitmask specifying external memory features
@@ -4684,6 +6684,12 @@ declare global {
     VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV,
     
   }
+
+  const VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV: VkExternalMemoryFeatureFlagBitsNV;
+  const VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV: VkExternalMemoryFeatureFlagBitsNV;
+  const VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV: VkExternalMemoryFeatureFlagBitsNV;
+  
+
   
   /**
    * Enum describing what subgroup operations are supported
@@ -4709,6 +6715,18 @@ declare global {
     VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV,
     
   }
+
+  const VK_SUBGROUP_FEATURE_BASIC_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_VOTE_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_ARITHMETIC_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_BALLOT_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_SHUFFLE_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_CLUSTERED_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_QUAD_BIT: VkSubgroupFeatureFlagBits;
+  const VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV: VkSubgroupFeatureFlagBits;
+  
+
   
   /**
    * Bitmask specifying allowed usage of an indirect commands layout
@@ -4724,6 +6742,13 @@ declare global {
     VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX,
     
   }
+
+  const VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  const VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  const VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  const VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  
+
   
   /**
    * Bitmask specifying allowed usage of an object entry
@@ -4735,6 +6760,11 @@ declare global {
     VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX,
     
   }
+
+  const VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX: VkObjectEntryUsageFlagBitsNVX;
+  const VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX: VkObjectEntryUsageFlagBitsNVX;
+  
+
   
   /**
    * Bitmask specifying descriptor set layout properties
@@ -4746,6 +6776,11 @@ declare global {
     VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT,
     
   }
+
+  const VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR: VkDescriptorSetLayoutCreateFlagBits;
+  const VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT: VkDescriptorSetLayoutCreateFlagBits;
+  
+
   
   /**
    * Bit specifying external memory handle types
@@ -4789,6 +6824,27 @@ declare global {
     VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT,
     
   }
+
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT_KHR: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT: VkExternalMemoryHandleTypeFlagBits;
+  const VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT: VkExternalMemoryHandleTypeFlagBits;
+  
+
   
   /**
    * Bitmask specifying features of an external memory handle type
@@ -4808,6 +6864,15 @@ declare global {
     VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR,
     
   }
+
+  const VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT: VkExternalMemoryFeatureFlagBits;
+  const VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT: VkExternalMemoryFeatureFlagBits;
+  const VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT: VkExternalMemoryFeatureFlagBits;
+  const VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_KHR: VkExternalMemoryFeatureFlagBits;
+  const VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_KHR: VkExternalMemoryFeatureFlagBits;
+  const VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR: VkExternalMemoryFeatureFlagBits;
+  
+
   
   /**
    * Bitmask of valid external semaphore handle types
@@ -4835,6 +6900,19 @@ declare global {
     VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR,
     
   }
+
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR: VkExternalSemaphoreHandleTypeFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR: VkExternalSemaphoreHandleTypeFlagBits;
+  
+
   
   /**
    * Bitfield describing features of an external semaphore handle type
@@ -4850,6 +6928,13 @@ declare global {
     VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR,
     
   }
+
+  const VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT: VkExternalSemaphoreFeatureFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT: VkExternalSemaphoreFeatureFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR: VkExternalSemaphoreFeatureFlagBits;
+  const VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR: VkExternalSemaphoreFeatureFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of semaphore payload import
@@ -4861,6 +6946,11 @@ declare global {
     VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR,
     
   }
+
+  const VK_SEMAPHORE_IMPORT_TEMPORARY_BIT: VkSemaphoreImportFlagBits;
+  const VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR: VkSemaphoreImportFlagBits;
+  
+
   
   /**
    * Bitmask of valid external fence handle types
@@ -4884,6 +6974,17 @@ declare global {
     VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR,
     
   }
+
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR: VkExternalFenceHandleTypeFlagBits;
+  const VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR: VkExternalFenceHandleTypeFlagBits;
+  
+
   
   /**
    * Bitfield describing features of an external fence handle type
@@ -4899,6 +7000,13 @@ declare global {
     VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR,
     
   }
+
+  const VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT: VkExternalFenceFeatureFlagBits;
+  const VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT: VkExternalFenceFeatureFlagBits;
+  const VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT_KHR: VkExternalFenceFeatureFlagBits;
+  const VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR: VkExternalFenceFeatureFlagBits;
+  
+
   
   /**
    * Bitmask specifying additional parameters of fence payload import
@@ -4910,6 +7018,11 @@ declare global {
     VK_FENCE_IMPORT_TEMPORARY_BIT_KHR,
     
   }
+
+  const VK_FENCE_IMPORT_TEMPORARY_BIT: VkFenceImportFlagBits;
+  const VK_FENCE_IMPORT_TEMPORARY_BIT_KHR: VkFenceImportFlagBits;
+  
+
   
   /**
    * Surface-relative counter types
@@ -4919,6 +7032,10 @@ declare global {
     VK_SURFACE_COUNTER_VBLANK_EXT,
     
   }
+
+  const VK_SURFACE_COUNTER_VBLANK_EXT: VkSurfaceCounterFlagBitsEXT;
+  
+
   
   /**
    * Bitmask specifying supported peer memory features
@@ -4942,6 +7059,17 @@ declare global {
     VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHR,
     
   }
+
+  const VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_COPY_DST_BIT: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT_KHR: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_COPY_DST_BIT_KHR: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT_KHR: VkPeerMemoryFeatureFlagBits;
+  const VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHR: VkPeerMemoryFeatureFlagBits;
+  
+
   
   /**
    * Bitmask specifying flags for a device memory allocation
@@ -4953,6 +7081,11 @@ declare global {
     VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHR,
     
   }
+
+  const VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT: VkMemoryAllocateFlagBits;
+  const VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHR: VkMemoryAllocateFlagBits;
+  
+
   
   /**
    * Bitmask specifying supported device group present modes
@@ -4968,6 +7101,13 @@ declare global {
     VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR,
     
   }
+
+  const VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR: VkDeviceGroupPresentModeFlagBitsKHR;
+  const VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR: VkDeviceGroupPresentModeFlagBitsKHR;
+  const VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR: VkDeviceGroupPresentModeFlagBitsKHR;
+  const VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR: VkDeviceGroupPresentModeFlagBitsKHR;
+  
+
   
   /**
    * Bitmask controlling swapchain creation
@@ -4981,6 +7121,12 @@ declare global {
     VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
     
   }
+
+  const VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR: VkSwapchainCreateFlagBitsKHR;
+  const VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR: VkSwapchainCreateFlagBitsKHR;
+  const VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR: VkSwapchainCreateFlagBitsKHR;
+  
+
   
   /**
    * Bitmask specifying usage of a subpass
@@ -4996,6 +7142,13 @@ declare global {
     VK_SUBPASS_DESCRIPTION_RESERVED_3_BIT_QCOM,
     
   }
+
+  const VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX: VkSubpassDescriptionFlagBits;
+  const VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX: VkSubpassDescriptionFlagBits;
+  const VK_SUBPASS_DESCRIPTION_RESERVED_2_BIT_QCOM: VkSubpassDescriptionFlagBits;
+  const VK_SUBPASS_DESCRIPTION_RESERVED_3_BIT_QCOM: VkSubpassDescriptionFlagBits;
+  
+
   
   /**
    * Bitmask specifying which severities of events cause a debug messenger callback
@@ -5011,6 +7164,13 @@ declare global {
     VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT,
     
   }
+
+  const VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  const VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  const VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  const VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  
+
   
   /**
    * Bitmask specifying which types of events cause a debug messenger callback
@@ -5024,6 +7184,12 @@ declare global {
     VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT,
     
   }
+
+  const VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT: VkDebugUtilsMessageTypeFlagBitsEXT;
+  const VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT: VkDebugUtilsMessageTypeFlagBitsEXT;
+  const VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT: VkDebugUtilsMessageTypeFlagBitsEXT;
+  
+
   
   /**
    * Bitmask specifying descriptor set layout binding properties
@@ -5039,6 +7205,13 @@ declare global {
     VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT,
     
   }
+
+  const VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT: VkDescriptorBindingFlagBitsEXT;
+  const VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT: VkDescriptorBindingFlagBitsEXT;
+  const VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT: VkDescriptorBindingFlagBitsEXT;
+  const VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT: VkDescriptorBindingFlagBitsEXT;
+  
+
   
   /**
    * Specify the behavior of conditional rendering
@@ -5048,6 +7221,10 @@ declare global {
     VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT,
     
   }
+
+  const VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT: VkConditionalRenderingFlagBitsEXT;
+  
+
   
   /**
    * Bitmask indicating supported depth and stencil resolve modes
@@ -5065,6 +7242,14 @@ declare global {
     VK_RESOLVE_MODE_MAX_BIT_KHR,
     
   }
+
+  const VK_RESOLVE_MODE_NONE_KHR: VkResolveModeFlagBitsKHR;
+  const VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR: VkResolveModeFlagBitsKHR;
+  const VK_RESOLVE_MODE_AVERAGE_BIT_KHR: VkResolveModeFlagBitsKHR;
+  const VK_RESOLVE_MODE_MIN_BIT_KHR: VkResolveModeFlagBitsKHR;
+  const VK_RESOLVE_MODE_MAX_BIT_KHR: VkResolveModeFlagBitsKHR;
+  
+
   
   /**
    * Instance flag bits
@@ -5080,6 +7265,13 @@ declare global {
     VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV,
     
   }
+
+  const VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV: VkGeometryInstanceFlagBitsNV;
+  const VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV: VkGeometryInstanceFlagBitsNV;
+  const VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV: VkGeometryInstanceFlagBitsNV;
+  const VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV: VkGeometryInstanceFlagBitsNV;
+  
+
   
   /**
    * Bitmask specifying additional parameters for a geometry
@@ -5091,6 +7283,11 @@ declare global {
     VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV,
     
   }
+
+  const VK_GEOMETRY_OPAQUE_BIT_NV: VkGeometryFlagBitsNV;
+  const VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV: VkGeometryFlagBitsNV;
+  
+
   
   /**
    * Bitmask specifying additional parameters for acceleration structure builds
@@ -5108,6 +7305,14 @@ declare global {
     VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV,
     
   }
+
+  const VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV: VkBuildAccelerationStructureFlagBitsNV;
+  const VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV: VkBuildAccelerationStructureFlagBitsNV;
+  const VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV: VkBuildAccelerationStructureFlagBitsNV;
+  const VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV: VkBuildAccelerationStructureFlagBitsNV;
+  const VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV: VkBuildAccelerationStructureFlagBitsNV;
+  
+
   
   /**
    * Bitmask specifying pipeline or pipeline stage creation feedback
@@ -5121,6 +7326,12 @@ declare global {
     VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT,
     
   }
+
+  const VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT: VkPipelineCreationFeedbackFlagBitsEXT;
+  const VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT: VkPipelineCreationFeedbackFlagBitsEXT;
+  const VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT: VkPipelineCreationFeedbackFlagBitsEXT;
+  
+
   
 
   

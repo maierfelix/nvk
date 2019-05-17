@@ -32,6 +32,11 @@ declare global {
     {{ child.name }},
     {% endfor %}
   }
+
+  {% for child in enu.children -%}
+  const {{ child.name }}: {{ enu.name }};
+  {% endfor %}
+
   {% endfor %}
 
   {% for name in includes -%}
