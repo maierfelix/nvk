@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -57,5 +57,10 @@
   "bugs": {
     "url": "https://github.com/maierfelix/nvk/issues"
   },
-  "homepage": "https://github.com/maierfelix/nvk#readme"
+  "homepage": "https://github.com/maierfelix/nvk#readme",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "lib": "lib"
+  }
 }
