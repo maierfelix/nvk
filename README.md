@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/npm/v/nvk.svg?style=flat-square" alt="NPM Version" />
   </a>
   <a href="https://www.phoronix.com/scan.php?page=news_item&px=Vulkan-1.1.106-Released">
-    <img src="https://img.shields.io/badge/vulkan-1.1.106-ff69b4.svg?style=flat-square" alt="Vulkan Header Version" />
+    <img src="https://img.shields.io/badge/vulkan-1.1.106-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
   </a>
   <a href="//www.npmjs.com/package/nvk">
     <img src="https://img.shields.io/npm/dt/nvk.svg?style=flat-square" alt="NPM Downloads" />
