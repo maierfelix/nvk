@@ -30,10 +30,10 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 | Mac           | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 
 ### Why Vulkan in JavaScript?
- - Much less overhead than WebGL/OpenGL
+ - Less overhead than WebGL/OpenGL
  - Essential features like Compute, Geometry and Tesselation shaders
  - API for Realtime Raytracing
- - Supports multi-threading
+ - Multi-threading
  - Low-level memory control using [ArrayBuffers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 
 This project is a *very* thin layer above Vulkan, built with simplicity and performance in mind. Native memory for Vulkan gets built entirely within JavaScript to reduce language switching overhead to a minimum. Bounding checks and type validations are enabled by default, but can be disabled using the `--disable-validation-checks` flag.
