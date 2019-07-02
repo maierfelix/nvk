@@ -1,0 +1,173 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPhysicalDeviceFeatures2KHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceFeatures2KHR</vk-name>
+
+    <vk-description></vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">physicalDeviceFeatures2KHR = new VkPhysicalDeviceFeatures2KHR();
+physicalDeviceFeatures2KHR = new VkPhysicalDeviceFeatures2KHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFeatures2KHR = new VkPhysicalDeviceFeatures2KHR();
+physicalDeviceFeatures2KHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2_KHR;
+physicalDeviceFeatures2KHR.pNext = ;
+physicalDeviceFeatures2KHR.features = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFeatures2KHR = new VkPhysicalDeviceFeatures2KHR();
+physicalDeviceFeatures2KHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2_KHR;
+physicalDeviceFeatures2KHR.pNext = ;
+physicalDeviceFeatures2KHR.features.robustBufferAccess = ;
+physicalDeviceFeatures2KHR.features.fullDrawIndexUint32 = ;
+physicalDeviceFeatures2KHR.features.imageCubeArray = ;
+physicalDeviceFeatures2KHR.features.independentBlend = ;
+physicalDeviceFeatures2KHR.features.geometryShader = ;
+physicalDeviceFeatures2KHR.features.tessellationShader = ;
+physicalDeviceFeatures2KHR.features.sampleRateShading = ;
+physicalDeviceFeatures2KHR.features.dualSrcBlend = ;
+physicalDeviceFeatures2KHR.features.logicOp = ;
+physicalDeviceFeatures2KHR.features.multiDrawIndirect = ;
+physicalDeviceFeatures2KHR.features.drawIndirectFirstInstance = ;
+physicalDeviceFeatures2KHR.features.depthClamp = ;
+physicalDeviceFeatures2KHR.features.depthBiasClamp = ;
+physicalDeviceFeatures2KHR.features.fillModeNonSolid = ;
+physicalDeviceFeatures2KHR.features.depthBounds = ;
+physicalDeviceFeatures2KHR.features.wideLines = ;
+physicalDeviceFeatures2KHR.features.largePoints = ;
+physicalDeviceFeatures2KHR.features.alphaToOne = ;
+physicalDeviceFeatures2KHR.features.multiViewport = ;
+physicalDeviceFeatures2KHR.features.samplerAnisotropy = ;
+physicalDeviceFeatures2KHR.features.textureCompressionETC2 = ;
+physicalDeviceFeatures2KHR.features.textureCompressionASTC_LDR = ;
+physicalDeviceFeatures2KHR.features.textureCompressionBC = ;
+physicalDeviceFeatures2KHR.features.occlusionQueryPrecise = ;
+physicalDeviceFeatures2KHR.features.pipelineStatisticsQuery = ;
+physicalDeviceFeatures2KHR.features.vertexPipelineStoresAndAtomics = ;
+physicalDeviceFeatures2KHR.features.fragmentStoresAndAtomics = ;
+physicalDeviceFeatures2KHR.features.shaderTessellationAndGeometryPointSize = ;
+physicalDeviceFeatures2KHR.features.shaderImageGatherExtended = ;
+physicalDeviceFeatures2KHR.features.shaderStorageImageExtendedFormats = ;
+physicalDeviceFeatures2KHR.features.shaderStorageImageMultisample = ;
+physicalDeviceFeatures2KHR.features.shaderStorageImageReadWithoutFormat = ;
+physicalDeviceFeatures2KHR.features.shaderStorageImageWriteWithoutFormat = ;
+physicalDeviceFeatures2KHR.features.shaderUniformBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures2KHR.features.shaderSampledImageArrayDynamicIndexing = ;
+physicalDeviceFeatures2KHR.features.shaderStorageBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures2KHR.features.shaderStorageImageArrayDynamicIndexing = ;
+physicalDeviceFeatures2KHR.features.shaderClipDistance = ;
+physicalDeviceFeatures2KHR.features.shaderCullDistance = ;
+physicalDeviceFeatures2KHR.features.shaderFloat64 = ;
+physicalDeviceFeatures2KHR.features.shaderInt64 = ;
+physicalDeviceFeatures2KHR.features.shaderInt16 = ;
+physicalDeviceFeatures2KHR.features.shaderResourceResidency = ;
+physicalDeviceFeatures2KHR.features.shaderResourceMinLod = ;
+physicalDeviceFeatures2KHR.features.sparseBinding = ;
+physicalDeviceFeatures2KHR.features.sparseResidencyBuffer = ;
+physicalDeviceFeatures2KHR.features.sparseResidencyImage2D = ;
+physicalDeviceFeatures2KHR.features.sparseResidencyImage3D = ;
+physicalDeviceFeatures2KHR.features.sparseResidency2Samples = ;
+physicalDeviceFeatures2KHR.features.sparseResidency4Samples = ;
+physicalDeviceFeatures2KHR.features.sparseResidency8Samples = ;
+physicalDeviceFeatures2KHR.features.sparseResidency16Samples = ;
+physicalDeviceFeatures2KHR.features.sparseResidencyAliased = ;
+physicalDeviceFeatures2KHR.features.variableMultisampleRate = ;
+physicalDeviceFeatures2KHR.features.inheritedQueries = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.prototype.<vk-prototype-name>features</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures2KHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

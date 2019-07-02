@@ -1,0 +1,74 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDebugUtilsMessageTypeFlagBitsEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDebugUtilsMessageTypeFlagBitsEXT</vk-name>
+
+    <vk-description>Bitmask specifying which types of events cause a debug messenger callback</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkDebugUtilsMessageTypeFlagBitsEXT = {
+  VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT: 0x1,
+  VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT: 0x2,
+  VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT: 0x4
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageTypeFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that some general event has occurred. This is typically a non-specification, non-performance event.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageTypeFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that something has occurred during validation against the Vulkan specification that may indicate invalid behavior.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageTypeFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies a potentially non-optimal use of Vulkan, e.g. using <b><a href="../calls/vkCmdClearColorImage.html">vkCmdClearColorImage</a></b> when setting <b><a href="../structs/VkAttachmentDescription.html">VkAttachmentDescription</a></b>::<b>loadOp</b> to <b>VK_ATTACHMENT_LOAD_OP_CLEAR</b> would have worked.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

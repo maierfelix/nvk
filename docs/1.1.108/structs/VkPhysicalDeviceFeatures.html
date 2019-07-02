@@ -1,0 +1,483 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPhysicalDeviceFeatures | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceFeatures</vk-name>
+
+    <vk-description>Structure describing the fine-grained features that can be supported by an implementation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">physicalDeviceFeatures = new VkPhysicalDeviceFeatures();
+physicalDeviceFeatures = new VkPhysicalDeviceFeatures(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFeatures = new VkPhysicalDeviceFeatures();
+physicalDeviceFeatures.robustBufferAccess = ;
+physicalDeviceFeatures.fullDrawIndexUint32 = ;
+physicalDeviceFeatures.imageCubeArray = ;
+physicalDeviceFeatures.independentBlend = ;
+physicalDeviceFeatures.geometryShader = ;
+physicalDeviceFeatures.tessellationShader = ;
+physicalDeviceFeatures.sampleRateShading = ;
+physicalDeviceFeatures.dualSrcBlend = ;
+physicalDeviceFeatures.logicOp = ;
+physicalDeviceFeatures.multiDrawIndirect = ;
+physicalDeviceFeatures.drawIndirectFirstInstance = ;
+physicalDeviceFeatures.depthClamp = ;
+physicalDeviceFeatures.depthBiasClamp = ;
+physicalDeviceFeatures.fillModeNonSolid = ;
+physicalDeviceFeatures.depthBounds = ;
+physicalDeviceFeatures.wideLines = ;
+physicalDeviceFeatures.largePoints = ;
+physicalDeviceFeatures.alphaToOne = ;
+physicalDeviceFeatures.multiViewport = ;
+physicalDeviceFeatures.samplerAnisotropy = ;
+physicalDeviceFeatures.textureCompressionETC2 = ;
+physicalDeviceFeatures.textureCompressionASTC_LDR = ;
+physicalDeviceFeatures.textureCompressionBC = ;
+physicalDeviceFeatures.occlusionQueryPrecise = ;
+physicalDeviceFeatures.pipelineStatisticsQuery = ;
+physicalDeviceFeatures.vertexPipelineStoresAndAtomics = ;
+physicalDeviceFeatures.fragmentStoresAndAtomics = ;
+physicalDeviceFeatures.shaderTessellationAndGeometryPointSize = ;
+physicalDeviceFeatures.shaderImageGatherExtended = ;
+physicalDeviceFeatures.shaderStorageImageExtendedFormats = ;
+physicalDeviceFeatures.shaderStorageImageMultisample = ;
+physicalDeviceFeatures.shaderStorageImageReadWithoutFormat = ;
+physicalDeviceFeatures.shaderStorageImageWriteWithoutFormat = ;
+physicalDeviceFeatures.shaderUniformBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderStorageBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderStorageImageArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderClipDistance = ;
+physicalDeviceFeatures.shaderCullDistance = ;
+physicalDeviceFeatures.shaderFloat64 = ;
+physicalDeviceFeatures.shaderInt64 = ;
+physicalDeviceFeatures.shaderInt16 = ;
+physicalDeviceFeatures.shaderResourceResidency = ;
+physicalDeviceFeatures.shaderResourceMinLod = ;
+physicalDeviceFeatures.sparseBinding = ;
+physicalDeviceFeatures.sparseResidencyBuffer = ;
+physicalDeviceFeatures.sparseResidencyImage2D = ;
+physicalDeviceFeatures.sparseResidencyImage3D = ;
+physicalDeviceFeatures.sparseResidency2Samples = ;
+physicalDeviceFeatures.sparseResidency4Samples = ;
+physicalDeviceFeatures.sparseResidency8Samples = ;
+physicalDeviceFeatures.sparseResidency16Samples = ;
+physicalDeviceFeatures.sparseResidencyAliased = ;
+physicalDeviceFeatures.variableMultisampleRate = ;
+physicalDeviceFeatures.inheritedQueries = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let physicalDeviceFeatures = new VkPhysicalDeviceFeatures();
+physicalDeviceFeatures.robustBufferAccess = ;
+physicalDeviceFeatures.fullDrawIndexUint32 = ;
+physicalDeviceFeatures.imageCubeArray = ;
+physicalDeviceFeatures.independentBlend = ;
+physicalDeviceFeatures.geometryShader = ;
+physicalDeviceFeatures.tessellationShader = ;
+physicalDeviceFeatures.sampleRateShading = ;
+physicalDeviceFeatures.dualSrcBlend = ;
+physicalDeviceFeatures.logicOp = ;
+physicalDeviceFeatures.multiDrawIndirect = ;
+physicalDeviceFeatures.drawIndirectFirstInstance = ;
+physicalDeviceFeatures.depthClamp = ;
+physicalDeviceFeatures.depthBiasClamp = ;
+physicalDeviceFeatures.fillModeNonSolid = ;
+physicalDeviceFeatures.depthBounds = ;
+physicalDeviceFeatures.wideLines = ;
+physicalDeviceFeatures.largePoints = ;
+physicalDeviceFeatures.alphaToOne = ;
+physicalDeviceFeatures.multiViewport = ;
+physicalDeviceFeatures.samplerAnisotropy = ;
+physicalDeviceFeatures.textureCompressionETC2 = ;
+physicalDeviceFeatures.textureCompressionASTC_LDR = ;
+physicalDeviceFeatures.textureCompressionBC = ;
+physicalDeviceFeatures.occlusionQueryPrecise = ;
+physicalDeviceFeatures.pipelineStatisticsQuery = ;
+physicalDeviceFeatures.vertexPipelineStoresAndAtomics = ;
+physicalDeviceFeatures.fragmentStoresAndAtomics = ;
+physicalDeviceFeatures.shaderTessellationAndGeometryPointSize = ;
+physicalDeviceFeatures.shaderImageGatherExtended = ;
+physicalDeviceFeatures.shaderStorageImageExtendedFormats = ;
+physicalDeviceFeatures.shaderStorageImageMultisample = ;
+physicalDeviceFeatures.shaderStorageImageReadWithoutFormat = ;
+physicalDeviceFeatures.shaderStorageImageWriteWithoutFormat = ;
+physicalDeviceFeatures.shaderUniformBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderStorageBufferArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderStorageImageArrayDynamicIndexing = ;
+physicalDeviceFeatures.shaderClipDistance = ;
+physicalDeviceFeatures.shaderCullDistance = ;
+physicalDeviceFeatures.shaderFloat64 = ;
+physicalDeviceFeatures.shaderInt64 = ;
+physicalDeviceFeatures.shaderInt16 = ;
+physicalDeviceFeatures.shaderResourceResidency = ;
+physicalDeviceFeatures.shaderResourceMinLod = ;
+physicalDeviceFeatures.sparseBinding = ;
+physicalDeviceFeatures.sparseResidencyBuffer = ;
+physicalDeviceFeatures.sparseResidencyImage2D = ;
+physicalDeviceFeatures.sparseResidencyImage3D = ;
+physicalDeviceFeatures.sparseResidency2Samples = ;
+physicalDeviceFeatures.sparseResidency4Samples = ;
+physicalDeviceFeatures.sparseResidency8Samples = ;
+physicalDeviceFeatures.sparseResidency16Samples = ;
+physicalDeviceFeatures.sparseResidencyAliased = ;
+physicalDeviceFeatures.variableMultisampleRate = ;
+physicalDeviceFeatures.inheritedQueries = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>robustBufferAccess</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by <b><a href="../structs/VkDescriptorBufferInfo.html">VkDescriptorBufferInfo</a></b>::<b>range</b>, <b><a href="../structs/VkBufferViewCreateInfo.html">VkBufferViewCreateInfo</a></b>::<b>range</b>, or the size of the buffer). Out of bounds accesses <i>must</i> not cause application termination, and the effects of shader loads, stores, and atomics <i>must</i> conform to an implementation-dependent behavior as described below.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fullDrawIndexUint32</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>imageCubeArray</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>independentBlend</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>geometryShader</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>tessellationShader</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sampleRateShading</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>dualSrcBlend</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>logicOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>multiDrawIndirect</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>drawIndirectFirstInstance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthClamp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthBiasClamp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fillModeNonSolid</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthBounds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>wideLines</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>largePoints</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>alphaToOne</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>multiViewport</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>samplerAnisotropy</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionETC2</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionASTC_LDR</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionBC</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>occlusionQueryPrecise</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>pipelineStatisticsQuery</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>vertexPipelineStoresAndAtomics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fragmentStoresAndAtomics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderTessellationAndGeometryPointSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderImageGatherExtended</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageExtendedFormats</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageMultisample</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageReadWithoutFormat</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageWriteWithoutFormat</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderUniformBufferArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderSampledImageArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageBufferArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderClipDistance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderCullDistance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderFloat64</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderInt64</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderInt16</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderResourceResidency</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderResourceMinLod</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseBinding</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyImage2D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyImage3D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency2Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency4Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency8Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency16Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyAliased</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>variableMultisampleRate</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>inheritedQueries</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

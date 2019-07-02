@@ -1,0 +1,182 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkBindSparseInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkBindSparseInfo</vk-name>
+
+    <vk-description>Structure specifying a sparse binding operation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">bindSparseInfo = new VkBindSparseInfo();
+bindSparseInfo = new VkBindSparseInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let bindSparseInfo = new VkBindSparseInfo();
+bindSparseInfo.sType = VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
+bindSparseInfo.pNext = ;
+bindSparseInfo.waitSemaphoreCount = ;
+bindSparseInfo.pWaitSemaphores = ;
+bindSparseInfo.bufferBindCount = ;
+bindSparseInfo.pBufferBinds = ;
+bindSparseInfo.imageOpaqueBindCount = ;
+bindSparseInfo.pImageOpaqueBinds = ;
+bindSparseInfo.imageBindCount = ;
+bindSparseInfo.pImageBinds = ;
+bindSparseInfo.signalSemaphoreCount = ;
+bindSparseInfo.pSignalSemaphores = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let bindSparseInfo = new VkBindSparseInfo();
+bindSparseInfo.sType = VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
+bindSparseInfo.pNext = ;
+bindSparseInfo.waitSemaphoreCount = ;
+bindSparseInfo.pWaitSemaphores = ;
+bindSparseInfo.bufferBindCount = ;
+bindSparseInfo.pBufferBinds = ;
+bindSparseInfo.imageOpaqueBindCount = ;
+bindSparseInfo.pImageOpaqueBinds = ;
+bindSparseInfo.imageBindCount = ;
+bindSparseInfo.pImageBinds = ;
+bindSparseInfo.signalSemaphoreCount = ;
+bindSparseInfo.pSignalSemaphores = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>waitSemaphoreCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphores upon which to wait before executing the sparse binding operations for the batch.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pWaitSemaphores</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkSemaphore.html">VkSemaphore]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of semaphores upon which to wait on before the sparse binding operations for this batch begin execution. If semaphores to wait on are provided, they define a <<synchronization-semaphores-waiting, semaphore wait operation>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>bufferBindCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of sparse buffer bindings to perform in the batch.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pBufferBinds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSparseBufferMemoryBindInfo.html">VkSparseBufferMemoryBindInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkSparseBufferMemoryBindInfo.html">VkSparseBufferMemoryBindInfo</a></b> structures.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>imageOpaqueBindCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of opaque sparse image bindings to perform.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pImageOpaqueBinds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a></b> structures, indicating opaque sparse image bindings to perform.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>imageBindCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of sparse image bindings to perform.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pImageBinds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSparseImageMemoryBindInfo.html">VkSparseImageMemoryBindInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkSparseImageMemoryBindInfo.html">VkSparseImageMemoryBindInfo</a></b> structures, indicating sparse image bindings to perform.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>signalSemaphoreCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphores to be signaled once the sparse binding operations specified by the structure have completed execution.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>pSignalSemaphores</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkSemaphore.html">VkSemaphore]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of semaphores which will be signaled when the sparse binding operations for this batch have completed execution. If semaphores to be signaled are provided, they define a <<synchronization-semaphores-signaling, semaphore signal operation>>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing this structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBindSparseInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
