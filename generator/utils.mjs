@@ -15,6 +15,22 @@ export function error() {
   process.stderr.write(`\x1b[31mError: ${str}\n\x1b[0m`);
 };
 
+export function getPlatform() {
+  let fakePlatform = process.env.npm_config_fake_platform;
+  if (fakePlatform) {
+    switch (fakePlatform) {
+      case "win32":
+      case "linux":
+      case "darwin":
+        break;
+      default:
+        throw new Error(`Invalid fake platform! Aborting..`);
+    };
+    return fakePlatform;
+  }
+  return process.platform;
+};
+
 export function formatIntToHex(n) {
   let h = parseInt(n.toString(16));
   let sign = h < 0 ? `-` : ``;
@@ -54,12 +70,12 @@ export function getLunarVkVersion(version) {
 };
 
 export function getLunarEnvironmentVariable() {
-  let {platform} = process;
+  let platform = getPlatform();
   return process.env.VULKAN_SDK;
 };
 
 export function getLunarVkSDKPath() {
-  let {platform} = process;
+  let platform = getPlatform();
   let envSDKPath = getLunarEnvironmentVariable();
   if (!envSDKPath) warn("Cannot resolve Vulkan SDK environment variable");
   if (platform === "win32") {
@@ -78,7 +94,7 @@ export function getLunarVkSDKPath() {
 };
 
 export function resolveLunarVkSDKPath(vkVersion) {
-  let {platform} = process;
+  let platform = getPlatform();
   let VK_SDK_PATH = getLunarVkSDKPath();
   let indices = [...Array(10)].map((v, i) => i);
   let sdkPath = VK_SDK_PATH + `/` + vkVersion;
@@ -269,7 +285,8 @@ export function isPNextMember(member) {
 };
 
 export function isCurrentPlatformSupportedExtension(extPlatform) {
-  switch (process.platform) {
+  let platform = getPlatform();
+  switch (platform) {
     case "win32":
       return isWin32SupportedExtension(extPlatform);
     case "linux":
@@ -277,7 +294,7 @@ export function isCurrentPlatformSupportedExtension(extPlatform) {
     case "darwin":
       return isDarwinSupportedExtension(extPlatform);
   };
-  warn(`Cannot resolve platform extension support for ${extPlatform}. Currently running on: ${process.platform}`);
+  warn(`Cannot resolve platform extension support for ${extPlatform}. Currently running on: ${platform}`);
   return false;
 };
 
@@ -309,7 +326,7 @@ export function isDarwinSupportedExtension(platform) {
 };
 
 export function isSupportedWSI(wsi) {
-  let {platform} = process;
+  let platform = getPlatform();
   // windows
   if (platform === "win32") {
     if (
@@ -341,7 +358,7 @@ export function isSupportedWSI(wsi) {
 
 export function getRequiredPlatformNativeInclude(ast) {
   let out = null;
-  let {platform} = process;
+  let platform = getPlatform();
   let includes = ast.filter(node => node.kind === "PLATFORM_INCLUDE");
   // windows
   if (platform === "win32") {
@@ -366,7 +383,7 @@ export function getRequiredPlatformNativeInclude(ast) {
 };
 
 export function getPlatformRelevantGLFWIncludes() {
-  let {platform} = process;
+  let platform = getPlatform();
   // windows
   if (platform === "win32") {
     return `#define GLFW_EXPOSE_NATIVE_WIN32`;

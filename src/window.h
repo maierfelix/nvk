@@ -23,6 +23,8 @@ class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
     double mouseLastX = 0;
     double mouseLastY = 0;
 
+    bool isClosed = false;
+
     // event callbacks
     Napi::FunctionReference onresize;
     Napi::FunctionReference onfocus;
@@ -286,9 +288,15 @@ void VulkanWindow::onWindowFocus(GLFWwindow* window, int focused) {
 void VulkanWindow::onWindowClose(GLFWwindow* window) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
   Napi::Env env = self->env_;
-  if (self->onclose.IsEmpty()) return;
-  Napi::Object out = Napi::Object::New(env);
-  self->onfocus.Value().As<Napi::Function>()({ out });
+  if (!self->onclose.IsEmpty()) {
+    Napi::Object out = Napi::Object::New(env);
+    self->onclose.Value().As<Napi::Function>()({ out });
+  }
+  if (!self->isClosed) {
+    glfwSetWindowShouldClose(window, GLFW_TRUE);
+    glfwDestroyWindow(window);
+    self->isClosed = true;
+  }
 }
 
 void VulkanWindow::onWindowKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -388,12 +396,11 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
       // init glfw
       if (!glfwInit()) Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
       Napi::Object obj = info[0].As<Napi::Object>();
-      if (!obj.Has("width")) Napi::Error::New(env, "'Object' must contain property 'width'").ThrowAsJavaScriptException();
+      if (!obj.Has("width"))  Napi::Error::New(env, "'Object' must contain property 'width'").ThrowAsJavaScriptException();
       if (!obj.Has("height")) Napi::Error::New(env, "'Object' must contain property 'height'").ThrowAsJavaScriptException();
-      if (!obj.Has("title")) Napi::Error::New(env, "'Object' must contain property 'title'").ThrowAsJavaScriptException();
       Napi::Value argWidth = obj.Get("width");
       Napi::Value argHeight = obj.Get("height");
-      Napi::Value argTitle = obj.Get("title");
+      Napi::Value argTitle = obj.Has("title") ? obj.Get("title") : Napi::String::New(env, "");
       if (argWidth.IsNumber()) this->width = argWidth.As<Napi::Number>().Int32Value();
       if (argHeight.IsNumber()) this->height = argHeight.As<Napi::Number>().Int32Value();
       if (argTitle.IsString()) this->title = argTitle.As<Napi::String>().Utf8Value();
@@ -429,28 +436,30 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
 Napi::Value VulkanWindow::shouldClose(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
+  if (this->isClosed) Napi::Boolean::New(env, false);
   return Napi::Boolean::New(env, static_cast<bool>(glfwWindowShouldClose(window)));
 }
 
 Napi::Value VulkanWindow::focus(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
-  glfwFocusWindow(window);
+  if (!this->isClosed) glfwFocusWindow(window);
   return env.Undefined();
 }
 
 Napi::Value VulkanWindow::close(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
-  glfwSetWindowShouldClose(window, GLFW_TRUE);
-  VulkanWindow::onWindowClose(window);
+  if (!this->isClosed) VulkanWindow::onWindowClose(window);
   return env.Undefined();
 }
 
 Napi::Value VulkanWindow::pollEvents(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
-  if (!glfwWindowShouldClose(window)) glfwPollEvents();
+  if (!this->isClosed && !glfwWindowShouldClose(window)) {
+    glfwPollEvents();
+  }
   return env.Undefined();
 }
 
@@ -515,7 +524,7 @@ void VulkanWindow::Settitle(const Napi::CallbackInfo& info, const Napi::Value& v
     Napi::TypeError::New(env, "Argument 1 must be of type 'String'").ThrowAsJavaScriptException();
   }
   std::string title = value.ToString().Utf8Value();
-  glfwSetWindowTitle(this->instance, title.c_str());
+  if (!this->isClosed) glfwSetWindowTitle(this->instance, title.c_str());
   this->title = title;
 }
 
@@ -531,8 +540,10 @@ void VulkanWindow::Setwidth(const Napi::CallbackInfo& info, const Napi::Value& v
     Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
   }
   this->width = value.As<Napi::Number>().Int32Value();
-  glfwSetWindowSize(window, this->width, this->height);
-  VulkanWindow::onWindowResize(window, this->width, this->height);
+  if (!this->isClosed) {
+    glfwSetWindowSize(window, this->width, this->height);
+    VulkanWindow::onWindowResize(window, this->width, this->height);
+  }
 }
 
 // height
@@ -547,8 +558,10 @@ void VulkanWindow::Setheight(const Napi::CallbackInfo& info, const Napi::Value& 
     Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
   }
   this->height = value.As<Napi::Number>().Int32Value();
-  glfwSetWindowSize(window, this->width, this->height);
-  VulkanWindow::onWindowResize(window, this->width, this->height);
+  if (!this->isClosed) {
+    glfwSetWindowSize(window, this->width, this->height);
+    VulkanWindow::onWindowResize(window, this->width, this->height);
+  }
 }
 
 // frameBufferWidth
@@ -556,7 +569,7 @@ Napi::Value VulkanWindow::GetframeBufferWidth(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
   int width = 0, height = 0;
-  glfwGetFramebufferSize(window, &width, &height);
+  if (!this->isClosed) glfwGetFramebufferSize(window, &width, &height);
   return Napi::Number::New(env, static_cast<int32_t>(width));
 }
 
@@ -565,7 +578,7 @@ Napi::Value VulkanWindow::GetframeBufferHeight(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
   int width = 0, height = 0;
-  glfwGetFramebufferSize(window, &width, &height);
+  if (!this->isClosed) glfwGetFramebufferSize(window, &width, &height);
   return Napi::Number::New(env, static_cast<int32_t>(height));
 }
 
@@ -574,7 +587,7 @@ Napi::Value VulkanWindow::GetdevicePixelRatio(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
   int width = 0, height = 0;
-  glfwGetFramebufferSize(window, &width, &height);
+  if (!this->isClosed) glfwGetFramebufferSize(window, &width, &height);
   return Napi::Number::New(env, static_cast<int32_t>(width / this->width));
 }
 
@@ -713,8 +726,10 @@ Napi::Value VulkanWindow::GetHWND(const Napi::CallbackInfo& info) {
   GLFWwindow* window = this->instance;
   Napi::BigInt out = Napi::BigInt::New(env, (int64_t)0);
   #ifdef _WIN32
-    HWND hwnd = glfwGetWin32Window(window);
-    out = Napi::BigInt::New(env, (int64_t)hwnd);
+    if (!this->isClosed) {
+      HWND hwnd = glfwGetWin32Window(window);
+      out = Napi::BigInt::New(env, (int64_t)hwnd);
+    }
   #endif
   return out;
 }
@@ -724,8 +739,10 @@ Napi::Value VulkanWindow::GetHINSTANCE(const Napi::CallbackInfo& info) {
   GLFWwindow* window = this->instance;
   Napi::BigInt out = Napi::BigInt::New(env, (int64_t)0);
   #ifdef _WIN32
-    HINSTANCE hinstance = GetModuleHandle(nullptr);
-    out = Napi::BigInt::New(env, (int64_t)hinstance);
+    if (!this->isClosed) {
+      HINSTANCE hinstance = GetModuleHandle(nullptr);
+      out = Napi::BigInt::New(env, (int64_t)hinstance);
+    }
   #endif
   return out;
 }

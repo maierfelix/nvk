@@ -7,6 +7,9 @@
   <a href="https://www.npmjs.com/package/nvk">
     <img src="https://img.shields.io/npm/v/nvk.svg?style=flat-square" alt="NPM Version" />
   </a>
+  <a href="https://www.phoronix.com/scan.php?page=news_item&px=Vulkan-1.1.106-Released">
+    <img src="https://img.shields.io/badge/vulkan-1.1.106-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
+  </a>
   <a href="//www.npmjs.com/package/nvk">
     <img src="https://img.shields.io/npm/dt/nvk.svg?style=flat-square" alt="NPM Downloads" />
   </a>
@@ -14,11 +17,11 @@
 
 #
 
-This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.106*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
+This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.106*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
 
 ### Platforms:
 
-*nvk* comes with pre-built binaries for the following platforms:
+*nvk* comes with pre-built N-API binaries for the following platforms:
 
 |       OS      |     Status    |
 | ------------- | ------------- |
@@ -26,10 +29,14 @@ This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) A
 | Linux         | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 | Mac           | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 
-### Preview:<br/>
-<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
+### Why Vulkan in JavaScript?
+ - Less overhead than WebGL/OpenGL
+ - Essential features like Compute, Geometry and Tesselation shaders
+ - API for Realtime Raytracing
+ - Multi-threading
+ - Low-level memory control using [ArrayBuffers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 
-You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
+This project is a *very* thin layer above Vulkan, built with simplicity and performance in mind. Native memory for Vulkan gets built entirely within JavaScript to reduce trampolining overhead. Bounding checks and type validations are enabled by default, but can be disabled using the `--disable-validation-checks` flag.
 
 #
 
@@ -42,6 +49,7 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
       - [Nested structures](#nested-structures)
   * [Project Structure](#project-structure)
   * [Binding Code Generator](#binding-code-generator)
+  * [Linking](#linking)
   * [Build Instructions](#build-instructions)
     + [Requirements](#requirements)
     + [Windows](#windows)
@@ -66,8 +74,6 @@ npm install nvk
 ## Example:
 
 In most cases the bindings match the C99 style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
-
-Also note that *nvk* performs type validation and bounding checks to help you catching bugs early. In future, these checks can be disabled using the `--disable-validation-checks` flag for better performance.
 
 JavaScript/TypeScript:
 ````js
@@ -220,9 +226,25 @@ The Generator generates code based on a `vk.xml` specification file. It first co
 
 Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.106/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
 
+## Linking:
+
+This section is of interest, if you have an existing C++ project and want to link against this one.
+
+This project mostly doesn't requires to be linked against. All structures and handles have properties to access the underlying memory directly. For example, see [VkApplicationInfo](https://maierfelix.github.io/nvk/1.1.106/structs/VkApplicationInfo.html) (#Default Properties).
+
+Structures and handles come with these 3 properties:
+
+ - *.memoryBuffer*: Reference to the underlying native memory, wrapped inside an [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+ - *.memoryAddress*: Native address (BigInt) of *memoryBuffer*. To convert BigInt into a native type, see e.g. [this](https://github.com/nodejs/node-addon-api/blob/master/doc/bigint.md#int64value) document
+ - *.byteLength*: Total native bytelength of the structure/handle
+
 ## Build Instructions:
 
-**Warning**: You may want to **skip this section**, as *nvk* uses [N-API](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which again is likely not your intention!
+**Warning**: You may want to **skip this section**, as *nvk* uses [N-API](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which is likely not your intention!
+
+This project requires two-pass compilation which means, after initially compiling the bindings, a second compilation is required. This is necessary, because this project constructs Vulkan memory entirely from within JavaScript.
+ - At the first compilation, memory layouts of vulkan structures get stored inside a JSON file
+ - At the second pass, these memory layout then get used to inline memory offsets inside the JavaScript binding code
 
 ### Requirements:
  - node.js >= v10.9.0 recommended
@@ -286,7 +308,6 @@ npm run [script] [flag] [value]
 
 #### General:
 ````
-[--vkversion]: The Vulkan version to use
 [--disable-validation-checks]: Disables type and bounding checks for better performance
 [--enable-shared-memory-hints]: Enables console hints, reporting to use nested structures when possible - useful for performance optimization
 ````
@@ -306,6 +327,7 @@ The generated bindings can then be found in `generated/{vkversion}/${platform}`
 ##### Flags:
 ````
 [--vkversion]: The Vulkan version to generate bindings for
+[--fake-platform]: Allows to specify a fake platform to generate bindings for. Only use this when the native bindings don't have to be recompiled! A useful but dangerous flag
 [--incremental]: Enables incremental builds when building the bindings
 [--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
@@ -327,5 +349,3 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 ## TODOs:
  - [ ] Function generation (~95%)
  - [ ] Documentation generator (95%)
- - [ ] Make `--vkversion=x` optional
- - [ ] Validate enum values when setting a Structure member
