@@ -242,6 +242,10 @@ Structures and handles come with these 3 properties:
 
 **Warning**: You may want to **skip this section**, as *nvk* uses [N-API](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which is likely not your intention!
 
+This project requires two-pass compilation which means, after initially compiling the bindings, a second compilation is required. This is necessary, because this project constructs Vulkan memory entirely from within JavaScript.
+ - At the first compilation, memory layouts of vulkan structures get stored inside a JSON file
+ - At the second pass, these memory layout then get used to inline memory offsets inside the JavaScript binding code
+
 ### Requirements:
  - node.js >= v10.9.0 recommended
 
