@@ -65,8 +65,6 @@ This project is a *very* thin layer above Vulkan, built with simplicity and perf
 
 ## Installation:
 
-This project comes with pre-built binaries, so to install *nvk* simply run:
-
 ````
 npm install nvk
 ````
