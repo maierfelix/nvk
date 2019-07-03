@@ -17,7 +17,7 @@
 
 #
 
-This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.108*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
+This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API with interfaces for JavaScript and [TypeScript](#typescript).
 
 ### Platforms:
 
@@ -32,11 +32,12 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 ### Why Vulkan in JavaScript?
  - Less overhead than WebGL/OpenGL
  - Essential features like Compute, Geometry and Tesselation shaders
- - API for Realtime Raytracing
- - Multi-threading
+ - Support for [Real-Time Ray Tracing](https://devblogs.nvidia.com/vulkan-raytracing/), [Mesh shaders](https://devblogs.nvidia.com/introduction-turing-mesh-shaders/), ...
+ - Supports Multithreading
  - Low-level memory control using [ArrayBuffers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 
-This project is a *very* thin layer above Vulkan, built with simplicity and performance in mind. Native memory for Vulkan gets built entirely within JavaScript to reduce trampolining overhead. Bounding checks and type validations are enabled by default, but can be disabled using the `--disable-validation-checks` flag.
+This project is a thin layer on top of native Vulkan, built with simplicity and performance in mind. Native memory for Vulkan gets constructed entirely within JavaScript to reduce trampolining overhead.
+Bounding checks and type validations are enabled by default, but can be disabled using the `--disable-validation-checks` flag.
 
 #
 
