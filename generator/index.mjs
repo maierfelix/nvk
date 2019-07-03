@@ -156,7 +156,7 @@ function mergeExtensionsIntoEnums(enums, extensions) {
   });
 };
 
-async function generateBindings({xml, version, docs, incremental} = _) {
+async function generateBindings({xml, version, docs, incremental, disableMinification} = _) {
   let ast = null;
   let includes = [];
   let includeNames = [];
@@ -166,6 +166,9 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   if (fakePlatform) {
     console.log(`Fake platform enabled!`);
     console.log(`Fake platform: '${fakePlatform}' - Real platform: '${process.platform}'`);
+  }
+  if (disableMinification) {
+    console.log(`Code minification is disabled!`);
   }
   // write paths
   const baseGeneratePath = pkg.config.GEN_OUT_DIR;
@@ -250,13 +253,13 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate js interface
   {
     console.log("Generating Vk JavaScript interfaces..");
-    let out = generateJavaScriptInterfaces(ast, true, calls, handles, structs);
+    let out = generateJavaScriptInterfaces(ast, true, disableMinification, calls, handles, structs);
     writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
   }
-  // generate js interface
+  // generate js interface (no validation checks)
   {
     console.log("Generating Vk JavaScript interfaces (no validation checks)..");
-    let out = generateJavaScriptInterfaces(ast, false, calls, handles, structs);
+    let out = generateJavaScriptInterfaces(ast, false, disableMinification, calls, handles, structs);
     writeAddonFile(`${generatePath}/interfaces-no-validation.js`, out, "utf-8", true);
   }
   // generate enums
@@ -346,10 +349,10 @@ if (getPlatform() === "linux") {
 
 let docs = process.env.npm_config_docs === "true";
 let incremental = process.env.npm_config_incremental === "true";
-
+let disableMinification = process.env.npm_config_disable_minification === "true";
 downloadVulkanSpecificationFile(vkVersion).then(out => {
   // read specification file
   if (out.error) throw out.error;
   const xml = fs.readFileSync(out.path, "utf-8");
-  generateBindings({ xml, version: vkVersion, docs, incremental });
+  generateBindings({ xml, version: vkVersion, docs, incremental, disableMinification });
 });

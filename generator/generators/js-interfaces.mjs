@@ -319,7 +319,7 @@ function getSetterProcessor(member) {
       if (validate) {
         out += `
     if (typeof value !== "number") {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Number' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Number' but got '" + typeToString(value) + "'");
     }`;
       }
       // validate enum boundings
@@ -343,7 +343,7 @@ function getSetterProcessor(member) {
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
     ${ validate ? `if (typeof value !== "bigint" && typeof value !== "number") {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' or 'Number' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' or 'Number' but got '" + typeToString(value) + "'");
     }` : `` }
     this.memoryView${instr}[${offset}] = BigInt(value);`;
     }
@@ -368,7 +368,7 @@ function getSetterProcessor(member) {
       this._${member.name} = null;
       ${((member.isStructType && isReference) || member.isHandleType) ? `this.memoryView${instr}[${offset}] = BI0;` : ``}
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + typeToString(value) + "'");
     }`: `` }
     `;
     }
@@ -384,7 +384,7 @@ function getSetterProcessor(member) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + typeToString(value) + "'");
     }` : `` }
     `;
     }
@@ -395,7 +395,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + typeToString(value) + "'");
     }`: `` }
     `;
     }
@@ -406,7 +406,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + typeToString(value) + "'");
     }` : `` }
     `;
     }
@@ -417,7 +417,7 @@ function getSetterProcessor(member) {
     } else if (value === null) {
       this._${member.name} = null;
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Array ${member.type}' but got '" + typeToString(value) + "'");
     } ` : `` }
     `;
     }
@@ -433,7 +433,7 @@ function getSetterProcessor(member) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;
     } ${ validate ? `else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + typeToString(value) + "'");
     }` : `` }
     `;
     }
@@ -525,8 +525,8 @@ function getFlusherProcessor(member) {
     }
     // validate type
     for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== String) {
-        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'String' but got '" + array[ii].constructor.name + "'");
+      if (typeof (array[ii]) !== "string") {
+        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'String' but got '" + typeToString(array[ii]) + "'");
         return false;
       }
     };` : `` }
@@ -554,8 +554,8 @@ function getFlusherProcessor(member) {
     }
     // validate type
     for (let ii = 0; ii < array.length; ++ii) {
-      if (array[ii].constructor !== Number) {
-        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'Number' but got '" + array[ii].constructor.name + "'");
+      if (typeof (array[ii]) !== "number") {
+        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected 'Number' but got '" + typeToString(array[ii]) + "'");
         return false;
       }
     };` : `` }
@@ -602,8 +602,8 @@ function getFlusherProcessor(member) {
     }` : `` }
     for (let ii = 0; ii < array.length; ++ii) {
       ${ validate ? `
-      if (array[ii].constructor !== ${member.type}) {
-        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + array[ii].constructor.name + "'");
+      if (!array[ii] || (array[ii].constructor !== ${member.type})) {
+        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + typeToString(array[ii]) + "'");
         return false;
       }` : `` }
       ${member.isStructType ? `if (!array[ii].flush()) return false;` : ``}
@@ -716,7 +716,7 @@ The code generater can only inline required memory layout offets after second co
   return null;
 };
 
-export default function(astReference, includeValidations, calls, handles, structs) {
+export default function(astReference, includeValidations, disableMinification, calls, handles, structs) {
   ast = astReference;
   validate = includeValidations;
   enumLayouts = getEnumLayouts();
@@ -782,6 +782,8 @@ export default function(astReference, includeValidations, calls, handles, struct
     output += `  ${struct.name}${comma}`;
   });
   output += `\n};\n`;
+  if (disableMinification) return output;
+  // minify output
   let minified = Terser.minify(output);
   if (minified.error) {
     warn(`Failed to minify code: ${minified.error.toString()}`);

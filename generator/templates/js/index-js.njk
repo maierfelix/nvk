@@ -33,6 +33,10 @@ function decodeNullTerminatedUTF8String(view) {
   return textDecoder.decode(subview);
 };
 
+function typeToString(value) {
+  return ((value === void 0 || value === null) ? String(value) : value.constructor.name);
+};
+
 class NativeStringArray {
   constructor(array) {
     this.array = array;
