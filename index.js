@@ -55,31 +55,19 @@ let {platform} = process;
 
 // strictly dissallow older versions
 if (pkg.config.OUTDATED.indexOf(vkVersion) > -1) {
-  throw `${vkVersion} is outdated and no longer supported!
-Please use v${pkg.config.POST_DEFAULT_BINDING_VERSION} from now on!`;
+  process.stderr.write(`${vkVersion} is outdated and no longer supported!
+Please use v${pkg.config.POST_DEFAULT_BINDING_VERSION} from now on!\n`);
+  throw `Exiting..`;
 }
 
 const releasePath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}/build/Release`;
-const addonLocalPath = `${releasePath}/addon-${platform}.node`;
-const addonPath = path.join(__dirname, addonLocalPath);
 const bindingsPath = path.join(__dirname, `${pkg.config.GEN_OUT_DIR}/`);
+const generatedPath = bindingsPath + `${vkVersion}/${platform}`;
 
 // make sure the bindings exist
-if (!fs.existsSync(addonPath)) {
-  process.stderr.write(`Failed to load vulkan bindings v${vkVersion} from ${addonLocalPath}\n`);
-  // show user available bindings
-  process.stderr.write(`You may instead use one of the following bindings:\n`);
-  fs.readdirSync(bindingsPath).forEach(dirname => {
-    let addon = null;
-    let addonNodePath = bindingsPath + dirname + `/${platform}/interfaces.js`;
-    try {
-      addon = require(addonNodePath);
-    } catch (e) {
-
-    }
-    if (addon) process.stderr.write(`> ${dirname}\n`);
-  });
-  //process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
+if (!fs.existsSync(`${generatedPath}/interfaces.js`)) {
+  process.stderr.write(`(nvk) Failed to load interfaces for v${vkVersion} from ${generatedPath}\n`);
+  process.stderr.write(`(nvk) Your platform might not be supported\n`);
   throw `Exiting..`;
 }
 
@@ -89,8 +77,8 @@ if (platform === "darwin") {
 
 if (disableValidationChecks) {
   process.stdout.write(`(nvk) Validation checks are disabled\n`);
-  module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces-no-validation.js`);
+  module.exports = require(`${generatedPath}/interfaces-no-validation.js`);
 } else {
   process.stdout.write(`(nvk) Validation checks are enabled\n`);
-  module.exports = require(bindingsPath + `${vkVersion}/${platform}/interfaces.js`);
+  module.exports = require(`${generatedPath}/interfaces.js`);
 }
