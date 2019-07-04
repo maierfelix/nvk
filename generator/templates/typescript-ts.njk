@@ -13,8 +13,8 @@ declare global {
     assign(...objects: Object[]): Object;
   }
 
-  var VkInout: { $: number; }
-  interface VkInout { $: number; }
+  var VkInout: { $: number | boolean; }
+  interface VkInout { $: number | boolean; }
 
   var VkInoutAddress: { $: bigint; }
   interface VkInoutAddress { $: bigint; }
