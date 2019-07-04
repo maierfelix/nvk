@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -41,8 +41,7 @@
     "xml-js": "^1.6.7",
     "yauzl": "^2.10.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "description": "Vulkan JavaScript API",
   "repository": {
     "type": "git",
