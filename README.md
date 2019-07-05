@@ -123,7 +123,7 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
 To use the TypeScript definition file, simply follow the installation steps above or use [this](https://github.com/maierfelix/nvk-examples/tree/master/typescript) example as a reference. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
-import * as nvk from "nvk/generated/1.1.108/index";
+import * as nvk from "nvk";
 
 Object.assign(global, nvk);
 
