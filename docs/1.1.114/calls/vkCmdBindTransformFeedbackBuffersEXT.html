@@ -1,0 +1,89 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>vkCmdBindTransformFeedbackBuffersEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>vkCmdBindTransformFeedbackBuffersEXT</vk-name>
+
+    <vk-description>Bind transform feedback buffers to a command buffer</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdBindTransformFeedbackBuffersEXT();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer into which the command is recorded.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>firstBinding</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the index of the first transform feedback binding whose state is updated by the command.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>bindingCount</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of transform feedback bindings whose state is updated by the command.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pBuffers</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkBuffer.html">VkBuffer]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of buffer handles.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pOffsets</vk-property-parameter>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of buffer offsets.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pSizes</vk-property-parameter>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an optional array of buffer sizes, which specifies the maximum number of bytes to capture to the corresponding transform feedback buffer. If <b>pSizes</b> is <i>null</i>, or the value of the <b>pSizes</b> array element is <b>VK_WHOLE_SIZE</b>, then the maximum bytes captured will be the size of the corresponding buffer minus the buffer offset.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

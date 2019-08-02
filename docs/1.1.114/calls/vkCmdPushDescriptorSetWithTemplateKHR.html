@@ -1,0 +1,84 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>vkCmdPushDescriptorSetWithTemplateKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>vkCmdPushDescriptorSetWithTemplateKHR</vk-name>
+
+    <vk-description>Pushes descriptor updates into a command buffer using a descriptor update template</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdPushDescriptorSetWithTemplateKHR();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer that the descriptors will be recorded in.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>descriptorUpdateTemplate</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDescriptorUpdateTemplate.html">VkDescriptorUpdateTemplate</a></vk-property-type>
+        <vk-property-description> is a descriptor update template that defines how to interpret the descriptor information in <b>pData</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>layout</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></vk-property-type>
+        <vk-property-description> is a <b><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></b> object used to program the bindings. It <i>must</i> be compatible with the layout used to create the <b>descriptorUpdateTemplate</b> handle.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>set</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the set number of the descriptor set in the pipeline layout that will be updated. This <i>must</i> be the same number used to create the <b>descriptorUpdateTemplate</b> handle.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pData</vk-property-parameter>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description> reference to memory which contains the descriptors for the templated update.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

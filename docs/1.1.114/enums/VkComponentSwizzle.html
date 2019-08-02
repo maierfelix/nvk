@@ -1,0 +1,94 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkComponentSwizzle | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkComponentSwizzle</vk-name>
+
+    <vk-description>Specify how a component is swizzled</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkComponentSwizzle = {
+  VK_COMPONENT_SWIZZLE_IDENTITY: 0,
+  VK_COMPONENT_SWIZZLE_ZERO: 1,
+  VK_COMPONENT_SWIZZLE_ONE: 2,
+  VK_COMPONENT_SWIZZLE_R: 3,
+  VK_COMPONENT_SWIZZLE_G: 4,
+  VK_COMPONENT_SWIZZLE_B: 5,
+  VK_COMPONENT_SWIZZLE_A: 6
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_IDENTITY</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to the identity swizzle.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_ZERO</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to zero.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_ONE</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to either 1 or 1.0, depending on whether the type of the image view format is integer or floating-point respectively, as determined by the <<formats-definition,Format Definition>> section for each <b>VkFormat</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_R</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to the value of the R component of the image.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_G</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to the value of the G component of the image.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_B</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to the value of the B component of the image.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkComponentSwizzle.<vk-prototype-name>VK_COMPONENT_SWIZZLE_A</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the component is set to the value of the A component of the image.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
