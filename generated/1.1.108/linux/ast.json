@@ -91216,7 +91216,7 @@
             },
             {
               "kind": "basetype",
-              "value": "VkBool32"
+              "value": "VkInout"
             }
           ],
           "description": " is a reference to a {#2#}, which is set to {#0#} to indicate support, and {#1#} otherwise."
