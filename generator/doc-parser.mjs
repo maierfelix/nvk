@@ -278,6 +278,9 @@ function extractDescriptionMacros(desc) {
           kind: match[1],
           value: match[2] || ""
         };
+        if (macro.value.match("VkBool32")) {
+          macro.value = macro.value.replace(`VkBool32`, `VkInout`);
+        }
         out.push(macro);
         desc = desc.replace(match[0], `{#${out.length - 1}#}`);
       }

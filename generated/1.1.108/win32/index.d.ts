@@ -51569,7 +51569,7 @@ declare global {
    * @param physicalDevice is the physical device.
    * @param queueFamilyIndex is the queue family.
    * @param surface is the surface.
-   * @param pSupported is a reference to a 'VkBool32', which is set to 'VK_TRUE' to indicate support, and 'VK_FALSE' otherwise.
+   * @param pSupported is a reference to a 'VkInout', which is set to 'VK_TRUE' to indicate support, and 'VK_FALSE' otherwise.
    */
   function vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice: VkPhysicalDevice | null, queueFamilyIndex: number, surface: VkSurfaceKHR | null, pSupported: VkInout | null): VkResult;
   
