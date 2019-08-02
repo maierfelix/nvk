@@ -4,7 +4,7 @@
         "name": "VK_LAYER_LUNARG_object_tracker",
         "type": "GLOBAL",
         "library_path": "../../../lib/libVkLayer_object_lifetimes.dylib",
-        "api_version": "1.1.97",
+        "api_version": "1.1.114",
         "implementation_version": "1",
         "description": "LunarG Validation Layer",
         "instance_extensions": [
