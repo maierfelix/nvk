@@ -1,0 +1,79 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDebugUtilsMessageSeverityFlagBitsEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDebugUtilsMessageSeverityFlagBitsEXT</vk-name>
+
+    <vk-description>Bitmask specifying which severities of events cause a debug messenger callback</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkDebugUtilsMessageSeverityFlagBitsEXT = {
+  VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT: 0x1,
+  VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT: 0x10,
+  VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT: 0x100,
+  VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT: 0x1000
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageSeverityFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the most verbose output indicating all diagnostic messages from the Vulkan loader, layers, and drivers should be captured.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageSeverityFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies an informational message such as resource details that may be handy when debugging an application.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageSeverityFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies use of Vulkan that <i>may</i> expose an app bug. Such cases may not be immediately harmful, such as a fragment shader outputting to a location with no attachment. Other cases <i>may</i> point to behavior that is almost certainly bad when unintended such as using an image whose memory has not been filled. In general if you see a warning but you know that the behavior is intended/desired, then simply ignore the warning.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDebugUtilsMessageSeverityFlagBitsEXT.<vk-prototype-name>VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the application has violated a valid usage condition of the specification.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
