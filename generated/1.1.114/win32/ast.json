@@ -108833,5 +108833,421 @@
       "category": "VK_INTEL_performance_query",
       "description": "Query performance capabilities of the device"
     }
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkInternalAllocationNotification",
+    "params": [
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "size_t size",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "size",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkInternalAllocationType allocationType",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationType",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkInternalAllocationType",
+        "enumRawType": "VkInternalAllocationType",
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkSystemAllocationScope allocationScope",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationScope",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkSystemAllocationScope",
+        "enumRawType": "VkSystemAllocationScope",
+        "isNumber": true,
+        "jsType": "Number"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkInternalFreeNotification",
+    "params": [
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "size_t size",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "size",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkInternalAllocationType allocationType",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationType",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkInternalAllocationType",
+        "enumRawType": "VkInternalAllocationType",
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkSystemAllocationScope allocationScope",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationScope",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkSystemAllocationScope",
+        "enumRawType": "VkSystemAllocationScope",
+        "isNumber": true,
+        "jsType": "Number"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkReallocationFunction",
+    "params": [
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "void * pOriginal",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pOriginal",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "size_t size",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "size",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "size_t alignment",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "alignment",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkSystemAllocationScope allocationScope",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationScope",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkSystemAllocationScope",
+        "enumRawType": "VkSystemAllocationScope",
+        "isNumber": true,
+        "jsType": "Number"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkAllocationFunction",
+    "params": [
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "size_t size",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "size",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "size_t alignment",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "alignment",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkSystemAllocationScope allocationScope",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "allocationScope",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkSystemAllocationScope",
+        "enumRawType": "VkSystemAllocationScope",
+        "isNumber": true,
+        "jsType": "Number"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkFreeFunction",
+    "params": [
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      },
+      {
+        "text": "void * pMemory",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pMemory",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkVoidFunction",
+    "params": []
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkDebugReportCallbackEXT",
+    "params": [
+      {
+        "text": "VkDebugReportFlagsEXT flags",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "flags",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "bitmaskType": "VkDebugReportFlagBitsEXT",
+        "bitmaskRawType": "VkDebugReportFlagsEXT",
+        "isBitmaskType": true,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkDebugReportObjectTypeEXT objectType",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "objectType",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "enumType": "VkDebugReportObjectTypeEXT",
+        "enumRawType": "VkDebugReportObjectTypeEXT",
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "uint64_t object",
+        "type": "uint64_t",
+        "rawType": "uint64_t",
+        "name": "object",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "size_t location",
+        "type": "size_t",
+        "rawType": "size_t",
+        "name": "location",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "int32_t messageCode",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "messageCode",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "const char * pLayerPrefix",
+        "type": "char",
+        "rawType": "const char *",
+        "name": "pLayerPrefix",
+        "isConstant": true,
+        "dereferenceCount": 1,
+        "jsType": "undefined"
+      },
+      {
+        "text": "const char * pMessage",
+        "type": "char",
+        "rawType": "const char *",
+        "name": "pMessage",
+        "isConstant": true,
+        "dereferenceCount": 1,
+        "jsType": "undefined"
+      },
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      }
+    ]
+  },
+  {
+    "kind": "FUNCTION_POINTER",
+    "name": "vkDebugUtilsMessengerCallbackEXT",
+    "params": [
+      {
+        "text": "VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "messageSeverity",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "bitmaskType": "VkDebugUtilsMessageSeverityFlagBitsEXT",
+        "bitmaskRawType": "VkDebugUtilsMessageSeverityFlagBitsEXT",
+        "isBitmaskType": true,
+        "enumType": "int32_t",
+        "enumRawType": "int32_t",
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "VkDebugUtilsMessageTypeFlagsEXT messageTypes",
+        "type": "int32_t",
+        "rawType": "int32_t",
+        "name": "messageTypes",
+        "isConstant": false,
+        "dereferenceCount": 0,
+        "bitmaskType": "VkDebugUtilsMessageTypeFlagBitsEXT",
+        "bitmaskRawType": "VkDebugUtilsMessageTypeFlagsEXT",
+        "isBitmaskType": true,
+        "isNumber": true,
+        "jsType": "Number"
+      },
+      {
+        "text": "const VkDebugUtilsMessengerCallbackDataEXT * pCallbackData",
+        "type": "VkDebugUtilsMessengerCallbackDataEXT",
+        "rawType": "const VkDebugUtilsMessengerCallbackDataEXT *",
+        "name": "pCallbackData",
+        "isConstant": true,
+        "dereferenceCount": 1,
+        "isStructType": true,
+        "jsType": "Object"
+      },
+      {
+        "text": "void * pUserData",
+        "type": "void",
+        "rawType": "void *",
+        "name": "pUserData",
+        "isConstant": false,
+        "dereferenceCount": 1,
+        "isVoidPointer": true,
+        "isContantVoidPointer": false,
+        "isDynamicVoidPointer": true,
+        "isTypedArray": true,
+        "jsTypedArrayName": "ArrayBuffer",
+        "jsType": "ArrayBufferView"
+      }
+    ]
   }
 ]

@@ -46,7 +46,8 @@ let TYPES = {
   UNKNOWN: uidx++,
   VALUE: uidx++,
   BITPOS: uidx++,
-  ALIAS: uidx++
+  ALIAS: uidx++,
+  FUNCTION_POINTER: uidx++
 };
 
 for (let key in TYPES) TYPES[key] = key;
@@ -89,6 +90,9 @@ function parseElement(el) {
   let {elements} = el;
   if (!attr) throw `Expected element attribute, found ${attr}!`;
   //console.log(`Parsing name:${name}, type:${type}..`);
+  if (attr.category === "funcpointer") {
+    return parseFunctionPointerElement(el);
+  }
   switch (el.name) {
     case "enums":
       return parseEnumElement(el);
@@ -99,9 +103,79 @@ function parseElement(el) {
       return parseCommandElement(el);
     case "extensions":
       return parseExtensionElement(el);
-    default: throw `Unsupported element of type:${el.name}`;
+    default: {
+      throw `Unsupported element of type:${el.name}`;
+    }
   };
   return null;
+};
+
+// super messy to parse, khronos plzzz
+function parseFunctionPointerElement(parent) {
+  let out = {};
+  let {elements} = parent;
+  if (!elements) return out;
+  let name = elements.filter(child =>child.name === "name")[0].elements[0].text;
+  let params = [];
+  let typeElements = [];
+  for (let ii = 0; ii < elements.length; ii += 2) {
+    if (ii <= 2) continue;
+    let element = elements[ii];
+    let next = elements[ii + 1] || element;
+    let previous = elements[ii - 1] || element;
+    let type = previous.elements[0].text;
+    let memberName = "";
+    let isConstant = false;
+    let dereferenceCount = 0;
+    // name
+    {
+      let str0 = element.text.trim().replace(/\n/gm, ``).replace(/ /gm, ``);
+      if (elements[ii - 2] && elements[ii - 2].text) {
+        isConstant = !!(elements[ii - 2].text).match("const ");
+      }
+      str0 = str0.replace(/,const/gm, "");
+      memberName = str0.substr(0, str0.indexOf(",")).trim();
+      memberName = str0.replace(/[^a-z0-9]/gi, "");
+      dereferenceCount = str0.split(/\*/g).length - 1;
+    }
+    let typeElement = [];
+    // convert into AST parser schema
+    // 1. const
+    if (isConstant) {
+      typeElement.push({ type: "text", text: "const " });
+    }
+    // 2. type string
+    typeElement.push({ type: "element", name: "type", elements: [ { type: "text", text: type } ] });
+    // 3. pointer
+    if (dereferenceCount > 0) {
+      if (dereferenceCount > 1) throw `Unsupported dereference count!`;
+      typeElement.push({ type: "text", text: "* " });
+    }
+    // 4. name
+    typeElement.push({ type: "element", name: "name", elements: [ { type: "text", text: memberName } ] });
+    typeElements.push(typeElement);
+  };
+  typeElements.map(elements => {
+    let input = {
+      type: "element",
+      name: "member",
+      attributes: {},
+      elements
+    };
+    params.push(parseTypeElement({
+      type: "element",
+      name: "member",
+      attributes: {},
+      elements
+    }));
+  });
+  // normalize "PFN_"
+  if (name.substr(0, 4) === "PFN_") name = name.substr(4);
+  else warn(`Cannot normalize function pointer name '${name}'`);
+  out.kind = TYPES.FUNCTION_POINTER;
+  out.name = name;
+  out.params = params;
+  return out;
 };
 
 function parseExtensionElement(parent) {
@@ -814,6 +888,15 @@ export default function({ xmlInput, version, docs } = _) {
           }
         };
       }
+    });
+  }
+  // funcpointers
+  {
+    let results = [];
+    findXMLElements(obj, { category: "funcpointer" }, results);
+    results.map(res => {
+      let ast = parseElement(res);
+      out.push(ast);
     });
   }
 

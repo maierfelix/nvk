@@ -295,6 +295,10 @@ function getGetterProcessor(member) {
       return `
     return this._${member.name};`;
     }
+    case JavaScriptType.FUNCTION: {
+      return `
+    return this._${member.name};`;
+    }
   };
   if (isPNextMember(member)) {
     return `
@@ -435,6 +439,17 @@ function getSetterProcessor(member) {
     } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + typeToString(value) + "'");
     }` : `` }
+    `;
+    }
+    case JavaScriptType.FUNCTION: {
+      return `
+    if (value !== null ${ validate ? `&& value.constructor === Function` : ``}) {
+      this._${member.name} = value;
+    } else if (value === null) {
+      this._${member.name} = null;
+    } ${ validate ? `else {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Function' but got '" + typeToString(value) + "'");
+    }`: `` }
     `;
     }
   };

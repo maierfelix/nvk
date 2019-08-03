@@ -261,7 +261,7 @@ export function isIgnoreableType(obj) {
   // dont ignore
   if (isPNextMember(obj)) return false;
   // ignore just for now
-  if (type.substr(0, 4) === "PFN_") return true;
+  //if (type.substr(0, 4) === "PFN_") return true;
   if (type.substr(type.length - 4, type.length) === "2KHR") return true;
   return (
     type === "struct AHardwareBuffer *" ||
