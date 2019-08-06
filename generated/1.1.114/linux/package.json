@@ -1,7 +1,7 @@
 {
   "name": "nvk-v1.1.114",
-  "version": "0.6.1",
-  "sdkPath": "/mnt/c/Users/User/Desktop/lxss-shared/1.1.114.0/x86_64",
+  "version": "0.6.4",
+  "sdkPath": "C:\VulkanSDK\1.1.108.0",
   "gypfile": true,
   "scripts": {},
   "devDependencies": {},

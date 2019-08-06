@@ -3,7 +3,7 @@
     "root": "../../..",
     "platform": "<(OS)",
     "release": "<@(module_root_dir)/build/Release",
-    "vkSDK": "/mnt/c/Users/User/Desktop/lxss-shared/1.1.114.0/x86_64"
+    "vkSDK": "C:\VulkanSDK\1.1.108.0"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
