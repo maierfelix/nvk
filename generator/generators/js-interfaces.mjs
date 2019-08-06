@@ -497,6 +497,7 @@ function getFlusherProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
   let {type, value, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
+  let byteLength = getStructureMemberByteLength(member);
   switch (type) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
@@ -509,14 +510,17 @@ function getFlusherProcessor(member) {
       if (member.isStructType && !isReference) {
         return `
   if (this._${member.name} !== null) {
-    this._${member.name}.flush();
-    if (this.memoryBuffer !== this._${member.name}.memoryBuffer) {
-      let srcView = new Uint8Array(this._${member.name}.memoryBuffer);
+    let ${member.name} = this._${member.name};
+    ${member.name}.flush();
+    if (this.memoryBuffer !== ${member.name}.memoryBuffer) {
+      let srcView = new Uint8Array(${member.name}.memoryBuffer).subarray(${member.name}.$memoryOffset, ${member.name}.$memoryOffset + ${byteLength});
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, ${byteOffset});
       ${ validate ? `if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'${currentStruct.name}.${member.name}' isn't used as shared-memory");` : `` }
     }
   }`;
+      } else {
+        warn(`Cannot handle member ${member.name}!`);
       }
       return ``;
     }
