@@ -3422,7 +3422,7 @@ class VkApplicationInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkApplicationInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkApplicationInfo.pNext' isn't allowed to be filled");
   }
   get pApplicationName() {
     if (this._pApplicationName !== null) {
@@ -5179,7 +5179,7 @@ class VkMappedMemoryRange {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMappedMemoryRange.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMappedMemoryRange.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -5992,7 +5992,7 @@ class VkCopyDescriptorSet {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCopyDescriptorSet.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCopyDescriptorSet.pNext' isn't allowed to be filled");
   }
   get srcSet() {
     return this._srcSet;
@@ -6390,7 +6390,7 @@ class VkBufferViewCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferViewCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferViewCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -6851,7 +6851,7 @@ class VkMemoryBarrier {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryBarrier.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryBarrier.pNext' isn't allowed to be filled");
   }
   get srcAccessMask() {
     return this.memoryViewInt32[0x4];
@@ -6973,7 +6973,7 @@ class VkBufferMemoryBarrier {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferMemoryBarrier.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferMemoryBarrier.pNext' isn't allowed to be filled");
   }
   get srcAccessMask() {
     return this.memoryViewInt32[0x4];
@@ -11242,7 +11242,7 @@ class VkPipelineShaderStageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineShaderStageCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineShaderStageCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -12053,7 +12053,7 @@ class VkPipelineInputAssemblyStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineInputAssemblyStateCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineInputAssemblyStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -13435,7 +13435,7 @@ class VkPipelineDynamicStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineDynamicStateCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineDynamicStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -13740,7 +13740,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineDepthStencilStateCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineDepthStencilStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -14469,7 +14469,7 @@ class VkPipelineCacheCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineCacheCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineCacheCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -14692,7 +14692,7 @@ class VkPipelineLayoutCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineLayoutCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineLayoutCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -15253,7 +15253,7 @@ class VkCommandPoolCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCommandPoolCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCommandPoolCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -15365,7 +15365,7 @@ class VkCommandBufferAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCommandBufferAllocateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCommandBufferAllocateInfo.pNext' isn't allowed to be filled");
   }
   get commandPool() {
     return this._commandPool;
@@ -17255,7 +17255,7 @@ class VkEventCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkEventCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkEventCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -19293,7 +19293,7 @@ class VkQueryPoolCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkQueryPoolCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkQueryPoolCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -20588,7 +20588,7 @@ class VkDisplayModeCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayModeCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayModeCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -20865,7 +20865,7 @@ class VkDisplaySurfaceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplaySurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplaySurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -21085,7 +21085,7 @@ class VkDisplayPresentInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayPresentInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayPresentInfoKHR.pNext' isn't allowed to be filled");
   }
   get srcRect() {
     return this._srcRect;
@@ -21380,7 +21380,7 @@ class VkWin32SurfaceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkWin32SurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkWin32SurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -22220,7 +22220,7 @@ class VkDebugReportCallbackCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugReportCallbackCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugReportCallbackCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -22353,7 +22353,7 @@ class VkValidationFlagsEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkValidationFlagsEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkValidationFlagsEXT.pNext' isn't allowed to be filled");
   }
   get disabledValidationCheckCount() {
     return this.memoryViewUint32[0x4];
@@ -22473,7 +22473,7 @@ class VkValidationFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkValidationFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkValidationFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get enabledValidationFeatureCount() {
     return this.memoryViewUint32[0x4];
@@ -22617,7 +22617,7 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineRasterizationStateRasterizationOrderAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineRasterizationStateRasterizationOrderAMD.pNext' isn't allowed to be filled");
   }
   get rasterizationOrder() {
     return this.memoryViewInt32[0x4];
@@ -22719,7 +22719,7 @@ class VkDebugMarkerObjectNameInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugMarkerObjectNameInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugMarkerObjectNameInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryViewInt32[0x4];
@@ -22862,7 +22862,7 @@ class VkDebugMarkerObjectTagInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugMarkerObjectTagInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugMarkerObjectTagInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryViewInt32[0x4];
@@ -23020,7 +23020,7 @@ class VkDebugMarkerMarkerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugMarkerMarkerInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugMarkerMarkerInfoEXT.pNext' isn't allowed to be filled");
   }
   get pMarkerName() {
     if (this._pMarkerName !== null) {
@@ -23168,7 +23168,7 @@ class VkDedicatedAllocationImageCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDedicatedAllocationImageCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDedicatedAllocationImageCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -23260,7 +23260,7 @@ class VkDedicatedAllocationBufferCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDedicatedAllocationBufferCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDedicatedAllocationBufferCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -23352,7 +23352,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDedicatedAllocationMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDedicatedAllocationMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -23551,7 +23551,7 @@ class VkExternalMemoryImageCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalMemoryImageCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalMemoryImageCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -23644,7 +23644,7 @@ class VkExportMemoryAllocateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -23739,7 +23739,7 @@ class VkImportMemoryWin32HandleInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -23843,7 +23843,7 @@ class VkExportMemoryWin32HandleInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
   }
   
 };
@@ -23939,7 +23939,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoNV.pNext' isn't allowed to be filled");
   }
   get acquireCount() {
     return this.memoryViewUint32[0x4];
@@ -24186,7 +24186,7 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGeneratedCommandsFeaturesNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGeneratedCommandsFeaturesNVX.pNext' isn't allowed to be filled");
   }
   get computeBindingPointSupport() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -24286,7 +24286,7 @@ class VkDeviceGeneratedCommandsLimitsNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGeneratedCommandsLimitsNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGeneratedCommandsLimitsNVX.pNext' isn't allowed to be filled");
   }
   get maxIndirectCommandsLayoutTokenCount() {
     return this.memoryViewUint32[0x4];
@@ -24643,7 +24643,7 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkIndirectCommandsLayoutCreateInfoNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkIndirectCommandsLayoutCreateInfoNVX.pNext' isn't allowed to be filled");
   }
   get pipelineBindPoint() {
     return this.memoryViewInt32[0x4];
@@ -24829,7 +24829,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCmdProcessCommandsInfoNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCmdProcessCommandsInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectTable() {
     return this._objectTable;
@@ -25113,7 +25113,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCmdReserveSpaceForCommandsInfoNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCmdReserveSpaceForCommandsInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectTable() {
     return this._objectTable;
@@ -25266,7 +25266,7 @@ class VkObjectTableCreateInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkObjectTableCreateInfoNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkObjectTableCreateInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectCount() {
     return this.memoryViewUint32[0x4];
@@ -27975,7 +27975,7 @@ class VkSparseImageFormatProperties2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSparseImageFormatProperties2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSparseImageFormatProperties2.pNext' isn't allowed to be filled");
   }
   get properties() {
     return this._properties;
@@ -28067,7 +28067,7 @@ class VkSparseImageFormatProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSparseImageFormatProperties2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSparseImageFormatProperties2KHR.pNext' isn't allowed to be filled");
   }
   get properties() {
     return this._properties;
@@ -28168,7 +28168,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2.pNext' isn't allowed to be filled");
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -28330,7 +28330,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2KHR.pNext' isn't allowed to be filled");
   }
   get format() {
     return this.memoryViewInt32[0x4];
@@ -28485,7 +28485,7 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevicePushDescriptorPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevicePushDescriptorPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxPushDescriptors() {
     return this.memoryViewUint32[0x4];
@@ -28677,7 +28677,7 @@ class VkPhysicalDeviceDriverPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDriverPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDriverPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get driverID() {
     return this.memoryViewInt32[0x4];
@@ -28800,7 +28800,7 @@ class VkPresentRegionsKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPresentRegionsKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPresentRegionsKHR.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryViewUint32[0x4];
@@ -29164,7 +29164,7 @@ class VkPhysicalDeviceVariablePointersFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVariablePointersFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVariablePointersFeatures.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -29268,7 +29268,7 @@ class VkPhysicalDeviceVariablePointersFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVariablePointersFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVariablePointersFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -29372,7 +29372,7 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVariablePointerFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVariablePointerFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -29476,7 +29476,7 @@ class VkPhysicalDeviceVariablePointerFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -29710,7 +29710,7 @@ class VkPhysicalDeviceExternalImageFormatInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -29803,7 +29803,7 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -29895,7 +29895,7 @@ class VkExternalImageFormatProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalImageFormatProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalImageFormatProperties.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -29987,7 +29987,7 @@ class VkExternalImageFormatPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -30084,7 +30084,7 @@ class VkPhysicalDeviceExternalBufferInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalBufferInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalBufferInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -30207,7 +30207,7 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalBufferInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalBufferInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -30325,7 +30325,7 @@ class VkExternalBufferProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalBufferProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalBufferProperties.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -30417,7 +30417,7 @@ class VkExternalBufferPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalBufferPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalBufferPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -30517,7 +30517,7 @@ class VkPhysicalDeviceIDProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceIDProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceIDProperties.pNext' isn't allowed to be filled");
   }
   get deviceUUID() {
     return [
@@ -30692,7 +30692,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceIDPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceIDPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get deviceUUID() {
     return [
@@ -30860,7 +30860,7 @@ class VkExternalMemoryImageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalMemoryImageCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalMemoryImageCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -30953,7 +30953,7 @@ class VkExternalMemoryImageCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalMemoryImageCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalMemoryImageCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -31046,7 +31046,7 @@ class VkExternalMemoryBufferCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalMemoryBufferCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalMemoryBufferCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -31139,7 +31139,7 @@ class VkExternalMemoryBufferCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalMemoryBufferCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalMemoryBufferCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -31232,7 +31232,7 @@ class VkExportMemoryAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportMemoryAllocateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportMemoryAllocateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -31325,7 +31325,7 @@ class VkExportMemoryAllocateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportMemoryAllocateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportMemoryAllocateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -31422,7 +31422,7 @@ class VkImportMemoryWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -31552,7 +31552,7 @@ class VkExportMemoryWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -31657,7 +31657,7 @@ class VkMemoryWin32HandlePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryWin32HandlePropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryWin32HandlePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryViewUint32[0x4];
@@ -31750,7 +31750,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -31866,7 +31866,7 @@ class VkImportMemoryFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportMemoryFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportMemoryFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -31973,7 +31973,7 @@ class VkMemoryFdPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryFdPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryFdPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryViewUint32[0x4];
@@ -32066,7 +32066,7 @@ class VkMemoryGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryGetFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -32196,7 +32196,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoKHR.pNext' isn't allowed to be filled");
   }
   get acquireCount() {
     return this.memoryViewUint32[0x4];
@@ -32441,7 +32441,7 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -32534,7 +32534,7 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -32628,7 +32628,7 @@ class VkExternalSemaphoreProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalSemaphoreProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalSemaphoreProperties.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryViewInt32[0x4];
@@ -32734,7 +32734,7 @@ class VkExternalSemaphorePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalSemaphorePropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalSemaphorePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryViewInt32[0x4];
@@ -32839,7 +32839,7 @@ class VkExportSemaphoreCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportSemaphoreCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportSemaphoreCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -32932,7 +32932,7 @@ class VkExportSemaphoreCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportSemaphoreCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportSemaphoreCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -33033,7 +33033,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -33197,7 +33197,7 @@ class VkExportSemaphoreWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -33309,7 +33309,7 @@ class VkD3D12FenceSubmitInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkD3D12FenceSubmitInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkD3D12FenceSubmitInfoKHR.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreValuesCount() {
     return this.memoryViewUint32[0x4];
@@ -33455,7 +33455,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSemaphoreGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSemaphoreGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -33575,7 +33575,7 @@ class VkImportSemaphoreFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportSemaphoreFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportSemaphoreFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -33717,7 +33717,7 @@ class VkSemaphoreGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSemaphoreGetFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSemaphoreGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -33831,7 +33831,7 @@ class VkPhysicalDeviceExternalFenceInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalFenceInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalFenceInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -33924,7 +33924,7 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalFenceInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalFenceInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -34018,7 +34018,7 @@ class VkExternalFenceProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalFenceProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalFenceProperties.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryViewInt32[0x4];
@@ -34124,7 +34124,7 @@ class VkExternalFencePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExternalFencePropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExternalFencePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryViewInt32[0x4];
@@ -34229,7 +34229,7 @@ class VkExportFenceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportFenceCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportFenceCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -34322,7 +34322,7 @@ class VkExportFenceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportFenceCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportFenceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryViewInt32[0x4];
@@ -34423,7 +34423,7 @@ class VkImportFenceWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -34587,7 +34587,7 @@ class VkExportFenceWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkExportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkExportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -34693,7 +34693,7 @@ class VkFenceGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFenceGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFenceGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -34813,7 +34813,7 @@ class VkImportFenceFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportFenceFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportFenceFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -34955,7 +34955,7 @@ class VkFenceGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFenceGetFdInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFenceGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -35075,7 +35075,7 @@ class VkPhysicalDeviceMultiviewFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMultiviewFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMultiviewFeatures.pNext' isn't allowed to be filled");
   }
   get multiview() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -35191,7 +35191,7 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMultiviewFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMultiviewFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get multiview() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -35303,7 +35303,7 @@ class VkPhysicalDeviceMultiviewProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMultiviewProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMultiviewProperties.pNext' isn't allowed to be filled");
   }
   get maxMultiviewViewCount() {
     return this.memoryViewUint32[0x4];
@@ -35403,7 +35403,7 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMultiviewPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMultiviewPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxMultiviewViewCount() {
     return this.memoryViewUint32[0x4];
@@ -35513,7 +35513,7 @@ class VkRenderPassMultiviewCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassMultiviewCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassMultiviewCreateInfo.pNext' isn't allowed to be filled");
   }
   get subpassCount() {
     return this.memoryViewUint32[0x4];
@@ -35701,7 +35701,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassMultiviewCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassMultiviewCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get subpassCount() {
     return this.memoryViewUint32[0x4];
@@ -35888,7 +35888,7 @@ class VkSurfaceCapabilities2EXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceCapabilities2EXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceCapabilities2EXT.pNext' isn't allowed to be filled");
   }
   get minImageCount() {
     return this.memoryViewUint32[0x4];
@@ -36055,7 +36055,7 @@ class VkDisplayPowerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayPowerInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayPowerInfoEXT.pNext' isn't allowed to be filled");
   }
   get powerState() {
     return this.memoryViewInt32[0x4];
@@ -36151,7 +36151,7 @@ class VkDeviceEventInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceEventInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceEventInfoEXT.pNext' isn't allowed to be filled");
   }
   get deviceEvent() {
     return this.memoryViewInt32[0x4];
@@ -36247,7 +36247,7 @@ class VkDisplayEventInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayEventInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayEventInfoEXT.pNext' isn't allowed to be filled");
   }
   get displayEvent() {
     return this.memoryViewInt32[0x4];
@@ -36343,7 +36343,7 @@ class VkSwapchainCounterCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSwapchainCounterCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSwapchainCounterCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get surfaceCounters() {
     return this.memoryViewInt32[0x4];
@@ -36439,7 +36439,7 @@ class VkPhysicalDeviceGroupProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceGroupProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceGroupProperties.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryViewUint32[0x4];
@@ -36549,7 +36549,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceGroupPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceGroupPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryViewUint32[0x4];
@@ -36660,7 +36660,7 @@ class VkMemoryAllocateFlagsInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryAllocateFlagsInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryAllocateFlagsInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -36770,7 +36770,7 @@ class VkMemoryAllocateFlagsInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryAllocateFlagsInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryAllocateFlagsInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -37198,7 +37198,7 @@ class VkBindBufferMemoryDeviceGroupInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindBufferMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindBufferMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0x4];
@@ -37314,7 +37314,7 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindBufferMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindBufferMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0x4];
@@ -37757,7 +37757,7 @@ class VkBindImageMemoryDeviceGroupInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindImageMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindImageMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0x4];
@@ -37932,7 +37932,7 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindImageMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindImageMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryViewUint32[0x4];
@@ -38105,7 +38105,7 @@ class VkDeviceGroupRenderPassBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupRenderPassBeginInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupRenderPassBeginInfo.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryViewUint32[0x4];
@@ -38259,7 +38259,7 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupRenderPassBeginInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupRenderPassBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryViewUint32[0x4];
@@ -38408,7 +38408,7 @@ class VkDeviceGroupCommandBufferBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupCommandBufferBeginInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupCommandBufferBeginInfo.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryViewUint32[0x4];
@@ -38503,7 +38503,7 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupCommandBufferBeginInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupCommandBufferBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryViewUint32[0x4];
@@ -38608,7 +38608,7 @@ class VkDeviceGroupSubmitInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupSubmitInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupSubmitInfo.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreCount() {
     return this.memoryViewUint32[0x4];
@@ -38796,7 +38796,7 @@ class VkDeviceGroupSubmitInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupSubmitInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupSubmitInfoKHR.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreCount() {
     return this.memoryViewUint32[0x4];
@@ -38976,7 +38976,7 @@ class VkDeviceGroupBindSparseInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupBindSparseInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupBindSparseInfo.pNext' isn't allowed to be filled");
   }
   get resourceDeviceIndex() {
     return this.memoryViewUint32[0x4];
@@ -39086,7 +39086,7 @@ class VkDeviceGroupBindSparseInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupBindSparseInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupBindSparseInfoKHR.pNext' isn't allowed to be filled");
   }
   get resourceDeviceIndex() {
     return this.memoryViewUint32[0x4];
@@ -39194,7 +39194,7 @@ class VkDeviceGroupPresentCapabilitiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupPresentCapabilitiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupPresentCapabilitiesKHR.pNext' isn't allowed to be filled");
   }
   get presentMask() {
     return [
@@ -39327,7 +39327,7 @@ class VkImageSwapchainCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -39432,7 +39432,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindImageMemorySwapchainInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindImageMemorySwapchainInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -39558,7 +39558,7 @@ class VkAcquireNextImageInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAcquireNextImageInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAcquireNextImageInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -39733,7 +39733,7 @@ class VkDeviceGroupPresentInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupPresentInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupPresentInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryViewUint32[0x4];
@@ -39863,7 +39863,7 @@ class VkDeviceGroupDeviceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupDeviceCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupDeviceCreateInfo.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryViewUint32[0x4];
@@ -40002,7 +40002,7 @@ class VkDeviceGroupDeviceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupDeviceCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupDeviceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryViewUint32[0x4];
@@ -40136,7 +40136,7 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceGroupSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceGroupSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get modes() {
     return this.memoryViewInt32[0x4];
@@ -40518,7 +40518,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorUpdateTemplateCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorUpdateTemplateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -40769,7 +40769,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorUpdateTemplateCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorUpdateTemplateCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -41088,7 +41088,7 @@ class VkHdrMetadataEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkHdrMetadataEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkHdrMetadataEXT.pNext' isn't allowed to be filled");
   }
   get displayPrimaryRed() {
     return this._displayPrimaryRed;
@@ -41361,7 +41361,7 @@ class VkDisplayNativeHdrSurfaceCapabilitiesAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayNativeHdrSurfaceCapabilitiesAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayNativeHdrSurfaceCapabilitiesAMD.pNext' isn't allowed to be filled");
   }
   get localDimmingSupport() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -41454,7 +41454,7 @@ class VkSwapchainDisplayNativeHdrCreateInfoAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSwapchainDisplayNativeHdrCreateInfoAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSwapchainDisplayNativeHdrCreateInfoAMD.pNext' isn't allowed to be filled");
   }
   get localDimmingEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -41685,7 +41685,7 @@ class VkPresentTimesInfoGOOGLE {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPresentTimesInfoGOOGLE.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPresentTimesInfoGOOGLE.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryViewUint32[0x4];
@@ -41966,7 +41966,7 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineViewportWScalingStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineViewportWScalingStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get viewportWScalingEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -42228,7 +42228,7 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineViewportSwizzleStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineViewportSwizzleStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -42376,7 +42376,7 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDiscardRectanglePropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDiscardRectanglePropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxDiscardRectangles() {
     return this.memoryViewUint32[0x4];
@@ -42476,7 +42476,7 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineDiscardRectangleStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineDiscardRectangleStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -42640,7 +42640,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.pNext' isn't allowed to be filled");
   }
   get perViewPositionAllComponents() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -42908,7 +42908,7 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfo.pNext' isn't allowed to be filled");
   }
   get aspectReferenceCount() {
     return this.memoryViewUint32[0x4];
@@ -43047,7 +43047,7 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get aspectReferenceCount() {
     return this.memoryViewUint32[0x4];
@@ -43413,7 +43413,7 @@ class VkSurfaceFormat2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceFormat2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceFormat2KHR.pNext' isn't allowed to be filled");
   }
   get surfaceFormat() {
     return this._surfaceFormat;
@@ -43505,7 +43505,7 @@ class VkDisplayProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayProperties2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayProperties() {
     return this._displayProperties;
@@ -43597,7 +43597,7 @@ class VkDisplayPlaneProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayPlaneProperties2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayPlaneProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayPlaneProperties() {
     return this._displayPlaneProperties;
@@ -43689,7 +43689,7 @@ class VkDisplayModeProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayModeProperties2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayModeProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayModeProperties() {
     return this._displayModeProperties;
@@ -43786,7 +43786,7 @@ class VkDisplayPlaneInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayPlaneInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayPlaneInfo2KHR.pNext' isn't allowed to be filled");
   }
   get mode() {
     return this._mode;
@@ -43899,7 +43899,7 @@ class VkDisplayPlaneCapabilities2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDisplayPlaneCapabilities2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDisplayPlaneCapabilities2KHR.pNext' isn't allowed to be filled");
   }
   get capabilities() {
     return this._capabilities;
@@ -43991,7 +43991,7 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSharedPresentSurfaceCapabilitiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSharedPresentSurfaceCapabilitiesKHR.pNext' isn't allowed to be filled");
   }
   get sharedPresentSupportedUsageFlags() {
     return this.memoryViewInt32[0x4];
@@ -44090,7 +44090,7 @@ class VkPhysicalDevice16BitStorageFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevice16BitStorageFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevice16BitStorageFeatures.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -44218,7 +44218,7 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevice16BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevice16BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -44342,7 +44342,7 @@ class VkPhysicalDeviceSubgroupProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSubgroupProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSubgroupProperties.pNext' isn't allowed to be filled");
   }
   get subgroupSize() {
     return this.memoryViewUint32[0x4];
@@ -44454,7 +44454,7 @@ class VkBufferMemoryRequirementsInfo2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -44555,7 +44555,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -44894,7 +44894,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageSparseMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageSparseMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -44995,7 +44995,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageSparseMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageSparseMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -45315,7 +45315,7 @@ class VkSparseImageMemoryRequirements2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSparseImageMemoryRequirements2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSparseImageMemoryRequirements2.pNext' isn't allowed to be filled");
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -45407,7 +45407,7 @@ class VkSparseImageMemoryRequirements2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSparseImageMemoryRequirements2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSparseImageMemoryRequirements2KHR.pNext' isn't allowed to be filled");
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -45499,7 +45499,7 @@ class VkPhysicalDevicePointClippingProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevicePointClippingProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevicePointClippingProperties.pNext' isn't allowed to be filled");
   }
   get pointClippingBehavior() {
     return this.memoryViewInt32[0x4];
@@ -45589,7 +45589,7 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevicePointClippingPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevicePointClippingPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get pointClippingBehavior() {
     return this.memoryViewInt32[0x4];
@@ -45682,7 +45682,7 @@ class VkMemoryDedicatedRequirements {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryDedicatedRequirements.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryDedicatedRequirements.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -45782,7 +45782,7 @@ class VkMemoryDedicatedRequirementsKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryDedicatedRequirementsKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryDedicatedRequirementsKHR.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -45882,7 +45882,7 @@ class VkMemoryDedicatedAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryDedicatedAllocateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryDedicatedAllocateInfo.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -46006,7 +46006,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryDedicatedAllocateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryDedicatedAllocateInfoKHR.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -46128,7 +46128,7 @@ class VkImageViewUsageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageViewUsageCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageViewUsageCreateInfo.pNext' isn't allowed to be filled");
   }
   get usage() {
     return this.memoryViewInt32[0x4];
@@ -46221,7 +46221,7 @@ class VkImageViewUsageCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageViewUsageCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageViewUsageCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get usage() {
     return this.memoryViewInt32[0x4];
@@ -46314,7 +46314,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get domainOrigin() {
     return this.memoryViewInt32[0x4];
@@ -46410,7 +46410,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get domainOrigin() {
     return this.memoryViewInt32[0x4];
@@ -46506,7 +46506,7 @@ class VkSamplerYcbcrConversionInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSamplerYcbcrConversionInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSamplerYcbcrConversionInfo.pNext' isn't allowed to be filled");
   }
   get conversion() {
     return this._conversion;
@@ -46607,7 +46607,7 @@ class VkSamplerYcbcrConversionInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSamplerYcbcrConversionInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSamplerYcbcrConversionInfoKHR.pNext' isn't allowed to be filled");
   }
   get conversion() {
     return this._conversion;
@@ -47218,7 +47218,7 @@ class VkBindImagePlaneMemoryInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindImagePlaneMemoryInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindImagePlaneMemoryInfo.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryViewInt32[0x4];
@@ -47311,7 +47311,7 @@ class VkBindImagePlaneMemoryInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindImagePlaneMemoryInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindImagePlaneMemoryInfoKHR.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryViewInt32[0x4];
@@ -47404,7 +47404,7 @@ class VkImagePlaneMemoryRequirementsInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImagePlaneMemoryRequirementsInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImagePlaneMemoryRequirementsInfo.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryViewInt32[0x4];
@@ -47497,7 +47497,7 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImagePlaneMemoryRequirementsInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImagePlaneMemoryRequirementsInfoKHR.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryViewInt32[0x4];
@@ -47592,7 +47592,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeatures.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -47684,7 +47684,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -47775,7 +47775,7 @@ class VkSamplerYcbcrConversionImageFormatProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSamplerYcbcrConversionImageFormatProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSamplerYcbcrConversionImageFormatProperties.pNext' isn't allowed to be filled");
   }
   get combinedImageSamplerDescriptorCount() {
     return this.memoryViewUint32[0x4];
@@ -47867,7 +47867,7 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSamplerYcbcrConversionImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSamplerYcbcrConversionImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get combinedImageSamplerDescriptorCount() {
     return this.memoryViewUint32[0x4];
@@ -47959,7 +47959,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkTextureLODGatherFormatPropertiesAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkTextureLODGatherFormatPropertiesAMD.pNext' isn't allowed to be filled");
   }
   get supportsTextureGatherLODBiasAMD() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48056,7 +48056,7 @@ class VkConditionalRenderingBeginInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkConditionalRenderingBeginInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkConditionalRenderingBeginInfoEXT.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -48185,7 +48185,7 @@ class VkProtectedSubmitInfo {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkProtectedSubmitInfo.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkProtectedSubmitInfo.pNext' isn't allowed to be filled");
   }
   get protectedSubmit() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48277,7 +48277,7 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceProtectedMemoryFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceProtectedMemoryFeatures.pNext' isn't allowed to be filled");
   }
   get protectedMemory() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48368,7 +48368,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceProtectedMemoryProperties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceProtectedMemoryProperties.pNext' isn't allowed to be filled");
   }
   get protectedNoFault() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48465,7 +48465,7 @@ class VkDeviceQueueInfo2 {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceQueueInfo2.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceQueueInfo2.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -48590,7 +48590,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineCoverageToColorStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineCoverageToColorStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -48708,7 +48708,7 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterMinmaxSingleComponentFormats() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -48884,7 +48884,7 @@ class VkSampleLocationsInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSampleLocationsInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSampleLocationsInfoEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationsPerPixel() {
     return this.memoryViewInt32[0x4];
@@ -49258,7 +49258,7 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassSampleLocationsBeginInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassSampleLocationsBeginInfoEXT.pNext' isn't allowed to be filled");
   }
   get attachmentInitialSampleLocationsCount() {
     return this.memoryViewUint32[0x4];
@@ -49450,7 +49450,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineSampleLocationsStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineSampleLocationsStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationsEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -49582,7 +49582,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceSampleLocationsPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceSampleLocationsPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationSampleCounts() {
     return this.memoryViewInt32[0x4];
@@ -49707,7 +49707,7 @@ class VkMultisamplePropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMultisamplePropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMultisamplePropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxSampleLocationGridSize() {
     return this._maxSampleLocationGridSize;
@@ -49800,7 +49800,7 @@ class VkSamplerReductionModeCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSamplerReductionModeCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSamplerReductionModeCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get reductionMode() {
     return this.memoryViewInt32[0x4];
@@ -49898,7 +49898,7 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get advancedBlendCoherentOperations() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -49994,7 +49994,7 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get advancedBlendMaxColorAttachments() {
     return this.memoryViewUint32[0x4];
@@ -50126,7 +50126,7 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineColorBlendAdvancedStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineColorBlendAdvancedStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get srcPremultiplied() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -50246,7 +50246,7 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceInlineUniformBlockFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceInlineUniformBlockFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get inlineUniformBlock() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -50351,7 +50351,7 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceInlineUniformBlockPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceInlineUniformBlockPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxInlineUniformBlockSize() {
     return this.memoryViewUint32[0x4];
@@ -50474,7 +50474,7 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkWriteDescriptorSetInlineUniformBlockEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkWriteDescriptorSetInlineUniformBlockEXT.pNext' isn't allowed to be filled");
   }
   get dataSize() {
     return this.memoryViewUint32[0x4];
@@ -50588,7 +50588,7 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorPoolInlineUniformBlockCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorPoolInlineUniformBlockCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get maxInlineUniformBlockBindings() {
     return this.memoryViewUint32[0x4];
@@ -50691,7 +50691,7 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineCoverageModulationStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineCoverageModulationStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -50846,7 +50846,7 @@ class VkImageFormatListCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageFormatListCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageFormatListCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get viewFormatCount() {
     return this.memoryViewUint32[0x4];
@@ -50962,7 +50962,7 @@ class VkValidationCacheCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -51087,7 +51087,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkShaderModuleValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkShaderModuleValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get validationCache() {
     return this._validationCache;
@@ -51192,7 +51192,7 @@ class VkPhysicalDeviceMaintenance3Properties {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMaintenance3Properties.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMaintenance3Properties.pNext' isn't allowed to be filled");
   }
   get maxPerSetDescriptors() {
     return this.memoryViewUint32[0x4];
@@ -51294,7 +51294,7 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMaintenance3PropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMaintenance3PropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxPerSetDescriptors() {
     return this.memoryViewUint32[0x4];
@@ -51614,7 +51614,7 @@ class VkPhysicalDeviceShaderDrawParametersFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderDrawParametersFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderDrawParametersFeatures.pNext' isn't allowed to be filled");
   }
   get shaderDrawParameters() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -51706,7 +51706,7 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderDrawParameterFeatures.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderDrawParameterFeatures.pNext' isn't allowed to be filled");
   }
   get shaderDrawParameters() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -51800,7 +51800,7 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFloat16Int8FeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFloat16Int8FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderFloat16() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -51917,7 +51917,7 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFloatControlsPropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFloatControlsPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get separateDenormSettings() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -52122,7 +52122,7 @@ class VkPhysicalDeviceHostQueryResetFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceHostQueryResetFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceHostQueryResetFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get hostQueryReset() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -52406,7 +52406,7 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceQueueGlobalPriorityCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceQueueGlobalPriorityCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get globalPriority() {
     return this.memoryViewInt32[0x4];
@@ -52508,7 +52508,7 @@ class VkDebugUtilsObjectNameInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugUtilsObjectNameInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugUtilsObjectNameInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryViewInt32[0x4];
@@ -52651,7 +52651,7 @@ class VkDebugUtilsObjectTagInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugUtilsObjectTagInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugUtilsObjectTagInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryViewInt32[0x4];
@@ -52809,7 +52809,7 @@ class VkDebugUtilsLabelEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugUtilsLabelEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugUtilsLabelEXT.pNext' isn't allowed to be filled");
   }
   get pLabelName() {
     if (this._pLabelName !== null) {
@@ -52963,7 +52963,7 @@ class VkDebugUtilsMessengerCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugUtilsMessengerCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugUtilsMessengerCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -53141,7 +53141,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDebugUtilsMessengerCallbackDataEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDebugUtilsMessengerCallbackDataEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -53459,7 +53459,7 @@ class VkImportMemoryHostPointerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImportMemoryHostPointerInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImportMemoryHostPointerInfoEXT.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryViewInt32[0x4];
@@ -53572,7 +53572,7 @@ class VkMemoryHostPointerPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryHostPointerPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryHostPointerPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryViewUint32[0x4];
@@ -53664,7 +53664,7 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExternalMemoryHostPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExternalMemoryHostPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get minImportedHostPointerAlignment() {
     return this.memoryViewBigUint64[0x2];
@@ -53766,7 +53766,7 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceConservativeRasterizationPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceConservativeRasterizationPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get primitiveOverestimationSize() {
     return this.memoryViewFloat32[0x4];
@@ -53913,7 +53913,7 @@ class VkCalibratedTimestampInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCalibratedTimestampInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCalibratedTimestampInfoEXT.pNext' isn't allowed to be filled");
   }
   get timeDomain() {
     return this.memoryViewInt32[0x4];
@@ -54023,7 +54023,7 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderCorePropertiesAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderCorePropertiesAMD.pNext' isn't allowed to be filled");
   }
   get shaderEngineCount() {
     return this.memoryViewUint32[0x4];
@@ -54211,7 +54211,7 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineRasterizationConservativeStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineRasterizationConservativeStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -54373,7 +54373,7 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDescriptorIndexingFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDescriptorIndexingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get shaderInputAttachmentArrayDynamicIndexing() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -54676,7 +54676,7 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDescriptorIndexingPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDescriptorIndexingPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxUpdateAfterBindDescriptorsInAllPools() {
     return this.memoryViewUint32[0x4];
@@ -54925,7 +54925,7 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get bindingCount() {
     return this.memoryViewUint32[0x4];
@@ -55041,7 +55041,7 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.pNext' isn't allowed to be filled");
   }
   get descriptorSetCount() {
     return this.memoryViewUint32[0x4];
@@ -55154,7 +55154,7 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.pNext' isn't allowed to be filled");
   }
   get maxVariableDescriptorCount() {
     return this.memoryViewUint32[0x4];
@@ -55261,7 +55261,7 @@ class VkAttachmentDescription2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAttachmentDescription2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAttachmentDescription2KHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -55485,7 +55485,7 @@ class VkAttachmentReference2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAttachmentReference2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAttachmentReference2KHR.pNext' isn't allowed to be filled");
   }
   get attachment() {
     return this.memoryViewUint32[0x4];
@@ -55990,7 +55990,7 @@ class VkSubpassDependency2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSubpassDependency2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSubpassDependency2KHR.pNext' isn't allowed to be filled");
   }
   get srcSubpass() {
     return this.memoryViewUint32[0x4];
@@ -56195,7 +56195,7 @@ class VkRenderPassCreateInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassCreateInfo2KHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassCreateInfo2KHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -56482,7 +56482,7 @@ class VkSubpassBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSubpassBeginInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSubpassBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get contents() {
     return this.memoryViewInt32[0x4];
@@ -56576,7 +56576,7 @@ class VkSubpassEndInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSubpassEndInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSubpassEndInfoKHR.pNext' isn't allowed to be filled");
   }
   
 };
@@ -56730,7 +56730,7 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineVertexInputDivisorStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineVertexInputDivisorStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get vertexBindingDivisorCount() {
     return this.memoryViewUint32[0x4];
@@ -56865,7 +56865,7 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxVertexAttribDivisor() {
     return this.memoryViewUint32[0x4];
@@ -56960,7 +56960,7 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevicePCIBusInfoPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevicePCIBusInfoPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get pciDomain() {
     return this.memoryViewUint32[0x4];
@@ -57074,7 +57074,7 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCommandBufferInheritanceConditionalRenderingInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCommandBufferInheritanceConditionalRenderingInfoEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRenderingEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57170,7 +57170,7 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDevice8BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDevice8BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer8BitAccess() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57284,7 +57284,7 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceConditionalRenderingFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceConditionalRenderingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRendering() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57390,7 +57390,7 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get vulkanMemoryModel() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57504,7 +57504,7 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderBufferInt64Atomics() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57608,7 +57608,7 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get vertexAttributeInstanceRateDivisor() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -57707,7 +57707,7 @@ class VkQueueFamilyCheckpointPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkQueueFamilyCheckpointPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkQueueFamilyCheckpointPropertiesNV.pNext' isn't allowed to be filled");
   }
   get checkpointExecutionStageMask() {
     return this.memoryViewInt32[0x4];
@@ -57799,7 +57799,7 @@ class VkCheckpointDataNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCheckpointDataNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCheckpointDataNV.pNext' isn't allowed to be filled");
   }
   get stage() {
     return this.memoryViewInt32[0x4];
@@ -57913,7 +57913,7 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDepthStencilResolvePropertiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDepthStencilResolvePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get supportedDepthResolveModes() {
     return this.memoryViewInt32[0x4];
@@ -58029,7 +58029,7 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSubpassDescriptionDepthStencilResolveKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSubpassDescriptionDepthStencilResolveKHR.pNext' isn't allowed to be filled");
   }
   get depthResolveMode() {
     return this.memoryViewInt32[0x4];
@@ -58156,7 +58156,7 @@ class VkImageViewASTCDecodeModeEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageViewASTCDecodeModeEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageViewASTCDecodeModeEXT.pNext' isn't allowed to be filled");
   }
   get decodeMode() {
     return this.memoryViewInt32[0x4];
@@ -58254,7 +58254,7 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceASTCDecodeFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceASTCDecodeFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get decodeModeSharedExponent() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -58348,7 +58348,7 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceTransformFeedbackFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceTransformFeedbackFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get transformFeedback() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -58460,7 +58460,7 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceTransformFeedbackPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceTransformFeedbackPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxTransformFeedbackStreams() {
     return this.memoryViewUint32[0x4];
@@ -58618,7 +58618,7 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineRasterizationStateStreamCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineRasterizationStateStreamCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -58726,7 +58726,7 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTest() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -58818,7 +58818,7 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineRepresentativeFragmentTestStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineRepresentativeFragmentTestStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTestEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -58910,7 +58910,7 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceExclusiveScissorFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceExclusiveScissorFeaturesNV.pNext' isn't allowed to be filled");
   }
   get exclusiveScissor() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59005,7 +59005,7 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get exclusiveScissorCount() {
     return this.memoryViewUint32[0x4];
@@ -59141,7 +59141,7 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceCornerSampledImageFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceCornerSampledImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cornerSampledImage() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59235,7 +59235,7 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.pNext' isn't allowed to be filled");
   }
   get computeDerivativeGroupQuads() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59337,7 +59337,7 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.pNext' isn't allowed to be filled");
   }
   get fragmentShaderBarycentric() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59429,7 +59429,7 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderImageFootprintFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderImageFootprintFeaturesNV.pNext' isn't allowed to be filled");
   }
   get imageFootprint() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59521,7 +59521,7 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocationImageAliasing() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59695,7 +59695,7 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineViewportShadingRateImageStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineViewportShadingRateImageStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImageEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59843,7 +59843,7 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShadingRateImageFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShadingRateImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImage() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -59946,7 +59946,7 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShadingRateImagePropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShadingRateImagePropertiesNV.pNext' isn't allowed to be filled");
   }
   get shadingRateTexelSize() {
     return this._shadingRateTexelSize;
@@ -60277,7 +60277,7 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get sampleOrderType() {
     return this.memoryViewInt32[0x4];
@@ -60431,7 +60431,7 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMeshShaderFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMeshShaderFeaturesNV.pNext' isn't allowed to be filled");
   }
   get taskShader() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -60544,7 +60544,7 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMeshShaderPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMeshShaderPropertiesNV.pNext' isn't allowed to be filled");
   }
   get maxDrawMeshTasksCount() {
     return this.memoryViewUint32[0x4];
@@ -60810,7 +60810,7 @@ class VkRayTracingShaderGroupCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRayTracingShaderGroupCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRayTracingShaderGroupCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryViewInt32[0x4];
@@ -61289,7 +61289,7 @@ class VkGeometryTrianglesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkGeometryTrianglesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkGeometryTrianglesNV.pNext' isn't allowed to be filled");
   }
   get vertexData() {
     return this._vertexData;
@@ -61552,7 +61552,7 @@ class VkGeometryAABBNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkGeometryAABBNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkGeometryAABBNV.pNext' isn't allowed to be filled");
   }
   get aabbData() {
     return this._aabbData;
@@ -61807,7 +61807,7 @@ class VkGeometryNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkGeometryNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkGeometryNV.pNext' isn't allowed to be filled");
   }
   get geometryType() {
     return this.memoryViewInt32[0x4];
@@ -61962,7 +61962,7 @@ class VkAccelerationStructureInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAccelerationStructureInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAccelerationStructureInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryViewInt32[0x4];
@@ -62142,7 +62142,7 @@ class VkAccelerationStructureCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAccelerationStructureCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAccelerationStructureCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get compactedSize() {
     return this.memoryViewBigUint64[0x2];
@@ -62282,7 +62282,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBindAccelerationStructureMemoryInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBindAccelerationStructureMemoryInfoNV.pNext' isn't allowed to be filled");
   }
   get accelerationStructure() {
     return this._accelerationStructure;
@@ -62454,7 +62454,7 @@ class VkWriteDescriptorSetAccelerationStructureNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkWriteDescriptorSetAccelerationStructureNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkWriteDescriptorSetAccelerationStructureNV.pNext' isn't allowed to be filled");
   }
   get accelerationStructureCount() {
     return this.memoryViewUint32[0x4];
@@ -62590,7 +62590,7 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkAccelerationStructureMemoryRequirementsInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkAccelerationStructureMemoryRequirementsInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryViewInt32[0x4];
@@ -62717,7 +62717,7 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceRayTracingPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceRayTracingPropertiesNV.pNext' isn't allowed to be filled");
   }
   get shaderGroupHandleSize() {
     return this.memoryViewUint32[0x4];
@@ -62860,7 +62860,7 @@ class VkDrmFormatModifierPropertiesListEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDrmFormatModifierPropertiesListEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDrmFormatModifierPropertiesListEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifierCount() {
     return this.memoryViewUint32[0x4];
@@ -63041,7 +63041,7 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryViewBigUint64[0x2];
@@ -63186,7 +63186,7 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageDrmFormatModifierListCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageDrmFormatModifierListCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifierCount() {
     return this.memoryViewUint32[0x4];
@@ -63307,7 +63307,7 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageDrmFormatModifierExplicitCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageDrmFormatModifierExplicitCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryViewBigUint64[0x2];
@@ -63455,7 +63455,7 @@ class VkImageDrmFormatModifierPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageDrmFormatModifierPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageDrmFormatModifierPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryViewBigUint64[0x2];
@@ -63546,7 +63546,7 @@ class VkImageStencilUsageCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageStencilUsageCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageStencilUsageCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get stencilUsage() {
     return this.memoryViewInt32[0x4];
@@ -63639,7 +63639,7 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkDeviceMemoryOverallocationCreateInfoAMD.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkDeviceMemoryOverallocationCreateInfoAMD.pNext' isn't allowed to be filled");
   }
   get overallocationBehavior() {
     return this.memoryViewInt32[0x4];
@@ -63738,7 +63738,7 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFragmentDensityMapFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFragmentDensityMapFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get fragmentDensityMap() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -63846,7 +63846,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFragmentDensityMapPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFragmentDensityMapPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get minFragmentDensityTexelSize() {
     return this._minFragmentDensityTexelSize;
@@ -63955,7 +63955,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassFragmentDensityMapCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassFragmentDensityMapCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get fragmentDensityMapAttachment() {
     return this._fragmentDensityMapAttachment;
@@ -64072,7 +64072,7 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get scalarBlockLayout() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64164,7 +64164,7 @@ class VkSurfaceProtectedCapabilitiesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceProtectedCapabilitiesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceProtectedCapabilitiesKHR.pNext' isn't allowed to be filled");
   }
   get supportsProtected() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64256,7 +64256,7 @@ class VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get uniformBufferStandardLayout() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64348,7 +64348,7 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceDepthClipEnableFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceDepthClipEnableFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get depthClipEnable() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64442,7 +64442,7 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineRasterizationDepthClipStateCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineRasterizationDepthClipStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -64547,7 +64547,7 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMemoryBudgetPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMemoryBudgetPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get heapBudget() {
     return [
@@ -64685,7 +64685,7 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceMemoryPriorityFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceMemoryPriorityFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get memoryPriority() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64777,7 +64777,7 @@ class VkMemoryPriorityAllocateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkMemoryPriorityAllocateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkMemoryPriorityAllocateInfoEXT.pNext' isn't allowed to be filled");
   }
   get priority() {
     return this.memoryViewFloat32[0x4];
@@ -64876,7 +64876,7 @@ class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get bufferDeviceAddress() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -64992,7 +64992,7 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceBufferAddressFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceBufferAddressFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get bufferDeviceAddress() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -65102,7 +65102,7 @@ class VkBufferDeviceAddressInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferDeviceAddressInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferDeviceAddressInfoEXT.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -65205,7 +65205,7 @@ class VkBufferDeviceAddressCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkBufferDeviceAddressCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkBufferDeviceAddressCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get deviceAddress() {
     return this.memoryViewBigUint64[0x2];
@@ -65298,7 +65298,7 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceImageViewImageFormatInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceImageViewImageFormatInfoEXT.pNext' isn't allowed to be filled");
   }
   get imageViewType() {
     return this.memoryViewInt32[0x4];
@@ -65396,7 +65396,7 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFilterCubicImageViewImageFormatPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFilterCubicImageViewImageFormatPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterCubic() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -65496,7 +65496,7 @@ class VkPhysicalDeviceImagelessFramebufferFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceImagelessFramebufferFeaturesKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceImagelessFramebufferFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get imagelessFramebuffer() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -65591,7 +65591,7 @@ class VkFramebufferAttachmentsCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFramebufferAttachmentsCreateInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFramebufferAttachmentsCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get attachmentImageInfoCount() {
     return this.memoryViewUint32[0x4];
@@ -65739,7 +65739,7 @@ class VkFramebufferAttachmentImageInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFramebufferAttachmentImageInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFramebufferAttachmentImageInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -65921,7 +65921,7 @@ class VkRenderPassAttachmentBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkRenderPassAttachmentBeginInfoKHR.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkRenderPassAttachmentBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get attachmentCount() {
     return this.memoryViewUint32[0x4];
@@ -66059,7 +66059,7 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceCooperativeMatrixFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceCooperativeMatrixFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cooperativeMatrix() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -66158,7 +66158,7 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
   }
   get cooperativeMatrixSupportedStages() {
     return this.memoryViewInt32[0x4];
@@ -66265,7 +66265,7 @@ class VkCooperativeMatrixPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
   }
   get MSize() {
     return this.memoryViewUint32[0x4];
@@ -66466,7 +66466,7 @@ class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get ycbcrImageArrays() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -66560,7 +66560,7 @@ class VkImageViewHandleInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkImageViewHandleInfoNVX.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkImageViewHandleInfoNVX.pNext' isn't allowed to be filled");
   }
   get imageView() {
     return this._imageView;
@@ -66766,7 +66766,7 @@ class VkPipelineCreationFeedbackCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineCreationFeedbackCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineCreationFeedbackCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get pPipelineCreationFeedback() {
     return this._pPipelineCreationFeedback;
@@ -66921,7 +66921,7 @@ class VkSurfaceFullScreenExclusiveInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceFullScreenExclusiveInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceFullScreenExclusiveInfoEXT.pNext' isn't allowed to be filled");
   }
   get fullScreenExclusive() {
     return this.memoryViewInt32[0x4];
@@ -67015,7 +67015,7 @@ class VkSurfaceFullScreenExclusiveWin32InfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceFullScreenExclusiveWin32InfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceFullScreenExclusiveWin32InfoEXT.pNext' isn't allowed to be filled");
   }
   
 };
@@ -67097,7 +67097,7 @@ class VkSurfaceCapabilitiesFullScreenExclusiveEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkSurfaceCapabilitiesFullScreenExclusiveEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkSurfaceCapabilitiesFullScreenExclusiveEXT.pNext' isn't allowed to be filled");
   }
   get fullScreenExclusiveSupported() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -67187,7 +67187,7 @@ class VkHeadlessSurfaceCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkHeadlessSurfaceCreateInfoEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkHeadlessSurfaceCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -67282,7 +67282,7 @@ class VkPhysicalDeviceCoverageReductionModeFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceCoverageReductionModeFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceCoverageReductionModeFeaturesNV.pNext' isn't allowed to be filled");
   }
   get coverageReductionMode() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -67374,7 +67374,7 @@ class VkPipelineCoverageReductionStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPipelineCoverageReductionStateCreateInfoNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPipelineCoverageReductionStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryViewInt32[0x4];
@@ -67485,7 +67485,7 @@ class VkFramebufferMixedSamplesCombinationNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkFramebufferMixedSamplesCombinationNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkFramebufferMixedSamplesCombinationNV.pNext' isn't allowed to be filled");
   }
   get coverageReductionMode() {
     return this.memoryViewInt32[0x4];
@@ -67599,7 +67599,7 @@ class VkPhysicalDeviceShaderIntegerFunctions2INTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderIntegerFunctions2INTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderIntegerFunctions2INTEL.pNext' isn't allowed to be filled");
   }
   get shaderIntegerFunctions2() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -67783,7 +67783,7 @@ class VkInitializePerformanceApiInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkInitializePerformanceApiInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkInitializePerformanceApiInfoINTEL.pNext' isn't allowed to be filled");
   }
   get pUserData() {
     return this._pUserData;
@@ -67882,7 +67882,7 @@ class VkQueryPoolCreateInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkQueryPoolCreateInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkQueryPoolCreateInfoINTEL.pNext' isn't allowed to be filled");
   }
   get performanceCountersSampling() {
     return this.memoryViewInt32[0x4];
@@ -67980,7 +67980,7 @@ class VkPerformanceMarkerInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPerformanceMarkerInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPerformanceMarkerInfoINTEL.pNext' isn't allowed to be filled");
   }
   get marker() {
     return this.memoryViewBigUint64[0x2];
@@ -68075,7 +68075,7 @@ class VkPerformanceStreamMarkerInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPerformanceStreamMarkerInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPerformanceStreamMarkerInfoINTEL.pNext' isn't allowed to be filled");
   }
   get marker() {
     return this.memoryViewUint32[0x4];
@@ -68176,7 +68176,7 @@ class VkPerformanceOverrideInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPerformanceOverrideInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPerformanceOverrideInfoINTEL.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryViewInt32[0x4];
@@ -68295,7 +68295,7 @@ class VkPerformanceConfigurationAcquireInfoINTEL {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPerformanceConfigurationAcquireInfoINTEL.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPerformanceConfigurationAcquireInfoINTEL.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryViewInt32[0x4];
@@ -68393,7 +68393,7 @@ class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.pNext' isn't allowed to be filled");
   }
   get shaderSMCount() {
     return this.memoryViewUint32[0x4];
@@ -68493,7 +68493,7 @@ class VkPhysicalDeviceShaderSMBuiltinsFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.pNext' isn't allowed to be filled");
   }
   get shaderSMBuiltins() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -68589,7 +68589,7 @@ class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get fragmentShaderSampleInterlock() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -68701,7 +68701,7 @@ class VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get shaderDemoteToHelperInvocation() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -68793,7 +68793,7 @@ class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get texelBufferAlignment() {
     return this.memoryViewUint32[0x4] !== 0;
@@ -68889,7 +68889,7 @@ class VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
-    throw new TypeError("'VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.pNext' isn't allowed to be filled");
+    if (value !== null) throw new TypeError("'VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get storageTexelBufferOffsetAlignmentBytes() {
     return this.memoryViewBigUint64[0x2];

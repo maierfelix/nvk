@@ -460,7 +460,7 @@ function getSetterProcessor(member) {
     let conditions = ``;
     if (!extensions) {
       return `
-    throw new TypeError("'${currentStruct.name}.${member.name}' isn't allowed to be filled");`;
+    if (value !== null) throw new TypeError("'${currentStruct.name}.${member.name}' isn't allowed to be filled");`;
     }
     extensions.map((extensionName, index) => {
       let structExt = getNodeByName(extensionName, ast);
