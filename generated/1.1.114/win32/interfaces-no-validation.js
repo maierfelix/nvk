@@ -2704,9 +2704,14 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pQueueCreateInfosNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pQueueCreateInfosNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pQueueCreateInfosNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -4266,9 +4271,14 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pImageInfoNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pImageInfoNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pImageInfoNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   
@@ -4280,9 +4290,14 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBufferInfoNative = nativeArray;
-    this.memoryViewBigInt64[0x6] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBufferInfoNative = nativeArray;
+      this.memoryViewBigInt64[0x6] = nativeArray.address;
+    } else {
+      this._pBufferInfoNative = null;
+      this.memoryViewBigInt64[0x6] = 0n;
+    }
   }
   
   
@@ -4294,9 +4309,14 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pTexelBufferViewNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pTexelBufferViewNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pTexelBufferViewNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -6654,9 +6674,14 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pBindsNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   return true;
@@ -6762,9 +6787,14 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pBindsNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   return true;
@@ -6870,9 +6900,14 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pBindsNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   return true;
@@ -7088,9 +7123,14 @@ VkBindSparseInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pWaitSemaphoresNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pWaitSemaphoresNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pWaitSemaphoresNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -7102,9 +7142,14 @@ VkBindSparseInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBufferBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBufferBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pBufferBindsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   
@@ -7116,9 +7161,14 @@ VkBindSparseInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pImageOpaqueBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pImageOpaqueBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pImageOpaqueBindsNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   
@@ -7130,9 +7180,14 @@ VkBindSparseInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pImageBindsNative = nativeArray;
-    this.memoryViewBigInt64[0x9] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pImageBindsNative = nativeArray;
+      this.memoryViewBigInt64[0x9] = nativeArray.address;
+    } else {
+      this._pImageBindsNative = null;
+      this.memoryViewBigInt64[0x9] = 0n;
+    }
   }
   
   
@@ -7144,9 +7199,14 @@ VkBindSparseInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSignalSemaphoresNative = nativeArray;
-    this.memoryViewBigInt64[0xB] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSignalSemaphoresNative = nativeArray;
+      this.memoryViewBigInt64[0xB] = nativeArray.address;
+    } else {
+      this._pSignalSemaphoresNative = null;
+      this.memoryViewBigInt64[0xB] = 0n;
+    }
   }
   
   return true;
@@ -8225,9 +8285,14 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pImmutableSamplersNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pImmutableSamplersNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pImmutableSamplersNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   return true;
@@ -8371,9 +8436,14 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pBindingsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pBindingsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pBindingsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -8592,9 +8662,14 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPoolSizesNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPoolSizesNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pPoolSizesNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -8753,9 +8828,14 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSetLayoutsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSetLayoutsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pSetLayoutsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -8956,9 +9036,14 @@ VkSpecializationInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pMapEntriesNative = nativeArray;
-    this.memoryViewBigInt64[0x1] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pMapEntriesNative = nativeArray;
+      this.memoryViewBigInt64[0x1] = nativeArray.address;
+    } else {
+      this._pMapEntriesNative = null;
+      this.memoryViewBigInt64[0x1] = 0n;
+    }
   }
   
   return true;
@@ -9637,9 +9722,14 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pVertexBindingDescriptionsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pVertexBindingDescriptionsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pVertexBindingDescriptionsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -9651,9 +9741,14 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pVertexAttributeDescriptionsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pVertexAttributeDescriptionsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pVertexAttributeDescriptionsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -10059,9 +10154,14 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pViewportsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pViewportsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pViewportsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -10073,9 +10173,14 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pScissorsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pScissorsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pScissorsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -10812,9 +10917,14 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pAttachmentsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   
@@ -11691,9 +11801,14 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pStagesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pStagesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pStagesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -12094,9 +12209,14 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSetLayoutsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSetLayoutsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pSetLayoutsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -12108,9 +12228,14 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPushConstantRangesNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPushConstantRangesNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pPushConstantRangesNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -13126,9 +13251,14 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pClearValuesNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pClearValuesNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pClearValuesNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -13708,9 +13838,14 @@ VkSubpassDescription.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pInputAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pInputAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pInputAttachmentsNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   
@@ -13722,9 +13857,14 @@ VkSubpassDescription.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pColorAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pColorAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pColorAttachmentsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   
@@ -13736,9 +13876,14 @@ VkSubpassDescription.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pResolveAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pResolveAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pResolveAttachmentsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -14077,9 +14222,14 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAttachmentsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -14091,9 +14241,14 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSubpassesNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSubpassesNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pSubpassesNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   
@@ -14105,9 +14260,14 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDependenciesNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDependenciesNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pDependenciesNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -16435,9 +16595,14 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pAttachmentsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -16917,9 +17082,14 @@ VkSubmitInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pWaitSemaphoresNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pWaitSemaphoresNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pWaitSemaphoresNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -16931,9 +17101,14 @@ VkSubmitInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pCommandBuffersNative = nativeArray;
-    this.memoryViewBigInt64[0x6] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pCommandBuffersNative = nativeArray;
+      this.memoryViewBigInt64[0x6] = nativeArray.address;
+    } else {
+      this._pCommandBuffersNative = null;
+      this.memoryViewBigInt64[0x6] = 0n;
+    }
   }
   
   
@@ -16945,9 +17120,14 @@ VkSubmitInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSignalSemaphoresNative = nativeArray;
-    this.memoryViewBigInt64[0x8] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSignalSemaphoresNative = nativeArray;
+      this.memoryViewBigInt64[0x8] = nativeArray.address;
+    } else {
+      this._pSignalSemaphoresNative = null;
+      this.memoryViewBigInt64[0x8] = 0n;
+    }
   }
   
   return true;
@@ -18720,9 +18900,14 @@ VkPresentInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pWaitSemaphoresNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pWaitSemaphoresNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pWaitSemaphoresNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -18734,9 +18919,14 @@ VkPresentInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSwapchainsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSwapchainsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pSwapchainsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -20479,9 +20669,14 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAcquireSyncsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAcquireSyncsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAcquireSyncsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -20493,9 +20688,14 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pReleaseSyncsNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pReleaseSyncsNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pReleaseSyncsNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -21049,9 +21249,14 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pTokensNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pTokensNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pTokensNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -21290,9 +21495,14 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pIndirectCommandsTokensNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pIndirectCommandsTokensNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pIndirectCommandsTokensNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -24752,9 +24962,14 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pRegionsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pRegionsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pRegionsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -24847,9 +25062,14 @@ VkPresentRegionKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pRectanglesNative = nativeArray;
-    this.memoryViewBigInt64[0x1] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pRectanglesNative = nativeArray;
+      this.memoryViewBigInt64[0x1] = nativeArray.address;
+    } else {
+      this._pRectanglesNative = null;
+      this.memoryViewBigInt64[0x1] = 0n;
+    }
   }
   
   return true;
@@ -27936,9 +28156,14 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAcquireSyncsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAcquireSyncsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAcquireSyncsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -27950,9 +28175,14 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pReleaseSyncsNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pReleaseSyncsNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pReleaseSyncsNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -32949,9 +33179,14 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSplitInstanceBindRegionsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSplitInstanceBindRegionsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pSplitInstanceBindRegionsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -33100,9 +33335,14 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSplitInstanceBindRegionsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSplitInstanceBindRegionsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pSplitInstanceBindRegionsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -33236,9 +33476,14 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDeviceRenderAreasNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDeviceRenderAreasNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pDeviceRenderAreasNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -33368,9 +33613,14 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDeviceRenderAreasNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDeviceRenderAreasNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pDeviceRenderAreasNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -34804,9 +35054,14 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPhysicalDevicesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPhysicalDevicesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pPhysicalDevicesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -34924,9 +35179,14 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPhysicalDevicesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPhysicalDevicesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pPhysicalDevicesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -35428,9 +35688,14 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDescriptorUpdateEntriesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDescriptorUpdateEntriesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pDescriptorUpdateEntriesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -35638,9 +35903,14 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDescriptorUpdateEntriesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDescriptorUpdateEntriesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pDescriptorUpdateEntriesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -36415,9 +36685,14 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pTimesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pTimesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pTimesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -36672,9 +36947,14 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pViewportWScalingsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pViewportWScalingsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pViewportWScalingsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -36891,9 +37171,14 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pViewportSwizzlesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pViewportSwizzlesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pViewportSwizzlesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -37117,9 +37402,14 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDiscardRectanglesNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDiscardRectanglesNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pDiscardRectanglesNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -37485,9 +37775,14 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAspectReferencesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAspectReferencesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAspectReferencesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -37605,9 +37900,14 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAspectReferencesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAspectReferencesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAspectReferencesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -42963,9 +43263,14 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSampleLocationsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSampleLocationsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pSampleLocationsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -43287,9 +43592,14 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentInitialSampleLocationsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentInitialSampleLocationsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAttachmentInitialSampleLocationsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -43301,9 +43611,14 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPostSubpassSampleLocationsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPostSubpassSampleLocationsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pPostSubpassSampleLocationsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -46916,9 +47231,14 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pQueueLabelsNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pQueueLabelsNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pQueueLabelsNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   
@@ -46930,9 +47250,14 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pCmdBufLabelsNative = nativeArray;
-    this.memoryViewBigInt64[0x9] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pCmdBufLabelsNative = nativeArray;
+      this.memoryViewBigInt64[0x9] = nativeArray.address;
+    } else {
+      this._pCmdBufLabelsNative = null;
+      this.memoryViewBigInt64[0x9] = 0n;
+    }
   }
   
   
@@ -46944,9 +47269,14 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pObjectsNative = nativeArray;
-    this.memoryViewBigInt64[0xB] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pObjectsNative = nativeArray;
+      this.memoryViewBigInt64[0xB] = nativeArray.address;
+    } else {
+      this._pObjectsNative = null;
+      this.memoryViewBigInt64[0xB] = 0n;
+    }
   }
   
   return true;
@@ -49189,9 +49519,14 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pInputAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pInputAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pInputAttachmentsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   
@@ -49203,9 +49538,14 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pColorAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x6] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pColorAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x6] = nativeArray.address;
+    } else {
+      this._pColorAttachmentsNative = null;
+      this.memoryViewBigInt64[0x6] = 0n;
+    }
   }
   
   
@@ -49217,9 +49557,14 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pResolveAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pResolveAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pResolveAttachmentsNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -49622,9 +49967,14 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAttachmentsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -49636,9 +49986,14 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSubpassesNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSubpassesNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pSubpassesNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   
@@ -49650,9 +50005,14 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pDependenciesNative = nativeArray;
-    this.memoryViewBigInt64[0x7] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pDependenciesNative = nativeArray;
+      this.memoryViewBigInt64[0x7] = nativeArray.address;
+    } else {
+      this._pDependenciesNative = null;
+      this.memoryViewBigInt64[0x7] = 0n;
+    }
   }
   
   return true;
@@ -50021,9 +50381,14 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pVertexBindingDivisorsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pVertexBindingDivisorsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pVertexBindingDivisorsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -52135,9 +52500,14 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pExclusiveScissorsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pExclusiveScissorsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pExclusiveScissorsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -52777,9 +53147,14 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pShadingRatePalettesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pShadingRatePalettesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pShadingRatePalettesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -53171,9 +53546,14 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pSampleLocationsNative = nativeArray;
-    this.memoryViewBigInt64[0x2] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pSampleLocationsNative = nativeArray;
+      this.memoryViewBigInt64[0x2] = nativeArray.address;
+    } else {
+      this._pSampleLocationsNative = null;
+      this.memoryViewBigInt64[0x2] = 0n;
+    }
   }
   
   return true;
@@ -53297,9 +53677,14 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pCustomSampleOrdersNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pCustomSampleOrdersNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pCustomSampleOrdersNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -54006,9 +54391,14 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pStagesNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pStagesNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pStagesNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   
@@ -54020,9 +54410,14 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pGroupsNative = nativeArray;
-    this.memoryViewBigInt64[0x5] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pGroupsNative = nativeArray;
+      this.memoryViewBigInt64[0x5] = nativeArray.address;
+    } else {
+      this._pGroupsNative = null;
+      this.memoryViewBigInt64[0x5] = 0n;
+    }
   }
   
   return true;
@@ -54805,9 +55200,14 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pGeometriesNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pGeometriesNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pGeometriesNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -55221,9 +55621,14 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAccelerationStructuresNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAccelerationStructuresNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAccelerationStructuresNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -56006,9 +56411,14 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPlaneLayoutsNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPlaneLayoutsNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pPlaneLayoutsNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;
@@ -58109,9 +58519,14 @@ VkFramebufferAttachmentsCreateInfoKHR.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentImageInfosNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentImageInfosNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAttachmentImageInfosNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -58394,9 +58809,14 @@ VkRenderPassAttachmentBeginInfoKHR.prototype.flush = function flush() {
       
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pAttachmentsNative = nativeArray;
-    this.memoryViewBigInt64[0x3] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pAttachmentsNative = nativeArray;
+      this.memoryViewBigInt64[0x3] = nativeArray.address;
+    } else {
+      this._pAttachmentsNative = null;
+      this.memoryViewBigInt64[0x3] = 0n;
+    }
   }
   
   return true;
@@ -59156,9 +59576,14 @@ VkPipelineCreationFeedbackCreateInfoEXT.prototype.flush = function flush() {
       if (!array[ii].flush()) return false;
     };
     
-    let nativeArray = new NativeObjectArray(array);
-    this._pPipelineStageCreationFeedbacksNative = nativeArray;
-    this.memoryViewBigInt64[0x4] = nativeArray.address;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._pPipelineStageCreationFeedbacksNative = nativeArray;
+      this.memoryViewBigInt64[0x4] = nativeArray.address;
+    } else {
+      this._pPipelineStageCreationFeedbacksNative = null;
+      this.memoryViewBigInt64[0x4] = 0n;
+    }
   }
   
   return true;

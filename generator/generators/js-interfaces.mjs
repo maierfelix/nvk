@@ -599,9 +599,14 @@ function getFlusherProcessor(member) {
         let byteStride = getDataViewInstructionStride(instr);
         let offset = getHexaByteOffset(byteOffset / byteStride);
         write = `
-    let nativeArray = new NativeObjectArray(array);
-    this._${member.name}Native = nativeArray;
-    this.memoryView${instr}[${offset}] = nativeArray.address;`;
+    if (array.length > 0) {
+      let nativeArray = new NativeObjectArray(array);
+      this._${member.name}Native = nativeArray;
+      this.memoryView${instr}[${offset}] = nativeArray.address;
+    } else {
+      this._${member.name}Native = null;
+      this.memoryView${instr}[${offset}] = 0n;
+    }`;
       // do a memcpy for static objects
       } else {
         write = `
