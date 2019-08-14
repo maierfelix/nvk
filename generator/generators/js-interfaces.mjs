@@ -605,7 +605,7 @@ function getFlusherProcessor(member) {
       this.memoryView${instr}[${offset}] = nativeArray.address;
     } else {
       this._${member.name}Native = null;
-      this.memoryView${instr}[${offset}] = 0n;
+      this.memoryView${instr}[${offset}] = BI0;
     }`;
       // do a memcpy for static objects
       } else {
