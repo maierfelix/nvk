@@ -429,10 +429,12 @@ function getSetterProcessor(member) {
       let instr = "BigInt64";
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
+      let isArrayBufferType = member.jsTypedArrayName === "ArrayBuffer";
+      let arrayBufferValue = `value${isArrayBufferType ? "" : ".buffer"}`;
       return `
     if (value !== null ${ validate ? `&& value.constructor === ${member.jsTypedArrayName}` : `` }) {
       this._${member.name} = value;
-      this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(${arrayBufferValue});
     } else if (value === null) {
       this._${member.name} = null;
       this.memoryView${instr}[${offset}] = BI0;

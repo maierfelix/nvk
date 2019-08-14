@@ -2244,7 +2244,7 @@ class VkAllocationCallbacks {
   set pUserData(value) {
     if (value !== null ) {
       this._pUserData = value;
-      this.memoryViewBigInt64[0x0] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x0] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pUserData = null;
       this.memoryViewBigInt64[0x0] = BI0;
@@ -8935,7 +8935,7 @@ class VkSpecializationInfo {
   set pData(value) {
     if (value !== null ) {
       this._pData = value;
-      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pData = null;
       this.memoryViewBigInt64[0x3] = BI0;
@@ -11853,7 +11853,7 @@ class VkPipelineCacheCreateInfo {
   set pInitialData(value) {
     if (value !== null ) {
       this._pInitialData = value;
-      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pInitialData = null;
       this.memoryViewBigInt64[0x4] = BI0;
@@ -18858,7 +18858,7 @@ class VkDebugReportCallbackCreateInfoEXT {
   set pUserData(value) {
     if (value !== null ) {
       this._pUserData = value;
-      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pUserData = null;
       this.memoryViewBigInt64[0x4] = BI0;
@@ -19442,7 +19442,7 @@ class VkDebugMarkerObjectTagInfoEXT {
   set pTag(value) {
     if (value !== null ) {
       this._pTag = value;
-      this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pTag = null;
       this.memoryViewBigInt64[0x6] = BI0;
@@ -44362,7 +44362,7 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
   set pData(value) {
     if (value !== null ) {
       this._pData = value;
-      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pData = null;
       this.memoryViewBigInt64[0x3] = BI0;
@@ -44806,7 +44806,7 @@ class VkValidationCacheCreateInfoEXT {
   set pInitialData(value) {
     if (value !== null ) {
       this._pInitialData = value;
-      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x4] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pInitialData = null;
       this.memoryViewBigInt64[0x4] = BI0;
@@ -46402,7 +46402,7 @@ class VkDebugUtilsObjectTagInfoEXT {
   set pTag(value) {
     if (value !== null ) {
       this._pTag = value;
-      this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x6] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pTag = null;
       this.memoryViewBigInt64[0x6] = BI0;
@@ -46674,7 +46674,7 @@ class VkDebugUtilsMessengerCreateInfoEXT {
   set pUserData(value) {
     if (value !== null ) {
       this._pUserData = value;
-      this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x5] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pUserData = null;
       this.memoryViewBigInt64[0x5] = BI0;
@@ -47073,7 +47073,7 @@ class VkImportMemoryHostPointerInfoEXT {
   set pHostPointer(value) {
     if (value !== null ) {
       this._pHostPointer = value;
-      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pHostPointer = null;
       this.memoryViewBigInt64[0x3] = BI0;
@@ -50990,7 +50990,7 @@ class VkCheckpointDataNV {
   set pCheckpointMarker(value) {
     if (value !== null ) {
       this._pCheckpointMarker = value;
-      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x3] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pCheckpointMarker = null;
       this.memoryViewBigInt64[0x3] = BI0;
@@ -60033,7 +60033,7 @@ class VkInitializePerformanceApiInfoINTEL {
   set pUserData(value) {
     if (value !== null ) {
       this._pUserData = value;
-      this.memoryViewBigInt64[0x2] = getAddressFromArrayBuffer(value.buffer);
+      this.memoryViewBigInt64[0x2] = getAddressFromArrayBuffer(value);
     } else if (value === null) {
       this._pUserData = null;
       this.memoryViewBigInt64[0x2] = BI0;
