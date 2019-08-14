@@ -1,0 +1,64 @@
+{{ getHeaderHTML() | safe }}
+
+<vk-title>ArrayBuffer | NVK</vk-title>
+
+<vk-centered>
+
+  {{ getNavigationHTML() | safe }}
+
+  <vk-struct>
+
+    <vk-name>ArrayBuffer</vk-name>
+
+    <vk-description><i>nvk</i> extends the <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type> Object with additional low-level methods.</vk-description>
+
+    </vk-stub><vk-section-title>Additional Properties</vk-section-title>
+
+    <vk-properties>
+
+      <!-- getAddress -->
+      <vk-property-entry>
+        <vk-property-prototype>ArrayBuffer.prototype.<vk-prototype-name>getAddress</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+        <vk-property-description>Returns the native memory address of the ArrayBuffer.</vk-property-description>
+
+        <vk-syntax>
+          <pre><code class="language-js">let byteLength = 8;
+let buffer = new ArrayBuffer(byteLength);
+let address = buffer.getAddress();</code></pre>
+        </vk-syntax>
+
+      </vk-property-entry>
+
+      <!-- fromAddress -->
+      <vk-property-entry>
+        <vk-property-prototype>ArrayBuffer.<vk-prototype-name>fromAddress</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Returns a new ArrayBuffer for the given memory address.</vk-property-description>
+
+        <vk-syntax>
+          <pre><code class="language-js">let byteLength = 8;
+let dataPtr = { $: 0n };
+vkMapMemory(device, memory, 0n, byteLength, 0, dataPtr);
+let mappedBuffer = ArrayBuffer.fromAddress(dataPtr.$, byteLength);
+
+// memcpy
+let srcView = new Uint8Array(data); // data to copy over
+let dstView = new Uint8Array(mappedBuffer); // copy destination
+dstView.set(srcView, 0x0); // fast copy</code></pre>
+        </vk-syntax>
+
+      </vk-property-entry>
+
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

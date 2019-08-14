@@ -41,6 +41,7 @@ const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "ut
 const HEADER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/header.njk`, "utf-8");
 const NAVIGATION_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/navigation.njk`, "utf-8");
 const WINDOW_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/window.njk`, "utf-8");
+const ARRAYBUFFER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/arraybuffer.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -327,12 +328,10 @@ function addSearchQuery(out, name, folder, label) {
   return out;
 };
 
-function addCategoryQuery(out, title, category, folder, label) {
+function addCategoryQuery(out, category, objects) {
   out.push({
     category,
-    objects: [
-      ...addSearchQuery([], title, folder, label)
-    ]
+    objects
   });
   return out;
 };
@@ -387,6 +386,7 @@ export default function(astReference, data, version) {
   // search json
   {
     let out = [];
+    addSearchQuery(out, `ArrayBuffer`, `additional`, ``);
     addSearchQuery(out, `VulkanWindow`, `additional`, ``);
     objects.map(obj => {
       out.push([
@@ -400,7 +400,10 @@ export default function(astReference, data, version) {
   // categories json
   {
     let out = [];
-    addCategoryQuery(out, `VulkanWindow`, `Additional`, `additional`, ``);
+    addCategoryQuery(out, `Additional`, [
+      ...addSearchQuery([], `ArrayBuffer`, `additional`, ``),
+      ...addSearchQuery([], `VulkanWindow`, `additional`, ``)
+    ]);
     categories.map(name => {
       let category = { category: name, objects: [] };
       let objects = getObjectsByCategory(name);
@@ -490,6 +493,15 @@ export default function(astReference, data, version) {
       ...defaultFunctions
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/additional/VulkanWindow.html`, output, `utf-8`);
+  }
+  // arraybuffer
+  {
+    let output = nunjucks.renderString(ARRAYBUFFER_TEMPLATE, {
+      objects,
+      categories,
+      ...defaultFunctions
+    });
+    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/ArrayBuffer.html`, output, `utf-8`);
   }
   return null;
 };
