@@ -33,11 +33,11 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 
 | Real-time RTX Ray Tracer |  A spinning 3D Cube |
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/prlOcQI.png)  |  ![](https://i.imgur.com/ey9XooY.gif)
+<img src="https://i.imgur.com/prlOcQI.png" height="218">  |  <img src="https://i.imgur.com/ey9XooY.gif" height="218">
 
 | A simple Triangle | Mandelbrot Compute shader |
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/wOBfkwb.png)  |  ![](https://i.imgur.com/M9jC4et.jpg)
+<img src="https://i.imgur.com/wOBfkwb.png" height="218">  |  <img src="https://i.imgur.com/M9jC4et.jpg" height="218">
 
 ### Why Vulkan in JavaScript?
  - Less overhead than WebGL/OpenGL
