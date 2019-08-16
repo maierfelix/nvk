@@ -35,7 +35,7 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/prlOcQI.png)  |  ![](https://i.imgur.com/ey9XooY.gif)
 
-| A simple Triangle |  Compute shader rendering the Mandelbrot set |
+| A simple Triangle | Mandelbrot Compute shader |
 :-------------------------:|:-------------------------:
 ![](https://i.imgur.com/wOBfkwb.png)  |  ![](https://i.imgur.com/M9jC4et.jpg)
 
