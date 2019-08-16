@@ -2,7 +2,7 @@ import {
   warn,
   isIgnoreableType,
   getBitmaskByName
-} from "./utils";
+} from "./utils.mjs";
 
 export class JavaScriptType {
   constructor(opts) {

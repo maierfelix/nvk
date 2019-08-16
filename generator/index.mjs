@@ -5,18 +5,18 @@ import pkg from "../package.json";
 
 import nunjucks from "nunjucks";
 
-import patchAST from "./generators/ast-patch";
-import generateAST from "./generators/ast";
-import generateCalls from "./generators/calls";
-import generateEnums from "./generators/enums";
-import generateIndex from "./generators/index";
-import generateGyp from "./generators/gyp";
-import generatePackage from "./generators/package";
-import generateUtils from "./generators/utils";
-import generateTS from "./generators/typescript";
-import generateMemoryLayouts from "./generators/memoryLayouts";
-import generateJavaScriptInterfaces from "./generators/js-interfaces";
-import generateDocs from "./generators/docs";
+import patchAST from "./generators/ast-patch.mjs";
+import generateAST from "./generators/ast.mjs";
+import generateCalls from "./generators/calls.mjs";
+import generateEnums from "./generators/enums.mjs";
+import generateIndex from "./generators/index.mjs";
+import generateGyp from "./generators/gyp.mjs";
+import generatePackage from "./generators/package.mjs";
+import generateUtils from "./generators/utils.mjs";
+import generateTS from "./generators/typescript.mjs";
+import generateMemoryLayouts from "./generators/memoryLayouts.mjs";
+import generateJavaScriptInterfaces from "./generators/js-interfaces.mjs";
+import generateDocs from "./generators/docs.mjs";
 
 import {
   warn,
@@ -26,7 +26,7 @@ import {
   getSortedIncludes,
   getPlatformRelevantIncludes,
   isCurrentPlatformSupportedExtension
-} from "./utils";
+} from "./utils.mjs";
 
 const GEN_FILE_NOTICE = `/*
  * MACHINE GENERATED, DO NOT EDIT

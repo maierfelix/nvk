@@ -18,12 +18,12 @@ import {
   getDataViewInstructionStride,
   stringifyJSONQuoteless,
   getHexaByteOffset
-} from "../utils";
+} from "../utils.mjs";
 
 import {
   JavaScriptType,
   getJavaScriptType
-} from "../javascript-type";
+} from "../javascript-type.mjs";
 
 let ast = null;
 let validate = false;

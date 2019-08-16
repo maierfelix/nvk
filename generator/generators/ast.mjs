@@ -5,7 +5,7 @@
 **/
 import xml from "xml-js";
 import pkg from "../../package.json";
-import parseDocumentation from "../doc-parser";
+import parseDocumentation from "../doc-parser.mjs";
 
 import {
   warn,
@@ -17,7 +17,7 @@ import {
   getStructByStructName,
   isNumericReferenceType,
   getJavaScriptTypedArrayName
-} from "../utils";
+} from "../utils.mjs";
 
 let xmlOpts = {
   ignoreComment: true,

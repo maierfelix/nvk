@@ -11,7 +11,7 @@ import {
   warn,
   getLunarVkSDKPath,
   resolveLunarVkSDKPath
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 

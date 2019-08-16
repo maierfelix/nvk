@@ -9,7 +9,7 @@ import pkg from "../../package.json";
 
 import {
   warn
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 

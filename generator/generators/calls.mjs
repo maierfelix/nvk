@@ -15,7 +15,7 @@ import {
   getNapiTypedArrayName,
   getStructByStructName,
   getHandleByHandleName
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 
@@ -731,7 +731,7 @@ function getCallObjectUpdate(call) {
       let index = getParamIndexByParamName(call, "pInstance");
       if (index <= -1) warn(`Cannot resolve param index by name "${name}"`);
       return `
-  vkUseInstance(*$p${index});`;
+  if (out == VK_SUCCESS) vkUseInstance(*$p${index});`;
     }
   };
   return ``;

@@ -11,7 +11,7 @@ import {
   warn,
   getSortedIncludes,
   getPlatformRelevantIncludes
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 

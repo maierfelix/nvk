@@ -10,12 +10,12 @@ import pkg from "../../package.json";
 import {
   warn,
   isIgnoreableType
-} from "../utils";
+} from "../utils.mjs";
 
 import {
   JavaScriptType,
   getJavaScriptType
-} from "../javascript-type";
+} from "../javascript-type.mjs";
 
 let ast = null;
 let calls = null;

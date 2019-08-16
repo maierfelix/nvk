@@ -21,7 +21,7 @@ import {
   isArrayOfObjectsMember,
   isHeaderHeapVector,
   isFillableMember
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 let currentStruct = null;

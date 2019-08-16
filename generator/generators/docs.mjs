@@ -7,7 +7,7 @@ import fs from "fs";
 import yauzl from "yauzl";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
-import parseDocumentation from "../doc-parser";
+import parseDocumentation from "../doc-parser.mjs";
 
 import {
   warn,
@@ -15,12 +15,12 @@ import {
   isIgnoreableType,
   getStructByStructName,
   getObjectInstantiationName
-} from "../utils";
+} from "../utils.mjs";
 
 import {
   JavaScriptType,
   getJavaScriptType
-} from "../javascript-type";
+} from "../javascript-type.mjs";
 
 let ast = null;
 let calls = null;

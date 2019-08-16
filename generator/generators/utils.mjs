@@ -5,7 +5,7 @@ import pkg from "../../package.json";
 import {
   warn,
   getPlatformRelevantIncludes
-} from "../utils";
+} from "../utils.mjs";
 
 let ast = null;
 
