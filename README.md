@@ -33,7 +33,7 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 
 | Real-time RTX Ray Tracer |  A spinning 3D Cube |
 :-------------------------:|:-------------------------:
-<img src="https://i.imgur.com/prlOcQI.png" height="218">  |  <img src="https://i.imgur.com/ey9XooY.gif" height="218">
+<img src="https://i.imgur.com/chLUB42.png" height="218">  |  <img src="https://i.imgur.com/ey9XooY.gif" height="218">
 
 | A simple Triangle | Mandelbrot Compute shader |
 :-------------------------:|:-------------------------:
