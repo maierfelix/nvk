@@ -33,7 +33,7 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 
 | Real-Time RTX Ray Tracer |  Mandelbrot Compute shader |
 :-------------------------:|:-------------------------:
-<img src="https://i.imgur.com/chLUB42.png" height="228">  |  <img src="https://i.imgur.com/M9jC4et.jpg" height="228">
+<img src="https://i.imgur.com/5KOxFS1.png" height="228">  |  <img src="https://i.imgur.com/M9jC4et.jpg" height="228">
 
 ### Why Vulkan in JavaScript?
  - Less overhead than WebGL/OpenGL
