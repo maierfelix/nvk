@@ -68,6 +68,7 @@ Bounding checks and type validations are enabled by default, but can be disabled
     + [Usage](#usage)
       - [Generation](#generation)
       - [Building](#building)
+  * [RenderDoc](#renderdoc)
   * [TODOs](#todos)
 
 ## Installation:
@@ -351,6 +352,15 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 [--vkversion]: The Vulkan version to build bindings for
 [--msvsversion]: The Visual Studio version to build the bindings with
 ````
+
+### RenderDoc:
+
+Using [RenderDoc](https://renderdoc.org/) is simple. Open RenderDoc and in the *Launch Application* tab, enter the following:
+
+E.g.:
+
+ - Executable Path: `C:\Program Files\nodejs\node.exe`
+ - Command-line Arguments: `--experimental-modules C:\GitHub\nvk-examples\triangle/index.mjs`
 
 ## TODOs:
  - [ ] Function generation (~95%)
