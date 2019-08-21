@@ -355,12 +355,10 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ### RenderDoc:
 
-Using [RenderDoc](https://renderdoc.org/) is simple. Open RenderDoc and in the *Launch Application* tab, enter the following:
-
-E.g.:
+Using [RenderDoc](https://renderdoc.org/) is simple. Open RenderDoc and in the *Launch Application* tab, enter e.g.:
 
  - Executable Path: `C:\Program Files\nodejs\node.exe`
- - Command-line Arguments: `--experimental-modules C:\GitHub\nvk-examples\triangle/index.mjs`
+ - Command-line Arguments: `--experimental-modules C:\GitHub\nvk-examples\triangle\index.mjs`
 
 ## TODOs:
  - [ ] Function generation (~95%)
