@@ -100,6 +100,44 @@ class NativeObjectReferenceArray {
   }
 };
 
+const STRUCT_RESET_CACHE = {
+  "0x10": new Uint8Array(0x10),
+  "0x8": new Uint8Array(0x8),
+  "0xC": new Uint8Array(0xC),
+  "0x18": new Uint8Array(0x18),
+  "0x338": new Uint8Array(0x338),
+  "0x104": new Uint8Array(0x104),
+  "0x208": new Uint8Array(0x208),
+  "0x30": new Uint8Array(0x30),
+  "0x28": new Uint8Array(0x28),
+  "0x48": new Uint8Array(0x48),
+  "0x40": new Uint8Array(0x40),
+  "0x20": new Uint8Array(0x20),
+  "0x14": new Uint8Array(0x14),
+  "0x38": new Uint8Array(0x38),
+  "0x58": new Uint8Array(0x58),
+  "0x50": new Uint8Array(0x50),
+  "0x60": new Uint8Array(0x60),
+  "0x44": new Uint8Array(0x44),
+  "0x1C": new Uint8Array(0x1C),
+  "0x68": new Uint8Array(0x68),
+  "0x90": new Uint8Array(0x90),
+  "0x24": new Uint8Array(0x24),
+  "0xDC": new Uint8Array(0xDC),
+  "0x1F8": new Uint8Array(0x1F8),
+  "0x34": new Uint8Array(0x34),
+  "0xF0": new Uint8Array(0xF0),
+  "0x348": new Uint8Array(0x348),
+  "0x218": new Uint8Array(0x218),
+  "0x4": new Uint8Array(0x4),
+  "0x120": new Uint8Array(0x120),
+  "0x98": new Uint8Array(0x98),
+  "0x70": new Uint8Array(0x70),
+  "0x88": new Uint8Array(0x88),
+  "0xA8": new Uint8Array(0xA8),
+  "0x110": new Uint8Array(0x110),
+};
+
 function $VAL_R_API_Extensions(value) {
   switch (value) {
     case 0x1: case 0x0: case 0x2: case 0x3: case 0xB: case 0x5: case 0x4: case 0x9: case 0x6: case 0x15: case 0x19: case 0x46: 
@@ -2157,8 +2195,8 @@ VkDebugUtilsMessengerEXT.prototype.reflect = function reflect(memoryAddress) {
 VkDebugUtilsMessengerEXT.byteLength = 0x8;
 /** VkBaseOutStructure **/
 function VkBaseOutStructure(opts) {
-  if (this.constructor !== VkBaseOutStructure) {
-    new Uint8Array(_VkBaseOutStructure.memoryBuffer).fill(0);
+  if (new.target !== VkBaseOutStructure) {
+    new Uint8Array(_VkBaseOutStructure.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkBaseOutStructure;
   }
   this.memoryBuffer = null;
@@ -2248,8 +2286,8 @@ VkBaseOutStructure.memoryLayout = {
 };
 /** VkBaseInStructure **/
 function VkBaseInStructure(opts) {
-  if (this.constructor !== VkBaseInStructure) {
-    new Uint8Array(_VkBaseInStructure.memoryBuffer).fill(0);
+  if (new.target !== VkBaseInStructure) {
+    new Uint8Array(_VkBaseInStructure.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkBaseInStructure;
   }
   this.memoryBuffer = null;
@@ -2339,8 +2377,8 @@ VkBaseInStructure.memoryLayout = {
 };
 /** VkOffset2D **/
 function VkOffset2D(opts) {
-  if (this.constructor !== VkOffset2D) {
-    new Uint8Array(_VkOffset2D.memoryBuffer).fill(0);
+  if (new.target !== VkOffset2D) {
+    new Uint8Array(_VkOffset2D.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkOffset2D;
   }
   this.memoryBuffer = null;
@@ -2417,8 +2455,8 @@ VkOffset2D.memoryLayout = {
 };
 /** VkOffset3D **/
 function VkOffset3D(opts) {
-  if (this.constructor !== VkOffset3D) {
-    new Uint8Array(_VkOffset3D.memoryBuffer).fill(0);
+  if (new.target !== VkOffset3D) {
+    new Uint8Array(_VkOffset3D.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkOffset3D;
   }
   this.memoryBuffer = null;
@@ -2512,8 +2550,8 @@ VkOffset3D.memoryLayout = {
 };
 /** VkExtent2D **/
 function VkExtent2D(opts) {
-  if (this.constructor !== VkExtent2D) {
-    new Uint8Array(_VkExtent2D.memoryBuffer).fill(0);
+  if (new.target !== VkExtent2D) {
+    new Uint8Array(_VkExtent2D.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkExtent2D;
   }
   this.memoryBuffer = null;
@@ -2590,8 +2628,8 @@ VkExtent2D.memoryLayout = {
 };
 /** VkExtent3D **/
 function VkExtent3D(opts) {
-  if (this.constructor !== VkExtent3D) {
-    new Uint8Array(_VkExtent3D.memoryBuffer).fill(0);
+  if (new.target !== VkExtent3D) {
+    new Uint8Array(_VkExtent3D.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkExtent3D;
   }
   this.memoryBuffer = null;
@@ -2685,8 +2723,8 @@ VkExtent3D.memoryLayout = {
 };
 /** VkViewport **/
 function VkViewport(opts) {
-  if (this.constructor !== VkViewport) {
-    new Uint8Array(_VkViewport.memoryBuffer).fill(0);
+  if (new.target !== VkViewport) {
+    new Uint8Array(_VkViewport.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkViewport;
   }
   this.memoryBuffer = null;
@@ -2831,8 +2869,8 @@ VkViewport.memoryLayout = {
 };
 /** VkRect2D **/
 function VkRect2D(opts) {
-  if (this.constructor !== VkRect2D) {
-    new Uint8Array(_VkRect2D.memoryBuffer).fill(0);
+  if (new.target !== VkRect2D) {
+    new Uint8Array(_VkRect2D.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkRect2D;
   }
   this.memoryBuffer = null;
@@ -2951,8 +2989,8 @@ VkRect2D.memoryLayout = {
 };
 /** VkClearRect **/
 function VkClearRect(opts) {
-  if (this.constructor !== VkClearRect) {
-    new Uint8Array(_VkClearRect.memoryBuffer).fill(0);
+  if (new.target !== VkClearRect) {
+    new Uint8Array(_VkClearRect.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkClearRect;
   }
   this.memoryBuffer = null;
@@ -3068,8 +3106,8 @@ VkClearRect.memoryLayout = {
 };
 /** VkComponentMapping **/
 function VkComponentMapping(opts) {
-  if (this.constructor !== VkComponentMapping) {
-    new Uint8Array(_VkComponentMapping.memoryBuffer).fill(0);
+  if (new.target !== VkComponentMapping) {
+    new Uint8Array(_VkComponentMapping.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkComponentMapping;
   }
   this.memoryBuffer = null;
@@ -3192,8 +3230,8 @@ VkComponentMapping.memoryLayout = {
 };
 /** VkPhysicalDeviceProperties **/
 function VkPhysicalDeviceProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceProperties) {
-    new Uint8Array(_VkPhysicalDeviceProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceProperties) {
+    new Uint8Array(_VkPhysicalDeviceProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x338], 0x0);
     return _VkPhysicalDeviceProperties;
   }
   this.memoryBuffer = null;
@@ -3359,8 +3397,8 @@ VkPhysicalDeviceProperties.memoryLayout = {
 };
 /** VkExtensionProperties **/
 function VkExtensionProperties(opts) {
-  if (this.constructor !== VkExtensionProperties) {
-    new Uint8Array(_VkExtensionProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExtensionProperties) {
+    new Uint8Array(_VkExtensionProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x104], 0x0);
     return _VkExtensionProperties;
   }
   this.memoryBuffer = null;
@@ -3429,8 +3467,8 @@ VkExtensionProperties.memoryLayout = {
 };
 /** VkLayerProperties **/
 function VkLayerProperties(opts) {
-  if (this.constructor !== VkLayerProperties) {
-    new Uint8Array(_VkLayerProperties.memoryBuffer).fill(0);
+  if (new.target !== VkLayerProperties) {
+    new Uint8Array(_VkLayerProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x208], 0x0);
     return _VkLayerProperties;
   }
   this.memoryBuffer = null;
@@ -3521,8 +3559,8 @@ VkLayerProperties.memoryLayout = {
 };
 /** VkApplicationInfo **/
 function VkApplicationInfo(opts) {
-  if (this.constructor !== VkApplicationInfo) {
-    new Uint8Array(_VkApplicationInfo.memoryBuffer).fill(0);
+  if (new.target !== VkApplicationInfo) {
+    new Uint8Array(_VkApplicationInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkApplicationInfo;
   }
   this.memoryBuffer = null;
@@ -3717,8 +3755,8 @@ VkApplicationInfo.memoryLayout = {
 };
 /** VkAllocationCallbacks **/
 function VkAllocationCallbacks(opts) {
-  if (this.constructor !== VkAllocationCallbacks) {
-    new Uint8Array(_VkAllocationCallbacks.memoryBuffer).fill(0);
+  if (new.target !== VkAllocationCallbacks) {
+    new Uint8Array(_VkAllocationCallbacks.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkAllocationCallbacks;
   }
   this.memoryBuffer = null;
@@ -3889,8 +3927,8 @@ VkAllocationCallbacks.memoryLayout = {
 };
 /** VkDeviceQueueCreateInfo **/
 function VkDeviceQueueCreateInfo(opts) {
-  if (this.constructor !== VkDeviceQueueCreateInfo) {
-    new Uint8Array(_VkDeviceQueueCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceQueueCreateInfo) {
+    new Uint8Array(_VkDeviceQueueCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDeviceQueueCreateInfo;
   }
   this.memoryBuffer = null;
@@ -4070,8 +4108,8 @@ VkDeviceQueueCreateInfo.memoryLayout = {
 };
 /** VkDeviceCreateInfo **/
 function VkDeviceCreateInfo(opts) {
-  if (this.constructor !== VkDeviceCreateInfo) {
-    new Uint8Array(_VkDeviceCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceCreateInfo) {
+    new Uint8Array(_VkDeviceCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkDeviceCreateInfo;
   }
   this.memoryBuffer = null;
@@ -4459,8 +4497,8 @@ VkDeviceCreateInfo.memoryLayout = {
 };
 /** VkInstanceCreateInfo **/
 function VkInstanceCreateInfo(opts) {
-  if (this.constructor !== VkInstanceCreateInfo) {
-    new Uint8Array(_VkInstanceCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkInstanceCreateInfo) {
+    new Uint8Array(_VkInstanceCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkInstanceCreateInfo;
   }
   this.memoryBuffer = null;
@@ -4739,8 +4777,8 @@ VkInstanceCreateInfo.memoryLayout = {
 };
 /** VkQueueFamilyProperties **/
 function VkQueueFamilyProperties(opts) {
-  if (this.constructor !== VkQueueFamilyProperties) {
-    new Uint8Array(_VkQueueFamilyProperties.memoryBuffer).fill(0);
+  if (new.target !== VkQueueFamilyProperties) {
+    new Uint8Array(_VkQueueFamilyProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkQueueFamilyProperties;
   }
   this.memoryBuffer = null;
@@ -4831,8 +4869,8 @@ VkQueueFamilyProperties.memoryLayout = {
 };
 /** VkPhysicalDeviceMemoryProperties **/
 function VkPhysicalDeviceMemoryProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceMemoryProperties) {
-    new Uint8Array(_VkPhysicalDeviceMemoryProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMemoryProperties) {
+    new Uint8Array(_VkPhysicalDeviceMemoryProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x208], 0x0);
     return _VkPhysicalDeviceMemoryProperties;
   }
   this.memoryBuffer = null;
@@ -4923,8 +4961,8 @@ VkPhysicalDeviceMemoryProperties.memoryLayout = {
 };
 /** VkMemoryAllocateInfo **/
 function VkMemoryAllocateInfo(opts) {
-  if (this.constructor !== VkMemoryAllocateInfo) {
-    new Uint8Array(_VkMemoryAllocateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryAllocateInfo) {
+    new Uint8Array(_VkMemoryAllocateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkMemoryAllocateInfo;
   }
   this.memoryBuffer = null;
@@ -5078,8 +5116,8 @@ VkMemoryAllocateInfo.memoryLayout = {
 };
 /** VkMemoryRequirements **/
 function VkMemoryRequirements(opts) {
-  if (this.constructor !== VkMemoryRequirements) {
-    new Uint8Array(_VkMemoryRequirements.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryRequirements) {
+    new Uint8Array(_VkMemoryRequirements.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryRequirements;
   }
   this.memoryBuffer = null;
@@ -5158,8 +5196,8 @@ VkMemoryRequirements.memoryLayout = {
 };
 /** VkSparseImageFormatProperties **/
 function VkSparseImageFormatProperties(opts) {
-  if (this.constructor !== VkSparseImageFormatProperties) {
-    new Uint8Array(_VkSparseImageFormatProperties.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageFormatProperties) {
+    new Uint8Array(_VkSparseImageFormatProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x14], 0x0);
     return _VkSparseImageFormatProperties;
   }
   this.memoryBuffer = null;
@@ -5238,8 +5276,8 @@ VkSparseImageFormatProperties.memoryLayout = {
 };
 /** VkSparseImageMemoryRequirements **/
 function VkSparseImageMemoryRequirements(opts) {
-  if (this.constructor !== VkSparseImageMemoryRequirements) {
-    new Uint8Array(_VkSparseImageMemoryRequirements.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageMemoryRequirements) {
+    new Uint8Array(_VkSparseImageMemoryRequirements.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkSparseImageMemoryRequirements;
   }
   this.memoryBuffer = null;
@@ -5340,8 +5378,8 @@ VkSparseImageMemoryRequirements.memoryLayout = {
 };
 /** VkMemoryType **/
 function VkMemoryType(opts) {
-  if (this.constructor !== VkMemoryType) {
-    new Uint8Array(_VkMemoryType.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryType) {
+    new Uint8Array(_VkMemoryType.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkMemoryType;
   }
   this.memoryBuffer = null;
@@ -5410,8 +5448,8 @@ VkMemoryType.memoryLayout = {
 };
 /** VkMemoryHeap **/
 function VkMemoryHeap(opts) {
-  if (this.constructor !== VkMemoryHeap) {
-    new Uint8Array(_VkMemoryHeap.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryHeap) {
+    new Uint8Array(_VkMemoryHeap.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkMemoryHeap;
   }
   this.memoryBuffer = null;
@@ -5480,8 +5518,8 @@ VkMemoryHeap.memoryLayout = {
 };
 /** VkMappedMemoryRange **/
 function VkMappedMemoryRange(opts) {
-  if (this.constructor !== VkMappedMemoryRange) {
-    new Uint8Array(_VkMappedMemoryRange.memoryBuffer).fill(0);
+  if (new.target !== VkMappedMemoryRange) {
+    new Uint8Array(_VkMappedMemoryRange.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkMappedMemoryRange;
   }
   this.memoryBuffer = null;
@@ -5628,8 +5666,8 @@ VkMappedMemoryRange.memoryLayout = {
 };
 /** VkFormatProperties **/
 function VkFormatProperties(opts) {
-  if (this.constructor !== VkFormatProperties) {
-    new Uint8Array(_VkFormatProperties.memoryBuffer).fill(0);
+  if (new.target !== VkFormatProperties) {
+    new Uint8Array(_VkFormatProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkFormatProperties;
   }
   this.memoryBuffer = null;
@@ -5706,8 +5744,8 @@ VkFormatProperties.memoryLayout = {
 };
 /** VkImageFormatProperties **/
 function VkImageFormatProperties(opts) {
-  if (this.constructor !== VkImageFormatProperties) {
-    new Uint8Array(_VkImageFormatProperties.memoryBuffer).fill(0);
+  if (new.target !== VkImageFormatProperties) {
+    new Uint8Array(_VkImageFormatProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkImageFormatProperties;
   }
   this.memoryBuffer = null;
@@ -5810,8 +5848,8 @@ VkImageFormatProperties.memoryLayout = {
 };
 /** VkDescriptorBufferInfo **/
 function VkDescriptorBufferInfo(opts) {
-  if (this.constructor !== VkDescriptorBufferInfo) {
-    new Uint8Array(_VkDescriptorBufferInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorBufferInfo) {
+    new Uint8Array(_VkDescriptorBufferInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorBufferInfo;
   }
   this.memoryBuffer = null;
@@ -5915,8 +5953,8 @@ VkDescriptorBufferInfo.memoryLayout = {
 };
 /** VkDescriptorImageInfo **/
 function VkDescriptorImageInfo(opts) {
-  if (this.constructor !== VkDescriptorImageInfo) {
-    new Uint8Array(_VkDescriptorImageInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorImageInfo) {
+    new Uint8Array(_VkDescriptorImageInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorImageInfo;
   }
   this.memoryBuffer = null;
@@ -6031,8 +6069,8 @@ VkDescriptorImageInfo.memoryLayout = {
 };
 /** VkWriteDescriptorSet **/
 function VkWriteDescriptorSet(opts) {
-  if (this.constructor !== VkWriteDescriptorSet) {
-    new Uint8Array(_VkWriteDescriptorSet.memoryBuffer).fill(0);
+  if (new.target !== VkWriteDescriptorSet) {
+    new Uint8Array(_VkWriteDescriptorSet.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkWriteDescriptorSet;
   }
   this.memoryBuffer = null;
@@ -6388,8 +6426,8 @@ VkWriteDescriptorSet.memoryLayout = {
 };
 /** VkCopyDescriptorSet **/
 function VkCopyDescriptorSet(opts) {
-  if (this.constructor !== VkCopyDescriptorSet) {
-    new Uint8Array(_VkCopyDescriptorSet.memoryBuffer).fill(0);
+  if (new.target !== VkCopyDescriptorSet) {
+    new Uint8Array(_VkCopyDescriptorSet.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkCopyDescriptorSet;
   }
   this.memoryBuffer = null;
@@ -6612,8 +6650,8 @@ VkCopyDescriptorSet.memoryLayout = {
 };
 /** VkBufferCreateInfo **/
 function VkBufferCreateInfo(opts) {
-  if (this.constructor !== VkBufferCreateInfo) {
-    new Uint8Array(_VkBufferCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBufferCreateInfo) {
+    new Uint8Array(_VkBufferCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkBufferCreateInfo;
   }
   this.memoryBuffer = null;
@@ -6834,8 +6872,8 @@ VkBufferCreateInfo.memoryLayout = {
 };
 /** VkBufferViewCreateInfo **/
 function VkBufferViewCreateInfo(opts) {
-  if (this.constructor !== VkBufferViewCreateInfo) {
-    new Uint8Array(_VkBufferViewCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBufferViewCreateInfo) {
+    new Uint8Array(_VkBufferViewCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkBufferViewCreateInfo;
   }
   this.memoryBuffer = null;
@@ -7019,8 +7057,8 @@ VkBufferViewCreateInfo.memoryLayout = {
 };
 /** VkImageSubresource **/
 function VkImageSubresource(opts) {
-  if (this.constructor !== VkImageSubresource) {
-    new Uint8Array(_VkImageSubresource.memoryBuffer).fill(0);
+  if (new.target !== VkImageSubresource) {
+    new Uint8Array(_VkImageSubresource.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkImageSubresource;
   }
   this.memoryBuffer = null;
@@ -7116,8 +7154,8 @@ VkImageSubresource.memoryLayout = {
 };
 /** VkImageSubresourceLayers **/
 function VkImageSubresourceLayers(opts) {
-  if (this.constructor !== VkImageSubresourceLayers) {
-    new Uint8Array(_VkImageSubresourceLayers.memoryBuffer).fill(0);
+  if (new.target !== VkImageSubresourceLayers) {
+    new Uint8Array(_VkImageSubresourceLayers.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkImageSubresourceLayers;
   }
   this.memoryBuffer = null;
@@ -7230,8 +7268,8 @@ VkImageSubresourceLayers.memoryLayout = {
 };
 /** VkImageSubresourceRange **/
 function VkImageSubresourceRange(opts) {
-  if (this.constructor !== VkImageSubresourceRange) {
-    new Uint8Array(_VkImageSubresourceRange.memoryBuffer).fill(0);
+  if (new.target !== VkImageSubresourceRange) {
+    new Uint8Array(_VkImageSubresourceRange.memoryBuffer).set(STRUCT_RESET_CACHE[0x14], 0x0);
     return _VkImageSubresourceRange;
   }
   this.memoryBuffer = null;
@@ -7361,8 +7399,8 @@ VkImageSubresourceRange.memoryLayout = {
 };
 /** VkMemoryBarrier **/
 function VkMemoryBarrier(opts) {
-  if (this.constructor !== VkMemoryBarrier) {
-    new Uint8Array(_VkMemoryBarrier.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryBarrier) {
+    new Uint8Array(_VkMemoryBarrier.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryBarrier;
   }
   this.memoryBuffer = null;
@@ -7482,8 +7520,8 @@ VkMemoryBarrier.memoryLayout = {
 };
 /** VkBufferMemoryBarrier **/
 function VkBufferMemoryBarrier(opts) {
-  if (this.constructor !== VkBufferMemoryBarrier) {
-    new Uint8Array(_VkBufferMemoryBarrier.memoryBuffer).fill(0);
+  if (new.target !== VkBufferMemoryBarrier) {
+    new Uint8Array(_VkBufferMemoryBarrier.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkBufferMemoryBarrier;
   }
   this.memoryBuffer = null;
@@ -7700,8 +7738,8 @@ VkBufferMemoryBarrier.memoryLayout = {
 };
 /** VkImageMemoryBarrier **/
 function VkImageMemoryBarrier(opts) {
-  if (this.constructor !== VkImageMemoryBarrier) {
-    new Uint8Array(_VkImageMemoryBarrier.memoryBuffer).fill(0);
+  if (new.target !== VkImageMemoryBarrier) {
+    new Uint8Array(_VkImageMemoryBarrier.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkImageMemoryBarrier;
   }
   this.memoryBuffer = null;
@@ -7979,8 +8017,8 @@ VkImageMemoryBarrier.memoryLayout = {
 };
 /** VkImageCreateInfo **/
 function VkImageCreateInfo(opts) {
-  if (this.constructor !== VkImageCreateInfo) {
-    new Uint8Array(_VkImageCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkImageCreateInfo) {
+    new Uint8Array(_VkImageCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x58], 0x0);
     return _VkImageCreateInfo;
   }
   this.memoryBuffer = null;
@@ -8358,8 +8396,8 @@ VkImageCreateInfo.memoryLayout = {
 };
 /** VkSubresourceLayout **/
 function VkSubresourceLayout(opts) {
-  if (this.constructor !== VkSubresourceLayout) {
-    new Uint8Array(_VkSubresourceLayout.memoryBuffer).fill(0);
+  if (new.target !== VkSubresourceLayout) {
+    new Uint8Array(_VkSubresourceLayout.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkSubresourceLayout;
   }
   this.memoryBuffer = null;
@@ -8456,8 +8494,8 @@ VkSubresourceLayout.memoryLayout = {
 };
 /** VkImageViewCreateInfo **/
 function VkImageViewCreateInfo(opts) {
-  if (this.constructor !== VkImageViewCreateInfo) {
-    new Uint8Array(_VkImageViewCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkImageViewCreateInfo) {
+    new Uint8Array(_VkImageViewCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x50], 0x0);
     return _VkImageViewCreateInfo;
   }
   this.memoryBuffer = null;
@@ -8723,8 +8761,8 @@ VkImageViewCreateInfo.memoryLayout = {
 };
 /** VkBufferCopy **/
 function VkBufferCopy(opts) {
-  if (this.constructor !== VkBufferCopy) {
-    new Uint8Array(_VkBufferCopy.memoryBuffer).fill(0);
+  if (new.target !== VkBufferCopy) {
+    new Uint8Array(_VkBufferCopy.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBufferCopy;
   }
   this.memoryBuffer = null;
@@ -8818,8 +8856,8 @@ VkBufferCopy.memoryLayout = {
 };
 /** VkSparseMemoryBind **/
 function VkSparseMemoryBind(opts) {
-  if (this.constructor !== VkSparseMemoryBind) {
-    new Uint8Array(_VkSparseMemoryBind.memoryBuffer).fill(0);
+  if (new.target !== VkSparseMemoryBind) {
+    new Uint8Array(_VkSparseMemoryBind.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkSparseMemoryBind;
   }
   this.memoryBuffer = null;
@@ -8959,8 +8997,8 @@ VkSparseMemoryBind.memoryLayout = {
 };
 /** VkSparseImageMemoryBind **/
 function VkSparseImageMemoryBind(opts) {
-  if (this.constructor !== VkSparseImageMemoryBind) {
-    new Uint8Array(_VkSparseImageMemoryBind.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageMemoryBind) {
+    new Uint8Array(_VkSparseImageMemoryBind.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkSparseImageMemoryBind;
   }
   this.memoryBuffer = null;
@@ -9183,8 +9221,8 @@ VkSparseImageMemoryBind.memoryLayout = {
 };
 /** VkSparseBufferMemoryBindInfo **/
 function VkSparseBufferMemoryBindInfo(opts) {
-  if (this.constructor !== VkSparseBufferMemoryBindInfo) {
-    new Uint8Array(_VkSparseBufferMemoryBindInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSparseBufferMemoryBindInfo) {
+    new Uint8Array(_VkSparseBufferMemoryBindInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSparseBufferMemoryBindInfo;
   }
   this.memoryBuffer = null;
@@ -9322,8 +9360,8 @@ VkSparseBufferMemoryBindInfo.memoryLayout = {
 };
 /** VkSparseImageOpaqueMemoryBindInfo **/
 function VkSparseImageOpaqueMemoryBindInfo(opts) {
-  if (this.constructor !== VkSparseImageOpaqueMemoryBindInfo) {
-    new Uint8Array(_VkSparseImageOpaqueMemoryBindInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageOpaqueMemoryBindInfo) {
+    new Uint8Array(_VkSparseImageOpaqueMemoryBindInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSparseImageOpaqueMemoryBindInfo;
   }
   this.memoryBuffer = null;
@@ -9461,8 +9499,8 @@ VkSparseImageOpaqueMemoryBindInfo.memoryLayout = {
 };
 /** VkSparseImageMemoryBindInfo **/
 function VkSparseImageMemoryBindInfo(opts) {
-  if (this.constructor !== VkSparseImageMemoryBindInfo) {
-    new Uint8Array(_VkSparseImageMemoryBindInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageMemoryBindInfo) {
+    new Uint8Array(_VkSparseImageMemoryBindInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSparseImageMemoryBindInfo;
   }
   this.memoryBuffer = null;
@@ -9600,8 +9638,8 @@ VkSparseImageMemoryBindInfo.memoryLayout = {
 };
 /** VkBindSparseInfo **/
 function VkBindSparseInfo(opts) {
-  if (this.constructor !== VkBindSparseInfo) {
-    new Uint8Array(_VkBindSparseInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindSparseInfo) {
+    new Uint8Array(_VkBindSparseInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkBindSparseInfo;
   }
   this.memoryBuffer = null;
@@ -10047,8 +10085,8 @@ VkBindSparseInfo.memoryLayout = {
 };
 /** VkImageCopy **/
 function VkImageCopy(opts) {
-  if (this.constructor !== VkImageCopy) {
-    new Uint8Array(_VkImageCopy.memoryBuffer).fill(0);
+  if (new.target !== VkImageCopy) {
+    new Uint8Array(_VkImageCopy.memoryBuffer).set(STRUCT_RESET_CACHE[0x44], 0x0);
     return _VkImageCopy;
   }
   this.memoryBuffer = null;
@@ -10284,8 +10322,8 @@ VkImageCopy.memoryLayout = {
 };
 /** VkImageBlit **/
 function VkImageBlit(opts) {
-  if (this.constructor !== VkImageBlit) {
-    new Uint8Array(_VkImageBlit.memoryBuffer).fill(0);
+  if (new.target !== VkImageBlit) {
+    new Uint8Array(_VkImageBlit.memoryBuffer).set(STRUCT_RESET_CACHE[0x50], 0x0);
     return _VkImageBlit;
   }
   this.memoryBuffer = null;
@@ -10502,8 +10540,8 @@ VkImageBlit.memoryLayout = {
 };
 /** VkBufferImageCopy **/
 function VkBufferImageCopy(opts) {
-  if (this.constructor !== VkBufferImageCopy) {
-    new Uint8Array(_VkBufferImageCopy.memoryBuffer).fill(0);
+  if (new.target !== VkBufferImageCopy) {
+    new Uint8Array(_VkBufferImageCopy.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkBufferImageCopy;
   }
   this.memoryBuffer = null;
@@ -10716,8 +10754,8 @@ VkBufferImageCopy.memoryLayout = {
 };
 /** VkImageResolve **/
 function VkImageResolve(opts) {
-  if (this.constructor !== VkImageResolve) {
-    new Uint8Array(_VkImageResolve.memoryBuffer).fill(0);
+  if (new.target !== VkImageResolve) {
+    new Uint8Array(_VkImageResolve.memoryBuffer).set(STRUCT_RESET_CACHE[0x44], 0x0);
     return _VkImageResolve;
   }
   this.memoryBuffer = null;
@@ -10953,8 +10991,8 @@ VkImageResolve.memoryLayout = {
 };
 /** VkShaderModuleCreateInfo **/
 function VkShaderModuleCreateInfo(opts) {
-  if (this.constructor !== VkShaderModuleCreateInfo) {
-    new Uint8Array(_VkShaderModuleCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkShaderModuleCreateInfo) {
+    new Uint8Array(_VkShaderModuleCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkShaderModuleCreateInfo;
   }
   this.memoryBuffer = null;
@@ -11115,8 +11153,8 @@ VkShaderModuleCreateInfo.memoryLayout = {
 };
 /** VkDescriptorSetLayoutBinding **/
 function VkDescriptorSetLayoutBinding(opts) {
-  if (this.constructor !== VkDescriptorSetLayoutBinding) {
-    new Uint8Array(_VkDescriptorSetLayoutBinding.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetLayoutBinding) {
+    new Uint8Array(_VkDescriptorSetLayoutBinding.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorSetLayoutBinding;
   }
   this.memoryBuffer = null;
@@ -11283,8 +11321,8 @@ VkDescriptorSetLayoutBinding.memoryLayout = {
 };
 /** VkDescriptorSetLayoutCreateInfo **/
 function VkDescriptorSetLayoutCreateInfo(opts) {
-  if (this.constructor !== VkDescriptorSetLayoutCreateInfo) {
-    new Uint8Array(_VkDescriptorSetLayoutCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetLayoutCreateInfo) {
+    new Uint8Array(_VkDescriptorSetLayoutCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDescriptorSetLayoutCreateInfo;
   }
   this.memoryBuffer = null;
@@ -11475,8 +11513,8 @@ VkDescriptorSetLayoutCreateInfo.memoryLayout = {
 };
 /** VkDescriptorPoolSize **/
 function VkDescriptorPoolSize(opts) {
-  if (this.constructor !== VkDescriptorPoolSize) {
-    new Uint8Array(_VkDescriptorPoolSize.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorPoolSize) {
+    new Uint8Array(_VkDescriptorPoolSize.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkDescriptorPoolSize;
   }
   this.memoryBuffer = null;
@@ -11558,8 +11596,8 @@ VkDescriptorPoolSize.memoryLayout = {
 };
 /** VkDescriptorPoolCreateInfo **/
 function VkDescriptorPoolCreateInfo(opts) {
-  if (this.constructor !== VkDescriptorPoolCreateInfo) {
-    new Uint8Array(_VkDescriptorPoolCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorPoolCreateInfo) {
+    new Uint8Array(_VkDescriptorPoolCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDescriptorPoolCreateInfo;
   }
   this.memoryBuffer = null;
@@ -11767,8 +11805,8 @@ VkDescriptorPoolCreateInfo.memoryLayout = {
 };
 /** VkDescriptorSetAllocateInfo **/
 function VkDescriptorSetAllocateInfo(opts) {
-  if (this.constructor !== VkDescriptorSetAllocateInfo) {
-    new Uint8Array(_VkDescriptorSetAllocateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetAllocateInfo) {
+    new Uint8Array(_VkDescriptorSetAllocateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDescriptorSetAllocateInfo;
   }
   this.memoryBuffer = null;
@@ -11967,8 +12005,8 @@ VkDescriptorSetAllocateInfo.memoryLayout = {
 };
 /** VkSpecializationMapEntry **/
 function VkSpecializationMapEntry(opts) {
-  if (this.constructor !== VkSpecializationMapEntry) {
-    new Uint8Array(_VkSpecializationMapEntry.memoryBuffer).fill(0);
+  if (new.target !== VkSpecializationMapEntry) {
+    new Uint8Array(_VkSpecializationMapEntry.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkSpecializationMapEntry;
   }
   this.memoryBuffer = null;
@@ -12064,8 +12102,8 @@ VkSpecializationMapEntry.memoryLayout = {
 };
 /** VkSpecializationInfo **/
 function VkSpecializationInfo(opts) {
-  if (this.constructor !== VkSpecializationInfo) {
-    new Uint8Array(_VkSpecializationInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSpecializationInfo) {
+    new Uint8Array(_VkSpecializationInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkSpecializationInfo;
   }
   this.memoryBuffer = null;
@@ -12218,8 +12256,8 @@ VkSpecializationInfo.memoryLayout = {
 };
 /** VkPipelineShaderStageCreateInfo **/
 function VkPipelineShaderStageCreateInfo(opts) {
-  if (this.constructor !== VkPipelineShaderStageCreateInfo) {
-    new Uint8Array(_VkPipelineShaderStageCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineShaderStageCreateInfo) {
+    new Uint8Array(_VkPipelineShaderStageCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPipelineShaderStageCreateInfo;
   }
   this.memoryBuffer = null;
@@ -12417,8 +12455,8 @@ VkPipelineShaderStageCreateInfo.memoryLayout = {
 };
 /** VkComputePipelineCreateInfo **/
 function VkComputePipelineCreateInfo(opts) {
-  if (this.constructor !== VkComputePipelineCreateInfo) {
-    new Uint8Array(_VkComputePipelineCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkComputePipelineCreateInfo) {
+    new Uint8Array(_VkComputePipelineCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkComputePipelineCreateInfo;
   }
   this.memoryBuffer = null;
@@ -12645,8 +12683,8 @@ VkComputePipelineCreateInfo.memoryLayout = {
 };
 /** VkVertexInputBindingDescription **/
 function VkVertexInputBindingDescription(opts) {
-  if (this.constructor !== VkVertexInputBindingDescription) {
-    new Uint8Array(_VkVertexInputBindingDescription.memoryBuffer).fill(0);
+  if (new.target !== VkVertexInputBindingDescription) {
+    new Uint8Array(_VkVertexInputBindingDescription.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkVertexInputBindingDescription;
   }
   this.memoryBuffer = null;
@@ -12745,8 +12783,8 @@ VkVertexInputBindingDescription.memoryLayout = {
 };
 /** VkVertexInputAttributeDescription **/
 function VkVertexInputAttributeDescription(opts) {
-  if (this.constructor !== VkVertexInputAttributeDescription) {
-    new Uint8Array(_VkVertexInputAttributeDescription.memoryBuffer).fill(0);
+  if (new.target !== VkVertexInputAttributeDescription) {
+    new Uint8Array(_VkVertexInputAttributeDescription.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkVertexInputAttributeDescription;
   }
   this.memoryBuffer = null;
@@ -12862,8 +12900,8 @@ VkVertexInputAttributeDescription.memoryLayout = {
 };
 /** VkPipelineVertexInputStateCreateInfo **/
 function VkPipelineVertexInputStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineVertexInputStateCreateInfo) {
-    new Uint8Array(_VkPipelineVertexInputStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineVertexInputStateCreateInfo) {
+    new Uint8Array(_VkPipelineVertexInputStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPipelineVertexInputStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -13122,8 +13160,8 @@ VkPipelineVertexInputStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineInputAssemblyStateCreateInfo **/
 function VkPipelineInputAssemblyStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineInputAssemblyStateCreateInfo) {
-    new Uint8Array(_VkPipelineInputAssemblyStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineInputAssemblyStateCreateInfo) {
+    new Uint8Array(_VkPipelineInputAssemblyStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineInputAssemblyStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -13262,8 +13300,8 @@ VkPipelineInputAssemblyStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineTessellationStateCreateInfo **/
 function VkPipelineTessellationStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineTessellationStateCreateInfo) {
-    new Uint8Array(_VkPipelineTessellationStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineTessellationStateCreateInfo) {
+    new Uint8Array(_VkPipelineTessellationStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineTessellationStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -13403,8 +13441,8 @@ VkPipelineTessellationStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineViewportStateCreateInfo **/
 function VkPipelineViewportStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineViewportStateCreateInfo) {
-    new Uint8Array(_VkPipelineViewportStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportStateCreateInfo) {
+    new Uint8Array(_VkPipelineViewportStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPipelineViewportStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -13667,8 +13705,8 @@ VkPipelineViewportStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineRasterizationStateCreateInfo **/
 function VkPipelineRasterizationStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineRasterizationStateCreateInfo) {
-    new Uint8Array(_VkPipelineRasterizationStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRasterizationStateCreateInfo) {
+    new Uint8Array(_VkPipelineRasterizationStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPipelineRasterizationStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -13963,8 +14001,8 @@ VkPipelineRasterizationStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineMultisampleStateCreateInfo **/
 function VkPipelineMultisampleStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineMultisampleStateCreateInfo) {
-    new Uint8Array(_VkPipelineMultisampleStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineMultisampleStateCreateInfo) {
+    new Uint8Array(_VkPipelineMultisampleStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPipelineMultisampleStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -14191,8 +14229,8 @@ VkPipelineMultisampleStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineColorBlendAttachmentState **/
 function VkPipelineColorBlendAttachmentState(opts) {
-  if (this.constructor !== VkPipelineColorBlendAttachmentState) {
-    new Uint8Array(_VkPipelineColorBlendAttachmentState.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineColorBlendAttachmentState) {
+    new Uint8Array(_VkPipelineColorBlendAttachmentState.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineColorBlendAttachmentState;
   }
   this.memoryBuffer = null;
@@ -14388,8 +14426,8 @@ VkPipelineColorBlendAttachmentState.memoryLayout = {
 };
 /** VkPipelineColorBlendStateCreateInfo **/
 function VkPipelineColorBlendStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineColorBlendStateCreateInfo) {
-    new Uint8Array(_VkPipelineColorBlendStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineColorBlendStateCreateInfo) {
+    new Uint8Array(_VkPipelineColorBlendStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkPipelineColorBlendStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -14662,8 +14700,8 @@ VkPipelineColorBlendStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineDynamicStateCreateInfo **/
 function VkPipelineDynamicStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineDynamicStateCreateInfo) {
-    new Uint8Array(_VkPipelineDynamicStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineDynamicStateCreateInfo) {
+    new Uint8Array(_VkPipelineDynamicStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineDynamicStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -14808,8 +14846,8 @@ VkPipelineDynamicStateCreateInfo.memoryLayout = {
 };
 /** VkStencilOpState **/
 function VkStencilOpState(opts) {
-  if (this.constructor !== VkStencilOpState) {
-    new Uint8Array(_VkStencilOpState.memoryBuffer).fill(0);
+  if (new.target !== VkStencilOpState) {
+    new Uint8Array(_VkStencilOpState.memoryBuffer).set(STRUCT_RESET_CACHE[0x1C], 0x0);
     return _VkStencilOpState;
   }
   this.memoryBuffer = null;
@@ -14985,8 +15023,8 @@ VkStencilOpState.memoryLayout = {
 };
 /** VkPipelineDepthStencilStateCreateInfo **/
 function VkPipelineDepthStencilStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineDepthStencilStateCreateInfo) {
-    new Uint8Array(_VkPipelineDepthStencilStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineDepthStencilStateCreateInfo) {
+    new Uint8Array(_VkPipelineDepthStencilStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x68], 0x0);
     return _VkPipelineDepthStencilStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -15281,8 +15319,8 @@ VkPipelineDepthStencilStateCreateInfo.memoryLayout = {
 };
 /** VkGraphicsPipelineCreateInfo **/
 function VkGraphicsPipelineCreateInfo(opts) {
-  if (this.constructor !== VkGraphicsPipelineCreateInfo) {
-    new Uint8Array(_VkGraphicsPipelineCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkGraphicsPipelineCreateInfo) {
+    new Uint8Array(_VkGraphicsPipelineCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x90], 0x0);
     return _VkGraphicsPipelineCreateInfo;
   }
   this.memoryBuffer = null;
@@ -15809,8 +15847,8 @@ VkGraphicsPipelineCreateInfo.memoryLayout = {
 };
 /** VkPipelineCacheCreateInfo **/
 function VkPipelineCacheCreateInfo(opts) {
-  if (this.constructor !== VkPipelineCacheCreateInfo) {
-    new Uint8Array(_VkPipelineCacheCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCacheCreateInfo) {
+    new Uint8Array(_VkPipelineCacheCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPipelineCacheCreateInfo;
   }
   this.memoryBuffer = null;
@@ -15953,8 +15991,8 @@ VkPipelineCacheCreateInfo.memoryLayout = {
 };
 /** VkPushConstantRange **/
 function VkPushConstantRange(opts) {
-  if (this.constructor !== VkPushConstantRange) {
-    new Uint8Array(_VkPushConstantRange.memoryBuffer).fill(0);
+  if (new.target !== VkPushConstantRange) {
+    new Uint8Array(_VkPushConstantRange.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkPushConstantRange;
   }
   this.memoryBuffer = null;
@@ -16050,8 +16088,8 @@ VkPushConstantRange.memoryLayout = {
 };
 /** VkPipelineLayoutCreateInfo **/
 function VkPipelineLayoutCreateInfo(opts) {
-  if (this.constructor !== VkPipelineLayoutCreateInfo) {
-    new Uint8Array(_VkPipelineLayoutCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineLayoutCreateInfo) {
+    new Uint8Array(_VkPipelineLayoutCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPipelineLayoutCreateInfo;
   }
   this.memoryBuffer = null;
@@ -16292,8 +16330,8 @@ VkPipelineLayoutCreateInfo.memoryLayout = {
 };
 /** VkSamplerCreateInfo **/
 function VkSamplerCreateInfo(opts) {
-  if (this.constructor !== VkSamplerCreateInfo) {
-    new Uint8Array(_VkSamplerCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerCreateInfo) {
+    new Uint8Array(_VkSamplerCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x50], 0x0);
     return _VkSamplerCreateInfo;
   }
   this.memoryBuffer = null;
@@ -16689,8 +16727,8 @@ VkSamplerCreateInfo.memoryLayout = {
 };
 /** VkCommandPoolCreateInfo **/
 function VkCommandPoolCreateInfo(opts) {
-  if (this.constructor !== VkCommandPoolCreateInfo) {
-    new Uint8Array(_VkCommandPoolCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkCommandPoolCreateInfo) {
+    new Uint8Array(_VkCommandPoolCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkCommandPoolCreateInfo;
   }
   this.memoryBuffer = null;
@@ -16812,8 +16850,8 @@ VkCommandPoolCreateInfo.memoryLayout = {
 };
 /** VkCommandBufferAllocateInfo **/
 function VkCommandBufferAllocateInfo(opts) {
-  if (this.constructor !== VkCommandBufferAllocateInfo) {
-    new Uint8Array(_VkCommandBufferAllocateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkCommandBufferAllocateInfo) {
+    new Uint8Array(_VkCommandBufferAllocateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkCommandBufferAllocateInfo;
   }
   this.memoryBuffer = null;
@@ -16963,8 +17001,8 @@ VkCommandBufferAllocateInfo.memoryLayout = {
 };
 /** VkCommandBufferInheritanceInfo **/
 function VkCommandBufferInheritanceInfo(opts) {
-  if (this.constructor !== VkCommandBufferInheritanceInfo) {
-    new Uint8Array(_VkCommandBufferInheritanceInfo.memoryBuffer).fill(0);
+  if (new.target !== VkCommandBufferInheritanceInfo) {
+    new Uint8Array(_VkCommandBufferInheritanceInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkCommandBufferInheritanceInfo;
   }
   this.memoryBuffer = null;
@@ -17185,8 +17223,8 @@ VkCommandBufferInheritanceInfo.memoryLayout = {
 };
 /** VkCommandBufferBeginInfo **/
 function VkCommandBufferBeginInfo(opts) {
-  if (this.constructor !== VkCommandBufferBeginInfo) {
-    new Uint8Array(_VkCommandBufferBeginInfo.memoryBuffer).fill(0);
+  if (new.target !== VkCommandBufferBeginInfo) {
+    new Uint8Array(_VkCommandBufferBeginInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkCommandBufferBeginInfo;
   }
   this.memoryBuffer = null;
@@ -17332,8 +17370,8 @@ VkCommandBufferBeginInfo.memoryLayout = {
 };
 /** VkRenderPassBeginInfo **/
 function VkRenderPassBeginInfo(opts) {
-  if (this.constructor !== VkRenderPassBeginInfo) {
-    new Uint8Array(_VkRenderPassBeginInfo.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassBeginInfo) {
+    new Uint8Array(_VkRenderPassBeginInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkRenderPassBeginInfo;
   }
   this.memoryBuffer = null;
@@ -17598,8 +17636,8 @@ VkRenderPassBeginInfo.memoryLayout = {
 };
 /** VkClearDepthStencilValue **/
 function VkClearDepthStencilValue(opts) {
-  if (this.constructor !== VkClearDepthStencilValue) {
-    new Uint8Array(_VkClearDepthStencilValue.memoryBuffer).fill(0);
+  if (new.target !== VkClearDepthStencilValue) {
+    new Uint8Array(_VkClearDepthStencilValue.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkClearDepthStencilValue;
   }
   this.memoryBuffer = null;
@@ -17678,8 +17716,8 @@ VkClearDepthStencilValue.memoryLayout = {
 };
 /** VkClearAttachment **/
 function VkClearAttachment(opts) {
-  if (this.constructor !== VkClearAttachment) {
-    new Uint8Array(_VkClearAttachment.memoryBuffer).fill(0);
+  if (new.target !== VkClearAttachment) {
+    new Uint8Array(_VkClearAttachment.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkClearAttachment;
   }
   this.memoryBuffer = null;
@@ -17797,8 +17835,8 @@ VkClearAttachment.memoryLayout = {
 };
 /** VkAttachmentDescription **/
 function VkAttachmentDescription(opts) {
-  if (this.constructor !== VkAttachmentDescription) {
-    new Uint8Array(_VkAttachmentDescription.memoryBuffer).fill(0);
+  if (new.target !== VkAttachmentDescription) {
+    new Uint8Array(_VkAttachmentDescription.memoryBuffer).set(STRUCT_RESET_CACHE[0x24], 0x0);
     return _VkAttachmentDescription;
   }
   this.memoryBuffer = null;
@@ -18015,8 +18053,8 @@ VkAttachmentDescription.memoryLayout = {
 };
 /** VkAttachmentReference **/
 function VkAttachmentReference(opts) {
-  if (this.constructor !== VkAttachmentReference) {
-    new Uint8Array(_VkAttachmentReference.memoryBuffer).fill(0);
+  if (new.target !== VkAttachmentReference) {
+    new Uint8Array(_VkAttachmentReference.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkAttachmentReference;
   }
   this.memoryBuffer = null;
@@ -18098,8 +18136,8 @@ VkAttachmentReference.memoryLayout = {
 };
 /** VkSubpassDescription **/
 function VkSubpassDescription(opts) {
-  if (this.constructor !== VkSubpassDescription) {
-    new Uint8Array(_VkSubpassDescription.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassDescription) {
+    new Uint8Array(_VkSubpassDescription.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkSubpassDescription;
   }
   this.memoryBuffer = null;
@@ -18435,8 +18473,8 @@ VkSubpassDescription.memoryLayout = {
 };
 /** VkSubpassDependency **/
 function VkSubpassDependency(opts) {
-  if (this.constructor !== VkSubpassDependency) {
-    new Uint8Array(_VkSubpassDependency.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassDependency) {
+    new Uint8Array(_VkSubpassDependency.memoryBuffer).set(STRUCT_RESET_CACHE[0x1C], 0x0);
     return _VkSubpassDependency;
   }
   this.memoryBuffer = null;
@@ -18600,8 +18638,8 @@ VkSubpassDependency.memoryLayout = {
 };
 /** VkRenderPassCreateInfo **/
 function VkRenderPassCreateInfo(opts) {
-  if (this.constructor !== VkRenderPassCreateInfo) {
-    new Uint8Array(_VkRenderPassCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassCreateInfo) {
+    new Uint8Array(_VkRenderPassCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkRenderPassCreateInfo;
   }
   this.memoryBuffer = null;
@@ -18930,8 +18968,8 @@ VkRenderPassCreateInfo.memoryLayout = {
 };
 /** VkEventCreateInfo **/
 function VkEventCreateInfo(opts) {
-  if (this.constructor !== VkEventCreateInfo) {
-    new Uint8Array(_VkEventCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkEventCreateInfo) {
+    new Uint8Array(_VkEventCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkEventCreateInfo;
   }
   this.memoryBuffer = null;
@@ -19034,8 +19072,8 @@ VkEventCreateInfo.memoryLayout = {
 };
 /** VkFenceCreateInfo **/
 function VkFenceCreateInfo(opts) {
-  if (this.constructor !== VkFenceCreateInfo) {
-    new Uint8Array(_VkFenceCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkFenceCreateInfo) {
+    new Uint8Array(_VkFenceCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkFenceCreateInfo;
   }
   this.memoryBuffer = null;
@@ -19157,8 +19195,8 @@ VkFenceCreateInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceFeatures **/
 function VkPhysicalDeviceFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceFeatures) {
-    new Uint8Array(_VkPhysicalDeviceFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFeatures) {
+    new Uint8Array(_VkPhysicalDeviceFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0xDC], 0x0);
     return _VkPhysicalDeviceFeatures;
   }
   this.memoryBuffer = null;
@@ -19971,8 +20009,8 @@ VkPhysicalDeviceFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceSparseProperties **/
 function VkPhysicalDeviceSparseProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceSparseProperties) {
-    new Uint8Array(_VkPhysicalDeviceSparseProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSparseProperties) {
+    new Uint8Array(_VkPhysicalDeviceSparseProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x14], 0x0);
     return _VkPhysicalDeviceSparseProperties;
   }
   this.memoryBuffer = null;
@@ -20069,8 +20107,8 @@ VkPhysicalDeviceSparseProperties.memoryLayout = {
 };
 /** VkPhysicalDeviceLimits **/
 function VkPhysicalDeviceLimits(opts) {
-  if (this.constructor !== VkPhysicalDeviceLimits) {
-    new Uint8Array(_VkPhysicalDeviceLimits.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceLimits) {
+    new Uint8Array(_VkPhysicalDeviceLimits.memoryBuffer).set(STRUCT_RESET_CACHE[0x1F8], 0x0);
     return _VkPhysicalDeviceLimits;
   }
   this.memoryBuffer = null;
@@ -21217,8 +21255,8 @@ VkPhysicalDeviceLimits.memoryLayout = {
 };
 /** VkSemaphoreCreateInfo **/
 function VkSemaphoreCreateInfo(opts) {
-  if (this.constructor !== VkSemaphoreCreateInfo) {
-    new Uint8Array(_VkSemaphoreCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSemaphoreCreateInfo) {
+    new Uint8Array(_VkSemaphoreCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSemaphoreCreateInfo;
   }
   this.memoryBuffer = null;
@@ -21340,8 +21378,8 @@ VkSemaphoreCreateInfo.memoryLayout = {
 };
 /** VkQueryPoolCreateInfo **/
 function VkQueryPoolCreateInfo(opts) {
-  if (this.constructor !== VkQueryPoolCreateInfo) {
-    new Uint8Array(_VkQueryPoolCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkQueryPoolCreateInfo) {
+    new Uint8Array(_VkQueryPoolCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkQueryPoolCreateInfo;
   }
   this.memoryBuffer = null;
@@ -21500,8 +21538,8 @@ VkQueryPoolCreateInfo.memoryLayout = {
 };
 /** VkFramebufferCreateInfo **/
 function VkFramebufferCreateInfo(opts) {
-  if (this.constructor !== VkFramebufferCreateInfo) {
-    new Uint8Array(_VkFramebufferCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkFramebufferCreateInfo) {
+    new Uint8Array(_VkFramebufferCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkFramebufferCreateInfo;
   }
   this.memoryBuffer = null;
@@ -21768,8 +21806,8 @@ VkFramebufferCreateInfo.memoryLayout = {
 };
 /** VkDrawIndirectCommand **/
 function VkDrawIndirectCommand(opts) {
-  if (this.constructor !== VkDrawIndirectCommand) {
-    new Uint8Array(_VkDrawIndirectCommand.memoryBuffer).fill(0);
+  if (new.target !== VkDrawIndirectCommand) {
+    new Uint8Array(_VkDrawIndirectCommand.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkDrawIndirectCommand;
   }
   this.memoryBuffer = null;
@@ -21880,8 +21918,8 @@ VkDrawIndirectCommand.memoryLayout = {
 };
 /** VkDrawIndexedIndirectCommand **/
 function VkDrawIndexedIndirectCommand(opts) {
-  if (this.constructor !== VkDrawIndexedIndirectCommand) {
-    new Uint8Array(_VkDrawIndexedIndirectCommand.memoryBuffer).fill(0);
+  if (new.target !== VkDrawIndexedIndirectCommand) {
+    new Uint8Array(_VkDrawIndexedIndirectCommand.memoryBuffer).set(STRUCT_RESET_CACHE[0x14], 0x0);
     return _VkDrawIndexedIndirectCommand;
   }
   this.memoryBuffer = null;
@@ -22011,8 +22049,8 @@ VkDrawIndexedIndirectCommand.memoryLayout = {
 };
 /** VkDispatchIndirectCommand **/
 function VkDispatchIndirectCommand(opts) {
-  if (this.constructor !== VkDispatchIndirectCommand) {
-    new Uint8Array(_VkDispatchIndirectCommand.memoryBuffer).fill(0);
+  if (new.target !== VkDispatchIndirectCommand) {
+    new Uint8Array(_VkDispatchIndirectCommand.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkDispatchIndirectCommand;
   }
   this.memoryBuffer = null;
@@ -22106,8 +22144,8 @@ VkDispatchIndirectCommand.memoryLayout = {
 };
 /** VkSubmitInfo **/
 function VkSubmitInfo(opts) {
-  if (this.constructor !== VkSubmitInfo) {
-    new Uint8Array(_VkSubmitInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSubmitInfo) {
+    new Uint8Array(_VkSubmitInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkSubmitInfo;
   }
   this.memoryBuffer = null;
@@ -22444,8 +22482,8 @@ VkSubmitInfo.memoryLayout = {
 };
 /** VkDisplayPropertiesKHR **/
 function VkDisplayPropertiesKHR(opts) {
-  if (this.constructor !== VkDisplayPropertiesKHR) {
-    new Uint8Array(_VkDisplayPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPropertiesKHR) {
+    new Uint8Array(_VkDisplayPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkDisplayPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -22573,8 +22611,8 @@ VkDisplayPropertiesKHR.memoryLayout = {
 };
 /** VkDisplayPlanePropertiesKHR **/
 function VkDisplayPlanePropertiesKHR(opts) {
-  if (this.constructor !== VkDisplayPlanePropertiesKHR) {
-    new Uint8Array(_VkDisplayPlanePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPlanePropertiesKHR) {
+    new Uint8Array(_VkDisplayPlanePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkDisplayPlanePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -22641,8 +22679,8 @@ VkDisplayPlanePropertiesKHR.memoryLayout = {
 };
 /** VkDisplayModeParametersKHR **/
 function VkDisplayModeParametersKHR(opts) {
-  if (this.constructor !== VkDisplayModeParametersKHR) {
-    new Uint8Array(_VkDisplayModeParametersKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayModeParametersKHR) {
+    new Uint8Array(_VkDisplayModeParametersKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkDisplayModeParametersKHR;
   }
   this.memoryBuffer = null;
@@ -22741,8 +22779,8 @@ VkDisplayModeParametersKHR.memoryLayout = {
 };
 /** VkDisplayModePropertiesKHR **/
 function VkDisplayModePropertiesKHR(opts) {
-  if (this.constructor !== VkDisplayModePropertiesKHR) {
-    new Uint8Array(_VkDisplayModePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayModePropertiesKHR) {
+    new Uint8Array(_VkDisplayModePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDisplayModePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -22809,8 +22847,8 @@ VkDisplayModePropertiesKHR.memoryLayout = {
 };
 /** VkDisplayModeCreateInfoKHR **/
 function VkDisplayModeCreateInfoKHR(opts) {
-  if (this.constructor !== VkDisplayModeCreateInfoKHR) {
-    new Uint8Array(_VkDisplayModeCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayModeCreateInfoKHR) {
+    new Uint8Array(_VkDisplayModeCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDisplayModeCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -22952,8 +22990,8 @@ VkDisplayModeCreateInfoKHR.memoryLayout = {
 };
 /** VkDisplayPlaneCapabilitiesKHR **/
 function VkDisplayPlaneCapabilitiesKHR(opts) {
-  if (this.constructor !== VkDisplayPlaneCapabilitiesKHR) {
-    new Uint8Array(_VkDisplayPlaneCapabilitiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPlaneCapabilitiesKHR) {
+    new Uint8Array(_VkDisplayPlaneCapabilitiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x44], 0x0);
     return _VkDisplayPlaneCapabilitiesKHR;
   }
   this.memoryBuffer = null;
@@ -23106,8 +23144,8 @@ VkDisplayPlaneCapabilitiesKHR.memoryLayout = {
 };
 /** VkDisplaySurfaceCreateInfoKHR **/
 function VkDisplaySurfaceCreateInfoKHR(opts) {
-  if (this.constructor !== VkDisplaySurfaceCreateInfoKHR) {
-    new Uint8Array(_VkDisplaySurfaceCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplaySurfaceCreateInfoKHR) {
+    new Uint8Array(_VkDisplaySurfaceCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkDisplaySurfaceCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -23363,8 +23401,8 @@ VkDisplaySurfaceCreateInfoKHR.memoryLayout = {
 };
 /** VkDisplayPresentInfoKHR **/
 function VkDisplayPresentInfoKHR(opts) {
-  if (this.constructor !== VkDisplayPresentInfoKHR) {
-    new Uint8Array(_VkDisplayPresentInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPresentInfoKHR) {
+    new Uint8Array(_VkDisplayPresentInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkDisplayPresentInfoKHR;
   }
   this.memoryBuffer = null;
@@ -23544,8 +23582,8 @@ VkDisplayPresentInfoKHR.memoryLayout = {
 };
 /** VkSurfaceCapabilitiesKHR **/
 function VkSurfaceCapabilitiesKHR(opts) {
-  if (this.constructor !== VkSurfaceCapabilitiesKHR) {
-    new Uint8Array(_VkSurfaceCapabilitiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceCapabilitiesKHR) {
+    new Uint8Array(_VkSurfaceCapabilitiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x34], 0x0);
     return _VkSurfaceCapabilitiesKHR;
   }
   this.memoryBuffer = null;
@@ -23700,8 +23738,8 @@ VkSurfaceCapabilitiesKHR.memoryLayout = {
 };
 /** VkWin32SurfaceCreateInfoKHR **/
 function VkWin32SurfaceCreateInfoKHR(opts) {
-  if (this.constructor !== VkWin32SurfaceCreateInfoKHR) {
-    new Uint8Array(_VkWin32SurfaceCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkWin32SurfaceCreateInfoKHR) {
+    new Uint8Array(_VkWin32SurfaceCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkWin32SurfaceCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -23838,8 +23876,8 @@ VkWin32SurfaceCreateInfoKHR.memoryLayout = {
 };
 /** VkSurfaceFormatKHR **/
 function VkSurfaceFormatKHR(opts) {
-  if (this.constructor !== VkSurfaceFormatKHR) {
-    new Uint8Array(_VkSurfaceFormatKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceFormatKHR) {
+    new Uint8Array(_VkSurfaceFormatKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkSurfaceFormatKHR;
   }
   this.memoryBuffer = null;
@@ -23906,8 +23944,8 @@ VkSurfaceFormatKHR.memoryLayout = {
 };
 /** VkSwapchainCreateInfoKHR **/
 function VkSwapchainCreateInfoKHR(opts) {
-  if (this.constructor !== VkSwapchainCreateInfoKHR) {
-    new Uint8Array(_VkSwapchainCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSwapchainCreateInfoKHR) {
+    new Uint8Array(_VkSwapchainCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x68], 0x0);
     return _VkSwapchainCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -24343,8 +24381,8 @@ VkSwapchainCreateInfoKHR.memoryLayout = {
 };
 /** VkPresentInfoKHR **/
 function VkPresentInfoKHR(opts) {
-  if (this.constructor !== VkPresentInfoKHR) {
-    new Uint8Array(_VkPresentInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPresentInfoKHR) {
+    new Uint8Array(_VkPresentInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPresentInfoKHR;
   }
   this.memoryBuffer = null;
@@ -24636,8 +24674,8 @@ VkPresentInfoKHR.memoryLayout = {
 };
 /** VkDebugReportCallbackCreateInfoEXT **/
 function VkDebugReportCallbackCreateInfoEXT(opts) {
-  if (this.constructor !== VkDebugReportCallbackCreateInfoEXT) {
-    new Uint8Array(_VkDebugReportCallbackCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugReportCallbackCreateInfoEXT) {
+    new Uint8Array(_VkDebugReportCallbackCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDebugReportCallbackCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -24784,8 +24822,8 @@ VkDebugReportCallbackCreateInfoEXT.memoryLayout = {
 };
 /** VkValidationFlagsEXT **/
 function VkValidationFlagsEXT(opts) {
-  if (this.constructor !== VkValidationFlagsEXT) {
-    new Uint8Array(_VkValidationFlagsEXT.memoryBuffer).fill(0);
+  if (new.target !== VkValidationFlagsEXT) {
+    new Uint8Array(_VkValidationFlagsEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkValidationFlagsEXT;
   }
   this.memoryBuffer = null;
@@ -24913,8 +24951,8 @@ VkValidationFlagsEXT.memoryLayout = {
 };
 /** VkValidationFeaturesEXT **/
 function VkValidationFeaturesEXT(opts) {
-  if (this.constructor !== VkValidationFeaturesEXT) {
-    new Uint8Array(_VkValidationFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkValidationFeaturesEXT) {
+    new Uint8Array(_VkValidationFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkValidationFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -25082,8 +25120,8 @@ VkValidationFeaturesEXT.memoryLayout = {
 };
 /** VkPipelineRasterizationStateRasterizationOrderAMD **/
 function VkPipelineRasterizationStateRasterizationOrderAMD(opts) {
-  if (this.constructor !== VkPipelineRasterizationStateRasterizationOrderAMD) {
-    new Uint8Array(_VkPipelineRasterizationStateRasterizationOrderAMD.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRasterizationStateRasterizationOrderAMD) {
+    new Uint8Array(_VkPipelineRasterizationStateRasterizationOrderAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineRasterizationStateRasterizationOrderAMD;
   }
   this.memoryBuffer = null;
@@ -25189,8 +25227,8 @@ VkPipelineRasterizationStateRasterizationOrderAMD.memoryLayout = {
 };
 /** VkDebugMarkerObjectNameInfoEXT **/
 function VkDebugMarkerObjectNameInfoEXT(opts) {
-  if (this.constructor !== VkDebugMarkerObjectNameInfoEXT) {
-    new Uint8Array(_VkDebugMarkerObjectNameInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugMarkerObjectNameInfoEXT) {
+    new Uint8Array(_VkDebugMarkerObjectNameInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDebugMarkerObjectNameInfoEXT;
   }
   this.memoryBuffer = null;
@@ -25343,8 +25381,8 @@ VkDebugMarkerObjectNameInfoEXT.memoryLayout = {
 };
 /** VkDebugMarkerObjectTagInfoEXT **/
 function VkDebugMarkerObjectTagInfoEXT(opts) {
-  if (this.constructor !== VkDebugMarkerObjectTagInfoEXT) {
-    new Uint8Array(_VkDebugMarkerObjectTagInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugMarkerObjectTagInfoEXT) {
+    new Uint8Array(_VkDebugMarkerObjectTagInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkDebugMarkerObjectTagInfoEXT;
   }
   this.memoryBuffer = null;
@@ -25526,8 +25564,8 @@ VkDebugMarkerObjectTagInfoEXT.memoryLayout = {
 };
 /** VkDebugMarkerMarkerInfoEXT **/
 function VkDebugMarkerMarkerInfoEXT(opts) {
-  if (this.constructor !== VkDebugMarkerMarkerInfoEXT) {
-    new Uint8Array(_VkDebugMarkerMarkerInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugMarkerMarkerInfoEXT) {
+    new Uint8Array(_VkDebugMarkerMarkerInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDebugMarkerMarkerInfoEXT;
   }
   this.memoryBuffer = null;
@@ -25689,8 +25727,8 @@ VkDebugMarkerMarkerInfoEXT.memoryLayout = {
 };
 /** VkDedicatedAllocationImageCreateInfoNV **/
 function VkDedicatedAllocationImageCreateInfoNV(opts) {
-  if (this.constructor !== VkDedicatedAllocationImageCreateInfoNV) {
-    new Uint8Array(_VkDedicatedAllocationImageCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkDedicatedAllocationImageCreateInfoNV) {
+    new Uint8Array(_VkDedicatedAllocationImageCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDedicatedAllocationImageCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -25792,8 +25830,8 @@ VkDedicatedAllocationImageCreateInfoNV.memoryLayout = {
 };
 /** VkDedicatedAllocationBufferCreateInfoNV **/
 function VkDedicatedAllocationBufferCreateInfoNV(opts) {
-  if (this.constructor !== VkDedicatedAllocationBufferCreateInfoNV) {
-    new Uint8Array(_VkDedicatedAllocationBufferCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkDedicatedAllocationBufferCreateInfoNV) {
+    new Uint8Array(_VkDedicatedAllocationBufferCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDedicatedAllocationBufferCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -25895,8 +25933,8 @@ VkDedicatedAllocationBufferCreateInfoNV.memoryLayout = {
 };
 /** VkDedicatedAllocationMemoryAllocateInfoNV **/
 function VkDedicatedAllocationMemoryAllocateInfoNV(opts) {
-  if (this.constructor !== VkDedicatedAllocationMemoryAllocateInfoNV) {
-    new Uint8Array(_VkDedicatedAllocationMemoryAllocateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkDedicatedAllocationMemoryAllocateInfoNV) {
+    new Uint8Array(_VkDedicatedAllocationMemoryAllocateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDedicatedAllocationMemoryAllocateInfoNV;
   }
   this.memoryBuffer = null;
@@ -26032,8 +26070,8 @@ VkDedicatedAllocationMemoryAllocateInfoNV.memoryLayout = {
 };
 /** VkExternalImageFormatPropertiesNV **/
 function VkExternalImageFormatPropertiesNV(opts) {
-  if (this.constructor !== VkExternalImageFormatPropertiesNV) {
-    new Uint8Array(_VkExternalImageFormatPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkExternalImageFormatPropertiesNV) {
+    new Uint8Array(_VkExternalImageFormatPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkExternalImageFormatPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -26122,8 +26160,8 @@ VkExternalImageFormatPropertiesNV.memoryLayout = {
 };
 /** VkExternalMemoryImageCreateInfoNV **/
 function VkExternalMemoryImageCreateInfoNV(opts) {
-  if (this.constructor !== VkExternalMemoryImageCreateInfoNV) {
-    new Uint8Array(_VkExternalMemoryImageCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryImageCreateInfoNV) {
+    new Uint8Array(_VkExternalMemoryImageCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExternalMemoryImageCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -26226,8 +26264,8 @@ VkExternalMemoryImageCreateInfoNV.memoryLayout = {
 };
 /** VkExportMemoryAllocateInfoNV **/
 function VkExportMemoryAllocateInfoNV(opts) {
-  if (this.constructor !== VkExportMemoryAllocateInfoNV) {
-    new Uint8Array(_VkExportMemoryAllocateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkExportMemoryAllocateInfoNV) {
+    new Uint8Array(_VkExportMemoryAllocateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportMemoryAllocateInfoNV;
   }
   this.memoryBuffer = null;
@@ -26330,8 +26368,8 @@ VkExportMemoryAllocateInfoNV.memoryLayout = {
 };
 /** VkImportMemoryWin32HandleInfoNV **/
 function VkImportMemoryWin32HandleInfoNV(opts) {
-  if (this.constructor !== VkImportMemoryWin32HandleInfoNV) {
-    new Uint8Array(_VkImportMemoryWin32HandleInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkImportMemoryWin32HandleInfoNV) {
+    new Uint8Array(_VkImportMemoryWin32HandleInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkImportMemoryWin32HandleInfoNV;
   }
   this.memoryBuffer = null;
@@ -26451,8 +26489,8 @@ VkImportMemoryWin32HandleInfoNV.memoryLayout = {
 };
 /** VkExportMemoryWin32HandleInfoNV **/
 function VkExportMemoryWin32HandleInfoNV(opts) {
-  if (this.constructor !== VkExportMemoryWin32HandleInfoNV) {
-    new Uint8Array(_VkExportMemoryWin32HandleInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkExportMemoryWin32HandleInfoNV) {
+    new Uint8Array(_VkExportMemoryWin32HandleInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExportMemoryWin32HandleInfoNV;
   }
   this.memoryBuffer = null;
@@ -26538,8 +26576,8 @@ VkExportMemoryWin32HandleInfoNV.memoryLayout = {
 };
 /** VkWin32KeyedMutexAcquireReleaseInfoNV **/
 function VkWin32KeyedMutexAcquireReleaseInfoNV(opts) {
-  if (this.constructor !== VkWin32KeyedMutexAcquireReleaseInfoNV) {
-    new Uint8Array(_VkWin32KeyedMutexAcquireReleaseInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkWin32KeyedMutexAcquireReleaseInfoNV) {
+    new Uint8Array(_VkWin32KeyedMutexAcquireReleaseInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkWin32KeyedMutexAcquireReleaseInfoNV;
   }
   this.memoryBuffer = null;
@@ -26832,8 +26870,8 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.memoryLayout = {
 };
 /** VkDeviceGeneratedCommandsFeaturesNVX **/
 function VkDeviceGeneratedCommandsFeaturesNVX(opts) {
-  if (this.constructor !== VkDeviceGeneratedCommandsFeaturesNVX) {
-    new Uint8Array(_VkDeviceGeneratedCommandsFeaturesNVX.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGeneratedCommandsFeaturesNVX) {
+    new Uint8Array(_VkDeviceGeneratedCommandsFeaturesNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGeneratedCommandsFeaturesNVX;
   }
   this.memoryBuffer = null;
@@ -26935,8 +26973,8 @@ VkDeviceGeneratedCommandsFeaturesNVX.memoryLayout = {
 };
 /** VkDeviceGeneratedCommandsLimitsNVX **/
 function VkDeviceGeneratedCommandsLimitsNVX(opts) {
-  if (this.constructor !== VkDeviceGeneratedCommandsLimitsNVX) {
-    new Uint8Array(_VkDeviceGeneratedCommandsLimitsNVX.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGeneratedCommandsLimitsNVX) {
+    new Uint8Array(_VkDeviceGeneratedCommandsLimitsNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDeviceGeneratedCommandsLimitsNVX;
   }
   this.memoryBuffer = null;
@@ -27109,8 +27147,8 @@ VkDeviceGeneratedCommandsLimitsNVX.memoryLayout = {
 };
 /** VkIndirectCommandsTokenNVX **/
 function VkIndirectCommandsTokenNVX(opts) {
-  if (this.constructor !== VkIndirectCommandsTokenNVX) {
-    new Uint8Array(_VkIndirectCommandsTokenNVX.memoryBuffer).fill(0);
+  if (new.target !== VkIndirectCommandsTokenNVX) {
+    new Uint8Array(_VkIndirectCommandsTokenNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkIndirectCommandsTokenNVX;
   }
   this.memoryBuffer = null;
@@ -27219,8 +27257,8 @@ VkIndirectCommandsTokenNVX.memoryLayout = {
 };
 /** VkIndirectCommandsLayoutTokenNVX **/
 function VkIndirectCommandsLayoutTokenNVX(opts) {
-  if (this.constructor !== VkIndirectCommandsLayoutTokenNVX) {
-    new Uint8Array(_VkIndirectCommandsLayoutTokenNVX.memoryBuffer).fill(0);
+  if (new.target !== VkIndirectCommandsLayoutTokenNVX) {
+    new Uint8Array(_VkIndirectCommandsLayoutTokenNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkIndirectCommandsLayoutTokenNVX;
   }
   this.memoryBuffer = null;
@@ -27336,8 +27374,8 @@ VkIndirectCommandsLayoutTokenNVX.memoryLayout = {
 };
 /** VkIndirectCommandsLayoutCreateInfoNVX **/
 function VkIndirectCommandsLayoutCreateInfoNVX(opts) {
-  if (this.constructor !== VkIndirectCommandsLayoutCreateInfoNVX) {
-    new Uint8Array(_VkIndirectCommandsLayoutCreateInfoNVX.memoryBuffer).fill(0);
+  if (new.target !== VkIndirectCommandsLayoutCreateInfoNVX) {
+    new Uint8Array(_VkIndirectCommandsLayoutCreateInfoNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkIndirectCommandsLayoutCreateInfoNVX;
   }
   this.memoryBuffer = null;
@@ -27530,8 +27568,8 @@ VkIndirectCommandsLayoutCreateInfoNVX.memoryLayout = {
 };
 /** VkCmdProcessCommandsInfoNVX **/
 function VkCmdProcessCommandsInfoNVX(opts) {
-  if (this.constructor !== VkCmdProcessCommandsInfoNVX) {
-    new Uint8Array(_VkCmdProcessCommandsInfoNVX.memoryBuffer).fill(0);
+  if (new.target !== VkCmdProcessCommandsInfoNVX) {
+    new Uint8Array(_VkCmdProcessCommandsInfoNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkCmdProcessCommandsInfoNVX;
   }
   this.memoryBuffer = null;
@@ -27865,8 +27903,8 @@ VkCmdProcessCommandsInfoNVX.memoryLayout = {
 };
 /** VkCmdReserveSpaceForCommandsInfoNVX **/
 function VkCmdReserveSpaceForCommandsInfoNVX(opts) {
-  if (this.constructor !== VkCmdReserveSpaceForCommandsInfoNVX) {
-    new Uint8Array(_VkCmdReserveSpaceForCommandsInfoNVX.memoryBuffer).fill(0);
+  if (new.target !== VkCmdReserveSpaceForCommandsInfoNVX) {
+    new Uint8Array(_VkCmdReserveSpaceForCommandsInfoNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkCmdReserveSpaceForCommandsInfoNVX;
   }
   this.memoryBuffer = null;
@@ -28021,8 +28059,8 @@ VkCmdReserveSpaceForCommandsInfoNVX.memoryLayout = {
 };
 /** VkObjectTableCreateInfoNVX **/
 function VkObjectTableCreateInfoNVX(opts) {
-  if (this.constructor !== VkObjectTableCreateInfoNVX) {
-    new Uint8Array(_VkObjectTableCreateInfoNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTableCreateInfoNVX) {
+    new Uint8Array(_VkObjectTableCreateInfoNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkObjectTableCreateInfoNVX;
   }
   this.memoryBuffer = null;
@@ -28281,8 +28319,8 @@ VkObjectTableCreateInfoNVX.memoryLayout = {
 };
 /** VkObjectTableEntryNVX **/
 function VkObjectTableEntryNVX(opts) {
-  if (this.constructor !== VkObjectTableEntryNVX) {
-    new Uint8Array(_VkObjectTableEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTableEntryNVX) {
+    new Uint8Array(_VkObjectTableEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkObjectTableEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28362,8 +28400,8 @@ VkObjectTableEntryNVX.memoryLayout = {
 };
 /** VkObjectTablePipelineEntryNVX **/
 function VkObjectTablePipelineEntryNVX(opts) {
-  if (this.constructor !== VkObjectTablePipelineEntryNVX) {
-    new Uint8Array(_VkObjectTablePipelineEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTablePipelineEntryNVX) {
+    new Uint8Array(_VkObjectTablePipelineEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkObjectTablePipelineEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28470,8 +28508,8 @@ VkObjectTablePipelineEntryNVX.memoryLayout = {
 };
 /** VkObjectTableDescriptorSetEntryNVX **/
 function VkObjectTableDescriptorSetEntryNVX(opts) {
-  if (this.constructor !== VkObjectTableDescriptorSetEntryNVX) {
-    new Uint8Array(_VkObjectTableDescriptorSetEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTableDescriptorSetEntryNVX) {
+    new Uint8Array(_VkObjectTableDescriptorSetEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkObjectTableDescriptorSetEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28603,8 +28641,8 @@ VkObjectTableDescriptorSetEntryNVX.memoryLayout = {
 };
 /** VkObjectTableVertexBufferEntryNVX **/
 function VkObjectTableVertexBufferEntryNVX(opts) {
-  if (this.constructor !== VkObjectTableVertexBufferEntryNVX) {
-    new Uint8Array(_VkObjectTableVertexBufferEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTableVertexBufferEntryNVX) {
+    new Uint8Array(_VkObjectTableVertexBufferEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkObjectTableVertexBufferEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28711,8 +28749,8 @@ VkObjectTableVertexBufferEntryNVX.memoryLayout = {
 };
 /** VkObjectTableIndexBufferEntryNVX **/
 function VkObjectTableIndexBufferEntryNVX(opts) {
-  if (this.constructor !== VkObjectTableIndexBufferEntryNVX) {
-    new Uint8Array(_VkObjectTableIndexBufferEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTableIndexBufferEntryNVX) {
+    new Uint8Array(_VkObjectTableIndexBufferEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkObjectTableIndexBufferEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28839,8 +28877,8 @@ VkObjectTableIndexBufferEntryNVX.memoryLayout = {
 };
 /** VkObjectTablePushConstantEntryNVX **/
 function VkObjectTablePushConstantEntryNVX(opts) {
-  if (this.constructor !== VkObjectTablePushConstantEntryNVX) {
-    new Uint8Array(_VkObjectTablePushConstantEntryNVX.memoryBuffer).fill(0);
+  if (new.target !== VkObjectTablePushConstantEntryNVX) {
+    new Uint8Array(_VkObjectTablePushConstantEntryNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkObjectTablePushConstantEntryNVX;
   }
   this.memoryBuffer = null;
@@ -28964,8 +29002,8 @@ VkObjectTablePushConstantEntryNVX.memoryLayout = {
 };
 /** VkPhysicalDeviceFeatures2 **/
 function VkPhysicalDeviceFeatures2(opts) {
-  if (this.constructor !== VkPhysicalDeviceFeatures2) {
-    new Uint8Array(_VkPhysicalDeviceFeatures2.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFeatures2) {
+    new Uint8Array(_VkPhysicalDeviceFeatures2.memoryBuffer).set(STRUCT_RESET_CACHE[0xF0], 0x0);
     return _VkPhysicalDeviceFeatures2;
   }
   this.memoryBuffer = null;
@@ -29149,8 +29187,8 @@ VkPhysicalDeviceFeatures2.memoryLayout = {
 };
 /** VkPhysicalDeviceFeatures2KHR **/
 function VkPhysicalDeviceFeatures2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceFeatures2KHR) {
-    new Uint8Array(_VkPhysicalDeviceFeatures2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFeatures2KHR) {
+    new Uint8Array(_VkPhysicalDeviceFeatures2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0xF0], 0x0);
     return _VkPhysicalDeviceFeatures2KHR;
   }
   this.memoryBuffer = null;
@@ -29334,8 +29372,8 @@ VkPhysicalDeviceFeatures2KHR.memoryLayout = {
 };
 /** VkPhysicalDeviceProperties2 **/
 function VkPhysicalDeviceProperties2(opts) {
-  if (this.constructor !== VkPhysicalDeviceProperties2) {
-    new Uint8Array(_VkPhysicalDeviceProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceProperties2) {
+    new Uint8Array(_VkPhysicalDeviceProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x348], 0x0);
     return _VkPhysicalDeviceProperties2;
   }
   this.memoryBuffer = null;
@@ -29483,8 +29521,8 @@ VkPhysicalDeviceProperties2.memoryLayout = {
 };
 /** VkPhysicalDeviceProperties2KHR **/
 function VkPhysicalDeviceProperties2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceProperties2KHR) {
-    new Uint8Array(_VkPhysicalDeviceProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceProperties2KHR) {
+    new Uint8Array(_VkPhysicalDeviceProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x348], 0x0);
     return _VkPhysicalDeviceProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -29632,8 +29670,8 @@ VkPhysicalDeviceProperties2KHR.memoryLayout = {
 };
 /** VkFormatProperties2 **/
 function VkFormatProperties2(opts) {
-  if (this.constructor !== VkFormatProperties2) {
-    new Uint8Array(_VkFormatProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkFormatProperties2) {
+    new Uint8Array(_VkFormatProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFormatProperties2;
   }
   this.memoryBuffer = null;
@@ -29753,8 +29791,8 @@ VkFormatProperties2.memoryLayout = {
 };
 /** VkFormatProperties2KHR **/
 function VkFormatProperties2KHR(opts) {
-  if (this.constructor !== VkFormatProperties2KHR) {
-    new Uint8Array(_VkFormatProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkFormatProperties2KHR) {
+    new Uint8Array(_VkFormatProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFormatProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -29874,8 +29912,8 @@ VkFormatProperties2KHR.memoryLayout = {
 };
 /** VkImageFormatProperties2 **/
 function VkImageFormatProperties2(opts) {
-  if (this.constructor !== VkImageFormatProperties2) {
-    new Uint8Array(_VkImageFormatProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkImageFormatProperties2) {
+    new Uint8Array(_VkImageFormatProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkImageFormatProperties2;
   }
   this.memoryBuffer = null;
@@ -29999,8 +30037,8 @@ VkImageFormatProperties2.memoryLayout = {
 };
 /** VkImageFormatProperties2KHR **/
 function VkImageFormatProperties2KHR(opts) {
-  if (this.constructor !== VkImageFormatProperties2KHR) {
-    new Uint8Array(_VkImageFormatProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageFormatProperties2KHR) {
+    new Uint8Array(_VkImageFormatProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkImageFormatProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -30124,8 +30162,8 @@ VkImageFormatProperties2KHR.memoryLayout = {
 };
 /** VkPhysicalDeviceImageFormatInfo2 **/
 function VkPhysicalDeviceImageFormatInfo2(opts) {
-  if (this.constructor !== VkPhysicalDeviceImageFormatInfo2) {
-    new Uint8Array(_VkPhysicalDeviceImageFormatInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceImageFormatInfo2) {
+    new Uint8Array(_VkPhysicalDeviceImageFormatInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceImageFormatInfo2;
   }
   this.memoryBuffer = null;
@@ -30327,8 +30365,8 @@ VkPhysicalDeviceImageFormatInfo2.memoryLayout = {
 };
 /** VkPhysicalDeviceImageFormatInfo2KHR **/
 function VkPhysicalDeviceImageFormatInfo2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceImageFormatInfo2KHR) {
-    new Uint8Array(_VkPhysicalDeviceImageFormatInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceImageFormatInfo2KHR) {
+    new Uint8Array(_VkPhysicalDeviceImageFormatInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceImageFormatInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -30530,8 +30568,8 @@ VkPhysicalDeviceImageFormatInfo2KHR.memoryLayout = {
 };
 /** VkQueueFamilyProperties2 **/
 function VkQueueFamilyProperties2(opts) {
-  if (this.constructor !== VkQueueFamilyProperties2) {
-    new Uint8Array(_VkQueueFamilyProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkQueueFamilyProperties2) {
+    new Uint8Array(_VkQueueFamilyProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkQueueFamilyProperties2;
   }
   this.memoryBuffer = null;
@@ -30651,8 +30689,8 @@ VkQueueFamilyProperties2.memoryLayout = {
 };
 /** VkQueueFamilyProperties2KHR **/
 function VkQueueFamilyProperties2KHR(opts) {
-  if (this.constructor !== VkQueueFamilyProperties2KHR) {
-    new Uint8Array(_VkQueueFamilyProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkQueueFamilyProperties2KHR) {
+    new Uint8Array(_VkQueueFamilyProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkQueueFamilyProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -30772,8 +30810,8 @@ VkQueueFamilyProperties2KHR.memoryLayout = {
 };
 /** VkPhysicalDeviceMemoryProperties2 **/
 function VkPhysicalDeviceMemoryProperties2(opts) {
-  if (this.constructor !== VkPhysicalDeviceMemoryProperties2) {
-    new Uint8Array(_VkPhysicalDeviceMemoryProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMemoryProperties2) {
+    new Uint8Array(_VkPhysicalDeviceMemoryProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x218], 0x0);
     return _VkPhysicalDeviceMemoryProperties2;
   }
   this.memoryBuffer = null;
@@ -30894,8 +30932,8 @@ VkPhysicalDeviceMemoryProperties2.memoryLayout = {
 };
 /** VkPhysicalDeviceMemoryProperties2KHR **/
 function VkPhysicalDeviceMemoryProperties2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceMemoryProperties2KHR) {
-    new Uint8Array(_VkPhysicalDeviceMemoryProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMemoryProperties2KHR) {
+    new Uint8Array(_VkPhysicalDeviceMemoryProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x218], 0x0);
     return _VkPhysicalDeviceMemoryProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -31016,8 +31054,8 @@ VkPhysicalDeviceMemoryProperties2KHR.memoryLayout = {
 };
 /** VkSparseImageFormatProperties2 **/
 function VkSparseImageFormatProperties2(opts) {
-  if (this.constructor !== VkSparseImageFormatProperties2) {
-    new Uint8Array(_VkSparseImageFormatProperties2.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageFormatProperties2) {
+    new Uint8Array(_VkSparseImageFormatProperties2.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkSparseImageFormatProperties2;
   }
   this.memoryBuffer = null;
@@ -31119,8 +31157,8 @@ VkSparseImageFormatProperties2.memoryLayout = {
 };
 /** VkSparseImageFormatProperties2KHR **/
 function VkSparseImageFormatProperties2KHR(opts) {
-  if (this.constructor !== VkSparseImageFormatProperties2KHR) {
-    new Uint8Array(_VkSparseImageFormatProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageFormatProperties2KHR) {
+    new Uint8Array(_VkSparseImageFormatProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkSparseImageFormatProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -31222,8 +31260,8 @@ VkSparseImageFormatProperties2KHR.memoryLayout = {
 };
 /** VkPhysicalDeviceSparseImageFormatInfo2 **/
 function VkPhysicalDeviceSparseImageFormatInfo2(opts) {
-  if (this.constructor !== VkPhysicalDeviceSparseImageFormatInfo2) {
-    new Uint8Array(_VkPhysicalDeviceSparseImageFormatInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSparseImageFormatInfo2) {
+    new Uint8Array(_VkPhysicalDeviceSparseImageFormatInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceSparseImageFormatInfo2;
   }
   this.memoryBuffer = null;
@@ -31403,8 +31441,8 @@ VkPhysicalDeviceSparseImageFormatInfo2.memoryLayout = {
 };
 /** VkPhysicalDeviceSparseImageFormatInfo2KHR **/
 function VkPhysicalDeviceSparseImageFormatInfo2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceSparseImageFormatInfo2KHR) {
-    new Uint8Array(_VkPhysicalDeviceSparseImageFormatInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSparseImageFormatInfo2KHR) {
+    new Uint8Array(_VkPhysicalDeviceSparseImageFormatInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceSparseImageFormatInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -31584,8 +31622,8 @@ VkPhysicalDeviceSparseImageFormatInfo2KHR.memoryLayout = {
 };
 /** VkPhysicalDevicePushDescriptorPropertiesKHR **/
 function VkPhysicalDevicePushDescriptorPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDevicePushDescriptorPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDevicePushDescriptorPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevicePushDescriptorPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDevicePushDescriptorPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDevicePushDescriptorPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -31687,8 +31725,8 @@ VkPhysicalDevicePushDescriptorPropertiesKHR.memoryLayout = {
 };
 /** VkConformanceVersionKHR **/
 function VkConformanceVersionKHR(opts) {
-  if (this.constructor !== VkConformanceVersionKHR) {
-    new Uint8Array(_VkConformanceVersionKHR.memoryBuffer).fill(0);
+  if (new.target !== VkConformanceVersionKHR) {
+    new Uint8Array(_VkConformanceVersionKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x4], 0x0);
     return _VkConformanceVersionKHR;
   }
   this.memoryBuffer = null;
@@ -31799,8 +31837,8 @@ VkConformanceVersionKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceDriverPropertiesKHR **/
 function VkPhysicalDeviceDriverPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceDriverPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceDriverPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDriverPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceDriverPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x218], 0x0);
     return _VkPhysicalDeviceDriverPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -31936,8 +31974,8 @@ VkPhysicalDeviceDriverPropertiesKHR.memoryLayout = {
 };
 /** VkPresentRegionsKHR **/
 function VkPresentRegionsKHR(opts) {
-  if (this.constructor !== VkPresentRegionsKHR) {
-    new Uint8Array(_VkPresentRegionsKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPresentRegionsKHR) {
+    new Uint8Array(_VkPresentRegionsKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPresentRegionsKHR;
   }
   this.memoryBuffer = null;
@@ -32093,8 +32131,8 @@ VkPresentRegionsKHR.memoryLayout = {
 };
 /** VkPresentRegionKHR **/
 function VkPresentRegionKHR(opts) {
-  if (this.constructor !== VkPresentRegionKHR) {
-    new Uint8Array(_VkPresentRegionKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPresentRegionKHR) {
+    new Uint8Array(_VkPresentRegionKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkPresentRegionKHR;
   }
   this.memoryBuffer = null;
@@ -32205,8 +32243,8 @@ VkPresentRegionKHR.memoryLayout = {
 };
 /** VkRectLayerKHR **/
 function VkRectLayerKHR(opts) {
-  if (this.constructor !== VkRectLayerKHR) {
-    new Uint8Array(_VkRectLayerKHR.memoryBuffer).fill(0);
+  if (new.target !== VkRectLayerKHR) {
+    new Uint8Array(_VkRectLayerKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x14], 0x0);
     return _VkRectLayerKHR;
   }
   this.memoryBuffer = null;
@@ -32344,8 +32382,8 @@ VkRectLayerKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceVariablePointersFeatures **/
 function VkPhysicalDeviceVariablePointersFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceVariablePointersFeatures) {
-    new Uint8Array(_VkPhysicalDeviceVariablePointersFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVariablePointersFeatures) {
+    new Uint8Array(_VkPhysicalDeviceVariablePointersFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVariablePointersFeatures;
   }
   this.memoryBuffer = null;
@@ -32461,8 +32499,8 @@ VkPhysicalDeviceVariablePointersFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceVariablePointersFeaturesKHR **/
 function VkPhysicalDeviceVariablePointersFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceVariablePointersFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceVariablePointersFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVariablePointersFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceVariablePointersFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVariablePointersFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -32578,8 +32616,8 @@ VkPhysicalDeviceVariablePointersFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceVariablePointerFeaturesKHR **/
 function VkPhysicalDeviceVariablePointerFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceVariablePointerFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceVariablePointerFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVariablePointerFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceVariablePointerFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVariablePointerFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -32695,8 +32733,8 @@ VkPhysicalDeviceVariablePointerFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceVariablePointerFeatures **/
 function VkPhysicalDeviceVariablePointerFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceVariablePointerFeatures) {
-    new Uint8Array(_VkPhysicalDeviceVariablePointerFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVariablePointerFeatures) {
+    new Uint8Array(_VkPhysicalDeviceVariablePointerFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVariablePointerFeatures;
   }
   this.memoryBuffer = null;
@@ -32812,8 +32850,8 @@ VkPhysicalDeviceVariablePointerFeatures.memoryLayout = {
 };
 /** VkExternalMemoryProperties **/
 function VkExternalMemoryProperties(opts) {
-  if (this.constructor !== VkExternalMemoryProperties) {
-    new Uint8Array(_VkExternalMemoryProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryProperties) {
+    new Uint8Array(_VkExternalMemoryProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkExternalMemoryProperties;
   }
   this.memoryBuffer = null;
@@ -32890,8 +32928,8 @@ VkExternalMemoryProperties.memoryLayout = {
 };
 /** VkExternalMemoryPropertiesKHR **/
 function VkExternalMemoryPropertiesKHR(opts) {
-  if (this.constructor !== VkExternalMemoryPropertiesKHR) {
-    new Uint8Array(_VkExternalMemoryPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryPropertiesKHR) {
+    new Uint8Array(_VkExternalMemoryPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkExternalMemoryPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -32968,8 +33006,8 @@ VkExternalMemoryPropertiesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalImageFormatInfo **/
 function VkPhysicalDeviceExternalImageFormatInfo(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalImageFormatInfo) {
-    new Uint8Array(_VkPhysicalDeviceExternalImageFormatInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalImageFormatInfo) {
+    new Uint8Array(_VkPhysicalDeviceExternalImageFormatInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalImageFormatInfo;
   }
   this.memoryBuffer = null;
@@ -33072,8 +33110,8 @@ VkPhysicalDeviceExternalImageFormatInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalImageFormatInfoKHR **/
 function VkPhysicalDeviceExternalImageFormatInfoKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalImageFormatInfoKHR) {
-    new Uint8Array(_VkPhysicalDeviceExternalImageFormatInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalImageFormatInfoKHR) {
+    new Uint8Array(_VkPhysicalDeviceExternalImageFormatInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalImageFormatInfoKHR;
   }
   this.memoryBuffer = null;
@@ -33176,8 +33214,8 @@ VkPhysicalDeviceExternalImageFormatInfoKHR.memoryLayout = {
 };
 /** VkExternalImageFormatProperties **/
 function VkExternalImageFormatProperties(opts) {
-  if (this.constructor !== VkExternalImageFormatProperties) {
-    new Uint8Array(_VkExternalImageFormatProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExternalImageFormatProperties) {
+    new Uint8Array(_VkExternalImageFormatProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalImageFormatProperties;
   }
   this.memoryBuffer = null;
@@ -33279,8 +33317,8 @@ VkExternalImageFormatProperties.memoryLayout = {
 };
 /** VkExternalImageFormatPropertiesKHR **/
 function VkExternalImageFormatPropertiesKHR(opts) {
-  if (this.constructor !== VkExternalImageFormatPropertiesKHR) {
-    new Uint8Array(_VkExternalImageFormatPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalImageFormatPropertiesKHR) {
+    new Uint8Array(_VkExternalImageFormatPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalImageFormatPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -33382,8 +33420,8 @@ VkExternalImageFormatPropertiesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalBufferInfo **/
 function VkPhysicalDeviceExternalBufferInfo(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalBufferInfo) {
-    new Uint8Array(_VkPhysicalDeviceExternalBufferInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalBufferInfo) {
+    new Uint8Array(_VkPhysicalDeviceExternalBufferInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceExternalBufferInfo;
   }
   this.memoryBuffer = null;
@@ -33520,8 +33558,8 @@ VkPhysicalDeviceExternalBufferInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalBufferInfoKHR **/
 function VkPhysicalDeviceExternalBufferInfoKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalBufferInfoKHR) {
-    new Uint8Array(_VkPhysicalDeviceExternalBufferInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalBufferInfoKHR) {
+    new Uint8Array(_VkPhysicalDeviceExternalBufferInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceExternalBufferInfoKHR;
   }
   this.memoryBuffer = null;
@@ -33658,8 +33696,8 @@ VkPhysicalDeviceExternalBufferInfoKHR.memoryLayout = {
 };
 /** VkExternalBufferProperties **/
 function VkExternalBufferProperties(opts) {
-  if (this.constructor !== VkExternalBufferProperties) {
-    new Uint8Array(_VkExternalBufferProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExternalBufferProperties) {
+    new Uint8Array(_VkExternalBufferProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalBufferProperties;
   }
   this.memoryBuffer = null;
@@ -33761,8 +33799,8 @@ VkExternalBufferProperties.memoryLayout = {
 };
 /** VkExternalBufferPropertiesKHR **/
 function VkExternalBufferPropertiesKHR(opts) {
-  if (this.constructor !== VkExternalBufferPropertiesKHR) {
-    new Uint8Array(_VkExternalBufferPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalBufferPropertiesKHR) {
+    new Uint8Array(_VkExternalBufferPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalBufferPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -33864,8 +33902,8 @@ VkExternalBufferPropertiesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceIDProperties **/
 function VkPhysicalDeviceIDProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceIDProperties) {
-    new Uint8Array(_VkPhysicalDeviceIDProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceIDProperties) {
+    new Uint8Array(_VkPhysicalDeviceIDProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPhysicalDeviceIDProperties;
   }
   this.memoryBuffer = null;
@@ -34058,8 +34096,8 @@ VkPhysicalDeviceIDProperties.memoryLayout = {
 };
 /** VkPhysicalDeviceIDPropertiesKHR **/
 function VkPhysicalDeviceIDPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceIDPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceIDPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceIDPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceIDPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPhysicalDeviceIDPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -34252,8 +34290,8 @@ VkPhysicalDeviceIDPropertiesKHR.memoryLayout = {
 };
 /** VkExternalMemoryImageCreateInfo **/
 function VkExternalMemoryImageCreateInfo(opts) {
-  if (this.constructor !== VkExternalMemoryImageCreateInfo) {
-    new Uint8Array(_VkExternalMemoryImageCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryImageCreateInfo) {
+    new Uint8Array(_VkExternalMemoryImageCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExternalMemoryImageCreateInfo;
   }
   this.memoryBuffer = null;
@@ -34356,8 +34394,8 @@ VkExternalMemoryImageCreateInfo.memoryLayout = {
 };
 /** VkExternalMemoryImageCreateInfoKHR **/
 function VkExternalMemoryImageCreateInfoKHR(opts) {
-  if (this.constructor !== VkExternalMemoryImageCreateInfoKHR) {
-    new Uint8Array(_VkExternalMemoryImageCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryImageCreateInfoKHR) {
+    new Uint8Array(_VkExternalMemoryImageCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExternalMemoryImageCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -34460,8 +34498,8 @@ VkExternalMemoryImageCreateInfoKHR.memoryLayout = {
 };
 /** VkExternalMemoryBufferCreateInfo **/
 function VkExternalMemoryBufferCreateInfo(opts) {
-  if (this.constructor !== VkExternalMemoryBufferCreateInfo) {
-    new Uint8Array(_VkExternalMemoryBufferCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryBufferCreateInfo) {
+    new Uint8Array(_VkExternalMemoryBufferCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExternalMemoryBufferCreateInfo;
   }
   this.memoryBuffer = null;
@@ -34564,8 +34602,8 @@ VkExternalMemoryBufferCreateInfo.memoryLayout = {
 };
 /** VkExternalMemoryBufferCreateInfoKHR **/
 function VkExternalMemoryBufferCreateInfoKHR(opts) {
-  if (this.constructor !== VkExternalMemoryBufferCreateInfoKHR) {
-    new Uint8Array(_VkExternalMemoryBufferCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalMemoryBufferCreateInfoKHR) {
+    new Uint8Array(_VkExternalMemoryBufferCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExternalMemoryBufferCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -34668,8 +34706,8 @@ VkExternalMemoryBufferCreateInfoKHR.memoryLayout = {
 };
 /** VkExportMemoryAllocateInfo **/
 function VkExportMemoryAllocateInfo(opts) {
-  if (this.constructor !== VkExportMemoryAllocateInfo) {
-    new Uint8Array(_VkExportMemoryAllocateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkExportMemoryAllocateInfo) {
+    new Uint8Array(_VkExportMemoryAllocateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportMemoryAllocateInfo;
   }
   this.memoryBuffer = null;
@@ -34772,8 +34810,8 @@ VkExportMemoryAllocateInfo.memoryLayout = {
 };
 /** VkExportMemoryAllocateInfoKHR **/
 function VkExportMemoryAllocateInfoKHR(opts) {
-  if (this.constructor !== VkExportMemoryAllocateInfoKHR) {
-    new Uint8Array(_VkExportMemoryAllocateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportMemoryAllocateInfoKHR) {
+    new Uint8Array(_VkExportMemoryAllocateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportMemoryAllocateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -34876,8 +34914,8 @@ VkExportMemoryAllocateInfoKHR.memoryLayout = {
 };
 /** VkImportMemoryWin32HandleInfoKHR **/
 function VkImportMemoryWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkImportMemoryWin32HandleInfoKHR) {
-    new Uint8Array(_VkImportMemoryWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportMemoryWin32HandleInfoKHR) {
+    new Uint8Array(_VkImportMemoryWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkImportMemoryWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -35025,8 +35063,8 @@ VkImportMemoryWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkExportMemoryWin32HandleInfoKHR **/
 function VkExportMemoryWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkExportMemoryWin32HandleInfoKHR) {
-    new Uint8Array(_VkExportMemoryWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportMemoryWin32HandleInfoKHR) {
+    new Uint8Array(_VkExportMemoryWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkExportMemoryWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -35140,8 +35178,8 @@ VkExportMemoryWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkMemoryWin32HandlePropertiesKHR **/
 function VkMemoryWin32HandlePropertiesKHR(opts) {
-  if (this.constructor !== VkMemoryWin32HandlePropertiesKHR) {
-    new Uint8Array(_VkMemoryWin32HandlePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryWin32HandlePropertiesKHR) {
+    new Uint8Array(_VkMemoryWin32HandlePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryWin32HandlePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -35243,8 +35281,8 @@ VkMemoryWin32HandlePropertiesKHR.memoryLayout = {
 };
 /** VkMemoryGetWin32HandleInfoKHR **/
 function VkMemoryGetWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkMemoryGetWin32HandleInfoKHR) {
-    new Uint8Array(_VkMemoryGetWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryGetWin32HandleInfoKHR) {
+    new Uint8Array(_VkMemoryGetWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkMemoryGetWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -35372,8 +35410,8 @@ VkMemoryGetWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkImportMemoryFdInfoKHR **/
 function VkImportMemoryFdInfoKHR(opts) {
-  if (this.constructor !== VkImportMemoryFdInfoKHR) {
-    new Uint8Array(_VkImportMemoryFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportMemoryFdInfoKHR) {
+    new Uint8Array(_VkImportMemoryFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImportMemoryFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -35493,8 +35531,8 @@ VkImportMemoryFdInfoKHR.memoryLayout = {
 };
 /** VkMemoryFdPropertiesKHR **/
 function VkMemoryFdPropertiesKHR(opts) {
-  if (this.constructor !== VkMemoryFdPropertiesKHR) {
-    new Uint8Array(_VkMemoryFdPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryFdPropertiesKHR) {
+    new Uint8Array(_VkMemoryFdPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryFdPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -35596,8 +35634,8 @@ VkMemoryFdPropertiesKHR.memoryLayout = {
 };
 /** VkMemoryGetFdInfoKHR **/
 function VkMemoryGetFdInfoKHR(opts) {
-  if (this.constructor !== VkMemoryGetFdInfoKHR) {
-    new Uint8Array(_VkMemoryGetFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryGetFdInfoKHR) {
+    new Uint8Array(_VkMemoryGetFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkMemoryGetFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -35725,8 +35763,8 @@ VkMemoryGetFdInfoKHR.memoryLayout = {
 };
 /** VkWin32KeyedMutexAcquireReleaseInfoKHR **/
 function VkWin32KeyedMutexAcquireReleaseInfoKHR(opts) {
-  if (this.constructor !== VkWin32KeyedMutexAcquireReleaseInfoKHR) {
-    new Uint8Array(_VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkWin32KeyedMutexAcquireReleaseInfoKHR) {
+    new Uint8Array(_VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkWin32KeyedMutexAcquireReleaseInfoKHR;
   }
   this.memoryBuffer = null;
@@ -36019,8 +36057,8 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalSemaphoreInfo **/
 function VkPhysicalDeviceExternalSemaphoreInfo(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalSemaphoreInfo) {
-    new Uint8Array(_VkPhysicalDeviceExternalSemaphoreInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalSemaphoreInfo) {
+    new Uint8Array(_VkPhysicalDeviceExternalSemaphoreInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalSemaphoreInfo;
   }
   this.memoryBuffer = null;
@@ -36123,8 +36161,8 @@ VkPhysicalDeviceExternalSemaphoreInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalSemaphoreInfoKHR **/
 function VkPhysicalDeviceExternalSemaphoreInfoKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalSemaphoreInfoKHR) {
-    new Uint8Array(_VkPhysicalDeviceExternalSemaphoreInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalSemaphoreInfoKHR) {
+    new Uint8Array(_VkPhysicalDeviceExternalSemaphoreInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalSemaphoreInfoKHR;
   }
   this.memoryBuffer = null;
@@ -36227,8 +36265,8 @@ VkPhysicalDeviceExternalSemaphoreInfoKHR.memoryLayout = {
 };
 /** VkExternalSemaphoreProperties **/
 function VkExternalSemaphoreProperties(opts) {
-  if (this.constructor !== VkExternalSemaphoreProperties) {
-    new Uint8Array(_VkExternalSemaphoreProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExternalSemaphoreProperties) {
+    new Uint8Array(_VkExternalSemaphoreProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalSemaphoreProperties;
   }
   this.memoryBuffer = null;
@@ -36348,8 +36386,8 @@ VkExternalSemaphoreProperties.memoryLayout = {
 };
 /** VkExternalSemaphorePropertiesKHR **/
 function VkExternalSemaphorePropertiesKHR(opts) {
-  if (this.constructor !== VkExternalSemaphorePropertiesKHR) {
-    new Uint8Array(_VkExternalSemaphorePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalSemaphorePropertiesKHR) {
+    new Uint8Array(_VkExternalSemaphorePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalSemaphorePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -36469,8 +36507,8 @@ VkExternalSemaphorePropertiesKHR.memoryLayout = {
 };
 /** VkExportSemaphoreCreateInfo **/
 function VkExportSemaphoreCreateInfo(opts) {
-  if (this.constructor !== VkExportSemaphoreCreateInfo) {
-    new Uint8Array(_VkExportSemaphoreCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkExportSemaphoreCreateInfo) {
+    new Uint8Array(_VkExportSemaphoreCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportSemaphoreCreateInfo;
   }
   this.memoryBuffer = null;
@@ -36573,8 +36611,8 @@ VkExportSemaphoreCreateInfo.memoryLayout = {
 };
 /** VkExportSemaphoreCreateInfoKHR **/
 function VkExportSemaphoreCreateInfoKHR(opts) {
-  if (this.constructor !== VkExportSemaphoreCreateInfoKHR) {
-    new Uint8Array(_VkExportSemaphoreCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportSemaphoreCreateInfoKHR) {
+    new Uint8Array(_VkExportSemaphoreCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportSemaphoreCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -36677,8 +36715,8 @@ VkExportSemaphoreCreateInfoKHR.memoryLayout = {
 };
 /** VkImportSemaphoreWin32HandleInfoKHR **/
 function VkImportSemaphoreWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkImportSemaphoreWin32HandleInfoKHR) {
-    new Uint8Array(_VkImportSemaphoreWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportSemaphoreWin32HandleInfoKHR) {
+    new Uint8Array(_VkImportSemaphoreWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkImportSemaphoreWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -36868,8 +36906,8 @@ VkImportSemaphoreWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkExportSemaphoreWin32HandleInfoKHR **/
 function VkExportSemaphoreWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkExportSemaphoreWin32HandleInfoKHR) {
-    new Uint8Array(_VkExportSemaphoreWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportSemaphoreWin32HandleInfoKHR) {
+    new Uint8Array(_VkExportSemaphoreWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkExportSemaphoreWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -36983,8 +37021,8 @@ VkExportSemaphoreWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkD3D12FenceSubmitInfoKHR **/
 function VkD3D12FenceSubmitInfoKHR(opts) {
-  if (this.constructor !== VkD3D12FenceSubmitInfoKHR) {
-    new Uint8Array(_VkD3D12FenceSubmitInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkD3D12FenceSubmitInfoKHR) {
+    new Uint8Array(_VkD3D12FenceSubmitInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkD3D12FenceSubmitInfoKHR;
   }
   this.memoryBuffer = null;
@@ -37152,8 +37190,8 @@ VkD3D12FenceSubmitInfoKHR.memoryLayout = {
 };
 /** VkSemaphoreGetWin32HandleInfoKHR **/
 function VkSemaphoreGetWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkSemaphoreGetWin32HandleInfoKHR) {
-    new Uint8Array(_VkSemaphoreGetWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSemaphoreGetWin32HandleInfoKHR) {
+    new Uint8Array(_VkSemaphoreGetWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkSemaphoreGetWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -37281,8 +37319,8 @@ VkSemaphoreGetWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkImportSemaphoreFdInfoKHR **/
 function VkImportSemaphoreFdInfoKHR(opts) {
-  if (this.constructor !== VkImportSemaphoreFdInfoKHR) {
-    new Uint8Array(_VkImportSemaphoreFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportSemaphoreFdInfoKHR) {
+    new Uint8Array(_VkImportSemaphoreFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkImportSemaphoreFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -37444,8 +37482,8 @@ VkImportSemaphoreFdInfoKHR.memoryLayout = {
 };
 /** VkSemaphoreGetFdInfoKHR **/
 function VkSemaphoreGetFdInfoKHR(opts) {
-  if (this.constructor !== VkSemaphoreGetFdInfoKHR) {
-    new Uint8Array(_VkSemaphoreGetFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSemaphoreGetFdInfoKHR) {
+    new Uint8Array(_VkSemaphoreGetFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkSemaphoreGetFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -37573,8 +37611,8 @@ VkSemaphoreGetFdInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalFenceInfo **/
 function VkPhysicalDeviceExternalFenceInfo(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalFenceInfo) {
-    new Uint8Array(_VkPhysicalDeviceExternalFenceInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalFenceInfo) {
+    new Uint8Array(_VkPhysicalDeviceExternalFenceInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalFenceInfo;
   }
   this.memoryBuffer = null;
@@ -37677,8 +37715,8 @@ VkPhysicalDeviceExternalFenceInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalFenceInfoKHR **/
 function VkPhysicalDeviceExternalFenceInfoKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalFenceInfoKHR) {
-    new Uint8Array(_VkPhysicalDeviceExternalFenceInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalFenceInfoKHR) {
+    new Uint8Array(_VkPhysicalDeviceExternalFenceInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalFenceInfoKHR;
   }
   this.memoryBuffer = null;
@@ -37781,8 +37819,8 @@ VkPhysicalDeviceExternalFenceInfoKHR.memoryLayout = {
 };
 /** VkExternalFenceProperties **/
 function VkExternalFenceProperties(opts) {
-  if (this.constructor !== VkExternalFenceProperties) {
-    new Uint8Array(_VkExternalFenceProperties.memoryBuffer).fill(0);
+  if (new.target !== VkExternalFenceProperties) {
+    new Uint8Array(_VkExternalFenceProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalFenceProperties;
   }
   this.memoryBuffer = null;
@@ -37902,8 +37940,8 @@ VkExternalFenceProperties.memoryLayout = {
 };
 /** VkExternalFencePropertiesKHR **/
 function VkExternalFencePropertiesKHR(opts) {
-  if (this.constructor !== VkExternalFencePropertiesKHR) {
-    new Uint8Array(_VkExternalFencePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExternalFencePropertiesKHR) {
+    new Uint8Array(_VkExternalFencePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkExternalFencePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -38023,8 +38061,8 @@ VkExternalFencePropertiesKHR.memoryLayout = {
 };
 /** VkExportFenceCreateInfo **/
 function VkExportFenceCreateInfo(opts) {
-  if (this.constructor !== VkExportFenceCreateInfo) {
-    new Uint8Array(_VkExportFenceCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkExportFenceCreateInfo) {
+    new Uint8Array(_VkExportFenceCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportFenceCreateInfo;
   }
   this.memoryBuffer = null;
@@ -38127,8 +38165,8 @@ VkExportFenceCreateInfo.memoryLayout = {
 };
 /** VkExportFenceCreateInfoKHR **/
 function VkExportFenceCreateInfoKHR(opts) {
-  if (this.constructor !== VkExportFenceCreateInfoKHR) {
-    new Uint8Array(_VkExportFenceCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportFenceCreateInfoKHR) {
+    new Uint8Array(_VkExportFenceCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkExportFenceCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38231,8 +38269,8 @@ VkExportFenceCreateInfoKHR.memoryLayout = {
 };
 /** VkImportFenceWin32HandleInfoKHR **/
 function VkImportFenceWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkImportFenceWin32HandleInfoKHR) {
-    new Uint8Array(_VkImportFenceWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportFenceWin32HandleInfoKHR) {
+    new Uint8Array(_VkImportFenceWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkImportFenceWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38422,8 +38460,8 @@ VkImportFenceWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkExportFenceWin32HandleInfoKHR **/
 function VkExportFenceWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkExportFenceWin32HandleInfoKHR) {
-    new Uint8Array(_VkExportFenceWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkExportFenceWin32HandleInfoKHR) {
+    new Uint8Array(_VkExportFenceWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkExportFenceWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38537,8 +38575,8 @@ VkExportFenceWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkFenceGetWin32HandleInfoKHR **/
 function VkFenceGetWin32HandleInfoKHR(opts) {
-  if (this.constructor !== VkFenceGetWin32HandleInfoKHR) {
-    new Uint8Array(_VkFenceGetWin32HandleInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkFenceGetWin32HandleInfoKHR) {
+    new Uint8Array(_VkFenceGetWin32HandleInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFenceGetWin32HandleInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38666,8 +38704,8 @@ VkFenceGetWin32HandleInfoKHR.memoryLayout = {
 };
 /** VkImportFenceFdInfoKHR **/
 function VkImportFenceFdInfoKHR(opts) {
-  if (this.constructor !== VkImportFenceFdInfoKHR) {
-    new Uint8Array(_VkImportFenceFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImportFenceFdInfoKHR) {
+    new Uint8Array(_VkImportFenceFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkImportFenceFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38829,8 +38867,8 @@ VkImportFenceFdInfoKHR.memoryLayout = {
 };
 /** VkFenceGetFdInfoKHR **/
 function VkFenceGetFdInfoKHR(opts) {
-  if (this.constructor !== VkFenceGetFdInfoKHR) {
-    new Uint8Array(_VkFenceGetFdInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkFenceGetFdInfoKHR) {
+    new Uint8Array(_VkFenceGetFdInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFenceGetFdInfoKHR;
   }
   this.memoryBuffer = null;
@@ -38958,8 +38996,8 @@ VkFenceGetFdInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceMultiviewFeatures **/
 function VkPhysicalDeviceMultiviewFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceMultiviewFeatures) {
-    new Uint8Array(_VkPhysicalDeviceMultiviewFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMultiviewFeatures) {
+    new Uint8Array(_VkPhysicalDeviceMultiviewFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceMultiviewFeatures;
   }
   this.memoryBuffer = null;
@@ -39089,8 +39127,8 @@ VkPhysicalDeviceMultiviewFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceMultiviewFeaturesKHR **/
 function VkPhysicalDeviceMultiviewFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceMultiviewFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceMultiviewFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMultiviewFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceMultiviewFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceMultiviewFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -39220,8 +39258,8 @@ VkPhysicalDeviceMultiviewFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceMultiviewProperties **/
 function VkPhysicalDeviceMultiviewProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceMultiviewProperties) {
-    new Uint8Array(_VkPhysicalDeviceMultiviewProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMultiviewProperties) {
+    new Uint8Array(_VkPhysicalDeviceMultiviewProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceMultiviewProperties;
   }
   this.memoryBuffer = null;
@@ -39333,8 +39371,8 @@ VkPhysicalDeviceMultiviewProperties.memoryLayout = {
 };
 /** VkPhysicalDeviceMultiviewPropertiesKHR **/
 function VkPhysicalDeviceMultiviewPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceMultiviewPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceMultiviewPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMultiviewPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceMultiviewPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceMultiviewPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -39446,8 +39484,8 @@ VkPhysicalDeviceMultiviewPropertiesKHR.memoryLayout = {
 };
 /** VkRenderPassMultiviewCreateInfo **/
 function VkRenderPassMultiviewCreateInfo(opts) {
-  if (this.constructor !== VkRenderPassMultiviewCreateInfo) {
-    new Uint8Array(_VkRenderPassMultiviewCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassMultiviewCreateInfo) {
+    new Uint8Array(_VkRenderPassMultiviewCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkRenderPassMultiviewCreateInfo;
   }
   this.memoryBuffer = null;
@@ -39655,8 +39693,8 @@ VkRenderPassMultiviewCreateInfo.memoryLayout = {
 };
 /** VkRenderPassMultiviewCreateInfoKHR **/
 function VkRenderPassMultiviewCreateInfoKHR(opts) {
-  if (this.constructor !== VkRenderPassMultiviewCreateInfoKHR) {
-    new Uint8Array(_VkRenderPassMultiviewCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassMultiviewCreateInfoKHR) {
+    new Uint8Array(_VkRenderPassMultiviewCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkRenderPassMultiviewCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -39864,8 +39902,8 @@ VkRenderPassMultiviewCreateInfoKHR.memoryLayout = {
 };
 /** VkSurfaceCapabilities2EXT **/
 function VkSurfaceCapabilities2EXT(opts) {
-  if (this.constructor !== VkSurfaceCapabilities2EXT) {
-    new Uint8Array(_VkSurfaceCapabilities2EXT.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceCapabilities2EXT) {
+    new Uint8Array(_VkSurfaceCapabilities2EXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkSurfaceCapabilities2EXT;
   }
   this.memoryBuffer = null;
@@ -40073,8 +40111,8 @@ VkSurfaceCapabilities2EXT.memoryLayout = {
 };
 /** VkDisplayPowerInfoEXT **/
 function VkDisplayPowerInfoEXT(opts) {
-  if (this.constructor !== VkDisplayPowerInfoEXT) {
-    new Uint8Array(_VkDisplayPowerInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPowerInfoEXT) {
+    new Uint8Array(_VkDisplayPowerInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDisplayPowerInfoEXT;
   }
   this.memoryBuffer = null;
@@ -40180,8 +40218,8 @@ VkDisplayPowerInfoEXT.memoryLayout = {
 };
 /** VkDeviceEventInfoEXT **/
 function VkDeviceEventInfoEXT(opts) {
-  if (this.constructor !== VkDeviceEventInfoEXT) {
-    new Uint8Array(_VkDeviceEventInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceEventInfoEXT) {
+    new Uint8Array(_VkDeviceEventInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceEventInfoEXT;
   }
   this.memoryBuffer = null;
@@ -40287,8 +40325,8 @@ VkDeviceEventInfoEXT.memoryLayout = {
 };
 /** VkDisplayEventInfoEXT **/
 function VkDisplayEventInfoEXT(opts) {
-  if (this.constructor !== VkDisplayEventInfoEXT) {
-    new Uint8Array(_VkDisplayEventInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayEventInfoEXT) {
+    new Uint8Array(_VkDisplayEventInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDisplayEventInfoEXT;
   }
   this.memoryBuffer = null;
@@ -40394,8 +40432,8 @@ VkDisplayEventInfoEXT.memoryLayout = {
 };
 /** VkSwapchainCounterCreateInfoEXT **/
 function VkSwapchainCounterCreateInfoEXT(opts) {
-  if (this.constructor !== VkSwapchainCounterCreateInfoEXT) {
-    new Uint8Array(_VkSwapchainCounterCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSwapchainCounterCreateInfoEXT) {
+    new Uint8Array(_VkSwapchainCounterCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSwapchainCounterCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -40498,8 +40536,8 @@ VkSwapchainCounterCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceGroupProperties **/
 function VkPhysicalDeviceGroupProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceGroupProperties) {
-    new Uint8Array(_VkPhysicalDeviceGroupProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceGroupProperties) {
+    new Uint8Array(_VkPhysicalDeviceGroupProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x120], 0x0);
     return _VkPhysicalDeviceGroupProperties;
   }
   this.memoryBuffer = null;
@@ -40623,8 +40661,8 @@ VkPhysicalDeviceGroupProperties.memoryLayout = {
 };
 /** VkPhysicalDeviceGroupPropertiesKHR **/
 function VkPhysicalDeviceGroupPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceGroupPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceGroupPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceGroupPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceGroupPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x120], 0x0);
     return _VkPhysicalDeviceGroupPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -40748,8 +40786,8 @@ VkPhysicalDeviceGroupPropertiesKHR.memoryLayout = {
 };
 /** VkMemoryAllocateFlagsInfo **/
 function VkMemoryAllocateFlagsInfo(opts) {
-  if (this.constructor !== VkMemoryAllocateFlagsInfo) {
-    new Uint8Array(_VkMemoryAllocateFlagsInfo.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryAllocateFlagsInfo) {
+    new Uint8Array(_VkMemoryAllocateFlagsInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryAllocateFlagsInfo;
   }
   this.memoryBuffer = null;
@@ -40871,8 +40909,8 @@ VkMemoryAllocateFlagsInfo.memoryLayout = {
 };
 /** VkMemoryAllocateFlagsInfoKHR **/
 function VkMemoryAllocateFlagsInfoKHR(opts) {
-  if (this.constructor !== VkMemoryAllocateFlagsInfoKHR) {
-    new Uint8Array(_VkMemoryAllocateFlagsInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryAllocateFlagsInfoKHR) {
+    new Uint8Array(_VkMemoryAllocateFlagsInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryAllocateFlagsInfoKHR;
   }
   this.memoryBuffer = null;
@@ -40994,8 +41032,8 @@ VkMemoryAllocateFlagsInfoKHR.memoryLayout = {
 };
 /** VkBindBufferMemoryInfo **/
 function VkBindBufferMemoryInfo(opts) {
-  if (this.constructor !== VkBindBufferMemoryInfo) {
-    new Uint8Array(_VkBindBufferMemoryInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindBufferMemoryInfo) {
+    new Uint8Array(_VkBindBufferMemoryInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkBindBufferMemoryInfo;
   }
   this.memoryBuffer = null;
@@ -41168,8 +41206,8 @@ VkBindBufferMemoryInfo.memoryLayout = {
 };
 /** VkBindBufferMemoryInfoKHR **/
 function VkBindBufferMemoryInfoKHR(opts) {
-  if (this.constructor !== VkBindBufferMemoryInfoKHR) {
-    new Uint8Array(_VkBindBufferMemoryInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindBufferMemoryInfoKHR) {
+    new Uint8Array(_VkBindBufferMemoryInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkBindBufferMemoryInfoKHR;
   }
   this.memoryBuffer = null;
@@ -41342,8 +41380,8 @@ VkBindBufferMemoryInfoKHR.memoryLayout = {
 };
 /** VkBindBufferMemoryDeviceGroupInfo **/
 function VkBindBufferMemoryDeviceGroupInfo(opts) {
-  if (this.constructor !== VkBindBufferMemoryDeviceGroupInfo) {
-    new Uint8Array(_VkBindBufferMemoryDeviceGroupInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindBufferMemoryDeviceGroupInfo) {
+    new Uint8Array(_VkBindBufferMemoryDeviceGroupInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkBindBufferMemoryDeviceGroupInfo;
   }
   this.memoryBuffer = null;
@@ -41471,8 +41509,8 @@ VkBindBufferMemoryDeviceGroupInfo.memoryLayout = {
 };
 /** VkBindBufferMemoryDeviceGroupInfoKHR **/
 function VkBindBufferMemoryDeviceGroupInfoKHR(opts) {
-  if (this.constructor !== VkBindBufferMemoryDeviceGroupInfoKHR) {
-    new Uint8Array(_VkBindBufferMemoryDeviceGroupInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindBufferMemoryDeviceGroupInfoKHR) {
+    new Uint8Array(_VkBindBufferMemoryDeviceGroupInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkBindBufferMemoryDeviceGroupInfoKHR;
   }
   this.memoryBuffer = null;
@@ -41600,8 +41638,8 @@ VkBindBufferMemoryDeviceGroupInfoKHR.memoryLayout = {
 };
 /** VkBindImageMemoryInfo **/
 function VkBindImageMemoryInfo(opts) {
-  if (this.constructor !== VkBindImageMemoryInfo) {
-    new Uint8Array(_VkBindImageMemoryInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindImageMemoryInfo) {
+    new Uint8Array(_VkBindImageMemoryInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkBindImageMemoryInfo;
   }
   this.memoryBuffer = null;
@@ -41776,8 +41814,8 @@ VkBindImageMemoryInfo.memoryLayout = {
 };
 /** VkBindImageMemoryInfoKHR **/
 function VkBindImageMemoryInfoKHR(opts) {
-  if (this.constructor !== VkBindImageMemoryInfoKHR) {
-    new Uint8Array(_VkBindImageMemoryInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindImageMemoryInfoKHR) {
+    new Uint8Array(_VkBindImageMemoryInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkBindImageMemoryInfoKHR;
   }
   this.memoryBuffer = null;
@@ -41952,8 +41990,8 @@ VkBindImageMemoryInfoKHR.memoryLayout = {
 };
 /** VkBindImageMemoryDeviceGroupInfo **/
 function VkBindImageMemoryDeviceGroupInfo(opts) {
-  if (this.constructor !== VkBindImageMemoryDeviceGroupInfo) {
-    new Uint8Array(_VkBindImageMemoryDeviceGroupInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindImageMemoryDeviceGroupInfo) {
+    new Uint8Array(_VkBindImageMemoryDeviceGroupInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkBindImageMemoryDeviceGroupInfo;
   }
   this.memoryBuffer = null;
@@ -42149,8 +42187,8 @@ VkBindImageMemoryDeviceGroupInfo.memoryLayout = {
 };
 /** VkBindImageMemoryDeviceGroupInfoKHR **/
 function VkBindImageMemoryDeviceGroupInfoKHR(opts) {
-  if (this.constructor !== VkBindImageMemoryDeviceGroupInfoKHR) {
-    new Uint8Array(_VkBindImageMemoryDeviceGroupInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindImageMemoryDeviceGroupInfoKHR) {
+    new Uint8Array(_VkBindImageMemoryDeviceGroupInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkBindImageMemoryDeviceGroupInfoKHR;
   }
   this.memoryBuffer = null;
@@ -42346,8 +42384,8 @@ VkBindImageMemoryDeviceGroupInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupRenderPassBeginInfo **/
 function VkDeviceGroupRenderPassBeginInfo(opts) {
-  if (this.constructor !== VkDeviceGroupRenderPassBeginInfo) {
-    new Uint8Array(_VkDeviceGroupRenderPassBeginInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupRenderPassBeginInfo) {
+    new Uint8Array(_VkDeviceGroupRenderPassBeginInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDeviceGroupRenderPassBeginInfo;
   }
   this.memoryBuffer = null;
@@ -42520,8 +42558,8 @@ VkDeviceGroupRenderPassBeginInfo.memoryLayout = {
 };
 /** VkDeviceGroupRenderPassBeginInfoKHR **/
 function VkDeviceGroupRenderPassBeginInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupRenderPassBeginInfoKHR) {
-    new Uint8Array(_VkDeviceGroupRenderPassBeginInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupRenderPassBeginInfoKHR) {
+    new Uint8Array(_VkDeviceGroupRenderPassBeginInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDeviceGroupRenderPassBeginInfoKHR;
   }
   this.memoryBuffer = null;
@@ -42694,8 +42732,8 @@ VkDeviceGroupRenderPassBeginInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupCommandBufferBeginInfo **/
 function VkDeviceGroupCommandBufferBeginInfo(opts) {
-  if (this.constructor !== VkDeviceGroupCommandBufferBeginInfo) {
-    new Uint8Array(_VkDeviceGroupCommandBufferBeginInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupCommandBufferBeginInfo) {
+    new Uint8Array(_VkDeviceGroupCommandBufferBeginInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGroupCommandBufferBeginInfo;
   }
   this.memoryBuffer = null;
@@ -42800,8 +42838,8 @@ VkDeviceGroupCommandBufferBeginInfo.memoryLayout = {
 };
 /** VkDeviceGroupCommandBufferBeginInfoKHR **/
 function VkDeviceGroupCommandBufferBeginInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupCommandBufferBeginInfoKHR) {
-    new Uint8Array(_VkDeviceGroupCommandBufferBeginInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupCommandBufferBeginInfoKHR) {
+    new Uint8Array(_VkDeviceGroupCommandBufferBeginInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGroupCommandBufferBeginInfoKHR;
   }
   this.memoryBuffer = null;
@@ -42906,8 +42944,8 @@ VkDeviceGroupCommandBufferBeginInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupSubmitInfo **/
 function VkDeviceGroupSubmitInfo(opts) {
-  if (this.constructor !== VkDeviceGroupSubmitInfo) {
-    new Uint8Array(_VkDeviceGroupSubmitInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupSubmitInfo) {
+    new Uint8Array(_VkDeviceGroupSubmitInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkDeviceGroupSubmitInfo;
   }
   this.memoryBuffer = null;
@@ -43115,8 +43153,8 @@ VkDeviceGroupSubmitInfo.memoryLayout = {
 };
 /** VkDeviceGroupSubmitInfoKHR **/
 function VkDeviceGroupSubmitInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupSubmitInfoKHR) {
-    new Uint8Array(_VkDeviceGroupSubmitInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupSubmitInfoKHR) {
+    new Uint8Array(_VkDeviceGroupSubmitInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkDeviceGroupSubmitInfoKHR;
   }
   this.memoryBuffer = null;
@@ -43324,8 +43362,8 @@ VkDeviceGroupSubmitInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupBindSparseInfo **/
 function VkDeviceGroupBindSparseInfo(opts) {
-  if (this.constructor !== VkDeviceGroupBindSparseInfo) {
-    new Uint8Array(_VkDeviceGroupBindSparseInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupBindSparseInfo) {
+    new Uint8Array(_VkDeviceGroupBindSparseInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGroupBindSparseInfo;
   }
   this.memoryBuffer = null;
@@ -43447,8 +43485,8 @@ VkDeviceGroupBindSparseInfo.memoryLayout = {
 };
 /** VkDeviceGroupBindSparseInfoKHR **/
 function VkDeviceGroupBindSparseInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupBindSparseInfoKHR) {
-    new Uint8Array(_VkDeviceGroupBindSparseInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupBindSparseInfoKHR) {
+    new Uint8Array(_VkDeviceGroupBindSparseInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGroupBindSparseInfoKHR;
   }
   this.memoryBuffer = null;
@@ -43570,8 +43608,8 @@ VkDeviceGroupBindSparseInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupPresentCapabilitiesKHR **/
 function VkDeviceGroupPresentCapabilitiesKHR(opts) {
-  if (this.constructor !== VkDeviceGroupPresentCapabilitiesKHR) {
-    new Uint8Array(_VkDeviceGroupPresentCapabilitiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupPresentCapabilitiesKHR) {
+    new Uint8Array(_VkDeviceGroupPresentCapabilitiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x98], 0x0);
     return _VkDeviceGroupPresentCapabilitiesKHR;
   }
   this.memoryBuffer = null;
@@ -43718,8 +43756,8 @@ VkDeviceGroupPresentCapabilitiesKHR.memoryLayout = {
 };
 /** VkImageSwapchainCreateInfoKHR **/
 function VkImageSwapchainCreateInfoKHR(opts) {
-  if (this.constructor !== VkImageSwapchainCreateInfoKHR) {
-    new Uint8Array(_VkImageSwapchainCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageSwapchainCreateInfoKHR) {
+    new Uint8Array(_VkImageSwapchainCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageSwapchainCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -43830,8 +43868,8 @@ VkImageSwapchainCreateInfoKHR.memoryLayout = {
 };
 /** VkBindImageMemorySwapchainInfoKHR **/
 function VkBindImageMemorySwapchainInfoKHR(opts) {
-  if (this.constructor !== VkBindImageMemorySwapchainInfoKHR) {
-    new Uint8Array(_VkBindImageMemorySwapchainInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindImageMemorySwapchainInfoKHR) {
+    new Uint8Array(_VkBindImageMemorySwapchainInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkBindImageMemorySwapchainInfoKHR;
   }
   this.memoryBuffer = null;
@@ -43961,8 +43999,8 @@ VkBindImageMemorySwapchainInfoKHR.memoryLayout = {
 };
 /** VkAcquireNextImageInfoKHR **/
 function VkAcquireNextImageInfoKHR(opts) {
-  if (this.constructor !== VkAcquireNextImageInfoKHR) {
-    new Uint8Array(_VkAcquireNextImageInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkAcquireNextImageInfoKHR) {
+    new Uint8Array(_VkAcquireNextImageInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkAcquireNextImageInfoKHR;
   }
   this.memoryBuffer = null;
@@ -44161,8 +44199,8 @@ VkAcquireNextImageInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupPresentInfoKHR **/
 function VkDeviceGroupPresentInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupPresentInfoKHR) {
-    new Uint8Array(_VkDeviceGroupPresentInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupPresentInfoKHR) {
+    new Uint8Array(_VkDeviceGroupPresentInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDeviceGroupPresentInfoKHR;
   }
   this.memoryBuffer = null;
@@ -44307,8 +44345,8 @@ VkDeviceGroupPresentInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupDeviceCreateInfo **/
 function VkDeviceGroupDeviceCreateInfo(opts) {
-  if (this.constructor !== VkDeviceGroupDeviceCreateInfo) {
-    new Uint8Array(_VkDeviceGroupDeviceCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupDeviceCreateInfo) {
+    new Uint8Array(_VkDeviceGroupDeviceCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDeviceGroupDeviceCreateInfo;
   }
   this.memoryBuffer = null;
@@ -44464,8 +44502,8 @@ VkDeviceGroupDeviceCreateInfo.memoryLayout = {
 };
 /** VkDeviceGroupDeviceCreateInfoKHR **/
 function VkDeviceGroupDeviceCreateInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupDeviceCreateInfoKHR) {
-    new Uint8Array(_VkDeviceGroupDeviceCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupDeviceCreateInfoKHR) {
+    new Uint8Array(_VkDeviceGroupDeviceCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDeviceGroupDeviceCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -44621,8 +44659,8 @@ VkDeviceGroupDeviceCreateInfoKHR.memoryLayout = {
 };
 /** VkDeviceGroupSwapchainCreateInfoKHR **/
 function VkDeviceGroupSwapchainCreateInfoKHR(opts) {
-  if (this.constructor !== VkDeviceGroupSwapchainCreateInfoKHR) {
-    new Uint8Array(_VkDeviceGroupSwapchainCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceGroupSwapchainCreateInfoKHR) {
+    new Uint8Array(_VkDeviceGroupSwapchainCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceGroupSwapchainCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -44725,8 +44763,8 @@ VkDeviceGroupSwapchainCreateInfoKHR.memoryLayout = {
 };
 /** VkDescriptorUpdateTemplateEntry **/
 function VkDescriptorUpdateTemplateEntry(opts) {
-  if (this.constructor !== VkDescriptorUpdateTemplateEntry) {
-    new Uint8Array(_VkDescriptorUpdateTemplateEntry.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorUpdateTemplateEntry) {
+    new Uint8Array(_VkDescriptorUpdateTemplateEntry.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDescriptorUpdateTemplateEntry;
   }
   this.memoryBuffer = null;
@@ -44878,8 +44916,8 @@ VkDescriptorUpdateTemplateEntry.memoryLayout = {
 };
 /** VkDescriptorUpdateTemplateEntryKHR **/
 function VkDescriptorUpdateTemplateEntryKHR(opts) {
-  if (this.constructor !== VkDescriptorUpdateTemplateEntryKHR) {
-    new Uint8Array(_VkDescriptorUpdateTemplateEntryKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorUpdateTemplateEntryKHR) {
+    new Uint8Array(_VkDescriptorUpdateTemplateEntryKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDescriptorUpdateTemplateEntryKHR;
   }
   this.memoryBuffer = null;
@@ -45031,8 +45069,8 @@ VkDescriptorUpdateTemplateEntryKHR.memoryLayout = {
 };
 /** VkDescriptorUpdateTemplateCreateInfo **/
 function VkDescriptorUpdateTemplateCreateInfo(opts) {
-  if (this.constructor !== VkDescriptorUpdateTemplateCreateInfo) {
-    new Uint8Array(_VkDescriptorUpdateTemplateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorUpdateTemplateCreateInfo) {
+    new Uint8Array(_VkDescriptorUpdateTemplateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkDescriptorUpdateTemplateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -45312,8 +45350,8 @@ VkDescriptorUpdateTemplateCreateInfo.memoryLayout = {
 };
 /** VkDescriptorUpdateTemplateCreateInfoKHR **/
 function VkDescriptorUpdateTemplateCreateInfoKHR(opts) {
-  if (this.constructor !== VkDescriptorUpdateTemplateCreateInfoKHR) {
-    new Uint8Array(_VkDescriptorUpdateTemplateCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorUpdateTemplateCreateInfoKHR) {
+    new Uint8Array(_VkDescriptorUpdateTemplateCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkDescriptorUpdateTemplateCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -45593,8 +45631,8 @@ VkDescriptorUpdateTemplateCreateInfoKHR.memoryLayout = {
 };
 /** VkXYColorEXT **/
 function VkXYColorEXT(opts) {
-  if (this.constructor !== VkXYColorEXT) {
-    new Uint8Array(_VkXYColorEXT.memoryBuffer).fill(0);
+  if (new.target !== VkXYColorEXT) {
+    new Uint8Array(_VkXYColorEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkXYColorEXT;
   }
   this.memoryBuffer = null;
@@ -45671,8 +45709,8 @@ VkXYColorEXT.memoryLayout = {
 };
 /** VkHdrMetadataEXT **/
 function VkHdrMetadataEXT(opts) {
-  if (this.constructor !== VkHdrMetadataEXT) {
-    new Uint8Array(_VkHdrMetadataEXT.memoryBuffer).fill(0);
+  if (new.target !== VkHdrMetadataEXT) {
+    new Uint8Array(_VkHdrMetadataEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkHdrMetadataEXT;
   }
   this.memoryBuffer = null;
@@ -45984,8 +46022,8 @@ VkHdrMetadataEXT.memoryLayout = {
 };
 /** VkDisplayNativeHdrSurfaceCapabilitiesAMD **/
 function VkDisplayNativeHdrSurfaceCapabilitiesAMD(opts) {
-  if (this.constructor !== VkDisplayNativeHdrSurfaceCapabilitiesAMD) {
-    new Uint8Array(_VkDisplayNativeHdrSurfaceCapabilitiesAMD.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayNativeHdrSurfaceCapabilitiesAMD) {
+    new Uint8Array(_VkDisplayNativeHdrSurfaceCapabilitiesAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDisplayNativeHdrSurfaceCapabilitiesAMD;
   }
   this.memoryBuffer = null;
@@ -46087,8 +46125,8 @@ VkDisplayNativeHdrSurfaceCapabilitiesAMD.memoryLayout = {
 };
 /** VkSwapchainDisplayNativeHdrCreateInfoAMD **/
 function VkSwapchainDisplayNativeHdrCreateInfoAMD(opts) {
-  if (this.constructor !== VkSwapchainDisplayNativeHdrCreateInfoAMD) {
-    new Uint8Array(_VkSwapchainDisplayNativeHdrCreateInfoAMD.memoryBuffer).fill(0);
+  if (new.target !== VkSwapchainDisplayNativeHdrCreateInfoAMD) {
+    new Uint8Array(_VkSwapchainDisplayNativeHdrCreateInfoAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSwapchainDisplayNativeHdrCreateInfoAMD;
   }
   this.memoryBuffer = null;
@@ -46190,8 +46228,8 @@ VkSwapchainDisplayNativeHdrCreateInfoAMD.memoryLayout = {
 };
 /** VkRefreshCycleDurationGOOGLE **/
 function VkRefreshCycleDurationGOOGLE(opts) {
-  if (this.constructor !== VkRefreshCycleDurationGOOGLE) {
-    new Uint8Array(_VkRefreshCycleDurationGOOGLE.memoryBuffer).fill(0);
+  if (new.target !== VkRefreshCycleDurationGOOGLE) {
+    new Uint8Array(_VkRefreshCycleDurationGOOGLE.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkRefreshCycleDurationGOOGLE;
   }
   this.memoryBuffer = null;
@@ -46248,8 +46286,8 @@ VkRefreshCycleDurationGOOGLE.memoryLayout = {
 };
 /** VkPastPresentationTimingGOOGLE **/
 function VkPastPresentationTimingGOOGLE(opts) {
-  if (this.constructor !== VkPastPresentationTimingGOOGLE) {
-    new Uint8Array(_VkPastPresentationTimingGOOGLE.memoryBuffer).fill(0);
+  if (new.target !== VkPastPresentationTimingGOOGLE) {
+    new Uint8Array(_VkPastPresentationTimingGOOGLE.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPastPresentationTimingGOOGLE;
   }
   this.memoryBuffer = null;
@@ -46348,8 +46386,8 @@ VkPastPresentationTimingGOOGLE.memoryLayout = {
 };
 /** VkPresentTimesInfoGOOGLE **/
 function VkPresentTimesInfoGOOGLE(opts) {
-  if (this.constructor !== VkPresentTimesInfoGOOGLE) {
-    new Uint8Array(_VkPresentTimesInfoGOOGLE.memoryBuffer).fill(0);
+  if (new.target !== VkPresentTimesInfoGOOGLE) {
+    new Uint8Array(_VkPresentTimesInfoGOOGLE.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPresentTimesInfoGOOGLE;
   }
   this.memoryBuffer = null;
@@ -46505,8 +46543,8 @@ VkPresentTimesInfoGOOGLE.memoryLayout = {
 };
 /** VkPresentTimeGOOGLE **/
 function VkPresentTimeGOOGLE(opts) {
-  if (this.constructor !== VkPresentTimeGOOGLE) {
-    new Uint8Array(_VkPresentTimeGOOGLE.memoryBuffer).fill(0);
+  if (new.target !== VkPresentTimeGOOGLE) {
+    new Uint8Array(_VkPresentTimeGOOGLE.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkPresentTimeGOOGLE;
   }
   this.memoryBuffer = null;
@@ -46585,8 +46623,8 @@ VkPresentTimeGOOGLE.memoryLayout = {
 };
 /** VkViewportWScalingNV **/
 function VkViewportWScalingNV(opts) {
-  if (this.constructor !== VkViewportWScalingNV) {
-    new Uint8Array(_VkViewportWScalingNV.memoryBuffer).fill(0);
+  if (new.target !== VkViewportWScalingNV) {
+    new Uint8Array(_VkViewportWScalingNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkViewportWScalingNV;
   }
   this.memoryBuffer = null;
@@ -46663,8 +46701,8 @@ VkViewportWScalingNV.memoryLayout = {
 };
 /** VkPipelineViewportWScalingStateCreateInfoNV **/
 function VkPipelineViewportWScalingStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineViewportWScalingStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineViewportWScalingStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportWScalingStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineViewportWScalingStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineViewportWScalingStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -46834,8 +46872,8 @@ VkPipelineViewportWScalingStateCreateInfoNV.memoryLayout = {
 };
 /** VkViewportSwizzleNV **/
 function VkViewportSwizzleNV(opts) {
-  if (this.constructor !== VkViewportSwizzleNV) {
-    new Uint8Array(_VkViewportSwizzleNV.memoryBuffer).fill(0);
+  if (new.target !== VkViewportSwizzleNV) {
+    new Uint8Array(_VkViewportSwizzleNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkViewportSwizzleNV;
   }
   this.memoryBuffer = null;
@@ -46958,8 +46996,8 @@ VkViewportSwizzleNV.memoryLayout = {
 };
 /** VkPipelineViewportSwizzleStateCreateInfoNV **/
 function VkPipelineViewportSwizzleStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineViewportSwizzleStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineViewportSwizzleStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportSwizzleStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineViewportSwizzleStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineViewportSwizzleStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -47132,8 +47170,8 @@ VkPipelineViewportSwizzleStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceDiscardRectanglePropertiesEXT **/
 function VkPhysicalDeviceDiscardRectanglePropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceDiscardRectanglePropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceDiscardRectanglePropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDiscardRectanglePropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceDiscardRectanglePropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceDiscardRectanglePropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -47235,8 +47273,8 @@ VkPhysicalDeviceDiscardRectanglePropertiesEXT.memoryLayout = {
 };
 /** VkPipelineDiscardRectangleStateCreateInfoEXT **/
 function VkPipelineDiscardRectangleStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineDiscardRectangleStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineDiscardRectangleStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineDiscardRectangleStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineDiscardRectangleStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPipelineDiscardRectangleStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -47429,8 +47467,8 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX **/
 function VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(opts) {
-  if (this.constructor !== VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX) {
-    new Uint8Array(_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX) {
+    new Uint8Array(_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
   }
   this.memoryBuffer = null;
@@ -47532,8 +47570,8 @@ VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.memoryLayout = {
 };
 /** VkInputAttachmentAspectReference **/
 function VkInputAttachmentAspectReference(opts) {
-  if (this.constructor !== VkInputAttachmentAspectReference) {
-    new Uint8Array(_VkInputAttachmentAspectReference.memoryBuffer).fill(0);
+  if (new.target !== VkInputAttachmentAspectReference) {
+    new Uint8Array(_VkInputAttachmentAspectReference.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkInputAttachmentAspectReference;
   }
   this.memoryBuffer = null;
@@ -47629,8 +47667,8 @@ VkInputAttachmentAspectReference.memoryLayout = {
 };
 /** VkInputAttachmentAspectReferenceKHR **/
 function VkInputAttachmentAspectReferenceKHR(opts) {
-  if (this.constructor !== VkInputAttachmentAspectReferenceKHR) {
-    new Uint8Array(_VkInputAttachmentAspectReferenceKHR.memoryBuffer).fill(0);
+  if (new.target !== VkInputAttachmentAspectReferenceKHR) {
+    new Uint8Array(_VkInputAttachmentAspectReferenceKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkInputAttachmentAspectReferenceKHR;
   }
   this.memoryBuffer = null;
@@ -47726,8 +47764,8 @@ VkInputAttachmentAspectReferenceKHR.memoryLayout = {
 };
 /** VkRenderPassInputAttachmentAspectCreateInfo **/
 function VkRenderPassInputAttachmentAspectCreateInfo(opts) {
-  if (this.constructor !== VkRenderPassInputAttachmentAspectCreateInfo) {
-    new Uint8Array(_VkRenderPassInputAttachmentAspectCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassInputAttachmentAspectCreateInfo) {
+    new Uint8Array(_VkRenderPassInputAttachmentAspectCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkRenderPassInputAttachmentAspectCreateInfo;
   }
   this.memoryBuffer = null;
@@ -47883,8 +47921,8 @@ VkRenderPassInputAttachmentAspectCreateInfo.memoryLayout = {
 };
 /** VkRenderPassInputAttachmentAspectCreateInfoKHR **/
 function VkRenderPassInputAttachmentAspectCreateInfoKHR(opts) {
-  if (this.constructor !== VkRenderPassInputAttachmentAspectCreateInfoKHR) {
-    new Uint8Array(_VkRenderPassInputAttachmentAspectCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassInputAttachmentAspectCreateInfoKHR) {
+    new Uint8Array(_VkRenderPassInputAttachmentAspectCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkRenderPassInputAttachmentAspectCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -48040,8 +48078,8 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceSurfaceInfo2KHR **/
 function VkPhysicalDeviceSurfaceInfo2KHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceSurfaceInfo2KHR) {
-    new Uint8Array(_VkPhysicalDeviceSurfaceInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSurfaceInfo2KHR) {
+    new Uint8Array(_VkPhysicalDeviceSurfaceInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceSurfaceInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -48171,8 +48209,8 @@ VkPhysicalDeviceSurfaceInfo2KHR.memoryLayout = {
 };
 /** VkSurfaceCapabilities2KHR **/
 function VkSurfaceCapabilities2KHR(opts) {
-  if (this.constructor !== VkSurfaceCapabilities2KHR) {
-    new Uint8Array(_VkSurfaceCapabilities2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceCapabilities2KHR) {
+    new Uint8Array(_VkSurfaceCapabilities2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkSurfaceCapabilities2KHR;
   }
   this.memoryBuffer = null;
@@ -48295,8 +48333,8 @@ VkSurfaceCapabilities2KHR.memoryLayout = {
 };
 /** VkSurfaceFormat2KHR **/
 function VkSurfaceFormat2KHR(opts) {
-  if (this.constructor !== VkSurfaceFormat2KHR) {
-    new Uint8Array(_VkSurfaceFormat2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceFormat2KHR) {
+    new Uint8Array(_VkSurfaceFormat2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSurfaceFormat2KHR;
   }
   this.memoryBuffer = null;
@@ -48398,8 +48436,8 @@ VkSurfaceFormat2KHR.memoryLayout = {
 };
 /** VkDisplayProperties2KHR **/
 function VkDisplayProperties2KHR(opts) {
-  if (this.constructor !== VkDisplayProperties2KHR) {
-    new Uint8Array(_VkDisplayProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayProperties2KHR) {
+    new Uint8Array(_VkDisplayProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkDisplayProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -48501,8 +48539,8 @@ VkDisplayProperties2KHR.memoryLayout = {
 };
 /** VkDisplayPlaneProperties2KHR **/
 function VkDisplayPlaneProperties2KHR(opts) {
-  if (this.constructor !== VkDisplayPlaneProperties2KHR) {
-    new Uint8Array(_VkDisplayPlaneProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPlaneProperties2KHR) {
+    new Uint8Array(_VkDisplayPlaneProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDisplayPlaneProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -48604,8 +48642,8 @@ VkDisplayPlaneProperties2KHR.memoryLayout = {
 };
 /** VkDisplayModeProperties2KHR **/
 function VkDisplayModeProperties2KHR(opts) {
-  if (this.constructor !== VkDisplayModeProperties2KHR) {
-    new Uint8Array(_VkDisplayModeProperties2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayModeProperties2KHR) {
+    new Uint8Array(_VkDisplayModeProperties2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDisplayModeProperties2KHR;
   }
   this.memoryBuffer = null;
@@ -48707,8 +48745,8 @@ VkDisplayModeProperties2KHR.memoryLayout = {
 };
 /** VkDisplayPlaneInfo2KHR **/
 function VkDisplayPlaneInfo2KHR(opts) {
-  if (this.constructor !== VkDisplayPlaneInfo2KHR) {
-    new Uint8Array(_VkDisplayPlaneInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPlaneInfo2KHR) {
+    new Uint8Array(_VkDisplayPlaneInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDisplayPlaneInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -48838,8 +48876,8 @@ VkDisplayPlaneInfo2KHR.memoryLayout = {
 };
 /** VkDisplayPlaneCapabilities2KHR **/
 function VkDisplayPlaneCapabilities2KHR(opts) {
-  if (this.constructor !== VkDisplayPlaneCapabilities2KHR) {
-    new Uint8Array(_VkDisplayPlaneCapabilities2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkDisplayPlaneCapabilities2KHR) {
+    new Uint8Array(_VkDisplayPlaneCapabilities2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x58], 0x0);
     return _VkDisplayPlaneCapabilities2KHR;
   }
   this.memoryBuffer = null;
@@ -48941,8 +48979,8 @@ VkDisplayPlaneCapabilities2KHR.memoryLayout = {
 };
 /** VkSharedPresentSurfaceCapabilitiesKHR **/
 function VkSharedPresentSurfaceCapabilitiesKHR(opts) {
-  if (this.constructor !== VkSharedPresentSurfaceCapabilitiesKHR) {
-    new Uint8Array(_VkSharedPresentSurfaceCapabilitiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSharedPresentSurfaceCapabilitiesKHR) {
+    new Uint8Array(_VkSharedPresentSurfaceCapabilitiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSharedPresentSurfaceCapabilitiesKHR;
   }
   this.memoryBuffer = null;
@@ -49042,8 +49080,8 @@ VkSharedPresentSurfaceCapabilitiesKHR.memoryLayout = {
 };
 /** VkPhysicalDevice16BitStorageFeatures **/
 function VkPhysicalDevice16BitStorageFeatures(opts) {
-  if (this.constructor !== VkPhysicalDevice16BitStorageFeatures) {
-    new Uint8Array(_VkPhysicalDevice16BitStorageFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevice16BitStorageFeatures) {
+    new Uint8Array(_VkPhysicalDevice16BitStorageFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDevice16BitStorageFeatures;
   }
   this.memoryBuffer = null;
@@ -49187,8 +49225,8 @@ VkPhysicalDevice16BitStorageFeatures.memoryLayout = {
 };
 /** VkPhysicalDevice16BitStorageFeaturesKHR **/
 function VkPhysicalDevice16BitStorageFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDevice16BitStorageFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDevice16BitStorageFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevice16BitStorageFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDevice16BitStorageFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDevice16BitStorageFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -49332,8 +49370,8 @@ VkPhysicalDevice16BitStorageFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceSubgroupProperties **/
 function VkPhysicalDeviceSubgroupProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceSubgroupProperties) {
-    new Uint8Array(_VkPhysicalDeviceSubgroupProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSubgroupProperties) {
+    new Uint8Array(_VkPhysicalDeviceSubgroupProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceSubgroupProperties;
   }
   this.memoryBuffer = null;
@@ -49465,8 +49503,8 @@ VkPhysicalDeviceSubgroupProperties.memoryLayout = {
 };
 /** VkBufferMemoryRequirementsInfo2 **/
 function VkBufferMemoryRequirementsInfo2(opts) {
-  if (this.constructor !== VkBufferMemoryRequirementsInfo2) {
-    new Uint8Array(_VkBufferMemoryRequirementsInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkBufferMemoryRequirementsInfo2) {
+    new Uint8Array(_VkBufferMemoryRequirementsInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBufferMemoryRequirementsInfo2;
   }
   this.memoryBuffer = null;
@@ -49577,8 +49615,8 @@ VkBufferMemoryRequirementsInfo2.memoryLayout = {
 };
 /** VkBufferMemoryRequirementsInfo2KHR **/
 function VkBufferMemoryRequirementsInfo2KHR(opts) {
-  if (this.constructor !== VkBufferMemoryRequirementsInfo2KHR) {
-    new Uint8Array(_VkBufferMemoryRequirementsInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkBufferMemoryRequirementsInfo2KHR) {
+    new Uint8Array(_VkBufferMemoryRequirementsInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBufferMemoryRequirementsInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -49689,8 +49727,8 @@ VkBufferMemoryRequirementsInfo2KHR.memoryLayout = {
 };
 /** VkImageMemoryRequirementsInfo2 **/
 function VkImageMemoryRequirementsInfo2(opts) {
-  if (this.constructor !== VkImageMemoryRequirementsInfo2) {
-    new Uint8Array(_VkImageMemoryRequirementsInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkImageMemoryRequirementsInfo2) {
+    new Uint8Array(_VkImageMemoryRequirementsInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageMemoryRequirementsInfo2;
   }
   this.memoryBuffer = null;
@@ -49819,8 +49857,8 @@ VkImageMemoryRequirementsInfo2.memoryLayout = {
 };
 /** VkImageMemoryRequirementsInfo2KHR **/
 function VkImageMemoryRequirementsInfo2KHR(opts) {
-  if (this.constructor !== VkImageMemoryRequirementsInfo2KHR) {
-    new Uint8Array(_VkImageMemoryRequirementsInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageMemoryRequirementsInfo2KHR) {
+    new Uint8Array(_VkImageMemoryRequirementsInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageMemoryRequirementsInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -49949,8 +49987,8 @@ VkImageMemoryRequirementsInfo2KHR.memoryLayout = {
 };
 /** VkImageSparseMemoryRequirementsInfo2 **/
 function VkImageSparseMemoryRequirementsInfo2(opts) {
-  if (this.constructor !== VkImageSparseMemoryRequirementsInfo2) {
-    new Uint8Array(_VkImageSparseMemoryRequirementsInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkImageSparseMemoryRequirementsInfo2) {
+    new Uint8Array(_VkImageSparseMemoryRequirementsInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageSparseMemoryRequirementsInfo2;
   }
   this.memoryBuffer = null;
@@ -50061,8 +50099,8 @@ VkImageSparseMemoryRequirementsInfo2.memoryLayout = {
 };
 /** VkImageSparseMemoryRequirementsInfo2KHR **/
 function VkImageSparseMemoryRequirementsInfo2KHR(opts) {
-  if (this.constructor !== VkImageSparseMemoryRequirementsInfo2KHR) {
-    new Uint8Array(_VkImageSparseMemoryRequirementsInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageSparseMemoryRequirementsInfo2KHR) {
+    new Uint8Array(_VkImageSparseMemoryRequirementsInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageSparseMemoryRequirementsInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -50173,8 +50211,8 @@ VkImageSparseMemoryRequirementsInfo2KHR.memoryLayout = {
 };
 /** VkMemoryRequirements2 **/
 function VkMemoryRequirements2(opts) {
-  if (this.constructor !== VkMemoryRequirements2) {
-    new Uint8Array(_VkMemoryRequirements2.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryRequirements2) {
+    new Uint8Array(_VkMemoryRequirements2.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkMemoryRequirements2;
   }
   this.memoryBuffer = null;
@@ -50294,8 +50332,8 @@ VkMemoryRequirements2.memoryLayout = {
 };
 /** VkMemoryRequirements2KHR **/
 function VkMemoryRequirements2KHR(opts) {
-  if (this.constructor !== VkMemoryRequirements2KHR) {
-    new Uint8Array(_VkMemoryRequirements2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryRequirements2KHR) {
+    new Uint8Array(_VkMemoryRequirements2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkMemoryRequirements2KHR;
   }
   this.memoryBuffer = null;
@@ -50415,8 +50453,8 @@ VkMemoryRequirements2KHR.memoryLayout = {
 };
 /** VkSparseImageMemoryRequirements2 **/
 function VkSparseImageMemoryRequirements2(opts) {
-  if (this.constructor !== VkSparseImageMemoryRequirements2) {
-    new Uint8Array(_VkSparseImageMemoryRequirements2.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageMemoryRequirements2) {
+    new Uint8Array(_VkSparseImageMemoryRequirements2.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkSparseImageMemoryRequirements2;
   }
   this.memoryBuffer = null;
@@ -50518,8 +50556,8 @@ VkSparseImageMemoryRequirements2.memoryLayout = {
 };
 /** VkSparseImageMemoryRequirements2KHR **/
 function VkSparseImageMemoryRequirements2KHR(opts) {
-  if (this.constructor !== VkSparseImageMemoryRequirements2KHR) {
-    new Uint8Array(_VkSparseImageMemoryRequirements2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSparseImageMemoryRequirements2KHR) {
+    new Uint8Array(_VkSparseImageMemoryRequirements2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkSparseImageMemoryRequirements2KHR;
   }
   this.memoryBuffer = null;
@@ -50621,8 +50659,8 @@ VkSparseImageMemoryRequirements2KHR.memoryLayout = {
 };
 /** VkPhysicalDevicePointClippingProperties **/
 function VkPhysicalDevicePointClippingProperties(opts) {
-  if (this.constructor !== VkPhysicalDevicePointClippingProperties) {
-    new Uint8Array(_VkPhysicalDevicePointClippingProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevicePointClippingProperties) {
+    new Uint8Array(_VkPhysicalDevicePointClippingProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDevicePointClippingProperties;
   }
   this.memoryBuffer = null;
@@ -50722,8 +50760,8 @@ VkPhysicalDevicePointClippingProperties.memoryLayout = {
 };
 /** VkPhysicalDevicePointClippingPropertiesKHR **/
 function VkPhysicalDevicePointClippingPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDevicePointClippingPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDevicePointClippingPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevicePointClippingPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDevicePointClippingPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDevicePointClippingPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -50823,8 +50861,8 @@ VkPhysicalDevicePointClippingPropertiesKHR.memoryLayout = {
 };
 /** VkMemoryDedicatedRequirements **/
 function VkMemoryDedicatedRequirements(opts) {
-  if (this.constructor !== VkMemoryDedicatedRequirements) {
-    new Uint8Array(_VkMemoryDedicatedRequirements.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryDedicatedRequirements) {
+    new Uint8Array(_VkMemoryDedicatedRequirements.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryDedicatedRequirements;
   }
   this.memoryBuffer = null;
@@ -50936,8 +50974,8 @@ VkMemoryDedicatedRequirements.memoryLayout = {
 };
 /** VkMemoryDedicatedRequirementsKHR **/
 function VkMemoryDedicatedRequirementsKHR(opts) {
-  if (this.constructor !== VkMemoryDedicatedRequirementsKHR) {
-    new Uint8Array(_VkMemoryDedicatedRequirementsKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryDedicatedRequirementsKHR) {
+    new Uint8Array(_VkMemoryDedicatedRequirementsKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryDedicatedRequirementsKHR;
   }
   this.memoryBuffer = null;
@@ -51049,8 +51087,8 @@ VkMemoryDedicatedRequirementsKHR.memoryLayout = {
 };
 /** VkMemoryDedicatedAllocateInfo **/
 function VkMemoryDedicatedAllocateInfo(opts) {
-  if (this.constructor !== VkMemoryDedicatedAllocateInfo) {
-    new Uint8Array(_VkMemoryDedicatedAllocateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryDedicatedAllocateInfo) {
+    new Uint8Array(_VkMemoryDedicatedAllocateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkMemoryDedicatedAllocateInfo;
   }
   this.memoryBuffer = null;
@@ -51186,8 +51224,8 @@ VkMemoryDedicatedAllocateInfo.memoryLayout = {
 };
 /** VkMemoryDedicatedAllocateInfoKHR **/
 function VkMemoryDedicatedAllocateInfoKHR(opts) {
-  if (this.constructor !== VkMemoryDedicatedAllocateInfoKHR) {
-    new Uint8Array(_VkMemoryDedicatedAllocateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryDedicatedAllocateInfoKHR) {
+    new Uint8Array(_VkMemoryDedicatedAllocateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkMemoryDedicatedAllocateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -51323,8 +51361,8 @@ VkMemoryDedicatedAllocateInfoKHR.memoryLayout = {
 };
 /** VkImageViewUsageCreateInfo **/
 function VkImageViewUsageCreateInfo(opts) {
-  if (this.constructor !== VkImageViewUsageCreateInfo) {
-    new Uint8Array(_VkImageViewUsageCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkImageViewUsageCreateInfo) {
+    new Uint8Array(_VkImageViewUsageCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageViewUsageCreateInfo;
   }
   this.memoryBuffer = null;
@@ -51427,8 +51465,8 @@ VkImageViewUsageCreateInfo.memoryLayout = {
 };
 /** VkImageViewUsageCreateInfoKHR **/
 function VkImageViewUsageCreateInfoKHR(opts) {
-  if (this.constructor !== VkImageViewUsageCreateInfoKHR) {
-    new Uint8Array(_VkImageViewUsageCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageViewUsageCreateInfoKHR) {
+    new Uint8Array(_VkImageViewUsageCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageViewUsageCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -51531,8 +51569,8 @@ VkImageViewUsageCreateInfoKHR.memoryLayout = {
 };
 /** VkPipelineTessellationDomainOriginStateCreateInfo **/
 function VkPipelineTessellationDomainOriginStateCreateInfo(opts) {
-  if (this.constructor !== VkPipelineTessellationDomainOriginStateCreateInfo) {
-    new Uint8Array(_VkPipelineTessellationDomainOriginStateCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineTessellationDomainOriginStateCreateInfo) {
+    new Uint8Array(_VkPipelineTessellationDomainOriginStateCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineTessellationDomainOriginStateCreateInfo;
   }
   this.memoryBuffer = null;
@@ -51638,8 +51676,8 @@ VkPipelineTessellationDomainOriginStateCreateInfo.memoryLayout = {
 };
 /** VkPipelineTessellationDomainOriginStateCreateInfoKHR **/
 function VkPipelineTessellationDomainOriginStateCreateInfoKHR(opts) {
-  if (this.constructor !== VkPipelineTessellationDomainOriginStateCreateInfoKHR) {
-    new Uint8Array(_VkPipelineTessellationDomainOriginStateCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineTessellationDomainOriginStateCreateInfoKHR) {
+    new Uint8Array(_VkPipelineTessellationDomainOriginStateCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineTessellationDomainOriginStateCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -51745,8 +51783,8 @@ VkPipelineTessellationDomainOriginStateCreateInfoKHR.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionInfo **/
 function VkSamplerYcbcrConversionInfo(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionInfo) {
-    new Uint8Array(_VkSamplerYcbcrConversionInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionInfo) {
+    new Uint8Array(_VkSamplerYcbcrConversionInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSamplerYcbcrConversionInfo;
   }
   this.memoryBuffer = null;
@@ -51857,8 +51895,8 @@ VkSamplerYcbcrConversionInfo.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionInfoKHR **/
 function VkSamplerYcbcrConversionInfoKHR(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionInfoKHR) {
-    new Uint8Array(_VkSamplerYcbcrConversionInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionInfoKHR) {
+    new Uint8Array(_VkSamplerYcbcrConversionInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSamplerYcbcrConversionInfoKHR;
   }
   this.memoryBuffer = null;
@@ -51969,8 +52007,8 @@ VkSamplerYcbcrConversionInfoKHR.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionCreateInfo **/
 function VkSamplerYcbcrConversionCreateInfo(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionCreateInfo) {
-    new Uint8Array(_VkSamplerYcbcrConversionCreateInfo.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionCreateInfo) {
+    new Uint8Array(_VkSamplerYcbcrConversionCreateInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkSamplerYcbcrConversionCreateInfo;
   }
   this.memoryBuffer = null;
@@ -52249,8 +52287,8 @@ VkSamplerYcbcrConversionCreateInfo.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionCreateInfoKHR **/
 function VkSamplerYcbcrConversionCreateInfoKHR(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionCreateInfoKHR) {
-    new Uint8Array(_VkSamplerYcbcrConversionCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionCreateInfoKHR) {
+    new Uint8Array(_VkSamplerYcbcrConversionCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkSamplerYcbcrConversionCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -52529,8 +52567,8 @@ VkSamplerYcbcrConversionCreateInfoKHR.memoryLayout = {
 };
 /** VkBindImagePlaneMemoryInfo **/
 function VkBindImagePlaneMemoryInfo(opts) {
-  if (this.constructor !== VkBindImagePlaneMemoryInfo) {
-    new Uint8Array(_VkBindImagePlaneMemoryInfo.memoryBuffer).fill(0);
+  if (new.target !== VkBindImagePlaneMemoryInfo) {
+    new Uint8Array(_VkBindImagePlaneMemoryInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBindImagePlaneMemoryInfo;
   }
   this.memoryBuffer = null;
@@ -52633,8 +52671,8 @@ VkBindImagePlaneMemoryInfo.memoryLayout = {
 };
 /** VkBindImagePlaneMemoryInfoKHR **/
 function VkBindImagePlaneMemoryInfoKHR(opts) {
-  if (this.constructor !== VkBindImagePlaneMemoryInfoKHR) {
-    new Uint8Array(_VkBindImagePlaneMemoryInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkBindImagePlaneMemoryInfoKHR) {
+    new Uint8Array(_VkBindImagePlaneMemoryInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBindImagePlaneMemoryInfoKHR;
   }
   this.memoryBuffer = null;
@@ -52737,8 +52775,8 @@ VkBindImagePlaneMemoryInfoKHR.memoryLayout = {
 };
 /** VkImagePlaneMemoryRequirementsInfo **/
 function VkImagePlaneMemoryRequirementsInfo(opts) {
-  if (this.constructor !== VkImagePlaneMemoryRequirementsInfo) {
-    new Uint8Array(_VkImagePlaneMemoryRequirementsInfo.memoryBuffer).fill(0);
+  if (new.target !== VkImagePlaneMemoryRequirementsInfo) {
+    new Uint8Array(_VkImagePlaneMemoryRequirementsInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImagePlaneMemoryRequirementsInfo;
   }
   this.memoryBuffer = null;
@@ -52841,8 +52879,8 @@ VkImagePlaneMemoryRequirementsInfo.memoryLayout = {
 };
 /** VkImagePlaneMemoryRequirementsInfoKHR **/
 function VkImagePlaneMemoryRequirementsInfoKHR(opts) {
-  if (this.constructor !== VkImagePlaneMemoryRequirementsInfoKHR) {
-    new Uint8Array(_VkImagePlaneMemoryRequirementsInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImagePlaneMemoryRequirementsInfoKHR) {
+    new Uint8Array(_VkImagePlaneMemoryRequirementsInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImagePlaneMemoryRequirementsInfoKHR;
   }
   this.memoryBuffer = null;
@@ -52945,8 +52983,8 @@ VkImagePlaneMemoryRequirementsInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceSamplerYcbcrConversionFeatures **/
 function VkPhysicalDeviceSamplerYcbcrConversionFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceSamplerYcbcrConversionFeatures) {
-    new Uint8Array(_VkPhysicalDeviceSamplerYcbcrConversionFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSamplerYcbcrConversionFeatures) {
+    new Uint8Array(_VkPhysicalDeviceSamplerYcbcrConversionFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceSamplerYcbcrConversionFeatures;
   }
   this.memoryBuffer = null;
@@ -53048,8 +53086,8 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR **/
 function VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -53151,8 +53189,8 @@ VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionImageFormatProperties **/
 function VkSamplerYcbcrConversionImageFormatProperties(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionImageFormatProperties) {
-    new Uint8Array(_VkSamplerYcbcrConversionImageFormatProperties.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionImageFormatProperties) {
+    new Uint8Array(_VkSamplerYcbcrConversionImageFormatProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSamplerYcbcrConversionImageFormatProperties;
   }
   this.memoryBuffer = null;
@@ -53254,8 +53292,8 @@ VkSamplerYcbcrConversionImageFormatProperties.memoryLayout = {
 };
 /** VkSamplerYcbcrConversionImageFormatPropertiesKHR **/
 function VkSamplerYcbcrConversionImageFormatPropertiesKHR(opts) {
-  if (this.constructor !== VkSamplerYcbcrConversionImageFormatPropertiesKHR) {
-    new Uint8Array(_VkSamplerYcbcrConversionImageFormatPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerYcbcrConversionImageFormatPropertiesKHR) {
+    new Uint8Array(_VkSamplerYcbcrConversionImageFormatPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSamplerYcbcrConversionImageFormatPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -53357,8 +53395,8 @@ VkSamplerYcbcrConversionImageFormatPropertiesKHR.memoryLayout = {
 };
 /** VkTextureLODGatherFormatPropertiesAMD **/
 function VkTextureLODGatherFormatPropertiesAMD(opts) {
-  if (this.constructor !== VkTextureLODGatherFormatPropertiesAMD) {
-    new Uint8Array(_VkTextureLODGatherFormatPropertiesAMD.memoryBuffer).fill(0);
+  if (new.target !== VkTextureLODGatherFormatPropertiesAMD) {
+    new Uint8Array(_VkTextureLODGatherFormatPropertiesAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkTextureLODGatherFormatPropertiesAMD;
   }
   this.memoryBuffer = null;
@@ -53460,8 +53498,8 @@ VkTextureLODGatherFormatPropertiesAMD.memoryLayout = {
 };
 /** VkConditionalRenderingBeginInfoEXT **/
 function VkConditionalRenderingBeginInfoEXT(opts) {
-  if (this.constructor !== VkConditionalRenderingBeginInfoEXT) {
-    new Uint8Array(_VkConditionalRenderingBeginInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkConditionalRenderingBeginInfoEXT) {
+    new Uint8Array(_VkConditionalRenderingBeginInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkConditionalRenderingBeginInfoEXT;
   }
   this.memoryBuffer = null;
@@ -53608,8 +53646,8 @@ VkConditionalRenderingBeginInfoEXT.memoryLayout = {
 };
 /** VkProtectedSubmitInfo **/
 function VkProtectedSubmitInfo(opts) {
-  if (this.constructor !== VkProtectedSubmitInfo) {
-    new Uint8Array(_VkProtectedSubmitInfo.memoryBuffer).fill(0);
+  if (new.target !== VkProtectedSubmitInfo) {
+    new Uint8Array(_VkProtectedSubmitInfo.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkProtectedSubmitInfo;
   }
   this.memoryBuffer = null;
@@ -53711,8 +53749,8 @@ VkProtectedSubmitInfo.memoryLayout = {
 };
 /** VkPhysicalDeviceProtectedMemoryFeatures **/
 function VkPhysicalDeviceProtectedMemoryFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceProtectedMemoryFeatures) {
-    new Uint8Array(_VkPhysicalDeviceProtectedMemoryFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceProtectedMemoryFeatures) {
+    new Uint8Array(_VkPhysicalDeviceProtectedMemoryFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceProtectedMemoryFeatures;
   }
   this.memoryBuffer = null;
@@ -53814,8 +53852,8 @@ VkPhysicalDeviceProtectedMemoryFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceProtectedMemoryProperties **/
 function VkPhysicalDeviceProtectedMemoryProperties(opts) {
-  if (this.constructor !== VkPhysicalDeviceProtectedMemoryProperties) {
-    new Uint8Array(_VkPhysicalDeviceProtectedMemoryProperties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceProtectedMemoryProperties) {
+    new Uint8Array(_VkPhysicalDeviceProtectedMemoryProperties.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceProtectedMemoryProperties;
   }
   this.memoryBuffer = null;
@@ -53917,8 +53955,8 @@ VkPhysicalDeviceProtectedMemoryProperties.memoryLayout = {
 };
 /** VkDeviceQueueInfo2 **/
 function VkDeviceQueueInfo2(opts) {
-  if (this.constructor !== VkDeviceQueueInfo2) {
-    new Uint8Array(_VkDeviceQueueInfo2.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceQueueInfo2) {
+    new Uint8Array(_VkDeviceQueueInfo2.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDeviceQueueInfo2;
   }
   this.memoryBuffer = null;
@@ -54057,8 +54095,8 @@ VkDeviceQueueInfo2.memoryLayout = {
 };
 /** VkPipelineCoverageToColorStateCreateInfoNV **/
 function VkPipelineCoverageToColorStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineCoverageToColorStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineCoverageToColorStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCoverageToColorStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineCoverageToColorStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineCoverageToColorStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -54194,8 +54232,8 @@ VkPipelineCoverageToColorStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT **/
 function VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -54307,8 +54345,8 @@ VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.memoryLayout = {
 };
 /** VkSampleLocationEXT **/
 function VkSampleLocationEXT(opts) {
-  if (this.constructor !== VkSampleLocationEXT) {
-    new Uint8Array(_VkSampleLocationEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSampleLocationEXT) {
+    new Uint8Array(_VkSampleLocationEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkSampleLocationEXT;
   }
   this.memoryBuffer = null;
@@ -54385,8 +54423,8 @@ VkSampleLocationEXT.memoryLayout = {
 };
 /** VkSampleLocationsInfoEXT **/
 function VkSampleLocationsInfoEXT(opts) {
-  if (this.constructor !== VkSampleLocationsInfoEXT) {
-    new Uint8Array(_VkSampleLocationsInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSampleLocationsInfoEXT) {
+    new Uint8Array(_VkSampleLocationsInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkSampleLocationsInfoEXT;
   }
   this.memoryBuffer = null;
@@ -54598,8 +54636,8 @@ VkSampleLocationsInfoEXT.memoryLayout = {
 };
 /** VkAttachmentSampleLocationsEXT **/
 function VkAttachmentSampleLocationsEXT(opts) {
-  if (this.constructor !== VkAttachmentSampleLocationsEXT) {
-    new Uint8Array(_VkAttachmentSampleLocationsEXT.memoryBuffer).fill(0);
+  if (new.target !== VkAttachmentSampleLocationsEXT) {
+    new Uint8Array(_VkAttachmentSampleLocationsEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkAttachmentSampleLocationsEXT;
   }
   this.memoryBuffer = null;
@@ -54698,8 +54736,8 @@ VkAttachmentSampleLocationsEXT.memoryLayout = {
 };
 /** VkSubpassSampleLocationsEXT **/
 function VkSubpassSampleLocationsEXT(opts) {
-  if (this.constructor !== VkSubpassSampleLocationsEXT) {
-    new Uint8Array(_VkSubpassSampleLocationsEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassSampleLocationsEXT) {
+    new Uint8Array(_VkSubpassSampleLocationsEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkSubpassSampleLocationsEXT;
   }
   this.memoryBuffer = null;
@@ -54798,8 +54836,8 @@ VkSubpassSampleLocationsEXT.memoryLayout = {
 };
 /** VkRenderPassSampleLocationsBeginInfoEXT **/
 function VkRenderPassSampleLocationsBeginInfoEXT(opts) {
-  if (this.constructor !== VkRenderPassSampleLocationsBeginInfoEXT) {
-    new Uint8Array(_VkRenderPassSampleLocationsBeginInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassSampleLocationsBeginInfoEXT) {
+    new Uint8Array(_VkRenderPassSampleLocationsBeginInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkRenderPassSampleLocationsBeginInfoEXT;
   }
   this.memoryBuffer = null;
@@ -55023,8 +55061,8 @@ VkRenderPassSampleLocationsBeginInfoEXT.memoryLayout = {
 };
 /** VkPipelineSampleLocationsStateCreateInfoEXT **/
 function VkPipelineSampleLocationsStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineSampleLocationsStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineSampleLocationsStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineSampleLocationsStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineSampleLocationsStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPipelineSampleLocationsStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -55165,8 +55203,8 @@ VkPipelineSampleLocationsStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceSampleLocationsPropertiesEXT **/
 function VkPhysicalDeviceSampleLocationsPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceSampleLocationsPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceSampleLocationsPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceSampleLocationsPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceSampleLocationsPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPhysicalDeviceSampleLocationsPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -55317,8 +55355,8 @@ VkPhysicalDeviceSampleLocationsPropertiesEXT.memoryLayout = {
 };
 /** VkMultisamplePropertiesEXT **/
 function VkMultisamplePropertiesEXT(opts) {
-  if (this.constructor !== VkMultisamplePropertiesEXT) {
-    new Uint8Array(_VkMultisamplePropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkMultisamplePropertiesEXT) {
+    new Uint8Array(_VkMultisamplePropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMultisamplePropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -55420,8 +55458,8 @@ VkMultisamplePropertiesEXT.memoryLayout = {
 };
 /** VkSamplerReductionModeCreateInfoEXT **/
 function VkSamplerReductionModeCreateInfoEXT(opts) {
-  if (this.constructor !== VkSamplerReductionModeCreateInfoEXT) {
-    new Uint8Array(_VkSamplerReductionModeCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSamplerReductionModeCreateInfoEXT) {
+    new Uint8Array(_VkSamplerReductionModeCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSamplerReductionModeCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -55527,8 +55565,8 @@ VkSamplerReductionModeCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT **/
 function VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -55630,8 +55668,8 @@ VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT **/
 function VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -55783,8 +55821,8 @@ VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryLayout = {
 };
 /** VkPipelineColorBlendAdvancedStateCreateInfoEXT **/
 function VkPipelineColorBlendAdvancedStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineColorBlendAdvancedStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineColorBlendAdvancedStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineColorBlendAdvancedStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineColorBlendAdvancedStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineColorBlendAdvancedStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -55920,8 +55958,8 @@ VkPipelineColorBlendAdvancedStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceInlineUniformBlockFeaturesEXT **/
 function VkPhysicalDeviceInlineUniformBlockFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceInlineUniformBlockFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceInlineUniformBlockFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceInlineUniformBlockFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -56037,8 +56075,8 @@ VkPhysicalDeviceInlineUniformBlockFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceInlineUniformBlockPropertiesEXT **/
 function VkPhysicalDeviceInlineUniformBlockPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceInlineUniformBlockPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceInlineUniformBlockPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceInlineUniformBlockPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceInlineUniformBlockPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceInlineUniformBlockPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -56180,8 +56218,8 @@ VkPhysicalDeviceInlineUniformBlockPropertiesEXT.memoryLayout = {
 };
 /** VkWriteDescriptorSetInlineUniformBlockEXT **/
 function VkWriteDescriptorSetInlineUniformBlockEXT(opts) {
-  if (this.constructor !== VkWriteDescriptorSetInlineUniformBlockEXT) {
-    new Uint8Array(_VkWriteDescriptorSetInlineUniformBlockEXT.memoryBuffer).fill(0);
+  if (new.target !== VkWriteDescriptorSetInlineUniformBlockEXT) {
+    new Uint8Array(_VkWriteDescriptorSetInlineUniformBlockEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkWriteDescriptorSetInlineUniformBlockEXT;
   }
   this.memoryBuffer = null;
@@ -56309,8 +56347,8 @@ VkWriteDescriptorSetInlineUniformBlockEXT.memoryLayout = {
 };
 /** VkDescriptorPoolInlineUniformBlockCreateInfoEXT **/
 function VkDescriptorPoolInlineUniformBlockCreateInfoEXT(opts) {
-  if (this.constructor !== VkDescriptorPoolInlineUniformBlockCreateInfoEXT) {
-    new Uint8Array(_VkDescriptorPoolInlineUniformBlockCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorPoolInlineUniformBlockCreateInfoEXT) {
+    new Uint8Array(_VkDescriptorPoolInlineUniformBlockCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorPoolInlineUniformBlockCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -56415,8 +56453,8 @@ VkDescriptorPoolInlineUniformBlockCreateInfoEXT.memoryLayout = {
 };
 /** VkPipelineCoverageModulationStateCreateInfoNV **/
 function VkPipelineCoverageModulationStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineCoverageModulationStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineCoverageModulationStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCoverageModulationStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineCoverageModulationStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPipelineCoverageModulationStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -56595,8 +56633,8 @@ VkPipelineCoverageModulationStateCreateInfoNV.memoryLayout = {
 };
 /** VkImageFormatListCreateInfoKHR **/
 function VkImageFormatListCreateInfoKHR(opts) {
-  if (this.constructor !== VkImageFormatListCreateInfoKHR) {
-    new Uint8Array(_VkImageFormatListCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkImageFormatListCreateInfoKHR) {
+    new Uint8Array(_VkImageFormatListCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkImageFormatListCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -56724,8 +56762,8 @@ VkImageFormatListCreateInfoKHR.memoryLayout = {
 };
 /** VkValidationCacheCreateInfoEXT **/
 function VkValidationCacheCreateInfoEXT(opts) {
-  if (this.constructor !== VkValidationCacheCreateInfoEXT) {
-    new Uint8Array(_VkValidationCacheCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkValidationCacheCreateInfoEXT) {
+    new Uint8Array(_VkValidationCacheCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkValidationCacheCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -56868,8 +56906,8 @@ VkValidationCacheCreateInfoEXT.memoryLayout = {
 };
 /** VkShaderModuleValidationCacheCreateInfoEXT **/
 function VkShaderModuleValidationCacheCreateInfoEXT(opts) {
-  if (this.constructor !== VkShaderModuleValidationCacheCreateInfoEXT) {
-    new Uint8Array(_VkShaderModuleValidationCacheCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkShaderModuleValidationCacheCreateInfoEXT) {
+    new Uint8Array(_VkShaderModuleValidationCacheCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkShaderModuleValidationCacheCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -56980,8 +57018,8 @@ VkShaderModuleValidationCacheCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceMaintenance3Properties **/
 function VkPhysicalDeviceMaintenance3Properties(opts) {
-  if (this.constructor !== VkPhysicalDeviceMaintenance3Properties) {
-    new Uint8Array(_VkPhysicalDeviceMaintenance3Properties.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMaintenance3Properties) {
+    new Uint8Array(_VkPhysicalDeviceMaintenance3Properties.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceMaintenance3Properties;
   }
   this.memoryBuffer = null;
@@ -57095,8 +57133,8 @@ VkPhysicalDeviceMaintenance3Properties.memoryLayout = {
 };
 /** VkPhysicalDeviceMaintenance3PropertiesKHR **/
 function VkPhysicalDeviceMaintenance3PropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceMaintenance3PropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceMaintenance3PropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMaintenance3PropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceMaintenance3PropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceMaintenance3PropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -57210,8 +57248,8 @@ VkPhysicalDeviceMaintenance3PropertiesKHR.memoryLayout = {
 };
 /** VkDescriptorSetLayoutSupport **/
 function VkDescriptorSetLayoutSupport(opts) {
-  if (this.constructor !== VkDescriptorSetLayoutSupport) {
-    new Uint8Array(_VkDescriptorSetLayoutSupport.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetLayoutSupport) {
+    new Uint8Array(_VkDescriptorSetLayoutSupport.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorSetLayoutSupport;
   }
   this.memoryBuffer = null;
@@ -57331,8 +57369,8 @@ VkDescriptorSetLayoutSupport.memoryLayout = {
 };
 /** VkDescriptorSetLayoutSupportKHR **/
 function VkDescriptorSetLayoutSupportKHR(opts) {
-  if (this.constructor !== VkDescriptorSetLayoutSupportKHR) {
-    new Uint8Array(_VkDescriptorSetLayoutSupportKHR.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetLayoutSupportKHR) {
+    new Uint8Array(_VkDescriptorSetLayoutSupportKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorSetLayoutSupportKHR;
   }
   this.memoryBuffer = null;
@@ -57452,8 +57490,8 @@ VkDescriptorSetLayoutSupportKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderDrawParametersFeatures **/
 function VkPhysicalDeviceShaderDrawParametersFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderDrawParametersFeatures) {
-    new Uint8Array(_VkPhysicalDeviceShaderDrawParametersFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderDrawParametersFeatures) {
+    new Uint8Array(_VkPhysicalDeviceShaderDrawParametersFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderDrawParametersFeatures;
   }
   this.memoryBuffer = null;
@@ -57555,8 +57593,8 @@ VkPhysicalDeviceShaderDrawParametersFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderDrawParameterFeatures **/
 function VkPhysicalDeviceShaderDrawParameterFeatures(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderDrawParameterFeatures) {
-    new Uint8Array(_VkPhysicalDeviceShaderDrawParameterFeatures.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderDrawParameterFeatures) {
+    new Uint8Array(_VkPhysicalDeviceShaderDrawParameterFeatures.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderDrawParameterFeatures;
   }
   this.memoryBuffer = null;
@@ -57658,8 +57696,8 @@ VkPhysicalDeviceShaderDrawParameterFeatures.memoryLayout = {
 };
 /** VkPhysicalDeviceFloat16Int8FeaturesKHR **/
 function VkPhysicalDeviceFloat16Int8FeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceFloat16Int8FeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceFloat16Int8FeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFloat16Int8FeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceFloat16Int8FeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceFloat16Int8FeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -57775,8 +57813,8 @@ VkPhysicalDeviceFloat16Int8FeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceFloatControlsPropertiesKHR **/
 function VkPhysicalDeviceFloatControlsPropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceFloatControlsPropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceFloatControlsPropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFloatControlsPropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceFloatControlsPropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x58], 0x0);
     return _VkPhysicalDeviceFloatControlsPropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -58038,8 +58076,8 @@ VkPhysicalDeviceFloatControlsPropertiesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceHostQueryResetFeaturesEXT **/
 function VkPhysicalDeviceHostQueryResetFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceHostQueryResetFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceHostQueryResetFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceHostQueryResetFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceHostQueryResetFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceHostQueryResetFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -58141,8 +58179,8 @@ VkPhysicalDeviceHostQueryResetFeaturesEXT.memoryLayout = {
 };
 /** VkShaderResourceUsageAMD **/
 function VkShaderResourceUsageAMD(opts) {
-  if (this.constructor !== VkShaderResourceUsageAMD) {
-    new Uint8Array(_VkShaderResourceUsageAMD.memoryBuffer).fill(0);
+  if (new.target !== VkShaderResourceUsageAMD) {
+    new Uint8Array(_VkShaderResourceUsageAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkShaderResourceUsageAMD;
   }
   this.memoryBuffer = null;
@@ -58241,8 +58279,8 @@ VkShaderResourceUsageAMD.memoryLayout = {
 };
 /** VkShaderStatisticsInfoAMD **/
 function VkShaderStatisticsInfoAMD(opts) {
-  if (this.constructor !== VkShaderStatisticsInfoAMD) {
-    new Uint8Array(_VkShaderStatisticsInfoAMD.memoryBuffer).fill(0);
+  if (new.target !== VkShaderStatisticsInfoAMD) {
+    new Uint8Array(_VkShaderStatisticsInfoAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkShaderStatisticsInfoAMD;
   }
   this.memoryBuffer = null;
@@ -58369,8 +58407,8 @@ VkShaderStatisticsInfoAMD.memoryLayout = {
 };
 /** VkDeviceQueueGlobalPriorityCreateInfoEXT **/
 function VkDeviceQueueGlobalPriorityCreateInfoEXT(opts) {
-  if (this.constructor !== VkDeviceQueueGlobalPriorityCreateInfoEXT) {
-    new Uint8Array(_VkDeviceQueueGlobalPriorityCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceQueueGlobalPriorityCreateInfoEXT) {
+    new Uint8Array(_VkDeviceQueueGlobalPriorityCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceQueueGlobalPriorityCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -58476,8 +58514,8 @@ VkDeviceQueueGlobalPriorityCreateInfoEXT.memoryLayout = {
 };
 /** VkDebugUtilsObjectNameInfoEXT **/
 function VkDebugUtilsObjectNameInfoEXT(opts) {
-  if (this.constructor !== VkDebugUtilsObjectNameInfoEXT) {
-    new Uint8Array(_VkDebugUtilsObjectNameInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugUtilsObjectNameInfoEXT) {
+    new Uint8Array(_VkDebugUtilsObjectNameInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDebugUtilsObjectNameInfoEXT;
   }
   this.memoryBuffer = null;
@@ -58630,8 +58668,8 @@ VkDebugUtilsObjectNameInfoEXT.memoryLayout = {
 };
 /** VkDebugUtilsObjectTagInfoEXT **/
 function VkDebugUtilsObjectTagInfoEXT(opts) {
-  if (this.constructor !== VkDebugUtilsObjectTagInfoEXT) {
-    new Uint8Array(_VkDebugUtilsObjectTagInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugUtilsObjectTagInfoEXT) {
+    new Uint8Array(_VkDebugUtilsObjectTagInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkDebugUtilsObjectTagInfoEXT;
   }
   this.memoryBuffer = null;
@@ -58813,8 +58851,8 @@ VkDebugUtilsObjectTagInfoEXT.memoryLayout = {
 };
 /** VkDebugUtilsLabelEXT **/
 function VkDebugUtilsLabelEXT(opts) {
-  if (this.constructor !== VkDebugUtilsLabelEXT) {
-    new Uint8Array(_VkDebugUtilsLabelEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugUtilsLabelEXT) {
+    new Uint8Array(_VkDebugUtilsLabelEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkDebugUtilsLabelEXT;
   }
   this.memoryBuffer = null;
@@ -58976,8 +59014,8 @@ VkDebugUtilsLabelEXT.memoryLayout = {
 };
 /** VkDebugUtilsMessengerCreateInfoEXT **/
 function VkDebugUtilsMessengerCreateInfoEXT(opts) {
-  if (this.constructor !== VkDebugUtilsMessengerCreateInfoEXT) {
-    new Uint8Array(_VkDebugUtilsMessengerCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugUtilsMessengerCreateInfoEXT) {
+    new Uint8Array(_VkDebugUtilsMessengerCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkDebugUtilsMessengerCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -59158,8 +59196,8 @@ VkDebugUtilsMessengerCreateInfoEXT.memoryLayout = {
 };
 /** VkDebugUtilsMessengerCallbackDataEXT **/
 function VkDebugUtilsMessengerCallbackDataEXT(opts) {
-  if (this.constructor !== VkDebugUtilsMessengerCallbackDataEXT) {
-    new Uint8Array(_VkDebugUtilsMessengerCallbackDataEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDebugUtilsMessengerCallbackDataEXT) {
+    new Uint8Array(_VkDebugUtilsMessengerCallbackDataEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkDebugUtilsMessengerCallbackDataEXT;
   }
   this.memoryBuffer = null;
@@ -59541,8 +59579,8 @@ VkDebugUtilsMessengerCallbackDataEXT.memoryLayout = {
 };
 /** VkImportMemoryHostPointerInfoEXT **/
 function VkImportMemoryHostPointerInfoEXT(opts) {
-  if (this.constructor !== VkImportMemoryHostPointerInfoEXT) {
-    new Uint8Array(_VkImportMemoryHostPointerInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImportMemoryHostPointerInfoEXT) {
+    new Uint8Array(_VkImportMemoryHostPointerInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkImportMemoryHostPointerInfoEXT;
   }
   this.memoryBuffer = null;
@@ -59668,8 +59706,8 @@ VkImportMemoryHostPointerInfoEXT.memoryLayout = {
 };
 /** VkMemoryHostPointerPropertiesEXT **/
 function VkMemoryHostPointerPropertiesEXT(opts) {
-  if (this.constructor !== VkMemoryHostPointerPropertiesEXT) {
-    new Uint8Array(_VkMemoryHostPointerPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryHostPointerPropertiesEXT) {
+    new Uint8Array(_VkMemoryHostPointerPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryHostPointerPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -59771,8 +59809,8 @@ VkMemoryHostPointerPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceExternalMemoryHostPropertiesEXT **/
 function VkPhysicalDeviceExternalMemoryHostPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceExternalMemoryHostPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceExternalMemoryHostPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExternalMemoryHostPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceExternalMemoryHostPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -59874,8 +59912,8 @@ VkPhysicalDeviceExternalMemoryHostPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceConservativeRasterizationPropertiesEXT **/
 function VkPhysicalDeviceConservativeRasterizationPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceConservativeRasterizationPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceConservativeRasterizationPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -60059,8 +60097,8 @@ VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryLayout = {
 };
 /** VkCalibratedTimestampInfoEXT **/
 function VkCalibratedTimestampInfoEXT(opts) {
-  if (this.constructor !== VkCalibratedTimestampInfoEXT) {
-    new Uint8Array(_VkCalibratedTimestampInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkCalibratedTimestampInfoEXT) {
+    new Uint8Array(_VkCalibratedTimestampInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkCalibratedTimestampInfoEXT;
   }
   this.memoryBuffer = null;
@@ -60166,8 +60204,8 @@ VkCalibratedTimestampInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderCorePropertiesAMD **/
 function VkPhysicalDeviceShaderCorePropertiesAMD(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderCorePropertiesAMD) {
-    new Uint8Array(_VkPhysicalDeviceShaderCorePropertiesAMD.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderCorePropertiesAMD) {
+    new Uint8Array(_VkPhysicalDeviceShaderCorePropertiesAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x48], 0x0);
     return _VkPhysicalDeviceShaderCorePropertiesAMD;
   }
   this.memoryBuffer = null;
@@ -60399,8 +60437,8 @@ VkPhysicalDeviceShaderCorePropertiesAMD.memoryLayout = {
 };
 /** VkPipelineRasterizationConservativeStateCreateInfoEXT **/
 function VkPipelineRasterizationConservativeStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineRasterizationConservativeStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineRasterizationConservativeStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRasterizationConservativeStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineRasterizationConservativeStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineRasterizationConservativeStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -60542,8 +60580,8 @@ VkPipelineRasterizationConservativeStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceDescriptorIndexingFeaturesEXT **/
 function VkPhysicalDeviceDescriptorIndexingFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceDescriptorIndexingFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceDescriptorIndexingFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDescriptorIndexingFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceDescriptorIndexingFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkPhysicalDeviceDescriptorIndexingFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -60911,8 +60949,8 @@ VkPhysicalDeviceDescriptorIndexingFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceDescriptorIndexingPropertiesEXT **/
 function VkPhysicalDeviceDescriptorIndexingPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceDescriptorIndexingPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceDescriptorIndexingPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDescriptorIndexingPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceDescriptorIndexingPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x70], 0x0);
     return _VkPhysicalDeviceDescriptorIndexingPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -61234,8 +61272,8 @@ VkPhysicalDeviceDescriptorIndexingPropertiesEXT.memoryLayout = {
 };
 /** VkDescriptorSetLayoutBindingFlagsCreateInfoEXT **/
 function VkDescriptorSetLayoutBindingFlagsCreateInfoEXT(opts) {
-  if (this.constructor !== VkDescriptorSetLayoutBindingFlagsCreateInfoEXT) {
-    new Uint8Array(_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetLayoutBindingFlagsCreateInfoEXT) {
+    new Uint8Array(_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDescriptorSetLayoutBindingFlagsCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -61363,8 +61401,8 @@ VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.memoryLayout = {
 };
 /** VkDescriptorSetVariableDescriptorCountAllocateInfoEXT **/
 function VkDescriptorSetVariableDescriptorCountAllocateInfoEXT(opts) {
-  if (this.constructor !== VkDescriptorSetVariableDescriptorCountAllocateInfoEXT) {
-    new Uint8Array(_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetVariableDescriptorCountAllocateInfoEXT) {
+    new Uint8Array(_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDescriptorSetVariableDescriptorCountAllocateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -61492,8 +61530,8 @@ VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.memoryLayout = {
 };
 /** VkDescriptorSetVariableDescriptorCountLayoutSupportEXT **/
 function VkDescriptorSetVariableDescriptorCountLayoutSupportEXT(opts) {
-  if (this.constructor !== VkDescriptorSetVariableDescriptorCountLayoutSupportEXT) {
-    new Uint8Array(_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDescriptorSetVariableDescriptorCountLayoutSupportEXT) {
+    new Uint8Array(_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDescriptorSetVariableDescriptorCountLayoutSupportEXT;
   }
   this.memoryBuffer = null;
@@ -61595,8 +61633,8 @@ VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.memoryLayout = {
 };
 /** VkAttachmentDescription2KHR **/
 function VkAttachmentDescription2KHR(opts) {
-  if (this.constructor !== VkAttachmentDescription2KHR) {
-    new Uint8Array(_VkAttachmentDescription2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkAttachmentDescription2KHR) {
+    new Uint8Array(_VkAttachmentDescription2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkAttachmentDescription2KHR;
   }
   this.memoryBuffer = null;
@@ -61856,8 +61894,8 @@ VkAttachmentDescription2KHR.memoryLayout = {
 };
 /** VkAttachmentReference2KHR **/
 function VkAttachmentReference2KHR(opts) {
-  if (this.constructor !== VkAttachmentReference2KHR) {
-    new Uint8Array(_VkAttachmentReference2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkAttachmentReference2KHR) {
+    new Uint8Array(_VkAttachmentReference2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkAttachmentReference2KHR;
   }
   this.memoryBuffer = null;
@@ -61999,8 +62037,8 @@ VkAttachmentReference2KHR.memoryLayout = {
 };
 /** VkSubpassDescription2KHR **/
 function VkSubpassDescription2KHR(opts) {
-  if (this.constructor !== VkSubpassDescription2KHR) {
-    new Uint8Array(_VkSubpassDescription2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassDescription2KHR) {
+    new Uint8Array(_VkSubpassDescription2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x58], 0x0);
     return _VkSubpassDescription2KHR;
   }
   this.memoryBuffer = null;
@@ -62412,8 +62450,8 @@ VkSubpassDescription2KHR.memoryLayout = {
 };
 /** VkSubpassDependency2KHR **/
 function VkSubpassDependency2KHR(opts) {
-  if (this.constructor !== VkSubpassDependency2KHR) {
-    new Uint8Array(_VkSubpassDependency2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassDependency2KHR) {
+    new Uint8Array(_VkSubpassDependency2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkSubpassDependency2KHR;
   }
   this.memoryBuffer = null;
@@ -62637,8 +62675,8 @@ VkSubpassDependency2KHR.memoryLayout = {
 };
 /** VkRenderPassCreateInfo2KHR **/
 function VkRenderPassCreateInfo2KHR(opts) {
-  if (this.constructor !== VkRenderPassCreateInfo2KHR) {
-    new Uint8Array(_VkRenderPassCreateInfo2KHR.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassCreateInfo2KHR) {
+    new Uint8Array(_VkRenderPassCreateInfo2KHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x50], 0x0);
     return _VkRenderPassCreateInfo2KHR;
   }
   this.memoryBuffer = null;
@@ -62987,8 +63025,8 @@ VkRenderPassCreateInfo2KHR.memoryLayout = {
 };
 /** VkSubpassBeginInfoKHR **/
 function VkSubpassBeginInfoKHR(opts) {
-  if (this.constructor !== VkSubpassBeginInfoKHR) {
-    new Uint8Array(_VkSubpassBeginInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassBeginInfoKHR) {
+    new Uint8Array(_VkSubpassBeginInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSubpassBeginInfoKHR;
   }
   this.memoryBuffer = null;
@@ -63094,8 +63132,8 @@ VkSubpassBeginInfoKHR.memoryLayout = {
 };
 /** VkSubpassEndInfoKHR **/
 function VkSubpassEndInfoKHR(opts) {
-  if (this.constructor !== VkSubpassEndInfoKHR) {
-    new Uint8Array(_VkSubpassEndInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassEndInfoKHR) {
+    new Uint8Array(_VkSubpassEndInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkSubpassEndInfoKHR;
   }
   this.memoryBuffer = null;
@@ -63181,8 +63219,8 @@ VkSubpassEndInfoKHR.memoryLayout = {
 };
 /** VkVertexInputBindingDivisorDescriptionEXT **/
 function VkVertexInputBindingDivisorDescriptionEXT(opts) {
-  if (this.constructor !== VkVertexInputBindingDivisorDescriptionEXT) {
-    new Uint8Array(_VkVertexInputBindingDivisorDescriptionEXT.memoryBuffer).fill(0);
+  if (new.target !== VkVertexInputBindingDivisorDescriptionEXT) {
+    new Uint8Array(_VkVertexInputBindingDivisorDescriptionEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkVertexInputBindingDivisorDescriptionEXT;
   }
   this.memoryBuffer = null;
@@ -63259,8 +63297,8 @@ VkVertexInputBindingDivisorDescriptionEXT.memoryLayout = {
 };
 /** VkPipelineVertexInputDivisorStateCreateInfoEXT **/
 function VkPipelineVertexInputDivisorStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineVertexInputDivisorStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineVertexInputDivisorStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineVertexInputDivisorStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineVertexInputDivisorStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineVertexInputDivisorStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -63416,8 +63454,8 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT **/
 function VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -63519,8 +63557,8 @@ VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDevicePCIBusInfoPropertiesEXT **/
 function VkPhysicalDevicePCIBusInfoPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDevicePCIBusInfoPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDevicePCIBusInfoPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevicePCIBusInfoPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDevicePCIBusInfoPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDevicePCIBusInfoPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -63652,8 +63690,8 @@ VkPhysicalDevicePCIBusInfoPropertiesEXT.memoryLayout = {
 };
 /** VkCommandBufferInheritanceConditionalRenderingInfoEXT **/
 function VkCommandBufferInheritanceConditionalRenderingInfoEXT(opts) {
-  if (this.constructor !== VkCommandBufferInheritanceConditionalRenderingInfoEXT) {
-    new Uint8Array(_VkCommandBufferInheritanceConditionalRenderingInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkCommandBufferInheritanceConditionalRenderingInfoEXT) {
+    new Uint8Array(_VkCommandBufferInheritanceConditionalRenderingInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkCommandBufferInheritanceConditionalRenderingInfoEXT;
   }
   this.memoryBuffer = null;
@@ -63755,8 +63793,8 @@ VkCommandBufferInheritanceConditionalRenderingInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDevice8BitStorageFeaturesKHR **/
 function VkPhysicalDevice8BitStorageFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDevice8BitStorageFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDevice8BitStorageFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDevice8BitStorageFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDevice8BitStorageFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDevice8BitStorageFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -63886,8 +63924,8 @@ VkPhysicalDevice8BitStorageFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceConditionalRenderingFeaturesEXT **/
 function VkPhysicalDeviceConditionalRenderingFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceConditionalRenderingFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceConditionalRenderingFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceConditionalRenderingFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -64003,8 +64041,8 @@ VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceVulkanMemoryModelFeaturesKHR **/
 function VkPhysicalDeviceVulkanMemoryModelFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceVulkanMemoryModelFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVulkanMemoryModelFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -64134,8 +64172,8 @@ VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderAtomicInt64FeaturesKHR **/
 function VkPhysicalDeviceShaderAtomicInt64FeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderAtomicInt64FeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderAtomicInt64FeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderAtomicInt64FeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -64251,8 +64289,8 @@ VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT **/
 function VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -64368,8 +64406,8 @@ VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.memoryLayout = {
 };
 /** VkQueueFamilyCheckpointPropertiesNV **/
 function VkQueueFamilyCheckpointPropertiesNV(opts) {
-  if (this.constructor !== VkQueueFamilyCheckpointPropertiesNV) {
-    new Uint8Array(_VkQueueFamilyCheckpointPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkQueueFamilyCheckpointPropertiesNV) {
+    new Uint8Array(_VkQueueFamilyCheckpointPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkQueueFamilyCheckpointPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -64469,8 +64507,8 @@ VkQueueFamilyCheckpointPropertiesNV.memoryLayout = {
 };
 /** VkCheckpointDataNV **/
 function VkCheckpointDataNV(opts) {
-  if (this.constructor !== VkCheckpointDataNV) {
-    new Uint8Array(_VkCheckpointDataNV.memoryBuffer).fill(0);
+  if (new.target !== VkCheckpointDataNV) {
+    new Uint8Array(_VkCheckpointDataNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkCheckpointDataNV;
   }
   this.memoryBuffer = null;
@@ -64593,8 +64631,8 @@ VkCheckpointDataNV.memoryLayout = {
 };
 /** VkPhysicalDeviceDepthStencilResolvePropertiesKHR **/
 function VkPhysicalDeviceDepthStencilResolvePropertiesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceDepthStencilResolvePropertiesKHR) {
-    new Uint8Array(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDepthStencilResolvePropertiesKHR) {
+    new Uint8Array(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceDepthStencilResolvePropertiesKHR;
   }
   this.memoryBuffer = null;
@@ -64726,8 +64764,8 @@ VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryLayout = {
 };
 /** VkSubpassDescriptionDepthStencilResolveKHR **/
 function VkSubpassDescriptionDepthStencilResolveKHR(opts) {
-  if (this.constructor !== VkSubpassDescriptionDepthStencilResolveKHR) {
-    new Uint8Array(_VkSubpassDescriptionDepthStencilResolveKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSubpassDescriptionDepthStencilResolveKHR) {
+    new Uint8Array(_VkSubpassDescriptionDepthStencilResolveKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkSubpassDescriptionDepthStencilResolveKHR;
   }
   this.memoryBuffer = null;
@@ -64872,8 +64910,8 @@ VkSubpassDescriptionDepthStencilResolveKHR.memoryLayout = {
 };
 /** VkImageViewASTCDecodeModeEXT **/
 function VkImageViewASTCDecodeModeEXT(opts) {
-  if (this.constructor !== VkImageViewASTCDecodeModeEXT) {
-    new Uint8Array(_VkImageViewASTCDecodeModeEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImageViewASTCDecodeModeEXT) {
+    new Uint8Array(_VkImageViewASTCDecodeModeEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageViewASTCDecodeModeEXT;
   }
   this.memoryBuffer = null;
@@ -64979,8 +65017,8 @@ VkImageViewASTCDecodeModeEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceASTCDecodeFeaturesEXT **/
 function VkPhysicalDeviceASTCDecodeFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceASTCDecodeFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceASTCDecodeFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceASTCDecodeFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceASTCDecodeFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceASTCDecodeFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -65082,8 +65120,8 @@ VkPhysicalDeviceASTCDecodeFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceTransformFeedbackFeaturesEXT **/
 function VkPhysicalDeviceTransformFeedbackFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceTransformFeedbackFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceTransformFeedbackFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceTransformFeedbackFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceTransformFeedbackFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceTransformFeedbackFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -65199,8 +65237,8 @@ VkPhysicalDeviceTransformFeedbackFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceTransformFeedbackPropertiesEXT **/
 function VkPhysicalDeviceTransformFeedbackPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceTransformFeedbackPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceTransformFeedbackPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceTransformFeedbackPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceTransformFeedbackPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPhysicalDeviceTransformFeedbackPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -65394,8 +65432,8 @@ VkPhysicalDeviceTransformFeedbackPropertiesEXT.memoryLayout = {
 };
 /** VkPipelineRasterizationStateStreamCreateInfoEXT **/
 function VkPipelineRasterizationStateStreamCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineRasterizationStateStreamCreateInfoEXT) {
-    new Uint8Array(_VkPipelineRasterizationStateStreamCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRasterizationStateStreamCreateInfoEXT) {
+    new Uint8Array(_VkPipelineRasterizationStateStreamCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineRasterizationStateStreamCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -65517,8 +65555,8 @@ VkPipelineRasterizationStateStreamCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV **/
 function VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -65620,8 +65658,8 @@ VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.memoryLayout = {
 };
 /** VkPipelineRepresentativeFragmentTestStateCreateInfoNV **/
 function VkPipelineRepresentativeFragmentTestStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineRepresentativeFragmentTestStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineRepresentativeFragmentTestStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRepresentativeFragmentTestStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineRepresentativeFragmentTestStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineRepresentativeFragmentTestStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -65723,8 +65761,8 @@ VkPipelineRepresentativeFragmentTestStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceExclusiveScissorFeaturesNV **/
 function VkPhysicalDeviceExclusiveScissorFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceExclusiveScissorFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceExclusiveScissorFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceExclusiveScissorFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceExclusiveScissorFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceExclusiveScissorFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -65826,8 +65864,8 @@ VkPhysicalDeviceExclusiveScissorFeaturesNV.memoryLayout = {
 };
 /** VkPipelineViewportExclusiveScissorStateCreateInfoNV **/
 function VkPipelineViewportExclusiveScissorStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineViewportExclusiveScissorStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineViewportExclusiveScissorStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportExclusiveScissorStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineViewportExclusiveScissorStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineViewportExclusiveScissorStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -65983,8 +66021,8 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceCornerSampledImageFeaturesNV **/
 function VkPhysicalDeviceCornerSampledImageFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceCornerSampledImageFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceCornerSampledImageFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceCornerSampledImageFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceCornerSampledImageFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceCornerSampledImageFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66086,8 +66124,8 @@ VkPhysicalDeviceCornerSampledImageFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceComputeShaderDerivativesFeaturesNV **/
 function VkPhysicalDeviceComputeShaderDerivativesFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceComputeShaderDerivativesFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceComputeShaderDerivativesFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceComputeShaderDerivativesFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66203,8 +66241,8 @@ VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV **/
 function VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66306,8 +66344,8 @@ VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderImageFootprintFeaturesNV **/
 function VkPhysicalDeviceShaderImageFootprintFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderImageFootprintFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceShaderImageFootprintFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderImageFootprintFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceShaderImageFootprintFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderImageFootprintFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66409,8 +66447,8 @@ VkPhysicalDeviceShaderImageFootprintFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV **/
 function VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66512,8 +66550,8 @@ VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryLayout = {
 };
 /** VkShadingRatePaletteNV **/
 function VkShadingRatePaletteNV(opts) {
-  if (this.constructor !== VkShadingRatePaletteNV) {
-    new Uint8Array(_VkShadingRatePaletteNV.memoryBuffer).fill(0);
+  if (new.target !== VkShadingRatePaletteNV) {
+    new Uint8Array(_VkShadingRatePaletteNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkShadingRatePaletteNV;
   }
   this.memoryBuffer = null;
@@ -66598,8 +66636,8 @@ VkShadingRatePaletteNV.memoryLayout = {
 };
 /** VkPipelineViewportShadingRateImageStateCreateInfoNV **/
 function VkPipelineViewportShadingRateImageStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineViewportShadingRateImageStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineViewportShadingRateImageStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportShadingRateImageStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineViewportShadingRateImageStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineViewportShadingRateImageStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -66769,8 +66807,8 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceShadingRateImageFeaturesNV **/
 function VkPhysicalDeviceShadingRateImageFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceShadingRateImageFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceShadingRateImageFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShadingRateImageFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceShadingRateImageFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShadingRateImageFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -66886,8 +66924,8 @@ VkPhysicalDeviceShadingRateImageFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceShadingRateImagePropertiesNV **/
 function VkPhysicalDeviceShadingRateImagePropertiesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceShadingRateImagePropertiesNV) {
-    new Uint8Array(_VkPhysicalDeviceShadingRateImagePropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShadingRateImagePropertiesNV) {
+    new Uint8Array(_VkPhysicalDeviceShadingRateImagePropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceShadingRateImagePropertiesNV;
   }
   this.memoryBuffer = null;
@@ -67011,8 +67049,8 @@ VkPhysicalDeviceShadingRateImagePropertiesNV.memoryLayout = {
 };
 /** VkCoarseSampleLocationNV **/
 function VkCoarseSampleLocationNV(opts) {
-  if (this.constructor !== VkCoarseSampleLocationNV) {
-    new Uint8Array(_VkCoarseSampleLocationNV.memoryBuffer).fill(0);
+  if (new.target !== VkCoarseSampleLocationNV) {
+    new Uint8Array(_VkCoarseSampleLocationNV.memoryBuffer).set(STRUCT_RESET_CACHE[0xC], 0x0);
     return _VkCoarseSampleLocationNV;
   }
   this.memoryBuffer = null;
@@ -67106,8 +67144,8 @@ VkCoarseSampleLocationNV.memoryLayout = {
 };
 /** VkCoarseSampleOrderCustomNV **/
 function VkCoarseSampleOrderCustomNV(opts) {
-  if (this.constructor !== VkCoarseSampleOrderCustomNV) {
-    new Uint8Array(_VkCoarseSampleOrderCustomNV.memoryBuffer).fill(0);
+  if (new.target !== VkCoarseSampleOrderCustomNV) {
+    new Uint8Array(_VkCoarseSampleOrderCustomNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkCoarseSampleOrderCustomNV;
   }
   this.memoryBuffer = null;
@@ -67257,8 +67295,8 @@ VkCoarseSampleOrderCustomNV.memoryLayout = {
 };
 /** VkPipelineViewportCoarseSampleOrderStateCreateInfoNV **/
 function VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineViewportCoarseSampleOrderStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineViewportCoarseSampleOrderStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -67434,8 +67472,8 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceMeshShaderFeaturesNV **/
 function VkPhysicalDeviceMeshShaderFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceMeshShaderFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceMeshShaderFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMeshShaderFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceMeshShaderFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceMeshShaderFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -67551,8 +67589,8 @@ VkPhysicalDeviceMeshShaderFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceMeshShaderPropertiesNV **/
 function VkPhysicalDeviceMeshShaderPropertiesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceMeshShaderPropertiesNV) {
-    new Uint8Array(_VkPhysicalDeviceMeshShaderPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMeshShaderPropertiesNV) {
+    new Uint8Array(_VkPhysicalDeviceMeshShaderPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x58], 0x0);
     return _VkPhysicalDeviceMeshShaderPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -67786,8 +67824,8 @@ VkPhysicalDeviceMeshShaderPropertiesNV.memoryLayout = {
 };
 /** VkDrawMeshTasksIndirectCommandNV **/
 function VkDrawMeshTasksIndirectCommandNV(opts) {
-  if (this.constructor !== VkDrawMeshTasksIndirectCommandNV) {
-    new Uint8Array(_VkDrawMeshTasksIndirectCommandNV.memoryBuffer).fill(0);
+  if (new.target !== VkDrawMeshTasksIndirectCommandNV) {
+    new Uint8Array(_VkDrawMeshTasksIndirectCommandNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkDrawMeshTasksIndirectCommandNV;
   }
   this.memoryBuffer = null;
@@ -67864,8 +67902,8 @@ VkDrawMeshTasksIndirectCommandNV.memoryLayout = {
 };
 /** VkRayTracingShaderGroupCreateInfoNV **/
 function VkRayTracingShaderGroupCreateInfoNV(opts) {
-  if (this.constructor !== VkRayTracingShaderGroupCreateInfoNV) {
-    new Uint8Array(_VkRayTracingShaderGroupCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkRayTracingShaderGroupCreateInfoNV) {
+    new Uint8Array(_VkRayTracingShaderGroupCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkRayTracingShaderGroupCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -68041,8 +68079,8 @@ VkRayTracingShaderGroupCreateInfoNV.memoryLayout = {
 };
 /** VkRayTracingPipelineCreateInfoNV **/
 function VkRayTracingPipelineCreateInfoNV(opts) {
-  if (this.constructor !== VkRayTracingPipelineCreateInfoNV) {
-    new Uint8Array(_VkRayTracingPipelineCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkRayTracingPipelineCreateInfoNV) {
+    new Uint8Array(_VkRayTracingPipelineCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x50], 0x0);
     return _VkRayTracingPipelineCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -68385,8 +68423,8 @@ VkRayTracingPipelineCreateInfoNV.memoryLayout = {
 };
 /** VkGeometryTrianglesNV **/
 function VkGeometryTrianglesNV(opts) {
-  if (this.constructor !== VkGeometryTrianglesNV) {
-    new Uint8Array(_VkGeometryTrianglesNV.memoryBuffer).fill(0);
+  if (new.target !== VkGeometryTrianglesNV) {
+    new Uint8Array(_VkGeometryTrianglesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x60], 0x0);
     return _VkGeometryTrianglesNV;
   }
   this.memoryBuffer = null;
@@ -68693,8 +68731,8 @@ VkGeometryTrianglesNV.memoryLayout = {
 };
 /** VkGeometryAABBNV **/
 function VkGeometryAABBNV(opts) {
-  if (this.constructor !== VkGeometryAABBNV) {
-    new Uint8Array(_VkGeometryAABBNV.memoryBuffer).fill(0);
+  if (new.target !== VkGeometryAABBNV) {
+    new Uint8Array(_VkGeometryAABBNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkGeometryAABBNV;
   }
   this.memoryBuffer = null;
@@ -68860,8 +68898,8 @@ VkGeometryAABBNV.memoryLayout = {
 };
 /** VkGeometryDataNV **/
 function VkGeometryDataNV(opts) {
-  if (this.constructor !== VkGeometryDataNV) {
-    new Uint8Array(_VkGeometryDataNV.memoryBuffer).fill(0);
+  if (new.target !== VkGeometryDataNV) {
+    new Uint8Array(_VkGeometryDataNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x88], 0x0);
     return _VkGeometryDataNV;
   }
   this.memoryBuffer = null;
@@ -68980,8 +69018,8 @@ VkGeometryDataNV.memoryLayout = {
 };
 /** VkGeometryNV **/
 function VkGeometryNV(opts) {
-  if (this.constructor !== VkGeometryNV) {
-    new Uint8Array(_VkGeometryNV.memoryBuffer).fill(0);
+  if (new.target !== VkGeometryNV) {
+    new Uint8Array(_VkGeometryNV.memoryBuffer).set(STRUCT_RESET_CACHE[0xA8], 0x0);
     return _VkGeometryNV;
   }
   this.memoryBuffer = null;
@@ -69143,8 +69181,8 @@ VkGeometryNV.memoryLayout = {
 };
 /** VkAccelerationStructureInfoNV **/
 function VkAccelerationStructureInfoNV(opts) {
-  if (this.constructor !== VkAccelerationStructureInfoNV) {
-    new Uint8Array(_VkAccelerationStructureInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkAccelerationStructureInfoNV) {
+    new Uint8Array(_VkAccelerationStructureInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkAccelerationStructureInfoNV;
   }
   this.memoryBuffer = null;
@@ -69354,8 +69392,8 @@ VkAccelerationStructureInfoNV.memoryLayout = {
 };
 /** VkAccelerationStructureCreateInfoNV **/
 function VkAccelerationStructureCreateInfoNV(opts) {
-  if (this.constructor !== VkAccelerationStructureCreateInfoNV) {
-    new Uint8Array(_VkAccelerationStructureCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkAccelerationStructureCreateInfoNV) {
+    new Uint8Array(_VkAccelerationStructureCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkAccelerationStructureCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -69499,8 +69537,8 @@ VkAccelerationStructureCreateInfoNV.memoryLayout = {
 };
 /** VkBindAccelerationStructureMemoryInfoNV **/
 function VkBindAccelerationStructureMemoryInfoNV(opts) {
-  if (this.constructor !== VkBindAccelerationStructureMemoryInfoNV) {
-    new Uint8Array(_VkBindAccelerationStructureMemoryInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkBindAccelerationStructureMemoryInfoNV) {
+    new Uint8Array(_VkBindAccelerationStructureMemoryInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x38], 0x0);
     return _VkBindAccelerationStructureMemoryInfoNV;
   }
   this.memoryBuffer = null;
@@ -69697,8 +69735,8 @@ VkBindAccelerationStructureMemoryInfoNV.memoryLayout = {
 };
 /** VkWriteDescriptorSetAccelerationStructureNV **/
 function VkWriteDescriptorSetAccelerationStructureNV(opts) {
-  if (this.constructor !== VkWriteDescriptorSetAccelerationStructureNV) {
-    new Uint8Array(_VkWriteDescriptorSetAccelerationStructureNV.memoryBuffer).fill(0);
+  if (new.target !== VkWriteDescriptorSetAccelerationStructureNV) {
+    new Uint8Array(_VkWriteDescriptorSetAccelerationStructureNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkWriteDescriptorSetAccelerationStructureNV;
   }
   this.memoryBuffer = null;
@@ -69854,8 +69892,8 @@ VkWriteDescriptorSetAccelerationStructureNV.memoryLayout = {
 };
 /** VkAccelerationStructureMemoryRequirementsInfoNV **/
 function VkAccelerationStructureMemoryRequirementsInfoNV(opts) {
-  if (this.constructor !== VkAccelerationStructureMemoryRequirementsInfoNV) {
-    new Uint8Array(_VkAccelerationStructureMemoryRequirementsInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkAccelerationStructureMemoryRequirementsInfoNV) {
+    new Uint8Array(_VkAccelerationStructureMemoryRequirementsInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkAccelerationStructureMemoryRequirementsInfoNV;
   }
   this.memoryBuffer = null;
@@ -69986,8 +70024,8 @@ VkAccelerationStructureMemoryRequirementsInfoNV.memoryLayout = {
 };
 /** VkPhysicalDeviceRayTracingPropertiesNV **/
 function VkPhysicalDeviceRayTracingPropertiesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceRayTracingPropertiesNV) {
-    new Uint8Array(_VkPhysicalDeviceRayTracingPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceRayTracingPropertiesNV) {
+    new Uint8Array(_VkPhysicalDeviceRayTracingPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x40], 0x0);
     return _VkPhysicalDeviceRayTracingPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -70161,8 +70199,8 @@ VkPhysicalDeviceRayTracingPropertiesNV.memoryLayout = {
 };
 /** VkDrmFormatModifierPropertiesListEXT **/
 function VkDrmFormatModifierPropertiesListEXT(opts) {
-  if (this.constructor !== VkDrmFormatModifierPropertiesListEXT) {
-    new Uint8Array(_VkDrmFormatModifierPropertiesListEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDrmFormatModifierPropertiesListEXT) {
+    new Uint8Array(_VkDrmFormatModifierPropertiesListEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkDrmFormatModifierPropertiesListEXT;
   }
   this.memoryBuffer = null;
@@ -70277,8 +70315,8 @@ VkDrmFormatModifierPropertiesListEXT.memoryLayout = {
 };
 /** VkDrmFormatModifierPropertiesEXT **/
 function VkDrmFormatModifierPropertiesEXT(opts) {
-  if (this.constructor !== VkDrmFormatModifierPropertiesEXT) {
-    new Uint8Array(_VkDrmFormatModifierPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkDrmFormatModifierPropertiesEXT) {
+    new Uint8Array(_VkDrmFormatModifierPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkDrmFormatModifierPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -70359,8 +70397,8 @@ VkDrmFormatModifierPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceImageDrmFormatModifierInfoEXT **/
 function VkPhysicalDeviceImageDrmFormatModifierInfoEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceImageDrmFormatModifierInfoEXT) {
-    new Uint8Array(_VkPhysicalDeviceImageDrmFormatModifierInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceImageDrmFormatModifierInfoEXT) {
+    new Uint8Array(_VkPhysicalDeviceImageDrmFormatModifierInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
   }
   this.memoryBuffer = null;
@@ -70527,8 +70565,8 @@ VkPhysicalDeviceImageDrmFormatModifierInfoEXT.memoryLayout = {
 };
 /** VkImageDrmFormatModifierListCreateInfoEXT **/
 function VkImageDrmFormatModifierListCreateInfoEXT(opts) {
-  if (this.constructor !== VkImageDrmFormatModifierListCreateInfoEXT) {
-    new Uint8Array(_VkImageDrmFormatModifierListCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImageDrmFormatModifierListCreateInfoEXT) {
+    new Uint8Array(_VkImageDrmFormatModifierListCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkImageDrmFormatModifierListCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -70656,8 +70694,8 @@ VkImageDrmFormatModifierListCreateInfoEXT.memoryLayout = {
 };
 /** VkImageDrmFormatModifierExplicitCreateInfoEXT **/
 function VkImageDrmFormatModifierExplicitCreateInfoEXT(opts) {
-  if (this.constructor !== VkImageDrmFormatModifierExplicitCreateInfoEXT) {
-    new Uint8Array(_VkImageDrmFormatModifierExplicitCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImageDrmFormatModifierExplicitCreateInfoEXT) {
+    new Uint8Array(_VkImageDrmFormatModifierExplicitCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkImageDrmFormatModifierExplicitCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -70832,8 +70870,8 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.memoryLayout = {
 };
 /** VkImageDrmFormatModifierPropertiesEXT **/
 function VkImageDrmFormatModifierPropertiesEXT(opts) {
-  if (this.constructor !== VkImageDrmFormatModifierPropertiesEXT) {
-    new Uint8Array(_VkImageDrmFormatModifierPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImageDrmFormatModifierPropertiesEXT) {
+    new Uint8Array(_VkImageDrmFormatModifierPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageDrmFormatModifierPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -70935,8 +70973,8 @@ VkImageDrmFormatModifierPropertiesEXT.memoryLayout = {
 };
 /** VkImageStencilUsageCreateInfoEXT **/
 function VkImageStencilUsageCreateInfoEXT(opts) {
-  if (this.constructor !== VkImageStencilUsageCreateInfoEXT) {
-    new Uint8Array(_VkImageStencilUsageCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkImageStencilUsageCreateInfoEXT) {
+    new Uint8Array(_VkImageStencilUsageCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkImageStencilUsageCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -71039,8 +71077,8 @@ VkImageStencilUsageCreateInfoEXT.memoryLayout = {
 };
 /** VkDeviceMemoryOverallocationCreateInfoAMD **/
 function VkDeviceMemoryOverallocationCreateInfoAMD(opts) {
-  if (this.constructor !== VkDeviceMemoryOverallocationCreateInfoAMD) {
-    new Uint8Array(_VkDeviceMemoryOverallocationCreateInfoAMD.memoryBuffer).fill(0);
+  if (new.target !== VkDeviceMemoryOverallocationCreateInfoAMD) {
+    new Uint8Array(_VkDeviceMemoryOverallocationCreateInfoAMD.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkDeviceMemoryOverallocationCreateInfoAMD;
   }
   this.memoryBuffer = null;
@@ -71146,8 +71184,8 @@ VkDeviceMemoryOverallocationCreateInfoAMD.memoryLayout = {
 };
 /** VkPhysicalDeviceFragmentDensityMapFeaturesEXT **/
 function VkPhysicalDeviceFragmentDensityMapFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceFragmentDensityMapFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFragmentDensityMapFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceFragmentDensityMapFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -71269,8 +71307,8 @@ VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceFragmentDensityMapPropertiesEXT **/
 function VkPhysicalDeviceFragmentDensityMapPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceFragmentDensityMapPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFragmentDensityMapPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPhysicalDeviceFragmentDensityMapPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -71396,8 +71434,8 @@ VkPhysicalDeviceFragmentDensityMapPropertiesEXT.memoryLayout = {
 };
 /** VkRenderPassFragmentDensityMapCreateInfoEXT **/
 function VkRenderPassFragmentDensityMapCreateInfoEXT(opts) {
-  if (this.constructor !== VkRenderPassFragmentDensityMapCreateInfoEXT) {
-    new Uint8Array(_VkRenderPassFragmentDensityMapCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassFragmentDensityMapCreateInfoEXT) {
+    new Uint8Array(_VkRenderPassFragmentDensityMapCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkRenderPassFragmentDensityMapCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -71522,8 +71560,8 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceScalarBlockLayoutFeaturesEXT **/
 function VkPhysicalDeviceScalarBlockLayoutFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceScalarBlockLayoutFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceScalarBlockLayoutFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -71625,8 +71663,8 @@ VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.memoryLayout = {
 };
 /** VkSurfaceProtectedCapabilitiesKHR **/
 function VkSurfaceProtectedCapabilitiesKHR(opts) {
-  if (this.constructor !== VkSurfaceProtectedCapabilitiesKHR) {
-    new Uint8Array(_VkSurfaceProtectedCapabilitiesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceProtectedCapabilitiesKHR) {
+    new Uint8Array(_VkSurfaceProtectedCapabilitiesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSurfaceProtectedCapabilitiesKHR;
   }
   this.memoryBuffer = null;
@@ -71728,8 +71766,8 @@ VkSurfaceProtectedCapabilitiesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR **/
 function VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -71831,8 +71869,8 @@ VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceDepthClipEnableFeaturesEXT **/
 function VkPhysicalDeviceDepthClipEnableFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceDepthClipEnableFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceDepthClipEnableFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceDepthClipEnableFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceDepthClipEnableFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceDepthClipEnableFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -71934,8 +71972,8 @@ VkPhysicalDeviceDepthClipEnableFeaturesEXT.memoryLayout = {
 };
 /** VkPipelineRasterizationDepthClipStateCreateInfoEXT **/
 function VkPipelineRasterizationDepthClipStateCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineRasterizationDepthClipStateCreateInfoEXT) {
-    new Uint8Array(_VkPipelineRasterizationDepthClipStateCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineRasterizationDepthClipStateCreateInfoEXT) {
+    new Uint8Array(_VkPipelineRasterizationDepthClipStateCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineRasterizationDepthClipStateCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -72054,8 +72092,8 @@ VkPipelineRasterizationDepthClipStateCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceMemoryBudgetPropertiesEXT **/
 function VkPhysicalDeviceMemoryBudgetPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceMemoryBudgetPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceMemoryBudgetPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMemoryBudgetPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceMemoryBudgetPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x110], 0x0);
     return _VkPhysicalDeviceMemoryBudgetPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -72205,8 +72243,8 @@ VkPhysicalDeviceMemoryBudgetPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceMemoryPriorityFeaturesEXT **/
 function VkPhysicalDeviceMemoryPriorityFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceMemoryPriorityFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceMemoryPriorityFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceMemoryPriorityFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -72308,8 +72346,8 @@ VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryLayout = {
 };
 /** VkMemoryPriorityAllocateInfoEXT **/
 function VkMemoryPriorityAllocateInfoEXT(opts) {
-  if (this.constructor !== VkMemoryPriorityAllocateInfoEXT) {
-    new Uint8Array(_VkMemoryPriorityAllocateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkMemoryPriorityAllocateInfoEXT) {
+    new Uint8Array(_VkMemoryPriorityAllocateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkMemoryPriorityAllocateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -72414,8 +72452,8 @@ VkMemoryPriorityAllocateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceBufferDeviceAddressFeaturesEXT **/
 function VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceBufferDeviceAddressFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceBufferDeviceAddressFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -72545,8 +72583,8 @@ VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceBufferAddressFeaturesEXT **/
 function VkPhysicalDeviceBufferAddressFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceBufferAddressFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceBufferAddressFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceBufferAddressFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceBufferAddressFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceBufferAddressFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -72676,8 +72714,8 @@ VkPhysicalDeviceBufferAddressFeaturesEXT.memoryLayout = {
 };
 /** VkBufferDeviceAddressInfoEXT **/
 function VkBufferDeviceAddressInfoEXT(opts) {
-  if (this.constructor !== VkBufferDeviceAddressInfoEXT) {
-    new Uint8Array(_VkBufferDeviceAddressInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkBufferDeviceAddressInfoEXT) {
+    new Uint8Array(_VkBufferDeviceAddressInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBufferDeviceAddressInfoEXT;
   }
   this.memoryBuffer = null;
@@ -72788,8 +72826,8 @@ VkBufferDeviceAddressInfoEXT.memoryLayout = {
 };
 /** VkBufferDeviceAddressCreateInfoEXT **/
 function VkBufferDeviceAddressCreateInfoEXT(opts) {
-  if (this.constructor !== VkBufferDeviceAddressCreateInfoEXT) {
-    new Uint8Array(_VkBufferDeviceAddressCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkBufferDeviceAddressCreateInfoEXT) {
+    new Uint8Array(_VkBufferDeviceAddressCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkBufferDeviceAddressCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -72894,8 +72932,8 @@ VkBufferDeviceAddressCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceImageViewImageFormatInfoEXT **/
 function VkPhysicalDeviceImageViewImageFormatInfoEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceImageViewImageFormatInfoEXT) {
-    new Uint8Array(_VkPhysicalDeviceImageViewImageFormatInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceImageViewImageFormatInfoEXT) {
+    new Uint8Array(_VkPhysicalDeviceImageViewImageFormatInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceImageViewImageFormatInfoEXT;
   }
   this.memoryBuffer = null;
@@ -73001,8 +73039,8 @@ VkPhysicalDeviceImageViewImageFormatInfoEXT.memoryLayout = {
 };
 /** VkFilterCubicImageViewImageFormatPropertiesEXT **/
 function VkFilterCubicImageViewImageFormatPropertiesEXT(opts) {
-  if (this.constructor !== VkFilterCubicImageViewImageFormatPropertiesEXT) {
-    new Uint8Array(_VkFilterCubicImageViewImageFormatPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkFilterCubicImageViewImageFormatPropertiesEXT) {
+    new Uint8Array(_VkFilterCubicImageViewImageFormatPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkFilterCubicImageViewImageFormatPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -73114,8 +73152,8 @@ VkFilterCubicImageViewImageFormatPropertiesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceImagelessFramebufferFeaturesKHR **/
 function VkPhysicalDeviceImagelessFramebufferFeaturesKHR(opts) {
-  if (this.constructor !== VkPhysicalDeviceImagelessFramebufferFeaturesKHR) {
-    new Uint8Array(_VkPhysicalDeviceImagelessFramebufferFeaturesKHR.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceImagelessFramebufferFeaturesKHR) {
+    new Uint8Array(_VkPhysicalDeviceImagelessFramebufferFeaturesKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceImagelessFramebufferFeaturesKHR;
   }
   this.memoryBuffer = null;
@@ -73217,8 +73255,8 @@ VkPhysicalDeviceImagelessFramebufferFeaturesKHR.memoryLayout = {
 };
 /** VkFramebufferAttachmentsCreateInfoKHR **/
 function VkFramebufferAttachmentsCreateInfoKHR(opts) {
-  if (this.constructor !== VkFramebufferAttachmentsCreateInfoKHR) {
-    new Uint8Array(_VkFramebufferAttachmentsCreateInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkFramebufferAttachmentsCreateInfoKHR) {
+    new Uint8Array(_VkFramebufferAttachmentsCreateInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFramebufferAttachmentsCreateInfoKHR;
   }
   this.memoryBuffer = null;
@@ -73374,8 +73412,8 @@ VkFramebufferAttachmentsCreateInfoKHR.memoryLayout = {
 };
 /** VkFramebufferAttachmentImageInfoKHR **/
 function VkFramebufferAttachmentImageInfoKHR(opts) {
-  if (this.constructor !== VkFramebufferAttachmentImageInfoKHR) {
-    new Uint8Array(_VkFramebufferAttachmentImageInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkFramebufferAttachmentImageInfoKHR) {
+    new Uint8Array(_VkFramebufferAttachmentImageInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkFramebufferAttachmentImageInfoKHR;
   }
   this.memoryBuffer = null;
@@ -73588,8 +73626,8 @@ VkFramebufferAttachmentImageInfoKHR.memoryLayout = {
 };
 /** VkRenderPassAttachmentBeginInfoKHR **/
 function VkRenderPassAttachmentBeginInfoKHR(opts) {
-  if (this.constructor !== VkRenderPassAttachmentBeginInfoKHR) {
-    new Uint8Array(_VkRenderPassAttachmentBeginInfoKHR.memoryBuffer).fill(0);
+  if (new.target !== VkRenderPassAttachmentBeginInfoKHR) {
+    new Uint8Array(_VkRenderPassAttachmentBeginInfoKHR.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkRenderPassAttachmentBeginInfoKHR;
   }
   this.memoryBuffer = null;
@@ -73745,8 +73783,8 @@ VkRenderPassAttachmentBeginInfoKHR.memoryLayout = {
 };
 /** VkPhysicalDeviceCooperativeMatrixFeaturesNV **/
 function VkPhysicalDeviceCooperativeMatrixFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceCooperativeMatrixFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceCooperativeMatrixFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceCooperativeMatrixFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceCooperativeMatrixFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceCooperativeMatrixFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -73862,8 +73900,8 @@ VkPhysicalDeviceCooperativeMatrixFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceCooperativeMatrixPropertiesNV **/
 function VkPhysicalDeviceCooperativeMatrixPropertiesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceCooperativeMatrixPropertiesNV) {
-    new Uint8Array(_VkPhysicalDeviceCooperativeMatrixPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceCooperativeMatrixPropertiesNV) {
+    new Uint8Array(_VkPhysicalDeviceCooperativeMatrixPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceCooperativeMatrixPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -73963,8 +74001,8 @@ VkPhysicalDeviceCooperativeMatrixPropertiesNV.memoryLayout = {
 };
 /** VkCooperativeMatrixPropertiesNV **/
 function VkCooperativeMatrixPropertiesNV(opts) {
-  if (this.constructor !== VkCooperativeMatrixPropertiesNV) {
-    new Uint8Array(_VkCooperativeMatrixPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkCooperativeMatrixPropertiesNV) {
+    new Uint8Array(_VkCooperativeMatrixPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkCooperativeMatrixPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -74203,8 +74241,8 @@ VkCooperativeMatrixPropertiesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceYcbcrImageArraysFeaturesEXT **/
 function VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceYcbcrImageArraysFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceYcbcrImageArraysFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceYcbcrImageArraysFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -74306,8 +74344,8 @@ VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.memoryLayout = {
 };
 /** VkImageViewHandleInfoNVX **/
 function VkImageViewHandleInfoNVX(opts) {
-  if (this.constructor !== VkImageViewHandleInfoNVX) {
-    new Uint8Array(_VkImageViewHandleInfoNVX.memoryBuffer).fill(0);
+  if (new.target !== VkImageViewHandleInfoNVX) {
+    new Uint8Array(_VkImageViewHandleInfoNVX.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkImageViewHandleInfoNVX;
   }
   this.memoryBuffer = null;
@@ -74463,8 +74501,8 @@ VkImageViewHandleInfoNVX.memoryLayout = {
 };
 /** VkPipelineCreationFeedbackEXT **/
 function VkPipelineCreationFeedbackEXT(opts) {
-  if (this.constructor !== VkPipelineCreationFeedbackEXT) {
-    new Uint8Array(_VkPipelineCreationFeedbackEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCreationFeedbackEXT) {
+    new Uint8Array(_VkPipelineCreationFeedbackEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkPipelineCreationFeedbackEXT;
   }
   this.memoryBuffer = null;
@@ -74533,8 +74571,8 @@ VkPipelineCreationFeedbackEXT.memoryLayout = {
 };
 /** VkPipelineCreationFeedbackCreateInfoEXT **/
 function VkPipelineCreationFeedbackCreateInfoEXT(opts) {
-  if (this.constructor !== VkPipelineCreationFeedbackCreateInfoEXT) {
-    new Uint8Array(_VkPipelineCreationFeedbackCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCreationFeedbackCreateInfoEXT) {
+    new Uint8Array(_VkPipelineCreationFeedbackCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x28], 0x0);
     return _VkPipelineCreationFeedbackCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -74715,8 +74753,8 @@ VkPipelineCreationFeedbackCreateInfoEXT.memoryLayout = {
 };
 /** VkSurfaceFullScreenExclusiveInfoEXT **/
 function VkSurfaceFullScreenExclusiveInfoEXT(opts) {
-  if (this.constructor !== VkSurfaceFullScreenExclusiveInfoEXT) {
-    new Uint8Array(_VkSurfaceFullScreenExclusiveInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceFullScreenExclusiveInfoEXT) {
+    new Uint8Array(_VkSurfaceFullScreenExclusiveInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSurfaceFullScreenExclusiveInfoEXT;
   }
   this.memoryBuffer = null;
@@ -74822,8 +74860,8 @@ VkSurfaceFullScreenExclusiveInfoEXT.memoryLayout = {
 };
 /** VkSurfaceFullScreenExclusiveWin32InfoEXT **/
 function VkSurfaceFullScreenExclusiveWin32InfoEXT(opts) {
-  if (this.constructor !== VkSurfaceFullScreenExclusiveWin32InfoEXT) {
-    new Uint8Array(_VkSurfaceFullScreenExclusiveWin32InfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceFullScreenExclusiveWin32InfoEXT) {
+    new Uint8Array(_VkSurfaceFullScreenExclusiveWin32InfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSurfaceFullScreenExclusiveWin32InfoEXT;
   }
   this.memoryBuffer = null;
@@ -74909,8 +74947,8 @@ VkSurfaceFullScreenExclusiveWin32InfoEXT.memoryLayout = {
 };
 /** VkSurfaceCapabilitiesFullScreenExclusiveEXT **/
 function VkSurfaceCapabilitiesFullScreenExclusiveEXT(opts) {
-  if (this.constructor !== VkSurfaceCapabilitiesFullScreenExclusiveEXT) {
-    new Uint8Array(_VkSurfaceCapabilitiesFullScreenExclusiveEXT.memoryBuffer).fill(0);
+  if (new.target !== VkSurfaceCapabilitiesFullScreenExclusiveEXT) {
+    new Uint8Array(_VkSurfaceCapabilitiesFullScreenExclusiveEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkSurfaceCapabilitiesFullScreenExclusiveEXT;
   }
   this.memoryBuffer = null;
@@ -75012,8 +75050,8 @@ VkSurfaceCapabilitiesFullScreenExclusiveEXT.memoryLayout = {
 };
 /** VkHeadlessSurfaceCreateInfoEXT **/
 function VkHeadlessSurfaceCreateInfoEXT(opts) {
-  if (this.constructor !== VkHeadlessSurfaceCreateInfoEXT) {
-    new Uint8Array(_VkHeadlessSurfaceCreateInfoEXT.memoryBuffer).fill(0);
+  if (new.target !== VkHeadlessSurfaceCreateInfoEXT) {
+    new Uint8Array(_VkHeadlessSurfaceCreateInfoEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkHeadlessSurfaceCreateInfoEXT;
   }
   this.memoryBuffer = null;
@@ -75116,8 +75154,8 @@ VkHeadlessSurfaceCreateInfoEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceCoverageReductionModeFeaturesNV **/
 function VkPhysicalDeviceCoverageReductionModeFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceCoverageReductionModeFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceCoverageReductionModeFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceCoverageReductionModeFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceCoverageReductionModeFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceCoverageReductionModeFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -75219,8 +75257,8 @@ VkPhysicalDeviceCoverageReductionModeFeaturesNV.memoryLayout = {
 };
 /** VkPipelineCoverageReductionStateCreateInfoNV **/
 function VkPipelineCoverageReductionStateCreateInfoNV(opts) {
-  if (this.constructor !== VkPipelineCoverageReductionStateCreateInfoNV) {
-    new Uint8Array(_VkPipelineCoverageReductionStateCreateInfoNV.memoryBuffer).fill(0);
+  if (new.target !== VkPipelineCoverageReductionStateCreateInfoNV) {
+    new Uint8Array(_VkPipelineCoverageReductionStateCreateInfoNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPipelineCoverageReductionStateCreateInfoNV;
   }
   this.memoryBuffer = null;
@@ -75343,8 +75381,8 @@ VkPipelineCoverageReductionStateCreateInfoNV.memoryLayout = {
 };
 /** VkFramebufferMixedSamplesCombinationNV **/
 function VkFramebufferMixedSamplesCombinationNV(opts) {
-  if (this.constructor !== VkFramebufferMixedSamplesCombinationNV) {
-    new Uint8Array(_VkFramebufferMixedSamplesCombinationNV.memoryBuffer).fill(0);
+  if (new.target !== VkFramebufferMixedSamplesCombinationNV) {
+    new Uint8Array(_VkFramebufferMixedSamplesCombinationNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkFramebufferMixedSamplesCombinationNV;
   }
   this.memoryBuffer = null;
@@ -75474,8 +75512,8 @@ VkFramebufferMixedSamplesCombinationNV.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderIntegerFunctions2INTEL **/
 function VkPhysicalDeviceShaderIntegerFunctions2INTEL(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderIntegerFunctions2INTEL) {
-    new Uint8Array(_VkPhysicalDeviceShaderIntegerFunctions2INTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderIntegerFunctions2INTEL) {
+    new Uint8Array(_VkPhysicalDeviceShaderIntegerFunctions2INTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderIntegerFunctions2INTEL;
   }
   this.memoryBuffer = null;
@@ -75577,8 +75615,8 @@ VkPhysicalDeviceShaderIntegerFunctions2INTEL.memoryLayout = {
 };
 /** VkPerformanceValueINTEL **/
 function VkPerformanceValueINTEL(opts) {
-  if (this.constructor !== VkPerformanceValueINTEL) {
-    new Uint8Array(_VkPerformanceValueINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceValueINTEL) {
+    new Uint8Array(_VkPerformanceValueINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkPerformanceValueINTEL;
   }
   this.memoryBuffer = null;
@@ -75680,8 +75718,8 @@ VkPerformanceValueINTEL.memoryLayout = {
 };
 /** VkInitializePerformanceApiInfoINTEL **/
 function VkInitializePerformanceApiInfoINTEL(opts) {
-  if (this.constructor !== VkInitializePerformanceApiInfoINTEL) {
-    new Uint8Array(_VkInitializePerformanceApiInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkInitializePerformanceApiInfoINTEL) {
+    new Uint8Array(_VkInitializePerformanceApiInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkInitializePerformanceApiInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -75790,8 +75828,8 @@ VkInitializePerformanceApiInfoINTEL.memoryLayout = {
 };
 /** VkQueryPoolCreateInfoINTEL **/
 function VkQueryPoolCreateInfoINTEL(opts) {
-  if (this.constructor !== VkQueryPoolCreateInfoINTEL) {
-    new Uint8Array(_VkQueryPoolCreateInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkQueryPoolCreateInfoINTEL) {
+    new Uint8Array(_VkQueryPoolCreateInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkQueryPoolCreateInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -75897,8 +75935,8 @@ VkQueryPoolCreateInfoINTEL.memoryLayout = {
 };
 /** VkPerformanceMarkerInfoINTEL **/
 function VkPerformanceMarkerInfoINTEL(opts) {
-  if (this.constructor !== VkPerformanceMarkerInfoINTEL) {
-    new Uint8Array(_VkPerformanceMarkerInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceMarkerInfoINTEL) {
+    new Uint8Array(_VkPerformanceMarkerInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPerformanceMarkerInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -76003,8 +76041,8 @@ VkPerformanceMarkerInfoINTEL.memoryLayout = {
 };
 /** VkPerformanceStreamMarkerInfoINTEL **/
 function VkPerformanceStreamMarkerInfoINTEL(opts) {
-  if (this.constructor !== VkPerformanceStreamMarkerInfoINTEL) {
-    new Uint8Array(_VkPerformanceStreamMarkerInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceStreamMarkerInfoINTEL) {
+    new Uint8Array(_VkPerformanceStreamMarkerInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPerformanceStreamMarkerInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -76109,8 +76147,8 @@ VkPerformanceStreamMarkerInfoINTEL.memoryLayout = {
 };
 /** VkPerformanceOverrideInfoINTEL **/
 function VkPerformanceOverrideInfoINTEL(opts) {
-  if (this.constructor !== VkPerformanceOverrideInfoINTEL) {
-    new Uint8Array(_VkPerformanceOverrideInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceOverrideInfoINTEL) {
+    new Uint8Array(_VkPerformanceOverrideInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPerformanceOverrideInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -76251,8 +76289,8 @@ VkPerformanceOverrideInfoINTEL.memoryLayout = {
 };
 /** VkPerformanceConfigurationAcquireInfoINTEL **/
 function VkPerformanceConfigurationAcquireInfoINTEL(opts) {
-  if (this.constructor !== VkPerformanceConfigurationAcquireInfoINTEL) {
-    new Uint8Array(_VkPerformanceConfigurationAcquireInfoINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceConfigurationAcquireInfoINTEL) {
+    new Uint8Array(_VkPerformanceConfigurationAcquireInfoINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPerformanceConfigurationAcquireInfoINTEL;
   }
   this.memoryBuffer = null;
@@ -76358,8 +76396,8 @@ VkPerformanceConfigurationAcquireInfoINTEL.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderSMBuiltinsPropertiesNV **/
 function VkPhysicalDeviceShaderSMBuiltinsPropertiesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderSMBuiltinsPropertiesNV) {
-    new Uint8Array(_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderSMBuiltinsPropertiesNV) {
+    new Uint8Array(_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderSMBuiltinsPropertiesNV;
   }
   this.memoryBuffer = null;
@@ -76471,8 +76509,8 @@ VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderSMBuiltinsFeaturesNV **/
 function VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderSMBuiltinsFeaturesNV) {
-    new Uint8Array(_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderSMBuiltinsFeaturesNV) {
+    new Uint8Array(_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderSMBuiltinsFeaturesNV;
   }
   this.memoryBuffer = null;
@@ -76574,8 +76612,8 @@ VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.memoryLayout = {
 };
 /** VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT **/
 function VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x20], 0x0);
     return _VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -76705,8 +76743,8 @@ VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT **/
 function VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -76808,8 +76846,8 @@ VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT **/
 function VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT) {
-    new Uint8Array(_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT) {
+    new Uint8Array(_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x18], 0x0);
     return _VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT;
   }
   this.memoryBuffer = null;
@@ -76911,8 +76949,8 @@ VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.memoryLayout = {
 };
 /** VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT **/
 function VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT(opts) {
-  if (this.constructor !== VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT) {
-    new Uint8Array(_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.memoryBuffer).fill(0);
+  if (new.target !== VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT) {
+    new Uint8Array(_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.memoryBuffer).set(STRUCT_RESET_CACHE[0x30], 0x0);
     return _VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT;
   }
   this.memoryBuffer = null;
@@ -77046,8 +77084,8 @@ VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.memoryLayout = {
 };
 /** VkClearColorValue **/
 function VkClearColorValue(opts) {
-  if (this.constructor !== VkClearColorValue) {
-    new Uint8Array(_VkClearColorValue.memoryBuffer).fill(0);
+  if (new.target !== VkClearColorValue) {
+    new Uint8Array(_VkClearColorValue.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkClearColorValue;
   }
   this.memoryBuffer = null;
@@ -77232,8 +77270,8 @@ VkClearColorValue.memoryLayout = {
 };
 /** VkClearValue **/
 function VkClearValue(opts) {
-  if (this.constructor !== VkClearValue) {
-    new Uint8Array(_VkClearValue.memoryBuffer).fill(0);
+  if (new.target !== VkClearValue) {
+    new Uint8Array(_VkClearValue.memoryBuffer).set(STRUCT_RESET_CACHE[0x10], 0x0);
     return _VkClearValue;
   }
   this.memoryBuffer = null;
@@ -77352,8 +77390,8 @@ VkClearValue.memoryLayout = {
 };
 /** VkPerformanceValueDataINTEL **/
 function VkPerformanceValueDataINTEL(opts) {
-  if (this.constructor !== VkPerformanceValueDataINTEL) {
-    new Uint8Array(_VkPerformanceValueDataINTEL.memoryBuffer).fill(0);
+  if (new.target !== VkPerformanceValueDataINTEL) {
+    new Uint8Array(_VkPerformanceValueDataINTEL.memoryBuffer).set(STRUCT_RESET_CACHE[0x8], 0x0);
     return _VkPerformanceValueDataINTEL;
   }
   this.memoryBuffer = null;

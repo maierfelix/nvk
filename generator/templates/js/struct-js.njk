@@ -1,9 +1,6 @@
 /** {{ struct.name }} **/
 function {{ struct.name }}(opts) {
-  if (this.constructor !== {{ struct.name }}) {
-    new Uint8Array(_{{ struct.name }}.memoryBuffer).fill(0);
-    return _{{ struct.name }};
-  }
+  {{ getStructureResetOperation() }}
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
   this.$memoryOffset = 0;

@@ -104,9 +104,9 @@ function getStructureMemberByteLength(member) {
   return getHexaByteOffset(byteLength);
 };
 
-function getStructureByteLength() {
+function getStructureByteLength(struct = null) {
   if (!memoryLayouts) return `0x0`;
-  let byteLength = memoryLayouts[currentStruct.name].byteLength;
+  let byteLength = memoryLayouts[(struct || currentStruct).name].byteLength;
   return getHexaByteOffset(byteLength);
 };
 
@@ -165,6 +165,14 @@ function $VAL_R_${enumName}(value) {`;
 };\n`;
   };
   return out;
+};
+
+function getStructureResetOperation() {
+  let accessor = getStructureByteLength();
+  return `if (new.target !== ${currentStruct.name}) {
+    new Uint8Array(_${currentStruct.name}.memoryBuffer).set(STRUCT_RESET_CACHE[${accessor}], 0x0);
+    return _${currentStruct.name};
+  }`;
 };
 
 function getStructureMemoryViews(passedByReference) {
@@ -751,6 +759,23 @@ export default function(astReference, includeValidations, disableMinification, c
   let output = ``;
   // header
   output += nunjucks.renderString(JS_INDEX_TEMPLATE, {});
+  // struct reset cache
+  {
+    output += `\n`;
+    let structCache = {};
+    // collect all individual struct sizes
+    structs.map(struct => {
+      let byteLength = getStructureByteLength(struct);
+      structCache[byteLength] = parseInt(byteLength);
+    });
+    // generate struct reset cache
+    output += `const STRUCT_RESET_CACHE = {\n`;
+    for (let key in structCache) {
+      if (!structCache.hasOwnProperty(key)) continue;
+      output += `  "${key}": new Uint8Array(${key}),\n`;
+    };
+    output += `};\n`;
+  }
   // enum range checks
   if (validate) {
     output += getEnumRangeValidationFunctions();
@@ -779,16 +804,19 @@ export default function(astReference, includeValidations, disableMinification, c
       getStructureByteLength,
       getStructureMemoryViews,
       getConstructorInitializer,
+      getStructureResetOperation,
       getStructureMemberByteOffset,
       getStructureMemberByteLength
     });
   });
   // struct cache
-  output += `\n`;
-  structs.map(struct => {
-    output += `let _${struct.name} = new ${struct.name}();\n`;
-  });
-  output += `\n`;
+  {
+    output += `\n`;
+    structs.map(struct => {
+      output += `let _${struct.name} = new ${struct.name}();\n`;
+    });
+    output += `\n`;
+  }
   // exports
   output += `\nmodule.exports = {\n`;
   // add c++ stuff
