@@ -1,48 +1,55 @@
 /** {{ struct.name }} **/
-class {{ struct.name }} {
-  constructor(opts) {
-    this.memoryBuffer = null;
-    this.memoryAddress = BI0;
-    this.$memoryOffset = 0;
-    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
-      this.$memoryOffset = opts.$memoryOffset | 0;
+function {{ struct.name }}(opts) {
+  if (this.constructor !== {{ struct.name }}) {
+    new Uint8Array(_{{ struct.name }}.memoryBuffer).fill(0);
+    return _{{ struct.name }};
+  }
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.$memoryOffset = 0;
+  if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+    this.memoryBuffer = opts.$memoryBuffer;
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+    this.$memoryOffset = opts.$memoryOffset | 0;
 {{ getStructureMemoryViews(false) | safe }}
-    } else {
-      this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  } else {
+    this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
 {{ getStructureMemoryViews(true) | safe }}
-    }
-    {% for member in struct.children %}
-    {%- if isIgnoreableType(member) != true -%}
-    {{ getConstructorInitializer(member) | safe }}
-    {% endif -%}
-    {%- endfor -%}
-    {{ getStructureAutoSType() | safe }}
-    if (typeof opts === "object") {
-      {% for member in struct.children %}
-      {%- if isIgnoreableType(member) != true -%}
-      {%- if isFillableMember(struct, member) == true -%}
-      if (opts.{{ member.name }} !== void 0) this.{{ member.name }} = opts.{{ member.name }};
-      {% endif -%}
-      {% endif -%}
-      {%- endfor %}
-    }
   }
   {% for member in struct.children %}
   {%- if isIgnoreableType(member) != true -%}
-  get {{ member.name }}() {
-    {{- getGetterProcessor(member) | safe }}
-  }
-  {% if isFillableMember(struct, member) == true -%}
-  set {{ member.name }}(value) {
-    {{- getSetterProcessor(member) | safe }}
-  }
+  {{ getConstructorInitializer(member) | safe }}
   {% endif -%}
+  {%- endfor -%}
+  {{ getStructureAutoSType() | safe }}
+  if (typeof opts === "object") {
+    {% for member in struct.children %}
+    {%- if isIgnoreableType(member) != true -%}
+    {%- if isFillableMember(struct, member) == true -%}
+    if (opts.{{ member.name }} !== void 0) this.{{ member.name }} = opts.{{ member.name }};
+    {% endif -%}
+    {% endif -%}
+    {%- endfor %}
+  }
+};
+
+Object.defineProperties({{ struct.name }}.prototype, {
+  {% for member in struct.children %}
+  {%- if isIgnoreableType(member) != true -%}
+  "{{ member.name }}": {
+    get() {
+      {{- getGetterProcessor(member) | safe }}
+    },
+    {% if isFillableMember(struct, member) == true -%}
+    set(value) {
+      {{- getSetterProcessor(member) | safe }}
+    }
+    {% endif -%}
+  },
   {% endif -%}
   {% endfor %}
-};
+});
 
 {{ struct.name }}.prototype.flush = function flush() {
   {% for member in struct.children -%}

@@ -130,7 +130,7 @@ function getEnumInlineValue(name) {
 function getEnumInlineStypeValue(name) {
   if (!enumLayouts) return ``;
   let value = getEnumInlineValue(name);
-  if (Number.isNaN(parseInt(value))) return `VkStructureType.${value}`;
+  if (Number.isNaN(parseInt(value))) return `VK_ENUMERATIONS.VkStructureType.${value}`;
   return value;
 };
 
@@ -783,10 +783,16 @@ export default function(astReference, includeValidations, disableMinification, c
       getStructureMemberByteLength
     });
   });
+  // struct cache
+  output += `\n`;
+  structs.map(struct => {
+    output += `let _${struct.name} = new ${struct.name}();\n`;
+  });
+  output += `\n`;
   // exports
   output += `\nmodule.exports = {\n`;
   // add c++ stuff
-  output += `  ...(nvk.$getVulkanEnumerations()),\n`;
+  output += `  ...VK_ENUMERATIONS,\n`;
   output += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
   output += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
   output += `  VK_VERSION_MINOR: nvk.VK_VERSION_MINOR,\n`;

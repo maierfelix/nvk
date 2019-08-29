@@ -23,6 +23,7 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 
 const BI0 = BigInt(0);
 const NULLT = String.fromCharCode(0x0);
+const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
 const textDecoder = new (typeof TextDecoder === "undefined" ? require("util").TextDecoder : TextDecoder);
