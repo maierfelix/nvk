@@ -1,6 +1,9 @@
 /** {{ struct.name }} **/
 function {{ struct.name }}(opts) {
-  {{ getStructureResetOperation() }}
+  if (new.target !== {{ struct.name }}) {
+    _{{ struct.name }}.reset();
+    return _{{ struct.name }};
+  }
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
   this.$memoryOffset = 0;
@@ -47,6 +50,10 @@ Object.defineProperties({{ struct.name }}.prototype, {
   {% endif -%}
   {% endfor %}
 });
+
+{{ struct.name }}.prototype.reset = function reset() {
+  this.memoryViewUint8.set(STRUCT_RESET_CACHE[{{ getStructureByteLength() | safe }}], 0x0);
+};
 
 {{ struct.name }}.prototype.flush = function flush() {
   {% for member in struct.children -%}

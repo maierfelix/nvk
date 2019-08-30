@@ -167,14 +167,6 @@ function $VAL_R_${enumName}(value) {`;
   return out;
 };
 
-function getStructureResetOperation() {
-  let accessor = getStructureByteLength();
-  return `if (new.target !== ${currentStruct.name}) {
-    new Uint8Array(_${currentStruct.name}.memoryBuffer).set(STRUCT_RESET_CACHE[${accessor}], 0x0);
-    return _${currentStruct.name};
-  }`;
-};
-
 function getStructureMemoryViews(passedByReference) {
   let out = ``;
   let struct = currentStruct;
@@ -210,16 +202,22 @@ function getStructureMemoryViews(passedByReference) {
       if (viewTypes.indexOf(viewInstr) <= -1) viewTypes.push(viewInstr);
     }
   });
+  // always add an Uint8Array base view (e.g. used for struct reset)
+  {
+    // check if it's necessary to add it
+    let addUint8View = !!!viewTypes.filter(type => type === "Uint8")[0];
+    if (addUint8View) viewTypes.unshift("Uint8");
+  }
   if (passedByReference) {
     viewTypes.map(type => {
-      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
+      out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
     });
   // passed by-value, share memoryBuffer of top-structure
   } else {
     viewTypes.map(type => {
       let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
       let byteLength = getStructureByteLength();
-      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
+      out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
     });
   }
   return out;
@@ -804,7 +802,6 @@ export default function(astReference, includeValidations, disableMinification, c
       getStructureByteLength,
       getStructureMemoryViews,
       getConstructorInitializer,
-      getStructureResetOperation,
       getStructureMemberByteOffset,
       getStructureMemberByteLength
     });
