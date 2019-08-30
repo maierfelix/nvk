@@ -7,8 +7,12 @@ DEFS_Debug := \
 	'-DUSING_UV_SHARED=1' \
 	'-DUSING_V8_SHARED=1' \
 	'-DV8_DEPRECATION_WARNINGS=1' \
+	'-DV8_DEPRECATION_WARNINGS' \
+	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG' \
@@ -45,14 +49,14 @@ CFLAGS_CC_Debug := \
 	-Wno-uninitialized
 
 INCS_Debug := \
-	-I/home/user/.node-gyp/11.10.0/include/node \
-	-I/home/user/.node-gyp/11.10.0/src \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/home/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/home/user/.node-gyp/11.10.0/deps/zlib \
-	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
-	-I/mnt/c/Users/User/Desktop/lxss-shared/node-vulkan/node_modules/node-addon-api \
+	-I/home/user/.cache/node-gyp/12.9.1/include/node \
+	-I/home/user/.cache/node-gyp/12.9.1/src \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/openssl/config \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/openssl/openssl/include \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/uv/include \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/zlib \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/v8/include \
+	-I/mnt/c/Users/User/Desktop/lxss-shared/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/mnt/c/Users/User/Desktop/lxss-shared/1.1.114.0/x86_64/include
 
@@ -61,8 +65,12 @@ DEFS_Release := \
 	'-DUSING_UV_SHARED=1' \
 	'-DUSING_V8_SHARED=1' \
 	'-DV8_DEPRECATION_WARNINGS=1' \
+	'-DV8_DEPRECATION_WARNINGS' \
+	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
@@ -96,14 +104,14 @@ CFLAGS_CC_Release := \
 	-Wno-uninitialized
 
 INCS_Release := \
-	-I/home/user/.node-gyp/11.10.0/include/node \
-	-I/home/user/.node-gyp/11.10.0/src \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/home/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/home/user/.node-gyp/11.10.0/deps/zlib \
-	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
-	-I/mnt/c/Users/User/Desktop/lxss-shared/node-vulkan/node_modules/node-addon-api \
+	-I/home/user/.cache/node-gyp/12.9.1/include/node \
+	-I/home/user/.cache/node-gyp/12.9.1/src \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/openssl/config \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/openssl/openssl/include \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/uv/include \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/zlib \
+	-I/home/user/.cache/node-gyp/12.9.1/deps/v8/include \
+	-I/mnt/c/Users/User/Desktop/lxss-shared/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/mnt/c/Users/User/Desktop/lxss-shared/1.1.114.0/x86_64/include
 
@@ -145,9 +153,9 @@ LDFLAGS_Release := \
 	-m64
 
 LIBS := \
-	-Wl,-rpath,/mnt/c/Users/User/Desktop/lxss-shared/node-vulkan/generated/1.1.114/linux/build/Release \
-	/mnt/c/Users/User/Desktop/lxss-shared/node-vulkan/generated/1.1.114/linux/build/Release/libvulkan.so \
-	/mnt/c/Users/User/Desktop/lxss-shared/node-vulkan/generated/1.1.114/linux/build/Release/../../../../../lib/linux/x64/GLFW/libglfw3.a \
+	-Wl,-rpath,/mnt/c/Users/User/Desktop/lxss-shared/nvk/generated/1.1.114/linux/build/Release \
+	/mnt/c/Users/User/Desktop/lxss-shared/nvk/generated/1.1.114/linux/build/Release/libvulkan.so \
+	/mnt/c/Users/User/Desktop/lxss-shared/nvk/generated/1.1.114/linux/build/Release/../../../../../lib/linux/x64/GLFW/libglfw3.a \
 	-lvulkan \
 	-lXrandr \
 	-lXi \
