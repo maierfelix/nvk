@@ -5023,6 +5023,12 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
+        "value": "1000120000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
         "value": "1000145000",
         "name": "VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO"
       },
@@ -5191,6 +5197,12 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
+        "value": "1000063000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
         "value": "999999000",
         "name": "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR"
       },
@@ -5295,6 +5307,12 @@
         "type": "VALUE",
         "value": "999999000",
         "name": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT"
       },
       {
         "kind": "ENUM_MEMBER",
@@ -5601,6 +5619,12 @@
         "type": "VALUE",
         "value": "999999000",
         "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT"
       },
       {
         "kind": "ENUM_MEMBER",
@@ -6519,6 +6543,12 @@
         "type": "VALUE",
         "value": "999999000",
         "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT"
       },
       {
         "kind": "ENUM_MEMBER",
@@ -7863,6 +7893,12 @@
           "macros": [],
           "description": " specifies support for the extended sRGB color space to be displayed using an sRGB EOTF."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_COLOR_SPACE_DCI_P3_LINEAR_EXT"
       },
       {
         "kind": "ENUM_MEMBER",
@@ -10883,6 +10919,12 @@
         "extends": "VkStructureType",
         "alias": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT",
         "isAlias": true
+      },
+      {
+        "kind": "EXTENSION_MEMBER_ENUM",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT",
+        "extends": "VkStructureType",
+        "value": 1000011000
       },
       {
         "kind": "EXTENSION_MEMBER_ENUM",
@@ -14689,6 +14731,12 @@
         "isAlias": true
       },
       {
+        "kind": "EXTENSION_MEMBER_ENUM",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT",
+        "extends": "VkStructureType",
+        "value": 1000090000
+      },
+      {
         "kind": "EXTENSION_MEMBER_STRUCT",
         "name": "VkSurfaceCounterFlagsEXT"
       },
@@ -15317,6 +15365,12 @@
         "extends": "VkColorSpaceKHR",
         "alias": "VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT",
         "isAlias": true
+      },
+      {
+        "kind": "EXTENSION_MEMBER_ENUM",
+        "name": "VK_COLOR_SPACE_DCI_P3_LINEAR_EXT",
+        "extends": "VkColorSpaceKHR",
+        "value": 1000104003
       }
     ]
   },
@@ -21843,6 +21897,12 @@
         "extends": "VkStructureType",
         "alias": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT",
         "isAlias": true
+      },
+      {
+        "kind": "EXTENSION_MEMBER_ENUM",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT",
+        "extends": "VkStructureType",
+        "value": 1000244000
       },
       {
         "kind": "EXTENSION_MEMBER_ENUM",

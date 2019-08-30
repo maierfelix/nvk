@@ -269,12 +269,22 @@ function parseExtensionMembers(parent, child) {
           out.push(member);
         }
         else if (attr.alias) {
+          let aliasedMember = out.filter(m => m.name === attr.alias)[0];
           member.name = attr.name;
           member.value = attr.value;
           member.extends = attr.extends;
           member.alias = attr.alias;
           member.isAlias = true;
           out.push(member);
+          // push enum alias if it doesn't exist yet
+          if (aliasedMember) {
+            out.push({
+              kind: TYPES.EXTENSION_MEMBER_ENUM,
+              name: attr.name,
+              extends: attr.extends,
+              value: aliasedMember.value
+            });
+          }
         }
         else {
           // ignore

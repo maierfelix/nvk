@@ -54,8 +54,8 @@
   VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT: 1000104012,
   VK_COLOR_SPACE_PASS_THROUGH_EXT: 1000104013,
   VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT: 1000104014,
-  VK_COLOR_SPACE_DISPLAY_NATIVE_AMD: 1000213000,
-  VK_COLOR_SPACE_DCI_P3_LINEAR_EXT: VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT
+  VK_COLOR_SPACE_DCI_P3_LINEAR_EXT: 1000104003,
+  VK_COLOR_SPACE_DISPLAY_NATIVE_AMD: 1000213000
 };</code></pre>
     </vk-stub>
 
@@ -127,12 +127,12 @@
         <vk-property-description> specifies support for the extended sRGB color space to be displayed using an sRGB EOTF.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkColorSpaceKHR.<vk-prototype-name>VK_COLOR_SPACE_DISPLAY_NATIVE_AMD</vk-prototype-name></vk-property-prototype>
-        <vk-property-description> specifies support for the display's native color space. This matches the color space expectations of AMD's FreeSync2 standard, for displays supporting it.</vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
         <vk-property-prototype>VkColorSpaceKHR.<vk-prototype-name>VK_COLOR_SPACE_DCI_P3_LINEAR_EXT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkColorSpaceKHR.<vk-prototype-name>VK_COLOR_SPACE_DISPLAY_NATIVE_AMD</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies support for the display's native color space. This matches the color space expectations of AMD's FreeSync2 standard, for displays supporting it.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>
