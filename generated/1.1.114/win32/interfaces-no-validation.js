@@ -1039,6 +1039,9 @@ Object.defineProperties(VkBaseOutStructure.prototype, {
 
 VkBaseOutStructure.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._pNext = null;
+  
 };
 
 VkBaseOutStructure.prototype.flush = function flush() {
@@ -1128,6 +1131,9 @@ Object.defineProperties(VkBaseInStructure.prototype, {
 
 VkBaseInStructure.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._pNext = null;
+  
 };
 
 VkBaseInStructure.prototype.flush = function flush() {
@@ -1206,6 +1212,9 @@ Object.defineProperties(VkOffset2D.prototype, {
 
 VkOffset2D.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkOffset2D.prototype.flush = function flush() {
@@ -1294,6 +1303,10 @@ Object.defineProperties(VkOffset3D.prototype, {
 
 VkOffset3D.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkOffset3D.prototype.flush = function flush() {
@@ -1376,6 +1389,9 @@ Object.defineProperties(VkExtent2D.prototype, {
 
 VkExtent2D.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkExtent2D.prototype.flush = function flush() {
@@ -1464,6 +1480,10 @@ Object.defineProperties(VkExtent3D.prototype, {
 
 VkExtent3D.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkExtent3D.prototype.flush = function flush() {
@@ -1586,6 +1606,13 @@ Object.defineProperties(VkViewport.prototype, {
 
 VkViewport.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkViewport.prototype.flush = function flush() {
@@ -1696,6 +1723,9 @@ Object.defineProperties(VkRect2D.prototype, {
 
 VkRect2D.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  this._offset = null;
+  this._extent = null;
+  
 };
 
 VkRect2D.prototype.flush = function flush() {
@@ -1821,6 +1851,10 @@ Object.defineProperties(VkClearRect.prototype, {
 
 VkClearRect.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._rect = null;
+  
+  
+  
 };
 
 VkClearRect.prototype.flush = function flush() {
@@ -1937,6 +1971,11 @@ Object.defineProperties(VkComponentMapping.prototype, {
 
 VkComponentMapping.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkComponentMapping.prototype.flush = function flush() {
@@ -2078,6 +2117,16 @@ Object.defineProperties(VkPhysicalDeviceProperties.prototype, {
 
 VkPhysicalDeviceProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x338], 0x0);
+  
+  
+  
+  
+  
+  
+  this._pipelineCacheUUID = null;
+  this._limits = null;
+  this._sparseProperties = null;
+  
 };
 
 VkPhysicalDeviceProperties.prototype.flush = function flush() {
@@ -2188,6 +2237,9 @@ Object.defineProperties(VkExtensionProperties.prototype, {
 
 VkExtensionProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x104], 0x0);
+  
+  
+  
 };
 
 VkExtensionProperties.prototype.flush = function flush() {
@@ -2278,6 +2330,11 @@ Object.defineProperties(VkLayerProperties.prototype, {
 
 VkLayerProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x208], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkLayerProperties.prototype.flush = function flush() {
@@ -2446,6 +2503,14 @@ Object.defineProperties(VkApplicationInfo.prototype, {
 
 VkApplicationInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  this._pApplicationName = null;
+  
+  this._pEngineName = null;
+  
+  
+  this.sType = 0x0;
 };
 
 VkApplicationInfo.prototype.flush = function flush() {
@@ -2623,6 +2688,13 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
 
 VkAllocationCallbacks.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  this._pUserData = null;
+  this._pfnAllocation = null;
+  this._pfnReallocation = null;
+  this._pfnFree = null;
+  this._pfnInternalAllocation = null;
+  this._pfnInternalFree = null;
+  
 };
 
 VkAllocationCallbacks.prototype.flush = function flush() {
@@ -2784,6 +2856,13 @@ Object.defineProperties(VkDeviceQueueCreateInfo.prototype, {
 
 VkDeviceQueueCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pQueuePriorities = null;
+  this.sType = 0x2;
 };
 
 VkDeviceQueueCreateInfo.prototype.flush = function flush() {
@@ -3056,6 +3135,20 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
 
 VkDeviceCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pQueueCreateInfos = null;
+    this._pQueueCreateInfosNative = null;
+  
+  this._ppEnabledLayerNames = null;
+    this._ppEnabledLayerNamesNative = null;
+  
+  this._ppEnabledExtensionNames = null;
+    this._ppEnabledExtensionNamesNative = null;
+  this._pEnabledFeatures = null;
+  this.sType = 0x3;
 };
 
 VkDeviceCreateInfo.prototype.flush = function flush() {
@@ -3324,6 +3417,17 @@ Object.defineProperties(VkInstanceCreateInfo.prototype, {
 
 VkInstanceCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pApplicationInfo = null;
+  
+  this._ppEnabledLayerNames = null;
+    this._ppEnabledLayerNamesNative = null;
+  
+  this._ppEnabledExtensionNames = null;
+    this._ppEnabledExtensionNamesNative = null;
+  this.sType = 0x1;
 };
 
 VkInstanceCreateInfo.prototype.flush = function flush() {
@@ -3465,6 +3569,11 @@ Object.defineProperties(VkQueueFamilyProperties.prototype, {
 
 VkQueueFamilyProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  this._minImageTransferGranularity = null;
+  
 };
 
 VkQueueFamilyProperties.prototype.flush = function flush() {
@@ -3561,6 +3670,11 @@ Object.defineProperties(VkPhysicalDeviceMemoryProperties.prototype, {
 
 VkPhysicalDeviceMemoryProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x208], 0x0);
+  
+  this._memoryTypes = null;
+  
+  this._memoryHeaps = null;
+  
 };
 
 VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
@@ -3710,6 +3824,11 @@ Object.defineProperties(VkMemoryAllocateInfo.prototype, {
 
 VkMemoryAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x5;
 };
 
 VkMemoryAllocateInfo.prototype.flush = function flush() {
@@ -3803,6 +3922,10 @@ Object.defineProperties(VkMemoryRequirements.prototype, {
 
 VkMemoryRequirements.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  
 };
 
 VkMemoryRequirements.prototype.flush = function flush() {
@@ -3887,6 +4010,10 @@ Object.defineProperties(VkSparseImageFormatProperties.prototype, {
 
 VkSparseImageFormatProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x14], 0x0);
+  
+  this._imageGranularity = null;
+  
+  
 };
 
 VkSparseImageFormatProperties.prototype.flush = function flush() {
@@ -3987,6 +4114,12 @@ Object.defineProperties(VkSparseImageMemoryRequirements.prototype, {
 
 VkSparseImageMemoryRequirements.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  this._formatProperties = null;
+  
+  
+  
+  
+  
 };
 
 VkSparseImageMemoryRequirements.prototype.flush = function flush() {
@@ -4077,6 +4210,9 @@ Object.defineProperties(VkMemoryType.prototype, {
 
 VkMemoryType.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkMemoryType.prototype.flush = function flush() {
@@ -4153,6 +4289,9 @@ Object.defineProperties(VkMemoryHeap.prototype, {
 
 VkMemoryHeap.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
 };
 
 VkMemoryHeap.prototype.flush = function flush() {
@@ -4280,6 +4419,12 @@ Object.defineProperties(VkMappedMemoryRange.prototype, {
 
 VkMappedMemoryRange.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._memory = null;
+  
+  
+  this.sType = 0x6;
 };
 
 VkMappedMemoryRange.prototype.flush = function flush() {
@@ -4375,6 +4520,10 @@ Object.defineProperties(VkFormatProperties.prototype, {
 
 VkFormatProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkFormatProperties.prototype.flush = function flush() {
@@ -4475,6 +4624,12 @@ Object.defineProperties(VkImageFormatProperties.prototype, {
 
 VkImageFormatProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  this._maxExtent = null;
+  
+  
+  
+  
+  
 };
 
 VkImageFormatProperties.prototype.flush = function flush() {
@@ -4594,6 +4749,10 @@ Object.defineProperties(VkDescriptorBufferInfo.prototype, {
 
 VkDescriptorBufferInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._buffer = null;
+  
+  
+  
 };
 
 VkDescriptorBufferInfo.prototype.flush = function flush() {
@@ -4706,6 +4865,10 @@ Object.defineProperties(VkDescriptorImageInfo.prototype, {
 
 VkDescriptorImageInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._sampler = null;
+  this._imageView = null;
+  
+  
 };
 
 VkDescriptorImageInfo.prototype.flush = function flush() {
@@ -4916,6 +5079,20 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
 
 VkWriteDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._dstSet = null;
+  
+  
+  
+  
+  this._pImageInfo = null;
+    this._pImageInfoNative = null;
+  this._pBufferInfo = null;
+    this._pBufferInfoNative = null;
+  this._pTexelBufferView = null;
+    this._pTexelBufferViewNative = null;
+  this.sType = 0x23;
 };
 
 VkWriteDescriptorSet.prototype.flush = function flush() {
@@ -5188,6 +5365,16 @@ Object.defineProperties(VkCopyDescriptorSet.prototype, {
 
 VkCopyDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  this._srcSet = null;
+  
+  
+  this._dstSet = null;
+  
+  
+  
+  this.sType = 0x24;
 };
 
 VkCopyDescriptorSet.prototype.flush = function flush() {
@@ -5393,6 +5580,15 @@ Object.defineProperties(VkBufferCreateInfo.prototype, {
 
 VkBufferCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this._pQueueFamilyIndices = null;
+  this.sType = 0xC;
 };
 
 VkBufferCreateInfo.prototype.flush = function flush() {
@@ -5567,6 +5763,14 @@ Object.defineProperties(VkBufferViewCreateInfo.prototype, {
 
 VkBufferViewCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  this._buffer = null;
+  
+  
+  
+  this.sType = 0xD;
 };
 
 VkBufferViewCreateInfo.prototype.flush = function flush() {
@@ -5684,6 +5888,10 @@ Object.defineProperties(VkImageSubresource.prototype, {
 
 VkImageSubresource.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkImageSubresource.prototype.flush = function flush() {
@@ -5788,6 +5996,11 @@ Object.defineProperties(VkImageSubresourceLayers.prototype, {
 
 VkImageSubresourceLayers.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkImageSubresourceLayers.prototype.flush = function flush() {
@@ -5906,6 +6119,12 @@ Object.defineProperties(VkImageSubresourceRange.prototype, {
 
 VkImageSubresourceRange.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x14], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkImageSubresourceRange.prototype.flush = function flush() {
@@ -6018,6 +6237,11 @@ Object.defineProperties(VkMemoryBarrier.prototype, {
 
 VkMemoryBarrier.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x2E;
 };
 
 VkMemoryBarrier.prototype.flush = function flush() {
@@ -6198,6 +6422,16 @@ Object.defineProperties(VkBufferMemoryBarrier.prototype, {
 
 VkBufferMemoryBarrier.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._buffer = null;
+  
+  
+  this.sType = 0x2C;
 };
 
 VkBufferMemoryBarrier.prototype.flush = function flush() {
@@ -6429,6 +6663,17 @@ Object.defineProperties(VkImageMemoryBarrier.prototype, {
 
 VkImageMemoryBarrier.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  this._image = null;
+  this._subresourceRange = null;
+  this.sType = 0x2D;
 };
 
 VkImageMemoryBarrier.prototype.flush = function flush() {
@@ -6734,6 +6979,22 @@ Object.defineProperties(VkImageCreateInfo.prototype, {
 
 VkImageCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x58], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._extent = null;
+  
+  
+  
+  
+  
+  
+  
+  this._pQueueFamilyIndices = null;
+  
+  this.sType = 0xE;
 };
 
 VkImageCreateInfo.prototype.flush = function flush() {
@@ -6895,6 +7156,12 @@ Object.defineProperties(VkSubresourceLayout.prototype, {
 
 VkSubresourceLayout.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkSubresourceLayout.prototype.flush = function flush() {
@@ -7096,6 +7363,15 @@ Object.defineProperties(VkImageViewCreateInfo.prototype, {
 
 VkImageViewCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x50], 0x0);
+  
+  this._pNext = null;
+  
+  this._image = null;
+  
+  
+  this._components = null;
+  this._subresourceRange = null;
+  this.sType = 0xF;
 };
 
 VkImageViewCreateInfo.prototype.flush = function flush() {
@@ -7246,6 +7522,10 @@ Object.defineProperties(VkBufferCopy.prototype, {
 
 VkBufferCopy.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  
 };
 
 VkBufferCopy.prototype.flush = function flush() {
@@ -7374,6 +7654,12 @@ Object.defineProperties(VkSparseMemoryBind.prototype, {
 
 VkSparseMemoryBind.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  
+  this._memory = null;
+  
+  
+  
 };
 
 VkSparseMemoryBind.prototype.flush = function flush() {
@@ -7545,6 +7831,13 @@ Object.defineProperties(VkSparseImageMemoryBind.prototype, {
 
 VkSparseImageMemoryBind.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  this._subresource = null;
+  this._offset = null;
+  this._extent = null;
+  this._memory = null;
+  
+  
+  
 };
 
 VkSparseImageMemoryBind.prototype.flush = function flush() {
@@ -7708,6 +8001,11 @@ Object.defineProperties(VkSparseBufferMemoryBindInfo.prototype, {
 
 VkSparseBufferMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._buffer = null;
+  
+  this._pBinds = null;
+    this._pBindsNative = null;
+  
 };
 
 VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
@@ -7838,6 +8136,11 @@ Object.defineProperties(VkSparseImageOpaqueMemoryBindInfo.prototype, {
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._image = null;
+  
+  this._pBinds = null;
+    this._pBindsNative = null;
+  
 };
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
@@ -7968,6 +8271,11 @@ Object.defineProperties(VkSparseImageMemoryBindInfo.prototype, {
 
 VkSparseImageMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._image = null;
+  
+  this._pBinds = null;
+    this._pBindsNative = null;
+  
 };
 
 VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
@@ -8221,6 +8529,24 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
 
 VkBindSparseInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphores = null;
+    this._pWaitSemaphoresNative = null;
+  
+  this._pBufferBinds = null;
+    this._pBufferBindsNative = null;
+  
+  this._pImageOpaqueBinds = null;
+    this._pImageOpaqueBindsNative = null;
+  
+  this._pImageBinds = null;
+    this._pImageBindsNative = null;
+  
+  this._pSignalSemaphores = null;
+    this._pSignalSemaphoresNative = null;
+  this.sType = 0x7;
 };
 
 VkBindSparseInfo.prototype.flush = function flush() {
@@ -8524,6 +8850,12 @@ Object.defineProperties(VkImageCopy.prototype, {
 
 VkImageCopy.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x44], 0x0);
+  this._srcSubresource = null;
+  this._srcOffset = null;
+  this._dstSubresource = null;
+  this._dstOffset = null;
+  this._extent = null;
+  
 };
 
 VkImageCopy.prototype.flush = function flush() {
@@ -8730,6 +9062,11 @@ Object.defineProperties(VkImageBlit.prototype, {
 
 VkImageBlit.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x50], 0x0);
+  this._srcSubresource = null;
+  this._srcOffsets = null;
+  this._dstSubresource = null;
+  this._dstOffsets = null;
+  
 };
 
 VkImageBlit.prototype.flush = function flush() {
@@ -8954,6 +9291,13 @@ Object.defineProperties(VkBufferImageCopy.prototype, {
 
 VkBufferImageCopy.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  
+  
+  this._imageSubresource = null;
+  this._imageOffset = null;
+  this._imageExtent = null;
+  
 };
 
 VkBufferImageCopy.prototype.flush = function flush() {
@@ -9163,6 +9507,12 @@ Object.defineProperties(VkImageResolve.prototype, {
 
 VkImageResolve.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x44], 0x0);
+  this._srcSubresource = null;
+  this._srcOffset = null;
+  this._dstSubresource = null;
+  this._dstOffset = null;
+  this._extent = null;
+  
 };
 
 VkImageResolve.prototype.flush = function flush() {
@@ -9379,6 +9729,12 @@ Object.defineProperties(VkShaderModuleCreateInfo.prototype, {
 
 VkShaderModuleCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pCode = null;
+  this.sType = 0x10;
 };
 
 VkShaderModuleCreateInfo.prototype.flush = function flush() {
@@ -9514,6 +9870,13 @@ Object.defineProperties(VkDescriptorSetLayoutBinding.prototype, {
 
 VkDescriptorSetLayoutBinding.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  
+  this._pImmutableSamplers = null;
+    this._pImmutableSamplersNative = null;
+  
 };
 
 VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
@@ -9681,6 +10044,13 @@ Object.defineProperties(VkDescriptorSetLayoutCreateInfo.prototype, {
 
 VkDescriptorSetLayoutCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pBindings = null;
+    this._pBindingsNative = null;
+  this.sType = 0x20;
 };
 
 VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
@@ -9801,6 +10171,9 @@ Object.defineProperties(VkDescriptorPoolSize.prototype, {
 
 VkDescriptorPoolSize.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkDescriptorPoolSize.prototype.flush = function flush() {
@@ -9945,6 +10318,14 @@ Object.defineProperties(VkDescriptorPoolCreateInfo.prototype, {
 
 VkDescriptorPoolCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pPoolSizes = null;
+    this._pPoolSizesNative = null;
+  this.sType = 0x21;
 };
 
 VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
@@ -10132,6 +10513,13 @@ Object.defineProperties(VkDescriptorSetAllocateInfo.prototype, {
 
 VkDescriptorSetAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._descriptorPool = null;
+  
+  this._pSetLayouts = null;
+    this._pSetLayoutsNative = null;
+  this.sType = 0x22;
 };
 
 VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
@@ -10263,6 +10651,10 @@ Object.defineProperties(VkSpecializationMapEntry.prototype, {
 
 VkSpecializationMapEntry.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
 };
 
 VkSpecializationMapEntry.prototype.flush = function flush() {
@@ -10381,6 +10773,12 @@ Object.defineProperties(VkSpecializationInfo.prototype, {
 
 VkSpecializationInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pMapEntries = null;
+    this._pMapEntriesNative = null;
+  
+  this._pData = null;
+  
 };
 
 VkSpecializationInfo.prototype.flush = function flush() {
@@ -10570,6 +10968,14 @@ Object.defineProperties(VkPipelineShaderStageCreateInfo.prototype, {
 
 VkPipelineShaderStageCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._module = null;
+  this._pName = null;
+  this._pSpecializationInfo = null;
+  this.sType = 0x12;
 };
 
 VkPipelineShaderStageCreateInfo.prototype.flush = function flush() {
@@ -10770,6 +11176,14 @@ Object.defineProperties(VkComputePipelineCreateInfo.prototype, {
 
 VkComputePipelineCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  
+  this._stage = null;
+  this._layout = null;
+  this._basePipelineHandle = null;
+  
+  this.sType = 0x1D;
 };
 
 VkComputePipelineCreateInfo.prototype.flush = function flush() {
@@ -10901,6 +11315,10 @@ Object.defineProperties(VkVertexInputBindingDescription.prototype, {
 
 VkVertexInputBindingDescription.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkVertexInputBindingDescription.prototype.flush = function flush() {
@@ -11005,6 +11423,11 @@ Object.defineProperties(VkVertexInputAttributeDescription.prototype, {
 
 VkVertexInputAttributeDescription.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkVertexInputAttributeDescription.prototype.flush = function flush() {
@@ -11173,6 +11596,16 @@ Object.defineProperties(VkPipelineVertexInputStateCreateInfo.prototype, {
 
 VkPipelineVertexInputStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pVertexBindingDescriptions = null;
+    this._pVertexBindingDescriptionsNative = null;
+  
+  this._pVertexAttributeDescriptions = null;
+    this._pVertexAttributeDescriptionsNative = null;
+  this.sType = 0x13;
 };
 
 VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
@@ -11354,6 +11787,12 @@ Object.defineProperties(VkPipelineInputAssemblyStateCreateInfo.prototype, {
 
 VkPipelineInputAssemblyStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x14;
 };
 
 VkPipelineInputAssemblyStateCreateInfo.prototype.flush = function flush() {
@@ -11491,6 +11930,11 @@ Object.defineProperties(VkPipelineTessellationStateCreateInfo.prototype, {
 
 VkPipelineTessellationStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x15;
 };
 
 VkPipelineTessellationStateCreateInfo.prototype.flush = function flush() {
@@ -11670,6 +12114,16 @@ Object.defineProperties(VkPipelineViewportStateCreateInfo.prototype, {
 
 VkPipelineViewportStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pViewports = null;
+    this._pViewportsNative = null;
+  
+  this._pScissors = null;
+    this._pScissorsNative = null;
+  this.sType = 0x16;
 };
 
 VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
@@ -11952,6 +12406,20 @@ Object.defineProperties(VkPipelineRasterizationStateCreateInfo.prototype, {
 
 VkPipelineRasterizationStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x17;
 };
 
 VkPipelineRasterizationStateCreateInfo.prototype.flush = function flush() {
@@ -12183,6 +12651,16 @@ Object.defineProperties(VkPipelineMultisampleStateCreateInfo.prototype, {
 
 VkPipelineMultisampleStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pSampleMask = null;
+  
+  
+  this.sType = 0x18;
 };
 
 VkPipelineMultisampleStateCreateInfo.prototype.flush = function flush() {
@@ -12358,6 +12836,15 @@ Object.defineProperties(VkPipelineColorBlendAttachmentState.prototype, {
 
 VkPipelineColorBlendAttachmentState.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkPipelineColorBlendAttachmentState.prototype.flush = function flush() {
@@ -12553,6 +13040,16 @@ Object.defineProperties(VkPipelineColorBlendStateCreateInfo.prototype, {
 
 VkPipelineColorBlendStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pAttachments = null;
+    this._pAttachmentsNative = null;
+  this._blendConstants = null;
+  this.sType = 0x1A;
 };
 
 VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
@@ -12737,6 +13234,12 @@ Object.defineProperties(VkPipelineDynamicStateCreateInfo.prototype, {
 
 VkPipelineDynamicStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDynamicStates = null;
+  this.sType = 0x1B;
 };
 
 VkPipelineDynamicStateCreateInfo.prototype.flush = function flush() {
@@ -12886,6 +13389,14 @@ Object.defineProperties(VkStencilOpState.prototype, {
 
 VkStencilOpState.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x1C], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkStencilOpState.prototype.flush = function flush() {
@@ -13108,6 +13619,19 @@ Object.defineProperties(VkPipelineDepthStencilStateCreateInfo.prototype, {
 
 VkPipelineDepthStencilStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x68], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  this._front = null;
+  this._back = null;
+  
+  
+  this.sType = 0x19;
 };
 
 VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
@@ -13567,6 +14091,27 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
 
 VkGraphicsPipelineCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x90], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pStages = null;
+    this._pStagesNative = null;
+  this._pVertexInputState = null;
+  this._pInputAssemblyState = null;
+  this._pTessellationState = null;
+  this._pViewportState = null;
+  this._pRasterizationState = null;
+  this._pMultisampleState = null;
+  this._pDepthStencilState = null;
+  this._pColorBlendState = null;
+  this._pDynamicState = null;
+  this._layout = null;
+  this._renderPass = null;
+  
+  this._basePipelineHandle = null;
+  
+  this.sType = 0x1C;
 };
 
 VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
@@ -13781,6 +14326,12 @@ Object.defineProperties(VkPipelineCacheCreateInfo.prototype, {
 
 VkPipelineCacheCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pInitialData = null;
+  this.sType = 0x11;
 };
 
 VkPipelineCacheCreateInfo.prototype.flush = function flush() {
@@ -13890,6 +14441,10 @@ Object.defineProperties(VkPushConstantRange.prototype, {
 
 VkPushConstantRange.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkPushConstantRange.prototype.flush = function flush() {
@@ -14038,6 +14593,16 @@ Object.defineProperties(VkPipelineLayoutCreateInfo.prototype, {
 
 VkPipelineLayoutCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pSetLayouts = null;
+    this._pSetLayoutsNative = null;
+  
+  this._pPushConstantRanges = null;
+    this._pPushConstantRangesNative = null;
+  this.sType = 0x1E;
 };
 
 VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
@@ -14368,6 +14933,25 @@ Object.defineProperties(VkSamplerCreateInfo.prototype, {
 
 VkSamplerCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x50], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x1F;
 };
 
 VkSamplerCreateInfo.prototype.flush = function flush() {
@@ -14541,6 +15125,11 @@ Object.defineProperties(VkCommandPoolCreateInfo.prototype, {
 
 VkCommandPoolCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x27;
 };
 
 VkCommandPoolCreateInfo.prototype.flush = function flush() {
@@ -14677,6 +15266,12 @@ Object.defineProperties(VkCommandBufferAllocateInfo.prototype, {
 
 VkCommandBufferAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._commandPool = null;
+  
+  
+  this.sType = 0x28;
 };
 
 VkCommandBufferAllocateInfo.prototype.flush = function flush() {
@@ -14872,6 +15467,15 @@ Object.defineProperties(VkCommandBufferInheritanceInfo.prototype, {
 
 VkCommandBufferInheritanceInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  this._renderPass = null;
+  
+  this._framebuffer = null;
+  
+  
+  
+  this.sType = 0x29;
 };
 
 VkCommandBufferInheritanceInfo.prototype.flush = function flush() {
@@ -15028,6 +15632,11 @@ Object.defineProperties(VkCommandBufferBeginInfo.prototype, {
 
 VkCommandBufferBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pInheritanceInfo = null;
+  this.sType = 0x2A;
 };
 
 VkCommandBufferBeginInfo.prototype.flush = function flush() {
@@ -15226,6 +15835,15 @@ Object.defineProperties(VkRenderPassBeginInfo.prototype, {
 
 VkRenderPassBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._renderPass = null;
+  this._framebuffer = null;
+  this._renderArea = null;
+  
+  this._pClearValues = null;
+    this._pClearValuesNative = null;
+  this.sType = 0x2B;
 };
 
 VkRenderPassBeginInfo.prototype.flush = function flush() {
@@ -15368,6 +15986,9 @@ Object.defineProperties(VkClearDepthStencilValue.prototype, {
 
 VkClearDepthStencilValue.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkClearDepthStencilValue.prototype.flush = function flush() {
@@ -15467,6 +16088,10 @@ Object.defineProperties(VkClearAttachment.prototype, {
 
 VkClearAttachment.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  this._clearValue = null;
+  
 };
 
 VkClearAttachment.prototype.flush = function flush() {
@@ -15633,6 +16258,16 @@ Object.defineProperties(VkAttachmentDescription.prototype, {
 
 VkAttachmentDescription.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x24], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkAttachmentDescription.prototype.flush = function flush() {
@@ -15741,6 +16376,9 @@ Object.defineProperties(VkAttachmentReference.prototype, {
 
 VkAttachmentReference.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkAttachmentReference.prototype.flush = function flush() {
@@ -15937,6 +16575,20 @@ Object.defineProperties(VkSubpassDescription.prototype, {
 
 VkSubpassDescription.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  
+  
+  this._pInputAttachments = null;
+    this._pInputAttachmentsNative = null;
+  
+  this._pColorAttachments = null;
+    this._pColorAttachmentsNative = null;
+  this._pResolveAttachments = null;
+    this._pResolveAttachmentsNative = null;
+  this._pDepthStencilAttachment = null;
+  
+  this._pPreserveAttachments = null;
+  
 };
 
 VkSubpassDescription.prototype.flush = function flush() {
@@ -16162,6 +16814,14 @@ Object.defineProperties(VkSubpassDependency.prototype, {
 
 VkSubpassDependency.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x1C], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkSubpassDependency.prototype.flush = function flush() {
@@ -16370,6 +17030,19 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
 
 VkRenderPassCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pAttachments = null;
+    this._pAttachmentsNative = null;
+  
+  this._pSubpasses = null;
+    this._pSubpassesNative = null;
+  
+  this._pDependencies = null;
+    this._pDependenciesNative = null;
+  this.sType = 0x26;
 };
 
 VkRenderPassCreateInfo.prototype.flush = function flush() {
@@ -16558,6 +17231,10 @@ Object.defineProperties(VkEventCreateInfo.prototype, {
 
 VkEventCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0xA;
 };
 
 VkEventCreateInfo.prototype.flush = function flush() {
@@ -16676,6 +17353,10 @@ Object.defineProperties(VkFenceCreateInfo.prototype, {
 
 VkFenceCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x8;
 };
 
 VkFenceCreateInfo.prototype.flush = function flush() {
@@ -17295,6 +17976,62 @@ Object.defineProperties(VkPhysicalDeviceFeatures.prototype, {
 
 VkPhysicalDeviceFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xDC], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkPhysicalDeviceFeatures.prototype.flush = function flush() {
@@ -17595,6 +18332,12 @@ Object.defineProperties(VkPhysicalDeviceSparseProperties.prototype, {
 
 VkPhysicalDeviceSparseProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x14], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkPhysicalDeviceSparseProperties.prototype.flush = function flush() {
@@ -18333,6 +19076,113 @@ Object.defineProperties(VkPhysicalDeviceLimits.prototype, {
 
 VkPhysicalDeviceLimits.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x1F8], 0x0);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this._maxComputeWorkGroupCount = null;
+  
+  this._maxComputeWorkGroupSize = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  this._maxViewportDimensions = null;
+  this._viewportBoundsRange = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this._pointSizeRange = null;
+  this._lineWidthRange = null;
+  
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkPhysicalDeviceLimits.prototype.flush = function flush() {
@@ -18872,6 +19722,10 @@ Object.defineProperties(VkSemaphoreCreateInfo.prototype, {
 
 VkSemaphoreCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x9;
 };
 
 VkSemaphoreCreateInfo.prototype.flush = function flush() {
@@ -19005,6 +19859,13 @@ Object.defineProperties(VkQueryPoolCreateInfo.prototype, {
 
 VkQueryPoolCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0xB;
 };
 
 VkQueryPoolCreateInfo.prototype.flush = function flush() {
@@ -19211,6 +20072,17 @@ Object.defineProperties(VkFramebufferCreateInfo.prototype, {
 
 VkFramebufferCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._renderPass = null;
+  
+  this._pAttachments = null;
+    this._pAttachmentsNative = null;
+  
+  
+  
+  this.sType = 0x25;
 };
 
 VkFramebufferCreateInfo.prototype.flush = function flush() {
@@ -19365,6 +20237,11 @@ Object.defineProperties(VkDrawIndirectCommand.prototype, {
 
 VkDrawIndirectCommand.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkDrawIndirectCommand.prototype.flush = function flush() {
@@ -19483,6 +20360,12 @@ Object.defineProperties(VkDrawIndexedIndirectCommand.prototype, {
 
 VkDrawIndexedIndirectCommand.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x14], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkDrawIndexedIndirectCommand.prototype.flush = function flush() {
@@ -19583,6 +20466,10 @@ Object.defineProperties(VkDispatchIndirectCommand.prototype, {
 
 VkDispatchIndirectCommand.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkDispatchIndirectCommand.prototype.flush = function flush() {
@@ -19784,6 +20671,19 @@ Object.defineProperties(VkSubmitInfo.prototype, {
 
 VkSubmitInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphores = null;
+    this._pWaitSemaphoresNative = null;
+  this._pWaitDstStageMask = null;
+  
+  this._pCommandBuffers = null;
+    this._pCommandBuffersNative = null;
+  
+  this._pSignalSemaphores = null;
+    this._pSignalSemaphoresNative = null;
+  this.sType = 0x4;
 };
 
 VkSubmitInfo.prototype.flush = function flush() {
@@ -19989,6 +20889,14 @@ Object.defineProperties(VkDisplayPropertiesKHR.prototype, {
 
 VkDisplayPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  this._display = null;
+  this._displayName = null;
+  this._physicalDimensions = null;
+  this._physicalResolution = null;
+  
+  
+  
+  
 };
 
 VkDisplayPropertiesKHR.prototype.flush = function flush() {
@@ -20087,6 +20995,9 @@ Object.defineProperties(VkDisplayPlanePropertiesKHR.prototype, {
 
 VkDisplayPlanePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  this._currentDisplay = null;
+  
+  
 };
 
 VkDisplayPlanePropertiesKHR.prototype.flush = function flush() {
@@ -20178,6 +21089,9 @@ Object.defineProperties(VkDisplayModeParametersKHR.prototype, {
 
 VkDisplayModeParametersKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  this._visibleRegion = null;
+  
+  
 };
 
 VkDisplayModeParametersKHR.prototype.flush = function flush() {
@@ -20260,6 +21174,9 @@ Object.defineProperties(VkDisplayModePropertiesKHR.prototype, {
 
 VkDisplayModePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  this._displayMode = null;
+  this._parameters = null;
+  
 };
 
 VkDisplayModePropertiesKHR.prototype.flush = function flush() {
@@ -20375,6 +21292,11 @@ Object.defineProperties(VkDisplayModeCreateInfoKHR.prototype, {
 
 VkDisplayModeCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._parameters = null;
+  this.sType = 0x3B9AD1D0;
 };
 
 VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
@@ -20516,6 +21438,16 @@ Object.defineProperties(VkDisplayPlaneCapabilitiesKHR.prototype, {
 
 VkDisplayPlaneCapabilitiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x44], 0x0);
+  
+  this._minSrcPosition = null;
+  this._maxSrcPosition = null;
+  this._minSrcExtent = null;
+  this._maxSrcExtent = null;
+  this._minDstPosition = null;
+  this._maxDstPosition = null;
+  this._minDstExtent = null;
+  this._maxDstExtent = null;
+  
 };
 
 VkDisplayPlaneCapabilitiesKHR.prototype.flush = function flush() {
@@ -20746,6 +21678,17 @@ Object.defineProperties(VkDisplaySurfaceCreateInfoKHR.prototype, {
 
 VkDisplaySurfaceCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._displayMode = null;
+  
+  
+  
+  
+  
+  this._imageExtent = null;
+  this.sType = 0x3B9AD1D1;
 };
 
 VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
@@ -20929,6 +21872,12 @@ Object.defineProperties(VkDisplayPresentInfoKHR.prototype, {
 
 VkDisplayPresentInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  this._srcRect = null;
+  this._dstRect = null;
+  
+  this.sType = 0x3B9AD5B8;
 };
 
 VkDisplayPresentInfoKHR.prototype.flush = function flush() {
@@ -21096,6 +22045,17 @@ Object.defineProperties(VkSurfaceCapabilitiesKHR.prototype, {
 
 VkSurfaceCapabilitiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x34], 0x0);
+  
+  
+  this._currentExtent = null;
+  this._minImageExtent = null;
+  this._maxImageExtent = null;
+  
+  
+  
+  
+  
+  
 };
 
 VkSurfaceCapabilitiesKHR.prototype.flush = function flush() {
@@ -21250,6 +22210,12 @@ Object.defineProperties(VkWin32SurfaceCreateInfoKHR.prototype, {
 
 VkWin32SurfaceCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9AED28;
 };
 
 VkWin32SurfaceCreateInfoKHR.prototype.flush = function flush() {
@@ -21339,6 +22305,9 @@ Object.defineProperties(VkSurfaceFormatKHR.prototype, {
 
 VkSurfaceFormatKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkSurfaceFormatKHR.prototype.flush = function flush() {
@@ -21640,6 +22609,25 @@ Object.defineProperties(VkSwapchainCreateInfoKHR.prototype, {
 
 VkSwapchainCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x68], 0x0);
+  
+  this._pNext = null;
+  
+  this._surface = null;
+  
+  
+  
+  this._imageExtent = null;
+  
+  
+  
+  
+  this._pQueueFamilyIndices = null;
+  
+  
+  
+  
+  this._oldSwapchain = null;
+  this.sType = 0x3B9ACDE8;
 };
 
 VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
@@ -21913,6 +22901,17 @@ Object.defineProperties(VkPresentInfoKHR.prototype, {
 
 VkPresentInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphores = null;
+    this._pWaitSemaphoresNative = null;
+  
+  this._pSwapchains = null;
+    this._pSwapchainsNative = null;
+  this._pImageIndices = null;
+  this._pResults = null;
+  this.sType = 0x3B9ACDE9;
 };
 
 VkPresentInfoKHR.prototype.flush = function flush() {
@@ -22108,6 +23107,12 @@ Object.defineProperties(VkDebugReportCallbackCreateInfoEXT.prototype, {
 
 VkDebugReportCallbackCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  this._pfnCallback = null;
+  this._pUserData = null;
+  this.sType = 0x3B9AF4F8;
 };
 
 VkDebugReportCallbackCreateInfoEXT.prototype.flush = function flush() {
@@ -22236,6 +23241,11 @@ Object.defineProperties(VkValidationFlagsEXT.prototype, {
 
 VkValidationFlagsEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDisabledValidationChecks = null;
+  this.sType = 0x3B9BB848;
 };
 
 VkValidationFlagsEXT.prototype.flush = function flush() {
@@ -22387,6 +23397,13 @@ Object.defineProperties(VkValidationFeaturesEXT.prototype, {
 
 VkValidationFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._pEnabledValidationFeatures = null;
+  
+  this._pDisabledValidationFeatures = null;
+  this.sType = 0x3B9E8ED8;
 };
 
 VkValidationFeaturesEXT.prototype.flush = function flush() {
@@ -22500,6 +23517,10 @@ Object.defineProperties(VkPipelineRasterizationStateRasterizationOrderAMD.protot
 
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9B1050;
 };
 
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.flush = function flush() {
@@ -22636,6 +23657,12 @@ Object.defineProperties(VkDebugMarkerObjectNameInfoEXT.prototype, {
 
 VkDebugMarkerObjectNameInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pObjectName = null;
+  this.sType = 0x3B9B1FF0;
 };
 
 VkDebugMarkerObjectNameInfoEXT.prototype.flush = function flush() {
@@ -22797,6 +23824,14 @@ Object.defineProperties(VkDebugMarkerObjectTagInfoEXT.prototype, {
 
 VkDebugMarkerObjectTagInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pTag = null;
+  this.sType = 0x3B9B1FF1;
 };
 
 VkDebugMarkerObjectTagInfoEXT.prototype.flush = function flush() {
@@ -22943,6 +23978,11 @@ Object.defineProperties(VkDebugMarkerMarkerInfoEXT.prototype, {
 
 VkDebugMarkerMarkerInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._pMarkerName = null;
+  this._color = null;
+  this.sType = 0x3B9B1FF2;
 };
 
 VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
@@ -23063,6 +24103,10 @@ Object.defineProperties(VkDedicatedAllocationImageCreateInfoNV.prototype, {
 
 VkDedicatedAllocationImageCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9B2F90;
 };
 
 VkDedicatedAllocationImageCreateInfoNV.prototype.flush = function flush() {
@@ -23166,6 +24210,10 @@ Object.defineProperties(VkDedicatedAllocationBufferCreateInfoNV.prototype, {
 
 VkDedicatedAllocationBufferCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9B2F91;
 };
 
 VkDedicatedAllocationBufferCreateInfoNV.prototype.flush = function flush() {
@@ -23295,6 +24343,11 @@ Object.defineProperties(VkDedicatedAllocationMemoryAllocateInfoNV.prototype, {
 
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this._buffer = null;
+  this.sType = 0x3B9B2F92;
 };
 
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.flush = function flush() {
@@ -23392,6 +24445,11 @@ Object.defineProperties(VkExternalImageFormatPropertiesNV.prototype, {
 
 VkExternalImageFormatPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  this._imageFormatProperties = null;
+  
+  
+  
+  
 };
 
 VkExternalImageFormatPropertiesNV.prototype.flush = function flush() {
@@ -23496,6 +24554,10 @@ Object.defineProperties(VkExternalMemoryImageCreateInfoNV.prototype, {
 
 VkExternalMemoryImageCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BA4C0;
 };
 
 VkExternalMemoryImageCreateInfoNV.prototype.flush = function flush() {
@@ -23597,6 +24659,10 @@ Object.defineProperties(VkExportMemoryAllocateInfoNV.prototype, {
 
 VkExportMemoryAllocateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BA4C1;
 };
 
 VkExportMemoryAllocateInfoNV.prototype.flush = function flush() {
@@ -23709,6 +24775,11 @@ Object.defineProperties(VkImportMemoryWin32HandleInfoNV.prototype, {
 
 VkImportMemoryWin32HandleInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BA8A8;
 };
 
 VkImportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
@@ -23804,6 +24875,9 @@ Object.defineProperties(VkExportMemoryWin32HandleInfoNV.prototype, {
 
 VkExportMemoryWin32HandleInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this.sType = 0x3B9BA8A9;
 };
 
 VkExportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
@@ -23996,6 +25070,18 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoNV.prototype, {
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAcquireSyncs = null;
+    this._pAcquireSyncsNative = null;
+  this._pAcquireKeys = null;
+  this._pAcquireTimeoutMilliseconds = null;
+  
+  this._pReleaseSyncs = null;
+    this._pReleaseSyncsNative = null;
+  this._pReleaseKeys = null;
+  this.sType = 0x3B9BAC90;
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
@@ -24165,6 +25251,10 @@ Object.defineProperties(VkDeviceGeneratedCommandsFeaturesNVX.prototype, {
 
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C19F5;
 };
 
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.flush = function flush() {
@@ -24308,6 +25398,14 @@ Object.defineProperties(VkDeviceGeneratedCommandsLimitsNVX.prototype, {
 
 VkDeviceGeneratedCommandsLimitsNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C19F4;
 };
 
 VkDeviceGeneratedCommandsLimitsNVX.prototype.flush = function flush() {
@@ -24437,6 +25535,10 @@ Object.defineProperties(VkIndirectCommandsTokenNVX.prototype, {
 
 VkIndirectCommandsTokenNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._buffer = null;
+  
+  
 };
 
 VkIndirectCommandsTokenNVX.prototype.flush = function flush() {
@@ -24541,6 +25643,11 @@ Object.defineProperties(VkIndirectCommandsLayoutTokenNVX.prototype, {
 
 VkIndirectCommandsLayoutTokenNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkIndirectCommandsLayoutTokenNVX.prototype.flush = function flush() {
@@ -24677,6 +25784,14 @@ Object.defineProperties(VkIndirectCommandsLayoutCreateInfoNVX.prototype, {
 
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pTokens = null;
+    this._pTokensNative = null;
+  this.sType = 0x3B9C19F1;
 };
 
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
@@ -24958,6 +26073,20 @@ Object.defineProperties(VkCmdProcessCommandsInfoNVX.prototype, {
 
 VkCmdProcessCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  this._objectTable = null;
+  this._indirectCommandsLayout = null;
+  
+  this._pIndirectCommandsTokens = null;
+    this._pIndirectCommandsTokensNative = null;
+  
+  this._targetCommandBuffer = null;
+  this._sequencesCountBuffer = null;
+  
+  this._sequencesIndexBuffer = null;
+  
+  this.sType = 0x3B9C19F2;
 };
 
 VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
@@ -25156,6 +26285,12 @@ Object.defineProperties(VkCmdReserveSpaceForCommandsInfoNVX.prototype, {
 
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._objectTable = null;
+  this._indirectCommandsLayout = null;
+  
+  this.sType = 0x3B9C19F3;
 };
 
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.flush = function flush() {
@@ -25368,6 +26503,18 @@ Object.defineProperties(VkObjectTableCreateInfoNVX.prototype, {
 
 VkObjectTableCreateInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  this._pObjectEntryTypes = null;
+  this._pObjectEntryCounts = null;
+  this._pObjectEntryUsageFlags = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C19F0;
 };
 
 VkObjectTableCreateInfoNVX.prototype.flush = function flush() {
@@ -25489,6 +26636,9 @@ Object.defineProperties(VkObjectTableEntryNVX.prototype, {
 
 VkObjectTableEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkObjectTableEntryNVX.prototype.flush = function flush() {
@@ -25588,6 +26738,10 @@ Object.defineProperties(VkObjectTablePipelineEntryNVX.prototype, {
 
 VkObjectTablePipelineEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  this._pipeline = null;
+  
 };
 
 VkObjectTablePipelineEntryNVX.prototype.flush = function flush() {
@@ -25710,6 +26864,11 @@ Object.defineProperties(VkObjectTableDescriptorSetEntryNVX.prototype, {
 
 VkObjectTableDescriptorSetEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  this._pipelineLayout = null;
+  this._descriptorSet = null;
+  
 };
 
 VkObjectTableDescriptorSetEntryNVX.prototype.flush = function flush() {
@@ -25817,6 +26976,10 @@ Object.defineProperties(VkObjectTableVertexBufferEntryNVX.prototype, {
 
 VkObjectTableVertexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  this._buffer = null;
+  
 };
 
 VkObjectTableVertexBufferEntryNVX.prototype.flush = function flush() {
@@ -25930,6 +27093,11 @@ Object.defineProperties(VkObjectTableIndexBufferEntryNVX.prototype, {
 
 VkObjectTableIndexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  this._buffer = null;
+  
+  
 };
 
 VkObjectTableIndexBufferEntryNVX.prototype.flush = function flush() {
@@ -26047,6 +27215,11 @@ Object.defineProperties(VkObjectTablePushConstantEntryNVX.prototype, {
 
 VkObjectTablePushConstantEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  this._pipelineLayout = null;
+  
+  
 };
 
 VkObjectTablePushConstantEntryNVX.prototype.flush = function flush() {
@@ -26211,6 +27384,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2.prototype, {
 
 VkPhysicalDeviceFeatures2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xF0], 0x0);
+  
+  this._pNext = null;
+  this._features = null;
+  this.sType = 0x3B9BB078;
 };
 
 VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
@@ -26392,6 +27569,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2KHR.prototype, {
 
 VkPhysicalDeviceFeatures2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xF0], 0x0);
+  
+  this._pNext = null;
+  this._features = null;
+  this.sType = 0x3B9BB078;
 };
 
 VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
@@ -26547,6 +27728,10 @@ Object.defineProperties(VkPhysicalDeviceProperties2.prototype, {
 
 VkPhysicalDeviceProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x348], 0x0);
+  
+  this._pNext = null;
+  this._properties = null;
+  this.sType = 0x3B9BB079;
 };
 
 VkPhysicalDeviceProperties2.prototype.flush = function flush() {
@@ -26694,6 +27879,10 @@ Object.defineProperties(VkPhysicalDeviceProperties2KHR.prototype, {
 
 VkPhysicalDeviceProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x348], 0x0);
+  
+  this._pNext = null;
+  this._properties = null;
+  this.sType = 0x3B9BB079;
 };
 
 VkPhysicalDeviceProperties2KHR.prototype.flush = function flush() {
@@ -26813,6 +28002,10 @@ Object.defineProperties(VkFormatProperties2.prototype, {
 
 VkFormatProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._formatProperties = null;
+  this.sType = 0x3B9BB07A;
 };
 
 VkFormatProperties2.prototype.flush = function flush() {
@@ -26932,6 +28125,10 @@ Object.defineProperties(VkFormatProperties2KHR.prototype, {
 
 VkFormatProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._formatProperties = null;
+  this.sType = 0x3B9BB07A;
 };
 
 VkFormatProperties2KHR.prototype.flush = function flush() {
@@ -27055,6 +28252,10 @@ Object.defineProperties(VkImageFormatProperties2.prototype, {
 
 VkImageFormatProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  this._imageFormatProperties = null;
+  this.sType = 0x3B9BB07B;
 };
 
 VkImageFormatProperties2.prototype.flush = function flush() {
@@ -27178,6 +28379,10 @@ Object.defineProperties(VkImageFormatProperties2KHR.prototype, {
 
 VkImageFormatProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  this._imageFormatProperties = null;
+  this.sType = 0x3B9BB07B;
 };
 
 VkImageFormatProperties2KHR.prototype.flush = function flush() {
@@ -27345,6 +28550,14 @@ Object.defineProperties(VkPhysicalDeviceImageFormatInfo2.prototype, {
 
 VkPhysicalDeviceImageFormatInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9BB07C;
 };
 
 VkPhysicalDeviceImageFormatInfo2.prototype.flush = function flush() {
@@ -27522,6 +28735,14 @@ Object.defineProperties(VkPhysicalDeviceImageFormatInfo2KHR.prototype, {
 
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9BB07C;
 };
 
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.flush = function flush() {
@@ -27651,6 +28872,10 @@ Object.defineProperties(VkQueueFamilyProperties2.prototype, {
 
 VkQueueFamilyProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._queueFamilyProperties = null;
+  this.sType = 0x3B9BB07D;
 };
 
 VkQueueFamilyProperties2.prototype.flush = function flush() {
@@ -27770,6 +28995,10 @@ Object.defineProperties(VkQueueFamilyProperties2KHR.prototype, {
 
 VkQueueFamilyProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._queueFamilyProperties = null;
+  this.sType = 0x3B9BB07D;
 };
 
 VkQueueFamilyProperties2KHR.prototype.flush = function flush() {
@@ -27890,6 +29119,10 @@ Object.defineProperties(VkPhysicalDeviceMemoryProperties2.prototype, {
 
 VkPhysicalDeviceMemoryProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x218], 0x0);
+  
+  this._pNext = null;
+  this._memoryProperties = null;
+  this.sType = 0x3B9BB07E;
 };
 
 VkPhysicalDeviceMemoryProperties2.prototype.flush = function flush() {
@@ -28010,6 +29243,10 @@ Object.defineProperties(VkPhysicalDeviceMemoryProperties2KHR.prototype, {
 
 VkPhysicalDeviceMemoryProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x218], 0x0);
+  
+  this._pNext = null;
+  this._memoryProperties = null;
+  this.sType = 0x3B9BB07E;
 };
 
 VkPhysicalDeviceMemoryProperties2KHR.prototype.flush = function flush() {
@@ -28113,6 +29350,10 @@ Object.defineProperties(VkSparseImageFormatProperties2.prototype, {
 
 VkSparseImageFormatProperties2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._properties = null;
+  this.sType = 0x3B9BB07F;
 };
 
 VkSparseImageFormatProperties2.prototype.flush = function flush() {
@@ -28216,6 +29457,10 @@ Object.defineProperties(VkSparseImageFormatProperties2KHR.prototype, {
 
 VkSparseImageFormatProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._properties = null;
+  this.sType = 0x3B9BB07F;
 };
 
 VkSparseImageFormatProperties2KHR.prototype.flush = function flush() {
@@ -28363,6 +29608,14 @@ Object.defineProperties(VkPhysicalDeviceSparseImageFormatInfo2.prototype, {
 
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9BB080;
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.flush = function flush() {
@@ -28520,6 +29773,14 @@ Object.defineProperties(VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype, {
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9BB080;
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.flush = function flush() {
@@ -28635,6 +29896,10 @@ Object.defineProperties(VkPhysicalDevicePushDescriptorPropertiesKHR.prototype, {
 
 VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C0280;
 };
 
 VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.flush = function flush() {
@@ -28746,6 +30011,11 @@ Object.defineProperties(VkConformanceVersionKHR.prototype, {
 
 VkConformanceVersionKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x4], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkConformanceVersionKHR.prototype.flush = function flush() {
@@ -28862,6 +30132,13 @@ Object.defineProperties(VkPhysicalDeviceDriverPropertiesKHR.prototype, {
 
 VkPhysicalDeviceDriverPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x218], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._conformanceVersion = null;
+  this.sType = 0x3B9DC7A0;
 };
 
 VkPhysicalDeviceDriverPropertiesKHR.prototype.flush = function flush() {
@@ -28999,6 +30276,12 @@ Object.defineProperties(VkPresentRegionsKHR.prototype, {
 
 VkPresentRegionsKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pRegions = null;
+    this._pRegionsNative = null;
+  this.sType = 0x3B9C1220;
 };
 
 VkPresentRegionsKHR.prototype.flush = function flush() {
@@ -29119,6 +30402,10 @@ Object.defineProperties(VkPresentRegionKHR.prototype, {
 
 VkPresentRegionKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._pRectangles = null;
+    this._pRectanglesNative = null;
+  
 };
 
 VkPresentRegionKHR.prototype.flush = function flush() {
@@ -29246,6 +30533,10 @@ Object.defineProperties(VkRectLayerKHR.prototype, {
 
 VkRectLayerKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x14], 0x0);
+  this._offset = null;
+  this._extent = null;
+  
+  
 };
 
 VkRectLayerKHR.prototype.flush = function flush() {
@@ -29380,6 +30671,11 @@ Object.defineProperties(VkPhysicalDeviceVariablePointersFeatures.prototype, {
 
 VkPhysicalDeviceVariablePointersFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C9EC0;
 };
 
 VkPhysicalDeviceVariablePointersFeatures.prototype.flush = function flush() {
@@ -29497,6 +30793,11 @@ Object.defineProperties(VkPhysicalDeviceVariablePointersFeaturesKHR.prototype, {
 
 VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C9EC0;
 };
 
 VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.flush = function flush() {
@@ -29614,6 +30915,11 @@ Object.defineProperties(VkPhysicalDeviceVariablePointerFeaturesKHR.prototype, {
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C9EC0;
 };
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.flush = function flush() {
@@ -29731,6 +31037,11 @@ Object.defineProperties(VkPhysicalDeviceVariablePointerFeatures.prototype, {
 
 VkPhysicalDeviceVariablePointerFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C9EC0;
 };
 
 VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
@@ -29822,6 +31133,10 @@ Object.defineProperties(VkExternalMemoryProperties.prototype, {
 
 VkExternalMemoryProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkExternalMemoryProperties.prototype.flush = function flush() {
@@ -29906,6 +31221,10 @@ Object.defineProperties(VkExternalMemoryPropertiesKHR.prototype, {
 
 VkExternalMemoryPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkExternalMemoryPropertiesKHR.prototype.flush = function flush() {
@@ -30004,6 +31323,10 @@ Object.defineProperties(VkPhysicalDeviceExternalImageFormatInfo.prototype, {
 
 VkPhysicalDeviceExternalImageFormatInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BDF58;
 };
 
 VkPhysicalDeviceExternalImageFormatInfo.prototype.flush = function flush() {
@@ -30105,6 +31428,10 @@ Object.defineProperties(VkPhysicalDeviceExternalImageFormatInfoKHR.prototype, {
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BDF58;
 };
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.flush = function flush() {
@@ -30202,6 +31529,10 @@ Object.defineProperties(VkExternalImageFormatProperties.prototype, {
 
 VkExternalImageFormatProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._externalMemoryProperties = null;
+  this.sType = 0x3B9BDF59;
 };
 
 VkExternalImageFormatProperties.prototype.flush = function flush() {
@@ -30305,6 +31636,10 @@ Object.defineProperties(VkExternalImageFormatPropertiesKHR.prototype, {
 
 VkExternalImageFormatPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._externalMemoryProperties = null;
+  this.sType = 0x3B9BDF59;
 };
 
 VkExternalImageFormatPropertiesKHR.prototype.flush = function flush() {
@@ -30432,6 +31767,12 @@ Object.defineProperties(VkPhysicalDeviceExternalBufferInfo.prototype, {
 
 VkPhysicalDeviceExternalBufferInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9BDF5A;
 };
 
 VkPhysicalDeviceExternalBufferInfo.prototype.flush = function flush() {
@@ -30561,6 +31902,12 @@ Object.defineProperties(VkPhysicalDeviceExternalBufferInfoKHR.prototype, {
 
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9BDF5A;
 };
 
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.flush = function flush() {
@@ -30666,6 +32013,10 @@ Object.defineProperties(VkExternalBufferProperties.prototype, {
 
 VkExternalBufferProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._externalMemoryProperties = null;
+  this.sType = 0x3B9BDF5B;
 };
 
 VkExternalBufferProperties.prototype.flush = function flush() {
@@ -30769,6 +32120,10 @@ Object.defineProperties(VkExternalBufferPropertiesKHR.prototype, {
 
 VkExternalBufferPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._externalMemoryProperties = null;
+  this.sType = 0x3B9BDF5B;
 };
 
 VkExternalBufferPropertiesKHR.prototype.flush = function flush() {
@@ -30941,6 +32296,14 @@ Object.defineProperties(VkPhysicalDeviceIDProperties.prototype, {
 
 VkPhysicalDeviceIDProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._deviceUUID = null;
+  this._driverUUID = null;
+  this._deviceLUID = null;
+  
+  
+  this.sType = 0x3B9BDF5C;
 };
 
 VkPhysicalDeviceIDProperties.prototype.flush = function flush() {
@@ -31133,6 +32496,14 @@ Object.defineProperties(VkPhysicalDeviceIDPropertiesKHR.prototype, {
 
 VkPhysicalDeviceIDPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._deviceUUID = null;
+  this._driverUUID = null;
+  this._deviceLUID = null;
+  
+  
+  this.sType = 0x3B9BDF5C;
 };
 
 VkPhysicalDeviceIDPropertiesKHR.prototype.flush = function flush() {
@@ -31260,6 +32631,10 @@ Object.defineProperties(VkExternalMemoryImageCreateInfo.prototype, {
 
 VkExternalMemoryImageCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE341;
 };
 
 VkExternalMemoryImageCreateInfo.prototype.flush = function flush() {
@@ -31361,6 +32736,10 @@ Object.defineProperties(VkExternalMemoryImageCreateInfoKHR.prototype, {
 
 VkExternalMemoryImageCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE341;
 };
 
 VkExternalMemoryImageCreateInfoKHR.prototype.flush = function flush() {
@@ -31462,6 +32841,10 @@ Object.defineProperties(VkExternalMemoryBufferCreateInfo.prototype, {
 
 VkExternalMemoryBufferCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE340;
 };
 
 VkExternalMemoryBufferCreateInfo.prototype.flush = function flush() {
@@ -31563,6 +32946,10 @@ Object.defineProperties(VkExternalMemoryBufferCreateInfoKHR.prototype, {
 
 VkExternalMemoryBufferCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE340;
 };
 
 VkExternalMemoryBufferCreateInfoKHR.prototype.flush = function flush() {
@@ -31664,6 +33051,10 @@ Object.defineProperties(VkExportMemoryAllocateInfo.prototype, {
 
 VkExportMemoryAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE342;
 };
 
 VkExportMemoryAllocateInfo.prototype.flush = function flush() {
@@ -31765,6 +33156,10 @@ Object.defineProperties(VkExportMemoryAllocateInfoKHR.prototype, {
 
 VkExportMemoryAllocateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE342;
 };
 
 VkExportMemoryAllocateInfoKHR.prototype.flush = function flush() {
@@ -31899,6 +33294,12 @@ Object.defineProperties(VkImportMemoryWin32HandleInfoKHR.prototype, {
 
 VkImportMemoryWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._name = null;
+  this.sType = 0x3B9BE728;
 };
 
 VkImportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -32020,6 +33421,10 @@ Object.defineProperties(VkExportMemoryWin32HandleInfoKHR.prototype, {
 
 VkExportMemoryWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._name = null;
+  this.sType = 0x3B9BE729;
 };
 
 VkExportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -32119,6 +33524,10 @@ Object.defineProperties(VkMemoryWin32HandlePropertiesKHR.prototype, {
 
 VkMemoryWin32HandlePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BE72A;
 };
 
 VkMemoryWin32HandlePropertiesKHR.prototype.flush = function flush() {
@@ -32243,6 +33652,11 @@ Object.defineProperties(VkMemoryGetWin32HandleInfoKHR.prototype, {
 
 VkMemoryGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9BE72B;
 };
 
 VkMemoryGetWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -32358,6 +33772,11 @@ Object.defineProperties(VkImportMemoryFdInfoKHR.prototype, {
 
 VkImportMemoryFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BEB10;
 };
 
 VkImportMemoryFdInfoKHR.prototype.flush = function flush() {
@@ -32461,6 +33880,10 @@ Object.defineProperties(VkMemoryFdPropertiesKHR.prototype, {
 
 VkMemoryFdPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BEB11;
 };
 
 VkMemoryFdPropertiesKHR.prototype.flush = function flush() {
@@ -32585,6 +34008,11 @@ Object.defineProperties(VkMemoryGetFdInfoKHR.prototype, {
 
 VkMemoryGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9BEB12;
 };
 
 VkMemoryGetFdInfoKHR.prototype.flush = function flush() {
@@ -32785,6 +34213,18 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype, {
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAcquireSyncs = null;
+    this._pAcquireSyncsNative = null;
+  this._pAcquireKeys = null;
+  this._pAcquireTimeouts = null;
+  
+  this._pReleaseSyncs = null;
+    this._pReleaseSyncsNative = null;
+  this._pReleaseKeys = null;
+  this.sType = 0x3B9BEEF8;
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
@@ -32952,6 +34392,10 @@ Object.defineProperties(VkPhysicalDeviceExternalSemaphoreInfo.prototype, {
 
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BF2E0;
 };
 
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.flush = function flush() {
@@ -33053,6 +34497,10 @@ Object.defineProperties(VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype, {
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BF2E0;
 };
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.flush = function flush() {
@@ -33162,6 +34610,12 @@ Object.defineProperties(VkExternalSemaphoreProperties.prototype, {
 
 VkExternalSemaphoreProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9BF2E1;
 };
 
 VkExternalSemaphoreProperties.prototype.flush = function flush() {
@@ -33283,6 +34737,12 @@ Object.defineProperties(VkExternalSemaphorePropertiesKHR.prototype, {
 
 VkExternalSemaphorePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9BF2E1;
 };
 
 VkExternalSemaphorePropertiesKHR.prototype.flush = function flush() {
@@ -33396,6 +34856,10 @@ Object.defineProperties(VkExportSemaphoreCreateInfo.prototype, {
 
 VkExportSemaphoreCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BF6C8;
 };
 
 VkExportSemaphoreCreateInfo.prototype.flush = function flush() {
@@ -33497,6 +34961,10 @@ Object.defineProperties(VkExportSemaphoreCreateInfoKHR.prototype, {
 
 VkExportSemaphoreCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BF6C8;
 };
 
 VkExportSemaphoreCreateInfoKHR.prototype.flush = function flush() {
@@ -33660,6 +35128,14 @@ Object.defineProperties(VkImportSemaphoreWin32HandleInfoKHR.prototype, {
 
 VkImportSemaphoreWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  this._semaphore = null;
+  
+  
+  
+  this._name = null;
+  this.sType = 0x3B9BFAB0;
 };
 
 VkImportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -33789,6 +35265,10 @@ Object.defineProperties(VkExportSemaphoreWin32HandleInfoKHR.prototype, {
 
 VkExportSemaphoreWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._name = null;
+  this.sType = 0x3B9BFAB1;
 };
 
 VkExportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -33936,6 +35416,13 @@ Object.defineProperties(VkD3D12FenceSubmitInfoKHR.prototype, {
 
 VkD3D12FenceSubmitInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphoreValues = null;
+  
+  this._pSignalSemaphoreValues = null;
+  this.sType = 0x3B9BFAB2;
 };
 
 VkD3D12FenceSubmitInfoKHR.prototype.flush = function flush() {
@@ -34068,6 +35555,11 @@ Object.defineProperties(VkSemaphoreGetWin32HandleInfoKHR.prototype, {
 
 VkSemaphoreGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._semaphore = null;
+  
+  this.sType = 0x3B9BFAB3;
 };
 
 VkSemaphoreGetWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -34212,6 +35704,13 @@ Object.defineProperties(VkImportSemaphoreFdInfoKHR.prototype, {
 
 VkImportSemaphoreFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._semaphore = null;
+  
+  
+  
+  this.sType = 0x3B9BFE98;
 };
 
 VkImportSemaphoreFdInfoKHR.prototype.flush = function flush() {
@@ -34344,6 +35843,11 @@ Object.defineProperties(VkSemaphoreGetFdInfoKHR.prototype, {
 
 VkSemaphoreGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._semaphore = null;
+  
+  this.sType = 0x3B9BFE99;
 };
 
 VkSemaphoreGetFdInfoKHR.prototype.flush = function flush() {
@@ -34449,6 +35953,10 @@ Object.defineProperties(VkPhysicalDeviceExternalFenceInfo.prototype, {
 
 VkPhysicalDeviceExternalFenceInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C7F80;
 };
 
 VkPhysicalDeviceExternalFenceInfo.prototype.flush = function flush() {
@@ -34550,6 +36058,10 @@ Object.defineProperties(VkPhysicalDeviceExternalFenceInfoKHR.prototype, {
 
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C7F80;
 };
 
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.flush = function flush() {
@@ -34659,6 +36171,12 @@ Object.defineProperties(VkExternalFenceProperties.prototype, {
 
 VkExternalFenceProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9C7F81;
 };
 
 VkExternalFenceProperties.prototype.flush = function flush() {
@@ -34780,6 +36298,12 @@ Object.defineProperties(VkExternalFencePropertiesKHR.prototype, {
 
 VkExternalFencePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9C7F81;
 };
 
 VkExternalFencePropertiesKHR.prototype.flush = function flush() {
@@ -34893,6 +36417,10 @@ Object.defineProperties(VkExportFenceCreateInfo.prototype, {
 
 VkExportFenceCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C8368;
 };
 
 VkExportFenceCreateInfo.prototype.flush = function flush() {
@@ -34994,6 +36522,10 @@ Object.defineProperties(VkExportFenceCreateInfoKHR.prototype, {
 
 VkExportFenceCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C8368;
 };
 
 VkExportFenceCreateInfoKHR.prototype.flush = function flush() {
@@ -35157,6 +36689,14 @@ Object.defineProperties(VkImportFenceWin32HandleInfoKHR.prototype, {
 
 VkImportFenceWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  this._fence = null;
+  
+  
+  
+  this._name = null;
+  this.sType = 0x3B9C8750;
 };
 
 VkImportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -35286,6 +36826,10 @@ Object.defineProperties(VkExportFenceWin32HandleInfoKHR.prototype, {
 
 VkExportFenceWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._name = null;
+  this.sType = 0x3B9C8751;
 };
 
 VkExportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -35406,6 +36950,11 @@ Object.defineProperties(VkFenceGetWin32HandleInfoKHR.prototype, {
 
 VkFenceGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._fence = null;
+  
+  this.sType = 0x3B9C8752;
 };
 
 VkFenceGetWin32HandleInfoKHR.prototype.flush = function flush() {
@@ -35550,6 +37099,13 @@ Object.defineProperties(VkImportFenceFdInfoKHR.prototype, {
 
 VkImportFenceFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._fence = null;
+  
+  
+  
+  this.sType = 0x3B9C8B38;
 };
 
 VkImportFenceFdInfoKHR.prototype.flush = function flush() {
@@ -35682,6 +37238,11 @@ Object.defineProperties(VkFenceGetFdInfoKHR.prototype, {
 
 VkFenceGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._fence = null;
+  
+  this.sType = 0x3B9C8B39;
 };
 
 VkFenceGetFdInfoKHR.prototype.flush = function flush() {
@@ -35809,6 +37370,12 @@ Object.defineProperties(VkPhysicalDeviceMultiviewFeatures.prototype, {
 
 VkPhysicalDeviceMultiviewFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9B9909;
 };
 
 VkPhysicalDeviceMultiviewFeatures.prototype.flush = function flush() {
@@ -35940,6 +37507,12 @@ Object.defineProperties(VkPhysicalDeviceMultiviewFeaturesKHR.prototype, {
 
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9B9909;
 };
 
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.flush = function flush() {
@@ -36053,6 +37626,11 @@ Object.defineProperties(VkPhysicalDeviceMultiviewProperties.prototype, {
 
 VkPhysicalDeviceMultiviewProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9B990A;
 };
 
 VkPhysicalDeviceMultiviewProperties.prototype.flush = function flush() {
@@ -36166,6 +37744,11 @@ Object.defineProperties(VkPhysicalDeviceMultiviewPropertiesKHR.prototype, {
 
 VkPhysicalDeviceMultiviewPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9B990A;
 };
 
 VkPhysicalDeviceMultiviewPropertiesKHR.prototype.flush = function flush() {
@@ -36348,6 +37931,15 @@ Object.defineProperties(VkRenderPassMultiviewCreateInfo.prototype, {
 
 VkRenderPassMultiviewCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pViewMasks = null;
+  
+  this._pViewOffsets = null;
+  
+  this._pCorrelationMasks = null;
+  this.sType = 0x3B9B9908;
 };
 
 VkRenderPassMultiviewCreateInfo.prototype.flush = function flush() {
@@ -36542,6 +38134,15 @@ Object.defineProperties(VkRenderPassMultiviewCreateInfoKHR.prototype, {
 
 VkRenderPassMultiviewCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pViewMasks = null;
+  
+  this._pViewOffsets = null;
+  
+  this._pCorrelationMasks = null;
+  this.sType = 0x3B9B9908;
 };
 
 VkRenderPassMultiviewCreateInfoKHR.prototype.flush = function flush() {
@@ -36721,6 +38322,20 @@ Object.defineProperties(VkSurfaceCapabilities2EXT.prototype, {
 
 VkSurfaceCapabilities2EXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._currentExtent = null;
+  this._minImageExtent = null;
+  this._maxImageExtent = null;
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C2990;
 };
 
 VkSurfaceCapabilities2EXT.prototype.flush = function flush() {
@@ -36872,6 +38487,10 @@ Object.defineProperties(VkDisplayPowerInfoEXT.prototype, {
 
 VkDisplayPowerInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C2D78;
 };
 
 VkDisplayPowerInfoEXT.prototype.flush = function flush() {
@@ -36973,6 +38592,10 @@ Object.defineProperties(VkDeviceEventInfoEXT.prototype, {
 
 VkDeviceEventInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C2D79;
 };
 
 VkDeviceEventInfoEXT.prototype.flush = function flush() {
@@ -37074,6 +38697,10 @@ Object.defineProperties(VkDisplayEventInfoEXT.prototype, {
 
 VkDisplayEventInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C2D7A;
 };
 
 VkDisplayEventInfoEXT.prototype.flush = function flush() {
@@ -37175,6 +38802,10 @@ Object.defineProperties(VkSwapchainCounterCreateInfoEXT.prototype, {
 
 VkSwapchainCounterCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C2D7B;
 };
 
 VkSwapchainCounterCreateInfoEXT.prototype.flush = function flush() {
@@ -37286,6 +38917,12 @@ Object.defineProperties(VkPhysicalDeviceGroupProperties.prototype, {
 
 VkPhysicalDeviceGroupProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x120], 0x0);
+  
+  this._pNext = null;
+  
+  this._physicalDevices = null;
+  
+  this.sType = 0x3B9BDB70;
 };
 
 VkPhysicalDeviceGroupProperties.prototype.flush = function flush() {
@@ -37411,6 +39048,12 @@ Object.defineProperties(VkPhysicalDeviceGroupPropertiesKHR.prototype, {
 
 VkPhysicalDeviceGroupPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x120], 0x0);
+  
+  this._pNext = null;
+  
+  this._physicalDevices = null;
+  
+  this.sType = 0x3B9BDB70;
 };
 
 VkPhysicalDeviceGroupPropertiesKHR.prototype.flush = function flush() {
@@ -37538,6 +39181,11 @@ Object.defineProperties(VkMemoryAllocateFlagsInfo.prototype, {
 
 VkMemoryAllocateFlagsInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BB460;
 };
 
 VkMemoryAllocateFlagsInfo.prototype.flush = function flush() {
@@ -37655,6 +39303,11 @@ Object.defineProperties(VkMemoryAllocateFlagsInfoKHR.prototype, {
 
 VkMemoryAllocateFlagsInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BB460;
 };
 
 VkMemoryAllocateFlagsInfoKHR.prototype.flush = function flush() {
@@ -37817,6 +39470,12 @@ Object.defineProperties(VkBindBufferMemoryInfo.prototype, {
 
 VkBindBufferMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9D2F48;
 };
 
 VkBindBufferMemoryInfo.prototype.flush = function flush() {
@@ -37983,6 +39642,12 @@ Object.defineProperties(VkBindBufferMemoryInfoKHR.prototype, {
 
 VkBindBufferMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9D2F48;
 };
 
 VkBindBufferMemoryInfoKHR.prototype.flush = function flush() {
@@ -38111,6 +39776,11 @@ Object.defineProperties(VkBindBufferMemoryDeviceGroupInfo.prototype, {
 
 VkBindBufferMemoryDeviceGroupInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDeviceIndices = null;
+  this.sType = 0x3B9BB46D;
 };
 
 VkBindBufferMemoryDeviceGroupInfo.prototype.flush = function flush() {
@@ -38235,6 +39905,11 @@ Object.defineProperties(VkBindBufferMemoryDeviceGroupInfoKHR.prototype, {
 
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDeviceIndices = null;
+  this.sType = 0x3B9BB46D;
 };
 
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
@@ -38399,6 +40074,12 @@ Object.defineProperties(VkBindImageMemoryInfo.prototype, {
 
 VkBindImageMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9D2F49;
 };
 
 VkBindImageMemoryInfo.prototype.flush = function flush() {
@@ -38567,6 +40248,12 @@ Object.defineProperties(VkBindImageMemoryInfoKHR.prototype, {
 
 VkBindImageMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this._memory = null;
+  
+  this.sType = 0x3B9D2F49;
 };
 
 VkBindImageMemoryInfoKHR.prototype.flush = function flush() {
@@ -38721,6 +40408,14 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfo.prototype, {
 
 VkBindImageMemoryDeviceGroupInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDeviceIndices = null;
+  
+  this._pSplitInstanceBindRegions = null;
+    this._pSplitInstanceBindRegionsNative = null;
+  this.sType = 0x3B9BB46E;
 };
 
 VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
@@ -38900,6 +40595,14 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfoKHR.prototype, {
 
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDeviceIndices = null;
+  
+  this._pSplitInstanceBindRegions = null;
+    this._pSplitInstanceBindRegionsNative = null;
+  this.sType = 0x3B9BB46E;
 };
 
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
@@ -39062,6 +40765,13 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfo.prototype, {
 
 VkDeviceGroupRenderPassBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDeviceRenderAreas = null;
+    this._pDeviceRenderAreasNative = null;
+  this.sType = 0x3B9BB463;
 };
 
 VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
@@ -39220,6 +40930,13 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfoKHR.prototype, {
 
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDeviceRenderAreas = null;
+    this._pDeviceRenderAreasNative = null;
+  this.sType = 0x3B9BB463;
 };
 
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
@@ -39352,6 +41069,10 @@ Object.defineProperties(VkDeviceGroupCommandBufferBeginInfo.prototype, {
 
 VkDeviceGroupCommandBufferBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BB464;
 };
 
 VkDeviceGroupCommandBufferBeginInfo.prototype.flush = function flush() {
@@ -39455,6 +41176,10 @@ Object.defineProperties(VkDeviceGroupCommandBufferBeginInfoKHR.prototype, {
 
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BB464;
 };
 
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.flush = function flush() {
@@ -39629,6 +41354,15 @@ Object.defineProperties(VkDeviceGroupSubmitInfo.prototype, {
 
 VkDeviceGroupSubmitInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphoreDeviceIndices = null;
+  
+  this._pCommandBufferDeviceMasks = null;
+  
+  this._pSignalSemaphoreDeviceIndices = null;
+  this.sType = 0x3B9BB465;
 };
 
 VkDeviceGroupSubmitInfo.prototype.flush = function flush() {
@@ -39823,6 +41557,15 @@ Object.defineProperties(VkDeviceGroupSubmitInfoKHR.prototype, {
 
 VkDeviceGroupSubmitInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._pWaitSemaphoreDeviceIndices = null;
+  
+  this._pCommandBufferDeviceMasks = null;
+  
+  this._pSignalSemaphoreDeviceIndices = null;
+  this.sType = 0x3B9BB465;
 };
 
 VkDeviceGroupSubmitInfoKHR.prototype.flush = function flush() {
@@ -39956,6 +41699,11 @@ Object.defineProperties(VkDeviceGroupBindSparseInfo.prototype, {
 
 VkDeviceGroupBindSparseInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BB466;
 };
 
 VkDeviceGroupBindSparseInfo.prototype.flush = function flush() {
@@ -40073,6 +41821,11 @@ Object.defineProperties(VkDeviceGroupBindSparseInfoKHR.prototype, {
 
 VkDeviceGroupBindSparseInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9BB466;
 };
 
 VkDeviceGroupBindSparseInfoKHR.prototype.flush = function flush() {
@@ -40215,6 +41968,11 @@ Object.defineProperties(VkDeviceGroupPresentCapabilitiesKHR.prototype, {
 
 VkDeviceGroupPresentCapabilitiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x98], 0x0);
+  
+  this._pNext = null;
+  this._presentMask = null;
+  
+  this.sType = 0x3B9BB467;
 };
 
 VkDeviceGroupPresentCapabilitiesKHR.prototype.flush = function flush() {
@@ -40335,6 +42093,10 @@ Object.defineProperties(VkImageSwapchainCreateInfoKHR.prototype, {
 
 VkImageSwapchainCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._swapchain = null;
+  this.sType = 0x3B9BB468;
 };
 
 VkImageSwapchainCreateInfoKHR.prototype.flush = function flush() {
@@ -40457,6 +42219,11 @@ Object.defineProperties(VkBindImageMemorySwapchainInfoKHR.prototype, {
 
 VkBindImageMemorySwapchainInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._swapchain = null;
+  
+  this.sType = 0x3B9BB469;
 };
 
 VkBindImageMemorySwapchainInfoKHR.prototype.flush = function flush() {
@@ -40634,6 +42401,14 @@ Object.defineProperties(VkAcquireNextImageInfoKHR.prototype, {
 
 VkAcquireNextImageInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  this._swapchain = null;
+  
+  this._semaphore = null;
+  this._fence = null;
+  
+  this.sType = 0x3B9BB46A;
 };
 
 VkAcquireNextImageInfoKHR.prototype.flush = function flush() {
@@ -40780,6 +42555,12 @@ Object.defineProperties(VkDeviceGroupPresentInfoKHR.prototype, {
 
 VkDeviceGroupPresentInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDeviceMasks = null;
+  
+  this.sType = 0x3B9BB46B;
 };
 
 VkDeviceGroupPresentInfoKHR.prototype.flush = function flush() {
@@ -40907,6 +42688,12 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfo.prototype, {
 
 VkDeviceGroupDeviceCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pPhysicalDevices = null;
+    this._pPhysicalDevicesNative = null;
+  this.sType = 0x3B9BDB71;
 };
 
 VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
@@ -41051,6 +42838,12 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfoKHR.prototype, {
 
 VkDeviceGroupDeviceCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pPhysicalDevices = null;
+    this._pPhysicalDevicesNative = null;
+  this.sType = 0x3B9BDB71;
 };
 
 VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
@@ -41177,6 +42970,10 @@ Object.defineProperties(VkDeviceGroupSwapchainCreateInfoKHR.prototype, {
 
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BB46C;
 };
 
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.flush = function flush() {
@@ -41312,6 +43109,13 @@ Object.defineProperties(VkDescriptorUpdateTemplateEntry.prototype, {
 
 VkDescriptorUpdateTemplateEntry.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkDescriptorUpdateTemplateEntry.prototype.flush = function flush() {
@@ -41452,6 +43256,13 @@ Object.defineProperties(VkDescriptorUpdateTemplateEntryKHR.prototype, {
 
 VkDescriptorUpdateTemplateEntryKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  
+  
+  
+  
+  
+  
 };
 
 VkDescriptorUpdateTemplateEntryKHR.prototype.flush = function flush() {
@@ -41654,6 +43465,18 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfo.prototype, {
 
 VkDescriptorUpdateTemplateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDescriptorUpdateEntries = null;
+    this._pDescriptorUpdateEntriesNative = null;
+  
+  this._descriptorSetLayout = null;
+  
+  this._pipelineLayout = null;
+  
+  this.sType = 0x3B9C1608;
 };
 
 VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
@@ -41900,6 +43723,18 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfoKHR.prototype, {
 
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDescriptorUpdateEntries = null;
+    this._pDescriptorUpdateEntriesNative = null;
+  
+  this._descriptorSetLayout = null;
+  
+  this._pipelineLayout = null;
+  
+  this.sType = 0x3B9C1608;
 };
 
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
@@ -42038,6 +43873,9 @@ Object.defineProperties(VkXYColorEXT.prototype, {
 
 VkXYColorEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkXYColorEXT.prototype.flush = function flush() {
@@ -42236,6 +44074,17 @@ Object.defineProperties(VkHdrMetadataEXT.prototype, {
 
 VkHdrMetadataEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._displayPrimaryRed = null;
+  this._displayPrimaryGreen = null;
+  this._displayPrimaryBlue = null;
+  this._whitePoint = null;
+  
+  
+  
+  
+  this.sType = 0x3B9C6428;
 };
 
 VkHdrMetadataEXT.prototype.flush = function flush() {
@@ -42419,6 +44268,10 @@ Object.defineProperties(VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype, {
 
 VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E0A08;
 };
 
 VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype.flush = function flush() {
@@ -42526,6 +44379,10 @@ Object.defineProperties(VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype, {
 
 VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E0A09;
 };
 
 VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.flush = function flush() {
@@ -42601,6 +44458,8 @@ Object.defineProperties(VkRefreshCycleDurationGOOGLE.prototype, {
 
 VkRefreshCycleDurationGOOGLE.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
 };
 
 VkRefreshCycleDurationGOOGLE.prototype.flush = function flush() {
@@ -42691,6 +44550,12 @@ Object.defineProperties(VkPastPresentationTimingGOOGLE.prototype, {
 
 VkPastPresentationTimingGOOGLE.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkPastPresentationTimingGOOGLE.prototype.flush = function flush() {
@@ -42815,6 +44680,12 @@ Object.defineProperties(VkPresentTimesInfoGOOGLE.prototype, {
 
 VkPresentTimesInfoGOOGLE.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pTimes = null;
+    this._pTimesNative = null;
+  this.sType = 0x3B9C3160;
 };
 
 VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
@@ -42932,6 +44803,9 @@ Object.defineProperties(VkPresentTimeGOOGLE.prototype, {
 
 VkPresentTimeGOOGLE.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
 };
 
 VkPresentTimeGOOGLE.prototype.flush = function flush() {
@@ -43010,6 +44884,9 @@ Object.defineProperties(VkViewportWScalingNV.prototype, {
 
 VkViewportWScalingNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkViewportWScalingNV.prototype.flush = function flush() {
@@ -43128,6 +45005,13 @@ Object.defineProperties(VkPipelineViewportWScalingStateCreateInfoNV.prototype, {
 
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pViewportWScalings = null;
+    this._pViewportWScalingsNative = null;
+  this.sType = 0x3B9C1DD8;
 };
 
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
@@ -43266,6 +45150,11 @@ Object.defineProperties(VkViewportSwizzleNV.prototype, {
 
 VkViewportSwizzleNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
+  
 };
 
 VkViewportSwizzleNV.prototype.flush = function flush() {
@@ -43392,6 +45281,13 @@ Object.defineProperties(VkPipelineViewportSwizzleStateCreateInfoNV.prototype, {
 
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pViewportSwizzles = null;
+    this._pViewportSwizzlesNative = null;
+  this.sType = 0x3B9C48D0;
 };
 
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
@@ -43520,6 +45416,10 @@ Object.defineProperties(VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype,
 
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C4CB8;
 };
 
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.flush = function flush() {
@@ -43663,6 +45563,14 @@ Object.defineProperties(VkPipelineDiscardRectangleStateCreateInfoEXT.prototype, 
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pDiscardRectangles = null;
+    this._pDiscardRectanglesNative = null;
+  this.sType = 0x3B9C4CB9;
 };
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() {
@@ -43795,6 +45703,10 @@ Object.defineProperties(VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.
 
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C44E8;
 };
 
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.flush = function flush() {
@@ -43900,6 +45812,10 @@ Object.defineProperties(VkInputAttachmentAspectReference.prototype, {
 
 VkInputAttachmentAspectReference.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkInputAttachmentAspectReference.prototype.flush = function flush() {
@@ -43994,6 +45910,10 @@ Object.defineProperties(VkInputAttachmentAspectReferenceKHR.prototype, {
 
 VkInputAttachmentAspectReferenceKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkInputAttachmentAspectReferenceKHR.prototype.flush = function flush() {
@@ -44106,6 +46026,12 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfo.prototype, {
 
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAspectReferences = null;
+    this._pAspectReferencesNative = null;
+  this.sType = 0x3B9C9309;
 };
 
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
@@ -44250,6 +46176,12 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAspectReferences = null;
+    this._pAspectReferencesNative = null;
+  this.sType = 0x3B9C9309;
 };
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush() {
@@ -44402,6 +46334,10 @@ Object.defineProperties(VkPhysicalDeviceSurfaceInfo2KHR.prototype, {
 
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._surface = null;
+  this.sType = 0x3B9C9AD8;
 };
 
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.flush = function flush() {
@@ -44518,6 +46454,10 @@ Object.defineProperties(VkSurfaceCapabilities2KHR.prototype, {
 
 VkSurfaceCapabilities2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  this._surfaceCapabilities = null;
+  this.sType = 0x3B9C9AD9;
 };
 
 VkSurfaceCapabilities2KHR.prototype.flush = function flush() {
@@ -44621,6 +46561,10 @@ Object.defineProperties(VkSurfaceFormat2KHR.prototype, {
 
 VkSurfaceFormat2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._surfaceFormat = null;
+  this.sType = 0x3B9C9ADA;
 };
 
 VkSurfaceFormat2KHR.prototype.flush = function flush() {
@@ -44724,6 +46668,10 @@ Object.defineProperties(VkDisplayProperties2KHR.prototype, {
 
 VkDisplayProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._displayProperties = null;
+  this.sType = 0x3B9CA2A8;
 };
 
 VkDisplayProperties2KHR.prototype.flush = function flush() {
@@ -44827,6 +46775,10 @@ Object.defineProperties(VkDisplayPlaneProperties2KHR.prototype, {
 
 VkDisplayPlaneProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._displayPlaneProperties = null;
+  this.sType = 0x3B9CA2A9;
 };
 
 VkDisplayPlaneProperties2KHR.prototype.flush = function flush() {
@@ -44930,6 +46882,10 @@ Object.defineProperties(VkDisplayModeProperties2KHR.prototype, {
 
 VkDisplayModeProperties2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._displayModeProperties = null;
+  this.sType = 0x3B9CA2AA;
 };
 
 VkDisplayModeProperties2KHR.prototype.flush = function flush() {
@@ -45058,6 +47014,11 @@ Object.defineProperties(VkDisplayPlaneInfo2KHR.prototype, {
 
 VkDisplayPlaneInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._mode = null;
+  
+  this.sType = 0x3B9CA2AB;
 };
 
 VkDisplayPlaneInfo2KHR.prototype.flush = function flush() {
@@ -45159,6 +47120,10 @@ Object.defineProperties(VkDisplayPlaneCapabilities2KHR.prototype, {
 
 VkDisplayPlaneCapabilities2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x58], 0x0);
+  
+  this._pNext = null;
+  this._capabilities = null;
+  this.sType = 0x3B9CA2AC;
 };
 
 VkDisplayPlaneCapabilities2KHR.prototype.flush = function flush() {
@@ -45262,6 +47227,10 @@ Object.defineProperties(VkSharedPresentSurfaceCapabilitiesKHR.prototype, {
 
 VkSharedPresentSurfaceCapabilitiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C7B98;
 };
 
 VkSharedPresentSurfaceCapabilitiesKHR.prototype.flush = function flush() {
@@ -45399,6 +47368,13 @@ Object.defineProperties(VkPhysicalDevice16BitStorageFeatures.prototype, {
 
 VkPhysicalDevice16BitStorageFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9C0E38;
 };
 
 VkPhysicalDevice16BitStorageFeatures.prototype.flush = function flush() {
@@ -45544,6 +47520,13 @@ Object.defineProperties(VkPhysicalDevice16BitStorageFeaturesKHR.prototype, {
 
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9C0E38;
 };
 
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.flush = function flush() {
@@ -45673,6 +47656,13 @@ Object.defineProperties(VkPhysicalDeviceSubgroupProperties.prototype, {
 
 VkPhysicalDeviceSubgroupProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9C3930;
 };
 
 VkPhysicalDeviceSubgroupProperties.prototype.flush = function flush() {
@@ -45799,6 +47789,10 @@ Object.defineProperties(VkBufferMemoryRequirementsInfo2.prototype, {
 
 VkBufferMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  this.sType = 0x3B9D0450;
 };
 
 VkBufferMemoryRequirementsInfo2.prototype.flush = function flush() {
@@ -45909,6 +47903,10 @@ Object.defineProperties(VkBufferMemoryRequirementsInfo2KHR.prototype, {
 
 VkBufferMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  this.sType = 0x3B9D0450;
 };
 
 VkBufferMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
@@ -46035,6 +48033,10 @@ Object.defineProperties(VkImageMemoryRequirementsInfo2.prototype, {
 
 VkImageMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this.sType = 0x3B9D0451;
 };
 
 VkImageMemoryRequirementsInfo2.prototype.flush = function flush() {
@@ -46161,6 +48163,10 @@ Object.defineProperties(VkImageMemoryRequirementsInfo2KHR.prototype, {
 
 VkImageMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this.sType = 0x3B9D0451;
 };
 
 VkImageMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
@@ -46271,6 +48277,10 @@ Object.defineProperties(VkImageSparseMemoryRequirementsInfo2.prototype, {
 
 VkImageSparseMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this.sType = 0x3B9D0452;
 };
 
 VkImageSparseMemoryRequirementsInfo2.prototype.flush = function flush() {
@@ -46381,6 +48391,10 @@ Object.defineProperties(VkImageSparseMemoryRequirementsInfo2KHR.prototype, {
 
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this.sType = 0x3B9D0452;
 };
 
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
@@ -46494,6 +48508,10 @@ Object.defineProperties(VkMemoryRequirements2.prototype, {
 
 VkMemoryRequirements2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._memoryRequirements = null;
+  this.sType = 0x3B9D0453;
 };
 
 VkMemoryRequirements2.prototype.flush = function flush() {
@@ -46613,6 +48631,10 @@ Object.defineProperties(VkMemoryRequirements2KHR.prototype, {
 
 VkMemoryRequirements2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._memoryRequirements = null;
+  this.sType = 0x3B9D0453;
 };
 
 VkMemoryRequirements2KHR.prototype.flush = function flush() {
@@ -46716,6 +48738,10 @@ Object.defineProperties(VkSparseImageMemoryRequirements2.prototype, {
 
 VkSparseImageMemoryRequirements2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._memoryRequirements = null;
+  this.sType = 0x3B9D0454;
 };
 
 VkSparseImageMemoryRequirements2.prototype.flush = function flush() {
@@ -46819,6 +48845,10 @@ Object.defineProperties(VkSparseImageMemoryRequirements2KHR.prototype, {
 
 VkSparseImageMemoryRequirements2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  this._memoryRequirements = null;
+  this.sType = 0x3B9D0454;
 };
 
 VkSparseImageMemoryRequirements2KHR.prototype.flush = function flush() {
@@ -46922,6 +48952,10 @@ Object.defineProperties(VkPhysicalDevicePointClippingProperties.prototype, {
 
 VkPhysicalDevicePointClippingProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C9308;
 };
 
 VkPhysicalDevicePointClippingProperties.prototype.flush = function flush() {
@@ -47023,6 +49057,10 @@ Object.defineProperties(VkPhysicalDevicePointClippingPropertiesKHR.prototype, {
 
 VkPhysicalDevicePointClippingPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C9308;
 };
 
 VkPhysicalDevicePointClippingPropertiesKHR.prototype.flush = function flush() {
@@ -47132,6 +49170,11 @@ Object.defineProperties(VkMemoryDedicatedRequirements.prototype, {
 
 VkMemoryDedicatedRequirements.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9CBA18;
 };
 
 VkMemoryDedicatedRequirements.prototype.flush = function flush() {
@@ -47245,6 +49288,11 @@ Object.defineProperties(VkMemoryDedicatedRequirementsKHR.prototype, {
 
 VkMemoryDedicatedRequirementsKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9CBA18;
 };
 
 VkMemoryDedicatedRequirementsKHR.prototype.flush = function flush() {
@@ -47382,6 +49430,11 @@ Object.defineProperties(VkMemoryDedicatedAllocateInfo.prototype, {
 
 VkMemoryDedicatedAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this._buffer = null;
+  this.sType = 0x3B9CBA19;
 };
 
 VkMemoryDedicatedAllocateInfo.prototype.flush = function flush() {
@@ -47515,6 +49568,11 @@ Object.defineProperties(VkMemoryDedicatedAllocateInfoKHR.prototype, {
 
 VkMemoryDedicatedAllocateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._image = null;
+  this._buffer = null;
+  this.sType = 0x3B9CBA19;
 };
 
 VkMemoryDedicatedAllocateInfoKHR.prototype.flush = function flush() {
@@ -47620,6 +49678,10 @@ Object.defineProperties(VkImageViewUsageCreateInfo.prototype, {
 
 VkImageViewUsageCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C930A;
 };
 
 VkImageViewUsageCreateInfo.prototype.flush = function flush() {
@@ -47721,6 +49783,10 @@ Object.defineProperties(VkImageViewUsageCreateInfoKHR.prototype, {
 
 VkImageViewUsageCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C930A;
 };
 
 VkImageViewUsageCreateInfoKHR.prototype.flush = function flush() {
@@ -47822,6 +49888,10 @@ Object.defineProperties(VkPipelineTessellationDomainOriginStateCreateInfo.protot
 
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C930B;
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.flush = function flush() {
@@ -47923,6 +49993,10 @@ Object.defineProperties(VkPipelineTessellationDomainOriginStateCreateInfoKHR.pro
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C930B;
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.flush = function flush() {
@@ -48033,6 +50107,10 @@ Object.defineProperties(VkSamplerYcbcrConversionInfo.prototype, {
 
 VkSamplerYcbcrConversionInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._conversion = null;
+  this.sType = 0x3B9D2B61;
 };
 
 VkSamplerYcbcrConversionInfo.prototype.flush = function flush() {
@@ -48143,6 +50221,10 @@ Object.defineProperties(VkSamplerYcbcrConversionInfoKHR.prototype, {
 
 VkSamplerYcbcrConversionInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._conversion = null;
+  this.sType = 0x3B9D2B61;
 };
 
 VkSamplerYcbcrConversionInfoKHR.prototype.flush = function flush() {
@@ -48341,6 +50423,17 @@ Object.defineProperties(VkSamplerYcbcrConversionCreateInfo.prototype, {
 
 VkSamplerYcbcrConversionCreateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._components = null;
+  
+  
+  
+  
+  this.sType = 0x3B9D2B60;
 };
 
 VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
@@ -48581,6 +50674,17 @@ Object.defineProperties(VkSamplerYcbcrConversionCreateInfoKHR.prototype, {
 
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._components = null;
+  
+  
+  
+  
+  this.sType = 0x3B9D2B60;
 };
 
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
@@ -48724,6 +50828,10 @@ Object.defineProperties(VkBindImagePlaneMemoryInfo.prototype, {
 
 VkBindImagePlaneMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B62;
 };
 
 VkBindImagePlaneMemoryInfo.prototype.flush = function flush() {
@@ -48825,6 +50933,10 @@ Object.defineProperties(VkBindImagePlaneMemoryInfoKHR.prototype, {
 
 VkBindImagePlaneMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B62;
 };
 
 VkBindImagePlaneMemoryInfoKHR.prototype.flush = function flush() {
@@ -48926,6 +51038,10 @@ Object.defineProperties(VkImagePlaneMemoryRequirementsInfo.prototype, {
 
 VkImagePlaneMemoryRequirementsInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B63;
 };
 
 VkImagePlaneMemoryRequirementsInfo.prototype.flush = function flush() {
@@ -49027,6 +51143,10 @@ Object.defineProperties(VkImagePlaneMemoryRequirementsInfoKHR.prototype, {
 
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B63;
 };
 
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.flush = function flush() {
@@ -49130,6 +51250,10 @@ Object.defineProperties(VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B64;
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.flush = function flush() {
@@ -49233,6 +51357,10 @@ Object.defineProperties(VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.protot
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B64;
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.flush = function flush() {
@@ -49332,6 +51460,10 @@ Object.defineProperties(VkSamplerYcbcrConversionImageFormatProperties.prototype,
 
 VkSamplerYcbcrConversionImageFormatProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B65;
 };
 
 VkSamplerYcbcrConversionImageFormatProperties.prototype.flush = function flush() {
@@ -49435,6 +51567,10 @@ Object.defineProperties(VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototy
 
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2B65;
 };
 
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.flush = function flush() {
@@ -49538,6 +51674,10 @@ Object.defineProperties(VkTextureLODGatherFormatPropertiesAMD.prototype, {
 
 VkTextureLODGatherFormatPropertiesAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9B6A28;
 };
 
 VkTextureLODGatherFormatPropertiesAMD.prototype.flush = function flush() {
@@ -49675,6 +51815,12 @@ Object.defineProperties(VkConditionalRenderingBeginInfoEXT.prototype, {
 
 VkConditionalRenderingBeginInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  
+  
+  this.sType = 0x3B9C066A;
 };
 
 VkConditionalRenderingBeginInfoEXT.prototype.flush = function flush() {
@@ -49786,6 +51932,10 @@ Object.defineProperties(VkProtectedSubmitInfo.prototype, {
 
 VkProtectedSubmitInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D0068;
 };
 
 VkProtectedSubmitInfo.prototype.flush = function flush() {
@@ -49889,6 +52039,10 @@ Object.defineProperties(VkPhysicalDeviceProtectedMemoryFeatures.prototype, {
 
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D0069;
 };
 
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.flush = function flush() {
@@ -49988,6 +52142,10 @@ Object.defineProperties(VkPhysicalDeviceProtectedMemoryProperties.prototype, {
 
 VkPhysicalDeviceProtectedMemoryProperties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D006A;
 };
 
 VkPhysicalDeviceProtectedMemoryProperties.prototype.flush = function flush() {
@@ -50115,6 +52273,12 @@ Object.defineProperties(VkDeviceQueueInfo2.prototype, {
 
 VkDeviceQueueInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9D006B;
 };
 
 VkDeviceQueueInfo2.prototype.flush = function flush() {
@@ -50246,6 +52410,12 @@ Object.defineProperties(VkPipelineCoverageToColorStateCreateInfoNV.prototype, {
 
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9D1008;
 };
 
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.flush = function flush() {
@@ -50359,6 +52529,11 @@ Object.defineProperties(VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototy
 
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9CC5D0;
 };
 
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.flush = function flush() {
@@ -50456,6 +52631,9 @@ Object.defineProperties(VkSampleLocationEXT.prototype, {
 
 VkSampleLocationEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkSampleLocationEXT.prototype.flush = function flush() {
@@ -50593,6 +52771,14 @@ Object.defineProperties(VkSampleLocationsInfoEXT.prototype, {
 
 VkSampleLocationsInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  this._sampleLocationGridSize = null;
+  
+  this._pSampleLocations = null;
+    this._pSampleLocationsNative = null;
+  this.sType = 0x3B9CF898;
 };
 
 VkSampleLocationsInfoEXT.prototype.flush = function flush() {
@@ -50738,6 +52924,9 @@ Object.defineProperties(VkAttachmentSampleLocationsEXT.prototype, {
 
 VkAttachmentSampleLocationsEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._sampleLocationsInfo = null;
+  
 };
 
 VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
@@ -50839,6 +53028,9 @@ Object.defineProperties(VkSubpassSampleLocationsEXT.prototype, {
 
 VkSubpassSampleLocationsEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._sampleLocationsInfo = null;
+  
 };
 
 VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
@@ -50987,6 +53179,15 @@ Object.defineProperties(VkRenderPassSampleLocationsBeginInfoEXT.prototype, {
 
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAttachmentInitialSampleLocations = null;
+    this._pAttachmentInitialSampleLocationsNative = null;
+  
+  this._pPostSubpassSampleLocations = null;
+    this._pPostSubpassSampleLocationsNative = null;
+  this.sType = 0x3B9CF899;
 };
 
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
@@ -51163,6 +53364,11 @@ Object.defineProperties(VkPipelineSampleLocationsStateCreateInfoEXT.prototype, {
 
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._sampleLocationsInfo = null;
+  this.sType = 0x3B9CF89A;
 };
 
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
@@ -51309,6 +53515,14 @@ Object.defineProperties(VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype, 
 
 VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  this._maxSampleLocationGridSize = null;
+  this._sampleLocationCoordinateRange = null;
+  
+  
+  this.sType = 0x3B9CF89B;
 };
 
 VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.flush = function flush() {
@@ -51430,6 +53644,10 @@ Object.defineProperties(VkMultisamplePropertiesEXT.prototype, {
 
 VkMultisamplePropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._maxSampleLocationGridSize = null;
+  this.sType = 0x3B9CF89C;
 };
 
 VkMultisamplePropertiesEXT.prototype.flush = function flush() {
@@ -51537,6 +53755,10 @@ Object.defineProperties(VkSamplerReductionModeCreateInfoEXT.prototype, {
 
 VkSamplerReductionModeCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9CC5D1;
 };
 
 VkSamplerReductionModeCreateInfoEXT.prototype.flush = function flush() {
@@ -51640,6 +53862,10 @@ Object.defineProperties(VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.protot
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D0C20;
 };
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.flush = function flush() {
@@ -51769,6 +53995,15 @@ Object.defineProperties(VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prot
 
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D0C21;
 };
 
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.flush = function flush() {
@@ -51916,6 +54151,12 @@ Object.defineProperties(VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9D0C22;
 };
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.flush = function flush() {
@@ -52037,6 +54278,11 @@ Object.defineProperties(VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype,
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9CE510;
 };
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.flush = function flush() {
@@ -52164,6 +54410,14 @@ Object.defineProperties(VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototyp
 
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9CE511;
 };
 
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.flush = function flush() {
@@ -52304,6 +54558,11 @@ Object.defineProperties(VkWriteDescriptorSetInlineUniformBlockEXT.prototype, {
 
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pData = null;
+  this.sType = 0x3B9CE512;
 };
 
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.flush = function flush() {
@@ -52411,6 +54670,10 @@ Object.defineProperties(VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototyp
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9CE513;
 };
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.flush = function flush() {
@@ -52561,6 +54824,14 @@ Object.defineProperties(VkPipelineCoverageModulationStateCreateInfoNV.prototype,
 
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pCoverageModulationTable = null;
+  this.sType = 0x3B9D1BC0;
 };
 
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.flush = function flush() {
@@ -52697,6 +54968,11 @@ Object.defineProperties(VkImageFormatListCreateInfoKHR.prototype, {
 
 VkImageFormatListCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pViewFormats = null;
+  this.sType = 0x3B9D0838;
 };
 
 VkImageFormatListCreateInfoKHR.prototype.flush = function flush() {
@@ -52830,6 +55106,12 @@ Object.defineProperties(VkValidationCacheCreateInfoEXT.prototype, {
 
 VkValidationCacheCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pInitialData = null;
+  this.sType = 0x3B9D3B00;
 };
 
 VkValidationCacheCreateInfoEXT.prototype.flush = function flush() {
@@ -52948,6 +55230,10 @@ Object.defineProperties(VkShaderModuleValidationCacheCreateInfoEXT.prototype, {
 
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._validationCache = null;
+  this.sType = 0x3B9D3B01;
 };
 
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.flush = function flush() {
@@ -53055,6 +55341,11 @@ Object.defineProperties(VkPhysicalDeviceMaintenance3Properties.prototype, {
 
 VkPhysicalDeviceMaintenance3Properties.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D5A40;
 };
 
 VkPhysicalDeviceMaintenance3Properties.prototype.flush = function flush() {
@@ -53170,6 +55461,11 @@ Object.defineProperties(VkPhysicalDeviceMaintenance3PropertiesKHR.prototype, {
 
 VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D5A40;
 };
 
 VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.flush = function flush() {
@@ -53293,6 +55589,10 @@ Object.defineProperties(VkDescriptorSetLayoutSupport.prototype, {
 
 VkDescriptorSetLayoutSupport.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D5A41;
 };
 
 VkDescriptorSetLayoutSupport.prototype.flush = function flush() {
@@ -53412,6 +55712,10 @@ Object.defineProperties(VkDescriptorSetLayoutSupportKHR.prototype, {
 
 VkDescriptorSetLayoutSupportKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D5A41;
 };
 
 VkDescriptorSetLayoutSupportKHR.prototype.flush = function flush() {
@@ -53519,6 +55823,10 @@ Object.defineProperties(VkPhysicalDeviceShaderDrawParametersFeatures.prototype, 
 
 VkPhysicalDeviceShaderDrawParametersFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BC018;
 };
 
 VkPhysicalDeviceShaderDrawParametersFeatures.prototype.flush = function flush() {
@@ -53622,6 +55930,10 @@ Object.defineProperties(VkPhysicalDeviceShaderDrawParameterFeatures.prototype, {
 
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BC018;
 };
 
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.flush = function flush() {
@@ -53735,6 +56047,11 @@ Object.defineProperties(VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype, {
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C0A50;
 };
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.flush = function flush() {
@@ -53934,6 +56251,26 @@ Object.defineProperties(VkPhysicalDeviceFloatControlsPropertiesKHR.prototype, {
 
 VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x58], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9DCB88;
 };
 
 VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.flush = function flush() {
@@ -54105,6 +56442,10 @@ Object.defineProperties(VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype, {
 
 VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EC588;
 };
 
 VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.flush = function flush() {
@@ -54206,6 +56547,12 @@ Object.defineProperties(VkShaderResourceUsageAMD.prototype, {
 
 VkShaderResourceUsageAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  
+  
+  
+  
+  
 };
 
 VkShaderResourceUsageAMD.prototype.flush = function flush() {
@@ -54328,6 +56675,14 @@ Object.defineProperties(VkShaderStatisticsInfoAMD.prototype, {
 
 VkShaderStatisticsInfoAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._resourceUsage = null;
+  
+  
+  
+  
+  this._computeWorkGroupSize = null;
+  
 };
 
 VkShaderStatisticsInfoAMD.prototype.flush = function flush() {
@@ -54446,6 +56801,10 @@ Object.defineProperties(VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype, {
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D71B0;
 };
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.flush = function flush() {
@@ -54582,6 +56941,12 @@ Object.defineProperties(VkDebugUtilsObjectNameInfoEXT.prototype, {
 
 VkDebugUtilsObjectNameInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pObjectName = null;
+  this.sType = 0x3B9CBE00;
 };
 
 VkDebugUtilsObjectNameInfoEXT.prototype.flush = function flush() {
@@ -54743,6 +57108,14 @@ Object.defineProperties(VkDebugUtilsObjectTagInfoEXT.prototype, {
 
 VkDebugUtilsObjectTagInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pTag = null;
+  this.sType = 0x3B9CBE01;
 };
 
 VkDebugUtilsObjectTagInfoEXT.prototype.flush = function flush() {
@@ -54889,6 +57262,11 @@ Object.defineProperties(VkDebugUtilsLabelEXT.prototype, {
 
 VkDebugUtilsLabelEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._pLabelName = null;
+  this._color = null;
+  this.sType = 0x3B9CBE02;
 };
 
 VkDebugUtilsLabelEXT.prototype.flush = function flush() {
@@ -55059,6 +57437,14 @@ Object.defineProperties(VkDebugUtilsMessengerCreateInfoEXT.prototype, {
 
 VkDebugUtilsMessengerCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pfnUserCallback = null;
+  this._pUserData = null;
+  this.sType = 0x3B9CBE04;
 };
 
 VkDebugUtilsMessengerCreateInfoEXT.prototype.flush = function flush() {
@@ -55310,6 +57696,22 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
 
 VkDebugUtilsMessengerCallbackDataEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  
+  this._pMessageIdName = null;
+  
+  this._pMessage = null;
+  
+  this._pQueueLabels = null;
+    this._pQueueLabelsNative = null;
+  
+  this._pCmdBufLabels = null;
+    this._pCmdBufLabelsNative = null;
+  
+  this._pObjects = null;
+    this._pObjectsNative = null;
+  this.sType = 0x3B9CBE03;
 };
 
 VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
@@ -55527,6 +57929,11 @@ Object.defineProperties(VkImportMemoryHostPointerInfoEXT.prototype, {
 
 VkImportMemoryHostPointerInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pHostPointer = null;
+  this.sType = 0x3B9D8150;
 };
 
 VkImportMemoryHostPointerInfoEXT.prototype.flush = function flush() {
@@ -55630,6 +58037,10 @@ Object.defineProperties(VkMemoryHostPointerPropertiesEXT.prototype, {
 
 VkMemoryHostPointerPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D8151;
 };
 
 VkMemoryHostPointerPropertiesEXT.prototype.flush = function flush() {
@@ -55733,6 +58144,10 @@ Object.defineProperties(VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototyp
 
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D8152;
 };
 
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.flush = function flush() {
@@ -55886,6 +58301,18 @@ Object.defineProperties(VkPhysicalDeviceConservativeRasterizationPropertiesEXT.p
 
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C5488;
 };
 
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.flush = function flush() {
@@ -56023,6 +58450,10 @@ Object.defineProperties(VkCalibratedTimestampInfoEXT.prototype, {
 
 VkCalibratedTimestampInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D98C0;
 };
 
 VkCalibratedTimestampInfoEXT.prototype.flush = function flush() {
@@ -56200,6 +58631,23 @@ Object.defineProperties(VkPhysicalDeviceShaderCorePropertiesAMD.prototype, {
 
 VkPhysicalDeviceShaderCorePropertiesAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x48], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D9CA8;
 };
 
 VkPhysicalDeviceShaderCorePropertiesAMD.prototype.flush = function flush() {
@@ -56379,6 +58827,12 @@ Object.defineProperties(VkPipelineRasterizationConservativeStateCreateInfoEXT.pr
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9C5489;
 };
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.flush = function flush() {
@@ -56680,6 +59134,29 @@ Object.defineProperties(VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype,
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D3EE9;
 };
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.flush = function flush() {
@@ -56987,6 +59464,32 @@ Object.defineProperties(VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototyp
 
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x70], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D3EEA;
 };
 
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.flush = function flush() {
@@ -57199,6 +59702,11 @@ Object.defineProperties(VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pBindingFlags = null;
+  this.sType = 0x3B9D3EE8;
 };
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.flush = function flush() {
@@ -57323,6 +59831,11 @@ Object.defineProperties(VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.pr
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDescriptorCounts = null;
+  this.sType = 0x3B9D3EEB;
 };
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.flush = function flush() {
@@ -57426,6 +59939,10 @@ Object.defineProperties(VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.p
 
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D3EEC;
 };
 
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.flush = function flush() {
@@ -57611,6 +60128,18 @@ Object.defineProperties(VkAttachmentDescription2KHR.prototype, {
 
 VkAttachmentDescription2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C73C8;
 };
 
 VkAttachmentDescription2KHR.prototype.flush = function flush() {
@@ -57766,6 +60295,12 @@ Object.defineProperties(VkAttachmentReference2KHR.prototype, {
 
 VkAttachmentReference2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9C73C9;
 };
 
 VkAttachmentReference2KHR.prototype.flush = function flush() {
@@ -58027,6 +60562,23 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
 
 VkSubpassDescription2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x58], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pInputAttachments = null;
+    this._pInputAttachmentsNative = null;
+  
+  this._pColorAttachments = null;
+    this._pColorAttachmentsNative = null;
+  this._pResolveAttachments = null;
+    this._pResolveAttachmentsNative = null;
+  this._pDepthStencilAttachment = null;
+  
+  this._pPreserveAttachments = null;
+  this.sType = 0x3B9C73CA;
 };
 
 VkSubpassDescription2KHR.prototype.flush = function flush() {
@@ -58303,6 +60855,17 @@ Object.defineProperties(VkSubpassDependency2KHR.prototype, {
 
 VkSubpassDependency2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9C73CB;
 };
 
 VkSubpassDependency2KHR.prototype.flush = function flush() {
@@ -58539,6 +61102,21 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
 
 VkRenderPassCreateInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x50], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pAttachments = null;
+    this._pAttachmentsNative = null;
+  
+  this._pSubpasses = null;
+    this._pSubpassesNative = null;
+  
+  this._pDependencies = null;
+    this._pDependenciesNative = null;
+  
+  this._pCorrelatedViewMasks = null;
+  this.sType = 0x3B9C73CC;
 };
 
 VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
@@ -58735,6 +61313,10 @@ Object.defineProperties(VkSubpassBeginInfoKHR.prototype, {
 
 VkSubpassBeginInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C73CD;
 };
 
 VkSubpassBeginInfoKHR.prototype.flush = function flush() {
@@ -58826,6 +61408,9 @@ Object.defineProperties(VkSubpassEndInfoKHR.prototype, {
 
 VkSubpassEndInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._pNext = null;
+  this.sType = 0x3B9C73CE;
 };
 
 VkSubpassEndInfoKHR.prototype.flush = function flush() {
@@ -58911,6 +61496,9 @@ Object.defineProperties(VkVertexInputBindingDivisorDescriptionEXT.prototype, {
 
 VkVertexInputBindingDivisorDescriptionEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkVertexInputBindingDivisorDescriptionEXT.prototype.flush = function flush() {
@@ -59019,6 +61607,12 @@ Object.defineProperties(VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pVertexBindingDivisors = null;
+    this._pVertexBindingDivisorsNative = null;
+  this.sType = 0x3B9DB031;
 };
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush() {
@@ -59143,6 +61737,10 @@ Object.defineProperties(VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prot
 
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DB030;
 };
 
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.flush = function flush() {
@@ -59264,6 +61862,13 @@ Object.defineProperties(VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype, {
 
 VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9E0620;
 };
 
 VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.flush = function flush() {
@@ -59383,6 +61988,10 @@ Object.defineProperties(VkCommandBufferInheritanceConditionalRenderingInfoEXT.pr
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C0668;
 };
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.flush = function flush() {
@@ -59506,6 +62115,12 @@ Object.defineProperties(VkPhysicalDevice8BitStorageFeaturesKHR.prototype, {
 
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9D7D68;
 };
 
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.flush = function flush() {
@@ -59627,6 +62242,11 @@ Object.defineProperties(VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototyp
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C0669;
 };
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.flush = function flush() {
@@ -59754,6 +62374,12 @@ Object.defineProperties(VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype, 
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9E0238;
 };
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.flush = function flush() {
@@ -59875,6 +62501,11 @@ Object.defineProperties(VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype, 
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D8920;
 };
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.flush = function flush() {
@@ -59992,6 +62623,11 @@ Object.defineProperties(VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.protot
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9DB032;
 };
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.flush = function flush() {
@@ -60093,6 +62729,10 @@ Object.defineProperties(VkQueueFamilyCheckpointPropertiesNV.prototype, {
 
 VkQueueFamilyCheckpointPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DEEB1;
 };
 
 VkQueueFamilyCheckpointPropertiesNV.prototype.flush = function flush() {
@@ -60211,6 +62851,11 @@ Object.defineProperties(VkCheckpointDataNV.prototype, {
 
 VkCheckpointDataNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pCheckpointMarker = null;
+  this.sType = 0x3B9DEEB0;
 };
 
 VkCheckpointDataNV.prototype.flush = function flush() {
@@ -60336,6 +62981,13 @@ Object.defineProperties(VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototy
 
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9DD358;
 };
 
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.flush = function flush() {
@@ -60482,6 +63134,12 @@ Object.defineProperties(VkSubpassDescriptionDepthStencilResolveKHR.prototype, {
 
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pDepthStencilResolveAttachment = null;
+  this.sType = 0x3B9DD359;
 };
 
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.flush = function flush() {
@@ -60591,6 +63249,10 @@ Object.defineProperties(VkImageViewASTCDecodeModeEXT.prototype, {
 
 VkImageViewASTCDecodeModeEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BCFB8;
 };
 
 VkImageViewASTCDecodeModeEXT.prototype.flush = function flush() {
@@ -60694,6 +63356,10 @@ Object.defineProperties(VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype, {
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9BCFB9;
 };
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.flush = function flush() {
@@ -60807,6 +63473,11 @@ Object.defineProperties(VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype, 
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9B3760;
 };
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.flush = function flush() {
@@ -60966,6 +63637,19 @@ Object.defineProperties(VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype
 
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9B3761;
 };
 
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.flush = function flush() {
@@ -61119,6 +63803,11 @@ Object.defineProperties(VkPipelineRasterizationStateStreamCreateInfoEXT.prototyp
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9B3762;
 };
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.flush = function flush() {
@@ -61226,6 +63915,10 @@ Object.defineProperties(VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.pro
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D5270;
 };
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.flush = function flush() {
@@ -61329,6 +64022,10 @@ Object.defineProperties(VkPipelineRepresentativeFragmentTestStateCreateInfoNV.pr
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D5271;
 };
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.flush = function flush() {
@@ -61432,6 +64129,10 @@ Object.defineProperties(VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype, {
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DEACA;
 };
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.flush = function flush() {
@@ -61551,6 +64252,12 @@ Object.defineProperties(VkPipelineViewportExclusiveScissorStateCreateInfoNV.prot
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pExclusiveScissors = null;
+    this._pExclusiveScissorsNative = null;
+  this.sType = 0x3B9DEAC8;
 };
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function flush() {
@@ -61679,6 +64386,10 @@ Object.defineProperties(VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype, 
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9B8D50;
 };
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.flush = function flush() {
@@ -61792,6 +64503,11 @@ Object.defineProperties(VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.proto
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9DDB28;
 };
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.flush = function flush() {
@@ -61899,6 +64615,10 @@ Object.defineProperties(VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prot
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DE2F8;
 };
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.flush = function flush() {
@@ -62002,6 +64722,10 @@ Object.defineProperties(VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DE6E0;
 };
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.flush = function flush() {
@@ -62105,6 +64829,10 @@ Object.defineProperties(VkPhysicalDeviceDedicatedAllocationImageAliasingFeatures
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E7380;
 };
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.flush = function flush() {
@@ -62203,6 +64931,9 @@ Object.defineProperties(VkShadingRatePaletteNV.prototype, {
 
 VkShadingRatePaletteNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._pShadingRatePaletteEntries = null;
+  
 };
 
 VkShadingRatePaletteNV.prototype.flush = function flush() {
@@ -62321,6 +65052,13 @@ Object.defineProperties(VkPipelineViewportShadingRateImageStateCreateInfoNV.prot
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pShadingRatePalettes = null;
+    this._pShadingRatePalettesNative = null;
+  this.sType = 0x3B9D4AA0;
 };
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function flush() {
@@ -62463,6 +65201,11 @@ Object.defineProperties(VkPhysicalDeviceShadingRateImageFeaturesNV.prototype, {
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D4AA1;
 };
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.flush = function flush() {
@@ -62578,6 +65321,12 @@ Object.defineProperties(VkPhysicalDeviceShadingRateImagePropertiesNV.prototype, 
 
 VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  this._shadingRateTexelSize = null;
+  
+  
+  this.sType = 0x3B9D4AA2;
 };
 
 VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.flush = function flush() {
@@ -62691,6 +65440,10 @@ Object.defineProperties(VkCoarseSampleLocationNV.prototype, {
 
 VkCoarseSampleLocationNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xC], 0x0);
+  
+  
+  
+  
 };
 
 VkCoarseSampleLocationNV.prototype.flush = function flush() {
@@ -62801,6 +65554,12 @@ Object.defineProperties(VkCoarseSampleOrderCustomNV.prototype, {
 
 VkCoarseSampleOrderCustomNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  
+  
+  this._pSampleLocations = null;
+    this._pSampleLocationsNative = null;
+  
 };
 
 VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
@@ -62948,6 +65707,13 @@ Object.defineProperties(VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pro
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pCustomSampleOrders = null;
+    this._pCustomSampleOrdersNative = null;
+  this.sType = 0x3B9D4AA5;
 };
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function flush() {
@@ -63090,6 +65856,11 @@ Object.defineProperties(VkPhysicalDeviceMeshShaderFeaturesNV.prototype, {
 
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9DDF10;
 };
 
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.flush = function flush() {
@@ -63273,6 +66044,22 @@ Object.defineProperties(VkPhysicalDeviceMeshShaderPropertiesNV.prototype, {
 
 VkPhysicalDeviceMeshShaderPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x58], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._maxTaskWorkGroupSize = null;
+  
+  
+  
+  this._maxMeshWorkGroupSize = null;
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9DDF11;
 };
 
 VkPhysicalDeviceMeshShaderPropertiesNV.prototype.flush = function flush() {
@@ -63418,6 +66205,9 @@ Object.defineProperties(VkDrawMeshTasksIndirectCommandNV.prototype, {
 
 VkDrawMeshTasksIndirectCommandNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
 };
 
 VkDrawMeshTasksIndirectCommandNV.prototype.flush = function flush() {
@@ -63550,6 +66340,14 @@ Object.defineProperties(VkRayTracingShaderGroupCreateInfoNV.prototype, {
 
 VkRayTracingShaderGroupCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D4E93;
 };
 
 VkRayTracingShaderGroupCreateInfoNV.prototype.flush = function flush() {
@@ -63795,6 +66593,20 @@ Object.defineProperties(VkRayTracingPipelineCreateInfoNV.prototype, {
 
 VkRayTracingPipelineCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x50], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pStages = null;
+    this._pStagesNative = null;
+  
+  this._pGroups = null;
+    this._pGroupsNative = null;
+  
+  this._layout = null;
+  this._basePipelineHandle = null;
+  
+  this.sType = 0x3B9D4E88;
 };
 
 VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
@@ -64105,6 +66917,20 @@ Object.defineProperties(VkGeometryTrianglesNV.prototype, {
 
 VkGeometryTrianglesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x60], 0x0);
+  
+  this._pNext = null;
+  this._vertexData = null;
+  
+  
+  
+  
+  this._indexData = null;
+  
+  
+  
+  this._transformData = null;
+  
+  this.sType = 0x3B9D4E8C;
 };
 
 VkGeometryTrianglesNV.prototype.flush = function flush() {
@@ -64290,6 +67116,13 @@ Object.defineProperties(VkGeometryAABBNV.prototype, {
 
 VkGeometryAABBNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._aabbData = null;
+  
+  
+  
+  this.sType = 0x3B9D4E8D;
 };
 
 VkGeometryAABBNV.prototype.flush = function flush() {
@@ -64407,6 +67240,9 @@ Object.defineProperties(VkGeometryDataNV.prototype, {
 
 VkGeometryDataNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x88], 0x0);
+  this._triangles = null;
+  this._aabbs = null;
+  
 };
 
 VkGeometryDataNV.prototype.flush = function flush() {
@@ -64554,6 +67390,12 @@ Object.defineProperties(VkGeometryNV.prototype, {
 
 VkGeometryNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0xA8], 0x0);
+  
+  this._pNext = null;
+  
+  this._geometry = null;
+  
+  this.sType = 0x3B9D4E8B;
 };
 
 VkGeometryNV.prototype.flush = function flush() {
@@ -64725,6 +67567,15 @@ Object.defineProperties(VkAccelerationStructureInfoNV.prototype, {
 
 VkAccelerationStructureInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this._pGeometries = null;
+    this._pGeometriesNative = null;
+  this.sType = 0x3B9D4E94;
 };
 
 VkAccelerationStructureInfoNV.prototype.flush = function flush() {
@@ -64885,6 +67736,11 @@ Object.defineProperties(VkAccelerationStructureCreateInfoNV.prototype, {
 
 VkAccelerationStructureCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  this._info = null;
+  this.sType = 0x3B9D4E89;
 };
 
 VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
@@ -65074,6 +67930,14 @@ Object.defineProperties(VkBindAccelerationStructureMemoryInfoNV.prototype, {
 
 VkBindAccelerationStructureMemoryInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x38], 0x0);
+  
+  this._pNext = null;
+  this._accelerationStructure = null;
+  this._memory = null;
+  
+  
+  this._pDeviceIndices = null;
+  this.sType = 0x3B9D4E8E;
 };
 
 VkBindAccelerationStructureMemoryInfoNV.prototype.flush = function flush() {
@@ -65209,6 +68073,12 @@ Object.defineProperties(VkWriteDescriptorSetAccelerationStructureNV.prototype, {
 
 VkWriteDescriptorSetAccelerationStructureNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAccelerationStructures = null;
+    this._pAccelerationStructuresNative = null;
+  this.sType = 0x3B9D4E8F;
 };
 
 VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
@@ -65354,6 +68224,11 @@ Object.defineProperties(VkAccelerationStructureMemoryRequirementsInfoNV.prototyp
 
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._accelerationStructure = null;
+  this.sType = 0x3B9D4E90;
 };
 
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.flush = function flush() {
@@ -65501,6 +68376,17 @@ Object.defineProperties(VkPhysicalDeviceRayTracingPropertiesNV.prototype, {
 
 VkPhysicalDeviceRayTracingPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x40], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9D4E91;
 };
 
 VkPhysicalDeviceRayTracingPropertiesNV.prototype.flush = function flush() {
@@ -65639,6 +68525,12 @@ Object.defineProperties(VkDrmFormatModifierPropertiesListEXT.prototype, {
 
 VkDrmFormatModifierPropertiesListEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDrmFormatModifierProperties = null;
+    this._pDrmFormatModifierPropertiesNative = null;
+  this.sType = 0x3B9D3330;
 };
 
 VkDrmFormatModifierPropertiesListEXT.prototype.flush = function flush() {
@@ -65740,6 +68632,10 @@ Object.defineProperties(VkDrmFormatModifierPropertiesEXT.prototype, {
 
 VkDrmFormatModifierPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
+  
 };
 
 VkDrmFormatModifierPropertiesEXT.prototype.flush = function flush() {
@@ -65880,6 +68776,13 @@ Object.defineProperties(VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype,
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this._pQueueFamilyIndices = null;
+  this.sType = 0x3B9D3332;
 };
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.flush = function flush() {
@@ -66012,6 +68915,11 @@ Object.defineProperties(VkImageDrmFormatModifierListCreateInfoEXT.prototype, {
 
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pDrmFormatModifiers = null;
+  this.sType = 0x3B9D3333;
 };
 
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.flush = function flush() {
@@ -66148,6 +69056,13 @@ Object.defineProperties(VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype,
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this._pPlaneLayouts = null;
+    this._pPlaneLayoutsNative = null;
+  this.sType = 0x3B9D3334;
 };
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush() {
@@ -66276,6 +69191,10 @@ Object.defineProperties(VkImageDrmFormatModifierPropertiesEXT.prototype, {
 
 VkImageDrmFormatModifierPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D3335;
 };
 
 VkImageDrmFormatModifierPropertiesEXT.prototype.flush = function flush() {
@@ -66381,6 +69300,10 @@ Object.defineProperties(VkImageStencilUsageCreateInfoEXT.prototype, {
 
 VkImageStencilUsageCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E8AF0;
 };
 
 VkImageStencilUsageCreateInfoEXT.prototype.flush = function flush() {
@@ -66482,6 +69405,10 @@ Object.defineProperties(VkDeviceMemoryOverallocationCreateInfoAMD.prototype, {
 
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DAC48;
 };
 
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.flush = function flush() {
@@ -66593,6 +69520,12 @@ Object.defineProperties(VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype,
 
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9E1D90;
 };
 
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.flush = function flush() {
@@ -66716,6 +69649,12 @@ Object.defineProperties(VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototyp
 
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._minFragmentDensityTexelSize = null;
+  this._maxFragmentDensityTexelSize = null;
+  
+  this.sType = 0x3B9E1D91;
 };
 
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.flush = function flush() {
@@ -66842,6 +69781,10 @@ Object.defineProperties(VkRenderPassFragmentDensityMapCreateInfoEXT.prototype, {
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._fragmentDensityMapAttachment = null;
+  this.sType = 0x3B9E1D92;
 };
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
@@ -66959,6 +69902,10 @@ Object.defineProperties(VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype, 
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E2948;
 };
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.flush = function flush() {
@@ -67062,6 +70009,10 @@ Object.defineProperties(VkSurfaceProtectedCapabilitiesKHR.prototype, {
 
 VkSurfaceProtectedCapabilitiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E6F98;
 };
 
 VkSurfaceProtectedCapabilitiesKHR.prototype.flush = function flush() {
@@ -67165,6 +70116,10 @@ Object.defineProperties(VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.p
 
 VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EA648;
 };
 
 VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.prototype.flush = function flush() {
@@ -67268,6 +70223,10 @@ Object.defineProperties(VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype, {
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C5870;
 };
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.flush = function flush() {
@@ -67381,6 +70340,11 @@ Object.defineProperties(VkPipelineRasterizationDepthClipStateCreateInfoEXT.proto
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9C5871;
 };
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.flush = function flush() {
@@ -67524,6 +70488,11 @@ Object.defineProperties(VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype, {
 
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x110], 0x0);
+  
+  this._pNext = null;
+  this._heapBudget = null;
+  this._heapUsage = null;
+  this.sType = 0x3B9E67C8;
 };
 
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.flush = function flush() {
@@ -67639,6 +70608,10 @@ Object.defineProperties(VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype, {
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E6BB0;
 };
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.flush = function flush() {
@@ -67742,6 +70715,10 @@ Object.defineProperties(VkMemoryPriorityAllocateInfoEXT.prototype, {
 
 VkMemoryPriorityAllocateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E6BB1;
 };
 
 VkMemoryPriorityAllocateInfoEXT.prototype.flush = function flush() {
@@ -67865,6 +70842,12 @@ Object.defineProperties(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype
 
 VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9E8320;
 };
 
 VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.flush = function flush() {
@@ -67996,6 +70979,12 @@ Object.defineProperties(VkPhysicalDeviceBufferAddressFeaturesEXT.prototype, {
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9E8320;
 };
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.flush = function flush() {
@@ -68114,6 +71103,10 @@ Object.defineProperties(VkBufferDeviceAddressInfoEXT.prototype, {
 
 VkBufferDeviceAddressInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._buffer = null;
+  this.sType = 0x3B9E8321;
 };
 
 VkBufferDeviceAddressInfoEXT.prototype.flush = function flush() {
@@ -68218,6 +71211,10 @@ Object.defineProperties(VkBufferDeviceAddressCreateInfoEXT.prototype, {
 
 VkBufferDeviceAddressCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E8322;
 };
 
 VkBufferDeviceAddressCreateInfoEXT.prototype.flush = function flush() {
@@ -68319,6 +71316,10 @@ Object.defineProperties(VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype, {
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D6210;
 };
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.flush = function flush() {
@@ -68424,6 +71425,11 @@ Object.defineProperties(VkFilterCubicImageViewImageFormatPropertiesEXT.prototype
 
 VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D6211;
 };
 
 VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.flush = function flush() {
@@ -68535,6 +71541,10 @@ Object.defineProperties(VkPhysicalDeviceImagelessFramebufferFeaturesKHR.prototyp
 
 VkPhysicalDeviceImagelessFramebufferFeaturesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9C6FE0;
 };
 
 VkPhysicalDeviceImagelessFramebufferFeaturesKHR.prototype.flush = function flush() {
@@ -68654,6 +71664,12 @@ Object.defineProperties(VkFramebufferAttachmentsCreateInfoKHR.prototype, {
 
 VkFramebufferAttachmentsCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAttachmentImageInfos = null;
+    this._pAttachmentImageInfosNative = null;
+  this.sType = 0x3B9C6FE1;
 };
 
 VkFramebufferAttachmentsCreateInfoKHR.prototype.flush = function flush() {
@@ -68849,6 +71865,16 @@ Object.defineProperties(VkFramebufferAttachmentImageInfoKHR.prototype, {
 
 VkFramebufferAttachmentImageInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  this._pViewFormats = null;
+  this.sType = 0x3B9C6FE2;
 };
 
 VkFramebufferAttachmentImageInfoKHR.prototype.flush = function flush() {
@@ -68992,6 +72018,12 @@ Object.defineProperties(VkRenderPassAttachmentBeginInfoKHR.prototype, {
 
 VkRenderPassAttachmentBeginInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  this._pAttachments = null;
+    this._pAttachmentsNative = null;
+  this.sType = 0x3B9C6FE3;
 };
 
 VkRenderPassAttachmentBeginInfoKHR.prototype.flush = function flush() {
@@ -69130,6 +72162,11 @@ Object.defineProperties(VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype, {
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9E96A8;
 };
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.flush = function flush() {
@@ -69231,6 +72268,10 @@ Object.defineProperties(VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype,
 
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E96AA;
 };
 
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
@@ -69408,6 +72449,17 @@ Object.defineProperties(VkCooperativeMatrixPropertiesNV.prototype, {
 
 VkCooperativeMatrixPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  
+  
+  
+  
+  this.sType = 0x3B9E96A9;
 };
 
 VkCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
@@ -69539,6 +72591,10 @@ Object.defineProperties(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype, {
 
 VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EA260;
 };
 
 VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.flush = function flush() {
@@ -69678,6 +72734,12 @@ Object.defineProperties(VkImageViewHandleInfoNVX.prototype, {
 
 VkImageViewHandleInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._imageView = null;
+  
+  this._sampler = null;
+  this.sType = 0x3B9B3F30;
 };
 
 VkImageViewHandleInfoNVX.prototype.flush = function flush() {
@@ -69769,6 +72831,9 @@ Object.defineProperties(VkPipelineCreationFeedbackEXT.prototype, {
 
 VkPipelineCreationFeedbackEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  
+  
 };
 
 VkPipelineCreationFeedbackEXT.prototype.flush = function flush() {
@@ -69900,6 +72965,13 @@ Object.defineProperties(VkPipelineCreationFeedbackCreateInfoEXT.prototype, {
 
 VkPipelineCreationFeedbackCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x28], 0x0);
+  
+  this._pNext = null;
+  this._pPipelineCreationFeedback = null;
+  
+  this._pPipelineStageCreationFeedbacks = null;
+    this._pPipelineStageCreationFeedbacksNative = null;
+  this.sType = 0x3B9DB800;
 };
 
 VkPipelineCreationFeedbackCreateInfoEXT.prototype.flush = function flush() {
@@ -70030,6 +73102,10 @@ Object.defineProperties(VkSurfaceFullScreenExclusiveInfoEXT.prototype, {
 
 VkSurfaceFullScreenExclusiveInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EAE18;
 };
 
 VkSurfaceFullScreenExclusiveInfoEXT.prototype.flush = function flush() {
@@ -70121,6 +73197,9 @@ Object.defineProperties(VkSurfaceFullScreenExclusiveWin32InfoEXT.prototype, {
 
 VkSurfaceFullScreenExclusiveWin32InfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this.sType = 0x3B9EAE19;
 };
 
 VkSurfaceFullScreenExclusiveWin32InfoEXT.prototype.flush = function flush() {
@@ -70220,6 +73299,10 @@ Object.defineProperties(VkSurfaceCapabilitiesFullScreenExclusiveEXT.prototype, {
 
 VkSurfaceCapabilitiesFullScreenExclusiveEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EAE1A;
 };
 
 VkSurfaceCapabilitiesFullScreenExclusiveEXT.prototype.flush = function flush() {
@@ -70321,6 +73404,10 @@ Object.defineProperties(VkHeadlessSurfaceCreateInfoEXT.prototype, {
 
 VkHeadlessSurfaceCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9EB200;
 };
 
 VkHeadlessSurfaceCreateInfoEXT.prototype.flush = function flush() {
@@ -70424,6 +73511,10 @@ Object.defineProperties(VkPhysicalDeviceCoverageReductionModeFeaturesNV.prototyp
 
 VkPhysicalDeviceCoverageReductionModeFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9E9A90;
 };
 
 VkPhysicalDeviceCoverageReductionModeFeaturesNV.prototype.flush = function flush() {
@@ -70535,6 +73626,11 @@ Object.defineProperties(VkPipelineCoverageReductionStateCreateInfoNV.prototype, 
 
 VkPipelineCoverageReductionStateCreateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9E9A91;
 };
 
 VkPipelineCoverageReductionStateCreateInfoNV.prototype.flush = function flush() {
@@ -70654,6 +73750,13 @@ Object.defineProperties(VkFramebufferMixedSamplesCombinationNV.prototype, {
 
 VkFramebufferMixedSamplesCombinationNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9E9A92;
 };
 
 VkFramebufferMixedSamplesCombinationNV.prototype.flush = function flush() {
@@ -70773,6 +73876,10 @@ Object.defineProperties(VkPhysicalDeviceShaderIntegerFunctions2INTEL.prototype, 
 
 VkPhysicalDeviceShaderIntegerFunctions2INTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DFA68;
 };
 
 VkPhysicalDeviceShaderIntegerFunctions2INTEL.prototype.flush = function flush() {
@@ -70871,6 +73978,9 @@ Object.defineProperties(VkPerformanceValueINTEL.prototype, {
 
 VkPerformanceValueINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  
+  this._data = null;
+  
 };
 
 VkPerformanceValueINTEL.prototype.flush = function flush() {
@@ -70982,6 +74092,10 @@ Object.defineProperties(VkInitializePerformanceApiInfoINTEL.prototype, {
 
 VkInitializePerformanceApiInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  this._pUserData = null;
+  this.sType = 0x3B9DFE51;
 };
 
 VkInitializePerformanceApiInfoINTEL.prototype.flush = function flush() {
@@ -71083,6 +74197,10 @@ Object.defineProperties(VkQueryPoolCreateInfoINTEL.prototype, {
 
 VkQueryPoolCreateInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DFE50;
 };
 
 VkQueryPoolCreateInfoINTEL.prototype.flush = function flush() {
@@ -71187,6 +74305,10 @@ Object.defineProperties(VkPerformanceMarkerInfoINTEL.prototype, {
 
 VkPerformanceMarkerInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DFE52;
 };
 
 VkPerformanceMarkerInfoINTEL.prototype.flush = function flush() {
@@ -71290,6 +74412,10 @@ Object.defineProperties(VkPerformanceStreamMarkerInfoINTEL.prototype, {
 
 VkPerformanceStreamMarkerInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DFE53;
 };
 
 VkPerformanceStreamMarkerInfoINTEL.prototype.flush = function flush() {
@@ -71416,6 +74542,12 @@ Object.defineProperties(VkPerformanceOverrideInfoINTEL.prototype, {
 
 VkPerformanceOverrideInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9DFE54;
 };
 
 VkPerformanceOverrideInfoINTEL.prototype.flush = function flush() {
@@ -71525,6 +74657,10 @@ Object.defineProperties(VkPerformanceConfigurationAcquireInfoINTEL.prototype, {
 
 VkPerformanceConfigurationAcquireInfoINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9DFE55;
 };
 
 VkPerformanceConfigurationAcquireInfoINTEL.prototype.flush = function flush() {
@@ -71630,6 +74766,11 @@ Object.defineProperties(VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.prototype, 
 
 VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  
+  this.sType = 0x3B9D2391;
 };
 
 VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.prototype.flush = function flush() {
@@ -71741,6 +74882,10 @@ Object.defineProperties(VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.prototype, {
 
 VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9D2390;
 };
 
 VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.prototype.flush = function flush() {
@@ -71864,6 +75009,12 @@ Object.defineProperties(VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.proto
 
 VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x20], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  this.sType = 0x3B9E9E78;
 };
 
 VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.prototype.flush = function flush() {
@@ -71975,6 +75126,10 @@ Object.defineProperties(VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEX
 
 VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9F0020;
 };
 
 VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.prototype.flush = function flush() {
@@ -72078,6 +75233,10 @@ Object.defineProperties(VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.prototyp
 
 VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x18], 0x0);
+  
+  this._pNext = null;
+  
+  this.sType = 0x3B9F13A8;
 };
 
 VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.prototype.flush = function flush() {
@@ -72197,6 +75356,13 @@ Object.defineProperties(VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.protot
 
 VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x30], 0x0);
+  
+  this._pNext = null;
+  
+  
+  
+  
+  this.sType = 0x3B9F13A9;
 };
 
 VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.prototype.flush = function flush() {
@@ -72331,6 +75497,10 @@ Object.defineProperties(VkClearColorValue.prototype, {
 
 VkClearColorValue.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  this._float32 = null;
+  this._int32 = null;
+  this._uint32 = null;
+  
 };
 
 VkClearColorValue.prototype.flush = function flush() {
@@ -72468,6 +75638,9 @@ Object.defineProperties(VkClearValue.prototype, {
 
 VkClearValue.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x10], 0x0);
+  this._color = null;
+  this._depthStencil = null;
+  
 };
 
 VkClearValue.prototype.flush = function flush() {
@@ -72623,6 +75796,12 @@ Object.defineProperties(VkPerformanceValueDataINTEL.prototype, {
 
 VkPerformanceValueDataINTEL.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[0x8], 0x0);
+  
+  
+  
+  
+  this._valueString = null;
+  
 };
 
 VkPerformanceValueDataINTEL.prototype.flush = function flush() {

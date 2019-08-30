@@ -53,6 +53,12 @@ Object.defineProperties({{ struct.name }}.prototype, {
 
 {{ struct.name }}.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE[{{ getStructureByteLength() | safe }}], 0x0);
+  {% for member in struct.children %}
+  {%- if isIgnoreableType(member) != true -%}
+  {{ getConstructorResetter(member) | safe }}
+  {% endif -%}
+  {%- endfor -%}
+  {{ getStructureAutoSType() | safe }}
 };
 
 {{ struct.name }}.prototype.flush = function flush() {

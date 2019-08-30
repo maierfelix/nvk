@@ -92,6 +92,24 @@ function getConstructorInitializer(member) {
   return ``;
 };
 
+function getConstructorResetter(member) {
+  let jsType = getJavaScriptType(ast, member);
+  if (jsType.isNumeric) return ``; // no reset needed
+  if (jsType.isBoolean) return ``; // no reset needed
+  if (jsType.isString && jsType.isStatic) return ``; // no reset needed
+  if (jsType.isJavaScriptArray) {
+    if (jsType.isStatic) {
+      return `this._${member.name} = null;`;
+    } else {
+      return `this._${member.name} = null;
+    this._${member.name}Native = null;`;
+    }
+  }
+  if (jsType.isNullable) return `this._${member.name} = null;`;
+  warn(`Cannot resolve constructor initializer for ${member.name}`);
+  return ``;
+};
+
 function getStructureMemberByteOffset(member) {
   if (!memoryLayouts) return `0x0`;
   let byteOffset = memoryLayouts[currentStruct.name][member.name].byteOffset;
@@ -798,6 +816,7 @@ export default function(astReference, includeValidations, disableMinification, c
       getSetterProcessor,
       getFlusherProcessor,
       getStructureAutoSType,
+      getConstructorResetter,
       getReflectorProcesssor,
       getStructureByteLength,
       getStructureMemoryViews,
