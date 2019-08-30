@@ -14,8 +14,9 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">{{ instantiationName | safe }} = new {{ struct.name }}();{%- if struct.returnedonly != true %}
-{{ instantiationName | safe }} = new {{ struct.name }}(object);{%- endif -%}</code></pre>
+      <pre><code class="language-js">{{ instantiationName | safe }} = {{ struct.name }}();
+{{ instantiationName | safe }} = new {{ struct.name }}();
+{{ instantiationName | safe }} = new {{ struct.name }}(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub{%- if struct.returnedonly %} <vk-property-type type="read-only">read-only</vk-property-type>{%- endif -%}</vk-section-title>
