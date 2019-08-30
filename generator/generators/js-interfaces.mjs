@@ -233,9 +233,9 @@ function getStructureMemoryViews(passedByReference) {
   // passed by-value, share memoryBuffer of top-structure
   } else {
     viewTypes.map(type => {
-      let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
-      let byteLength = getStructureByteLength();
-      out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
+      let byteStride = global[type + "Array"].BYTES_PER_ELEMENT;
+      let length = getStructureByteLength() / byteStride;
+      out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer, opts.$memoryOffset, ${getHexaByteOffset(length)});\n`;
     });
   }
   return out;
@@ -539,7 +539,7 @@ function getFlusherProcessor(member) {
     let ${member.name} = this._${member.name};
     ${member.name}.flush();
     if (this.memoryBuffer !== ${member.name}.memoryBuffer) {
-      let srcView = new Uint8Array(${member.name}.memoryBuffer).subarray(${member.name}.$memoryOffset, ${member.name}.$memoryOffset + ${byteLength});
+      let srcView = new Uint8Array(${member.name}.memoryBuffer, ${member.name}.$memoryOffset, ${byteLength});
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, ${byteOffset});
       ${ validate ? `if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'${currentStruct.name}.${member.name}' isn't used as shared-memory");` : `` }

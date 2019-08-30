@@ -2210,9 +2210,9 @@ function VkBaseOutStructure(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -2310,9 +2310,9 @@ function VkBaseInStructure(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -2410,8 +2410,8 @@ function VkOffset2D(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -2497,8 +2497,8 @@ function VkOffset3D(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -2602,8 +2602,8 @@ function VkExtent2D(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -2689,8 +2689,8 @@ function VkExtent3D(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -2794,8 +2794,8 @@ function VkViewport(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -2953,7 +2953,7 @@ function VkRect2D(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -3027,7 +3027,7 @@ VkRect2D.prototype.flush = function flush() {
     let offset = this._offset;
     offset.flush();
     if (this.memoryBuffer !== offset.memoryBuffer) {
-      let srcView = new Uint8Array(offset.memoryBuffer).subarray(offset.$memoryOffset, offset.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(offset.memoryBuffer, offset.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRect2D.offset' isn't used as shared-memory");
@@ -3039,7 +3039,7 @@ VkRect2D.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRect2D.extent' isn't used as shared-memory");
@@ -3082,8 +3082,8 @@ function VkClearRect(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -3164,7 +3164,7 @@ VkClearRect.prototype.flush = function flush() {
     let rect = this._rect;
     rect.flush();
     if (this.memoryBuffer !== rect.memoryBuffer) {
-      let srcView = new Uint8Array(rect.memoryBuffer).subarray(rect.$memoryOffset, rect.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(rect.memoryBuffer, rect.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearRect.rect' isn't used as shared-memory");
@@ -3209,8 +3209,8 @@ function VkComponentMapping(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -3344,9 +3344,9 @@ function VkPhysicalDeviceProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x338) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x338) / 0x4);
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x338) / 0x1);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xCE);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xCE);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x338);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x338);
@@ -3525,8 +3525,8 @@ function VkExtensionProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x104) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x104) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x104);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x41);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x104);
@@ -3604,8 +3604,8 @@ function VkLayerProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x208) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x208) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x208);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x82);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x208);
@@ -3707,10 +3707,10 @@ function VkApplicationInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -3917,8 +3917,8 @@ function VkAllocationCallbacks(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -4102,10 +4102,10 @@ function VkDeviceQueueCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -4296,10 +4296,10 @@ function VkDeviceCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -4705,10 +4705,10 @@ function VkInstanceCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -5002,9 +5002,9 @@ function VkQueueFamilyProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -5105,8 +5105,8 @@ function VkPhysicalDeviceMemoryProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x208) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x208) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x208);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x82);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x208);
@@ -5208,11 +5208,11 @@ function VkMemoryAllocateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -5374,9 +5374,9 @@ function VkMemoryRequirements(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -5464,8 +5464,8 @@ function VkSparseImageFormatProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x14) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x14);
@@ -5554,9 +5554,9 @@ function VkSparseImageMemoryRequirements(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -5668,9 +5668,9 @@ function VkMemoryType(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -5747,9 +5747,9 @@ function VkMemoryHeap(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -5826,10 +5826,10 @@ function VkMappedMemoryRange(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -5986,8 +5986,8 @@ function VkFormatProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -6074,10 +6074,10 @@ function VkImageFormatProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -6190,9 +6190,9 @@ function VkDescriptorBufferInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -6305,9 +6305,9 @@ function VkDescriptorImageInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -6431,10 +6431,10 @@ function VkWriteDescriptorSet(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -6808,10 +6808,10 @@ function VkCopyDescriptorSet(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -7048,11 +7048,11 @@ function VkBufferCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -7285,10 +7285,10 @@ function VkBufferViewCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -7484,9 +7484,9 @@ function VkImageSubresource(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -7591,9 +7591,9 @@ function VkImageSubresourceLayers(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -7716,9 +7716,9 @@ function VkImageSubresourceRange(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x14) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x14);
@@ -7859,9 +7859,9 @@ function VkMemoryBarrier(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -7991,11 +7991,11 @@ function VkBufferMemoryBarrier(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -8225,10 +8225,10 @@ function VkImageMemoryBarrier(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -8446,7 +8446,7 @@ VkImageMemoryBarrier.prototype.flush = function flush() {
     let subresourceRange = this._subresourceRange;
     subresourceRange.flush();
     if (this.memoryBuffer !== subresourceRange.memoryBuffer) {
-      let srcView = new Uint8Array(subresourceRange.memoryBuffer).subarray(subresourceRange.$memoryOffset, subresourceRange.$memoryOffset + 0x14);
+      let srcView = new Uint8Array(subresourceRange.memoryBuffer, subresourceRange.$memoryOffset, 0x14);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x30);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageMemoryBarrier.subresourceRange' isn't used as shared-memory");
@@ -8521,10 +8521,10 @@ function VkImageCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x58) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x58) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x58);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xB);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x58);
@@ -8827,7 +8827,7 @@ VkImageCreateInfo.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCreateInfo.extent' isn't used as shared-memory");
@@ -8922,8 +8922,8 @@ function VkSubresourceLayout(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -9032,9 +9032,9 @@ function VkImageViewCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x50) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x50) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x50);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x50);
@@ -9233,7 +9233,7 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
     let components = this._components;
     components.flush();
     if (this.memoryBuffer !== components.memoryBuffer) {
-      let srcView = new Uint8Array(components.memoryBuffer).subarray(components.$memoryOffset, components.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(components.memoryBuffer, components.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageViewCreateInfo.components' isn't used as shared-memory");
@@ -9245,7 +9245,7 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
     let subresourceRange = this._subresourceRange;
     subresourceRange.flush();
     if (this.memoryBuffer !== subresourceRange.memoryBuffer) {
-      let srcView = new Uint8Array(subresourceRange.memoryBuffer).subarray(subresourceRange.$memoryOffset, subresourceRange.$memoryOffset + 0x14);
+      let srcView = new Uint8Array(subresourceRange.memoryBuffer, subresourceRange.$memoryOffset, 0x14);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageViewCreateInfo.subresourceRange' isn't used as shared-memory");
@@ -9314,8 +9314,8 @@ function VkBufferCopy(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -9419,10 +9419,10 @@ function VkSparseMemoryBind(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -9572,10 +9572,10 @@ function VkSparseImageMemoryBind(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -9724,7 +9724,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
     let subresource = this._subresource;
     subresource.flush();
     if (this.memoryBuffer !== subresource.memoryBuffer) {
-      let srcView = new Uint8Array(subresource.memoryBuffer).subarray(subresource.$memoryOffset, subresource.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(subresource.memoryBuffer, subresource.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.subresource' isn't used as shared-memory");
@@ -9736,7 +9736,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
     let offset = this._offset;
     offset.flush();
     if (this.memoryBuffer !== offset.memoryBuffer) {
-      let srcView = new Uint8Array(offset.memoryBuffer).subarray(offset.$memoryOffset, offset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(offset.memoryBuffer, offset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0xC);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.offset' isn't used as shared-memory");
@@ -9748,7 +9748,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSparseImageMemoryBind.extent' isn't used as shared-memory");
@@ -9809,9 +9809,9 @@ function VkSparseBufferMemoryBindInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -9959,9 +9959,9 @@ function VkSparseImageOpaqueMemoryBindInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -10109,9 +10109,9 @@ function VkSparseImageMemoryBindInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -10259,10 +10259,10 @@ function VkBindSparseInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -10730,7 +10730,7 @@ function VkImageCopy(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x44) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x44);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x44);
@@ -10870,7 +10870,7 @@ VkImageCopy.prototype.flush = function flush() {
     let srcSubresource = this._srcSubresource;
     srcSubresource.flush();
     if (this.memoryBuffer !== srcSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(srcSubresource.memoryBuffer).subarray(srcSubresource.$memoryOffset, srcSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(srcSubresource.memoryBuffer, srcSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.srcSubresource' isn't used as shared-memory");
@@ -10882,7 +10882,7 @@ VkImageCopy.prototype.flush = function flush() {
     let srcOffset = this._srcOffset;
     srcOffset.flush();
     if (this.memoryBuffer !== srcOffset.memoryBuffer) {
-      let srcView = new Uint8Array(srcOffset.memoryBuffer).subarray(srcOffset.$memoryOffset, srcOffset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(srcOffset.memoryBuffer, srcOffset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.srcOffset' isn't used as shared-memory");
@@ -10894,7 +10894,7 @@ VkImageCopy.prototype.flush = function flush() {
     let dstSubresource = this._dstSubresource;
     dstSubresource.flush();
     if (this.memoryBuffer !== dstSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(dstSubresource.memoryBuffer).subarray(dstSubresource.$memoryOffset, dstSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(dstSubresource.memoryBuffer, dstSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.dstSubresource' isn't used as shared-memory");
@@ -10906,7 +10906,7 @@ VkImageCopy.prototype.flush = function flush() {
     let dstOffset = this._dstOffset;
     dstOffset.flush();
     if (this.memoryBuffer !== dstOffset.memoryBuffer) {
-      let srcView = new Uint8Array(dstOffset.memoryBuffer).subarray(dstOffset.$memoryOffset, dstOffset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(dstOffset.memoryBuffer, dstOffset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.dstOffset' isn't used as shared-memory");
@@ -10918,7 +10918,7 @@ VkImageCopy.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageCopy.extent' isn't used as shared-memory");
@@ -10979,7 +10979,7 @@ function VkImageBlit(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x50) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x50);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x50);
@@ -11089,7 +11089,7 @@ VkImageBlit.prototype.flush = function flush() {
     let srcSubresource = this._srcSubresource;
     srcSubresource.flush();
     if (this.memoryBuffer !== srcSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(srcSubresource.memoryBuffer).subarray(srcSubresource.$memoryOffset, srcSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(srcSubresource.memoryBuffer, srcSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageBlit.srcSubresource' isn't used as shared-memory");
@@ -11127,7 +11127,7 @@ VkImageBlit.prototype.flush = function flush() {
     let dstSubresource = this._dstSubresource;
     dstSubresource.flush();
     if (this.memoryBuffer !== dstSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(dstSubresource.memoryBuffer).subarray(dstSubresource.$memoryOffset, dstSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(dstSubresource.memoryBuffer, dstSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageBlit.dstSubresource' isn't used as shared-memory");
@@ -11208,9 +11208,9 @@ function VkBufferImageCopy(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -11350,7 +11350,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
     let imageSubresource = this._imageSubresource;
     imageSubresource.flush();
     if (this.memoryBuffer !== imageSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(imageSubresource.memoryBuffer).subarray(imageSubresource.$memoryOffset, imageSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(imageSubresource.memoryBuffer, imageSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageSubresource' isn't used as shared-memory");
@@ -11362,7 +11362,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
     let imageOffset = this._imageOffset;
     imageOffset.flush();
     if (this.memoryBuffer !== imageOffset.memoryBuffer) {
-      let srcView = new Uint8Array(imageOffset.memoryBuffer).subarray(imageOffset.$memoryOffset, imageOffset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(imageOffset.memoryBuffer, imageOffset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageOffset' isn't used as shared-memory");
@@ -11374,7 +11374,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
     let imageExtent = this._imageExtent;
     imageExtent.flush();
     if (this.memoryBuffer !== imageExtent.memoryBuffer) {
-      let srcView = new Uint8Array(imageExtent.memoryBuffer).subarray(imageExtent.$memoryOffset, imageExtent.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(imageExtent.memoryBuffer, imageExtent.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkBufferImageCopy.imageExtent' isn't used as shared-memory");
@@ -11435,7 +11435,7 @@ function VkImageResolve(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x44) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x44);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x44);
@@ -11575,7 +11575,7 @@ VkImageResolve.prototype.flush = function flush() {
     let srcSubresource = this._srcSubresource;
     srcSubresource.flush();
     if (this.memoryBuffer !== srcSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(srcSubresource.memoryBuffer).subarray(srcSubresource.$memoryOffset, srcSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(srcSubresource.memoryBuffer, srcSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.srcSubresource' isn't used as shared-memory");
@@ -11587,7 +11587,7 @@ VkImageResolve.prototype.flush = function flush() {
     let srcOffset = this._srcOffset;
     srcOffset.flush();
     if (this.memoryBuffer !== srcOffset.memoryBuffer) {
-      let srcView = new Uint8Array(srcOffset.memoryBuffer).subarray(srcOffset.$memoryOffset, srcOffset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(srcOffset.memoryBuffer, srcOffset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.srcOffset' isn't used as shared-memory");
@@ -11599,7 +11599,7 @@ VkImageResolve.prototype.flush = function flush() {
     let dstSubresource = this._dstSubresource;
     dstSubresource.flush();
     if (this.memoryBuffer !== dstSubresource.memoryBuffer) {
-      let srcView = new Uint8Array(dstSubresource.memoryBuffer).subarray(dstSubresource.$memoryOffset, dstSubresource.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(dstSubresource.memoryBuffer, dstSubresource.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.dstSubresource' isn't used as shared-memory");
@@ -11611,7 +11611,7 @@ VkImageResolve.prototype.flush = function flush() {
     let dstOffset = this._dstOffset;
     dstOffset.flush();
     if (this.memoryBuffer !== dstOffset.memoryBuffer) {
-      let srcView = new Uint8Array(dstOffset.memoryBuffer).subarray(dstOffset.$memoryOffset, dstOffset.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(dstOffset.memoryBuffer, dstOffset.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.dstOffset' isn't used as shared-memory");
@@ -11623,7 +11623,7 @@ VkImageResolve.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x38);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkImageResolve.extent' isn't used as shared-memory");
@@ -11684,9 +11684,9 @@ function VkShaderModuleCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -11858,9 +11858,9 @@ function VkDescriptorSetLayoutBinding(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -12039,10 +12039,10 @@ function VkDescriptorSetLayoutCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -12244,9 +12244,9 @@ function VkDescriptorPoolSize(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -12336,10 +12336,10 @@ function VkDescriptorPoolCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -12559,10 +12559,10 @@ function VkDescriptorSetAllocateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -12772,9 +12772,9 @@ function VkSpecializationMapEntry(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -12879,9 +12879,9 @@ function VkSpecializationInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -13045,9 +13045,9 @@ function VkPipelineShaderStageCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -13258,9 +13258,9 @@ function VkComputePipelineCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -13437,7 +13437,7 @@ VkComputePipelineCreateInfo.prototype.flush = function flush() {
     let stage = this._stage;
     stage.flush();
     if (this.memoryBuffer !== stage.memoryBuffer) {
-      let srcView = new Uint8Array(stage.memoryBuffer).subarray(stage.$memoryOffset, stage.$memoryOffset + 0x30);
+      let srcView = new Uint8Array(stage.memoryBuffer, stage.$memoryOffset, 0x30);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkComputePipelineCreateInfo.stage' isn't used as shared-memory");
@@ -13500,9 +13500,9 @@ function VkVertexInputBindingDescription(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -13610,9 +13610,9 @@ function VkVertexInputAttributeDescription(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -13738,10 +13738,10 @@ function VkPipelineVertexInputStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -14014,10 +14014,10 @@ function VkPipelineInputAssemblyStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -14166,10 +14166,10 @@ function VkPipelineTessellationStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -14318,10 +14318,10 @@ function VkPipelineViewportStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -14598,11 +14598,11 @@ function VkPipelineRasterizationStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -14914,11 +14914,11 @@ function VkPipelineMultisampleStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -15158,9 +15158,9 @@ function VkPipelineColorBlendAttachmentState(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -15370,11 +15370,11 @@ function VkPipelineColorBlendStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -15660,10 +15660,10 @@ function VkPipelineDynamicStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -15818,9 +15818,9 @@ function VkStencilOpState(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x1C) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1C) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1C) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x1C);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x1C);
@@ -16009,11 +16009,11 @@ function VkPipelineDepthStencilStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x68) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x68) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x68) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x68) / 0x4);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x68) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x68);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x1A);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xD);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x1A);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x1A);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x68);
@@ -16227,7 +16227,7 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
     let front = this._front;
     front.flush();
     if (this.memoryBuffer !== front.memoryBuffer) {
-      let srcView = new Uint8Array(front.memoryBuffer).subarray(front.$memoryOffset, front.$memoryOffset + 0x1C);
+      let srcView = new Uint8Array(front.memoryBuffer, front.$memoryOffset, 0x1C);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineDepthStencilStateCreateInfo.front' isn't used as shared-memory");
@@ -16239,7 +16239,7 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
     let back = this._back;
     back.flush();
     if (this.memoryBuffer !== back.memoryBuffer) {
-      let srcView = new Uint8Array(back.memoryBuffer).subarray(back.$memoryOffset, back.$memoryOffset + 0x1C);
+      let srcView = new Uint8Array(back.memoryBuffer, back.$memoryOffset, 0x1C);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x44);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineDepthStencilStateCreateInfo.back' isn't used as shared-memory");
@@ -16324,10 +16324,10 @@ function VkGraphicsPipelineCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x90) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x90) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x90) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x90) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x90);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x24);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x24);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x90);
@@ -16879,9 +16879,9 @@ function VkPipelineCacheCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -17035,9 +17035,9 @@ function VkPushConstantRange(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -17142,10 +17142,10 @@ function VkPipelineLayoutCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -17400,11 +17400,11 @@ function VkSamplerCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x50) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x50) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x50);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x50);
@@ -17822,10 +17822,10 @@ function VkCommandPoolCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -17956,10 +17956,10 @@ function VkCommandBufferAllocateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -18119,10 +18119,10 @@ function VkCommandBufferInheritanceInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -18356,9 +18356,9 @@ function VkCommandBufferBeginInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -18514,10 +18514,10 @@ function VkRenderPassBeginInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -18703,7 +18703,7 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
     let renderArea = this._renderArea;
     renderArea.flush();
     if (this.memoryBuffer !== renderArea.memoryBuffer) {
-      let srcView = new Uint8Array(renderArea.memoryBuffer).subarray(renderArea.$memoryOffset, renderArea.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(renderArea.memoryBuffer, renderArea.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRenderPassBeginInfo.renderArea' isn't used as shared-memory");
@@ -18795,9 +18795,9 @@ function VkClearDepthStencilValue(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -18884,9 +18884,9 @@ function VkClearAttachment(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -18968,7 +18968,7 @@ VkClearAttachment.prototype.flush = function flush() {
     let clearValue = this._clearValue;
     clearValue.flush();
     if (this.memoryBuffer !== clearValue.memoryBuffer) {
-      let srcView = new Uint8Array(clearValue.memoryBuffer).subarray(clearValue.$memoryOffset, clearValue.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(clearValue.memoryBuffer, clearValue.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearAttachment.clearValue' isn't used as shared-memory");
@@ -19013,8 +19013,8 @@ function VkAttachmentDescription(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x24) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x24) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x24);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x24);
@@ -19247,9 +19247,9 @@ function VkAttachmentReference(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -19339,10 +19339,10 @@ function VkSubpassDescription(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -19696,9 +19696,9 @@ function VkSubpassDependency(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x1C) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1C) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1C) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x1C);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x1C);
@@ -19875,10 +19875,10 @@ function VkRenderPassCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -20224,9 +20224,9 @@ function VkEventCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -20338,9 +20338,9 @@ function VkFenceCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -20471,8 +20471,8 @@ function VkPhysicalDeviceFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xDC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xDC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xDC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x37);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xDC);
@@ -21347,8 +21347,8 @@ function VkPhysicalDeviceSparseProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x14) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x14);
@@ -21457,12 +21457,12 @@ function VkPhysicalDeviceLimits(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x1F8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1F8) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x1F8) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1F8) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x1F8) / 0x8);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x1F8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x1F8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x7E);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3F);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x7E);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3F);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x7E);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x1F8);
@@ -22718,9 +22718,9 @@ function VkSemaphoreCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -22851,10 +22851,10 @@ function VkQueryPoolCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -23024,10 +23024,10 @@ function VkFramebufferCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -23309,8 +23309,8 @@ function VkDrawIndirectCommand(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -23432,9 +23432,9 @@ function VkDrawIndexedIndirectCommand(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x14) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x14);
@@ -23575,8 +23575,8 @@ function VkDispatchIndirectCommand(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -23680,10 +23680,10 @@ function VkSubmitInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -24037,9 +24037,9 @@ function VkDisplayPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -24180,8 +24180,8 @@ function VkDisplayPlanePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -24257,8 +24257,8 @@ function VkDisplayModeParametersKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -24325,7 +24325,7 @@ VkDisplayModeParametersKHR.prototype.flush = function flush() {
     let visibleRegion = this._visibleRegion;
     visibleRegion.flush();
     if (this.memoryBuffer !== visibleRegion.memoryBuffer) {
-      let srcView = new Uint8Array(visibleRegion.memoryBuffer).subarray(visibleRegion.$memoryOffset, visibleRegion.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(visibleRegion.memoryBuffer, visibleRegion.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayModeParametersKHR.visibleRegion' isn't used as shared-memory");
@@ -24366,7 +24366,7 @@ function VkDisplayModePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -24443,9 +24443,9 @@ function VkDisplayModeCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -24546,7 +24546,7 @@ VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
     let parameters = this._parameters;
     parameters.flush();
     if (this.memoryBuffer !== parameters.memoryBuffer) {
-      let srcView = new Uint8Array(parameters.memoryBuffer).subarray(parameters.$memoryOffset, parameters.$memoryOffset + 0xC);
+      let srcView = new Uint8Array(parameters.memoryBuffer, parameters.$memoryOffset, 0xC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x14);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayModeCreateInfoKHR.parameters' isn't used as shared-memory");
@@ -24597,8 +24597,8 @@ function VkDisplayPlaneCapabilitiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x44) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x44) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x44);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x11);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x44);
@@ -24767,11 +24767,11 @@ function VkDisplaySurfaceCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -24966,7 +24966,7 @@ VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
     let imageExtent = this._imageExtent;
     imageExtent.flush();
     if (this.memoryBuffer !== imageExtent.memoryBuffer) {
-      let srcView = new Uint8Array(imageExtent.memoryBuffer).subarray(imageExtent.$memoryOffset, imageExtent.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(imageExtent.memoryBuffer, imageExtent.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x34);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplaySurfaceCreateInfoKHR.imageExtent' isn't used as shared-memory");
@@ -25041,10 +25041,10 @@ function VkDisplayPresentInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -25165,7 +25165,7 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
     let srcRect = this._srcRect;
     srcRect.flush();
     if (this.memoryBuffer !== srcRect.memoryBuffer) {
-      let srcView = new Uint8Array(srcRect.memoryBuffer).subarray(srcRect.$memoryOffset, srcRect.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(srcRect.memoryBuffer, srcRect.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayPresentInfoKHR.srcRect' isn't used as shared-memory");
@@ -25177,7 +25177,7 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
     let dstRect = this._dstRect;
     dstRect.flush();
     if (this.memoryBuffer !== dstRect.memoryBuffer) {
-      let srcView = new Uint8Array(dstRect.memoryBuffer).subarray(dstRect.$memoryOffset, dstRect.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(dstRect.memoryBuffer, dstRect.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkDisplayPresentInfoKHR.dstRect' isn't used as shared-memory");
@@ -25234,9 +25234,9 @@ function VkSurfaceCapabilitiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x34) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x34) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x34) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x34);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xD);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xD);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x34);
@@ -25407,9 +25407,9 @@ function VkWin32SurfaceCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -25557,8 +25557,8 @@ function VkSurfaceFormatKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -25634,10 +25634,10 @@ function VkSwapchainCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x68) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x68) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x68) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x68) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x68);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x1A);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xD);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x1A);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x68);
@@ -25989,7 +25989,7 @@ VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
     let imageExtent = this._imageExtent;
     imageExtent.flush();
     if (this.memoryBuffer !== imageExtent.memoryBuffer) {
-      let srcView = new Uint8Array(imageExtent.memoryBuffer).subarray(imageExtent.$memoryOffset, imageExtent.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(imageExtent.memoryBuffer, imageExtent.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x2C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSwapchainCreateInfoKHR.imageExtent' isn't used as shared-memory");
@@ -26096,10 +26096,10 @@ function VkPresentInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -26406,9 +26406,9 @@ function VkDebugReportCallbackCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -26566,10 +26566,10 @@ function VkValidationFlagsEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -26706,10 +26706,10 @@ function VkValidationFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -26888,9 +26888,9 @@ function VkPipelineRasterizationStateRasterizationOrderAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -27005,10 +27005,10 @@ function VkDebugMarkerObjectNameInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -27171,10 +27171,10 @@ function VkDebugMarkerObjectTagInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -27368,10 +27368,10 @@ function VkDebugMarkerMarkerInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -27542,10 +27542,10 @@ function VkDedicatedAllocationImageCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -27655,10 +27655,10 @@ function VkDedicatedAllocationBufferCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -27768,9 +27768,9 @@ function VkDedicatedAllocationMemoryAllocateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -27916,8 +27916,8 @@ function VkExternalImageFormatPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -28017,9 +28017,9 @@ function VkExternalMemoryImageCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -28131,9 +28131,9 @@ function VkExportMemoryAllocateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -28245,9 +28245,9 @@ function VkImportMemoryWin32HandleInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -28377,9 +28377,9 @@ function VkExportMemoryWin32HandleInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -28473,10 +28473,10 @@ function VkWin32KeyedMutexAcquireReleaseInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -28785,10 +28785,10 @@ function VkDeviceGeneratedCommandsFeaturesNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -28898,10 +28898,10 @@ function VkDeviceGeneratedCommandsLimitsNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -29086,10 +29086,10 @@ function VkIndirectCommandsTokenNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -29206,9 +29206,9 @@ function VkIndirectCommandsLayoutTokenNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -29334,10 +29334,10 @@ function VkIndirectCommandsLayoutCreateInfoNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -29542,11 +29542,11 @@ function VkCmdProcessCommandsInfoNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -29897,10 +29897,10 @@ function VkCmdReserveSpaceForCommandsInfoNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -30065,10 +30065,10 @@ function VkObjectTableCreateInfoNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -30343,8 +30343,8 @@ function VkObjectTableEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -30433,9 +30433,9 @@ function VkObjectTablePipelineEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -30551,9 +30551,9 @@ function VkObjectTableDescriptorSetEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -30695,9 +30695,9 @@ function VkObjectTableVertexBufferEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -30813,9 +30813,9 @@ function VkObjectTableIndexBufferEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -30952,9 +30952,9 @@ function VkObjectTablePushConstantEntryNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -31088,9 +31088,9 @@ function VkPhysicalDeviceFeatures2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xF0) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xF0) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0xF0) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xF0);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3C);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x1E);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xF0);
@@ -31236,7 +31236,7 @@ VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
     let features = this._features;
     features.flush();
     if (this.memoryBuffer !== features.memoryBuffer) {
-      let srcView = new Uint8Array(features.memoryBuffer).subarray(features.$memoryOffset, features.$memoryOffset + 0xDC);
+      let srcView = new Uint8Array(features.memoryBuffer, features.$memoryOffset, 0xDC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPhysicalDeviceFeatures2.features' isn't used as shared-memory");
@@ -31283,9 +31283,9 @@ function VkPhysicalDeviceFeatures2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xF0) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xF0) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0xF0) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xF0);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3C);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x1E);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xF0);
@@ -31431,7 +31431,7 @@ VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
     let features = this._features;
     features.flush();
     if (this.memoryBuffer !== features.memoryBuffer) {
-      let srcView = new Uint8Array(features.memoryBuffer).subarray(features.$memoryOffset, features.$memoryOffset + 0xDC);
+      let srcView = new Uint8Array(features.memoryBuffer, features.$memoryOffset, 0xDC);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPhysicalDeviceFeatures2KHR.features' isn't used as shared-memory");
@@ -31478,9 +31478,9 @@ function VkPhysicalDeviceProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x348) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x348) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x348) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x348);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xD2);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x69);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x348);
@@ -31637,9 +31637,9 @@ function VkPhysicalDeviceProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x348) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x348) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x348) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x348);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xD2);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x69);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x348);
@@ -31796,9 +31796,9 @@ function VkFormatProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -31927,9 +31927,9 @@ function VkFormatProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -32058,9 +32058,9 @@ function VkImageFormatProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -32193,9 +32193,9 @@ function VkImageFormatProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -32328,9 +32328,9 @@ function VkPhysicalDeviceImageFormatInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -32545,9 +32545,9 @@ function VkPhysicalDeviceImageFormatInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -32762,9 +32762,9 @@ function VkQueueFamilyProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -32893,9 +32893,9 @@ function VkQueueFamilyProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -33024,9 +33024,9 @@ function VkPhysicalDeviceMemoryProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x218) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x218) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x218) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x218);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x86);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x43);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x218);
@@ -33156,9 +33156,9 @@ function VkPhysicalDeviceMemoryProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x218) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x218) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x218) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x218);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x86);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x43);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x218);
@@ -33288,9 +33288,9 @@ function VkSparseImageFormatProperties2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -33401,9 +33401,9 @@ function VkSparseImageFormatProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -33514,9 +33514,9 @@ function VkPhysicalDeviceSparseImageFormatInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -33709,9 +33709,9 @@ function VkPhysicalDeviceSparseImageFormatInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -33904,10 +33904,10 @@ function VkPhysicalDevicePushDescriptorPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -34017,7 +34017,7 @@ function VkConformanceVersionKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x4) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x4);
@@ -34138,9 +34138,9 @@ function VkPhysicalDeviceDriverPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x218) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x218) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x218) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x218);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x86);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x43);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x218);
@@ -34288,10 +34288,10 @@ function VkPresentRegionsKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -34457,8 +34457,8 @@ function VkPresentRegionKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -34579,8 +34579,8 @@ function VkRectLayerKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x14) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x14) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x14);
@@ -34669,7 +34669,7 @@ VkRectLayerKHR.prototype.flush = function flush() {
     let offset = this._offset;
     offset.flush();
     if (this.memoryBuffer !== offset.memoryBuffer) {
-      let srcView = new Uint8Array(offset.memoryBuffer).subarray(offset.$memoryOffset, offset.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(offset.memoryBuffer, offset.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRectLayerKHR.offset' isn't used as shared-memory");
@@ -34681,7 +34681,7 @@ VkRectLayerKHR.prototype.flush = function flush() {
     let extent = this._extent;
     extent.flush();
     if (this.memoryBuffer !== extent.memoryBuffer) {
-      let srcView = new Uint8Array(extent.memoryBuffer).subarray(extent.$memoryOffset, extent.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(extent.memoryBuffer, extent.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRectLayerKHR.extent' isn't used as shared-memory");
@@ -34728,10 +34728,10 @@ function VkPhysicalDeviceVariablePointersFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -34856,10 +34856,10 @@ function VkPhysicalDeviceVariablePointersFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -34984,10 +34984,10 @@ function VkPhysicalDeviceVariablePointerFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -35112,10 +35112,10 @@ function VkPhysicalDeviceVariablePointerFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -35240,8 +35240,8 @@ function VkExternalMemoryProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -35328,8 +35328,8 @@ function VkExternalMemoryPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -35416,9 +35416,9 @@ function VkPhysicalDeviceExternalImageFormatInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -35530,9 +35530,9 @@ function VkPhysicalDeviceExternalImageFormatInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -35644,9 +35644,9 @@ function VkExternalImageFormatProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -35757,9 +35757,9 @@ function VkExternalImageFormatPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -35870,9 +35870,9 @@ function VkPhysicalDeviceExternalBufferInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -36020,9 +36020,9 @@ function VkPhysicalDeviceExternalBufferInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -36170,9 +36170,9 @@ function VkExternalBufferProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -36283,9 +36283,9 @@ function VkExternalBufferPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -36396,10 +36396,10 @@ function VkPhysicalDeviceIDProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -36602,10 +36602,10 @@ function VkPhysicalDeviceIDPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -36808,9 +36808,9 @@ function VkExternalMemoryImageCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -36922,9 +36922,9 @@ function VkExternalMemoryImageCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37036,9 +37036,9 @@ function VkExternalMemoryBufferCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37150,9 +37150,9 @@ function VkExternalMemoryBufferCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37264,9 +37264,9 @@ function VkExportMemoryAllocateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37378,9 +37378,9 @@ function VkExportMemoryAllocateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37492,9 +37492,9 @@ function VkImportMemoryWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -37653,9 +37653,9 @@ function VkExportMemoryWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -37778,10 +37778,10 @@ function VkMemoryWin32HandlePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -37891,9 +37891,9 @@ function VkMemoryGetWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -38031,9 +38031,9 @@ function VkImportMemoryFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -38163,10 +38163,10 @@ function VkMemoryFdPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -38276,9 +38276,9 @@ function VkMemoryGetFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -38416,10 +38416,10 @@ function VkWin32KeyedMutexAcquireReleaseInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -38728,9 +38728,9 @@ function VkPhysicalDeviceExternalSemaphoreInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -38842,9 +38842,9 @@ function VkPhysicalDeviceExternalSemaphoreInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -38956,9 +38956,9 @@ function VkExternalSemaphoreProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -39089,9 +39089,9 @@ function VkExternalSemaphorePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -39222,9 +39222,9 @@ function VkExportSemaphoreCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -39336,9 +39336,9 @@ function VkExportSemaphoreCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -39450,9 +39450,9 @@ function VkImportSemaphoreWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -39655,9 +39655,9 @@ function VkExportSemaphoreWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -39780,10 +39780,10 @@ function VkD3D12FenceSubmitInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -39962,9 +39962,9 @@ function VkSemaphoreGetWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -40102,9 +40102,9 @@ function VkImportSemaphoreFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -40278,9 +40278,9 @@ function VkSemaphoreGetFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -40418,9 +40418,9 @@ function VkPhysicalDeviceExternalFenceInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -40532,9 +40532,9 @@ function VkPhysicalDeviceExternalFenceInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -40646,9 +40646,9 @@ function VkExternalFenceProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -40779,9 +40779,9 @@ function VkExternalFencePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -40912,9 +40912,9 @@ function VkExportFenceCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -41026,9 +41026,9 @@ function VkExportFenceCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -41140,9 +41140,9 @@ function VkImportFenceWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -41345,9 +41345,9 @@ function VkExportFenceWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -41470,9 +41470,9 @@ function VkFenceGetWin32HandleInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -41610,9 +41610,9 @@ function VkImportFenceFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -41786,9 +41786,9 @@ function VkFenceGetFdInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -41926,10 +41926,10 @@ function VkPhysicalDeviceMultiviewFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -42069,10 +42069,10 @@ function VkPhysicalDeviceMultiviewFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -42212,10 +42212,10 @@ function VkPhysicalDeviceMultiviewProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -42336,10 +42336,10 @@ function VkPhysicalDeviceMultiviewPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -42460,10 +42460,10 @@ function VkRenderPassMultiviewCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -42684,10 +42684,10 @@ function VkRenderPassMultiviewCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -42908,10 +42908,10 @@ function VkSurfaceCapabilities2EXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -43137,9 +43137,9 @@ function VkDisplayPowerInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -43254,9 +43254,9 @@ function VkDeviceEventInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -43371,9 +43371,9 @@ function VkDisplayEventInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -43488,9 +43488,9 @@ function VkSwapchainCounterCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -43602,10 +43602,10 @@ function VkPhysicalDeviceGroupProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x120) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x120) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x120) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x120) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x120);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x24);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x120);
@@ -43739,10 +43739,10 @@ function VkPhysicalDeviceGroupPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x120) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x120) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x120) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x120) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x120);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x24);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x120);
@@ -43876,10 +43876,10 @@ function VkMemoryAllocateFlagsInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -44010,10 +44010,10 @@ function VkMemoryAllocateFlagsInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -44144,10 +44144,10 @@ function VkBindBufferMemoryInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -44330,10 +44330,10 @@ function VkBindBufferMemoryInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -44516,10 +44516,10 @@ function VkBindBufferMemoryDeviceGroupInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -44656,10 +44656,10 @@ function VkBindBufferMemoryDeviceGroupInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -44796,10 +44796,10 @@ function VkBindImageMemoryInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -44984,10 +44984,10 @@ function VkBindImageMemoryInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -45172,10 +45172,10 @@ function VkBindImageMemoryDeviceGroupInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -45383,10 +45383,10 @@ function VkBindImageMemoryDeviceGroupInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -45594,10 +45594,10 @@ function VkDeviceGroupRenderPassBeginInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -45781,10 +45781,10 @@ function VkDeviceGroupRenderPassBeginInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -45968,10 +45968,10 @@ function VkDeviceGroupCommandBufferBeginInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -46084,10 +46084,10 @@ function VkDeviceGroupCommandBufferBeginInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -46200,10 +46200,10 @@ function VkDeviceGroupSubmitInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -46424,10 +46424,10 @@ function VkDeviceGroupSubmitInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -46648,10 +46648,10 @@ function VkDeviceGroupBindSparseInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -46782,10 +46782,10 @@ function VkDeviceGroupBindSparseInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -46916,10 +46916,10 @@ function VkDeviceGroupPresentCapabilitiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x98) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x98) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x98) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x98) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x98);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x26);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x13);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x26);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x98);
@@ -47075,9 +47075,9 @@ function VkImageSwapchainCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -47197,10 +47197,10 @@ function VkBindImageMemorySwapchainInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -47339,11 +47339,11 @@ function VkAcquireNextImageInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -47553,10 +47553,10 @@ function VkDeviceGroupPresentInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -47711,10 +47711,10 @@ function VkDeviceGroupDeviceCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -47880,10 +47880,10 @@ function VkDeviceGroupDeviceCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -48049,9 +48049,9 @@ function VkDeviceGroupSwapchainCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -48163,10 +48163,10 @@ function VkDescriptorUpdateTemplateEntry(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -48329,10 +48329,10 @@ function VkDescriptorUpdateTemplateEntryKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -48495,10 +48495,10 @@ function VkDescriptorUpdateTemplateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -48794,10 +48794,10 @@ function VkDescriptorUpdateTemplateCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -49093,8 +49093,8 @@ function VkXYColorEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -49180,10 +49180,10 @@ function VkHdrMetadataEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -49393,7 +49393,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
     let displayPrimaryRed = this._displayPrimaryRed;
     displayPrimaryRed.flush();
     if (this.memoryBuffer !== displayPrimaryRed.memoryBuffer) {
-      let srcView = new Uint8Array(displayPrimaryRed.memoryBuffer).subarray(displayPrimaryRed.$memoryOffset, displayPrimaryRed.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(displayPrimaryRed.memoryBuffer, displayPrimaryRed.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryRed' isn't used as shared-memory");
@@ -49405,7 +49405,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
     let displayPrimaryGreen = this._displayPrimaryGreen;
     displayPrimaryGreen.flush();
     if (this.memoryBuffer !== displayPrimaryGreen.memoryBuffer) {
-      let srcView = new Uint8Array(displayPrimaryGreen.memoryBuffer).subarray(displayPrimaryGreen.$memoryOffset, displayPrimaryGreen.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(displayPrimaryGreen.memoryBuffer, displayPrimaryGreen.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryGreen' isn't used as shared-memory");
@@ -49417,7 +49417,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
     let displayPrimaryBlue = this._displayPrimaryBlue;
     displayPrimaryBlue.flush();
     if (this.memoryBuffer !== displayPrimaryBlue.memoryBuffer) {
-      let srcView = new Uint8Array(displayPrimaryBlue.memoryBuffer).subarray(displayPrimaryBlue.$memoryOffset, displayPrimaryBlue.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(displayPrimaryBlue.memoryBuffer, displayPrimaryBlue.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x20);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.displayPrimaryBlue' isn't used as shared-memory");
@@ -49429,7 +49429,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
     let whitePoint = this._whitePoint;
     whitePoint.flush();
     if (this.memoryBuffer !== whitePoint.memoryBuffer) {
-      let srcView = new Uint8Array(whitePoint.memoryBuffer).subarray(whitePoint.$memoryOffset, whitePoint.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(whitePoint.memoryBuffer, whitePoint.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x28);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkHdrMetadataEXT.whitePoint' isn't used as shared-memory");
@@ -49510,10 +49510,10 @@ function VkDisplayNativeHdrSurfaceCapabilitiesAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -49623,10 +49623,10 @@ function VkSwapchainDisplayNativeHdrCreateInfoAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -49736,8 +49736,8 @@ function VkRefreshCycleDurationGOOGLE(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x8) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x1);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -49802,9 +49802,9 @@ function VkPastPresentationTimingGOOGLE(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -49914,10 +49914,10 @@ function VkPresentTimesInfoGOOGLE(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -50083,9 +50083,9 @@ function VkPresentTimeGOOGLE(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -50172,8 +50172,8 @@ function VkViewportWScalingNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -50259,10 +50259,10 @@ function VkPipelineViewportWScalingStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -50443,8 +50443,8 @@ function VkViewportSwizzleNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -50578,10 +50578,10 @@ function VkPipelineViewportSwizzleStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -50765,10 +50765,10 @@ function VkPhysicalDeviceDiscardRectanglePropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -50878,10 +50878,10 @@ function VkPipelineDiscardRectangleStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -51086,10 +51086,10 @@ function VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -51199,9 +51199,9 @@ function VkInputAttachmentAspectReference(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -51306,9 +51306,9 @@ function VkInputAttachmentAspectReferenceKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -51413,10 +51413,10 @@ function VkRenderPassInputAttachmentAspectCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -51582,10 +51582,10 @@ function VkRenderPassInputAttachmentAspectCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -51751,9 +51751,9 @@ function VkPhysicalDeviceSurfaceInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -51892,9 +51892,9 @@ function VkSurfaceCapabilities2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -52026,9 +52026,9 @@ function VkSurfaceFormat2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -52139,9 +52139,9 @@ function VkDisplayProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -52252,9 +52252,9 @@ function VkDisplayPlaneProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -52365,9 +52365,9 @@ function VkDisplayModeProperties2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -52478,10 +52478,10 @@ function VkDisplayPlaneInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -52620,9 +52620,9 @@ function VkDisplayPlaneCapabilities2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x58) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x58) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x58);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xB);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x58);
@@ -52733,9 +52733,9 @@ function VkSharedPresentSurfaceCapabilitiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -52844,10 +52844,10 @@ function VkPhysicalDevice16BitStorageFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -53002,10 +53002,10 @@ function VkPhysicalDevice16BitStorageFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -53160,10 +53160,10 @@ function VkPhysicalDeviceSubgroupProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -53306,9 +53306,9 @@ function VkBufferMemoryRequirementsInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -53428,9 +53428,9 @@ function VkBufferMemoryRequirementsInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -53550,9 +53550,9 @@ function VkImageMemoryRequirementsInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -53690,9 +53690,9 @@ function VkImageMemoryRequirementsInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -53830,9 +53830,9 @@ function VkImageSparseMemoryRequirementsInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -53952,9 +53952,9 @@ function VkImageSparseMemoryRequirementsInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -54074,9 +54074,9 @@ function VkMemoryRequirements2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -54205,9 +54205,9 @@ function VkMemoryRequirements2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -54336,9 +54336,9 @@ function VkSparseImageMemoryRequirements2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -54449,9 +54449,9 @@ function VkSparseImageMemoryRequirements2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -54562,9 +54562,9 @@ function VkPhysicalDevicePointClippingProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -54673,9 +54673,9 @@ function VkPhysicalDevicePointClippingPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -54784,10 +54784,10 @@ function VkMemoryDedicatedRequirements(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -54908,10 +54908,10 @@ function VkMemoryDedicatedRequirementsKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55032,9 +55032,9 @@ function VkMemoryDedicatedAllocateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -55180,9 +55180,9 @@ function VkMemoryDedicatedAllocateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -55328,9 +55328,9 @@ function VkImageViewUsageCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55442,9 +55442,9 @@ function VkImageViewUsageCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55556,9 +55556,9 @@ function VkPipelineTessellationDomainOriginStateCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55673,9 +55673,9 @@ function VkPipelineTessellationDomainOriginStateCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55790,9 +55790,9 @@ function VkSamplerYcbcrConversionInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -55912,9 +55912,9 @@ function VkSamplerYcbcrConversionInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -56034,10 +56034,10 @@ function VkSamplerYcbcrConversionCreateInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -56256,7 +56256,7 @@ VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
     let components = this._components;
     components.flush();
     if (this.memoryBuffer !== components.memoryBuffer) {
-      let srcView = new Uint8Array(components.memoryBuffer).subarray(components.$memoryOffset, components.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(components.memoryBuffer, components.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSamplerYcbcrConversionCreateInfo.components' isn't used as shared-memory");
@@ -56331,10 +56331,10 @@ function VkSamplerYcbcrConversionCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -56553,7 +56553,7 @@ VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
     let components = this._components;
     components.flush();
     if (this.memoryBuffer !== components.memoryBuffer) {
-      let srcView = new Uint8Array(components.memoryBuffer).subarray(components.$memoryOffset, components.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(components.memoryBuffer, components.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x1C);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSamplerYcbcrConversionCreateInfoKHR.components' isn't used as shared-memory");
@@ -56628,9 +56628,9 @@ function VkBindImagePlaneMemoryInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -56742,9 +56742,9 @@ function VkBindImagePlaneMemoryInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -56856,9 +56856,9 @@ function VkImagePlaneMemoryRequirementsInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -56970,9 +56970,9 @@ function VkImagePlaneMemoryRequirementsInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57084,10 +57084,10 @@ function VkPhysicalDeviceSamplerYcbcrConversionFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57197,10 +57197,10 @@ function VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57310,10 +57310,10 @@ function VkSamplerYcbcrConversionImageFormatProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57423,10 +57423,10 @@ function VkSamplerYcbcrConversionImageFormatPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57536,10 +57536,10 @@ function VkTextureLODGatherFormatPropertiesAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57649,10 +57649,10 @@ function VkConditionalRenderingBeginInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -57809,10 +57809,10 @@ function VkProtectedSubmitInfo(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -57922,10 +57922,10 @@ function VkPhysicalDeviceProtectedMemoryFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -58035,10 +58035,10 @@ function VkPhysicalDeviceProtectedMemoryProperties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -58148,10 +58148,10 @@ function VkDeviceQueueInfo2(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -58300,10 +58300,10 @@ function VkPipelineCoverageToColorStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -58449,10 +58449,10 @@ function VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -58573,8 +58573,8 @@ function VkSampleLocationEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -58660,10 +58660,10 @@ function VkSampleLocationsInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -58799,7 +58799,7 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
     let sampleLocationGridSize = this._sampleLocationGridSize;
     sampleLocationGridSize.flush();
     if (this.memoryBuffer !== sampleLocationGridSize.memoryBuffer) {
-      let srcView = new Uint8Array(sampleLocationGridSize.memoryBuffer).subarray(sampleLocationGridSize.$memoryOffset, sampleLocationGridSize.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(sampleLocationGridSize.memoryBuffer, sampleLocationGridSize.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x14);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSampleLocationsInfoEXT.sampleLocationGridSize' isn't used as shared-memory");
@@ -58887,8 +58887,8 @@ function VkAttachmentSampleLocationsEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -58955,7 +58955,7 @@ VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
     let sampleLocationsInfo = this._sampleLocationsInfo;
     sampleLocationsInfo.flush();
     if (this.memoryBuffer !== sampleLocationsInfo.memoryBuffer) {
-      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer).subarray(sampleLocationsInfo.$memoryOffset, sampleLocationsInfo.$memoryOffset + 0x28);
+      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer, sampleLocationsInfo.$memoryOffset, 0x28);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkAttachmentSampleLocationsEXT.sampleLocationsInfo' isn't used as shared-memory");
@@ -58996,8 +58996,8 @@ function VkSubpassSampleLocationsEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -59064,7 +59064,7 @@ VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
     let sampleLocationsInfo = this._sampleLocationsInfo;
     sampleLocationsInfo.flush();
     if (this.memoryBuffer !== sampleLocationsInfo.memoryBuffer) {
-      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer).subarray(sampleLocationsInfo.$memoryOffset, sampleLocationsInfo.$memoryOffset + 0x28);
+      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer, sampleLocationsInfo.$memoryOffset, 0x28);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkSubpassSampleLocationsEXT.sampleLocationsInfo' isn't used as shared-memory");
@@ -59105,10 +59105,10 @@ function VkRenderPassSampleLocationsBeginInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -59345,10 +59345,10 @@ function VkPipelineSampleLocationsStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -59447,7 +59447,7 @@ VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
     let sampleLocationsInfo = this._sampleLocationsInfo;
     sampleLocationsInfo.flush();
     if (this.memoryBuffer !== sampleLocationsInfo.memoryBuffer) {
-      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer).subarray(sampleLocationsInfo.$memoryOffset, sampleLocationsInfo.$memoryOffset + 0x28);
+      let srcView = new Uint8Array(sampleLocationsInfo.memoryBuffer, sampleLocationsInfo.$memoryOffset, 0x28);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPipelineSampleLocationsStateCreateInfoEXT.sampleLocationsInfo' isn't used as shared-memory");
@@ -59498,11 +59498,11 @@ function VkPhysicalDeviceSampleLocationsPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -59664,9 +59664,9 @@ function VkMultisamplePropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -59777,9 +59777,9 @@ function VkSamplerReductionModeCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -59894,10 +59894,10 @@ function VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -60007,10 +60007,10 @@ function VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -60175,10 +60175,10 @@ function VkPipelineColorBlendAdvancedStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -60324,10 +60324,10 @@ function VkPhysicalDeviceInlineUniformBlockFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -60452,10 +60452,10 @@ function VkPhysicalDeviceInlineUniformBlockPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -60609,10 +60609,10 @@ function VkWriteDescriptorSetInlineUniformBlockEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -60749,10 +60749,10 @@ function VkDescriptorPoolInlineUniformBlockCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -60865,10 +60865,10 @@ function VkPipelineCoverageModulationStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -61059,10 +61059,10 @@ function VkImageFormatListCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -61199,9 +61199,9 @@ function VkValidationCacheCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -61355,9 +61355,9 @@ function VkShaderModuleValidationCacheCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -61477,11 +61477,11 @@ function VkPhysicalDeviceMaintenance3Properties(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -61603,11 +61603,11 @@ function VkPhysicalDeviceMaintenance3PropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -61729,10 +61729,10 @@ function VkDescriptorSetLayoutSupport(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -61860,10 +61860,10 @@ function VkDescriptorSetLayoutSupportKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -61991,10 +61991,10 @@ function VkPhysicalDeviceShaderDrawParametersFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -62104,10 +62104,10 @@ function VkPhysicalDeviceShaderDrawParameterFeatures(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -62217,10 +62217,10 @@ function VkPhysicalDeviceFloat16Int8FeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -62345,10 +62345,10 @@ function VkPhysicalDeviceFloatControlsPropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x58) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x58) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x58);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xB);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x58);
@@ -62634,10 +62634,10 @@ function VkPhysicalDeviceHostQueryResetFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -62747,9 +62747,9 @@ function VkShaderResourceUsageAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -62859,9 +62859,9 @@ function VkShaderStatisticsInfoAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -63001,9 +63001,9 @@ function VkDeviceQueueGlobalPriorityCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -63118,10 +63118,10 @@ function VkDebugUtilsObjectNameInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -63284,10 +63284,10 @@ function VkDebugUtilsObjectTagInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -63481,10 +63481,10 @@ function VkDebugUtilsLabelEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -63655,9 +63655,9 @@ function VkDebugUtilsMessengerCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -63851,10 +63851,10 @@ function VkDebugUtilsMessengerCallbackDataEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -64256,9 +64256,9 @@ function VkImportMemoryHostPointerInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -64394,10 +64394,10 @@ function VkMemoryHostPointerPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -64507,10 +64507,10 @@ function VkPhysicalDeviceExternalMemoryHostPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -64620,11 +64620,11 @@ function VkPhysicalDeviceConservativeRasterizationPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -64823,9 +64823,9 @@ function VkCalibratedTimestampInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -64940,10 +64940,10 @@ function VkPhysicalDeviceShaderCorePropertiesAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x48) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x48) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x48) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x48);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x9);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x12);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x48);
@@ -65196,10 +65196,10 @@ function VkPipelineRasterizationConservativeStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -65351,10 +65351,10 @@ function VkPhysicalDeviceDescriptorIndexingFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -65749,10 +65749,10 @@ function VkPhysicalDeviceDescriptorIndexingPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x70) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x70) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x70) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x70) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x70);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x1C);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x1C);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x70);
@@ -66104,10 +66104,10 @@ function VkDescriptorSetLayoutBindingFlagsCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -66244,10 +66244,10 @@ function VkDescriptorSetVariableDescriptorCountAllocateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -66384,10 +66384,10 @@ function VkDescriptorSetVariableDescriptorCountLayoutSupportEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -66497,9 +66497,9 @@ function VkAttachmentDescription2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -66776,10 +66776,10 @@ function VkAttachmentReference2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -66931,10 +66931,10 @@ function VkSubpassDescription2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x58) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x58) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x58);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xB);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x58);
@@ -67367,10 +67367,10 @@ function VkSubpassDependency2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -67609,10 +67609,10 @@ function VkRenderPassCreateInfo2KHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x50) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x50) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x50);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x50);
@@ -67980,9 +67980,9 @@ function VkSubpassBeginInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -68097,9 +68097,9 @@ function VkSubpassEndInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -68193,8 +68193,8 @@ function VkVertexInputBindingDivisorDescriptionEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -68280,10 +68280,10 @@ function VkPipelineVertexInputDivisorStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -68449,10 +68449,10 @@ function VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -68562,10 +68562,10 @@ function VkPhysicalDevicePCIBusInfoPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -68708,10 +68708,10 @@ function VkCommandBufferInheritanceConditionalRenderingInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -68821,10 +68821,10 @@ function VkPhysicalDevice8BitStorageFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -68964,10 +68964,10 @@ function VkPhysicalDeviceConditionalRenderingFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -69092,10 +69092,10 @@ function VkPhysicalDeviceVulkanMemoryModelFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -69235,10 +69235,10 @@ function VkPhysicalDeviceShaderAtomicInt64FeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -69363,10 +69363,10 @@ function VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -69491,9 +69491,9 @@ function VkQueueFamilyCheckpointPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -69602,9 +69602,9 @@ function VkCheckpointDataNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -69737,10 +69737,10 @@ function VkPhysicalDeviceDepthStencilResolvePropertiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -69883,9 +69883,9 @@ function VkSubpassDescriptionDepthStencilResolveKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -70041,9 +70041,9 @@ function VkImageViewASTCDecodeModeEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70158,10 +70158,10 @@ function VkPhysicalDeviceASTCDecodeFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70271,10 +70271,10 @@ function VkPhysicalDeviceTransformFeedbackFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70399,11 +70399,11 @@ function VkPhysicalDeviceTransformFeedbackPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -70613,10 +70613,10 @@ function VkPipelineRasterizationStateStreamCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70747,10 +70747,10 @@ function VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70860,10 +70860,10 @@ function VkPipelineRepresentativeFragmentTestStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -70973,10 +70973,10 @@ function VkPhysicalDeviceExclusiveScissorFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71086,10 +71086,10 @@ function VkPipelineViewportExclusiveScissorStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -71255,10 +71255,10 @@ function VkPhysicalDeviceCornerSampledImageFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71368,10 +71368,10 @@ function VkPhysicalDeviceComputeShaderDerivativesFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71496,10 +71496,10 @@ function VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71609,10 +71609,10 @@ function VkPhysicalDeviceShaderImageFootprintFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71722,10 +71722,10 @@ function VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -71835,9 +71835,9 @@ function VkShadingRatePaletteNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -71930,10 +71930,10 @@ function VkPipelineViewportShadingRateImageStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -72114,10 +72114,10 @@ function VkPhysicalDeviceShadingRateImageFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -72242,10 +72242,10 @@ function VkPhysicalDeviceShadingRateImagePropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -72379,8 +72379,8 @@ function VkCoarseSampleLocationNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xC) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xC) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xC);
@@ -72484,9 +72484,9 @@ function VkCoarseSampleOrderCustomNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -72647,10 +72647,10 @@ function VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -72837,10 +72837,10 @@ function VkPhysicalDeviceMeshShaderFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -72965,10 +72965,10 @@ function VkPhysicalDeviceMeshShaderPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x58) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x58) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x58) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x58);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xB);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x16);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x58);
@@ -73222,8 +73222,8 @@ function VkDrawMeshTasksIndirectCommandNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
@@ -73309,10 +73309,10 @@ function VkRayTracingShaderGroupCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -73500,10 +73500,10 @@ function VkRayTracingPipelineCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x50) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x50) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x50) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x50);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x14);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x50);
@@ -73864,11 +73864,11 @@ function VkGeometryTrianglesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x60) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x60) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x60) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x60);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x60);
@@ -74192,11 +74192,11 @@ function VkGeometryAABBNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -74372,7 +74372,7 @@ function VkGeometryDataNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x88) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x88);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x88);
@@ -74446,7 +74446,7 @@ VkGeometryDataNV.prototype.flush = function flush() {
     let triangles = this._triangles;
     triangles.flush();
     if (this.memoryBuffer !== triangles.memoryBuffer) {
-      let srcView = new Uint8Array(triangles.memoryBuffer).subarray(triangles.$memoryOffset, triangles.$memoryOffset + 0x60);
+      let srcView = new Uint8Array(triangles.memoryBuffer, triangles.$memoryOffset, 0x60);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryDataNV.triangles' isn't used as shared-memory");
@@ -74458,7 +74458,7 @@ VkGeometryDataNV.prototype.flush = function flush() {
     let aabbs = this._aabbs;
     aabbs.flush();
     if (this.memoryBuffer !== aabbs.memoryBuffer) {
-      let srcView = new Uint8Array(aabbs.memoryBuffer).subarray(aabbs.$memoryOffset, aabbs.$memoryOffset + 0x28);
+      let srcView = new Uint8Array(aabbs.memoryBuffer, aabbs.$memoryOffset, 0x28);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x60);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryDataNV.aabbs' isn't used as shared-memory");
@@ -74501,9 +74501,9 @@ function VkGeometryNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0xA8) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0xA8) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0xA8) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0xA8);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x2A);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x15);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0xA8);
@@ -74621,7 +74621,7 @@ VkGeometryNV.prototype.flush = function flush() {
     let geometry = this._geometry;
     geometry.flush();
     if (this.memoryBuffer !== geometry.memoryBuffer) {
-      let srcView = new Uint8Array(geometry.memoryBuffer).subarray(geometry.$memoryOffset, geometry.$memoryOffset + 0x88);
+      let srcView = new Uint8Array(geometry.memoryBuffer, geometry.$memoryOffset, 0x88);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkGeometryNV.geometry' isn't used as shared-memory");
@@ -74676,10 +74676,10 @@ function VkAccelerationStructureInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -74902,10 +74902,10 @@ function VkAccelerationStructureCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -75007,7 +75007,7 @@ VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
     let info = this._info;
     info.flush();
     if (this.memoryBuffer !== info.memoryBuffer) {
-      let srcView = new Uint8Array(info.memoryBuffer).subarray(info.$memoryOffset, info.$memoryOffset + 0x28);
+      let srcView = new Uint8Array(info.memoryBuffer, info.$memoryOffset, 0x28);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x18);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkAccelerationStructureCreateInfoNV.info' isn't used as shared-memory");
@@ -75058,11 +75058,11 @@ function VkBindAccelerationStructureMemoryInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x38) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x38) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x38) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x38);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x7);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xE);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x38);
@@ -75270,10 +75270,10 @@ function VkWriteDescriptorSetAccelerationStructureNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -75439,9 +75439,9 @@ function VkAccelerationStructureMemoryRequirementsInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -75582,11 +75582,11 @@ function VkPhysicalDeviceRayTracingPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x40) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x40) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x40) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x40);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x40);
@@ -75774,10 +75774,10 @@ function VkDrmFormatModifierPropertiesListEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -75902,10 +75902,10 @@ function VkDrmFormatModifierPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -75994,11 +75994,11 @@ function VkPhysicalDeviceImageDrmFormatModifierInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -76175,10 +76175,10 @@ function VkImageDrmFormatModifierListCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -76315,11 +76315,11 @@ function VkImageDrmFormatModifierExplicitCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -76504,10 +76504,10 @@ function VkImageDrmFormatModifierPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -76617,9 +76617,9 @@ function VkImageStencilUsageCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -76731,9 +76731,9 @@ function VkDeviceMemoryOverallocationCreateInfoAMD(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -76848,10 +76848,10 @@ function VkPhysicalDeviceFragmentDensityMapFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -76983,10 +76983,10 @@ function VkPhysicalDeviceFragmentDensityMapPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -77122,9 +77122,9 @@ function VkRenderPassFragmentDensityMapCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77211,7 +77211,7 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
     let fragmentDensityMapAttachment = this._fragmentDensityMapAttachment;
     fragmentDensityMapAttachment.flush();
     if (this.memoryBuffer !== fragmentDensityMapAttachment.memoryBuffer) {
-      let srcView = new Uint8Array(fragmentDensityMapAttachment.memoryBuffer).subarray(fragmentDensityMapAttachment.$memoryOffset, fragmentDensityMapAttachment.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(fragmentDensityMapAttachment.memoryBuffer, fragmentDensityMapAttachment.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x10);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment' isn't used as shared-memory");
@@ -77258,10 +77258,10 @@ function VkPhysicalDeviceScalarBlockLayoutFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77371,10 +77371,10 @@ function VkSurfaceProtectedCapabilitiesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77484,10 +77484,10 @@ function VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77597,10 +77597,10 @@ function VkPhysicalDeviceDepthClipEnableFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77710,10 +77710,10 @@ function VkPipelineRasterizationDepthClipStateCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -77841,10 +77841,10 @@ function VkPhysicalDeviceMemoryBudgetPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x110) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x110) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x110) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x110) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x110);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x44);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x22);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x22);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x110);
@@ -78003,10 +78003,10 @@ function VkPhysicalDeviceMemoryPriorityFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78116,10 +78116,10 @@ function VkMemoryPriorityAllocateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78232,10 +78232,10 @@ function VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -78375,10 +78375,10 @@ function VkPhysicalDeviceBufferAddressFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -78518,9 +78518,9 @@ function VkBufferDeviceAddressInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78640,10 +78640,10 @@ function VkBufferDeviceAddressCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78756,9 +78756,9 @@ function VkPhysicalDeviceImageViewImageFormatInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78873,10 +78873,10 @@ function VkFilterCubicImageViewImageFormatPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -78997,10 +78997,10 @@ function VkPhysicalDeviceImagelessFramebufferFeaturesKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -79110,10 +79110,10 @@ function VkFramebufferAttachmentsCreateInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -79279,10 +79279,10 @@ function VkFramebufferAttachmentImageInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -79509,10 +79509,10 @@ function VkRenderPassAttachmentBeginInfoKHR(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -79678,10 +79678,10 @@ function VkPhysicalDeviceCooperativeMatrixFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -79806,9 +79806,9 @@ function VkPhysicalDeviceCooperativeMatrixPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -79917,10 +79917,10 @@ function VkCooperativeMatrixPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -80174,10 +80174,10 @@ function VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -80287,9 +80287,9 @@ function VkImageViewHandleInfoNVX(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -80456,9 +80456,9 @@ function VkPipelineCreationFeedbackEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x10) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -80535,10 +80535,10 @@ function VkPipelineCreationFeedbackCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x28) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x28) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x28) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x28);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x5);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xA);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x28);
@@ -80730,9 +80730,9 @@ function VkSurfaceFullScreenExclusiveInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -80847,9 +80847,9 @@ function VkSurfaceFullScreenExclusiveWin32InfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -80943,10 +80943,10 @@ function VkSurfaceCapabilitiesFullScreenExclusiveEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81056,9 +81056,9 @@ function VkHeadlessSurfaceCreateInfoEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81170,10 +81170,10 @@ function VkPhysicalDeviceCoverageReductionModeFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81283,9 +81283,9 @@ function VkPipelineCoverageReductionStateCreateInfoNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81418,9 +81418,9 @@ function VkFramebufferMixedSamplesCombinationNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -81562,10 +81562,10 @@ function VkPhysicalDeviceShaderIntegerFunctions2INTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81675,8 +81675,8 @@ function VkPerformanceValueINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -81746,7 +81746,7 @@ VkPerformanceValueINTEL.prototype.flush = function flush() {
     let data = this._data;
     data.flush();
     if (this.memoryBuffer !== data.memoryBuffer) {
-      let srcView = new Uint8Array(data.memoryBuffer).subarray(data.$memoryOffset, data.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(data.memoryBuffer, data.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x8);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkPerformanceValueINTEL.data' isn't used as shared-memory");
@@ -81787,9 +81787,9 @@ function VkInitializePerformanceApiInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -81907,9 +81907,9 @@ function VkQueryPoolCreateInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82024,10 +82024,10 @@ function VkPerformanceMarkerInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82140,10 +82140,10 @@ function VkPerformanceStreamMarkerInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82256,11 +82256,11 @@ function VkPerformanceOverrideInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -82410,9 +82410,9 @@ function VkPerformanceConfigurationAcquireInfoINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82527,10 +82527,10 @@ function VkPhysicalDeviceShaderSMBuiltinsPropertiesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82651,10 +82651,10 @@ function VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -82764,10 +82764,10 @@ function VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x20) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x20) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x20) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x20);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x20);
@@ -82907,10 +82907,10 @@ function VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -83020,10 +83020,10 @@ function VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x18) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x18) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x18) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x18);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x3);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x18);
@@ -83133,11 +83133,11 @@ function VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x30) / 0x1);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x30) / 0x8);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x30) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x30);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x6);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0xC);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x30);
@@ -83281,10 +83281,10 @@ function VkClearColorValue(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewInt32 = new Int32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x10) / 0x4);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewInt32 = new Int32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x4);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -83477,7 +83477,7 @@ function VkClearValue(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x10) / 0x1);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x10);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x10);
@@ -83551,7 +83551,7 @@ VkClearValue.prototype.flush = function flush() {
     let color = this._color;
     color.flush();
     if (this.memoryBuffer !== color.memoryBuffer) {
-      let srcView = new Uint8Array(color.memoryBuffer).subarray(color.$memoryOffset, color.$memoryOffset + 0x10);
+      let srcView = new Uint8Array(color.memoryBuffer, color.$memoryOffset, 0x10);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearValue.color' isn't used as shared-memory");
@@ -83563,7 +83563,7 @@ VkClearValue.prototype.flush = function flush() {
     let depthStencil = this._depthStencil;
     depthStencil.flush();
     if (this.memoryBuffer !== depthStencil.memoryBuffer) {
-      let srcView = new Uint8Array(depthStencil.memoryBuffer).subarray(depthStencil.$memoryOffset, depthStencil.$memoryOffset + 0x8);
+      let srcView = new Uint8Array(depthStencil.memoryBuffer, depthStencil.$memoryOffset, 0x8);
       let dstView = new Uint8Array(this.memoryBuffer);
       dstView.set(srcView, 0x0);
       if (ENABLE_SHARED_MEMORY_HINTS) console.warn("'VkClearValue.depthStencil' isn't used as shared-memory");
@@ -83606,11 +83606,11 @@ function VkPerformanceValueDataINTEL(opts) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
     this.$memoryOffset = opts.$memoryOffset | 0;
-    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x1, (opts.$memoryOffset + 0x8) / 0x1);
-    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x8) / 0x8);
-    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x4, (opts.$memoryOffset + 0x8) / 0x4);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer).subarray(opts.$memoryOffset / 0x8, (opts.$memoryOffset + 0x8) / 0x8);
+    this.memoryViewUint8 = new Uint8Array(this.memoryBuffer, opts.$memoryOffset, 0x8);
+    this.memoryViewUint32 = new Uint32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer, opts.$memoryOffset, 0x1);
+    this.memoryViewFloat32 = new Float32Array(this.memoryBuffer, opts.$memoryOffset, 0x2);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer, opts.$memoryOffset, 0x1);
 
   } else {
     this.memoryBuffer = new ArrayBuffer(0x8);
