@@ -393,7 +393,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
     $p2
   );
   
-  vkUseInstance(*$p2);
+  if (out == VK_SUCCESS) vkUseInstance(*$p2);
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
   

@@ -7,9 +7,13 @@ DEFS_Debug := \
 	'-DUSING_UV_SHARED=1' \
 	'-DUSING_V8_SHARED=1' \
 	'-DV8_DEPRECATION_WARNINGS=1' \
+	'-DV8_DEPRECATION_WARNINGS' \
+	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
@@ -20,7 +24,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.7 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -47,13 +51,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/user/.node-gyp/11.14.0/include/node \
-	-I/Users/user/.node-gyp/11.14.0/src \
-	-I/Users/user/.node-gyp/11.14.0/deps/openssl/config \
-	-I/Users/user/.node-gyp/11.14.0/deps/openssl/openssl/include \
-	-I/Users/user/.node-gyp/11.14.0/deps/uv/include \
-	-I/Users/user/.node-gyp/11.14.0/deps/zlib \
-	-I/Users/user/.node-gyp/11.14.0/deps/v8/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/include/node \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/src \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/openssl/config \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/openssl/openssl/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/uv/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/zlib \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.114.0/macOS/include
@@ -63,9 +67,13 @@ DEFS_Release := \
 	'-DUSING_UV_SHARED=1' \
 	'-DUSING_V8_SHARED=1' \
 	'-DV8_DEPRECATION_WARNINGS=1' \
+	'-DV8_DEPRECATION_WARNINGS' \
+	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION'
 
@@ -73,7 +81,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-Os \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.7 \
+	-mmacosx-version-min=10.10 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -100,13 +108,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/user/.node-gyp/11.14.0/include/node \
-	-I/Users/user/.node-gyp/11.14.0/src \
-	-I/Users/user/.node-gyp/11.14.0/deps/openssl/config \
-	-I/Users/user/.node-gyp/11.14.0/deps/openssl/openssl/include \
-	-I/Users/user/.node-gyp/11.14.0/deps/uv/include \
-	-I/Users/user/.node-gyp/11.14.0/deps/zlib \
-	-I/Users/user/.node-gyp/11.14.0/deps/v8/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/include/node \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/src \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/openssl/config \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/openssl/openssl/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/uv/include \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/zlib \
+	-I/Users/user/Library/Caches/node-gyp/12.9.1/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.114.0/macOS/include
@@ -151,7 +159,7 @@ LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.7 \
+	-mmacosx-version-min=10.10 \
 	-L/Users/user/Documents/GitHub/nvk/generated/1.1.114/darwin/build/Release \
 	-arch x86_64 \
 	-L$(builddir) \
@@ -180,7 +188,7 @@ LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.7 \
+	-mmacosx-version-min=10.10 \
 	-L/Users/user/Documents/GitHub/nvk/generated/1.1.114/darwin/build/Release \
 	-arch x86_64 \
 	-L$(builddir) \

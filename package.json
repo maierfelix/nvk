@@ -42,7 +42,9 @@
     "xml-js": "^1.6.7",
     "yauzl": "^2.10.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "n": "^6.0.1"
+  },
   "description": "Vulkan API for JavaScript/TypeScript",
   "repository": {
     "type": "git",

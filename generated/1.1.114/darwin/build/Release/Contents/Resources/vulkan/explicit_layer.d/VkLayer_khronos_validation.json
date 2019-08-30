@@ -1,9 +1,9 @@
 {
     "file_format_version" : "1.1.0",
     "layer" : {
-        "name": "VK_LAYER_LUNARG_object_tracker",
+        "name": "VK_LAYER_KHRONOS_validation",
         "type": "GLOBAL",
-        "library_path": "../../../lib/libVkLayer_object_lifetimes.dylib",
+        "library_path": "../../../lib/libVkLayer_khronos_validation.dylib",
         "api_version": "1.1.114",
         "implementation_version": "1",
         "description": "LunarG Validation Layer",
@@ -23,6 +23,15 @@
                         "vkCmdDebugMarkerEndEXT",
                         "vkCmdDebugMarkerInsertEXT"
                        ]
+             },
+             {
+                 "name": "VK_EXT_validation_cache",
+                 "spec_version": "1",
+                 "entrypoints": ["vkCreateValidationCacheEXT",
+                         "vkDestroyValidationCacheEXT",
+                         "vkGetValidationCacheDataEXT",
+                         "vkMergeValidationCachesEXT"
+                        ]
              }
          ]
     }
