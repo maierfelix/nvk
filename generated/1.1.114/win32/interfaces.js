@@ -404,7 +404,7 @@ function $VAL_R_VkFormat(value) {
 
 function $VAL_R_VkStructureType(value) {
   switch (value) {
-    case 0x3B9D4E89: case 0x3B9D4E94: case 0x3B9D4E90: case 0x3B9BB46A: case 0x3B9CC1EA: case 0x3B9CC1E9: case 0x3B9CC1E8: case 0x3B9AE940: case 0x0: case 0x3B9C73C8: case 0x3B9C73C9: case 0x3B9D4E8E: case 0x3B9BB46D: case 0x3B9D2F48: case 0x3B9BB46E: case 0x3B9D2F49: case 0x3B9BB469: case 0x3B9D2B62: case 0x7: case 0xC: case 0x3B9E8322: case 0x3B9E8321: case 0x2C: case 0x3B9D0450: case 0xD: case 0x3B9D98C0: case 0x3B9DEEB0: case 0x3B9C19F2: case 0x3B9C19F3: case 0x28: case 0x2A: case 0x3B9C0668: case 0x29: case 0x27: case 0x1D: case 0x3B9C066A: case 0x3B9E96A9: case 0x24: case 0x3B9BFAB2: case 0x3B9B1FF2: case 0x3B9B1FF0: case 0x3B9B1FF1: case 0x3B9AF4F8: case 0x3B9CBE02: case 0x3B9CBE03: case 0x3B9CBE04: case 0x3B9CBE00: case 0x3B9CBE01: case 0x3B9B2F91: case 0x3B9B2F90: case 0x3B9B2F92: case 0x21: case 0x3B9CE513: case 0x22: case 0x3B9D3EE8: case 0x20: case 0x3B9D5A41: case 0x3B9D3EEB: case 0x3B9D3EEC: case 0x3B9C1608: case 0x3: case 0x3B9C2D79: case 0x3B9C19F5: case 0x3B9C19F4: case 0x3B9BB466: case 0x3B9BB464: case 0x3B9BDB71: case 0x3B9BB467: case 0x3B9BB46B: case 0x3B9BB463: case 0x3B9BB465: case 0x3B9BB46C: case 0x3B9DAC48: case 0x2: case 0x3B9D71B0: case 0x3B9C2D7A: case 0x3B9AD1D0: case 0x3B9CA2AA: case 0x3B9E0A08: case 0x3B9CA2AC: case 0x3B9CA2AB: case 0x3B9CA2A9: case 0x3B9C2D78: case 0x3B9AD5B8: case 0x3B9CA2A8: case 0x3B9AD1D1: case 0x3B9D3331: case 0x3B9D3330: case 0xA: case 0x3B9C8368: case 0x3B9C8751: case 0x3B9BE342: case 0x3B9BA4C1: case 0x3B9BE729: case 0x3B9BA8A9: case 0x3B9BF6C8: case 0x3B9BFAB1: case 0x3B9BDF5B: case 0x3B9C7F81: case 0x3B9CC1ED: case 0x3B9BDF59: case 0x3B9BE340: case 0x3B9BE341: case 0x3B9BA4C0: case 0x3B9BF2E1: case 0x8: case 0x3B9C8B39: case 0x3B9C8752: case 0x3B9D6211: case 0x3B9BB07A: case 0x3B9C6FE1: case 0x3B9C6FE2: case 0x25: case 0x3B9E9A92: case 0x3B9D4E8D: case 0x3B9D4E8B: case 0x3B9D4E8C: case 0x1C: case 0x3B9C6428: case 0x3B9EB200: case 0x3B9E0DF0: case 0xE: case 0x3B9D3334: case 0x3B9D3333: case 0x3B9D3335: case 0x3B9D0838: case 0x3B9BB07B: case 0x2D: case 0x3B9D0451: case 0x3B9D2B63: case 0x3B9D0452: case 0x3B9E8AF0: case 0x3B9BB468: case 0x3B9BCFB8: case 0xF: case 0x3B9B3F30: case 0x3B9C930A: case 0x3B9CC1EB: case 0x3B9C8B38: case 0x3B9C8750: case 0x3B9BEB10: case 0x3B9D8150: case 0x3B9BE728: case 0x3B9BA8A8: case 0x3B9BFE98: case 0x3B9BFAB0: case 0x3B9C19F1: case 0x3B9DFE51: case 0x1: case 0x3B9CA690: case 0x30: case 0x2F: case 0x3B9CAA78: case 0x6: case 0x3B9BB460: case 0x5: case 0x2E: case 0x3B9CBA19: case 0x3B9CBA18: case 0x3B9BEB11: case 0x3B9CC1EC: case 0x3B9BEB12: case 0x3B9BE72B: case 0x3B9D8151: case 0x3B9E6BB1: case 0x3B9D0453: case 0x3B9BE72A: case 0x3B9E19A8: case 0x3B9CF89C: case 0x3B9AF110: case 0x3B9C19F0: case 0x3B9DFE55: case 0x3B9DFE52: case 0x3B9DFE54: case 0x3B9DFE53: case 0x3B9C0E38: case 0x3B9D7D68: case 0x3B9BCFB9: case 0x3B9D0C20: case 0x3B9D0C21: case 0x3B9E8320: case 0x3B9DDB28: case 0x3B9C0669: case 0x3B9C5488: case 0x3B9E96A8: case 0x3B9E96AA: case 0x3B9B8D50: case 0x3B9E9A90: case 0x3B9E7380: case 0x3B9C5870: case 0x3B9DD358: case 0x3B9D3EE9: case 0x3B9D3EEA: case 0x3B9C4CB8: case 0x3B9DC7A0: case 0x3B9DEACA: case 0x3B9BDF5A: case 0x3B9C7F80: case 0x3B9BDF58: case 0x3B9D8152: case 0x3B9BF2E0: case 0x3B9BB078: case 0x3B9C0A50: case 0x3B9DCB88: case 0x3B9E1D90: case 0x3B9E1D91: case 0x3B9DE2F8: case 0x3B9E9E78: case 0x3B9BDB70: case 0x3B9EC588: case 0x3B9BDF5C: case 0x3B9C6FE0: case 0x3B9D3332: case 0x3B9BB07C: case 0x3B9D6210: case 0x3B9CE510: case 0x3B9CE511: case 0x3B9D5A40: case 0x3B9E67C8: case 0x3B9E6BB0: case 0x3B9BB07E: case 0x3B9DDF10: case 0x3B9DDF11: case 0x3B9B9909: case 0x3B9C44E8: case 0x3B9B990A: case 0x3B9E0620: case 0x3B9C9308: case 0x3B9BB079: case 0x3B9C0280: case 0x3B9D4E91: case 0x3B9D5270: case 0x3B9CC5D0: case 0x3B9D2B64: case 0x3B9CF89B: case 0x3B9E2948: case 0x3B9D8920: case 0x3B9D9CA8: case 0x3B9F0020: case 0x3B9DE6E0: case 0x3B9DFA68: case 0x3B9D2390: case 0x3B9D2391: case 0x3B9D4AA1: case 0x3B9D4AA2: case 0x3B9BB080: case 0x3B9C9AD8: case 0x3B9F13A8: case 0x3B9F13A9: case 0x3B9B3760: case 0x3B9B3761: case 0x3B9EA648: case 0x3B9C9EC0: case 0x3B9DB032: case 0x3B9DB030: case 0x3B9E0238: case 0x3B9EA260: case 0x11: case 0x3B9D0C22: case 0x1A: case 0x3B9D1BC0: case 0x3B9E9A91: case 0x3B9D1008: case 0x3B9DB800: case 0x19: case 0x3B9C4CB9: case 0x1B: case 0x14: case 0x1E: case 0x18: case 0x3B9C5489: case 0x3B9C5871: case 0x17: case 0x3B9B1050: case 0x3B9B3762: case 0x3B9D5271: case 0x3B9CF89A: case 0x12: case 0x3B9C930B: case 0x15: case 0x3B9DB031: case 0x13: case 0x3B9D4AA5: case 0x3B9DEAC8: case 0x3B9D4AA0: case 0x16: case 0x3B9C48D0: case 0x3B9C1DD8: case 0x3B9DB418: case 0x3B9ACDE9: case 0x3B9C1220: case 0x3B9C3160: case 0xB: case 0x3B9DFE50: case 0x3B9DEEB1: case 0x3B9BB07D: case 0x3B9D4E88: case 0x3B9D4E93: case 0x3B9C6FE3: case 0x2B: case 0x26: case 0x3B9C73CC: case 0x3B9E1D92: case 0x3B9C9309: case 0x3B9B9908: case 0x3B9CF899: case 0x1F: case 0x3B9CC5D1: case 0x3B9D2B60: case 0x3B9D2B65: case 0x3B9D2B61: case 0x3B9CF898: case 0x9: case 0x3B9BFE99: case 0x3B9BFAB3: case 0x10: case 0x3B9D3B01: case 0x3B9C7B98: case 0x3B9BB07F: case 0x3B9D0454: case 0x3B9B8968: case 0x4: case 0x3B9C73CD: case 0x3B9C73CB: case 0x3B9C73CA: case 0x3B9DD359: case 0x3B9C73CE: case 0x3B9C2990: case 0x3B9C9AD9: case 0x3B9EAE1A: case 0x3B9C9ADA: case 0x3B9EAE18: case 0x3B9EAE19: case 0x3B9E6F98: case 0x3B9C2D7B: case 0x3B9ACDE8: case 0x3B9E0A09: case 0x3B9B6A28: case 0x3B9D3B00: case 0x3B9E8ED8: case 0x3B9BB848: case 0x3B9BBC30: case 0x3B9AE170: case 0x3B9BEEF8: case 0x3B9BAC90: case 0x3B9AED28: case 0x23: case 0x3B9D4E8F: case 0x3B9CE512: case 0x3B9ADD88: case 0x3B9AD9A0: 
+    case 0x3B9D4E89: case 0x3B9D4E94: case 0x3B9D4E90: case 0x3B9BB46A: case 0x3B9CC1EA: case 0x3B9CC1E9: case 0x3B9CC1E8: case 0x3B9AE940: case 0x0: case 0x3B9C73C8: case 0x3B9C73C9: case 0x3B9D4E8E: case 0x3B9BB46D: case 0x3B9D2F48: case 0x3B9BB46E: case 0x3B9D2F49: case 0x3B9BB469: case 0x3B9D2B62: case 0x7: case 0xC: case 0x3B9E8322: case 0x3B9E8321: case 0x2C: case 0x3B9D0450: case 0xD: case 0x3B9D98C0: case 0x3B9DEEB0: case 0x3B9C19F2: case 0x3B9C19F3: case 0x28: case 0x2A: case 0x3B9C0668: case 0x29: case 0x27: case 0x1D: case 0x3B9C066A: case 0x3B9E96A9: case 0x24: case 0x3B9BFAB2: case 0x3B9B1FF2: case 0x3B9B1FF0: case 0x3B9B1FF1: case 0x3B9AF4F8: case 0x3B9CBE02: case 0x3B9CBE03: case 0x3B9CBE04: case 0x3B9CBE00: case 0x3B9CBE01: case 0x3B9B2F91: case 0x3B9B2F90: case 0x3B9B2F92: case 0x21: case 0x3B9CE513: case 0x22: case 0x3B9D3EE8: case 0x20: case 0x3B9D5A41: case 0x3B9D3EEB: case 0x3B9D3EEC: case 0x3B9C1608: case 0x3: case 0x3B9C2D79: case 0x3B9C19F5: case 0x3B9C19F4: case 0x3B9BB466: case 0x3B9BB464: case 0x3B9BDB71: case 0x3B9BB467: case 0x3B9BB46B: case 0x3B9BB463: case 0x3B9BB465: case 0x3B9BB46C: case 0x3B9DAC48: case 0x2: case 0x3B9D71B0: case 0x3B9D006B: case 0x3B9C2D7A: case 0x3B9AD1D0: case 0x3B9CA2AA: case 0x3B9E0A08: case 0x3B9CA2AC: case 0x3B9CA2AB: case 0x3B9CA2A9: case 0x3B9C2D78: case 0x3B9AD5B8: case 0x3B9CA2A8: case 0x3B9AD1D1: case 0x3B9D3331: case 0x3B9D3330: case 0xA: case 0x3B9C8368: case 0x3B9C8751: case 0x3B9BE342: case 0x3B9BA4C1: case 0x3B9BE729: case 0x3B9BA8A9: case 0x3B9BF6C8: case 0x3B9BFAB1: case 0x3B9BDF5B: case 0x3B9C7F81: case 0x3B9CC1ED: case 0x3B9BDF59: case 0x3B9BE340: case 0x3B9BE341: case 0x3B9BA4C0: case 0x3B9BF2E1: case 0x8: case 0x3B9C8B39: case 0x3B9C8752: case 0x3B9D6211: case 0x3B9BB07A: case 0x3B9C6FE1: case 0x3B9C6FE2: case 0x25: case 0x3B9E9A92: case 0x3B9D4E8D: case 0x3B9D4E8B: case 0x3B9D4E8C: case 0x1C: case 0x3B9C6428: case 0x3B9EB200: case 0x3B9E0DF0: case 0xE: case 0x3B9D3334: case 0x3B9D3333: case 0x3B9D3335: case 0x3B9D0838: case 0x3B9BB07B: case 0x2D: case 0x3B9D0451: case 0x3B9D2B63: case 0x3B9D0452: case 0x3B9E8AF0: case 0x3B9BB468: case 0x3B9BCFB8: case 0xF: case 0x3B9B3F30: case 0x3B9C930A: case 0x3B9CC1EB: case 0x3B9C8B38: case 0x3B9C8750: case 0x3B9BEB10: case 0x3B9D8150: case 0x3B9BE728: case 0x3B9BA8A8: case 0x3B9BFE98: case 0x3B9BFAB0: case 0x3B9C19F1: case 0x3B9DFE51: case 0x1: case 0x3B9CA690: case 0x30: case 0x2F: case 0x3B9CAA78: case 0x6: case 0x3B9BB460: case 0x5: case 0x2E: case 0x3B9CBA19: case 0x3B9CBA18: case 0x3B9BEB11: case 0x3B9CC1EC: case 0x3B9BEB12: case 0x3B9BE72B: case 0x3B9D8151: case 0x3B9E6BB1: case 0x3B9D0453: case 0x3B9BE72A: case 0x3B9E19A8: case 0x3B9CF89C: case 0x3B9AF110: case 0x3B9C19F0: case 0x3B9DFE55: case 0x3B9DFE52: case 0x3B9DFE54: case 0x3B9DFE53: case 0x3B9C0E38: case 0x3B9D7D68: case 0x3B9BCFB9: case 0x3B9D0C20: case 0x3B9D0C21: case 0x3B9E8320: case 0x3B9DDB28: case 0x3B9C0669: case 0x3B9C5488: case 0x3B9E96A8: case 0x3B9E96AA: case 0x3B9B8D50: case 0x3B9E9A90: case 0x3B9E7380: case 0x3B9C5870: case 0x3B9DD358: case 0x3B9D3EE9: case 0x3B9D3EEA: case 0x3B9C4CB8: case 0x3B9DC7A0: case 0x3B9DEACA: case 0x3B9BDF5A: case 0x3B9C7F80: case 0x3B9BDF58: case 0x3B9D8152: case 0x3B9BF2E0: case 0x3B9BB078: case 0x3B9C0A50: case 0x3B9DCB88: case 0x3B9E1D90: case 0x3B9E1D91: case 0x3B9DE2F8: case 0x3B9E9E78: case 0x3B9BDB70: case 0x3B9EC588: case 0x3B9BDF5C: case 0x3B9C6FE0: case 0x3B9D3332: case 0x3B9BB07C: case 0x3B9D6210: case 0x3B9CE510: case 0x3B9CE511: case 0x3B9D5A40: case 0x3B9E67C8: case 0x3B9E6BB0: case 0x3B9BB07E: case 0x3B9DDF10: case 0x3B9DDF11: case 0x3B9B9909: case 0x3B9C44E8: case 0x3B9B990A: case 0x3B9E0620: case 0x3B9C9308: case 0x3B9BB079: case 0x3B9D0069: case 0x3B9D006A: case 0x3B9C0280: case 0x3B9D4E91: case 0x3B9D5270: case 0x3B9CC5D0: case 0x3B9D2B64: case 0x3B9CF89B: case 0x3B9E2948: case 0x3B9D8920: case 0x3B9D9CA8: case 0x3B9F0020: case 0x3B9BC018: case 0x3B9DE6E0: case 0x3B9DFA68: case 0x3B9D2390: case 0x3B9D2391: case 0x3B9D4AA1: case 0x3B9D4AA2: case 0x3B9BB080: case 0x3B9C3930: case 0x3B9C9AD8: case 0x3B9F13A8: case 0x3B9F13A9: case 0x3B9B3760: case 0x3B9B3761: case 0x3B9EA648: case 0x3B9C9EC0: case 0x3B9DB032: case 0x3B9DB030: case 0x3B9E0238: case 0x3B9EA260: case 0x11: case 0x3B9D0C22: case 0x1A: case 0x3B9D1BC0: case 0x3B9E9A91: case 0x3B9D1008: case 0x3B9DB800: case 0x19: case 0x3B9C4CB9: case 0x1B: case 0x14: case 0x1E: case 0x18: case 0x3B9C5489: case 0x3B9C5871: case 0x17: case 0x3B9B1050: case 0x3B9B3762: case 0x3B9D5271: case 0x3B9CF89A: case 0x12: case 0x3B9C930B: case 0x15: case 0x3B9DB031: case 0x13: case 0x3B9D4AA5: case 0x3B9DEAC8: case 0x3B9D4AA0: case 0x16: case 0x3B9C48D0: case 0x3B9C1DD8: case 0x3B9DB418: case 0x3B9ACDE9: case 0x3B9C1220: case 0x3B9C3160: case 0x3B9D0068: case 0xB: case 0x3B9DFE50: case 0x3B9DEEB1: case 0x3B9BB07D: case 0x3B9D4E88: case 0x3B9D4E93: case 0x3B9C6FE3: case 0x2B: case 0x26: case 0x3B9C73CC: case 0x3B9E1D92: case 0x3B9C9309: case 0x3B9B9908: case 0x3B9CF899: case 0x1F: case 0x3B9CC5D1: case 0x3B9D2B60: case 0x3B9D2B65: case 0x3B9D2B61: case 0x3B9CF898: case 0x9: case 0x3B9BFE99: case 0x3B9BFAB3: case 0x10: case 0x3B9D3B01: case 0x3B9C7B98: case 0x3B9BB07F: case 0x3B9D0454: case 0x3B9B8968: case 0x4: case 0x3B9C73CD: case 0x3B9C73CB: case 0x3B9C73CA: case 0x3B9DD359: case 0x3B9C73CE: case 0x3B9C2990: case 0x3B9C9AD9: case 0x3B9EAE1A: case 0x3B9C9ADA: case 0x3B9EAE18: case 0x3B9EAE19: case 0x3B9E6F98: case 0x3B9C2D7B: case 0x3B9ACDE8: case 0x3B9E0A09: case 0x3B9B6A28: case 0x3B9D3B00: case 0x3B9E8ED8: case 0x3B9BB848: case 0x3B9BBC30: case 0x3B9AE170: case 0x3B9BEEF8: case 0x3B9BAC90: case 0x3B9AED28: case 0x23: case 0x3B9D4E8F: case 0x3B9CE512: case 0x3B9ADD88: case 0x3B9AD9A0: 
       return true;
   };
   return false;
@@ -828,7 +828,7 @@ function $VAL_R_VkCullModeFlagBits(value) {
 
 function $VAL_R_VkQueueFlagBits(value) {
   switch (value) {
-    case 0x2: case 0x1: case 0x20: case 0x40: case 0x8: case 0x4: 
+    case 0x2: case 0x1: case 0x10: case 0x20: case 0x40: case 0x8: case 0x4: 
       return true;
   };
   return false;
@@ -843,12 +843,16 @@ function $VAL_R_VkRenderPassCreateFlagBits(value) {
 };
 
 function $VAL_R_VkDeviceQueueCreateFlagBits(value) {
+  switch (value) {
+    case 0x1: 
+      return true;
+  };
   return false;
 };
 
 function $VAL_R_VkMemoryPropertyFlagBits(value) {
   switch (value) {
-    case 0x1: case 0x8: case 0x4: case 0x2: case 0x10: 
+    case 0x1: case 0x8: case 0x4: case 0x2: case 0x10: case 0x20: 
       return true;
   };
   return false;
@@ -880,7 +884,7 @@ function $VAL_R_VkBufferUsageFlagBits(value) {
 
 function $VAL_R_VkBufferCreateFlagBits(value) {
   switch (value) {
-    case 0x10: case 0x4: case 0x1: case 0x2: 
+    case 0x10: case 0x8: case 0x4: case 0x1: case 0x2: 
       return true;
   };
   return false;
@@ -904,7 +908,7 @@ function $VAL_R_VkImageUsageFlagBits(value) {
 
 function $VAL_R_VkImageCreateFlagBits(value) {
   switch (value) {
-    case 0x20: case 0x400: case 0x80: case 0x2000: case 0x10: case 0x200: case 0x100: case 0x8: case 0x1000: case 0x4: case 0x1: case 0x2: case 0x40: case 0x4000: 
+    case 0x20: case 0x400: case 0x80: case 0x2000: case 0x10: case 0x200: case 0x100: case 0x8: case 0x800: case 0x1000: case 0x4: case 0x1: case 0x2: case 0x40: case 0x4000: 
       return true;
   };
   return false;
@@ -1024,7 +1028,7 @@ function $VAL_R_VkPipelineStageFlagBits(value) {
 
 function $VAL_R_VkCommandPoolCreateFlagBits(value) {
   switch (value) {
-    case 0x2: case 0x1: 
+    case 0x4: case 0x2: case 0x1: 
       return true;
   };
   return false;
@@ -4191,10 +4195,10 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
         case 0x3B9BDB71:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -22223,7 +22227,7 @@ Object.defineProperties(VkSubmitInfo.prototype, {
         case 0x3B9BEEF8:
         case 0x3B9BFAB2:
         case 0x3B9BB465:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
+        case 0x3B9D0068:
           break;
         default:
           throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
@@ -29064,10 +29068,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2.prototype, {
         case 0x3B9B9909:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -29249,10 +29253,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2KHR.prototype, {
         case 0x3B9B9909:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -29435,9 +29439,9 @@ Object.defineProperties(VkPhysicalDeviceProperties2.prototype, {
         case 0x3B9B990A:
         case 0x3B9C4CB8:
         case 0x3B9C44E8:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case 0x3B9C3930:
         case 0x3B9C9308:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case 0x3B9D006A:
         case 0x3B9CC5D0:
         case 0x3B9CF89B:
         case 0x3B9D0C21:
@@ -29584,9 +29588,9 @@ Object.defineProperties(VkPhysicalDeviceProperties2KHR.prototype, {
         case 0x3B9B990A:
         case 0x3B9C4CB8:
         case 0x3B9C44E8:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case 0x3B9C3930:
         case 0x3B9C9308:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case 0x3B9D006A:
         case 0x3B9CC5D0:
         case 0x3B9CF89B:
         case 0x3B9D0C21:
@@ -49399,7 +49403,7 @@ function VkPhysicalDeviceSubgroupProperties(opts) {
   
   
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES;
+  this.sType = 0x3B9C3930;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -53672,7 +53676,7 @@ function VkProtectedSubmitInfo(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO;
+  this.sType = 0x3B9D0068;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -53775,7 +53779,7 @@ function VkPhysicalDeviceProtectedMemoryFeatures(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES;
+  this.sType = 0x3B9D0069;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -53878,7 +53882,7 @@ function VkPhysicalDeviceProtectedMemoryProperties(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES;
+  this.sType = 0x3B9D006A;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -53983,7 +53987,7 @@ function VkDeviceQueueInfo2(opts) {
   
   
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2;
+  this.sType = 0x3B9D006B;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -57516,7 +57520,7 @@ function VkPhysicalDeviceShaderDrawParametersFeatures(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
+  this.sType = 0x3B9BC018;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;

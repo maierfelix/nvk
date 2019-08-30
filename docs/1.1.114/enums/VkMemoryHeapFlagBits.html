@@ -39,6 +39,7 @@
     <vk-stub>
       <pre><code class="language-js">VkMemoryHeapFlagBits = {
   VK_MEMORY_HEAP_DEVICE_LOCAL_BIT: 0x1,
+  VK_MEMORY_HEAP_MULTI_INSTANCE_BIT: 0x2,
   VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR: VK_MEMORY_HEAP_MULTI_INSTANCE_BIT
 };</code></pre>
     </vk-stub>
@@ -49,6 +50,10 @@
       <vk-property-entry>
         <vk-property-prototype>VkMemoryHeapFlagBits.<vk-prototype-name>VK_MEMORY_HEAP_DEVICE_LOCAL_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description> specifies that the heap corresponds to device local memory. Device local memory <i>may</i> have different performance characteristics than host local memory, and <i>may</i> support different memory property flags.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryHeapFlagBits.<vk-prototype-name>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that in a logical device representing more than one physical device, there is a per-physical device instance of the heap memory. By default, an allocation from such a heap will be replicated to each physical device's instance of the heap.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkMemoryHeapFlagBits.<vk-prototype-name>VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR</vk-prototype-name></vk-property-prototype>

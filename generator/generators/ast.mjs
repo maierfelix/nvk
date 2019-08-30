@@ -213,9 +213,9 @@ function parseExtensionMembers(parent, child) {
   let out = [];
   let {elements} = child;
   if (!elements) return out;
-  let baseNum = parseInt(child.attributes.number, 0);
+  let baseNum = child.name === "extension" ? parseInt(child.attributes.number, 0) : 0;
   elements.map(el => {
-    el.elements.map(ch => {
+    (el.elements || []).map(ch => {
       if (ch.name === "comment") return;
       let attr = ch.attributes;
       if (!attr) return;
@@ -793,7 +793,7 @@ export default function({ xmlInput, version, docs } = _) {
       out.push(ast);
     });
   }
-  // extensions
+  // base extensions
   if (true) {
     let results = [];
     findXMLElements(obj, { comment: "Vulkan extension interface definitions" }, results);
@@ -872,7 +872,6 @@ export default function({ xmlInput, version, docs } = _) {
   }
   // merge aliased structs
   {
-    let enums = out.filter(node => node.kind === "ENUM");
     let structs = out.filter(node => node.kind === "STRUCT");
     structs.map(struct => {
       if (struct.alias) {
@@ -888,6 +887,33 @@ export default function({ xmlInput, version, docs } = _) {
           }
         };
       }
+    });
+  }
+  // enum extensions
+  if (true) {
+    let enums = out.filter(node => node.kind === "ENUM");
+    let results = [];
+    findXMLElements(obj, "require", results);
+    results.map((result, index) => {
+      let el = { elements: [result] };
+      let extMembers = parseExtensionMembers(null, el);
+      extMembers.map(member => {
+        if (!member.extends || member.alias) return;
+        let enumToExtend = enums.filter(node => node.name === member.extends)[0] || null;
+        if (!enumToExtend) {
+          throw `Cannot resolve enum to extend '${member.extends}'`;
+        }
+        let node = {
+          kind: TYPES.ENUM_MEMBER,
+          type: "VALUE",
+          value: "" + member.value,
+          name: member.name
+        };
+        // only push extension if it doesn't exist yet
+        if (!enumToExtend.children.filter(child => child.name === member.name)[0]) {
+          enumToExtend.children.push(node);
+        }
+      });
     });
   }
   // funcpointers

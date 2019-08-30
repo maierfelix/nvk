@@ -39,7 +39,8 @@
     <vk-stub>
       <pre><code class="language-js">VkCommandPoolCreateFlagBits = {
   VK_COMMAND_POOL_CREATE_TRANSIENT_BIT: 0x1,
-  VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT: 0x2
+  VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT: 0x2,
+  VK_COMMAND_POOL_CREATE_PROTECTED_BIT: 0x4
 };</code></pre>
     </vk-stub>
 
@@ -53,6 +54,10 @@
       <vk-property-entry>
         <vk-property-prototype>VkCommandPoolCreateFlagBits.<vk-prototype-name>VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description> allows any command buffer allocated from a pool to be individually reset to the <<commandbuffers-lifecycle, initial state>>; either by calling <b><a href="../calls/vkResetCommandBuffer.html">vkResetCommandBuffer</a></b>, or via the implicit reset when calling <b><a href="../calls/vkBeginCommandBuffer.html">vkBeginCommandBuffer</a></b>. If this flag is not set on a pool, then <b><a href="../calls/vkResetCommandBuffer.html">vkResetCommandBuffer</a></b> <i>must</i> not be called for any command buffer allocated from that pool.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandPoolCreateFlagBits.<vk-prototype-name>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that command buffers allocated from the pool are protected command buffers. If the protected memory feature is not enabled, the <b>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</b> bit of <b>flags</b> <i>must</i> not be set.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

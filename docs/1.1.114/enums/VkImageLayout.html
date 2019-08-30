@@ -47,12 +47,14 @@
   VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL: 6,
   VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL: 7,
   VK_IMAGE_LAYOUT_PREINITIALIZED: 8,
+  VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL: 1000117000,
+  VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL: 1000117001,
   VK_IMAGE_LAYOUT_PRESENT_SRC_KHR: 1000001002,
   VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR: 1000111000,
-  VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL,
-  VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL,
   VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV: 1000164003,
-  VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT: 1000218000
+  VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT: 1000218000,
+  VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL,
+  VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL
 };</code></pre>
     </vk-stub>
 
@@ -96,6 +98,14 @@
         <vk-property-description> does not support device access. This layout <i>must</i> only be used as the <b>initialLayout</b> member of <b><a href="../structs/VkImageCreateInfo.html">VkImageCreateInfo</a></b> or <b><a href="../structs/VkAttachmentDescription.html">VkAttachmentDescription</a></b>, or as the <b>oldLayout</b> in an image transition. When transitioning out of this layout, the contents of the memory are preserved. This layout is intended to be used as the initial layout for an image whose contents are written by the host, and hence the data <i>can</i> be written to memory immediately, without first executing a layout transition. Currently, <b>VK_IMAGE_LAYOUT_PREINITIALIZED</b> is only useful with <<glossary-linear-resource,linear>> images because there is not a standard layout defined for <b>VK_IMAGE_TILING_OPTIMAL</b> images.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
+        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
         <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
@@ -104,19 +114,19 @@
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
         <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageLayout.<vk-prototype-name>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       

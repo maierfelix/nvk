@@ -2815,10 +2815,10 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
         case 0x3B9BDB71:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -19051,7 +19051,7 @@ Object.defineProperties(VkSubmitInfo.prototype, {
         case 0x3B9BEEF8:
         case 0x3B9BFAB2:
         case 0x3B9BB465:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
+        case 0x3B9D0068:
           break;
         default:
           throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
@@ -25238,10 +25238,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2.prototype, {
         case 0x3B9B9909:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -25413,10 +25413,10 @@ Object.defineProperties(VkPhysicalDeviceFeatures2KHR.prototype, {
         case 0x3B9B9909:
         case 0x3B9C0E38:
         case 0x3B9D2B64:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case 0x3B9D0069:
         case 0x3B9D0C20:
         case 0x3B9CE510:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+        case 0x3B9BC018:
         case 0x3B9C0A50:
         case 0x3B9EC588:
         case 0x3B9D3EE9:
@@ -25589,9 +25589,9 @@ Object.defineProperties(VkPhysicalDeviceProperties2.prototype, {
         case 0x3B9B990A:
         case 0x3B9C4CB8:
         case 0x3B9C44E8:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case 0x3B9C3930:
         case 0x3B9C9308:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case 0x3B9D006A:
         case 0x3B9CC5D0:
         case 0x3B9CF89B:
         case 0x3B9D0C21:
@@ -25730,9 +25730,9 @@ Object.defineProperties(VkPhysicalDeviceProperties2KHR.prototype, {
         case 0x3B9B990A:
         case 0x3B9C4CB8:
         case 0x3B9C44E8:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case 0x3B9C3930:
         case 0x3B9C9308:
-        case VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case 0x3B9D006A:
         case 0x3B9CC5D0:
         case 0x3B9CF89B:
         case 0x3B9D0C21:
@@ -43829,7 +43829,7 @@ function VkPhysicalDeviceSubgroupProperties(opts) {
   
   
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES;
+  this.sType = 0x3B9C3930;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -47743,7 +47743,7 @@ function VkProtectedSubmitInfo(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO;
+  this.sType = 0x3B9D0068;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -47840,7 +47840,7 @@ function VkPhysicalDeviceProtectedMemoryFeatures(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES;
+  this.sType = 0x3B9D0069;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -47937,7 +47937,7 @@ function VkPhysicalDeviceProtectedMemoryProperties(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES;
+  this.sType = 0x3B9D006A;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -48036,7 +48036,7 @@ function VkDeviceQueueInfo2(opts) {
   
   
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2;
+  this.sType = 0x3B9D006B;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;
@@ -51296,7 +51296,7 @@ function VkPhysicalDeviceShaderDrawParametersFeatures(opts) {
   
   this._pNext = null;
   
-  this.sType = VK_ENUMERATIONS.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
+  this.sType = 0x3B9BC018;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
     if (opts.pNext !== void 0) this.pNext = opts.pNext;

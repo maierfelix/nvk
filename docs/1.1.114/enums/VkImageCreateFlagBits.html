@@ -43,15 +43,22 @@
   VK_IMAGE_CREATE_SPARSE_ALIASED_BIT: 0x4,
   VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT: 0x8,
   VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT: 0x10,
+  VK_IMAGE_CREATE_ALIAS_BIT: 0x400,
+  VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT: 0x40,
+  VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT: 0x20,
+  VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT: 0x80,
+  VK_IMAGE_CREATE_EXTENDED_USAGE_BIT: 0x100,
+  VK_IMAGE_CREATE_PROTECTED_BIT: 0x800,
+  VK_IMAGE_CREATE_DISJOINT_BIT: 0x200,
   VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV: 0x2000,
+  VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT: 0x1000,
+  VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT: 0x4000,
   VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR: VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT,
   VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR: VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT,
   VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR: VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT,
   VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR: VK_IMAGE_CREATE_EXTENDED_USAGE_BIT,
-  VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT: 0x1000,
   VK_IMAGE_CREATE_DISJOINT_BIT_KHR: VK_IMAGE_CREATE_DISJOINT_BIT,
-  VK_IMAGE_CREATE_ALIAS_BIT_KHR: VK_IMAGE_CREATE_ALIAS_BIT,
-  VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT: 0x4000
+  VK_IMAGE_CREATE_ALIAS_BIT_KHR: VK_IMAGE_CREATE_ALIAS_BIT
 };</code></pre>
     </vk-stub>
 
@@ -79,7 +86,43 @@
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_ALIAS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_EXTENDED_USAGE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_DISJOINT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
         <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -99,19 +142,11 @@
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
         <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_DISJOINT_BIT_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_ALIAS_BIT_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkImageCreateFlagBits.<vk-prototype-name>VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       

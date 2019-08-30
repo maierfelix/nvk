@@ -38,13 +38,17 @@
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">VkDeviceQueueCreateFlagBits = {
-  
+  VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT: 0x1
 };</code></pre>
     </vk-stub>
 
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceQueueCreateFlagBits.<vk-prototype-name>VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the device queue is a protected-capable queue. If the protected memory feature is not enabled, the <b>VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT</b> bit of <b>flags</b> <i>must</i> not be set.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

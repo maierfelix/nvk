@@ -42,13 +42,16 @@
   VK_IMAGE_ASPECT_DEPTH_BIT: 0x2,
   VK_IMAGE_ASPECT_STENCIL_BIT: 0x4,
   VK_IMAGE_ASPECT_METADATA_BIT: 0x8,
-  VK_IMAGE_ASPECT_PLANE_0_BIT_KHR: VK_IMAGE_ASPECT_PLANE_0_BIT,
-  VK_IMAGE_ASPECT_PLANE_1_BIT_KHR: VK_IMAGE_ASPECT_PLANE_1_BIT,
-  VK_IMAGE_ASPECT_PLANE_2_BIT_KHR: VK_IMAGE_ASPECT_PLANE_2_BIT,
+  VK_IMAGE_ASPECT_PLANE_0_BIT: 0x10,
+  VK_IMAGE_ASPECT_PLANE_1_BIT: 0x20,
+  VK_IMAGE_ASPECT_PLANE_2_BIT: 0x40,
   VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT: 0x80,
   VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT: 0x100,
   VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT: 0x200,
-  VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT: 0x400
+  VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT: 0x400,
+  VK_IMAGE_ASPECT_PLANE_0_BIT_KHR: VK_IMAGE_ASPECT_PLANE_0_BIT,
+  VK_IMAGE_ASPECT_PLANE_1_BIT_KHR: VK_IMAGE_ASPECT_PLANE_1_BIT,
+  VK_IMAGE_ASPECT_PLANE_2_BIT_KHR: VK_IMAGE_ASPECT_PLANE_2_BIT
 };</code></pre>
     </vk-stub>
 
@@ -72,15 +75,15 @@
         <vk-property-description> specifies the metadata aspect, used for sparse <<sparsememory, sparse resource>> operations.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_0_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_0_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_1_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_1_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
-        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_2_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_2_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -97,6 +100,18 @@
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_0_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_1_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageAspectFlagBits.<vk-prototype-name>VK_IMAGE_ASPECT_PLANE_2_BIT_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       

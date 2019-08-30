@@ -42,6 +42,7 @@
   VK_QUEUE_COMPUTE_BIT: 0x2,
   VK_QUEUE_TRANSFER_BIT: 0x4,
   VK_QUEUE_SPARSE_BINDING_BIT: 0x8,
+  VK_QUEUE_PROTECTED_BIT: 0x10,
   VK_QUEUE_RESERVED_6_BIT_KHR: 0x40,
   VK_QUEUE_RESERVED_5_BIT_KHR: 0x20
 };</code></pre>
@@ -65,6 +66,10 @@
       <vk-property-entry>
         <vk-property-prototype>VkQueueFlagBits.<vk-prototype-name>VK_QUEUE_SPARSE_BINDING_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description> specifies that queues in this queue family support sparse memory management operations (see <<sparsememory,Sparse Resources>>). If any of the sparse resource features are enabled, then at least one queue family <i>must</i> support this bit.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFlagBits.<vk-prototype-name>VK_QUEUE_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> is set, then the queues in this queue family support the <b>VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT</b> bit. (see <<memory-protected-memory,Protected Memory>>). If the protected memory physical device feature is supported, then at least one queue family of at least one physical device exposed by the implementation <i>must</i> support this bit.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkQueueFlagBits.<vk-prototype-name>VK_QUEUE_RESERVED_6_BIT_KHR</vk-prototype-name></vk-property-prototype>

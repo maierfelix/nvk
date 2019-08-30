@@ -41,6 +41,7 @@
   VK_BUFFER_CREATE_SPARSE_BINDING_BIT: 0x1,
   VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT: 0x2,
   VK_BUFFER_CREATE_SPARSE_ALIASED_BIT: 0x4,
+  VK_BUFFER_CREATE_PROTECTED_BIT: 0x8,
   VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT: 0x10
 };</code></pre>
     </vk-stub>
@@ -59,6 +60,10 @@
       <vk-property-entry>
         <vk-property-prototype>VkBufferCreateFlagBits.<vk-prototype-name>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description> specifies that the buffer will be backed using sparse memory binding with memory ranges that might also simultaneously be backing another buffer (or another portion of the same buffer). Buffers created with this flag <i>must</i> also be created with the <b>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</b> flag.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkBufferCreateFlagBits.<vk-prototype-name>VK_BUFFER_CREATE_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the buffer is a protected buffer.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkBufferCreateFlagBits.<vk-prototype-name>VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT</vk-prototype-name></vk-property-prototype>

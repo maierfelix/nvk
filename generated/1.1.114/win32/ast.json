@@ -911,6 +911,42 @@
           ],
           "description": " does not support device access. This layout {#1#} only be used as the {#6#} member of {#2#} or {#3#}, or as the {#7#} in an image transition. When transitioning out of this layout, the contents of the memory are preserved. This layout is intended to be used as the initial layout for an image whose contents are written by the host, and hence the data {#0#} be written to memory immediately, without first executing a layout transition. Currently, {#4#} is only useful with <<glossary-linear-resource,linear>> images because there is not a standard layout defined for {#5#} images."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117000",
+        "name": "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117001",
+        "name": "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_IMAGE_LAYOUT_PRESENT_SRC_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT"
       }
     ],
     "documentation": {
@@ -1115,6 +1151,33 @@
         "documentation": {
           "macros": [],
           "description": " specifies linear tiling (texels are laid out in memory in row-major order, possibly with some padding on each row)."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkGetImageDrmFormatModifierPropertiesEXT"
+            },
+            {
+              "kind": "slink",
+              "value": "VkImageDrmFormatModifierListCreateInfoEXT"
+            },
+            {
+              "kind": "slink",
+              "value": "VkImageDrmFormatModifierExplicitCreateInfoEXT"
+            }
+          ],
+          "description": " indicates that the image's tiling is defined by a <<glossary-drm-format-modifier,Linux DRM format modifier>>. The modifier is specified at image creation with {#2#} or {#3#}, and {#0#} be queried with {#1#}."
         }
       }
     ],
@@ -1411,6 +1474,22 @@
           "macros": [],
           "description": " specifies an <<descriptorsets-inputattachment, input attachment descriptor>>."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies an <<descriptorsets-inlineuniformblock, inline uniform block>>."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV"
       }
     ],
     "documentation": {
@@ -1453,6 +1532,40 @@
           "macros": [],
           "description": " specifies a <<queries-timestamps, timestamp query>>."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999008",
+        "name": "VK_QUERY_TYPE_RESERVED_8"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_QUERY_TYPE_RESERVED_4"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies a <<queries-transform-feedback, transform feedback query>>."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL"
       }
     ],
     "documentation": {
@@ -1556,6 +1669,16 @@
         "documentation": {
           "macros": [],
           "description": " specifies binding as a compute pipeline."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_PIPELINE_BIND_POINT_RAY_TRACING_NV",
+        "documentation": {
+          "macros": [],
+          "description": " specifies binding as a ray tracing pipeline."
         }
       }
     ],
@@ -1761,6 +1884,16 @@
           "macros": [],
           "description": " specifies that indices are 32-bit unsigned integer values."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_INDEX_TYPE_NONE_NV",
+        "documentation": {
+          "macros": [],
+          "description": " specifies that no indices are provided."
+        }
       }
     ],
     "documentation": {
@@ -1793,6 +1926,12 @@
           "macros": [],
           "description": " specifies linear filtering."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_FILTER_CUBIC_IMG"
       }
     ],
     "documentation": {
@@ -1982,6 +2121,37 @@
         "documentation": {
           "macros": [],
           "description": " specifies that polygon vertices are drawn as reference."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_POLYGON_MODE_FILL_RECTANGLE_NV",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_POLYGON_MODE_FILL_RECTANGLE_NV"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_POLYGON_MODE_FILL_RECTANGLE_NV"
+            }
+          ],
+          "description": " specifies that polygons are rendered using polygon rasterization rules, modified to consider a sample within the primitive if the sample location is inside the axis-aligned bounding box of the triangle after projection. Note that the barycentric weights used in attribute interpolation {#0#} extend outside the range [eq]#[0,1]# when these primitives are shaded. Special treatment is given to a sample position on the boundary edge of the bounding box. In such a case, if two rectangles lie on either side of a common edge (with identical endreference) on which a sample position lies, then exactly one of the triangles {#2#} produce a fragment that covers that sample during rasterization.+Polygons rendered in {#3#} mode {#1#} be clipped by the frustum or by user clip planes. If clipping is applied, the triangle is culled rather than clipped.+Area calculation and facingness are determined for {#4#} mode using the triangle's vertices."
         }
       }
     ],
@@ -2183,6 +2353,282 @@
         "type": "VALUE",
         "value": "4",
         "name": "VK_BLEND_OP_MAX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_BLEND_OP_ZERO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_BLEND_OP_SRC_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_BLEND_OP_DST_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_BLEND_OP_SRC_OVER_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_BLEND_OP_DST_OVER_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_BLEND_OP_SRC_IN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_BLEND_OP_DST_IN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999007",
+        "name": "VK_BLEND_OP_SRC_OUT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999008",
+        "name": "VK_BLEND_OP_DST_OUT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999009",
+        "name": "VK_BLEND_OP_SRC_ATOP_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999010",
+        "name": "VK_BLEND_OP_DST_ATOP_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999011",
+        "name": "VK_BLEND_OP_XOR_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999012",
+        "name": "VK_BLEND_OP_MULTIPLY_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999013",
+        "name": "VK_BLEND_OP_SCREEN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999014",
+        "name": "VK_BLEND_OP_OVERLAY_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999015",
+        "name": "VK_BLEND_OP_DARKEN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999016",
+        "name": "VK_BLEND_OP_LIGHTEN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999017",
+        "name": "VK_BLEND_OP_COLORDODGE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999018",
+        "name": "VK_BLEND_OP_COLORBURN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999019",
+        "name": "VK_BLEND_OP_HARDLIGHT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999020",
+        "name": "VK_BLEND_OP_SOFTLIGHT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999021",
+        "name": "VK_BLEND_OP_DIFFERENCE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999022",
+        "name": "VK_BLEND_OP_EXCLUSION_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999023",
+        "name": "VK_BLEND_OP_INVERT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999024",
+        "name": "VK_BLEND_OP_INVERT_RGB_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999025",
+        "name": "VK_BLEND_OP_LINEARDODGE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999026",
+        "name": "VK_BLEND_OP_LINEARBURN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999027",
+        "name": "VK_BLEND_OP_VIVIDLIGHT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999028",
+        "name": "VK_BLEND_OP_LINEARLIGHT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999029",
+        "name": "VK_BLEND_OP_PINLIGHT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999030",
+        "name": "VK_BLEND_OP_HARDMIX_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999031",
+        "name": "VK_BLEND_OP_HSL_HUE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999032",
+        "name": "VK_BLEND_OP_HSL_SATURATION_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999033",
+        "name": "VK_BLEND_OP_HSL_COLOR_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999034",
+        "name": "VK_BLEND_OP_HSL_LUMINOSITY_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999035",
+        "name": "VK_BLEND_OP_PLUS_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999036",
+        "name": "VK_BLEND_OP_PLUS_CLAMPED_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999037",
+        "name": "VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999038",
+        "name": "VK_BLEND_OP_PLUS_DARKER_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999039",
+        "name": "VK_BLEND_OP_MINUS_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999040",
+        "name": "VK_BLEND_OP_MINUS_CLAMPED_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999041",
+        "name": "VK_BLEND_OP_CONTRAST_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999042",
+        "name": "VK_BLEND_OP_INVERT_OVG_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999043",
+        "name": "VK_BLEND_OP_RED_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999044",
+        "name": "VK_BLEND_OP_GREEN_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999045",
+        "name": "VK_BLEND_OP_BLUE_EXT"
       }
     ],
     "documentation": {
@@ -3680,6 +4126,371 @@
         "type": "VALUE",
         "value": "184",
         "name": "VK_FORMAT_ASTC_12x12_SRGB_BLOCK"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156000",
+        "name": "VK_FORMAT_G8B8G8R8_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156001",
+        "name": "VK_FORMAT_B8G8R8G8_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156002",
+        "name": "VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156003",
+        "name": "VK_FORMAT_G8_B8R8_2PLANE_420_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156004",
+        "name": "VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156005",
+        "name": "VK_FORMAT_G8_B8R8_2PLANE_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156006",
+        "name": "VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156007",
+        "name": "VK_FORMAT_R10X6_UNORM_PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156008",
+        "name": "VK_FORMAT_R10X6G10X6_UNORM_2PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156009",
+        "name": "VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156010",
+        "name": "VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156011",
+        "name": "VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156012",
+        "name": "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156013",
+        "name": "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156014",
+        "name": "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156015",
+        "name": "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156016",
+        "name": "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156017",
+        "name": "VK_FORMAT_R12X4_UNORM_PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156018",
+        "name": "VK_FORMAT_R12X4G12X4_UNORM_2PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156019",
+        "name": "VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156020",
+        "name": "VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156021",
+        "name": "VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156022",
+        "name": "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156023",
+        "name": "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156024",
+        "name": "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156025",
+        "name": "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156026",
+        "name": "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156027",
+        "name": "VK_FORMAT_G16B16G16R16_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156028",
+        "name": "VK_FORMAT_B16G16R16G16_422_UNORM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156029",
+        "name": "VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkGetImageSubresourceLayout"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_2_BIT"
+            }
+          ],
+          "description": " specifies an unsigned normalized _multi-planar format_ that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. The horizontal and vertical dimensions of the R and B planes are halved relative to the image dimensions, and each R and B component is shared with the G components for which latexmath:[\\lfloor i_G \\times 0.5 \\rfloor = i_B = i_R] and latexmath:[\\lfloor j_G \\times 0.5 \\rfloor = j_B = j_R]. The location of each plane when this image is in linear layout can be determined via {#1#}, using {#2#} for the G plane, {#3#} for the B plane, and {#4#} for the R plane. Images in this format {#0#} be defined with a width and height that is a multiple of two."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156030",
+        "name": "VK_FORMAT_G16_B16R16_2PLANE_420_UNORM",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkGetImageSubresourceLayout"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+            }
+          ],
+          "description": " specifies an unsigned normalized _multi-planar format_ that has a 16-bit G component in each 16-bit word of plane 0, and a two-component, 32-bit BR plane 1 consisting of a 16-bit B component in the word in bytes 0..1, and a 16-bit R component in the word in bytes 2..3. The horizontal and vertical dimensions of the BR plane is halved relative to the image dimensions, and each R and B value is shared with the G components for which latexmath:[\\lfloor i_G \\times 0.5 \\rfloor = i_B = i_R] and latexmath:[\\lfloor j_G \\times 0.5 \\rfloor = j_B = j_R]. The location of each plane when this image is in linear layout can be determined via {#1#}, using {#2#} for the G plane, and {#3#} for the BR plane. Images in this format {#0#} be defined with a width and height that is a multiple of two."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156031",
+        "name": "VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkGetImageSubresourceLayout"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_2_BIT"
+            }
+          ],
+          "description": " specifies an unsigned normalized _multi-planar format_ that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. The horizontal dimension of the R and B plane is halved relative to the image dimensions, and each R and B value is shared with the G components for which latexmath:[\\lfloor i_G \\times 0.5 \\rfloor = i_B = i_R]. The location of each plane when this image is in linear layout can be determined via {#1#}, using {#2#} for the G plane, {#3#} for the B plane, and {#4#} for the R plane. Images in this format {#0#} be defined with a width that is a multiple of two."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156032",
+        "name": "VK_FORMAT_G16_B16R16_2PLANE_422_UNORM",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkGetImageSubresourceLayout"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+            }
+          ],
+          "description": " specifies an unsigned normalized _multi-planar format_ that has a 16-bit G component in each 16-bit word of plane 0, and a two-component, 32-bit BR plane 1 consisting of a 16-bit B component in the word in bytes 0..1, and a 16-bit R component in the word in bytes 2..3. The horizontal dimensions of the BR plane is halved relative to the image dimensions, and each R and B value is shared with the G components for which latexmath:[\\lfloor i_G \\times 0.5 \\rfloor = i_B = i_R]. The location of each plane when this image is in linear layout can be determined via {#1#}, using {#2#} for the G plane, and {#3#} for the BR plane. Images in this format {#0#} be defined with a width that is a multiple of two."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156033",
+        "name": "VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "flink",
+              "value": "vkGetImageSubresourceLayout"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_ASPECT_PLANE_2_BIT"
+            }
+          ],
+          "description": " specifies an unsigned normalized _multi-planar format_ that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. Each plane has the same dimensions and each R, G and B component contributes to a single texel. The location of each plane when this image is in linear layout can be determined via {#0#}, using {#1#} for the G plane, {#2#} for the B plane, and {#3#} for the R plane.endif::VK_VERSION_1_1,VK_KHR_sampler_ycbcr_conversion[]"
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999007",
+        "name": "VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG"
       }
     ],
     "documentation": {
@@ -3986,6 +4797,1854 @@
         "type": "VALUE",
         "value": "48",
         "name": "VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000094000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000157000",
+        "name": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000157001",
+        "name": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000083000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000127000",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000127001",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060000",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060003",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060004",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060005",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060006",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060013",
+        "name": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060014",
+        "name": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000070000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000070001",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000146000",
+        "name": "VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000146001",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000146002",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000146003",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000146004",
+        "name": "VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059002",
+        "name": "VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059003",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059004",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059005",
+        "name": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059006",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059007",
+        "name": "VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000059008",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117001",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117002",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000117003",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000053000",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000053001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000053002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000120000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000145000",
+        "name": "VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000145001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000145002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000145003",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156000",
+        "name": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156001",
+        "name": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156002",
+        "name": "VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156003",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156004",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156005",
+        "name": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000085000",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000071000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000071001",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000071002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000071003",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000071004",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000072000",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000072001",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000072002",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000112000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000112001",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000113000",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000077000",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000076000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000076001",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000168000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000168001",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000063000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PRESENT_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060007",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060008",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060009",
+        "name": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060010",
+        "name": "VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060011",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000060012",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_NATIVE_BUFFER_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_HDR_METADATA_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_GEOMETRY_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999007",
+        "name": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999008",
+        "name": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999009",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999011",
+        "name": "VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999012",
+        "name": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS2_FEATURES_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT"
       }
     ],
     "documentation": {
@@ -4180,6 +6839,99 @@
         "type": "VALUE",
         "value": "-12",
         "name": "VK_ERROR_FRAGMENTED_POOL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-1000069000",
+        "name": "VK_ERROR_OUT_OF_POOL_MEMORY"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-1000072003",
+        "name": "VK_ERROR_INVALID_EXTERNAL_HANDLE"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_SURFACE_LOST_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999001",
+        "name": "VK_ERROR_NATIVE_WINDOW_IN_USE_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_SUBOPTIMAL_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " A swapchain no longer matches the surface properties exactly, but {#0#} still be used to present to the surface successfully."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999004",
+        "name": "VK_ERROR_OUT_OF_DATE_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999001",
+        "name": "VK_ERROR_INCOMPATIBLE_DISPLAY_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999001",
+        "name": "VK_ERROR_VALIDATION_FAILED_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_INVALID_SHADER_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_FRAGMENTATION_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999001",
+        "name": "VK_ERROR_NOT_PERMITTED_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_INVALID_DEVICE_ADDRESS_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-999999000",
+        "name": "VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT"
       }
     ],
     "documentation": {
@@ -4480,6 +7232,75 @@
           ],
           "description": " specifies that the {#5#} state in {#2#} for both {#6#} and {#7#} will be ignored and {#0#} be set dynamically with {#1#} before any draws are performed with a pipeline state with {#3#} member {#8#} set to {#4#}"
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkCmdSetViewportWScalingNV"
+            },
+            {
+              "kind": "slink",
+              "value": "VkPipelineViewportWScalingStateCreateInfoNV"
+            },
+            {
+              "kind": "slink",
+              "value": "VkPipelineViewportWScalingStateCreateInfoNV"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_TRUE"
+            },
+            {
+              "kind": "pname",
+              "value": "pViewportScalings"
+            },
+            {
+              "kind": "pname",
+              "value": "viewportScalingEnable"
+            }
+          ],
+          "description": " specifies that the {#5#} state in {#2#} will be ignored and {#0#} be set dynamically with {#1#} before any draws are performed with a pipeline state with {#3#} member {#6#} set to {#4#}"
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV"
       }
     ],
     "documentation": {
@@ -4670,6 +7491,84 @@
         "type": "VALUE",
         "value": "25",
         "name": "VK_OBJECT_TYPE_COMMAND_POOL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156000",
+        "name": "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000085000",
+        "name": "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_SURFACE_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_SWAPCHAIN_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_DISPLAY_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_OBJECT_TYPE_DISPLAY_MODE_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_OBJECT_TABLE_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_VALIDATION_CACHE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL"
       }
     ],
     "documentation": {
@@ -4750,6 +7649,52 @@
           ],
           "description": " specifies that the presentation engine generally waits for the next vertical blanking period to update the current image. If a vertical blanking period has already passed since the last update of the current image then the presentation engine does not wait for another vertical blanking period for the update, meaning this mode {#0#} result in visible tearing in this case. This mode is useful for reducing visual stutter with an application that will mostly present a new image before the next vertical blanking period, but may occasionally be late, and present a new image just after the next vertical blanking period. An internal queue is used to hold pending presentation requests. New requests are appended to the end of the queue, and one request is removed from the beginning of the queue and processed during or after each vertical blanking period in which the queue is non-empty."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies that the presentation engine and application have concurrent access to a single image, which is referred to as a _shared presentable image_. The presentation engine is only required to update the current image after a new presentation request is received. Therefore the application {#2#} make a presentation request whenever an update is required. However, the presentation engine {#0#} update the current image at any point, meaning this mode {#1#} result in visible tearing."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies that the presentation engine and application have concurrent access to a single image, which is referred to as a _shared presentable image_. The presentation engine periodically updates the current image on its regular refresh cycle. The application is only required to make one initial presentation request, after which the presentation engine {#2#} update the current image without any need for further presentation requests. The application {#0#} indicate the image contents have been updated by making a presentation request, but this does not guarantee the timing of when it will be updated. This mode {#1#} result in visible tearing if rendering to the image is not timed correctly."
+        }
       }
     ],
     "documentation": {
@@ -4778,6 +7723,156 @@
         "type": "ALIAS",
         "value": "(int32_t)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR",
         "name": "VK_COLORSPACE_SRGB_NONLINEAR_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999001",
+        "name": "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the Display-P3 color space to be displayed using an sRGB-like EOTF (defined below)."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999002",
+        "name": "VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the extended sRGB color space to be displayed using a linear EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999003",
+        "name": "VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the Display-P3 color space to be displayed using a linear EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999004",
+        "name": "VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the DCI-P3 color space to be displayed using the DCI-P3 EOTF. Note that values in such an image are interpreted as XYZ encoded color data by the presentation engine."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999005",
+        "name": "VK_COLOR_SPACE_BT709_LINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the BT709 color space to be displayed using a linear EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999006",
+        "name": "VK_COLOR_SPACE_BT709_NONLINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the BT709 color space to be displayed using the SMPTE 170M EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999007",
+        "name": "VK_COLOR_SPACE_BT2020_LINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the BT2020 color space to be displayed using a linear EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999008",
+        "name": "VK_COLOR_SPACE_HDR10_ST2084_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the HDR10 (BT2020 color) space to be displayed using the SMPTE ST2084 Perceptual Quantizer (PQ) EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999009",
+        "name": "VK_COLOR_SPACE_DOLBYVISION_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the Dolby Vision (BT2020 color space), proprietary encoding, to be displayed using the SMPTE ST2084 EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999010",
+        "name": "VK_COLOR_SPACE_HDR10_HLG_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the HDR10 (BT2020 color space) to be displayed using the Hybrid Log Gamma (HLG) EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999011",
+        "name": "VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the AdobeRGB color space to be displayed using a linear EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999012",
+        "name": "VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the AdobeRGB color space to be displayed using the Gamma 2.2 EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999013",
+        "name": "VK_COLOR_SPACE_PASS_THROUGH_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies that color components are used \"`as is`\". This is intended to allow applications to supply data for color spaces not described here.ifdef::VK_AMD_display_native_hdr[]"
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999014",
+        "name": "VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the extended sRGB color space to be displayed using an sRGB EOTF."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_COLOR_SPACE_DISPLAY_NATIVE_AMD",
+        "documentation": {
+          "macros": [],
+          "description": " specifies support for the display's native color space. This matches the color space expectations of AMD's FreeSync2 standard, for displays supporting it."
+        }
       }
     ],
     "documentation": {
@@ -5051,6 +8146,24 @@
         "type": "ALIAS",
         "value": "(int32_t)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT",
         "name": "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000156000",
+        "name": "VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "1000085000",
+        "name": "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "999999000",
+        "name": "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT"
       }
     ],
     "documentation": {
@@ -76380,6 +79493,37 @@
           ],
           "description": " specifies that queues in this queue family support sparse memory management operations (see <<sparsememory,Sparse Resources>>). If any of the sparse resource features are enabled, then at least one queue family {#0#} support this bit."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10",
+        "name": "VK_QUEUE_PROTECTED_BIT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT"
+            }
+          ],
+          "description": " is set, then the queues in this queue family support the {#1#} bit. (see <<memory-protected-memory,Protected Memory>>). If the protected memory physical device feature is supported, then at least one queue family of at least one physical device exposed by the implementation {#0#} support this bit."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40",
+        "name": "VK_QUEUE_RESERVED_6_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20",
+        "name": "VK_QUEUE_RESERVED_5_BIT_KHR"
       }
     ],
     "documentation": {
@@ -76392,7 +79536,18 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkRenderPassCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_RENDER_PASS_CREATE_RESERVED_0_BIT_KHR",
+        "documentation": {
+          "macros": [],
+          "description": ""
+        }
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "",
@@ -76403,7 +79558,31 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkDeviceQueueCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT"
+            },
+            {
+              "kind": "pname",
+              "value": "flags"
+            }
+          ],
+          "description": " specifies that the device queue is a protected-capable queue. If the protected memory feature is not enabled, the {#1#} bit of {#2#} {#0#} not be set."
+        }
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Devices and Queues",
@@ -76504,6 +79683,37 @@
           ],
           "description": " bit specifies that the memory type only allows device access to the memory. Memory types {#1#} not have both {#2#} and {#3#} set. Additionally, the object's backing memory {#0#} be provided by the implementation lazily as specified in <<memory-device-lazy_allocation, Lazily Allocated Memory>>."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20",
+        "name": "VK_MEMORY_PROPERTY_PROTECTED_BIT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_MEMORY_PROPERTY_PROTECTED_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_MEMORY_PROPERTY_HOST_COHERENT_BIT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_MEMORY_PROPERTY_HOST_CACHED_BIT"
+            }
+          ],
+          "description": " bit specifies that the memory type only allows device access to the memory, and allows protected queue operations to access the memory. Memory types {#0#} not have {#1#} set and any of {#2#} set, or {#3#} set, or {#4#} set."
+        }
       }
     ],
     "documentation": {
@@ -76534,6 +79744,16 @@
             }
           ],
           "description": " specifies that the heap corresponds to device local memory. Device local memory {#0#} have different performance characteristics than host local memory, and {#1#} support different memory property flags."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies that in a logical device representing more than one physical device, there is a per-physical device instance of the heap memory. By default, an allocation from such a heap will be replicated to each physical device's instance of the heap."
         }
       }
     ],
@@ -76683,6 +79903,96 @@
         "type": "BITPOS",
         "value": "0x10000",
         "name": "VK_ACCESS_MEMORY_WRITE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40000000",
+        "name": "VK_ACCESS_RESERVED_30_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "-0x80000000",
+        "name": "VK_ACCESS_RESERVED_31_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10000000",
+        "name": "VK_ACCESS_RESERVED_28_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20000000",
+        "name": "VK_ACCESS_RESERVED_29_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000000",
+        "name": "VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000000",
+        "name": "VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000000",
+        "name": "VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100000",
+        "name": "VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20000",
+        "name": "VK_ACCESS_COMMAND_PROCESS_READ_BIT_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40000",
+        "name": "VK_ACCESS_COMMAND_PROCESS_WRITE_BIT_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80000",
+        "name": "VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800000",
+        "name": "VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200000",
+        "name": "VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400000",
+        "name": "VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000000",
+        "name": "VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT"
       }
     ],
     "documentation": {
@@ -76914,6 +80224,60 @@
           ],
           "description": " specifies that the buffer is suitable for passing as the {#4#} parameter to {#0#}, {#1#}, {#2#}, {#3#},"
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000",
+        "name": "VK_BUFFER_USAGE_RESERVED_15_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10000",
+        "name": "VK_BUFFER_USAGE_RESERVED_16_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000",
+        "name": "VK_BUFFER_USAGE_RESERVED_13_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000",
+        "name": "VK_BUFFER_USAGE_RESERVED_14_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800",
+        "name": "VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000",
+        "name": "VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_BUFFER_USAGE_RAY_TRACING_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20000",
+        "name": "VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT"
       }
     ],
     "documentation": {
@@ -76978,6 +80342,22 @@
           ],
           "description": " specifies that the buffer will be backed using sparse memory binding with memory ranges that might also simultaneously be backing another buffer (or another portion of the same buffer). Buffers created with this flag {#0#} also be created with the {#1#} flag."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8",
+        "name": "VK_BUFFER_CREATE_PROTECTED_BIT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies that the buffer is a protected buffer."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10",
+        "name": "VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT"
       }
     ],
     "documentation": {
@@ -77062,6 +80442,62 @@
         "type": "VALUE",
         "value": "0x7FFFFFFF",
         "name": "VK_SHADER_STAGE_ALL"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_SHADER_STAGE_RAYGEN_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_SHADER_STAGE_ANY_HIT_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800",
+        "name": "VK_SHADER_STAGE_MISS_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000",
+        "name": "VK_SHADER_STAGE_INTERSECTION_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000",
+        "name": "VK_SHADER_STAGE_CALLABLE_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40",
+        "name": "VK_SHADER_STAGE_TASK_BIT_NV",
+        "documentation": {
+          "macros": [],
+          "description": " specifies the task stage."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80",
+        "name": "VK_SHADER_STAGE_MESH_BIT_NV",
+        "documentation": {
+          "macros": [],
+          "description": " specifies the mesh stage."
+        }
       }
     ],
     "documentation": {
@@ -77216,6 +80652,54 @@
         "type": "BITPOS",
         "value": "0x80",
         "name": "VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000",
+        "name": "VK_IMAGE_USAGE_RESERVED_13_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000",
+        "name": "VK_IMAGE_USAGE_RESERVED_14_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000",
+        "name": "VK_IMAGE_USAGE_RESERVED_15_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_IMAGE_USAGE_RESERVED_10_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800",
+        "name": "VK_IMAGE_USAGE_RESERVED_11_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000",
+        "name": "VK_IMAGE_USAGE_RESERVED_12_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT"
       }
     ],
     "documentation": {
@@ -77313,6 +80797,66 @@
         "type": "BITPOS",
         "value": "0x10",
         "name": "VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_IMAGE_CREATE_ALIAS_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40",
+        "name": "VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20",
+        "name": "VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80",
+        "name": "VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_IMAGE_CREATE_EXTENDED_USAGE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800",
+        "name": "VK_IMAGE_CREATE_PROTECTED_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_IMAGE_CREATE_DISJOINT_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000",
+        "name": "VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000",
+        "name": "VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000",
+        "name": "VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
       }
     ],
     "documentation": {
@@ -77325,7 +80869,23 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkImageViewCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "fname",
+              "value": "vkCmdBeginRenderPass"
+            }
+          ],
+          "description": " prohibits the implementation from accessing the fragment density map by the host during {#0#} as the contents are expected to change after recording"
+        }
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Resource Creation",
@@ -77336,7 +80896,42 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkSamplerCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+            },
+            {
+              "kind": "pname",
+              "value": "flags"
+            }
+          ],
+          "description": " specifies that the sampler will read from an image created with {#1#} containing {#0#}."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " specifies that the implementation {#0#} use approximations when reconstructing a full color value for texture access from a subsampled image."
+        }
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Samplers",
@@ -77391,6 +80986,37 @@
           "macros": [],
           "description": " specifies that the pipeline to be created will be a child of a previously created parent pipeline.ifdef::VK_VERSION_1_1,VK_KHR_multiview[]"
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8",
+        "name": "VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "code",
+              "value": "ViewIndex"
+            },
+            {
+              "kind": "code",
+              "value": "DeviceIndex"
+            }
+          ],
+          "description": " specifies that any shader input variables decorated as {#0#} will be assigned values as if they were decorated as {#1#}."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10",
+        "name": "VK_PIPELINE_CREATE_DISPATCH_BASE"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20",
+        "name": "VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV"
       }
     ],
     "documentation": {
@@ -77720,6 +81346,102 @@
           ],
           "description": " specifies that if {#6#} is also set, an image view {#0#} be used with a sampler that has either of {#13#} or {#14#} set to {#7#}, or {#15#} set to {#8#}. If {#9#} is also set, an image can be used as the {#16#} to {#5#} with a {#17#} of {#10#}. This bit {#2#} only be exposed for formats that also support the {#11#} or {#12#}.+If the format being queried is a depth/stencil format, this bit onlyspecifies that the depth aspect (not the stencil aspect) of an image of thisformat supports linear filtering, and that linear filtering of the depthaspect is supported whether depth compare is enabled in the sampler or not.If this bit is not present, linear filtering with depth compare disabled isunsupported and linear filtering with depth compare enabled is supported,but {#1#} compute the filtered value in an implementation-dependent mannerwhich differs from the normal rules of linear filtering.The resulting value {#3#} be in the range [eq]#[0,1]# and {#4#} beproportional to, or a weighted average of, the number of comparison passesor failures."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000",
+        "name": "VK_FORMAT_FEATURE_TRANSFER_SRC_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000",
+        "name": "VK_FORMAT_FEATURE_TRANSFER_DST_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20000",
+        "name": "VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400000",
+        "name": "VK_FORMAT_FEATURE_DISJOINT_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800000",
+        "name": "VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000000",
+        "name": "VK_FORMAT_FEATURE_RESERVED_27_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10000000",
+        "name": "VK_FORMAT_FEATURE_RESERVED_28_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000000",
+        "name": "VK_FORMAT_FEATURE_RESERVED_25_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000000",
+        "name": "VK_FORMAT_FEATURE_RESERVED_26_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10000",
+        "name": "VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000000",
+        "name": "VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT"
       }
     ],
     "documentation": {
@@ -78044,6 +81766,48 @@
           "macros": [],
           "description": " specifies the metadata aspect, used for sparse <<sparsememory, sparse resource>> operations."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x10",
+        "name": "VK_IMAGE_ASPECT_PLANE_0_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20",
+        "name": "VK_IMAGE_ASPECT_PLANE_1_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40",
+        "name": "VK_IMAGE_ASPECT_PLANE_2_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80",
+        "name": "VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT"
       }
     ],
     "documentation": {
@@ -78240,6 +82004,72 @@
         "type": "BITPOS",
         "value": "0x10000",
         "name": "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8000000",
+        "name": "VK_PIPELINE_STAGE_RESERVED_27_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4000000",
+        "name": "VK_PIPELINE_STAGE_RESERVED_26_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1000000",
+        "name": "VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x40000",
+        "name": "VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x20000",
+        "name": "VK_PIPELINE_STAGE_COMMAND_PROCESS_BIT_NVX"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400000",
+        "name": "VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200000",
+        "name": "VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2000000",
+        "name": "VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80000",
+        "name": "VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100000",
+        "name": "VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x800000",
+        "name": "VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT"
       }
     ],
     "documentation": {
@@ -78293,6 +82123,29 @@
             }
           ],
           "description": " allows any command buffer allocated from a pool to be individually reset to the <<commandbuffers-lifecycle, initial state>>; either by calling {#1#}, or via the implicit reset when calling {#2#}. If this flag is not set on a pool, then {#3#} {#0#} not be called for any command buffer allocated from that pool."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4",
+        "name": "VK_COMMAND_POOL_CREATE_PROTECTED_BIT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_COMMAND_POOL_CREATE_PROTECTED_BIT"
+            },
+            {
+              "kind": "pname",
+              "value": "flags"
+            }
+          ],
+          "description": " specifies that command buffers allocated from the pool are protected command buffers. If the protected memory feature is not enabled, the {#1#} bit of {#2#} {#0#} not be set."
         }
       }
     ],
@@ -78529,6 +82382,33 @@
           ],
           "description": " specifies that descriptor sets {#0#} return their individual allocations to the pool, i.e. all of {#2#}, {#3#}, and {#4#} are allowed. Otherwise, descriptor sets allocated from the pool {#1#} not be individually freed back to the pool, i.e. only {#5#} and {#6#} are allowed."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT"
+            }
+          ],
+          "description": " specifies that descriptor sets allocated from this pool {#0#} include bindings with the {#1#} bit set. It is valid to allocate descriptor sets that have bindings that do not set the {#2#} bit from a pool that has {#3#} set."
+        }
       }
     ],
     "documentation": {
@@ -78550,6 +82430,22 @@
         "documentation": {
           "macros": [],
           "description": " specifies that dependencies will be <<synchronization-framebuffer-regions, framebuffer-local>>."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4",
+        "name": "VK_DEPENDENCY_DEVICE_GROUP_BIT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_DEPENDENCY_VIEW_LOCAL_BIT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies that a <<synchronization-pipeline-barriers-subpass-self-dependencies, subpass has more than one view>>."
         }
       }
     ],
@@ -79080,6 +82976,21 @@
           ],
           "description": " specifies the device will accept SPIR-V shader modules that contain the {#0#} capability."
         }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "code",
+              "value": "GroupNonUniformPartitionedNV"
+            }
+          ],
+          "description": " specifies the device will accept SPIR-V shader modules that contain the {#0#} capability."
+        }
       }
     ],
     "documentation": {
@@ -79196,7 +83107,33 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkDescriptorSetLayoutCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "flink",
+              "value": "vkCmdPushDescriptorSetKHR"
+            }
+          ],
+          "description": " specifies that descriptor sets {#0#} not be allocated using this layout, and descriptors are instead pushed by {#1#}."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT"
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Resource Descriptors",
@@ -79366,6 +83303,38 @@
             }
           ],
           "description": " specifies an NT handle returned by {#0#}::{#1#} referring to a Direct3D 12 committed resource. It owns a reference to the memory used by the Direct3D resource."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x200",
+        "name": "VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x400",
+        "name": "VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x80",
+        "name": "VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies a host reference returned by a host memory allocation command. It does not own a reference to the underlying memory resource, and will therefore become invalid if the host memory is freed."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x100",
+        "name": "VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT",
+        "documentation": {
+          "macros": [],
+          "description": " specifies a host reference to _host mapped foreign memory_. It does not own a reference to the underlying memory resource, and will therefore become invalid if the foreign memory is unmapped or otherwise becomes no longer available."
         }
       }
     ],
@@ -80024,7 +83993,47 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkSwapchainCreateFlagBitsKHR",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "slink",
+              "value": "VkImageSwapchainCreateInfoKHR"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT"
+            },
+            {
+              "kind": "pname",
+              "value": "swapchain"
+            }
+          ],
+          "description": " specifies that images created from the swapchain (i.e. with the {#3#} member of {#1#} set to this swapchain's handle) {#0#} use {#2#}."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4",
+        "name": "VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR"
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "VK_KHR_swapchain",
@@ -80035,7 +84044,50 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkSubpassDescriptionFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies that shaders compiled for this subpass write the attributes for all views in a single invocation of each vertex processing stage. All pipelines compiled against a subpass that includes this bit {#0#} write per-view attributes to the `"
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x2",
+        "name": "VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " specifies that shaders compiled for this subpass use per-view positions which only differ in value in the x component. Per-view viewport mask {#0#} also be used."
+        }
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x4",
+        "name": "VK_SUBPASS_DESCRIPTION_RESERVED_2_BIT_QCOM"
+      },
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x8",
+        "name": "VK_SUBPASS_DESCRIPTION_RESERVED_3_BIT_QCOM"
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Render Pass",
@@ -80514,7 +84566,23 @@
     "kind": "ENUM",
     "type": "BITMASK",
     "name": "VkFramebufferCreateFlagBits",
-    "children": [],
+    "children": [
+      {
+        "kind": "ENUM_MEMBER",
+        "type": "VALUE",
+        "value": "0x1",
+        "name": "VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR",
+        "documentation": {
+          "macros": [
+            {
+              "kind": "slink",
+              "value": "VkFramebufferAttachmentImageInfoKHR"
+            }
+          ],
+          "description": " specifies that image views are not specified, and only attachment compatibility information will be provided via an instance of {#0#}."
+        }
+      }
+    ],
     "documentation": {
       "macros": [],
       "category": "Render Pass",

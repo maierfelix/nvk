@@ -42,7 +42,8 @@
   VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT: 0x2,
   VK_MEMORY_PROPERTY_HOST_COHERENT_BIT: 0x4,
   VK_MEMORY_PROPERTY_HOST_CACHED_BIT: 0x8,
-  VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT: 0x10
+  VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT: 0x10,
+  VK_MEMORY_PROPERTY_PROTECTED_BIT: 0x20
 };</code></pre>
     </vk-stub>
 
@@ -68,6 +69,10 @@
       <vk-property-entry>
         <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</vk-prototype-name></vk-property-prototype>
         <vk-property-description> bit specifies that the memory type only allows device access to the memory. Memory types <i>must</i> not have both <b>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</b> and <b>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</b> set. Additionally, the object's backing memory <i>may</i> be provided by the implementation lazily as specified in <<memory-device-lazy_allocation, Lazily Allocated Memory>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_PROTECTED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that the memory type only allows device access to the memory, and allows protected queue operations to access the memory. Memory types <i>must</i> not have <b>VK_MEMORY_PROPERTY_PROTECTED_BIT</b> set and any of <b>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</b> set, or <b>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT</b> set, or <b>VK_MEMORY_PROPERTY_HOST_CACHED_BIT</b> set.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

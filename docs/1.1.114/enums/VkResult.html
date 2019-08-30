@@ -56,6 +56,8 @@
   VK_ERROR_TOO_MANY_OBJECTS: -10,
   VK_ERROR_FORMAT_NOT_SUPPORTED: -11,
   VK_ERROR_FRAGMENTED_POOL: -12,
+  VK_ERROR_OUT_OF_POOL_MEMORY: -1000069000,
+  VK_ERROR_INVALID_EXTERNAL_HANDLE: -1000072003,
   VK_ERROR_SURFACE_LOST_KHR: -1000000000,
   VK_ERROR_NATIVE_WINDOW_IN_USE_KHR: -1000000001,
   VK_SUBOPTIMAL_KHR: 1000001003,
@@ -63,13 +65,13 @@
   VK_ERROR_INCOMPATIBLE_DISPLAY_KHR: -1000003001,
   VK_ERROR_VALIDATION_FAILED_EXT: -1000011001,
   VK_ERROR_INVALID_SHADER_NV: -1000012000,
-  VK_ERROR_OUT_OF_POOL_MEMORY_KHR: VK_ERROR_OUT_OF_POOL_MEMORY,
-  VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR: VK_ERROR_INVALID_EXTERNAL_HANDLE,
   VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT: -1000158000,
   VK_ERROR_FRAGMENTATION_EXT: -1000161000,
   VK_ERROR_NOT_PERMITTED_EXT: -1000174001,
   VK_ERROR_INVALID_DEVICE_ADDRESS_EXT: -1000244000,
-  VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT: -1000255000
+  VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT: -1000255000,
+  VK_ERROR_OUT_OF_POOL_MEMORY_KHR: VK_ERROR_OUT_OF_POOL_MEMORY,
+  VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR: VK_ERROR_INVALID_EXTERNAL_HANDLE
 };</code></pre>
     </vk-stub>
 
@@ -149,6 +151,14 @@
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
+        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_OUT_OF_POOL_MEMORY</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_INVALID_EXTERNAL_HANDLE</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
         <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_SURFACE_LOST_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
@@ -158,7 +168,7 @@
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkResult.<vk-prototype-name>VK_SUBOPTIMAL_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
+        <vk-property-description> A swapchain no longer matches the surface properties exactly, but <i>can</i> still be used to present to the surface successfully.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_OUT_OF_DATE_KHR</vk-prototype-name></vk-property-prototype>
@@ -174,14 +184,6 @@
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_INVALID_SHADER_NV</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_OUT_OF_POOL_MEMORY_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -202,6 +204,14 @@
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_OUT_OF_POOL_MEMORY_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkResult.<vk-prototype-name>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       

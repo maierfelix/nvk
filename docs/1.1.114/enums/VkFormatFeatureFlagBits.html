@@ -51,14 +51,24 @@
   VK_FORMAT_FEATURE_BLIT_SRC_BIT: 0x400,
   VK_FORMAT_FEATURE_BLIT_DST_BIT: 0x800,
   VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT: 0x1000,
+  VK_FORMAT_FEATURE_TRANSFER_SRC_BIT: 0x4000,
+  VK_FORMAT_FEATURE_TRANSFER_DST_BIT: 0x8000,
+  VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT: 0x20000,
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT: 0x40000,
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT: 0x80000,
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT: 0x100000,
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT: 0x200000,
+  VK_FORMAT_FEATURE_DISJOINT_BIT: 0x400000,
+  VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT: 0x800000,
   VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG: 0x2000,
   VK_FORMAT_FEATURE_RESERVED_27_BIT_KHR: 0x8000000,
   VK_FORMAT_FEATURE_RESERVED_28_BIT_KHR: 0x10000000,
   VK_FORMAT_FEATURE_RESERVED_25_BIT_KHR: 0x2000000,
   VK_FORMAT_FEATURE_RESERVED_26_BIT_KHR: 0x4000000,
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT: 0x10000,
+  VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT: 0x1000000,
   VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR: VK_FORMAT_FEATURE_TRANSFER_SRC_BIT,
   VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR: VK_FORMAT_FEATURE_TRANSFER_DST_BIT,
-  VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT: 0x10000,
   VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT_KHR: VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT,
   VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR: VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT,
   VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR: VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT,
@@ -66,8 +76,7 @@
   VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR: VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT,
   VK_FORMAT_FEATURE_DISJOINT_BIT_KHR: VK_FORMAT_FEATURE_DISJOINT_BIT,
   VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR: VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT,
-  VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT: VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG,
-  VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT: 0x1000000
+  VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT: VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG
 };</code></pre>
     </vk-stub>
 
@@ -127,6 +136,42 @@
         <vk-property-description> specifies that if <b>VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT</b> is also set, an image view <i>can</i> be used with a sampler that has either of <b>magFilter</b> or <b>minFilter</b> set to <b>VK_FILTER_LINEAR</b>, or <b>mipmapMode</b> set to <b>VK_SAMPLER_MIPMAP_MODE_LINEAR</b>. If <b>VK_FORMAT_FEATURE_BLIT_SRC_BIT</b> is also set, an image can be used as the <b>srcImage</b> to <b><a href="../calls/vkCmdBlitImage.html">vkCmdBlitImage</a></b> with a <b>filter</b> of <b>VK_FILTER_LINEAR</b>. This bit <i>must</i> only be exposed for formats that also support the <b>VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT</b> or <b>VK_FORMAT_FEATURE_BLIT_SRC_BIT</b>.+If the format being queried is a depth/stencil format, this bit onlyspecifies that the depth aspect (not the stencil aspect) of an image of thisformat supports linear filtering, and that linear filtering of the depthaspect is supported whether depth compare is enabled in the sampler or not.If this bit is not present, linear filtering with depth compare disabled isunsupported and linear filtering with depth compare enabled is supported,but <i>may</i> compute the filtered value in an implementation-dependent mannerwhich differs from the normal rules of linear filtering.The resulting value <i>must</i> be in the range [eq]#[0,1]# and <i>should</i> beproportional to, or a weighted average of, the number of comparison passesor failures.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_TRANSFER_DST_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_DISJOINT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
         <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
@@ -147,15 +192,19 @@
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
         <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -188,10 +237,6 @@
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT</vk-prototype-name></vk-property-prototype>
-        <vk-property-description></vk-property-description>
-      </vk-property-entry>
-      <vk-property-entry>
-        <vk-property-prototype>VkFormatFeatureFlagBits.<vk-prototype-name>VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT</vk-prototype-name></vk-property-prototype>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       
