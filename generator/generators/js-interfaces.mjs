@@ -84,7 +84,7 @@ function getConstructorInitializer(member) {
       return `this._${member.name} = null;`;
     } else {
       return `this._${member.name} = null;
-    this._${member.name}Native = null;`;
+  this._${member.name}Native = null;`;
     }
   }
   if (jsType.isNullable) return `this._${member.name} = null;`;
@@ -94,6 +94,41 @@ function getConstructorInitializer(member) {
 
 function getConstructorResetter(member) {
   let jsType = getJavaScriptType(ast, member);
+  if (member.needsInitializationAtInstantiation) {
+    let {type, value, isReference} = jsType;
+    let length = parseInt(member.length);
+    switch (type) {
+      case JavaScriptType.OBJECT: {
+        if (isReference) {
+          return `this._${member.name} = null;`;
+        } else {
+          let byteOffset = getStructureMemberByteOffset(member);
+          let memoryOffset = getHexaByteOffset(byteOffset);
+          return `if (this._${member.name} !== null) {
+    if (this.memoryBuffer !== this._${member.name}.memoryBuffer) this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + ${memoryOffset} });
+    else this._${member.name}.reset();
+  }`;
+        }
+      }
+      case JavaScriptType.ARRAY_OF_OBJECTS: {
+        let byteOffset = getStructureMemberByteOffset(member);
+        let memoryOffset = getHexaByteOffset(byteOffset);
+        let byteLength = getHexaByteOffset(parseInt(getStructureMemberByteLength(member)) / length);
+        return `if (this._${member.name} !== null) {
+    let array = this._${member.name};
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii].reset();
+    };
+  };`;
+      }
+      case JavaScriptType.ARRAY_OF_NUMBERS: {
+        if (currentStruct.isUnionType) return `this._${member.name} = null;`;
+        return `if (this._${member.name} !== null) this._${member.name}.fill(0x0);
+      else this._${member.name} = [...Array(${length})].fill(0x0);`;
+      }
+    };
+    warn(`Cannot handle instantiation initializer for ${currentStruct.name}.${member.name}, ${jsType.type}`);
+  }
   if (jsType.isNumeric) return ``; // no reset needed
   if (jsType.isBoolean) return ``; // no reset needed
   if (jsType.isString && jsType.isStatic) return ``; // no reset needed
@@ -102,7 +137,7 @@ function getConstructorResetter(member) {
       return `this._${member.name} = null;`;
     } else {
       return `this._${member.name} = null;
-    this._${member.name}Native = null;`;
+  this._${member.name}Native = null;`;
     }
   }
   if (jsType.isNullable) return `this._${member.name} = null;`;
