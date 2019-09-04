@@ -191,7 +191,7 @@ let renderArea = new VkRect2D({
 });
 ````
 
-#### Nested structures
+#### Nested Structures
 
 *nvk* allows to use nested structures to improve memory usage and performance. A nested structure is pre-allocated automatically and shares the native memory of it's top-level structure.
 You can use the `--enable-shared-memory-hints` flag, to get hints where you could've used a nested structure in your code.
@@ -215,6 +215,41 @@ scissor.offset.y = 0;
 scissor.extent.width = 480;
 scissor.extent.height = 320;
 ````
+
+#### Cached Structures
+
+To reduce GC pressure, *nvk* allows to use cached structures. Instead of having to allocate a structure every time on the heap, *nvk* pre-allocates a cached version of each available structure.
+
+To use the cached version of a structure, you have to remove the `new` keyword from a structure call:
+````js
+let applicationInfo = VkApplicationInfo();
+````
+
+When a structure gets created without the `new` keyword, a cached version of the structure gets returned. Note that the returned structure is **not** a new structure, but always the same one. Each time you create a structure without the `new` keyword, the cached structure gets reset to it's original state (similar to zero/null a structure in C).
+
+Example:
+
+````js
+let applicationInfoA = new VkApplicationInfo();
+applicationInfoA.pApplicationName = "My Application";
+
+let applicationInfoB = new VkApplicationInfo();
+applicationInfoB.pApplicationName = applicationInfoA.pApplicationName; // "My Application"
+````
+
+But this is not possible with a cached structure:
+
+````js
+let applicationInfoA = VkApplicationInfo();
+applicationInfoA.pApplicationName = "My Application A";
+
+let applicationInfoB = VkApplicationInfo(); // reset
+applicationInfoB.pApplicationName = applicationInfoA.pApplicationName; // ""
+````
+
+`applicationInfoA.pApplicationName` is empty, because when the variable `applicationInfoB` gets initialised, all members of the cached structure get reset, so `applicationInfoA.pApplicationName` doesn't contain anything anymore.
+
+Only use this feature if you are aware of the side effects that might be introduced by this. Also, using this feature only makes sense in frequently called code sections, where the GC pressure is high.
 
 ## Project Structure:
  - `docs`: generated vulkan documentation files
