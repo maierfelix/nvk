@@ -116644,8 +116644,14 @@
     }
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void",
+    "type": "void",
+    "rawType": "void",
     "name": "vkInternalAllocationNotification",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "jsType": "undefined",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "void * pUserData",
@@ -116698,8 +116704,14 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void",
+    "type": "void",
+    "rawType": "void",
     "name": "vkInternalFreeNotification",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "jsType": "undefined",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "void * pUserData",
@@ -116752,8 +116764,19 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void * *",
+    "type": "void *",
+    "rawType": "void *",
     "name": "vkReallocationFunction",
+    "isConstant": false,
+    "dereferenceCount": 1,
+    "isVoidPointer": true,
+    "isContantVoidPointer": false,
+    "isDynamicVoidPointer": true,
+    "isTypedArray": true,
+    "jsTypedArrayName": "ArrayBuffer",
+    "jsType": "ArrayBufferView",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "void * pUserData",
@@ -116818,8 +116841,19 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void * *",
+    "type": "void *",
+    "rawType": "void *",
     "name": "vkAllocationFunction",
+    "isConstant": false,
+    "dereferenceCount": 1,
+    "isVoidPointer": true,
+    "isContantVoidPointer": false,
+    "isDynamicVoidPointer": true,
+    "isTypedArray": true,
+    "jsTypedArrayName": "ArrayBuffer",
+    "jsType": "ArrayBufferView",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "void * pUserData",
@@ -116870,8 +116904,14 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void",
+    "type": "void",
+    "rawType": "void",
     "name": "vkFreeFunction",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "jsType": "undefined",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "void * pUserData",
@@ -116904,13 +116944,28 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "void",
+    "type": "void",
+    "rawType": "void",
     "name": "vkVoidFunction",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "jsType": "undefined",
+    "kind": "FUNCTION_POINTER",
     "params": []
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "VkBool32",
+    "type": "uint32_t",
+    "rawType": "uint32_t",
     "name": "vkDebugReportCallbackEXT",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "baseType": "VkBool32",
+    "isBoolean": true,
+    "isNumber": true,
+    "jsType": "Number",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "VkDebugReportFlagsEXT flags",
@@ -117002,8 +117057,17 @@
     ]
   },
   {
-    "kind": "FUNCTION_POINTER",
+    "text": "VkBool32",
+    "type": "uint32_t",
+    "rawType": "uint32_t",
     "name": "vkDebugUtilsMessengerCallbackEXT",
+    "isConstant": false,
+    "dereferenceCount": 0,
+    "baseType": "VkBool32",
+    "isBoolean": true,
+    "isNumber": true,
+    "jsType": "Number",
+    "kind": "FUNCTION_POINTER",
     "params": [
       {
         "text": "VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity",

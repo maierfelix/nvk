@@ -6,7 +6,7 @@ function {{ struct.name }}(opts) {
   }
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
-  this.$memoryOffset = 0;
+  this.$memoryOffset = 0x0;
   if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);

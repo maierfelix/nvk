@@ -118,6 +118,34 @@ function parseFunctionPointerElement(parent) {
   let name = elements.filter(child =>child.name === "name")[0].elements[0].text;
   let params = [];
   let typeElements = [];
+  if (name) {
+    let fnType = elements[0].text;
+    let match = /^(typedef?) (.*) \((.*)/gm.exec(fnType);
+    if (match[1] !== "typedef") warn(`Invalid function pointer type signatur: Expected 'typedef' but got '${match[1]}'`);
+    if (match[3] !== "VKAPI_PTR *") warn(`Invalid function pointer type signatur: Expected 'VKAPI_PTR *' but got '${match[3]}'`);
+    // turn void* into void *
+    match[2] = match[2].replace("void*", "void *");
+    let typeElement = [];
+    // 1. type string
+    typeElement.push({ type: "element", name: "type", elements: [ { type: "text", text: match[2] } ] });
+    // 2. pointer
+    let dereferenceCount = match[2].split(/\*/g).length - 1;
+    if (dereferenceCount > 0) {
+      if (dereferenceCount > 1) throw `Unsupported dereference count!`;
+      typeElement.push({ type: "text", text: "* " });
+    }
+    let type = parseTypeElement({
+      type: "element",
+      name: "member",
+      attributes: {},
+      elements: typeElement
+    });
+    // TODO: wtf?
+    if (type.dereferenceCount > 1) {
+      type.dereferenceCount = 1;
+    }
+    Object.assign(out, type);
+  }
   for (let ii = 0; ii < elements.length; ii += 2) {
     if (ii <= 2) continue;
     let element = elements[ii];
@@ -162,12 +190,7 @@ function parseFunctionPointerElement(parent) {
       attributes: {},
       elements
     };
-    params.push(parseTypeElement({
-      type: "element",
-      name: "member",
-      attributes: {},
-      elements
-    }));
+    params.push(parseTypeElement(input));
   });
   // normalize "PFN_"
   if (name.substr(0, 4) === "PFN_") name = name.substr(4);
@@ -175,6 +198,17 @@ function parseFunctionPointerElement(parent) {
   out.kind = TYPES.FUNCTION_POINTER;
   out.name = name;
   out.params = params;
+  // ignore vkVoidFunction as its used in e.g. vkGetInstanceProcAddr, which nvk doesnt expose
+  if (out.name !== "vkVoidFunction") {
+    // find 'pUserData' param and reserve it
+    let pUserData = out.params.find(param => param.name === "pUserData" && param.isDynamicVoidPointer);
+    if (!pUserData) {
+      warn(`Cannot reserve 'pUserData' parameter for '${out.name}'`);
+    }
+    let pUserDataIndex = out.params.indexOf(pUserData);
+    //out.params.splice(pUserDataIndex, 1);
+    // TODO: what do now?
+  }
   return out;
 };
 

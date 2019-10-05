@@ -4,7 +4,7 @@ class {{ handle.name }} {
     this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
     this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (typeof opts === "object") {
+    if (opts !== void 0) {
       throw new Error("'{{ handle.name }}' doesn't take any arguments");
     }
   }
