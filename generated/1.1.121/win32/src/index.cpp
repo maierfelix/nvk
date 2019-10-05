@@ -19,6 +19,119 @@
 #include "enums.h"
 #include "window.h"
 
+class CallbackProxy : public Napi::ObjectWrap<CallbackProxy> {
+  public:
+    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
+    static Napi::FunctionReference constructor;
+    CallbackProxy(const Napi::CallbackInfo &info);
+    ~CallbackProxy();
+
+    Napi::Value getAddress(const Napi::CallbackInfo &info);
+    Napi::FunctionReference callback;
+};
+
+Napi::FunctionReference CallbackProxy::constructor;
+
+// constructor
+CallbackProxy::CallbackProxy(const Napi::CallbackInfo& info) : Napi::ObjectWrap<CallbackProxy>(info) {
+  this->callback.Reset(info[0].As<Napi::Function>(), 1);
+}
+
+// destructor
+CallbackProxy::~CallbackProxy() {
+  this->callback.Reset();
+}
+
+Napi::Value CallbackProxy::getAddress(const Napi::CallbackInfo &info) {
+  Napi::Env env = info.Env();
+  uint64_t address = reinterpret_cast<uint64_t>(this);
+  return Napi::BigInt::New(env, address);
+}
+
+Napi::Object CallbackProxy::Initialize(Napi::Env env, Napi::Object exports) {
+  Napi::HandleScope scope(env);
+  Napi::Function func = DefineClass(env, "CallbackProxy", {
+    InstanceMethod(
+      "getAddress",
+      &CallbackProxy::getAddress,
+      napi_enumerable
+    )
+  });
+  constructor = Napi::Persistent(func);
+  constructor.SuppressDestruct();
+  exports.Set("$CallbackProxy", func);
+  return exports;
+}
+
+static VKAPI_ATTR void VKAPI_CALL CB_vkInternalAllocationNotification(
+  void * pUserData,
+  size_t size,
+  VkInternalAllocationType allocationType,
+  VkSystemAllocationScope allocationScope
+  ) {
+  return;
+};
+
+static VKAPI_ATTR void VKAPI_CALL CB_vkInternalFreeNotification(
+  void * pUserData,
+  size_t size,
+  VkInternalAllocationType allocationType,
+  VkSystemAllocationScope allocationScope
+  ) {
+  return;
+};
+
+static VKAPI_ATTR void * VKAPI_CALL CB_vkReallocationFunction(
+  void * pUserData,
+  void * pOriginal,
+  size_t size,
+  size_t alignment,
+  VkSystemAllocationScope allocationScope
+  ) {
+  return nullptr;
+};
+
+static VKAPI_ATTR void * VKAPI_CALL CB_vkAllocationFunction(
+  void * pUserData,
+  size_t size,
+  size_t alignment,
+  VkSystemAllocationScope allocationScope
+  ) {
+  return nullptr;
+};
+
+static VKAPI_ATTR void VKAPI_CALL CB_vkFreeFunction(
+  void * pUserData,
+  void * pMemory
+  ) {
+  return;
+};
+
+static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
+  VkDebugReportFlagsEXT flags,
+  VkDebugReportObjectTypeEXT objectType,
+  uint64_t object,
+  size_t location,
+  int32_t messageCode,
+  const char * pLayerPrefix,
+  const char * pMessage,
+  void * pUserData
+  ) {
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback->Env();
+  callback.Call({  });
+  return true;
+};
+
+static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
+  VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+  VkDebugUtilsMessageTypeFlagsEXT messageTypes,
+  const VkDebugUtilsMessengerCallbackDataEXT * pCallbackData,
+  void * pUserData
+  ) {
+  return true;
+};
 
 static Napi::Value getAddressFromArrayBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
@@ -99,6 +212,18 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
   
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    obj.Set("vkInternalAllocationNotification", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkInternalAllocationNotification)));
+    obj.Set("vkInternalFreeNotification", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkInternalFreeNotification)));
+    obj.Set("vkReallocationFunction", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkReallocationFunction)));
+    obj.Set("vkAllocationFunction", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkAllocationFunction)));
+    obj.Set("vkFreeFunction", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkFreeFunction)));
+    obj.Set("vkDebugReportCallbackEXT", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkDebugReportCallbackEXT)));
+    obj.Set("vkDebugUtilsMessengerCallbackEXT", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkDebugUtilsMessengerCallbackEXT)));
+    
+    exports["$vulkanCallbackFunctionPointers"] = obj;
+  }
   // calls
   exports["vkCreateInstance"] = Napi::Function::New(env, _vkCreateInstance, "vkCreateInstance");
   exports["vkDestroyInstance"] = Napi::Function::New(env, _vkDestroyInstance, "vkDestroyInstance");

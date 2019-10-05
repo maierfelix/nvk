@@ -4044,8 +4044,12 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnAllocation = value;
+      this._pfnAllocationCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x1] = nvk.$vulkanCallbackFunctionPointers["vkAllocationFunction"];
+      this.memoryViewBigInt64[0x0] = this._pfnAllocationCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnAllocation = null;
+      this.memoryViewBigInt64[0x1] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pfnAllocation': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -4059,8 +4063,12 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnReallocation = value;
+      this._pfnReallocationCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x2] = nvk.$vulkanCallbackFunctionPointers["vkReallocationFunction"];
+      this.memoryViewBigInt64[0x0] = this._pfnReallocationCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnReallocation = null;
+      this.memoryViewBigInt64[0x2] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pfnReallocation': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -4074,8 +4082,12 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnFree = value;
+      this._pfnFreeCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x3] = nvk.$vulkanCallbackFunctionPointers["vkFreeFunction"];
+      this.memoryViewBigInt64[0x0] = this._pfnFreeCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnFree = null;
+      this.memoryViewBigInt64[0x3] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pfnFree': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -4089,8 +4101,12 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnInternalAllocation = value;
+      this._pfnInternalAllocationCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x4] = nvk.$vulkanCallbackFunctionPointers["vkInternalAllocationFunction"];
+      this.memoryViewBigInt64[0x0] = this._pfnInternalAllocationCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnInternalAllocation = null;
+      this.memoryViewBigInt64[0x4] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pfnInternalAllocation': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -4104,8 +4120,12 @@ Object.defineProperties(VkAllocationCallbacks.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnInternalFree = value;
+      this._pfnInternalFreeCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x5] = nvk.$vulkanCallbackFunctionPointers["vkInternalFreeFunction"];
+      this.memoryViewBigInt64[0x0] = this._pfnInternalFreeCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnInternalFree = null;
+      this.memoryViewBigInt64[0x5] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkAllocationCallbacks.pfnInternalFree': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -26756,8 +26776,12 @@ Object.defineProperties(VkDebugReportCallbackCreateInfoEXT.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnCallback = value;
+      this._pfnCallbackCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x3] = nvk.$vulkanCallbackFunctionPointers["vkCallbackFunction"];
+      this.memoryViewBigInt64[0x4] = this._pfnCallbackCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnCallback = null;
+      this.memoryViewBigInt64[0x3] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkDebugReportCallbackCreateInfoEXT.pfnCallback': Expected 'Function' but got '" + typeToString(value) + "'");
     }
@@ -64332,8 +64356,12 @@ Object.defineProperties(VkDebugUtilsMessengerCreateInfoEXT.prototype, {
     set(value) {
     if (value !== null && value.constructor === Function) {
       this._pfnUserCallback = value;
+      this._pfnUserCallbackCallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryViewBigInt64[0x4] = nvk.$vulkanCallbackFunctionPointers["vkUserCallbackFunction"];
+      this.memoryViewBigInt64[0x5] = this._pfnUserCallbackCallbackProxy.getAddress();
     } else if (value === null) {
       this._pfnUserCallback = null;
+      this.memoryViewBigInt64[0x4] = BI0;
     } else {
       throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCreateInfoEXT.pfnUserCallback': Expected 'Function' but got '" + typeToString(value) + "'");
     }

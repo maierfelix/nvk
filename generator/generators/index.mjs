@@ -27,9 +27,11 @@ export default function(astReference, includes, calls, includeMemoryLayouts) {
   } else {
     warn(`Excluding memoryLayouts from build, to reduce package size. Make sure that the module got recompiled, before publishing!`);
   }
+  let functionPointers = astReference.filter(node => node.kind === "FUNCTION_POINTER");
   let vars = {
     calls,
     includes,
+    functionPointers,
     getPlatformRelevantIncludes: () => {
       return getPlatformRelevantIncludes(ast);
     },

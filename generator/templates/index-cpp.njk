@@ -13,6 +13,17 @@
 #include "memoryLayouts.h"
 {% endif %}
 
+{% for func in functionPointers -%}
+static VKAPI_ATTR {{ func.text }} VKAPI_CALL CB_{{ func.name }}(
+  {% for param in func.params -%}
+  {{ param.text }}{% if loop.index <= loop.length - 1 %},{% endif %}
+  {% endfor -%}
+) {
+  return;
+};
+
+{% endfor -%}
+
 static Napi::Value getAddressFromArrayBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (!(info[0].IsArrayBuffer())) {
@@ -94,6 +105,13 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   {% endif %}
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
+  {
+    Napi::Object obj = Napi::Object::New(env);
+    {% for func in functionPointers -%}
+    obj.Set("{{ func.name }}", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_{{ func.name }})));
+    {% endfor %}
+    exports["$vulkanCallbackFunctionPointers"] = obj;
+  }
   // calls
   {% for call in calls -%}
   exports["{{ call.name }}"] = Napi::Function::New(env, _{{ call.name }}, "{{ call.name }}");

@@ -87,7 +87,14 @@ function getConstructorInitializer(member) {
   this._${member.name}Native = null;`;
     }
   }
-  if (jsType.isNullable) return `this._${member.name} = null;`;
+  if (jsType.isNullable) {
+    let out = ``;
+    out += `this._${member.name} = null;`;
+    if (jsType.isFunction) {
+      out += `this._${member.name}CallbackProxy = null;`;
+    }
+    return out;
+  }
   warn(`Cannot resolve constructor initializer for ${member.name}`);
   return ``;
 };
@@ -245,6 +252,11 @@ function getStructureMemoryViews(passedByReference) {
     }
     else if (
       isPNextMember(member)
+    ) {
+      if (viewTypes.indexOf("BigInt64") <= -1) viewTypes.push("BigInt64");
+    }
+    else if (
+      type === JavaScriptType.FUNCTION
     ) {
       if (viewTypes.indexOf("BigInt64") <= -1) viewTypes.push("BigInt64");
     }
@@ -503,14 +515,33 @@ function getSetterProcessor(member) {
     `;
     }
     case JavaScriptType.FUNCTION: {
+      let instr = "BigInt64";
+      let functionPointerAccessor = "vk" + (member.name.substr(3)) + "Function";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexaByteOffset(byteOffset / byteStride);
+      let pUserData = ``;
+      // resolve member setter code for pUserData
+      {
+        let pUserDataMember = currentStruct.children.find(child => child.name === "pUserData");
+        if (!pUserDataMember) warn(`Cannot resolve 'pUserData' member for '${currentStruct.name}'`);
+        let byteOffset = getStructureMemberByteOffset(pUserDataMember);
+        let instr = "BigInt64";
+        let byteStride = getDataViewInstructionStride(instr);
+        let offset = getHexaByteOffset(byteOffset / byteStride);
+        pUserData = `this.memoryView${instr}[${offset}] = this._${member.name}CallbackProxy.getAddress();`;
+      }
       return `
-    if (value !== null ${ validate ? `&& value.constructor === Function` : ``}) {
+    if (value !== null ${ validate ? `&& value.constructor === Function` : `` }) {
       this._${member.name} = value;
+      this._${member.name}CallbackProxy = new nvk.$CallbackProxy(value);
+      this.memoryView${instr}[${offset}] = nvk.$vulkanCallbackFunctionPointers["${functionPointerAccessor}"];
+      ${pUserData}
     } else if (value === null) {
       this._${member.name} = null;
+      this.memoryView${instr}[${offset}] = BI0;
     } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Function' but got '" + typeToString(value) + "'");
-    }`: `` }
+    }` : `` }
     `;
     }
   };

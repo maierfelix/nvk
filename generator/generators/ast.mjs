@@ -118,6 +118,7 @@ function parseFunctionPointerElement(parent) {
   let name = elements.filter(child =>child.name === "name")[0].elements[0].text;
   let params = [];
   let typeElements = [];
+  if (name === "PFN_vkVoidFunction") return null;
   if (name) {
     let fnType = elements[0].text;
     let match = /^(typedef?) (.*) \((.*)/gm.exec(fnType);
@@ -143,6 +144,7 @@ function parseFunctionPointerElement(parent) {
     // TODO: wtf?
     if (type.dereferenceCount > 1) {
       type.dereferenceCount = 1;
+      type.text = type.text.replace(`void * *`, `void *`);
     }
     Object.assign(out, type);
   }
@@ -198,17 +200,14 @@ function parseFunctionPointerElement(parent) {
   out.kind = TYPES.FUNCTION_POINTER;
   out.name = name;
   out.params = params;
-  // ignore vkVoidFunction as its used in e.g. vkGetInstanceProcAddr, which nvk doesnt expose
-  if (out.name !== "vkVoidFunction") {
-    // find 'pUserData' param and reserve it
-    let pUserData = out.params.find(param => param.name === "pUserData" && param.isDynamicVoidPointer);
-    if (!pUserData) {
-      warn(`Cannot reserve 'pUserData' parameter for '${out.name}'`);
-    }
-    let pUserDataIndex = out.params.indexOf(pUserData);
-    //out.params.splice(pUserDataIndex, 1);
-    // TODO: what do now?
+  // find 'pUserData' param and reserve it
+  let pUserData = out.params.find(param => param.name === "pUserData" && param.isDynamicVoidPointer);
+  if (!pUserData) {
+    warn(`Cannot reserve 'pUserData' parameter for '${out.name}'`);
   }
+  let pUserDataIndex = out.params.indexOf(pUserData);
+  //out.params.splice(pUserDataIndex, 1);
+  // TODO: what do now?
   return out;
 };
 
@@ -967,7 +966,7 @@ export default function({ xmlInput, version, docs } = _) {
     findXMLElements(obj, { category: "funcpointer" }, results);
     results.map(res => {
       let ast = parseElement(res);
-      out.push(ast);
+      if (ast) out.push(ast);
     });
   }
 
