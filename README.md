@@ -36,7 +36,7 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 <a href="https://github.com/maierfelix/tiny-rtx"><img src="https://i.imgur.com/5KOxFS1.png" height="228"></a>
 
 ### Why Vulkan in JavaScript?
- - Vulkan is Language binding friendly
+ - Vulkan is a binding friendly API
  - Less overhead than WebGL/OpenGL
  - Essential features like Compute, Geometry and Tesselation shaders
  - Support for [Real-Time Ray Tracing](https://devblogs.nvidia.com/vulkan-raytracing/), [Mesh shaders](https://devblogs.nvidia.com/introduction-turing-mesh-shaders/), ...
