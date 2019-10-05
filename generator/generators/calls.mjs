@@ -299,6 +299,8 @@ function getCallBodyBefore(call) {
     }
     switch (rawType) {
       case "size_t":
+      case "double":
+      case "int64_t":
       case "uint64_t": {
         let type = param.enumType || param.type;
         return `
@@ -316,9 +318,12 @@ function getCallBodyBefore(call) {
       }
       case "int":
       case "float":
+      case "int8_t":
+      case "int16_t":
       case "int32_t":
-      case "uint32_t":
-      case "uint64_t": {
+      case "uint8_t":
+      case "uint16_t":
+      case "uint32_t": {
         let type = param.enumType || param.type;
         return `
   if (!info[${index}].IsNumber()) {

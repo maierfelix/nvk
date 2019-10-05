@@ -1,0 +1,104 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkSurfaceTransformFlagBitsKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkSurfaceTransformFlagBitsKHR</vk-name>
+
+    <vk-description>presentation transforms supported on a device</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkSurfaceTransformFlagBitsKHR = {
+  VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR: 0x1,
+  VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR: 0x2,
+  VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR: 0x4,
+  VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR: 0x8,
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR: 0x10,
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR: 0x20,
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR: 0x40,
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR: 0x80,
+  VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR: 0x100
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is presented without being transformed.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is rotated 90 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is rotated 180 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is rotated 270 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is mirrored horizontally.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is mirrored horizontally, then rotated 90 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is mirrored horizontally, then rotated 180 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that image content is mirrored horizontally, then rotated 270 degrees clockwise.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceTransformFlagBitsKHR.<vk-prototype-name>VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the presentation transform is not specified, and is instead determined by platform-specific considerations and mechanisms outside Vulkan.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

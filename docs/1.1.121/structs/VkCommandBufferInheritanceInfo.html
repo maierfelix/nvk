@@ -1,0 +1,174 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkCommandBufferInheritanceInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkCommandBufferInheritanceInfo</vk-name>
+
+    <vk-description>Structure specifying command buffer inheritance info</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">commandBufferInheritanceInfo = VkCommandBufferInheritanceInfo();
+commandBufferInheritanceInfo = new VkCommandBufferInheritanceInfo();
+commandBufferInheritanceInfo = new VkCommandBufferInheritanceInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let commandBufferInheritanceInfo = new VkCommandBufferInheritanceInfo();
+commandBufferInheritanceInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO;
+commandBufferInheritanceInfo.pNext = ;
+commandBufferInheritanceInfo.renderPass = ;
+commandBufferInheritanceInfo.subpass = ;
+commandBufferInheritanceInfo.framebuffer = ;
+commandBufferInheritanceInfo.occlusionQueryEnable = ;
+commandBufferInheritanceInfo.queryFlags = ;
+commandBufferInheritanceInfo.pipelineStatistics = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let commandBufferInheritanceInfo = new VkCommandBufferInheritanceInfo();
+commandBufferInheritanceInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO;
+commandBufferInheritanceInfo.pNext = ;
+commandBufferInheritanceInfo.renderPass = ;
+commandBufferInheritanceInfo.subpass = ;
+commandBufferInheritanceInfo.framebuffer = ;
+commandBufferInheritanceInfo.occlusionQueryEnable = ;
+commandBufferInheritanceInfo.queryFlags = ;
+commandBufferInheritanceInfo.pipelineStatistics = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>renderPass</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkRenderPass.html">VkRenderPass</a></vk-property-type>
+        <vk-property-description> is a <b><a href="../handles/VkRenderPass.html">VkRenderPass</a></b> object defining which render passes the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be <<renderpass-compatibility, compatible>> with and <i>can</i> be executed within. If the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>renderPass</b> is ignored.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>subpass</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the index of the subpass within the render pass instance that the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be executed within. If the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>subpass</b> is ignored.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>framebuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></vk-property-type>
+        <vk-property-description> optionally refers to the <b><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></b> object that the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be rendering to if it is executed within a render pass instance. It <i>can</i> be <b>VK_NULL_HANDLE</b> if the framebuffer is not known, or if the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with <i>may</i> result in better performance at command buffer executiontime.====</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>occlusionQueryEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description> specifies whether the command buffer <i>can</i> be executed while an occlusion query is active in the primary command buffer. If this is <b>VK_TRUE</b>, then this command buffer <i>can</i> be executed whether the primary command buffer has an occlusion query active or not. If this is <b>VK_FALSE</b>, then the primary command buffer <i>must</i> not have an occlusion query active.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>queryFlags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkQueryControlFlagBits.html">VkQueryControlFlagBits</a></vk-property-type>
+        <vk-property-description> specifies the query flags that <i>can</i> be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the <b>VK_QUERY_CONTROL_PRECISE_BIT</b> bit, then the active query <i>can</i> return boolean results or actual sample counts. If this bit is not set, then the active query <i>must</i> not use the <b>VK_QUERY_CONTROL_PRECISE_BIT</b> bit.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>pipelineStatistics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkQueryPipelineStatisticFlagBits.html">VkQueryPipelineStatisticFlagBits</a></vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkQueryPipelineStatisticFlagBits</b> specifying the set of pipeline statistics that <i>can</i> be counted by an active query in the primary command buffer when this secondary command buffer is executed. If this value includes a given bit, then this command buffer <i>can</i> be executed whether the primary command buffer has a pipeline statistics query active that includes this bit or not. If this value excludes a given bit, then the active pipeline statistics query <i>must</i> not be from a query pool that counts that statistic.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkCommandBufferInheritanceInfo.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

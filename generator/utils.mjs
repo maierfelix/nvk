@@ -48,8 +48,8 @@ export function formatVkVersion(version) {
   let split = version.split(".");
   if (split.length > 3) {
     let subv = split[3];
-    // .0 at version end is ignored, pop it
-    if (subv === "0" || subv === "1") {
+    // .x at version end is ignored, pop it
+    if (Number.isInteger(parseInt(subv))) {
       split.pop();
       return split.join(".");
     } else {
@@ -202,6 +202,8 @@ export function getAutoStructureType(name) {
   });
   out += values.join(`_`).toUpperCase();
   // manual spelling fix ups
+  out = out.replace(/(INT_8)/gm, `INT8`);
+  out = out.replace(/(FLOAT_16)/gm, `FLOAT16`);
   out = out.replace(/(_BIT)/gm, `BIT`);
   out = out.replace(/(WIN_32)/gm, `WIN32`);
   out = out.replace(/(MAC_OS)/gm, `MACOS`);
@@ -235,6 +237,7 @@ export function getObjectInstantiationName(object) {
 export function isNumericReferenceType(type) {
   switch (type) {
     case "float *":
+    case "double *":
     case "int8_t *":
     case "int16_t *":
     case "int32_t *":
@@ -243,6 +246,7 @@ export function isNumericReferenceType(type) {
     case "uint32_t *":
     case "uint64_t *":
     case "const float *":
+    case "const double *":
     case "const int8_t *":
     case "const int16_t *":
     case "const int32_t *":
@@ -420,6 +424,9 @@ export function getJavaScriptTypedArrayName(type) {
     case "float *":
     case "const float *":
       return "Float32Array";
+    case "double *":
+    case "const double *":
+      return "BigUint64Array";
     case "int8_t *":
     case "const int8_t *":
       return "Int8Array";
@@ -491,19 +498,30 @@ export function isReferenceableMember(member) {
     case "const char * const*":
       return true;
     case "float *":
+    case "double *":
+    case "int8_t *":
+    case "int16_t *":
     case "int32_t *":
     case "uint8_t *":
+    case "uint16_t *":
     case "uint32_t *":
     case "uint64_t *":
     case "const float *":
+    case "const double *":
+    case "const int8_t *":
+    case "const int16_t *":
     case "const int32_t *":
     case "const uint8_t *":
+    case "const uint16_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return true;
     case "int":
     case "float":
+    case "double":
     case "size_t":
+    case "int8_t":
+    case "int16_t":
     case "int32_t":
     case "uint8_t":
     case "uint16_t":
@@ -559,9 +577,14 @@ export function getDataViewInstruction(member) {
   switch (type) {
     case "int": return `Int32`;
     case "float": return `Float32`;
+    case "double": return `BigUint64`;
     case "size_t": return `BigInt64`;
+    case "int8_t": return `Int8Array`;
+    case "int16_t": return `Int16`;
     case "int32_t": return `Int32`;
+    case "int64_t": return `BigInt64`;
     case "uint8_t": return `Uint8`;
+    case "uint16_t": return `Uint16`;
     case "uint32_t": return `Uint32`;
     case "uint64_t": return `BigUint64`;
     default:
@@ -572,10 +595,13 @@ export function getDataViewInstruction(member) {
 
 export function getDataViewInstructionStride(instr) {
   switch (instr) {
+    case "Int8": return Int8Array.BYTES_PER_ELEMENT;
+    case "Int16": return Int16Array.BYTES_PER_ELEMENT;
     case "Int32": return Int32Array.BYTES_PER_ELEMENT;
     case "Float32": return Float32Array.BYTES_PER_ELEMENT;
     case "BigInt64": return BigInt64Array.BYTES_PER_ELEMENT;
     case "Uint8": return Uint8Array.BYTES_PER_ELEMENT;
+    case "Uint16": return Uint16Array.BYTES_PER_ELEMENT;
     case "Uint32": return Uint32Array.BYTES_PER_ELEMENT;
     case "BigUint64": return BigUint64Array.BYTES_PER_ELEMENT;
     default:

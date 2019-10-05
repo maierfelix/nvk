@@ -1,0 +1,167 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPipelineLayoutCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPipelineLayoutCreateInfo</vk-name>
+
+    <vk-description>Structure specifying the parameters of a newly created pipeline layout object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">pipelineLayoutInfo = VkPipelineLayoutCreateInfo();
+pipelineLayoutInfo = new VkPipelineLayoutCreateInfo();
+pipelineLayoutInfo = new VkPipelineLayoutCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let pipelineLayoutInfo = new VkPipelineLayoutCreateInfo();
+pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+pipelineLayoutInfo.pNext = ;
+pipelineLayoutInfo.flags = ;
+pipelineLayoutInfo.setLayoutCount = ;
+pipelineLayoutInfo.pSetLayouts = ;
+pipelineLayoutInfo.pushConstantRangeCount = ;
+pipelineLayoutInfo.pPushConstantRanges = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let pipelineLayoutInfo = new VkPipelineLayoutCreateInfo();
+pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+pipelineLayoutInfo.pNext = ;
+pipelineLayoutInfo.flags = ;
+pipelineLayoutInfo.setLayoutCount = ;
+pipelineLayoutInfo.pSetLayouts = ;
+pipelineLayoutInfo.pushConstantRangeCount = ;
+pipelineLayoutInfo.pPushConstantRanges = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>setLayoutCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of descriptor sets included in the pipeline layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>pSetLayouts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkDescriptorSetLayout.html">VkDescriptorSetLayout]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../handles/VkDescriptorSetLayout.html">VkDescriptorSetLayout</a></b> objects.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>pushConstantRangeCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of push constant ranges included in the pipeline layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>pPushConstantRanges</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkPushConstantRange.html">VkPushConstantRange]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkPushConstantRange.html">VkPushConstantRange</a></b> structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants <i>can</i> be accessed by each stage of the pipeline.+[NOTE].Note====Push constants represent a high speed path to modify constant data inpipelines that is expected to outperform memory-backed resource updates.====</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineLayoutCreateInfo.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

@@ -1,0 +1,79 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDisplayPlaneAlphaFlagBitsKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDisplayPlaneAlphaFlagBitsKHR</vk-name>
+
+    <vk-description>Alpha blending type</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkDisplayPlaneAlphaFlagBitsKHR = {
+  VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR: 0x1,
+  VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR: 0x2,
+  VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR: 0x4,
+  VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR: 0x8
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlaneAlphaFlagBitsKHR.<vk-prototype-name>VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the source image will be treated as opaque.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlaneAlphaFlagBitsKHR.<vk-prototype-name>VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that a global alpha value <i>must</i> be specified that will be applied to all pixels in the source image.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlaneAlphaFlagBitsKHR.<vk-prototype-name>VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the alpha value will be determined by the alpha channel of the source image's pixels. If the source format contains no alpha values, no blending will be applied. The source alpha values are not premultiplied into the source image's other color channels.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlaneAlphaFlagBitsKHR.<vk-prototype-name>VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> is equivalent to <b>VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR</b>, except the source alpha values are assumed to be premultiplied into the source image's other color channels.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

@@ -1,0 +1,133 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPresentTimeGOOGLE | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPresentTimeGOOGLE</vk-name>
+
+    <vk-description>The earliest time image should be presented</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">presentTimeGOOGLE = VkPresentTimeGOOGLE();
+presentTimeGOOGLE = new VkPresentTimeGOOGLE();
+presentTimeGOOGLE = new VkPresentTimeGOOGLE(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let presentTimeGOOGLE = new VkPresentTimeGOOGLE();
+presentTimeGOOGLE.presentID = ;
+presentTimeGOOGLE.desiredPresentTime = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let presentTimeGOOGLE = new VkPresentTimeGOOGLE();
+presentTimeGOOGLE.presentID = ;
+presentTimeGOOGLE.desiredPresentTime = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>presentID</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is an application-provided identification value, that <i>can</i> be used with the results of <b><a href="../calls/vkGetPastPresentationTimingGOOGLE.html">vkGetPastPresentationTimingGOOGLE</a></b>, in order to uniquely identify this present. In order to be useful to the application, it <i>should</i> be unique within some period of time that is meaningful to the application.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>desiredPresentTime</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies that the image given <i>should</i> not be displayed to the user any earlier than this time. <b>desiredPresentTime</b> is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine <i>may</i> display the image at any time. This is useful when the application desires to provide <b>presentID</b>, but does not need a specific <b>desiredPresentTime</b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPresentTimeGOOGLE.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

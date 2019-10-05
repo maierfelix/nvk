@@ -624,6 +624,7 @@ function isNumber(type) {
     case "int32_t":
     case "int64_t":
     case "uint8_t":
+    case "uint16_t":
     case "uint32_t":
     case "uint64_t":
       return true;
