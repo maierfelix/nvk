@@ -1,243 +1,233 @@
+type BigUint64Array = Float32Array
+declare const BigUint64Array: typeof Float32Array
+
+export interface ObjectConstructor {
+  assign(...objects: Object[]): Object;
+}
+
+export interface ArrayBufferConstructor {
+  fromAddress: (ptr: bigint, size: number) => ArrayBuffer;
+  getAddress: (data: ArrayBuffer) => bigint;
+}
+
 declare var VkInout: { $: number | boolean; }
 export interface VkInout { $: number | boolean; }
 
 declare var VkInoutAddress: { $: bigint; }
 export interface VkInoutAddress { $: bigint; }
 
-type BigUint64Array = Float32Array
-declare const BigUint64Array: typeof Float32Array
-
-declare global {
-
-  interface ObjectConstructor {
-    assign(...objects: Object[]): Object;
-  }
-  
-  interface ArrayBufferConstructor {
-    fromAddress: (ptr: bigint, size: number) => ArrayBuffer;
-    getAddress: (data: ArrayBuffer) => bigint;
-  }
-
-  var VkInout: { $: number | boolean; }
-  interface VkInout { $: number | boolean; }
-
-  var VkInoutAddress: { $: bigint; }
-  interface VkInoutAddress { $: bigint; }
-
-  {% for enu in enums %}
-  /**
-   * {{ getObjectDescription(enu) | safe }}
-   {% for child in enu.children -%}
-   {{ processEnumMemberDescriptions(enu, child) | safe }}
-   {% endfor -%}
-   */
-  enum {{ enu.name }} {
-    {% for child in enu.children -%}
-    {{ child.name }},
-    {% endfor %}
-  }
-
+{% for enu in enums %}
+/**
+  * {{ getObjectDescription(enu) | safe }}
   {% for child in enu.children -%}
-  const {{ child.name }}: {{ enu.name }};
+  {{ processEnumMemberDescriptions(enu, child) | safe }}
+  {% endfor -%}
+  */
+export enum {{ enu.name }} {
+  {% for child in enu.children -%}
+  {{ child.name }},
   {% endfor %}
+}
 
-  {% endfor %}
+{% for child in enu.children -%}
+declare const {{ child.name }}: {{ enu.name }};
+{% endfor %}
 
-  {% for name in includes -%}
-  {%- if isHandleInclude(name) == true -%}
+{% endfor %}
 
-  {{ getObjectDocumentation(name) | safe }}
-  interface {{ name | safe }} {
+{% for name in includes -%}
+{%- if isHandleInclude(name) == true -%}
 
-    /**
-     * Memory reference to the original vulkan handle.
-     */
-    address: bigint;
+{{ getObjectDocumentation(name) | safe }}
+declare interface {{ name | safe }} {
 
-  }
+  /**
+    * Memory reference to the original vulkan handle.
+    */
+  address: bigint;
 
-  interface {{ name | safe }}Constructor {
-    readonly prototype: {{ name | safe }};
-    new(): {{ name | safe }};
+}
 
-  }
+declare interface {{ name | safe }}Constructor {
+  readonly prototype: {{ name | safe }};
+  new(): {{ name | safe }};
 
-  var {{ name | safe }}: {{ name | safe }}Constructor;
+}
 
-  {% endif -%}
-  {% endfor %}
+declare var {{ name | safe }}: {{ name | safe }}Constructor;
 
-  {% for name in includes -%}
-  {%- if isStructInclude(name) == true -%}
+{% endif -%}
+{% endfor %}
 
-  {{ getObjectDocumentation(name) | safe }}
-  interface {{ name | safe }} {
-    /**
-     * Object describing the memory layout for this structure.
-     */
-    readonly memoryLayout: object;
+{% for name in includes -%}
+{%- if isStructInclude(name) == true -%}
 
-    /**
-     * Memory representation of the original vulkan structure instance.
-     */
-    memoryBuffer: ArrayBuffer;
-    {{ processStructMembers(name, false) | safe }}
+{{ getObjectDocumentation(name) | safe }}
+interface {{ name | safe }} {
+  /**
+    * Object describing the memory layout for this structure.
+    */
+  readonly memoryLayout: object;
 
-  }
+  /**
+    * Memory representation of the original vulkan structure instance.
+    */
+  memoryBuffer: ArrayBuffer;
+  {{ processStructMembers(name, false) | safe }}
 
-  interface {{ name | safe }}Initializer {
-    {{ processStructMembers(name, true) | safe }}
-  }
+}
 
-  interface {{ name | safe }}Constructor {
-    readonly prototype: {{ name | safe }};
-    new(param?: {{ name | safe }}Initializer | null): {{ name | safe }};
+declare interface {{ name | safe }}Initializer {
+  {{ processStructMembers(name, true) | safe }}
+}
 
-    /**
-     * Object describing the memory layout for this structure.
-     */
-    readonly memoryLayout: object;
+declare interface {{ name | safe }}Constructor {
+  readonly prototype: {{ name | safe }};
+  new(param?: {{ name | safe }}Initializer | null): {{ name | safe }};
 
-  }
+  /**
+    * Object describing the memory layout for this structure.
+    */
+  readonly memoryLayout: object;
 
-  var {{ name | safe }}: {{ name | safe }}Constructor;
+}
 
-  {% endif %}
-  {% endfor %}
+declare var {{ name | safe }}: {{ name | safe }}Constructor;
 
-  {% for call in calls -%}
-  {{ processCall(call) | safe }}
-  {% endfor %}
+{% endif %}
+{% endfor %}
 
-  function createV8ArrayBufferFromMemory(
-    addr: bigint,
-    size: number
-  ): ArrayBuffer;
+{% for call in calls -%}
+export {{ processCall(call) | safe }}
+{% endfor %}
 
-  function VK_MAKE_VERSION(
-    major: number,
-    minor: number,
-    patch: number
-  ): number;
+export function createV8ArrayBufferFromMemory(
+  addr: bigint,
+  size: number
+): ArrayBuffer;
 
-  function VK_VERSION_MAJOR(
-    major: number
-  ): number;
+export function VK_MAKE_VERSION(
+  major: number,
+  minor: number,
+  patch: number
+): number;
 
-  function VK_VERSION_MINOR(
-    minor: number
-  ): number;
+export function VK_VERSION_MAJOR(
+  major: number
+): number;
 
-  function VK_VERSION_PATCH(
-    patch: number
-  ): number;
+export function VK_VERSION_MINOR(
+  minor: number
+): number;
 
-  function vkUseDevice(
-    pDevice: VkDevice
-  ): void;
+export function VK_VERSION_PATCH(
+  patch: number
+): number;
 
-  function vkUseInstance(
-    pInstance: VkInstance
-  ): void;
+export function vkUseDevice(
+  pDevice: VkDevice
+): void;
 
-  var VK_API_VERSION_1_0: number;
+export function vkUseInstance(
+  pInstance: VkInstance
+): void;
 
-  interface ResizeEvent {
-    width: number;
-    height: number;
-  }
-  interface FocusEvent {
-    focused: boolean;
-  }
-  interface CloseEvent {
+export var VK_API_VERSION_1_0: number;
 
-  }
-  interface KeydownEvent {
-    keyCode: number;
-  }
-  interface KeyupEvent {
-    keyCode: number;
-  }
-  interface MousemoveEvent {
-    x: number;
-    y: number;
-    movementX: number;
-    movementY: number;
-  }
-  interface MousewheelEvent {
-    x: number;
-    y: number;
-    deltaX: number;
-    deltaY: number;
-  }
-  interface MousedownEvent {
-    x: number;
-    y: number;
-    button: number;
-  }
-  interface MouseupEvent {
-    x: number;
-    y: number;
-    button: number;
-  }
-  interface DropEvent {
-    paths: string[];
-  }
+export interface ResizeEvent {
+  width: number;
+  height: number;
+}
+export interface FocusEvent {
+  focused: boolean;
+}
+export interface CloseEvent {
 
-  interface VulkanWindowInitializer {
-    width?: number;
-    height?: number;
-    title?: string;
-  }
+}
+export interface KeydownEvent {
+  keyCode: number;
+}
+export interface KeyupEvent {
+  keyCode: number;
+}
+export interface MousemoveEvent {
+  x: number;
+  y: number;
+  movementX: number;
+  movementY: number;
+}
+export interface MousewheelEvent {
+  x: number;
+  y: number;
+  deltaX: number;
+  deltaY: number;
+}
+export interface MousedownEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+export interface MouseupEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+export interface DropEvent {
+  paths: string[];
+}
 
-  var VulkanWindow: {
-    prototype: VulkanWindow;
-    new(param?: VulkanWindowInitializer | null): VulkanWindow;
-    width: number;
-    height: number;
-    frameBufferWidth: number;
-    frameBufferHeight: number;
-    title: string;
-    pollEvents(): void;
-    focus(): void;
-    close(): void;
-    shouldClose(): boolean;
-    createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
-    getRequiredInstanceExtensions(): string[];
-    onresize: ((ev: ResizeEvent) => any) | null;
-    onfocus: ((ev: FocusEvent) => any) | null;
-    onclose: ((ev: CloseEvent) => any) | null;
-    onkeydown: ((ev: KeydownEvent) => any) | null;
-    onkeyup: ((ev: KeyupEvent) => any) | null;
-    onmousemove: ((ev: MousemoveEvent) => any) | null;
-    onmousewheel: ((ev: MousewheelEvent) => any) | null;
-    onmousedown: ((ev: MousedownEvent) => any) | null;
-    onmouseup: ((ev: MouseupEvent) => any) | null;
-    ondrop: ((ev: DropEvent) => any) | null;
-  }
+export interface VulkanWindowInitializer {
+  width?: number;
+  height?: number;
+  title?: string;
+}
 
-  interface VulkanWindow {
-    width: number;
-    height: number;
-    frameBufferWidth: number;
-    frameBufferHeight: number;
-    title: string;
-    pollEvents(): void;
-    focus(): void;
-    close(): void;
-    shouldClose(): boolean;
-    createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
-    getRequiredInstanceExtensions(): string[];
-    onresize: ((ev: ResizeEvent) => any) | null;
-    onfocus: ((ev: FocusEvent) => any) | null;
-    onclose: ((ev: CloseEvent) => any) | null;
-    onkeydown: ((ev: KeydownEvent) => any) | null;
-    onkeyup: ((ev: KeyupEvent) => any) | null;
-    onmousemove: ((ev: MousemoveEvent) => any) | null;
-    onmousewheel: ((ev: MousewheelEvent) => any) | null;
-    onmousedown: ((ev: MousedownEvent) => any) | null;
-    onmouseup: ((ev: MouseupEvent) => any) | null;
-    ondrop: ((ev: DropEvent) => any) | null;
-  }
+declare var VulkanWindow: {
+  prototype: VulkanWindow;
+  new(param?: VulkanWindowInitializer | null): VulkanWindow;
+  width: number;
+  height: number;
+  frameBufferWidth: number;
+  frameBufferHeight: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
+}
 
+export interface VulkanWindow {
+  width: number;
+  height: number;
+  frameBufferWidth: number;
+  frameBufferHeight: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
 }
