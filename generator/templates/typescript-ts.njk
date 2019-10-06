@@ -9,6 +9,7 @@ export interface CustomArraybufferConstructor extends ArrayBufferConstructor {
   fromAddress: (ptr: bigint, size: number) => ArrayBuffer;
   getAddress: (data: ArrayBuffer) => bigint;
 }
+declare var ArrayBuffer: CustomArraybufferConstructor;
 
 declare var VkInout: { $: number | boolean; }
 export interface VkInout { $: number | boolean; }
