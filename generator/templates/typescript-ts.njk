@@ -5,7 +5,7 @@ export interface ObjectConstructor {
   assign(...objects: Object[]): Object;
 }
 
-export interface ArrayBufferConstructor {
+export interface CustomArraybufferConstructor extends ArrayBufferConstructor {
   fromAddress: (ptr: bigint, size: number) => ArrayBuffer;
   getAddress: (data: ArrayBuffer) => bigint;
 }
