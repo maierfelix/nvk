@@ -13,13 +13,66 @@
 #include "memoryLayouts.h"
 {% endif %}
 
+class CallbackProxy : public Napi::ObjectWrap<CallbackProxy> {
+  public:
+    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
+    static Napi::FunctionReference constructor;
+    CallbackProxy(const Napi::CallbackInfo &info);
+    ~CallbackProxy();
+
+    Napi::Value getAddress(const Napi::CallbackInfo &info);
+    Napi::FunctionReference callback;
+    Napi::ObjectReference module;
+};
+
+Napi::FunctionReference CallbackProxy::constructor;
+
+// constructor
+CallbackProxy::CallbackProxy(const Napi::CallbackInfo& info) : Napi::ObjectWrap<CallbackProxy>(info) {
+  this->callback.Reset(info[0].As<Napi::Function>(), 1);
+  this->module.Reset(info[1].As<Napi::Object>(), 1);
+}
+
+// destructor
+CallbackProxy::~CallbackProxy() {
+  this->callback.Reset();
+  this->module.Reset();
+}
+
+Napi::Value CallbackProxy::getAddress(const Napi::CallbackInfo &info) {
+  Napi::Env env = info.Env();
+  uint64_t address = reinterpret_cast<uint64_t>(this);
+  return Napi::BigInt::New(env, address);
+}
+
+Napi::Object CallbackProxy::Initialize(Napi::Env env, Napi::Object exports) {
+  Napi::HandleScope scope(env);
+  Napi::Function func = DefineClass(env, "CallbackProxy", {
+    InstanceMethod(
+      "getAddress",
+      &CallbackProxy::getAddress,
+      napi_enumerable
+    )
+  });
+  constructor = Napi::Persistent(func);
+  constructor.SuppressDestruct();
+  exports.Set("$CallbackProxy", func);
+  return exports;
+}
+
 {% for func in functionPointers -%}
 static VKAPI_ATTR {{ func.text }} VKAPI_CALL CB_{{ func.name }}(
   {% for param in func.params -%}
   {{ param.text }}{% if loop.index <= loop.length - 1 %},{% endif %}
   {% endfor -%}
 ) {
-  return;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  {{ processCallbackParameters(func) | safe }}
+  Napi::Value ret = callback.Call(args);
+  {{ processCallbackReturn(func) | safe }}
 };
 
 {% endfor -%}
@@ -105,6 +158,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   {% endif %}
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
+  CallbackProxy::Initialize(env, exports);
   {
     Napi::Object obj = Napi::Object::New(env);
     {% for func in functionPointers -%}

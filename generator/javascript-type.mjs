@@ -22,6 +22,14 @@ export class JavaScriptType {
     if (opts.isReference !== void 0) this.isReference = opts.isReference;
     //if (!opts.byteLength) console.log("nooooo");
   }
+  toString() {
+    for (let key in JavaScriptType) {
+      if (JavaScriptType[key] === this.type) {
+        return this.constructor.name + "." + key;
+      }
+    };
+    return `UNKNOWN`;
+  }
   get isNumeric() {
     let {type} = this;
     return (
@@ -38,8 +46,8 @@ export class JavaScriptType {
   get isArray() {
     let {type} = this;
     return (
-      this.isJavaScriptArray() ||
-      type === JavaScriptType.TYPED_ARRAY
+      this.isTypedArray ||
+      this.isJavaScriptArray
     );
   }
   get isJavaScriptArray() {
@@ -48,6 +56,18 @@ export class JavaScriptType {
       type === JavaScriptType.ARRAY_OF_STRINGS ||
       type === JavaScriptType.ARRAY_OF_NUMBERS ||
       type === JavaScriptType.ARRAY_OF_OBJECTS
+    );
+  }
+  get isTypedArray() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.TYPED_ARRAY
+    );
+  }
+  get isArrayBuffer() {
+    return (
+      this.isTypedArray &&
+      this.value === "ArrayBuffer"
     );
   }
   get isBoolean() {
@@ -64,6 +84,7 @@ export class JavaScriptType {
   JavaScriptType.UNKNOWN = idx++;
   JavaScriptType.OBJECT = idx++;
   JavaScriptType.NULL = idx++;
+  JavaScriptType.UNDEFINED = idx++;
   JavaScriptType.STRING = idx++;
   JavaScriptType.NUMBER = idx++;
   JavaScriptType.BOOLEAN = idx++;
@@ -202,6 +223,10 @@ export function getJavaScriptType(ast, object) {
     });
   }
   switch (rawType) {
+    case "void":
+      return new JavaScriptType({
+        type: JavaScriptType.UNDEFINED
+      });
     case "void *":
     case "const void *":
       return new JavaScriptType({

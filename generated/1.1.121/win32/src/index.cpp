@@ -19,6 +19,7 @@
 #include "enums.h"
 #include "window.h"
 
+
 class CallbackProxy : public Napi::ObjectWrap<CallbackProxy> {
   public:
     static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
@@ -28,6 +29,7 @@ class CallbackProxy : public Napi::ObjectWrap<CallbackProxy> {
 
     Napi::Value getAddress(const Napi::CallbackInfo &info);
     Napi::FunctionReference callback;
+    Napi::ObjectReference module;
 };
 
 Napi::FunctionReference CallbackProxy::constructor;
@@ -35,11 +37,13 @@ Napi::FunctionReference CallbackProxy::constructor;
 // constructor
 CallbackProxy::CallbackProxy(const Napi::CallbackInfo& info) : Napi::ObjectWrap<CallbackProxy>(info) {
   this->callback.Reset(info[0].As<Napi::Function>(), 1);
+  this->module.Reset(info[1].As<Napi::Object>(), 1);
 }
 
 // destructor
 CallbackProxy::~CallbackProxy() {
   this->callback.Reset();
+  this->module.Reset();
 }
 
 Napi::Value CallbackProxy::getAddress(const Napi::CallbackInfo &info) {
@@ -69,7 +73,17 @@ static VKAPI_ATTR void VKAPI_CALL CB_vkInternalAllocationNotification(
   VkInternalAllocationType allocationType,
   VkSystemAllocationScope allocationScope
   ) {
-  return;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(env.Null().As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(size)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationType)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationScope)).As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  
 };
 
 static VKAPI_ATTR void VKAPI_CALL CB_vkInternalFreeNotification(
@@ -78,7 +92,17 @@ static VKAPI_ATTR void VKAPI_CALL CB_vkInternalFreeNotification(
   VkInternalAllocationType allocationType,
   VkSystemAllocationScope allocationScope
   ) {
-  return;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(env.Null().As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(size)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationType)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationScope)).As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  
 };
 
 static VKAPI_ATTR void * VKAPI_CALL CB_vkReallocationFunction(
@@ -88,7 +112,23 @@ static VKAPI_ATTR void * VKAPI_CALL CB_vkReallocationFunction(
   size_t alignment,
   VkSystemAllocationScope allocationScope
   ) {
-  return nullptr;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(env.Null().As<Napi::Value>());
+  args.push_back(Napi::ArrayBuffer::New(env, pOriginal, size).As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(size)).As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(alignment)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationScope)).As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  if (!(ret.IsArrayBuffer())) {
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' as the Return Value of Callback 'vkReallocationFunction'").ThrowAsJavaScriptException();
+    return nullptr;
+  }
+  Napi::ArrayBuffer buffer = ret.As<Napi::ArrayBuffer>();
+  return reinterpret_cast<void*>(buffer.Data());
 };
 
 static VKAPI_ATTR void * VKAPI_CALL CB_vkAllocationFunction(
@@ -97,14 +137,37 @@ static VKAPI_ATTR void * VKAPI_CALL CB_vkAllocationFunction(
   size_t alignment,
   VkSystemAllocationScope allocationScope
   ) {
-  return nullptr;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(env.Null().As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(size)).As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(alignment)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(allocationScope)).As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  if (!(ret.IsArrayBuffer())) {
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' as the Return Value of Callback 'vkAllocationFunction'").ThrowAsJavaScriptException();
+    return nullptr;
+  }
+  Napi::ArrayBuffer buffer = ret.As<Napi::ArrayBuffer>();
+  return reinterpret_cast<void*>(buffer.Data());
 };
 
 static VKAPI_ATTR void VKAPI_CALL CB_vkFreeFunction(
   void * pUserData,
   void * pMemory
   ) {
-  return;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(env.Null().As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, reinterpret_cast<uint64_t>(pMemory)).As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  
 };
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
@@ -119,9 +182,23 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
   ) {
   CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
   Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
-  Napi::Env env = callback->Env();
-  callback.Call({  });
-  return true;
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(flags)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(objectType)).As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(object)).As<Napi::Value>());
+  args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(location)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageCode)).As<Napi::Value>());
+  args.push_back(Napi::String::New(env, pLayerPrefix).As<Napi::Value>());
+  args.push_back(Napi::String::New(env, pMessage).As<Napi::Value>());
+  args.push_back(env.Null().As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  if (!(ret.IsBoolean())) {
+    Napi::TypeError::New(env, "Expected 'Boolean' as the Return Value of Callback 'vkDebugReportCallbackEXT'").ThrowAsJavaScriptException();
+    return false;
+  }
+  return ret.As<Napi::Boolean>().Value();
 };
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
@@ -130,7 +207,22 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
   const VkDebugUtilsMessengerCallbackDataEXT * pCallbackData,
   void * pUserData
   ) {
-  return true;
+  CallbackProxy* proxy = reinterpret_cast<CallbackProxy*>(pUserData);
+  Napi::Function callback = proxy->callback.Value().As<Napi::Function>();
+  Napi::Env env = callback.Env();
+  std::vector<napi_value> args = {};
+  
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageSeverity)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageTypes)).As<Napi::Value>());
+  Napi::Object module = proxy->module.Value();
+  args.push_back(module.Get("VkDebugUtilsMessengerCallbackDataEXT").As<Napi::Value>());
+  args.push_back(env.Null().As<Napi::Value>());
+  Napi::Value ret = callback.Call(args);
+  if (!(ret.IsBoolean())) {
+    Napi::TypeError::New(env, "Expected 'Boolean' as the Return Value of Callback 'vkDebugUtilsMessengerCallbackEXT'").ThrowAsJavaScriptException();
+    return false;
+  }
+  return ret.As<Napi::Boolean>().Value();
 };
 
 static Napi::Value getAddressFromArrayBuffer(const Napi::CallbackInfo& info) {
@@ -212,6 +304,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
   
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
+  CallbackProxy::Initialize(env, exports);
   {
     Napi::Object obj = Napi::Object::New(env);
     obj.Set("vkInternalAllocationNotification", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkInternalAllocationNotification)));

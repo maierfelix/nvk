@@ -516,7 +516,7 @@ function getSetterProcessor(member) {
     }
     case JavaScriptType.FUNCTION: {
       let instr = "BigInt64";
-      let functionPointerAccessor = "vk" + (member.name.substr(3)) + "Function";
+      let functionPointerAccessor = member.type.substr(4);
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       let pUserData = ``;
@@ -533,7 +533,7 @@ function getSetterProcessor(member) {
       return `
     if (value !== null ${ validate ? `&& value.constructor === Function` : `` }) {
       this._${member.name} = value;
-      this._${member.name}CallbackProxy = new nvk.$CallbackProxy(value);
+      this._${member.name}CallbackProxy = new nvk.$CallbackProxy(value, module.exports);
       this.memoryView${instr}[${offset}] = nvk.$vulkanCallbackFunctionPointers["${functionPointerAccessor}"];
       ${pUserData}
     } else if (value === null) {
