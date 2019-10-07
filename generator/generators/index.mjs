@@ -69,10 +69,12 @@ function processCallbackParameter(func, param) {
     Napi::Object module = proxy->module.Value();
     Napi::Function ctor = module.Get("${param.type}").As<Napi::Function>();
     Napi::Object arg = Napi::Object::New(env);
+    void* addr = const_cast<void*>(reinterpret_cast<const void*>(${param.name}));
     arg.Set("$memoryOffset", Napi::Number::New(env, 0).As<Napi::Value>());
-    arg.Set("$memoryBuffer", Napi::ArrayBuffer::New(env, const_cast<void*>(reinterpret_cast<const void*>((${param.name})), sizeof(${param.type})).As<Napi::Value>());
-    Napi::Object object = ctor.New({ arg }).As<Napi::Value>();
-    args.push_back(object);
+    arg.Set("$memoryBuffer", Napi::ArrayBuffer::New(env, addr, sizeof(${param.type})).As<Napi::Value>());
+    Napi::Object object = ctor.New({ arg });
+    object.Get("reflect").As<Napi::Function>().Call({ object.Get("memoryAddress") });
+    args.push_back(object.As<Napi::Value>());
   }`;
   }
   // pUserData is only used by nvk for now
