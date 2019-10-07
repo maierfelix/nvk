@@ -26,6 +26,7 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 };
 
 const BI0 = BigInt(0);
+const BI4 = BigInt(4);
 const NULLT = String.fromCharCode(0x0);
 const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
 
@@ -36,6 +37,21 @@ function decodeNullTerminatedUTF8String(view) {
   let terminator = view.indexOf(0x0);
   let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
   return textDecoder.decode(subview);
+};
+
+function findNullTerminatedUTF8StringLength(addr) {
+  let limit = 2 << 12;
+  // read 4 bytes on each iteration
+  for (let ii = 0; ii < limit; ii += 4) {
+    let chunk = getArrayBufferFromAddress(addr + BigInt(ii), BI4);
+    let chunkU8 = new Uint8Array(chunk);
+    if (chunkU8[0] === 0x0) return ++ii + 0x0;
+    if (chunkU8[1] === 0x0) return ++ii + 0x1;
+    if (chunkU8[2] === 0x0) return ++ii + 0x2;
+    if (chunkU8[3] === 0x0) return ++ii + 0x3;
+  };
+  throw new ReferenceError(`Failed to find UTF8 String length - Memory is either corrupted, misses a NULL terminator or exceeds the Limit of '${limit}' bytes`);
+  return -1;
 };
 
 function typeToString(value) {
@@ -2458,6 +2474,14 @@ Object.defineProperties(VkApplicationInfo.prototype, {
       let str = textDecoder.decode(this._pApplicationName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pApplicationName = buffer;
+        return this.pApplicationName;
+      }
       return null;
     }
     },
@@ -2486,6 +2510,14 @@ Object.defineProperties(VkApplicationInfo.prototype, {
       let str = textDecoder.decode(this._pEngineName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pEngineName = buffer;
+        return this.pEngineName;
+      }
       return null;
     }
     },
@@ -11090,6 +11122,14 @@ Object.defineProperties(VkPipelineShaderStageCreateInfo.prototype, {
       let str = textDecoder.decode(this._pName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pName = buffer;
+        return this.pName;
+      }
       return null;
     }
     },
@@ -21038,6 +21078,14 @@ Object.defineProperties(VkDisplayPropertiesKHR.prototype, {
       let str = textDecoder.decode(this._displayName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x1] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x1];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._displayName = buffer;
+        return this.displayName;
+      }
       return null;
     }
     },
@@ -23885,6 +23933,14 @@ Object.defineProperties(VkDebugMarkerObjectNameInfoEXT.prototype, {
       let str = textDecoder.decode(this._pObjectName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pObjectName = buffer;
+        return this.pObjectName;
+      }
       return null;
     }
     },
@@ -24193,6 +24249,14 @@ Object.defineProperties(VkDebugMarkerMarkerInfoEXT.prototype, {
       let str = textDecoder.decode(this._pMarkerName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMarkerName = buffer;
+        return this.pMarkerName;
+      }
       return null;
     }
     },
@@ -33613,6 +33677,14 @@ Object.defineProperties(VkImportMemoryWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -33740,6 +33812,14 @@ Object.defineProperties(VkExportMemoryWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -35447,6 +35527,14 @@ Object.defineProperties(VkImportSemaphoreWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -35584,6 +35672,14 @@ Object.defineProperties(VkExportSemaphoreWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -37008,6 +37104,14 @@ Object.defineProperties(VkImportFenceWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -37145,6 +37249,14 @@ Object.defineProperties(VkExportFenceWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -57463,6 +57575,14 @@ Object.defineProperties(VkDebugUtilsObjectNameInfoEXT.prototype, {
       let str = textDecoder.decode(this._pObjectName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pObjectName = buffer;
+        return this.pObjectName;
+      }
       return null;
     }
     },
@@ -57771,6 +57891,14 @@ Object.defineProperties(VkDebugUtilsLabelEXT.prototype, {
       let str = textDecoder.decode(this._pLabelName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pLabelName = buffer;
+        return this.pLabelName;
+      }
       return null;
     }
     },
@@ -58132,6 +58260,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
       let str = textDecoder.decode(this._pMessageIdName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x3] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x3];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMessageIdName = buffer;
+        return this.pMessageIdName;
+      }
       return null;
     }
     },
@@ -58160,6 +58296,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
       let str = textDecoder.decode(this._pMessage);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMessage = buffer;
+        return this.pMessage;
+      }
       return null;
     }
     },
@@ -78552,6 +78696,14 @@ Object.defineProperties(VkPerformanceValueDataINTEL.prototype, {
       let str = textDecoder.decode(this._valueString);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x0] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x0];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._valueString = buffer;
+        return this.valueString;
+      }
       return null;
     }
     },

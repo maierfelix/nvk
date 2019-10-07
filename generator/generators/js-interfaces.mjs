@@ -322,14 +322,26 @@ function getGetterProcessor(member) {
     return decodeNullTerminatedUTF8String(
       new Uint8Array(this.memoryBuffer).subarray(this.$memoryOffset + ${hxByteOffsetBegin}, ${hxByteOffsetEnd})
     ) || null;`;
-      }
-      return `
+      } else {
+        let instr = "BigInt64";
+        let byteStride = getDataViewInstructionStride(instr);
+        let offset = getHexaByteOffset(byteOffsetBegin / byteStride);
+        return `
     if (this._${member.name} !== null) {
       let str = textDecoder.decode(this._${member.name});
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[${offset}] !== BI0) {
+        let addr = this.memoryViewBigInt64[${offset}];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._${member.name} = buffer;
+        return this.${member.name};
+      }
       return null;
     }`;
+      }
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `
