@@ -2,20 +2,26 @@
 function {{ handle.name }}(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'{{ handle.name }}' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 

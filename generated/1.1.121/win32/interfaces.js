@@ -27,11 +27,19 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 
 const BI0 = BigInt(0);
 const BI4 = BigInt(4);
+const BI8 = BigInt(8);
 const NULLT = String.fromCharCode(0x0);
 const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
 const textDecoder = new (typeof TextDecoder === "undefined" ? require("util").TextDecoder : TextDecoder);
+
+function dereferencePointer(addr) {
+  // read ptr address
+  let ptrBuffer = getArrayBufferFromAddress(addr, BI8);
+  // deref ptr
+  return getAddressFromArrayBuffer(ptrBuffer);
+};
 
 function decodeNullTerminatedUTF8String(view) {
   let terminator = view.indexOf(0x0);
@@ -55,8 +63,21 @@ function findNullTerminatedUTF8StringLength(addr) {
 };
 
 function decodeNativeArrayOfObjects(addr, length, ctor) {
-  console.log(addr, length, ctor.byteLength);
-  return [];
+  let out = [];
+  let byteLength = BigInt(ctor.byteLength);
+  let baseAddr = dereferencePointer(addr);
+  for (let ii = 0; ii < length; ++ii) {
+    let buffer = getArrayBufferFromAddress(
+      baseAddr + BigInt(ii) * byteLength,
+      byteLength
+    );
+    let item = new ctor({
+      $memoryBuffer: buffer,
+      $memoryOffset: 0
+    });
+    out.push(item);
+  };
+  return out;
 };
 
 function typeToString(value) {
@@ -1444,20 +1465,26 @@ function $VAL_R_VkPipelineCompilerControlFlagBitsAMD(value) {
 function VkInstance(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkInstance' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1475,20 +1502,26 @@ VkInstance.byteLength = 0x8;
 function VkPhysicalDevice(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPhysicalDevice' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1506,20 +1539,26 @@ VkPhysicalDevice.byteLength = 0x8;
 function VkDevice(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDevice' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1537,20 +1576,26 @@ VkDevice.byteLength = 0x8;
 function VkQueue(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkQueue' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1568,20 +1613,26 @@ VkQueue.byteLength = 0x8;
 function VkCommandBuffer(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkCommandBuffer' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1599,20 +1650,26 @@ VkCommandBuffer.byteLength = 0x8;
 function VkDeviceMemory(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDeviceMemory' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1630,20 +1687,26 @@ VkDeviceMemory.byteLength = 0x8;
 function VkCommandPool(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkCommandPool' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1661,20 +1724,26 @@ VkCommandPool.byteLength = 0x8;
 function VkBuffer(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkBuffer' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1692,20 +1761,26 @@ VkBuffer.byteLength = 0x8;
 function VkBufferView(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkBufferView' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1723,20 +1798,26 @@ VkBufferView.byteLength = 0x8;
 function VkImage(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkImage' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1754,20 +1835,26 @@ VkImage.byteLength = 0x8;
 function VkImageView(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkImageView' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1785,20 +1872,26 @@ VkImageView.byteLength = 0x8;
 function VkShaderModule(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkShaderModule' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1816,20 +1909,26 @@ VkShaderModule.byteLength = 0x8;
 function VkPipeline(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipeline' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1847,20 +1946,26 @@ VkPipeline.byteLength = 0x8;
 function VkPipelineLayout(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipelineLayout' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1878,20 +1983,26 @@ VkPipelineLayout.byteLength = 0x8;
 function VkSampler(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSampler' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1909,20 +2020,26 @@ VkSampler.byteLength = 0x8;
 function VkDescriptorSet(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorSet' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1940,20 +2057,26 @@ VkDescriptorSet.byteLength = 0x8;
 function VkDescriptorSetLayout(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorSetLayout' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -1971,20 +2094,26 @@ VkDescriptorSetLayout.byteLength = 0x8;
 function VkDescriptorPool(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorPool' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2002,20 +2131,26 @@ VkDescriptorPool.byteLength = 0x8;
 function VkFence(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkFence' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2033,20 +2168,26 @@ VkFence.byteLength = 0x8;
 function VkSemaphore(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSemaphore' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2064,20 +2205,26 @@ VkSemaphore.byteLength = 0x8;
 function VkEvent(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkEvent' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2095,20 +2242,26 @@ VkEvent.byteLength = 0x8;
 function VkQueryPool(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkQueryPool' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2126,20 +2279,26 @@ VkQueryPool.byteLength = 0x8;
 function VkFramebuffer(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkFramebuffer' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2157,20 +2316,26 @@ VkFramebuffer.byteLength = 0x8;
 function VkRenderPass(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkRenderPass' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2188,20 +2353,26 @@ VkRenderPass.byteLength = 0x8;
 function VkPipelineCache(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipelineCache' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2219,20 +2390,26 @@ VkPipelineCache.byteLength = 0x8;
 function VkObjectTableNVX(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkObjectTableNVX' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2250,20 +2427,26 @@ VkObjectTableNVX.byteLength = 0x8;
 function VkIndirectCommandsLayoutNVX(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkIndirectCommandsLayoutNVX' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2281,20 +2464,26 @@ VkIndirectCommandsLayoutNVX.byteLength = 0x8;
 function VkDescriptorUpdateTemplate(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorUpdateTemplate' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2312,20 +2501,26 @@ VkDescriptorUpdateTemplate.byteLength = 0x8;
 function VkSamplerYcbcrConversion(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSamplerYcbcrConversion' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2343,20 +2538,26 @@ VkSamplerYcbcrConversion.byteLength = 0x8;
 function VkValidationCacheEXT(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkValidationCacheEXT' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2374,20 +2575,26 @@ VkValidationCacheEXT.byteLength = 0x8;
 function VkAccelerationStructureNV(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkAccelerationStructureNV' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2405,20 +2612,26 @@ VkAccelerationStructureNV.byteLength = 0x8;
 function VkPerformanceConfigurationINTEL(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPerformanceConfigurationINTEL' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2436,20 +2649,26 @@ VkPerformanceConfigurationINTEL.byteLength = 0x8;
 function VkDisplayKHR(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDisplayKHR' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2467,20 +2686,26 @@ VkDisplayKHR.byteLength = 0x8;
 function VkDisplayModeKHR(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDisplayModeKHR' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2498,20 +2723,26 @@ VkDisplayModeKHR.byteLength = 0x8;
 function VkSurfaceKHR(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSurfaceKHR' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2529,20 +2760,26 @@ VkSurfaceKHR.byteLength = 0x8;
 function VkSwapchainKHR(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSwapchainKHR' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2560,20 +2797,26 @@ VkSwapchainKHR.byteLength = 0x8;
 function VkDebugReportCallbackEXT(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDebugReportCallbackEXT' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -2591,20 +2834,26 @@ VkDebugReportCallbackEXT.byteLength = 0x8;
 function VkDebugUtilsMessengerEXT(opts) {
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
 
   if (opts !== void 0) {
     if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDebugUtilsMessengerEXT' doesn't take any arguments");
     }
     else {
-      this.memoryBuffer = opts.$memoryBuffer;
-      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
     }
   }
   else {
     this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
   this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
@@ -4913,7 +5162,6 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
     get() {
     if (this._pQueueCreateInfos === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.queueCreateInfoCount, VkDeviceQueueCreateInfo);
       this._pQueueCreateInfos = array;
       return this.pQueueCreateInfos;
@@ -7062,7 +7310,6 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     get() {
     if (this._pImageInfo === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkDescriptorImageInfo);
       this._pImageInfo = array;
       return this.pImageInfo;
@@ -7085,7 +7332,6 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     get() {
     if (this._pBufferInfo === null && this.memoryViewBigInt64[0x6] !== BI0) {
       let addr = this.memoryViewBigInt64[0x6];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkDescriptorBufferInfo);
       this._pBufferInfo = array;
       return this.pBufferInfo;
@@ -7108,7 +7354,6 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     get() {
     if (this._pTexelBufferView === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkBufferView);
       this._pTexelBufferView = array;
       return this.pTexelBufferView;
@@ -10363,7 +10608,6 @@ Object.defineProperties(VkSparseBufferMemoryBindInfo.prototype, {
     get() {
     if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseMemoryBind);
       this._pBinds = array;
       return this.pBinds;
@@ -10521,7 +10765,6 @@ Object.defineProperties(VkSparseImageOpaqueMemoryBindInfo.prototype, {
     get() {
     if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseMemoryBind);
       this._pBinds = array;
       return this.pBinds;
@@ -10679,7 +10922,6 @@ Object.defineProperties(VkSparseImageMemoryBindInfo.prototype, {
     get() {
     if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseImageMemoryBind);
       this._pBinds = array;
       return this.pBinds;
@@ -10882,7 +11124,6 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     get() {
     if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
       this._pWaitSemaphores = array;
       return this.pWaitSemaphores;
@@ -10916,7 +11157,6 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     get() {
     if (this._pBufferBinds === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.bufferBindCount, VkSparseBufferMemoryBindInfo);
       this._pBufferBinds = array;
       return this.pBufferBinds;
@@ -10950,7 +11190,6 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     get() {
     if (this._pImageOpaqueBinds === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.imageOpaqueBindCount, VkSparseImageOpaqueMemoryBindInfo);
       this._pImageOpaqueBinds = array;
       return this.pImageOpaqueBinds;
@@ -10984,7 +11223,6 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     get() {
     if (this._pImageBinds === null && this.memoryViewBigInt64[0x9] !== BI0) {
       let addr = this.memoryViewBigInt64[0x9];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.imageBindCount, VkSparseImageMemoryBindInfo);
       this._pImageBinds = array;
       return this.pImageBinds;
@@ -11018,7 +11256,6 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     get() {
     if (this._pSignalSemaphores === null && this.memoryViewBigInt64[0xB] !== BI0) {
       let addr = this.memoryViewBigInt64[0xB];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.signalSemaphoreCount, VkSemaphore);
       this._pSignalSemaphores = array;
       return this.pSignalSemaphores;
@@ -12498,7 +12735,6 @@ Object.defineProperties(VkDescriptorSetLayoutBinding.prototype, {
     get() {
     if (this._pImmutableSamplers === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkSampler);
       this._pImmutableSamplers = array;
       return this.pImmutableSamplers;
@@ -12701,7 +12937,6 @@ Object.defineProperties(VkDescriptorSetLayoutCreateInfo.prototype, {
     get() {
     if (this._pBindings === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.bindingCount, VkDescriptorSetLayoutBinding);
       this._pBindings = array;
       return this.pBindings;
@@ -13013,7 +13248,6 @@ Object.defineProperties(VkDescriptorPoolCreateInfo.prototype, {
     get() {
     if (this._pPoolSizes === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.poolSizeCount, VkDescriptorPoolSize);
       this._pPoolSizes = array;
       return this.pPoolSizes;
@@ -13234,7 +13468,6 @@ Object.defineProperties(VkDescriptorSetAllocateInfo.prototype, {
     get() {
     if (this._pSetLayouts === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorSetCount, VkDescriptorSetLayout);
       this._pSetLayouts = array;
       return this.pSetLayouts;
@@ -13496,7 +13729,6 @@ Object.defineProperties(VkSpecializationInfo.prototype, {
     get() {
     if (this._pMapEntries === null && this.memoryViewBigInt64[0x1] !== BI0) {
       let addr = this.memoryViewBigInt64[0x1];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.mapEntryCount, VkSpecializationMapEntry);
       this._pMapEntries = array;
       return this.pMapEntries;
@@ -14457,7 +14689,6 @@ Object.defineProperties(VkPipelineVertexInputStateCreateInfo.prototype, {
     get() {
     if (this._pVertexBindingDescriptions === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.vertexBindingDescriptionCount, VkVertexInputBindingDescription);
       this._pVertexBindingDescriptions = array;
       return this.pVertexBindingDescriptions;
@@ -14491,7 +14722,6 @@ Object.defineProperties(VkPipelineVertexInputStateCreateInfo.prototype, {
     get() {
     if (this._pVertexAttributeDescriptions === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.vertexAttributeDescriptionCount, VkVertexInputAttributeDescription);
       this._pVertexAttributeDescriptions = array;
       return this.pVertexAttributeDescriptions;
@@ -15044,7 +15274,6 @@ Object.defineProperties(VkPipelineViewportStateCreateInfo.prototype, {
     get() {
     if (this._pViewports === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewport);
       this._pViewports = array;
       return this.pViewports;
@@ -15078,7 +15307,6 @@ Object.defineProperties(VkPipelineViewportStateCreateInfo.prototype, {
     get() {
     if (this._pScissors === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.scissorCount, VkRect2D);
       this._pScissors = array;
       return this.pScissors;
@@ -16120,7 +16348,6 @@ Object.defineProperties(VkPipelineColorBlendStateCreateInfo.prototype, {
     get() {
     if (this._pAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkPipelineColorBlendAttachmentState);
       this._pAttachments = array;
       return this.pAttachments;
@@ -17072,7 +17299,6 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     get() {
     if (this._pStages === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.stageCount, VkPipelineShaderStageCreateInfo);
       this._pStages = array;
       return this.pStages;
@@ -17927,7 +18153,6 @@ Object.defineProperties(VkPipelineLayoutCreateInfo.prototype, {
     get() {
     if (this._pSetLayouts === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.setLayoutCount, VkDescriptorSetLayout);
       this._pSetLayouts = array;
       return this.pSetLayouts;
@@ -17961,7 +18186,6 @@ Object.defineProperties(VkPipelineLayoutCreateInfo.prototype, {
     get() {
     if (this._pPushConstantRanges === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.pushConstantRangeCount, VkPushConstantRange);
       this._pPushConstantRanges = array;
       return this.pPushConstantRanges;
@@ -19375,7 +19599,6 @@ Object.defineProperties(VkRenderPassBeginInfo.prototype, {
     get() {
     if (this._pClearValues === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.clearValueCount, VkClearValue);
       this._pClearValues = array;
       return this.pClearValues;
@@ -20141,7 +20364,6 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     get() {
     if (this._pInputAttachments === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.inputAttachmentCount, VkAttachmentReference);
       this._pInputAttachments = array;
       return this.pInputAttachments;
@@ -20175,7 +20397,6 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     get() {
     if (this._pColorAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference);
       this._pColorAttachments = array;
       return this.pColorAttachments;
@@ -20198,7 +20419,6 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     get() {
     if (this._pResolveAttachments === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference);
       this._pResolveAttachments = array;
       return this.pResolveAttachments;
@@ -20727,7 +20947,6 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     get() {
     if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkAttachmentDescription);
       this._pAttachments = array;
       return this.pAttachments;
@@ -20761,7 +20980,6 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     get() {
     if (this._pSubpasses === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.subpassCount, VkSubpassDescription);
       this._pSubpasses = array;
       return this.pSubpasses;
@@ -20795,7 +21013,6 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     get() {
     if (this._pDependencies === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.dependencyCount, VkSubpassDependency);
       this._pDependencies = array;
       return this.pDependencies;
@@ -23885,7 +24102,6 @@ Object.defineProperties(VkFramebufferCreateInfo.prototype, {
     get() {
     if (this._pAttachments === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkImageView);
       this._pAttachments = array;
       return this.pAttachments;
@@ -24520,7 +24736,6 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     get() {
     if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
       this._pWaitSemaphores = array;
       return this.pWaitSemaphores;
@@ -24571,7 +24786,6 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     get() {
     if (this._pCommandBuffers === null && this.memoryViewBigInt64[0x6] !== BI0) {
       let addr = this.memoryViewBigInt64[0x6];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.commandBufferCount, VkCommandBuffer);
       this._pCommandBuffers = array;
       return this.pCommandBuffers;
@@ -24605,7 +24819,6 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     get() {
     if (this._pSignalSemaphores === null && this.memoryViewBigInt64[0x8] !== BI0) {
       let addr = this.memoryViewBigInt64[0x8];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.signalSemaphoreCount, VkSemaphore);
       this._pSignalSemaphores = array;
       return this.pSignalSemaphores;
@@ -26972,7 +27185,6 @@ Object.defineProperties(VkPresentInfoKHR.prototype, {
     get() {
     if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
       this._pWaitSemaphores = array;
       return this.pWaitSemaphores;
@@ -27006,7 +27218,6 @@ Object.defineProperties(VkPresentInfoKHR.prototype, {
     get() {
     if (this._pSwapchains === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkSwapchainKHR);
       this._pSwapchains = array;
       return this.pSwapchains;
@@ -29321,7 +29532,6 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoNV.prototype, {
     get() {
     if (this._pAcquireSyncs === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.acquireCount, VkDeviceMemory);
       this._pAcquireSyncs = array;
       return this.pAcquireSyncs;
@@ -29389,7 +29599,6 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoNV.prototype, {
     get() {
     if (this._pReleaseSyncs === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.releaseCount, VkDeviceMemory);
       this._pReleaseSyncs = array;
       return this.pReleaseSyncs;
@@ -30204,7 +30413,6 @@ Object.defineProperties(VkIndirectCommandsLayoutCreateInfoNVX.prototype, {
     get() {
     if (this._pTokens === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.tokenCount, VkIndirectCommandsLayoutTokenNVX);
       this._pTokens = array;
       return this.pTokens;
@@ -30442,7 +30650,6 @@ Object.defineProperties(VkCmdProcessCommandsInfoNVX.prototype, {
     get() {
     if (this._pIndirectCommandsTokens === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.indirectCommandsTokenCount, VkIndirectCommandsTokenNVX);
       this._pIndirectCommandsTokens = array;
       return this.pIndirectCommandsTokens;
@@ -35134,7 +35341,6 @@ Object.defineProperties(VkPresentRegionsKHR.prototype, {
     get() {
     if (this._pRegions === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkPresentRegionKHR);
       this._pRegions = array;
       return this.pRegions;
@@ -35276,7 +35482,6 @@ Object.defineProperties(VkPresentRegionKHR.prototype, {
     get() {
     if (this._pRectangles === null && this.memoryViewBigInt64[0x1] !== BI0) {
       let addr = this.memoryViewBigInt64[0x1];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.rectangleCount, VkRectLayerKHR);
       this._pRectangles = array;
       return this.pRectangles;
@@ -39219,7 +39424,6 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype, {
     get() {
     if (this._pAcquireSyncs === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.acquireCount, VkDeviceMemory);
       this._pAcquireSyncs = array;
       return this.pAcquireSyncs;
@@ -39287,7 +39491,6 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype, {
     get() {
     if (this._pReleaseSyncs === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.releaseCount, VkDeviceMemory);
       this._pReleaseSyncs = array;
       return this.pReleaseSyncs;
@@ -45962,7 +46165,6 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfo.prototype, {
     get() {
     if (this._pSplitInstanceBindRegions === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.splitInstanceBindRegionCount, VkRect2D);
       this._pSplitInstanceBindRegions = array;
       return this.pSplitInstanceBindRegions;
@@ -46176,7 +46378,6 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfoKHR.prototype, {
     get() {
     if (this._pSplitInstanceBindRegions === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.splitInstanceBindRegionCount, VkRect2D);
       this._pSplitInstanceBindRegions = array;
       return this.pSplitInstanceBindRegions;
@@ -46371,7 +46572,6 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfo.prototype, {
     get() {
     if (this._pDeviceRenderAreas === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.deviceRenderAreaCount, VkRect2D);
       this._pDeviceRenderAreas = array;
       return this.pDeviceRenderAreas;
@@ -46561,7 +46761,6 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfoKHR.prototype, {
     get() {
     if (this._pDeviceRenderAreas === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.deviceRenderAreaCount, VkRect2D);
       this._pDeviceRenderAreas = array;
       return this.pDeviceRenderAreas;
@@ -48462,7 +48661,6 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfo.prototype, {
     get() {
     if (this._pPhysicalDevices === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.physicalDeviceCount, VkPhysicalDevice);
       this._pPhysicalDevices = array;
       return this.pPhysicalDevices;
@@ -48634,7 +48832,6 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfoKHR.prototype, {
     get() {
     if (this._pPhysicalDevices === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.physicalDeviceCount, VkPhysicalDevice);
       this._pPhysicalDevices = array;
       return this.pPhysicalDevices;
@@ -49270,7 +49467,6 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfo.prototype, {
     get() {
     if (this._pDescriptorUpdateEntries === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry);
       this._pDescriptorUpdateEntries = array;
       return this.pDescriptorUpdateEntries;
@@ -49578,7 +49774,6 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfoKHR.prototype, {
     get() {
     if (this._pDescriptorUpdateEntries === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry);
       this._pDescriptorUpdateEntries = array;
       return this.pDescriptorUpdateEntries;
@@ -50676,7 +50871,6 @@ Object.defineProperties(VkPresentTimesInfoGOOGLE.prototype, {
     get() {
     if (this._pTimes === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkPresentTimeGOOGLE);
       this._pTimes = array;
       return this.pTimes;
@@ -51032,7 +51226,6 @@ Object.defineProperties(VkPipelineViewportWScalingStateCreateInfoNV.prototype, {
     get() {
     if (this._pViewportWScalings === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewportWScalingNV);
       this._pViewportWScalings = array;
       return this.pViewportWScalings;
@@ -51356,7 +51549,6 @@ Object.defineProperties(VkPipelineViewportSwizzleStateCreateInfoNV.prototype, {
     get() {
     if (this._pViewportSwizzles === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewportSwizzleNV);
       this._pViewportSwizzles = array;
       return this.pViewportSwizzles;
@@ -51672,7 +51864,6 @@ Object.defineProperties(VkPipelineDiscardRectangleStateCreateInfoEXT.prototype, 
     get() {
     if (this._pDiscardRectangles === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.discardRectangleCount, VkRect2D);
       this._pDiscardRectangles = array;
       return this.pDiscardRectangles;
@@ -52176,7 +52367,6 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfo.prototype, {
     get() {
     if (this._pAspectReferences === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.aspectReferenceCount, VkInputAttachmentAspectReference);
       this._pAspectReferences = array;
       return this.pAspectReferences;
@@ -52348,7 +52538,6 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype
     get() {
     if (this._pAspectReferences === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.aspectReferenceCount, VkInputAttachmentAspectReference);
       this._pAspectReferences = array;
       return this.pAspectReferences;
@@ -59363,7 +59552,6 @@ Object.defineProperties(VkSampleLocationsInfoEXT.prototype, {
     get() {
     if (this._pSampleLocations === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.sampleLocationsCount, VkSampleLocationEXT);
       this._pSampleLocations = array;
       return this.pSampleLocations;
@@ -59783,7 +59971,6 @@ Object.defineProperties(VkRenderPassSampleLocationsBeginInfoEXT.prototype, {
     get() {
     if (this._pAttachmentInitialSampleLocations === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentInitialSampleLocationsCount, VkAttachmentSampleLocationsEXT);
       this._pAttachmentInitialSampleLocations = array;
       return this.pAttachmentInitialSampleLocations;
@@ -59817,7 +60004,6 @@ Object.defineProperties(VkRenderPassSampleLocationsBeginInfoEXT.prototype, {
     get() {
     if (this._pPostSubpassSampleLocations === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.postSubpassSampleLocationsCount, VkSubpassSampleLocationsEXT);
       this._pPostSubpassSampleLocations = array;
       return this.pPostSubpassSampleLocations;
@@ -64693,7 +64879,6 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     get() {
     if (this._pQueueLabels === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.queueLabelCount, VkDebugUtilsLabelEXT);
       this._pQueueLabels = array;
       return this.pQueueLabels;
@@ -64727,7 +64912,6 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     get() {
     if (this._pCmdBufLabels === null && this.memoryViewBigInt64[0x9] !== BI0) {
       let addr = this.memoryViewBigInt64[0x9];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.cmdBufLabelCount, VkDebugUtilsLabelEXT);
       this._pCmdBufLabels = array;
       return this.pCmdBufLabels;
@@ -64761,7 +64945,6 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     get() {
     if (this._pObjects === null && this.memoryViewBigInt64[0xB] !== BI0) {
       let addr = this.memoryViewBigInt64[0xB];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.objectCount, VkDebugUtilsObjectNameInfoEXT);
       this._pObjects = array;
       return this.pObjects;
@@ -67857,7 +68040,6 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     get() {
     if (this._pInputAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.inputAttachmentCount, VkAttachmentReference2KHR);
       this._pInputAttachments = array;
       return this.pInputAttachments;
@@ -67891,7 +68073,6 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     get() {
     if (this._pColorAttachments === null && this.memoryViewBigInt64[0x6] !== BI0) {
       let addr = this.memoryViewBigInt64[0x6];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference2KHR);
       this._pColorAttachments = array;
       return this.pColorAttachments;
@@ -67914,7 +68095,6 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     get() {
     if (this._pResolveAttachments === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference2KHR);
       this._pResolveAttachments = array;
       return this.pResolveAttachments;
@@ -68508,7 +68688,6 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     get() {
     if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkAttachmentDescription2KHR);
       this._pAttachments = array;
       return this.pAttachments;
@@ -68542,7 +68721,6 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     get() {
     if (this._pSubpasses === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.subpassCount, VkSubpassDescription2KHR);
       this._pSubpasses = array;
       return this.pSubpasses;
@@ -68576,7 +68754,6 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     get() {
     if (this._pDependencies === null && this.memoryViewBigInt64[0x7] !== BI0) {
       let addr = this.memoryViewBigInt64[0x7];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.dependencyCount, VkSubpassDependency2KHR);
       this._pDependencies = array;
       return this.pDependencies;
@@ -69160,7 +69337,6 @@ Object.defineProperties(VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype
     get() {
     if (this._pVertexBindingDivisors === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.vertexBindingDivisorCount, VkVertexInputBindingDivisorDescriptionEXT);
       this._pVertexBindingDivisors = array;
       return this.pVertexBindingDivisors;
@@ -71917,7 +72093,6 @@ Object.defineProperties(VkPipelineViewportExclusiveScissorStateCreateInfoNV.prot
     get() {
     if (this._pExclusiveScissors === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.exclusiveScissorCount, VkRect2D);
       this._pExclusiveScissors = array;
       return this.pExclusiveScissors;
@@ -72758,7 +72933,6 @@ Object.defineProperties(VkPipelineViewportShadingRateImageStateCreateInfoNV.prot
     get() {
     if (this._pShadingRatePalettes === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkShadingRatePaletteNV);
       this._pShadingRatePalettes = array;
       return this.pShadingRatePalettes;
@@ -73300,7 +73474,6 @@ Object.defineProperties(VkCoarseSampleOrderCustomNV.prototype, {
     get() {
     if (this._pSampleLocations === null && this.memoryViewBigInt64[0x2] !== BI0) {
       let addr = this.memoryViewBigInt64[0x2];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.sampleLocationCount, VkCoarseSampleLocationNV);
       this._pSampleLocations = array;
       return this.pSampleLocations;
@@ -73483,7 +73656,6 @@ Object.defineProperties(VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pro
     get() {
     if (this._pCustomSampleOrders === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.customSampleOrderCount, VkCoarseSampleOrderCustomNV);
       this._pCustomSampleOrders = array;
       return this.pCustomSampleOrders;
@@ -74355,7 +74527,6 @@ Object.defineProperties(VkRayTracingPipelineCreateInfoNV.prototype, {
     get() {
     if (this._pStages === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.stageCount, VkPipelineShaderStageCreateInfo);
       this._pStages = array;
       return this.pStages;
@@ -74389,7 +74560,6 @@ Object.defineProperties(VkRayTracingPipelineCreateInfoNV.prototype, {
     get() {
     if (this._pGroups === null && this.memoryViewBigInt64[0x5] !== BI0) {
       let addr = this.memoryViewBigInt64[0x5];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.groupCount, VkRayTracingShaderGroupCreateInfoNV);
       this._pGroups = array;
       return this.pGroups;
@@ -75549,7 +75719,6 @@ Object.defineProperties(VkAccelerationStructureInfoNV.prototype, {
     get() {
     if (this._pGeometries === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.geometryCount, VkGeometryNV);
       this._pGeometries = array;
       return this.pGeometries;
@@ -76105,7 +76274,6 @@ Object.defineProperties(VkWriteDescriptorSetAccelerationStructureNV.prototype, {
     get() {
     if (this._pAccelerationStructures === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.accelerationStructureCount, VkAccelerationStructureNV);
       this._pAccelerationStructures = array;
       return this.pAccelerationStructures;
@@ -76601,7 +76769,6 @@ Object.defineProperties(VkDrmFormatModifierPropertiesListEXT.prototype, {
     get() {
     if (this._pDrmFormatModifierProperties === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.drmFormatModifierCount, VkDrmFormatModifierPropertiesEXT);
       this._pDrmFormatModifierProperties = array;
       return this.pDrmFormatModifierProperties;
@@ -77161,7 +77328,6 @@ Object.defineProperties(VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype,
     get() {
     if (this._pPlaneLayouts === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.drmFormatModifierPlaneCount, VkSubresourceLayout);
       this._pPlaneLayouts = array;
       return this.pPlaneLayouts;
@@ -79885,7 +80051,6 @@ Object.defineProperties(VkFramebufferAttachmentsCreateInfoKHR.prototype, {
     get() {
     if (this._pAttachmentImageInfos === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentImageInfoCount, VkFramebufferAttachmentImageInfoKHR);
       this._pAttachmentImageInfos = array;
       return this.pAttachmentImageInfos;
@@ -80284,7 +80449,6 @@ Object.defineProperties(VkRenderPassAttachmentBeginInfoKHR.prototype, {
     get() {
     if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
       let addr = this.memoryViewBigInt64[0x3];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkImageView);
       this._pAttachments = array;
       return this.pAttachments;
@@ -81442,7 +81606,6 @@ Object.defineProperties(VkPipelineCreationFeedbackCreateInfoEXT.prototype, {
     get() {
     if (this._pPipelineStageCreationFeedbacks === null && this.memoryViewBigInt64[0x4] !== BI0) {
       let addr = this.memoryViewBigInt64[0x4];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.pipelineStageCreationFeedbackCount, VkPipelineCreationFeedbackEXT);
       this._pPipelineStageCreationFeedbacks = array;
       return this.pPipelineStageCreationFeedbacks;

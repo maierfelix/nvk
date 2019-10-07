@@ -403,7 +403,6 @@ function getGetterProcessor(member) {
         return `
     if (this._${member.name} === null && this.memoryView${instr}[${offset}] !== BI0) {
       let addr = this.memoryView${instr}[${offset}];
-      // TODO: implement 'decodeNativeArrayOfObjects'
       let array = decodeNativeArrayOfObjects(addr, this.${member.length}, ${member.type});
       this._${member.name} = array;
       return this.${member.name};
