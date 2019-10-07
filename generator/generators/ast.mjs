@@ -1033,7 +1033,7 @@ export default function({ xmlInput, version, docs } = _) {
         // struct member
         if (
           !member.isConstant &&
-          member.isStructType &&
+          (member.isStructType || member.isHandleType) &&
           member.dereferenceCount <= 0
         ) member.needsInitializationAtInstantiation = true;
         // numeric array member

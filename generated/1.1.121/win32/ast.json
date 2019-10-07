@@ -23106,7 +23106,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize offset",
@@ -23269,7 +23270,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize offset",
@@ -23313,7 +23315,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageView imageView",
@@ -23325,7 +23328,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageLayout imageLayout",
@@ -23384,7 +23388,8 @@
         "isHandleType": true,
         "handleType": "VkDescriptorPool",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t dstBinding",
@@ -23524,7 +23529,8 @@
         "isHandleType": true,
         "handleType": "VkDescriptorPool",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t srcBinding",
@@ -23558,7 +23564,8 @@
         "isHandleType": true,
         "handleType": "VkDescriptorPool",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t dstBinding",
@@ -23772,7 +23779,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkFormat format",
@@ -24134,7 +24142,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize offset",
@@ -24281,7 +24290,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageSubresourceRange subresourceRange",
@@ -24639,7 +24649,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageViewType viewType",
@@ -24783,7 +24794,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -24865,7 +24877,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -24911,7 +24924,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t bindCount",
@@ -24956,7 +24970,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t bindCount",
@@ -25001,7 +25016,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t bindCount",
@@ -25861,7 +25877,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t descriptorSetCount",
@@ -26068,7 +26085,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "const char * pName",
@@ -26166,7 +26184,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkPipeline basePipelineHandle",
@@ -26178,7 +26197,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "int32_t basePipelineIndex",
@@ -27698,7 +27718,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkRenderPass renderPass",
@@ -27710,7 +27731,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t subpass",
@@ -27733,7 +27755,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "int32_t basePipelineIndex",
@@ -28319,7 +28342,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkCommandBufferLevel level",
@@ -28390,7 +28414,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t subpass",
@@ -28413,7 +28438,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBool32 occlusionQueryEnable",
@@ -28567,7 +28593,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkFramebuffer framebuffer",
@@ -28579,7 +28606,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkRect2D renderArea",
@@ -31559,7 +31587,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t attachmentCount",
@@ -31937,7 +31966,8 @@
         "isHandleType": true,
         "handleType": null,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "const char * displayName",
@@ -32032,7 +32062,8 @@
         "isHandleType": true,
         "handleType": null,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t currentStackIndex",
@@ -32094,7 +32125,8 @@
         "isHandleType": true,
         "handleType": "VkPhysicalDevice,VkDisplayKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDisplayModeParametersKHR parameters",
@@ -32345,7 +32377,8 @@
         "isHandleType": true,
         "handleType": "VkPhysicalDevice,VkDisplayKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t planeIndex",
@@ -33240,7 +33273,8 @@
         "isHandleType": true,
         "handleType": "VkInstance",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t minImageCount",
@@ -33420,7 +33454,8 @@
         "isHandleType": true,
         "handleType": "VkSurfaceKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR",
@@ -34227,7 +34262,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBuffer buffer",
@@ -34239,7 +34275,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "extends": [
@@ -34839,7 +34876,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize offset",
@@ -35038,7 +35076,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkIndirectCommandsLayoutNVX indirectCommandsLayout",
@@ -35050,7 +35089,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t indirectCommandsTokenCount",
@@ -35098,7 +35138,8 @@
         "isHandleType": true,
         "handleType": "VkCommandPool",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBuffer sequencesCountBuffer",
@@ -35110,7 +35151,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize sequencesCountOffset",
@@ -35134,7 +35176,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize sequencesIndexOffset",
@@ -35193,7 +35236,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkIndirectCommandsLayoutNVX indirectCommandsLayout",
@@ -35205,7 +35249,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t maxSequencesCount",
@@ -35453,7 +35498,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ]
   },
@@ -35500,7 +35546,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDescriptorSet descriptorSet",
@@ -35512,7 +35559,8 @@
         "isHandleType": true,
         "handleType": "VkDescriptorPool",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ]
   },
@@ -35559,7 +35607,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ]
   },
@@ -35606,7 +35655,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkIndexType indexType",
@@ -35666,7 +35716,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkShaderStageFlags stageFlags",
@@ -38891,7 +38942,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalMemoryHandleTypeFlagBits handleType",
@@ -39061,7 +39113,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalMemoryHandleTypeFlagBits handleType",
@@ -39619,7 +39672,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkSemaphoreImportFlags flags",
@@ -39875,7 +39929,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalSemaphoreHandleTypeFlagBits handleType",
@@ -39936,7 +39991,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkSemaphoreImportFlags flags",
@@ -40022,7 +40078,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalSemaphoreHandleTypeFlagBits handleType",
@@ -40442,7 +40499,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkFenceImportFlags flags",
@@ -40606,7 +40664,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalFenceHandleTypeFlagBits handleType",
@@ -40667,7 +40726,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkFenceImportFlags flags",
@@ -40753,7 +40813,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExternalFenceHandleTypeFlagBits handleType",
@@ -41715,7 +41776,8 @@
         "length": "32",
         "isStaticArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBool32 subsetAllocation",
@@ -41789,7 +41851,8 @@
         "length": "32",
         "isStaticArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBool32 subsetAllocation",
@@ -41977,7 +42040,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -41989,7 +42053,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -42051,7 +42116,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -42063,7 +42129,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -42257,7 +42324,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -42269,7 +42337,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -42333,7 +42402,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -42345,7 +42415,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -43263,7 +43334,8 @@
         "isHandleType": true,
         "handleType": "VkSurfaceKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "extends": [
@@ -43313,7 +43385,8 @@
         "isHandleType": true,
         "handleType": "VkSurfaceKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t imageIndex",
@@ -43374,7 +43447,8 @@
         "isHandleType": true,
         "handleType": "VkSurfaceKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint64_t timeout",
@@ -43397,7 +43471,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkFence fence",
@@ -43409,7 +43484,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t deviceMask",
@@ -43932,7 +44008,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkPipelineBindPoint pipelineBindPoint",
@@ -43957,7 +44034,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t set",
@@ -44067,7 +44145,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkPipelineBindPoint pipelineBindPoint",
@@ -44092,7 +44171,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t set",
@@ -45421,7 +45501,8 @@
         "isHandleType": true,
         "handleType": "VkInstance",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR",
@@ -45713,7 +45794,8 @@
         "isHandleType": true,
         "handleType": "VkPhysicalDevice,VkDisplayKHR",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t planeIndex",
@@ -46143,7 +46225,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2"
@@ -46190,7 +46273,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "alias": "VkBufferMemoryRequirementsInfo2",
@@ -46238,7 +46322,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2",
@@ -46288,7 +46373,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "alias": "VkImageMemoryRequirementsInfo2",
@@ -46339,7 +46425,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2"
@@ -46386,7 +46473,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "alias": "VkImageSparseMemoryRequirementsInfo2",
@@ -46862,7 +46950,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBuffer buffer",
@@ -46874,7 +46963,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "extends": [
@@ -46924,7 +47014,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBuffer buffer",
@@ -46936,7 +47027,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "alias": "VkMemoryDedicatedAllocateInfo",
@@ -47195,7 +47287,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "extends": [
@@ -47246,7 +47339,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "alias": "VkSamplerYcbcrConversionInfo",
@@ -48046,7 +48140,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize offset",
@@ -49786,7 +49881,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "extends": [
@@ -54167,7 +54263,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID"
@@ -56845,7 +56942,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkPipeline basePipelineHandle",
@@ -56857,7 +56955,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "int32_t basePipelineIndex",
@@ -56918,7 +57017,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize vertexOffset",
@@ -56978,7 +57078,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize indexOffset",
@@ -57026,7 +57127,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize transformOffset",
@@ -57085,7 +57187,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t numAABBs",
@@ -57429,7 +57532,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -57441,7 +57545,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceSize memoryOffset",
@@ -57604,7 +57709,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV"
@@ -59065,7 +59171,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT"
@@ -59935,7 +60042,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDescriptorType descriptorType",
@@ -59960,7 +60068,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX"
@@ -61261,7 +61370,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_INFO_KHR"
@@ -61396,7 +61506,8 @@
         "isHandleType": true,
         "handleType": "VkDevice",
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t executableIndex",

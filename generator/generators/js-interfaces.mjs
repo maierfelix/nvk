@@ -411,35 +411,8 @@ function getGetterProcessor(member) {
       return this._${member.name};
     }`;
       } else {
-        let length = parseInt(member.length);
-        let memberNode = getNodeByName(member.type, ast);
-        let totalByteLength = 0;
-        let perMemberByteLength = 0;
-        if (member.isStructType) {
-          totalByteLength = parseInt(getStructureMemberByteLength(member));
-          perMemberByteLength = parseInt(getStructureByteLength(memberNode));
-        } else {
-          totalByteLength = length * parseInt(getHandleByteLength());
-          perMemberByteLength = parseInt(getHandleByteLength());
-        }
-        if (Number.isNaN(length)) {
-          warn(`Failed to parse member length for ${currentStruct.name}.${member.name}`);
-        }
-        if (totalByteLength / perMemberByteLength !== length) {
-          warn(`Invalid member length for ${currentStruct.name}.${member.name}`);
-        }
-        let out = ``;
-        let offset = 0x0;
-        out += `
-    return [`;
-        for (let ii = 0; ii < length; ++ii) {
-          out += `
-    1337,`;
-          offset += perMemberByteLength;
-        };
-        out += `
-    ];`;
-        return out;
+        return `
+    return this._${member.name};`;
       }
     }
     case JavaScriptType.TYPED_ARRAY: {

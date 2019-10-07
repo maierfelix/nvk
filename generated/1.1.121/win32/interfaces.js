@@ -5604,6 +5604,7 @@ Object.defineProperties(VkPhysicalDeviceMemoryProperties.prototype, {
     },
   "memoryTypes": {
     get() {
+    return this._memoryTypes;
     },
     },
   "memoryHeapCount": {
@@ -5613,6 +5614,7 @@ Object.defineProperties(VkPhysicalDeviceMemoryProperties.prototype, {
     },
   "memoryHeaps": {
     get() {
+    return this._memoryHeaps;
     },
     },
   
@@ -6310,7 +6312,7 @@ function VkMappedMemoryRange(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x6;
@@ -6395,7 +6397,10 @@ VkMappedMemoryRange.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   
   this.sType = 0x6;
@@ -6666,7 +6671,7 @@ function VkDescriptorBufferInfo(opts) {
     this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer);
 
   }
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   
   
@@ -6725,7 +6730,10 @@ Object.defineProperties(VkDescriptorBufferInfo.prototype, {
 
 VkDescriptorBufferInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._buffer.reset();
+  }
   
   
   
@@ -6780,8 +6788,8 @@ function VkDescriptorImageInfo(opts) {
     this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
 
   }
-  this._sampler = null;
-  this._imageView = null;
+  this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+  this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -6850,8 +6858,14 @@ Object.defineProperties(VkDescriptorImageInfo.prototype, {
 
 VkDescriptorImageInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._sampler = null;
-  this._imageView = null;
+  if (this._sampler !== null) {
+    if (this.memoryBuffer !== this._sampler.memoryBuffer) this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._sampler.reset();
+  }
+  if (this._imageView !== null) {
+    if (this.memoryBuffer !== this._imageView.memoryBuffer) this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._imageView.reset();
+  }
   
   
 };
@@ -6909,7 +6923,7 @@ function VkWriteDescriptorSet(opts) {
   }
   
   this._pNext = null;
-  this._dstSet = null;
+  this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -7120,7 +7134,10 @@ VkWriteDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x40"], 0x0);
   
   this._pNext = null;
-  this._dstSet = null;
+  if (this._dstSet !== null) {
+    if (this.memoryBuffer !== this._dstSet.memoryBuffer) this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._dstSet.reset();
+  }
   
   
   
@@ -7301,10 +7318,10 @@ function VkCopyDescriptorSet(opts) {
   }
   
   this._pNext = null;
-  this._srcSet = null;
+  this._srcSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
-  this._dstSet = null;
+  this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   
@@ -7446,10 +7463,16 @@ VkCopyDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._srcSet = null;
+  if (this._srcSet !== null) {
+    if (this.memoryBuffer !== this._srcSet.memoryBuffer) this._srcSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._srcSet.reset();
+  }
   
   
-  this._dstSet = null;
+  if (this._dstSet !== null) {
+    if (this.memoryBuffer !== this._dstSet.memoryBuffer) this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._dstSet.reset();
+  }
   
   
   
@@ -7773,7 +7796,7 @@ function VkBufferViewCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -7887,7 +7910,10 @@ VkBufferViewCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   
   
   
@@ -8475,7 +8501,7 @@ function VkBufferMemoryBarrier(opts) {
   
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   this.sType = 0x2C;
@@ -8612,7 +8638,10 @@ VkBufferMemoryBarrier.prototype.reset = function reset() {
   
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._buffer.reset();
+  }
   
   
   this.sType = 0x2C;
@@ -8706,7 +8735,7 @@ function VkImageMemoryBarrier(opts) {
   
   
   
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   this._subresourceRange = new VkImageSubresourceRange({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x30 });
   this.sType = 0x2D;
   if (typeof opts === "object") {
@@ -8888,7 +8917,10 @@ VkImageMemoryBarrier.prototype.reset = function reset() {
   
   
   
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._image.reset();
+  }
   if (this._subresourceRange !== null) {
     if (this.memoryBuffer !== this._subresourceRange.memoryBuffer) this._subresourceRange = new VkImageSubresourceRange({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x30 });
     else this._subresourceRange.reset();
@@ -9501,7 +9533,7 @@ function VkImageViewCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   this._components = new VkComponentMapping({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
@@ -9667,7 +9699,10 @@ VkImageViewCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._image.reset();
+  }
   
   
   if (this._components !== null) {
@@ -9887,7 +9922,7 @@ function VkSparseMemoryBind(opts) {
   }
   
   
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -9972,7 +10007,10 @@ VkSparseMemoryBind.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   
   
@@ -10040,7 +10078,7 @@ function VkSparseImageMemoryBind(opts) {
   this._subresource = new VkImageSubresource({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._offset = new VkOffset3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0xC });
   this._extent = new VkExtent3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
   
   
@@ -10171,7 +10209,10 @@ VkSparseImageMemoryBind.prototype.reset = function reset() {
     if (this.memoryBuffer !== this._extent.memoryBuffer) this._extent = new VkExtent3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
     else this._extent.reset();
   }
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._memory.reset();
+  }
   
   
   
@@ -10274,7 +10315,7 @@ function VkSparseBufferMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -10346,7 +10387,10 @@ Object.defineProperties(VkSparseBufferMemoryBindInfo.prototype, {
 
 VkSparseBufferMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._buffer.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -10429,7 +10473,7 @@ function VkSparseImageOpaqueMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -10501,7 +10545,10 @@ Object.defineProperties(VkSparseImageOpaqueMemoryBindInfo.prototype, {
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._image.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -10584,7 +10631,7 @@ function VkSparseImageMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -10656,7 +10703,10 @@ Object.defineProperties(VkSparseImageMemoryBindInfo.prototype, {
 
 VkSparseImageMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._image.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -11522,6 +11572,7 @@ Object.defineProperties(VkImageBlit.prototype, {
     },
   "srcOffsets": {
     get() {
+    return this._srcOffsets;
     },
     set(value) {
     if (value !== null && value.constructor === Array) {
@@ -11555,6 +11606,7 @@ Object.defineProperties(VkImageBlit.prototype, {
     },
   "dstOffsets": {
     get() {
+    return this._dstOffsets;
     },
     set(value) {
     if (value !== null && value.constructor === Array) {
@@ -13092,7 +13144,7 @@ function VkDescriptorSetAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._descriptorPool = null;
+  this._descriptorPool = new VkDescriptorPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this._pSetLayouts = null;
   this._pSetLayoutsNative = null;
@@ -13208,7 +13260,10 @@ VkDescriptorSetAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._descriptorPool = null;
+  if (this._descriptorPool !== null) {
+    if (this.memoryBuffer !== this._descriptorPool.memoryBuffer) this._descriptorPool = new VkDescriptorPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._descriptorPool.reset();
+  }
   
   this._pSetLayouts = null;
   this._pSetLayoutsNative = null;
@@ -13585,7 +13640,7 @@ function VkPipelineShaderStageCreateInfo(opts) {
   this._pNext = null;
   
   
-  this._module = null;
+  this._module = new VkShaderModule({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this._pName = null;
   this._pSpecializationInfo = null;
   this.sType = 0x12;
@@ -13749,7 +13804,10 @@ VkPipelineShaderStageCreateInfo.prototype.reset = function reset() {
   this._pNext = null;
   
   
-  this._module = null;
+  if (this._module !== null) {
+    if (this.memoryBuffer !== this._module.memoryBuffer) this._module = new VkShaderModule({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._module.reset();
+  }
   this._pName = null;
   this._pSpecializationInfo = null;
   this.sType = 0x12;
@@ -13829,8 +13887,8 @@ function VkComputePipelineCreateInfo(opts) {
   this._pNext = null;
   
   this._stage = new VkPipelineShaderStageCreateInfo({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
-  this._layout = null;
-  this._basePipelineHandle = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x48 });
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x1D;
   if (typeof opts === "object") {
@@ -13978,8 +14036,14 @@ VkComputePipelineCreateInfo.prototype.reset = function reset() {
     if (this.memoryBuffer !== this._stage.memoryBuffer) this._stage = new VkPipelineShaderStageCreateInfo({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
     else this._stage.reset();
   }
-  this._layout = null;
-  this._basePipelineHandle = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x48 });
+    else this._layout.reset();
+  }
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x1D;
 };
@@ -16908,10 +16972,10 @@ function VkGraphicsPipelineCreateInfo(opts) {
   this._pDepthStencilState = null;
   this._pColorBlendState = null;
   this._pDynamicState = null;
-  this._layout = null;
-  this._renderPass = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x68 });
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x70 });
   
-  this._basePipelineHandle = null;
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x80 });
   
   this.sType = 0x1C;
   if (typeof opts === "object") {
@@ -17369,10 +17433,19 @@ VkGraphicsPipelineCreateInfo.prototype.reset = function reset() {
   this._pDepthStencilState = null;
   this._pColorBlendState = null;
   this._pDynamicState = null;
-  this._layout = null;
-  this._renderPass = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x68 });
+    else this._layout.reset();
+  }
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x70 });
+    else this._renderPass.reset();
+  }
   
-  this._basePipelineHandle = null;
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x80 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x1C;
 };
@@ -18602,7 +18675,7 @@ function VkCommandBufferAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._commandPool = null;
+  this._commandPool = new VkCommandPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x28;
@@ -18690,7 +18763,10 @@ VkCommandBufferAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._commandPool = null;
+  if (this._commandPool !== null) {
+    if (this.memoryBuffer !== this._commandPool.memoryBuffer) this._commandPool = new VkCommandPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._commandPool.reset();
+  }
   
   
   this.sType = 0x28;
@@ -18762,9 +18838,9 @@ function VkCommandBufferInheritanceInfo(opts) {
   }
   
   this._pNext = null;
-  this._renderPass = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._framebuffer = null;
+  this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   
@@ -18909,9 +18985,15 @@ VkCommandBufferInheritanceInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._renderPass = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._renderPass.reset();
+  }
   
-  this._framebuffer = null;
+  if (this._framebuffer !== null) {
+    if (this.memoryBuffer !== this._framebuffer.memoryBuffer) this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._framebuffer.reset();
+  }
   
   
   
@@ -19159,8 +19241,8 @@ function VkRenderPassBeginInfo(opts) {
   }
   
   this._pNext = null;
-  this._renderPass = null;
-  this._framebuffer = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this._renderArea = new VkRect2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   this._pClearValues = null;
@@ -19319,8 +19401,14 @@ VkRenderPassBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x40"], 0x0);
   
   this._pNext = null;
-  this._renderPass = null;
-  this._framebuffer = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._renderPass.reset();
+  }
+  if (this._framebuffer !== null) {
+    if (this.memoryBuffer !== this._framebuffer.memoryBuffer) this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._framebuffer.reset();
+  }
   if (this._renderArea !== null) {
     if (this.memoryBuffer !== this._renderArea.memoryBuffer) this._renderArea = new VkRect2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
     else this._renderArea.reset();
@@ -23689,7 +23777,7 @@ function VkFramebufferCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._renderPass = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this._pAttachments = null;
   this._pAttachmentsNative = null;
@@ -23857,7 +23945,10 @@ VkFramebufferCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._renderPass = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._renderPass.reset();
+  }
   
   this._pAttachments = null;
   this._pAttachmentsNative = null;
@@ -24712,7 +24803,7 @@ function VkDisplayPropertiesKHR(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._display = null;
+  this._display = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._displayName = null;
   this._physicalDimensions = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this._physicalResolution = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
@@ -24779,7 +24870,10 @@ Object.defineProperties(VkDisplayPropertiesKHR.prototype, {
 
 VkDisplayPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
-  this._display = null;
+  if (this._display !== null) {
+    if (this.memoryBuffer !== this._display.memoryBuffer) this._display = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._display.reset();
+  }
   this._displayName = null;
   if (this._physicalDimensions !== null) {
     if (this.memoryBuffer !== this._physicalDimensions.memoryBuffer) this._physicalDimensions = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
@@ -24862,7 +24956,7 @@ function VkDisplayPlanePropertiesKHR(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._currentDisplay = null;
+  this._currentDisplay = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   
   if (typeof opts === "object") {
@@ -24886,7 +24980,10 @@ Object.defineProperties(VkDisplayPlanePropertiesKHR.prototype, {
 
 VkDisplayPlanePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
-  this._currentDisplay = null;
+  if (this._currentDisplay !== null) {
+    if (this.memoryBuffer !== this._currentDisplay.memoryBuffer) this._currentDisplay = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._currentDisplay.reset();
+  }
   
   
 };
@@ -25045,7 +25142,7 @@ function VkDisplayModePropertiesKHR(opts) {
     this.memoryViewUint8 = new Uint8Array(this.memoryBuffer);
 
   }
-  this._displayMode = null;
+  this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._parameters = new VkDisplayModeParametersKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
@@ -25069,7 +25166,10 @@ Object.defineProperties(VkDisplayModePropertiesKHR.prototype, {
 
 VkDisplayModePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._displayMode = null;
+  if (this._displayMode !== null) {
+    if (this.memoryBuffer !== this._displayMode.memoryBuffer) this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._displayMode.reset();
+  }
   if (this._parameters !== null) {
     if (this.memoryBuffer !== this._parameters.memoryBuffer) this._parameters = new VkDisplayModeParametersKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
     else this._parameters.reset();
@@ -25462,7 +25562,7 @@ function VkDisplaySurfaceCreateInfoKHR(opts) {
   
   this._pNext = null;
   
-  this._displayMode = null;
+  this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -25620,7 +25720,10 @@ VkDisplaySurfaceCreateInfoKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._displayMode = null;
+  if (this._displayMode !== null) {
+    if (this.memoryBuffer !== this._displayMode.memoryBuffer) this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._displayMode.reset();
+  }
   
   
   
@@ -26322,7 +26425,7 @@ function VkSwapchainCreateInfoKHR(opts) {
   
   this._pNext = null;
   
-  this._surface = null;
+  this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -26336,7 +26439,7 @@ function VkSwapchainCreateInfoKHR(opts) {
   
   
   
-  this._oldSwapchain = null;
+  this._oldSwapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x60 });
   this.sType = 0x3B9ACDE8;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -26630,7 +26733,10 @@ VkSwapchainCreateInfoKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._surface = null;
+  if (this._surface !== null) {
+    if (this.memoryBuffer !== this._surface.memoryBuffer) this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._surface.reset();
+  }
   
   
   
@@ -26647,7 +26753,10 @@ VkSwapchainCreateInfoKHR.prototype.reset = function reset() {
   
   
   
-  this._oldSwapchain = null;
+  if (this._oldSwapchain !== null) {
+    if (this.memoryBuffer !== this._oldSwapchain.memoryBuffer) this._oldSwapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x60 });
+    else this._oldSwapchain.reset();
+  }
   this.sType = 0x3B9ACDE8;
 };
 
@@ -28452,8 +28561,8 @@ function VkDedicatedAllocationMemoryAllocateInfoNV(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9B2F92;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -28532,8 +28641,14 @@ VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9B2F92;
 };
 
@@ -29759,7 +29874,7 @@ function VkIndirectCommandsTokenNVX(opts) {
 
   }
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -29821,7 +29936,10 @@ Object.defineProperties(VkIndirectCommandsTokenNVX.prototype, {
 VkIndirectCommandsTokenNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
   
 };
@@ -30219,16 +30337,16 @@ function VkCmdProcessCommandsInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this._pIndirectCommandsTokens = null;
   this._pIndirectCommandsTokensNative = null;
   
-  this._targetCommandBuffer = null;
-  this._sequencesCountBuffer = null;
+  this._targetCommandBuffer = new VkCommandBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+  this._sequencesCountBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
   
-  this._sequencesIndexBuffer = null;
+  this._sequencesIndexBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x3B9C19F2;
   if (typeof opts === "object") {
@@ -30440,16 +30558,31 @@ VkCmdProcessCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x60"], 0x0);
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  if (this._objectTable !== null) {
+    if (this.memoryBuffer !== this._objectTable.memoryBuffer) this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._objectTable.reset();
+  }
+  if (this._indirectCommandsLayout !== null) {
+    if (this.memoryBuffer !== this._indirectCommandsLayout.memoryBuffer) this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._indirectCommandsLayout.reset();
+  }
   
   this._pIndirectCommandsTokens = null;
   this._pIndirectCommandsTokensNative = null;
   
-  this._targetCommandBuffer = null;
-  this._sequencesCountBuffer = null;
+  if (this._targetCommandBuffer !== null) {
+    if (this.memoryBuffer !== this._targetCommandBuffer.memoryBuffer) this._targetCommandBuffer = new VkCommandBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._targetCommandBuffer.reset();
+  }
+  if (this._sequencesCountBuffer !== null) {
+    if (this.memoryBuffer !== this._sequencesCountBuffer.memoryBuffer) this._sequencesCountBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
+    else this._sequencesCountBuffer.reset();
+  }
   
-  this._sequencesIndexBuffer = null;
+  if (this._sequencesIndexBuffer !== null) {
+    if (this.memoryBuffer !== this._sequencesIndexBuffer.memoryBuffer) this._sequencesIndexBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._sequencesIndexBuffer.reset();
+  }
   
   this.sType = 0x3B9C19F2;
 };
@@ -30575,8 +30708,8 @@ function VkCmdReserveSpaceForCommandsInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9C19F3;
   if (typeof opts === "object") {
@@ -30668,8 +30801,14 @@ VkCmdReserveSpaceForCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  if (this._objectTable !== null) {
+    if (this.memoryBuffer !== this._objectTable.memoryBuffer) this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._objectTable.reset();
+  }
+  if (this._indirectCommandsLayout !== null) {
+    if (this.memoryBuffer !== this._indirectCommandsLayout.memoryBuffer) this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._indirectCommandsLayout.reset();
+  }
   
   this.sType = 0x3B9C19F3;
 };
@@ -31102,7 +31241,7 @@ function VkObjectTablePipelineEntryNVX(opts) {
   }
   
   
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -31164,7 +31303,10 @@ VkObjectTablePipelineEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
   
   
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipeline.reset();
+  }
   
 };
 
@@ -31219,8 +31361,8 @@ function VkObjectTableDescriptorSetEntryNVX(opts) {
   }
   
   
-  this._pipelineLayout = null;
-  this._descriptorSet = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+  this._descriptorSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -31302,8 +31444,14 @@ VkObjectTableDescriptorSetEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._pipelineLayout = null;
-  this._descriptorSet = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipelineLayout.reset();
+  }
+  if (this._descriptorSet !== null) {
+    if (this.memoryBuffer !== this._descriptorSet.memoryBuffer) this._descriptorSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._descriptorSet.reset();
+  }
   
 };
 
@@ -31362,7 +31510,7 @@ function VkObjectTableVertexBufferEntryNVX(opts) {
   }
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -31424,7 +31572,10 @@ VkObjectTableVertexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
 };
 
@@ -31479,7 +31630,7 @@ function VkObjectTableIndexBufferEntryNVX(opts) {
   }
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -31557,7 +31708,10 @@ VkObjectTableIndexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
   
 };
@@ -31617,7 +31771,7 @@ function VkObjectTablePushConstantEntryNVX(opts) {
   }
   
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -31692,7 +31846,10 @@ VkObjectTablePushConstantEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipelineLayout.reset();
+  }
   
   
 };
@@ -38479,7 +38636,7 @@ function VkMemoryGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BE72B;
   if (typeof opts === "object") {
@@ -38551,7 +38708,10 @@ VkMemoryGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9BE72B;
 };
@@ -38855,7 +39015,7 @@ function VkMemoryGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BEB12;
   if (typeof opts === "object") {
@@ -38927,7 +39087,10 @@ VkMemoryGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9BEB12;
 };
@@ -40017,7 +40180,7 @@ function VkImportSemaphoreWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -40147,7 +40310,10 @@ VkImportSemaphoreWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   
   
@@ -40536,7 +40702,7 @@ function VkSemaphoreGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BFAB3;
   if (typeof opts === "object") {
@@ -40608,7 +40774,10 @@ VkSemaphoreGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   this.sType = 0x3B9BFAB3;
 };
@@ -40673,7 +40842,7 @@ function VkImportSemaphoreFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -40771,7 +40940,10 @@ VkImportSemaphoreFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   
   
@@ -40846,7 +41018,7 @@ function VkSemaphoreGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BFE99;
   if (typeof opts === "object") {
@@ -40918,7 +41090,10 @@ VkSemaphoreGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   this.sType = 0x3B9BFE99;
 };
@@ -41687,7 +41862,7 @@ function VkImportFenceWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -41817,7 +41992,10 @@ VkImportFenceWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   
   
@@ -42027,7 +42205,7 @@ function VkFenceGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9C8752;
   if (typeof opts === "object") {
@@ -42099,7 +42277,10 @@ VkFenceGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9C8752;
 };
@@ -42164,7 +42345,7 @@ function VkImportFenceFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -42262,7 +42443,10 @@ VkImportFenceFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   
   
@@ -42337,7 +42521,7 @@ function VkFenceGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9C8B39;
   if (typeof opts === "object") {
@@ -42409,7 +42593,10 @@ VkFenceGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9C8B39;
 };
@@ -44123,7 +44310,7 @@ function VkPhysicalDeviceGroupProperties(opts) {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -44163,6 +44350,7 @@ Object.defineProperties(VkPhysicalDeviceGroupProperties.prototype, {
     },
   "physicalDevices": {
     get() {
+    return this._physicalDevices;
     },
     },
   "subsetAllocation": {
@@ -44178,7 +44366,12 @@ VkPhysicalDeviceGroupProperties.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  if (this._physicalDevices !== null) {
+    let array = this._physicalDevices;
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii].reset();
+    };
+  };
   
   this.sType = 0x3B9BDB70;
 };
@@ -44254,7 +44447,7 @@ function VkPhysicalDeviceGroupPropertiesKHR(opts) {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -44294,6 +44487,7 @@ Object.defineProperties(VkPhysicalDeviceGroupPropertiesKHR.prototype, {
     },
   "physicalDevices": {
     get() {
+    return this._physicalDevices;
     },
     },
   "subsetAllocation": {
@@ -44309,7 +44503,12 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  if (this._physicalDevices !== null) {
+    let array = this._physicalDevices;
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii].reset();
+    };
+  };
   
   this.sType = 0x3B9BDB70;
 };
@@ -44646,8 +44845,8 @@ function VkBindBufferMemoryInfo(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F48;
   if (typeof opts === "object") {
@@ -44757,8 +44956,14 @@ VkBindBufferMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F48;
 };
@@ -44829,8 +45034,8 @@ function VkBindBufferMemoryInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F48;
   if (typeof opts === "object") {
@@ -44940,8 +45145,14 @@ VkBindBufferMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F48;
 };
@@ -45286,8 +45497,8 @@ function VkBindImageMemoryInfo(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F49;
   if (typeof opts === "object") {
@@ -45399,8 +45610,14 @@ VkBindImageMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F49;
 };
@@ -45471,8 +45688,8 @@ function VkBindImageMemoryInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F49;
   if (typeof opts === "object") {
@@ -45584,8 +45801,14 @@ VkBindImageMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F49;
 };
@@ -47547,7 +47770,7 @@ function VkImageSwapchainCreateInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9BB468;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -47606,7 +47829,10 @@ VkImageSwapchainCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   this.sType = 0x3B9BB468;
 };
 
@@ -47668,7 +47894,7 @@ function VkBindImageMemorySwapchainInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BB469;
   if (typeof opts === "object") {
@@ -47740,7 +47966,10 @@ VkBindImageMemorySwapchainInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   
   this.sType = 0x3B9BB469;
 };
@@ -47809,10 +48038,10 @@ function VkAcquireNextImageInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._semaphore = null;
-  this._fence = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
   this.sType = 0x3B9BB46A;
   if (typeof opts === "object") {
@@ -47936,10 +48165,19 @@ VkAcquireNextImageInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   
-  this._semaphore = null;
-  this._fence = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._semaphore.reset();
+  }
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9BB46A;
 };
@@ -48963,9 +49201,9 @@ function VkDescriptorUpdateTemplateCreateInfo(opts) {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   this.sType = 0x3B9C1608;
   if (typeof opts === "object") {
@@ -49140,9 +49378,15 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.reset = function reset() {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  if (this._descriptorSetLayout !== null) {
+    if (this.memoryBuffer !== this._descriptorSetLayout.memoryBuffer) this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._descriptorSetLayout.reset();
+  }
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._pipelineLayout.reset();
+  }
   
   this.sType = 0x3B9C1608;
 };
@@ -49265,9 +49509,9 @@ function VkDescriptorUpdateTemplateCreateInfoKHR(opts) {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   this.sType = 0x3B9C1608;
   if (typeof opts === "object") {
@@ -49442,9 +49686,15 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reset = function reset() {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  if (this._descriptorSetLayout !== null) {
+    if (this.memoryBuffer !== this._descriptorSetLayout.memoryBuffer) this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._descriptorSetLayout.reset();
+  }
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._pipelineLayout.reset();
+  }
   
   this.sType = 0x3B9C1608;
 };
@@ -52217,7 +52467,7 @@ function VkPhysicalDeviceSurfaceInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._surface = null;
+  this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9C9AD8;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -52295,7 +52545,10 @@ VkPhysicalDeviceSurfaceInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._surface = null;
+  if (this._surface !== null) {
+    if (this.memoryBuffer !== this._surface.memoryBuffer) this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._surface.reset();
+  }
   this.sType = 0x3B9C9AD8;
 };
 
@@ -52933,7 +53186,7 @@ function VkDisplayPlaneInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._mode = null;
+  this._mode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9CA2AB;
   if (typeof opts === "object") {
@@ -53005,7 +53258,10 @@ VkDisplayPlaneInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._mode = null;
+  if (this._mode !== null) {
+    if (this.memoryBuffer !== this._mode.memoryBuffer) this._mode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._mode.reset();
+  }
   
   this.sType = 0x3B9CA2AB;
 };
@@ -53742,7 +53998,7 @@ function VkBufferMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0450;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -53801,7 +54057,10 @@ VkBufferMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9D0450;
 };
 
@@ -53861,7 +54120,7 @@ function VkBufferMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0450;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -53920,7 +54179,10 @@ VkBufferMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9D0450;
 };
 
@@ -53980,7 +54242,7 @@ function VkImageMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0451;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -54057,7 +54319,10 @@ VkImageMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0451;
 };
 
@@ -54117,7 +54382,7 @@ function VkImageMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0451;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -54194,7 +54459,10 @@ VkImageMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0451;
 };
 
@@ -54254,7 +54522,7 @@ function VkImageSparseMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0452;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -54313,7 +54581,10 @@ VkImageSparseMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0452;
 };
 
@@ -54373,7 +54644,7 @@ function VkImageSparseMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0452;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -54432,7 +54703,10 @@ VkImageSparseMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0452;
 };
 
@@ -55430,8 +55704,8 @@ function VkMemoryDedicatedAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9CBA19;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -55510,8 +55784,14 @@ VkMemoryDedicatedAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9CBA19;
 };
 
@@ -55575,8 +55855,8 @@ function VkMemoryDedicatedAllocateInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9CBA19;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -55655,8 +55935,14 @@ VkMemoryDedicatedAllocateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9CBA19;
 };
 
@@ -56170,7 +56456,7 @@ function VkSamplerYcbcrConversionInfo(opts) {
   }
   
   this._pNext = null;
-  this._conversion = null;
+  this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D2B61;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -56229,7 +56515,10 @@ VkSamplerYcbcrConversionInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._conversion = null;
+  if (this._conversion !== null) {
+    if (this.memoryBuffer !== this._conversion.memoryBuffer) this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._conversion.reset();
+  }
   this.sType = 0x3B9D2B61;
 };
 
@@ -56289,7 +56578,7 @@ function VkSamplerYcbcrConversionInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._conversion = null;
+  this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D2B61;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -56348,7 +56637,10 @@ VkSamplerYcbcrConversionInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._conversion = null;
+  if (this._conversion !== null) {
+    if (this.memoryBuffer !== this._conversion.memoryBuffer) this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._conversion.reset();
+  }
   this.sType = 0x3B9D2B61;
 };
 
@@ -57994,7 +58286,7 @@ function VkConditionalRenderingBeginInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x3B9C066A;
@@ -58079,7 +58371,10 @@ VkConditionalRenderingBeginInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   
   
   this.sType = 0x3B9C066A;
@@ -61649,7 +61944,7 @@ function VkShaderModuleValidationCacheCreateInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._validationCache = null;
+  this._validationCache = new VkValidationCacheEXT({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D3B01;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -61708,7 +62003,10 @@ VkShaderModuleValidationCacheCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._validationCache = null;
+  if (this._validationCache !== null) {
+    if (this.memoryBuffer !== this._validationCache.memoryBuffer) this._validationCache = new VkValidationCacheEXT({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._validationCache.reset();
+  }
   this.sType = 0x3B9D3B01;
 };
 
@@ -73970,8 +74268,8 @@ function VkRayTracingPipelineCreateInfoNV(opts) {
   this._pGroups = null;
   this._pGroupsNative = null;
   
-  this._layout = null;
-  this._basePipelineHandle = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
   
   this.sType = 0x3B9D4E88;
   if (typeof opts === "object") {
@@ -74185,8 +74483,14 @@ VkRayTracingPipelineCreateInfoNV.prototype.reset = function reset() {
   this._pGroups = null;
   this._pGroupsNative = null;
   
-  this._layout = null;
-  this._basePipelineHandle = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._layout.reset();
+  }
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x3B9D4E88;
 };
@@ -74337,16 +74641,16 @@ function VkGeometryTrianglesNV(opts) {
   }
   
   this._pNext = null;
-  this._vertexData = null;
+  this._vertexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
   
-  this._indexData = null;
+  this._indexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   
   
-  this._transformData = null;
+  this._transformData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x3B9D4E8C;
   if (typeof opts === "object") {
@@ -74548,16 +74852,25 @@ VkGeometryTrianglesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x60"], 0x0);
   
   this._pNext = null;
-  this._vertexData = null;
+  if (this._vertexData !== null) {
+    if (this.memoryBuffer !== this._vertexData.memoryBuffer) this._vertexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._vertexData.reset();
+  }
   
   
   
   
-  this._indexData = null;
+  if (this._indexData !== null) {
+    if (this.memoryBuffer !== this._indexData.memoryBuffer) this._indexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._indexData.reset();
+  }
   
   
   
-  this._transformData = null;
+  if (this._transformData !== null) {
+    if (this.memoryBuffer !== this._transformData.memoryBuffer) this._transformData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._transformData.reset();
+  }
   
   this.sType = 0x3B9D4E8C;
 };
@@ -74662,7 +74975,7 @@ function VkGeometryAABBNV(opts) {
   }
   
   this._pNext = null;
-  this._aabbData = null;
+  this._aabbData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -74760,7 +75073,10 @@ VkGeometryAABBNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._aabbData = null;
+  if (this._aabbData !== null) {
+    if (this.memoryBuffer !== this._aabbData.memoryBuffer) this._aabbData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._aabbData.reset();
+  }
   
   
   
@@ -75525,8 +75841,8 @@ function VkBindAccelerationStructureMemoryInfoNV(opts) {
   }
   
   this._pNext = null;
-  this._accelerationStructure = null;
-  this._memory = null;
+  this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   this._pDeviceIndices = null;
@@ -75650,8 +75966,14 @@ VkBindAccelerationStructureMemoryInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._accelerationStructure = null;
-  this._memory = null;
+  if (this._accelerationStructure !== null) {
+    if (this.memoryBuffer !== this._accelerationStructure.memoryBuffer) this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._accelerationStructure.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   
   this._pDeviceIndices = null;
@@ -75903,7 +76225,7 @@ function VkAccelerationStructureMemoryRequirementsInfoNV(opts) {
   
   this._pNext = null;
   
-  this._accelerationStructure = null;
+  this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9D4E90;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -75978,7 +76300,10 @@ VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reset = function reset
   
   this._pNext = null;
   
-  this._accelerationStructure = null;
+  if (this._accelerationStructure !== null) {
+    if (this.memoryBuffer !== this._accelerationStructure.memoryBuffer) this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._accelerationStructure.reset();
+  }
   this.sType = 0x3B9D4E90;
 };
 
@@ -78927,7 +79252,7 @@ function VkBufferDeviceAddressInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9E8321;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -78986,7 +79311,10 @@ VkBufferDeviceAddressInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9E8321;
 };
 
@@ -80782,9 +81110,9 @@ function VkImageViewHandleInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._imageView = null;
+  this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._sampler = null;
+  this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   this.sType = 0x3B9B3F30;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -80878,9 +81206,15 @@ VkImageViewHandleInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._imageView = null;
+  if (this._imageView !== null) {
+    if (this.memoryBuffer !== this._imageView.memoryBuffer) this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._imageView.reset();
+  }
   
-  this._sampler = null;
+  if (this._sampler !== null) {
+    if (this.memoryBuffer !== this._sampler.memoryBuffer) this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._sampler.reset();
+  }
   this.sType = 0x3B9B3F30;
 };
 
@@ -83578,7 +83912,7 @@ function VkPipelineInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9EE4C9;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -83637,7 +83971,10 @@ VkPipelineInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._pipeline.reset();
+  }
   this.sType = 0x3B9EE4C9;
 };
 
@@ -83846,7 +84183,7 @@ function VkPipelineExecutableInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9EE4CB;
   if (typeof opts === "object") {
@@ -83918,7 +84255,10 @@ VkPipelineExecutableInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._pipeline.reset();
+  }
   
   this.sType = 0x3B9EE4CB;
 };
