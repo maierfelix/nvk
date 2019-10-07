@@ -64793,7 +64793,7 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.reflect = function reflect(memory
   
   
   
-  
+  console.log(this);
   
   
   

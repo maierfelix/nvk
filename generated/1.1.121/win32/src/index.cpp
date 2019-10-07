@@ -222,7 +222,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
     arg.Set("$memoryOffset", Napi::Number::New(env, 0).As<Napi::Value>());
     arg.Set("$memoryBuffer", Napi::ArrayBuffer::New(env, addr, sizeof(VkDebugUtilsMessengerCallbackDataEXT)).As<Napi::Value>());
     Napi::Object object = ctor.New({ arg });
-    object.Get("reflect").As<Napi::Function>().Call({ object.Get("memoryAddress") });
+    object.Get("reflect").As<Napi::Function>().Call(napi_value(object), { object.Get("memoryAddress").As<Napi::Value>() });
     args.push_back(object.As<Napi::Value>());
   }
   args.push_back(env.Null().As<Napi::Value>());
