@@ -65,8 +65,15 @@ function processCallbackParameter(func, param) {
   }
   else if (type === JavaScriptType.OBJECT) {
     return `
-  Napi::Object module = proxy->module.Value();
-  args.push_back(module.Get("${param.type}").As<Napi::Value>());`;
+  {
+    Napi::Object module = proxy->module.Value();
+    Napi::Function ctor = module.Get("${param.type}").As<Napi::Function>();
+    Napi::Object arg = Napi::Object::New(env);
+    arg.Set("$memoryOffset", Napi::Number::New(env, 0).As<Napi::Value>());
+    arg.Set("$memoryBuffer", Napi::ArrayBuffer::New(env, const_cast<void*>(reinterpret_cast<const void*>((${param.name})), sizeof(${param.type})).As<Napi::Value>());
+    Napi::Object object = ctor.New({ arg }).As<Napi::Value>();
+    args.push_back(object);
+  }`;
   }
   // pUserData is only used by nvk for now
   else if (jsType.isArrayBuffer && param.name === "pUserData") {
@@ -76,7 +83,9 @@ function processCallbackParameter(func, param) {
   else if (jsType.isArrayBuffer) {
     // we skip to find a 'size' parameter for the function 'vkFreeFunction'
     // as this function doesn't require one
-    // memory should be freed by retrieving the passed ArrayBuffer's memory address
+    // as manual memory management is expected to be done by the user,
+    // the user will likely free memory just by retrieving the passed ArrayBuffer's memory address,
+    // and then resolve the length of the ArrayBuffer with his custom allocator
     if (func.name !== "vkFreeFunction") {
       // make sure that a 'size' parameter is defined
       let sizeParam = func.params.find(p => p.name === "size");
@@ -84,6 +93,7 @@ function processCallbackParameter(func, param) {
       return `
   args.push_back(Napi::ArrayBuffer::New(env, ${param.name}, size).As<Napi::Value>());`;
     } else {
+      // we send the user the address of the to-be-freed memory as a BigInt
       return `
   args.push_back(Napi::BigInt::New(env, reinterpret_cast<uint64_t>(${param.name})).As<Napi::Value>());`;
     }

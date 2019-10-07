@@ -50999,7 +50999,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsObjectNameInfoEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -51168,7 +51168,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsLabelEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -51335,7 +51335,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsMessengerCallbackDataEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
