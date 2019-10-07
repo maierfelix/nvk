@@ -36,18 +36,23 @@ function decodeNullTerminatedUTF8String(view) {
 };
 
 function findNullTerminatedUTF8StringLength(addr) {
-  let limit = 2 << 12;
+  let limit = 2 << 12; 
   // read 4 bytes on each iteration
   for (let ii = 0; ii < limit; ii += 4) {
     let chunk = getArrayBufferFromAddress(addr + BigInt(ii), BI4);
     let chunkU8 = new Uint8Array(chunk);
-    if (chunkU8[0] === 0x0) return ++ii + 0x0;
-    if (chunkU8[1] === 0x0) return ++ii + 0x1;
-    if (chunkU8[2] === 0x0) return ++ii + 0x2;
-    if (chunkU8[3] === 0x0) return ++ii + 0x3;
+    if (chunkU8[0x0] === 0) return ii + 0x1 + 0x0;
+    if (chunkU8[0x1] === 0) return ii + 0x1 + 0x1;
+    if (chunkU8[0x2] === 0) return ii + 0x1 + 0x2;
+    if (chunkU8[0x3] === 0) return ii + 0x1 + 0x3;
   };
   throw new ReferenceError(`Failed to find UTF8 String length - Memory is either corrupted, misses a NULL terminator or exceeds the Limit of '${limit}' bytes`);
   return -1;
+};
+
+function decodeNativeArrayOfObjects(addr, length, ctor) {
+  console.log(addr, length, ctor.byteLength);
+  return [];
 };
 
 function typeToString(value) {

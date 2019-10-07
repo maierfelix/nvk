@@ -1,13 +1,22 @@
 /** {{ handle.name }} **/
-class {{ handle.name }} {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function {{ handle.name }}(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'{{ handle.name }}' doesn't take any arguments");
     }
+    else {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  }
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 {{ handle.name }}.prototype.reflect = function reflect(memoryAddress) {
