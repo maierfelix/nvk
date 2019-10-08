@@ -3,7 +3,7 @@
     "root": "../../..",
     "platform": "<(OS)",
     "release": "<@(module_root_dir)/build/Release",
-    "vkSDK": ""
+    "vkSDK": "C:\VulkanSDK\1.1.121.2"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
