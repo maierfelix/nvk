@@ -9,7 +9,8 @@ import pkg from "../../package.json";
 
 import {
   warn,
-  isIgnoreableType
+  isIgnoreableType,
+  getFunctionByFunctionName
 } from "../utils.mjs";
 
 import {
@@ -19,6 +20,7 @@ import {
 
 let ast = null;
 let calls = null;
+let functionPointers = null;
 let enums = null;
 let structs = null;
 let handles = null;
@@ -107,7 +109,8 @@ function getTypescriptType(object) {
       return `string | null`;
     }
     case JavaScriptType.FUNCTION: {
-      return `null`;
+      let relativeFunction = getFunctionByFunctionName(ast, object.type);
+      return `${relativeFunction.name} | null`;
     }
     case JavaScriptType.BIGINT: {
       return `bigint | number`;
@@ -196,7 +199,60 @@ function processCall(call) {
    * ${getObjectDescription(call)}
 ${paramDescrs.join("\n")}
    */
-  function ${call.name}(${params}): ${ret};`;
+  export function ${call.name}(${params}): ${ret};`;
+  return out;
+};
+
+function processFunctionPointerReturn(functionPtr) {
+  let type = functionPtr.rawType;
+  if (functionPtr.enumType) return functionPtr.enumType;
+  switch (type) {
+    case "void":
+      return `void`;
+    case "int8_t":
+    case "int16_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
+    case "uint32_t":
+      return "number";
+    case "uint64_t":
+      return "bigint";
+    default:
+      warn(`Cannot handle function pointer param return type ${type} in ts-function-pointer-return!`);
+  };
+  return `void`;
+};
+
+function processFunctionPointerParameters(functionPtr) {
+  let out = [];
+  functionPtr.params.map(param => {
+    let {name} = param;
+    let type = getTypescriptType(param);
+    // ignore
+    if (name === "pUserData") type = `null`;
+    out.push(`${name}: ${type}`);
+  });
+  return out.join(",\n      ");
+};
+
+function processFunctionPointer(functionPtr) {
+  let params = processFunctionPointerParameters(functionPtr);
+  let ret = processFunctionPointerReturn(functionPtr);
+  let paramDescrs = [];
+  functionPtr.params.map(param => {
+     paramDescrs.push(`   * @param ${param.name}${getObjectDescription(param)}`); 
+  });
+  let out = `
+  /**
+   * ${getObjectDescription(functionPtr)}
+${paramDescrs.join("\n")}
+   */
+  export interface ${functionPtr.name} {
+    (
+      ${params}
+    ) : ${ret}
+  }`;
   return out;
 };
 
@@ -291,12 +347,14 @@ export default function(astReference, data) {
   structs = data.structs;
   handles = data.handles;
   includes = data.includes;
+  functionPointers = data.functionPointers;
   let vars = {
     calls,
     enums,
     structs,
     handles,
     includes,
+    functionPointers,
     processCall,
     getEnumByName,
     getStructByName,
@@ -305,6 +363,7 @@ export default function(astReference, data) {
     processStructMembers,
     getObjectDescription,
     getObjectDocumentation,
+    processFunctionPointer,
     processEnumMemberDescriptions
   };
   let out = {

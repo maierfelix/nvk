@@ -99,7 +99,11 @@ declare var {{ name | safe }}: {{ name | safe }}Constructor;
 {% endfor %}
 
 {% for call in calls -%}
-export {{ processCall(call) | safe }}
+{{ processCall(call) | safe }}
+{% endfor %}
+
+{% for fnPtr in functionPointers -%}
+{{ processFunctionPointer(fnPtr) | safe }}
 {% endfor %}
 
 export function createV8ArrayBufferFromMemory(
@@ -178,14 +182,15 @@ export interface DropEvent {
 }
 
 export interface VulkanWindowInitializer {
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
   title?: string;
+  resizable?: boolean;
 }
 
 declare var VulkanWindow: {
   prototype: VulkanWindow;
-  new(param?: VulkanWindowInitializer | null): VulkanWindow;
+  new(param: VulkanWindowInitializer): VulkanWindow;
   width: number;
   height: number;
   frameBufferWidth: number;

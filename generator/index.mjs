@@ -203,6 +203,7 @@ async function generateBindings({xml, version, docs, incremental, disableMinific
   let structs = ast.filter(node => node.kind === "STRUCT");
   let handles = ast.filter(node => node.kind === "HANDLE");
   let extensions = ast.filter(node => node.kind === "EXTENSION");
+  let functionPointers = ast.filter(node => node.kind === "FUNCTION_POINTER");
   // process extensions
   {
     extensions.map(extension => {
@@ -281,7 +282,14 @@ async function generateBindings({xml, version, docs, incremental, disableMinific
   }
   // generate typescript definition
   {
-    let data = { structs, handles, calls, enums, includes: sortedIncludes };
+    let data = {
+      structs,
+      handles,
+      calls,
+      enums,
+      functionPointers,
+      includes: sortedIncludes
+    };
     let result = generateTS(ast, data);
     console.log("Generating Typescript definition..");
     writeAddonFile(`${generatePath}/index.d.ts`, result.source, "utf-8", true);
