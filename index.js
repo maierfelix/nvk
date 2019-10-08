@@ -1,3 +1,7 @@
+/// <reference types="./generated/1.1.121/darwin/" />
+/// <reference types="./generated/1.1.121/win32/" />
+/// <reference types="./generated/1.1.121/linux" />
+
 const fs = require("fs");
 const path = require("path");
 const pkg = require("./package.json");
