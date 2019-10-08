@@ -206,6 +206,7 @@ ${paramDescrs.join("\n")}
 function processFunctionPointerReturn(functionPtr) {
   let type = functionPtr.rawType;
   if (functionPtr.enumType) return functionPtr.enumType;
+  if (functionPtr.isBoolean) return "boolean";
   switch (type) {
     case "void":
       return `void`;

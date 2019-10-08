@@ -56964,7 +56964,7 @@ declare var VkBaseOutStructure: VkBaseOutStructureConstructor;
       pLayerPrefix: string | null,
       pMessage: string | null,
       pUserData: null
-    ) : number
+    ) : boolean
   }
 
   /**
@@ -56980,7 +56980,7 @@ declare var VkBaseOutStructure: VkBaseOutStructureConstructor;
       messageTypes: VkDebugUtilsMessageTypeFlagBitsEXT,
       pCallbackData: VkDebugUtilsMessengerCallbackDataEXT | null,
       pUserData: null
-    ) : number
+    ) : boolean
   }
 
 
