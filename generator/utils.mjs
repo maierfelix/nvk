@@ -153,6 +153,20 @@ export function getBitmaskByName(ast, name) {
   return null;
 };
 
+export function getFunctionByFunctionName(ast, name) {
+  let functions = ast.filter(node => node.kind === "FUNCTION_POINTER");
+  for (let ii = 0; ii < functions.length; ++ii) {
+    let func = functions[ii];
+    if (
+      func.name === name ||
+      func.name === (name.substr(4)) ||
+      (func.name.substr(4) === name)
+    ) return func;
+  };
+  error(`Cannot resolve function by name "${name}"`);
+  return null;
+};
+
 export function getStructByStructName(ast, name) {
   let structs = ast.filter(node => node.kind === "STRUCT");
   for (let ii = 0; ii < structs.length; ++ii) {
