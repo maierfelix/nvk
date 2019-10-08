@@ -8,7 +8,7 @@ Release/obj.target/addon-linux/src/index.o: ../src/index.cpp \
  /home/zeeshan/Documents/Projects/tortuga-library/node_modules/nvk/node_modules/node-addon-api/napi-inl.h \
  /home/zeeshan/Documents/Projects/tortuga-library/node_modules/nvk/node_modules/node-addon-api/napi-inl.deprecated.h \
  ../../../../lib/include/GLFW/glfw3.h ../src/calls.h ../src/utils.h \
- ../src/enums.h ../src/window.h ../src/memoryLayouts.h
+ ../src/enums.h ../src/window.h
 ../src/index.cpp:
 /home/zeeshan/Documents/Projects/tortuga-library/node_modules/nvk/node_modules/node-addon-api/napi.h:
 /home/zeeshan/.cache/node-gyp/12.9.1/include/node/node_api.h:
@@ -22,4 +22,3 @@ Release/obj.target/addon-linux/src/index.o: ../src/index.cpp \
 ../src/utils.h:
 ../src/enums.h:
 ../src/window.h:
-../src/memoryLayouts.h:
