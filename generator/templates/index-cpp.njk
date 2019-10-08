@@ -144,6 +144,7 @@ static Napi::Value _VK_VERSION_PATCH(const Napi::CallbackInfo& info) {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   VulkanWindow::Initialize(env, exports);
+  CallbackProxy::Initialize(env, exports);
   exports["VK_MAKE_VERSION"] = Napi::Function::New(env, _VK_MAKE_VERSION, "VK_MAKE_VERSION");
   exports["VK_VERSION_MAJOR"] = Napi::Function::New(env, _VK_VERSION_MAJOR, "VK_VERSION_MAJOR");
   exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
@@ -158,7 +159,6 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   {% endif %}
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
-  CallbackProxy::Initialize(env, exports);
   {
     Napi::Object obj = Napi::Object::New(env);
     {% for func in functionPointers -%}

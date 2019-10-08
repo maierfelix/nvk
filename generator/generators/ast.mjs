@@ -1012,6 +1012,18 @@ export default function({ xmlInput, version, docs } = _) {
       }
     });
   }
+  // trace reflection structures when used in function callbacks
+  {
+    let fnPptrs = out.filter(node => node.kind === "FUNCTION_POINTER");
+    fnPptrs.map(fnPtr => {
+      fnPtr.params.map(param => {
+        if (param.isStructType) {
+          let struct = getStructByStructName(out, param.type);
+          deepReflectionTrace(struct);
+        }
+      });
+    });
+  }
   // trace members which need to be initialized at instantiation
   // e.g. struct.struct, struct.numericarray
   {
@@ -1021,7 +1033,7 @@ export default function({ xmlInput, version, docs } = _) {
         // struct member
         if (
           !member.isConstant &&
-          member.isStructType &&
+          (member.isStructType || member.isHandleType) &&
           member.dereferenceCount <= 0
         ) member.needsInitializationAtInstantiation = true;
         // numeric array member

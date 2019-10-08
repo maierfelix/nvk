@@ -214,8 +214,17 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
   
   args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageSeverity)).As<Napi::Value>());
   args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageTypes)).As<Napi::Value>());
-  Napi::Object module = proxy->module.Value();
-  args.push_back(module.Get("VkDebugUtilsMessengerCallbackDataEXT").As<Napi::Value>());
+  {
+    Napi::Object module = proxy->module.Value();
+    Napi::Function ctor = module.Get("VkDebugUtilsMessengerCallbackDataEXT").As<Napi::Function>();
+    Napi::Object arg = Napi::Object::New(env);
+    void* addr = const_cast<void*>(reinterpret_cast<const void*>(pCallbackData));
+    arg.Set("$memoryOffset", Napi::Number::New(env, 0).As<Napi::Value>());
+    arg.Set("$memoryBuffer", Napi::ArrayBuffer::New(env, addr, sizeof(VkDebugUtilsMessengerCallbackDataEXT)).As<Napi::Value>());
+    Napi::Object object = ctor.New({ arg });
+    object.Get("reflect").As<Napi::Function>().Call(napi_value(object), { object.Get("memoryAddress").As<Napi::Value>() });
+    args.push_back(object.As<Napi::Value>());
+  }
   args.push_back(env.Null().As<Napi::Value>());
   Napi::Value ret = callback.Call(args);
   if (!(ret.IsBoolean())) {
@@ -292,6 +301,7 @@ static Napi::Value _VK_VERSION_PATCH(const Napi::CallbackInfo& info) {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   VulkanWindow::Initialize(env, exports);
+  CallbackProxy::Initialize(env, exports);
   exports["VK_MAKE_VERSION"] = Napi::Function::New(env, _VK_MAKE_VERSION, "VK_MAKE_VERSION");
   exports["VK_VERSION_MAJOR"] = Napi::Function::New(env, _VK_VERSION_MAJOR, "VK_VERSION_MAJOR");
   exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
@@ -304,7 +314,6 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
   
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
-  CallbackProxy::Initialize(env, exports);
   {
     Napi::Object obj = Napi::Object::New(env);
     obj.Set("vkInternalAllocationNotification", Napi::BigInt::New(env, reinterpret_cast<uint64_t>(&CB_vkInternalAllocationNotification)));

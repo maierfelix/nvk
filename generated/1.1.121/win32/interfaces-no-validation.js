@@ -26,16 +26,58 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 };
 
 const BI0 = BigInt(0);
+const BI4 = BigInt(4);
+const BI8 = BigInt(8);
 const NULLT = String.fromCharCode(0x0);
 const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
 const textDecoder = new (typeof TextDecoder === "undefined" ? require("util").TextDecoder : TextDecoder);
 
+function dereferencePointer(addr) {
+  // read ptr address
+  let ptrBuffer = getArrayBufferFromAddress(addr, BI8);
+  // deref ptr
+  return getAddressFromArrayBuffer(ptrBuffer);
+};
+
 function decodeNullTerminatedUTF8String(view) {
   let terminator = view.indexOf(0x0);
   let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
   return textDecoder.decode(subview);
+};
+
+function findNullTerminatedUTF8StringLength(addr) {
+  let limit = 2 << 12; 
+  // read 4 bytes on each iteration
+  for (let ii = 0; ii < limit; ii += 4) {
+    let chunk = getArrayBufferFromAddress(addr + BigInt(ii), BI4);
+    let chunkU8 = new Uint8Array(chunk);
+    if (chunkU8[0x0] === 0) return ii + 0x1 + 0x0;
+    if (chunkU8[0x1] === 0) return ii + 0x1 + 0x1;
+    if (chunkU8[0x2] === 0) return ii + 0x1 + 0x2;
+    if (chunkU8[0x3] === 0) return ii + 0x1 + 0x3;
+  };
+  throw new ReferenceError(`Failed to find UTF8 String length - Memory is either corrupted, misses a NULL terminator or exceeds the Limit of '${limit}' bytes`);
+  return -1;
+};
+
+function decodeNativeArrayOfObjects(addr, length, ctor) {
+  let out = [];
+  let byteLength = BigInt(ctor.byteLength);
+  let baseAddr = dereferencePointer(addr);
+  for (let ii = 0; ii < length; ++ii) {
+    let buffer = getArrayBufferFromAddress(
+      baseAddr + BigInt(ii) * byteLength,
+      byteLength
+    );
+    let item = new ctor({
+      $memoryBuffer: buffer,
+      $memoryOffset: 0
+    });
+    out.push(item);
+  };
+  return out;
 };
 
 function typeToString(value) {
@@ -140,15 +182,30 @@ const STRUCT_RESET_CACHE = {
   "0x228": new Uint8Array(0x228),
 };
 /** VkInstance **/
-class VkInstance {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkInstance(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkInstance' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkInstance.prototype.reflect = function reflect(memoryAddress) {
@@ -162,15 +219,30 @@ VkInstance.prototype.reflect = function reflect(memoryAddress) {
 
 VkInstance.byteLength = 0x8;
 /** VkPhysicalDevice **/
-class VkPhysicalDevice {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkPhysicalDevice(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPhysicalDevice' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkPhysicalDevice.prototype.reflect = function reflect(memoryAddress) {
@@ -184,15 +256,30 @@ VkPhysicalDevice.prototype.reflect = function reflect(memoryAddress) {
 
 VkPhysicalDevice.byteLength = 0x8;
 /** VkDevice **/
-class VkDevice {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDevice(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDevice' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDevice.prototype.reflect = function reflect(memoryAddress) {
@@ -206,15 +293,30 @@ VkDevice.prototype.reflect = function reflect(memoryAddress) {
 
 VkDevice.byteLength = 0x8;
 /** VkQueue **/
-class VkQueue {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkQueue(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkQueue' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkQueue.prototype.reflect = function reflect(memoryAddress) {
@@ -228,15 +330,30 @@ VkQueue.prototype.reflect = function reflect(memoryAddress) {
 
 VkQueue.byteLength = 0x8;
 /** VkCommandBuffer **/
-class VkCommandBuffer {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkCommandBuffer(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkCommandBuffer' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkCommandBuffer.prototype.reflect = function reflect(memoryAddress) {
@@ -250,15 +367,30 @@ VkCommandBuffer.prototype.reflect = function reflect(memoryAddress) {
 
 VkCommandBuffer.byteLength = 0x8;
 /** VkDeviceMemory **/
-class VkDeviceMemory {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDeviceMemory(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDeviceMemory' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDeviceMemory.prototype.reflect = function reflect(memoryAddress) {
@@ -272,15 +404,30 @@ VkDeviceMemory.prototype.reflect = function reflect(memoryAddress) {
 
 VkDeviceMemory.byteLength = 0x8;
 /** VkCommandPool **/
-class VkCommandPool {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkCommandPool(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkCommandPool' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkCommandPool.prototype.reflect = function reflect(memoryAddress) {
@@ -294,15 +441,30 @@ VkCommandPool.prototype.reflect = function reflect(memoryAddress) {
 
 VkCommandPool.byteLength = 0x8;
 /** VkBuffer **/
-class VkBuffer {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkBuffer(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkBuffer' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkBuffer.prototype.reflect = function reflect(memoryAddress) {
@@ -316,15 +478,30 @@ VkBuffer.prototype.reflect = function reflect(memoryAddress) {
 
 VkBuffer.byteLength = 0x8;
 /** VkBufferView **/
-class VkBufferView {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkBufferView(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkBufferView' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkBufferView.prototype.reflect = function reflect(memoryAddress) {
@@ -338,15 +515,30 @@ VkBufferView.prototype.reflect = function reflect(memoryAddress) {
 
 VkBufferView.byteLength = 0x8;
 /** VkImage **/
-class VkImage {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkImage(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkImage' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkImage.prototype.reflect = function reflect(memoryAddress) {
@@ -360,15 +552,30 @@ VkImage.prototype.reflect = function reflect(memoryAddress) {
 
 VkImage.byteLength = 0x8;
 /** VkImageView **/
-class VkImageView {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkImageView(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkImageView' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkImageView.prototype.reflect = function reflect(memoryAddress) {
@@ -382,15 +589,30 @@ VkImageView.prototype.reflect = function reflect(memoryAddress) {
 
 VkImageView.byteLength = 0x8;
 /** VkShaderModule **/
-class VkShaderModule {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkShaderModule(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkShaderModule' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkShaderModule.prototype.reflect = function reflect(memoryAddress) {
@@ -404,15 +626,30 @@ VkShaderModule.prototype.reflect = function reflect(memoryAddress) {
 
 VkShaderModule.byteLength = 0x8;
 /** VkPipeline **/
-class VkPipeline {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkPipeline(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipeline' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkPipeline.prototype.reflect = function reflect(memoryAddress) {
@@ -426,15 +663,30 @@ VkPipeline.prototype.reflect = function reflect(memoryAddress) {
 
 VkPipeline.byteLength = 0x8;
 /** VkPipelineLayout **/
-class VkPipelineLayout {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkPipelineLayout(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipelineLayout' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkPipelineLayout.prototype.reflect = function reflect(memoryAddress) {
@@ -448,15 +700,30 @@ VkPipelineLayout.prototype.reflect = function reflect(memoryAddress) {
 
 VkPipelineLayout.byteLength = 0x8;
 /** VkSampler **/
-class VkSampler {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkSampler(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSampler' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkSampler.prototype.reflect = function reflect(memoryAddress) {
@@ -470,15 +737,30 @@ VkSampler.prototype.reflect = function reflect(memoryAddress) {
 
 VkSampler.byteLength = 0x8;
 /** VkDescriptorSet **/
-class VkDescriptorSet {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDescriptorSet(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorSet' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
@@ -492,15 +774,30 @@ VkDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorSet.byteLength = 0x8;
 /** VkDescriptorSetLayout **/
-class VkDescriptorSetLayout {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDescriptorSetLayout(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorSetLayout' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDescriptorSetLayout.prototype.reflect = function reflect(memoryAddress) {
@@ -514,15 +811,30 @@ VkDescriptorSetLayout.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorSetLayout.byteLength = 0x8;
 /** VkDescriptorPool **/
-class VkDescriptorPool {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDescriptorPool(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorPool' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDescriptorPool.prototype.reflect = function reflect(memoryAddress) {
@@ -536,15 +848,30 @@ VkDescriptorPool.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorPool.byteLength = 0x8;
 /** VkFence **/
-class VkFence {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkFence(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkFence' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkFence.prototype.reflect = function reflect(memoryAddress) {
@@ -558,15 +885,30 @@ VkFence.prototype.reflect = function reflect(memoryAddress) {
 
 VkFence.byteLength = 0x8;
 /** VkSemaphore **/
-class VkSemaphore {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkSemaphore(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSemaphore' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkSemaphore.prototype.reflect = function reflect(memoryAddress) {
@@ -580,15 +922,30 @@ VkSemaphore.prototype.reflect = function reflect(memoryAddress) {
 
 VkSemaphore.byteLength = 0x8;
 /** VkEvent **/
-class VkEvent {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkEvent(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkEvent' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkEvent.prototype.reflect = function reflect(memoryAddress) {
@@ -602,15 +959,30 @@ VkEvent.prototype.reflect = function reflect(memoryAddress) {
 
 VkEvent.byteLength = 0x8;
 /** VkQueryPool **/
-class VkQueryPool {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkQueryPool(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkQueryPool' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkQueryPool.prototype.reflect = function reflect(memoryAddress) {
@@ -624,15 +996,30 @@ VkQueryPool.prototype.reflect = function reflect(memoryAddress) {
 
 VkQueryPool.byteLength = 0x8;
 /** VkFramebuffer **/
-class VkFramebuffer {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkFramebuffer(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkFramebuffer' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkFramebuffer.prototype.reflect = function reflect(memoryAddress) {
@@ -646,15 +1033,30 @@ VkFramebuffer.prototype.reflect = function reflect(memoryAddress) {
 
 VkFramebuffer.byteLength = 0x8;
 /** VkRenderPass **/
-class VkRenderPass {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkRenderPass(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkRenderPass' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkRenderPass.prototype.reflect = function reflect(memoryAddress) {
@@ -668,15 +1070,30 @@ VkRenderPass.prototype.reflect = function reflect(memoryAddress) {
 
 VkRenderPass.byteLength = 0x8;
 /** VkPipelineCache **/
-class VkPipelineCache {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkPipelineCache(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPipelineCache' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkPipelineCache.prototype.reflect = function reflect(memoryAddress) {
@@ -690,15 +1107,30 @@ VkPipelineCache.prototype.reflect = function reflect(memoryAddress) {
 
 VkPipelineCache.byteLength = 0x8;
 /** VkObjectTableNVX **/
-class VkObjectTableNVX {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkObjectTableNVX(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkObjectTableNVX' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkObjectTableNVX.prototype.reflect = function reflect(memoryAddress) {
@@ -712,15 +1144,30 @@ VkObjectTableNVX.prototype.reflect = function reflect(memoryAddress) {
 
 VkObjectTableNVX.byteLength = 0x8;
 /** VkIndirectCommandsLayoutNVX **/
-class VkIndirectCommandsLayoutNVX {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkIndirectCommandsLayoutNVX(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkIndirectCommandsLayoutNVX' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkIndirectCommandsLayoutNVX.prototype.reflect = function reflect(memoryAddress) {
@@ -734,15 +1181,30 @@ VkIndirectCommandsLayoutNVX.prototype.reflect = function reflect(memoryAddress) 
 
 VkIndirectCommandsLayoutNVX.byteLength = 0x8;
 /** VkDescriptorUpdateTemplate **/
-class VkDescriptorUpdateTemplate {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDescriptorUpdateTemplate(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDescriptorUpdateTemplate' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDescriptorUpdateTemplate.prototype.reflect = function reflect(memoryAddress) {
@@ -756,15 +1218,30 @@ VkDescriptorUpdateTemplate.prototype.reflect = function reflect(memoryAddress) {
 
 VkDescriptorUpdateTemplate.byteLength = 0x8;
 /** VkSamplerYcbcrConversion **/
-class VkSamplerYcbcrConversion {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkSamplerYcbcrConversion(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSamplerYcbcrConversion' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkSamplerYcbcrConversion.prototype.reflect = function reflect(memoryAddress) {
@@ -778,15 +1255,30 @@ VkSamplerYcbcrConversion.prototype.reflect = function reflect(memoryAddress) {
 
 VkSamplerYcbcrConversion.byteLength = 0x8;
 /** VkValidationCacheEXT **/
-class VkValidationCacheEXT {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkValidationCacheEXT(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkValidationCacheEXT' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkValidationCacheEXT.prototype.reflect = function reflect(memoryAddress) {
@@ -800,15 +1292,30 @@ VkValidationCacheEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkValidationCacheEXT.byteLength = 0x8;
 /** VkAccelerationStructureNV **/
-class VkAccelerationStructureNV {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkAccelerationStructureNV(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkAccelerationStructureNV' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkAccelerationStructureNV.prototype.reflect = function reflect(memoryAddress) {
@@ -822,15 +1329,30 @@ VkAccelerationStructureNV.prototype.reflect = function reflect(memoryAddress) {
 
 VkAccelerationStructureNV.byteLength = 0x8;
 /** VkPerformanceConfigurationINTEL **/
-class VkPerformanceConfigurationINTEL {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkPerformanceConfigurationINTEL(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkPerformanceConfigurationINTEL' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkPerformanceConfigurationINTEL.prototype.reflect = function reflect(memoryAddress) {
@@ -844,15 +1366,30 @@ VkPerformanceConfigurationINTEL.prototype.reflect = function reflect(memoryAddre
 
 VkPerformanceConfigurationINTEL.byteLength = 0x8;
 /** VkDisplayKHR **/
-class VkDisplayKHR {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDisplayKHR(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDisplayKHR' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDisplayKHR.prototype.reflect = function reflect(memoryAddress) {
@@ -866,15 +1403,30 @@ VkDisplayKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayKHR.byteLength = 0x8;
 /** VkDisplayModeKHR **/
-class VkDisplayModeKHR {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDisplayModeKHR(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDisplayModeKHR' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDisplayModeKHR.prototype.reflect = function reflect(memoryAddress) {
@@ -888,15 +1440,30 @@ VkDisplayModeKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkDisplayModeKHR.byteLength = 0x8;
 /** VkSurfaceKHR **/
-class VkSurfaceKHR {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkSurfaceKHR(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSurfaceKHR' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkSurfaceKHR.prototype.reflect = function reflect(memoryAddress) {
@@ -910,15 +1477,30 @@ VkSurfaceKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSurfaceKHR.byteLength = 0x8;
 /** VkSwapchainKHR **/
-class VkSwapchainKHR {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkSwapchainKHR(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkSwapchainKHR' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkSwapchainKHR.prototype.reflect = function reflect(memoryAddress) {
@@ -932,15 +1514,30 @@ VkSwapchainKHR.prototype.reflect = function reflect(memoryAddress) {
 
 VkSwapchainKHR.byteLength = 0x8;
 /** VkDebugReportCallbackEXT **/
-class VkDebugReportCallbackEXT {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDebugReportCallbackEXT(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDebugReportCallbackEXT' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDebugReportCallbackEXT.prototype.reflect = function reflect(memoryAddress) {
@@ -954,15 +1551,30 @@ VkDebugReportCallbackEXT.prototype.reflect = function reflect(memoryAddress) {
 
 VkDebugReportCallbackEXT.byteLength = 0x8;
 /** VkDebugUtilsMessengerEXT **/
-class VkDebugUtilsMessengerEXT {
-  constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
-    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (opts !== void 0) {
+function VkDebugUtilsMessengerEXT(opts) {
+  this.memoryBuffer = null;
+  this.memoryAddress = BI0;
+  this.memoryOffset = 0x0;
+
+  if (opts !== void 0) {
+    if (opts.$memoryBuffer === void 0) {
       throw new Error("'VkDebugUtilsMessengerEXT' doesn't take any arguments");
     }
+    else {
+      if (opts.$memoryOffset !== void 0) {
+        let addr = getAddressFromArrayBuffer(opts.$memoryBuffer);
+        this.memoryBuffer = getArrayBufferFromAddress(addr + BigInt(opts.$memoryOffset), BI8);
+        this.memoryOffset = opts.$memoryOffset;
+      } else {
+        this.memoryBuffer = opts.$memoryBuffer;
+      }
+    }
   }
+  else {
+    this.memoryBuffer = new ArrayBuffer(0x8);
+  }
+  this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
 };
 
 VkDebugUtilsMessengerEXT.prototype.reflect = function reflect(memoryAddress) {
@@ -1021,7 +1633,15 @@ Object.defineProperties(VkBaseOutStructure.prototype, {
     },
   "pNext": {
     get() {
-    return this._pNext;
+    if (this._pNext === null && this.memoryViewBigInt64[0x1] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x1];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkBaseOutStructure.byteLength));
+      this._pNext = new VkBaseOutStructure({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x1] = this._pNext.memoryAddress;
+      return this.pNext;
+    } else {
+      return this._pNext;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -1052,8 +1672,7 @@ VkBaseOutStructure.prototype.flush = function flush() {
 };
 
 VkBaseOutStructure.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkBaseOutStructure.byteLength = 0x10;
 
@@ -1113,7 +1732,15 @@ Object.defineProperties(VkBaseInStructure.prototype, {
     },
   "pNext": {
     get() {
-    return this._pNext;
+    if (this._pNext === null && this.memoryViewBigInt64[0x1] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x1];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkBaseInStructure.byteLength));
+      this._pNext = new VkBaseInStructure({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x1] = this._pNext.memoryAddress;
+      return this.pNext;
+    } else {
+      return this._pNext;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -1144,8 +1771,7 @@ VkBaseInStructure.prototype.flush = function flush() {
 };
 
 VkBaseInStructure.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkBaseInStructure.byteLength = 0x10;
 
@@ -1225,8 +1851,7 @@ VkOffset2D.prototype.flush = function flush() {
 };
 
 VkOffset2D.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkOffset2D.byteLength = 0x8;
 
@@ -1317,8 +1942,7 @@ VkOffset3D.prototype.flush = function flush() {
 };
 
 VkOffset3D.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkOffset3D.byteLength = 0xC;
 
@@ -1402,8 +2026,7 @@ VkExtent2D.prototype.flush = function flush() {
 };
 
 VkExtent2D.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkExtent2D.byteLength = 0x8;
 
@@ -1494,8 +2117,7 @@ VkExtent3D.prototype.flush = function flush() {
 };
 
 VkExtent3D.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkExtent3D.byteLength = 0xC;
 
@@ -1623,8 +2245,7 @@ VkViewport.prototype.flush = function flush() {
 };
 
 VkViewport.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkViewport.byteLength = 0x18;
 
@@ -1766,12 +2387,7 @@ VkRect2D.prototype.flush = function flush() {
 };
 
 VkRect2D.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRect2D.byteLength = 0x10;
 
@@ -1886,10 +2502,7 @@ VkClearRect.prototype.flush = function flush() {
 };
 
 VkClearRect.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkClearRect.byteLength = 0x18;
 
@@ -1995,8 +2608,7 @@ VkComponentMapping.prototype.flush = function flush() {
 };
 
 VkComponentMapping.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkComponentMapping.byteLength = 0x10;
 
@@ -2157,14 +2769,7 @@ VkPhysicalDeviceProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x338), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x338), 0x0);};
 
 VkPhysicalDeviceProperties.byteLength = 0x338;
 
@@ -2270,8 +2875,7 @@ VkExtensionProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x104), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x104), 0x0);};
 
 VkExtensionProperties.byteLength = 0x104;
 
@@ -2365,8 +2969,7 @@ VkLayerProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x208), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x208), 0x0);};
 
 VkLayerProperties.byteLength = 0x208;
 
@@ -2458,6 +3061,14 @@ Object.defineProperties(VkApplicationInfo.prototype, {
       let str = textDecoder.decode(this._pApplicationName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pApplicationName = buffer;
+        return this.pApplicationName;
+      }
       return null;
     }
     },
@@ -2486,6 +3097,14 @@ Object.defineProperties(VkApplicationInfo.prototype, {
       let str = textDecoder.decode(this._pEngineName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pEngineName = buffer;
+        return this.pEngineName;
+      }
       return null;
     }
     },
@@ -2542,10 +3161,7 @@ VkApplicationInfo.prototype.flush = function flush() {
 };
 
 VkApplicationInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkApplicationInfo.byteLength = 0x30;
 
@@ -2741,8 +3357,7 @@ VkAllocationCallbacks.prototype.flush = function flush() {
 };
 
 VkAllocationCallbacks.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkAllocationCallbacks.byteLength = 0x30;
 
@@ -2914,10 +3529,7 @@ VkDeviceQueueCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceQueueCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceQueueCreateInfo.byteLength = 0x28;
 
@@ -3104,7 +3716,14 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
     },
   "pQueueCreateInfos": {
     get() {
-    return this._pQueueCreateInfos;
+    if (this._pQueueCreateInfos === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.queueCreateInfoCount, VkDeviceQueueCreateInfo);
+      this._pQueueCreateInfos = array;
+      return this.pQueueCreateInfos;
+    } else {
+      return this._pQueueCreateInfos;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -3159,7 +3778,15 @@ Object.defineProperties(VkDeviceCreateInfo.prototype, {
     },
   "pEnabledFeatures": {
     get() {
-    return this._pEnabledFeatures;
+    if (this._pEnabledFeatures === null && this.memoryViewBigInt64[0x8] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x8];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPhysicalDeviceFeatures.byteLength));
+      this._pEnabledFeatures = new VkPhysicalDeviceFeatures({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x8] = this._pEnabledFeatures.memoryAddress;
+      return this.pEnabledFeatures;
+    } else {
+      return this._pEnabledFeatures;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -3247,16 +3874,7 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkDeviceCreateInfo.byteLength = 0x48;
 
@@ -3399,7 +4017,15 @@ Object.defineProperties(VkInstanceCreateInfo.prototype, {
     },
   "pApplicationInfo": {
     get() {
-    return this._pApplicationInfo;
+    if (this._pApplicationInfo === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkApplicationInfo.byteLength));
+      this._pApplicationInfo = new VkApplicationInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x3] = this._pApplicationInfo.memoryAddress;
+      return this.pApplicationInfo;
+    } else {
+      return this._pApplicationInfo;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -3507,14 +4133,7 @@ VkInstanceCreateInfo.prototype.flush = function flush() {
 };
 
 VkInstanceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkInstanceCreateInfo.byteLength = 0x40;
 
@@ -3633,10 +4252,7 @@ VkQueueFamilyProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkQueueFamilyProperties.byteLength = 0x18;
 
@@ -3744,12 +4360,7 @@ VkPhysicalDeviceMemoryProperties.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x208), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x208), 0x0);};
 
 VkPhysicalDeviceMemoryProperties.byteLength = 0x208;
 
@@ -3899,10 +4510,7 @@ VkMemoryAllocateInfo.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryAllocateInfo.byteLength = 0x20;
 
@@ -3995,8 +4603,7 @@ VkMemoryRequirements.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryRequirements.byteLength = 0x18;
 
@@ -4086,10 +4693,7 @@ VkSparseImageFormatProperties.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x14), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x14), 0x0);};
 
 VkSparseImageFormatProperties.byteLength = 0x14;
 
@@ -4195,10 +4799,7 @@ VkSparseImageMemoryRequirements.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkSparseImageMemoryRequirements.byteLength = 0x30;
 
@@ -4288,8 +4889,7 @@ VkMemoryType.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x8), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x8), 0x0);};
 
 VkMemoryType.byteLength = 0x8;
 
@@ -4367,8 +4967,7 @@ VkMemoryHeap.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x10), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x10), 0x0);};
 
 VkMemoryHeap.byteLength = 0x10;
 
@@ -4411,7 +5010,7 @@ function VkMappedMemoryRange(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x6;
@@ -4484,7 +5083,10 @@ VkMappedMemoryRange.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   
   this.sType = 0x6;
@@ -4501,10 +5103,7 @@ VkMappedMemoryRange.prototype.flush = function flush() {
 };
 
 VkMappedMemoryRange.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMappedMemoryRange.byteLength = 0x28;
 
@@ -4599,8 +5198,7 @@ VkFormatProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0xC), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0xC), 0x0);};
 
 VkFormatProperties.byteLength = 0xC;
 
@@ -4708,10 +5306,7 @@ VkImageFormatProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkImageFormatProperties.byteLength = 0x20;
 
@@ -4762,7 +5357,7 @@ function VkDescriptorBufferInfo(opts) {
     this.memoryViewBigUint64 = new BigUint64Array(this.memoryBuffer);
 
   }
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   
   
@@ -4815,7 +5410,10 @@ Object.defineProperties(VkDescriptorBufferInfo.prototype, {
 
 VkDescriptorBufferInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._buffer.reset();
+  }
   
   
   
@@ -4827,8 +5425,7 @@ VkDescriptorBufferInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorBufferInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDescriptorBufferInfo.byteLength = 0x18;
 
@@ -4871,8 +5468,8 @@ function VkDescriptorImageInfo(opts) {
     this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
 
   }
-  this._sampler = null;
-  this._imageView = null;
+  this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+  this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -4931,8 +5528,14 @@ Object.defineProperties(VkDescriptorImageInfo.prototype, {
 
 VkDescriptorImageInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._sampler = null;
-  this._imageView = null;
+  if (this._sampler !== null) {
+    if (this.memoryBuffer !== this._sampler.memoryBuffer) this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._sampler.reset();
+  }
+  if (this._imageView !== null) {
+    if (this.memoryBuffer !== this._imageView.memoryBuffer) this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._imageView.reset();
+  }
   
   
 };
@@ -4943,8 +5546,7 @@ VkDescriptorImageInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorImageInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDescriptorImageInfo.byteLength = 0x18;
 
@@ -4991,7 +5593,7 @@ function VkWriteDescriptorSet(opts) {
   }
   
   this._pNext = null;
-  this._dstSet = null;
+  this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -5103,7 +5705,14 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     },
   "pImageInfo": {
     get() {
-    return this._pImageInfo;
+    if (this._pImageInfo === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkDescriptorImageInfo);
+      this._pImageInfo = array;
+      return this.pImageInfo;
+    } else {
+      return this._pImageInfo;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -5116,7 +5725,14 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     },
   "pBufferInfo": {
     get() {
-    return this._pBufferInfo;
+    if (this._pBufferInfo === null && this.memoryViewBigInt64[0x6] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x6];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkDescriptorBufferInfo);
+      this._pBufferInfo = array;
+      return this.pBufferInfo;
+    } else {
+      return this._pBufferInfo;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -5129,7 +5745,14 @@ Object.defineProperties(VkWriteDescriptorSet.prototype, {
     },
   "pTexelBufferView": {
     get() {
-    return this._pTexelBufferView;
+    if (this._pTexelBufferView === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkBufferView);
+      this._pTexelBufferView = array;
+      return this.pTexelBufferView;
+    } else {
+      return this._pTexelBufferView;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -5147,7 +5770,10 @@ VkWriteDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x40"], 0x0);
   
   this._pNext = null;
-  this._dstSet = null;
+  if (this._dstSet !== null) {
+    if (this.memoryBuffer !== this._dstSet.memoryBuffer) this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._dstSet.reset();
+  }
   
   
   
@@ -5229,16 +5855,7 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkWriteDescriptorSet.byteLength = 0x40;
 
@@ -5313,10 +5930,10 @@ function VkCopyDescriptorSet(opts) {
   }
   
   this._pNext = null;
-  this._srcSet = null;
+  this._srcSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
-  this._dstSet = null;
+  this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   
@@ -5433,10 +6050,16 @@ VkCopyDescriptorSet.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._srcSet = null;
+  if (this._srcSet !== null) {
+    if (this.memoryBuffer !== this._srcSet.memoryBuffer) this._srcSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._srcSet.reset();
+  }
   
   
-  this._dstSet = null;
+  if (this._dstSet !== null) {
+    if (this.memoryBuffer !== this._dstSet.memoryBuffer) this._dstSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._dstSet.reset();
+  }
   
   
   
@@ -5454,10 +6077,7 @@ VkCopyDescriptorSet.prototype.flush = function flush() {
 };
 
 VkCopyDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCopyDescriptorSet.byteLength = 0x38;
 
@@ -5668,10 +6288,7 @@ VkBufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkBufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferCreateInfo.byteLength = 0x38;
 
@@ -5739,7 +6356,7 @@ function VkBufferViewCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -5832,7 +6449,10 @@ VkBufferViewCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   
   
   
@@ -5850,10 +6470,7 @@ VkBufferViewCreateInfo.prototype.flush = function flush() {
 };
 
 VkBufferViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferViewCreateInfo.byteLength = 0x38;
 
@@ -5966,8 +6583,7 @@ VkImageSubresource.prototype.flush = function flush() {
 };
 
 VkImageSubresource.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkImageSubresource.byteLength = 0xC;
 
@@ -6075,8 +6691,7 @@ VkImageSubresourceLayers.prototype.flush = function flush() {
 };
 
 VkImageSubresourceLayers.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkImageSubresourceLayers.byteLength = 0x10;
 
@@ -6199,8 +6814,7 @@ VkImageSubresourceRange.prototype.flush = function flush() {
 };
 
 VkImageSubresourceRange.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkImageSubresourceRange.byteLength = 0x14;
 
@@ -6321,10 +6935,7 @@ VkMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryBarrier.byteLength = 0x18;
 
@@ -6381,7 +6992,7 @@ function VkBufferMemoryBarrier(opts) {
   
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   this.sType = 0x2C;
@@ -6494,7 +7105,10 @@ VkBufferMemoryBarrier.prototype.reset = function reset() {
   
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._buffer.reset();
+  }
   
   
   this.sType = 0x2C;
@@ -6511,10 +7125,7 @@ VkBufferMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkBufferMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferMemoryBarrier.byteLength = 0x38;
 
@@ -6591,7 +7202,7 @@ function VkImageMemoryBarrier(opts) {
   
   
   
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   this._subresourceRange = new VkImageSubresourceRange({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x30 });
   this.sType = 0x2D;
   if (typeof opts === "object") {
@@ -6737,7 +7348,10 @@ VkImageMemoryBarrier.prototype.reset = function reset() {
   
   
   
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._image.reset();
+  }
   if (this._subresourceRange !== null) {
     if (this.memoryBuffer !== this._subresourceRange.memoryBuffer) this._subresourceRange = new VkImageSubresourceRange({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x30 });
     else this._subresourceRange.reset();
@@ -6768,12 +7382,7 @@ VkImageMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkImageMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageMemoryBarrier.byteLength = 0x48;
 
@@ -7092,12 +7701,7 @@ VkImageCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageCreateInfo.byteLength = 0x58;
 
@@ -7246,8 +7850,7 @@ VkSubresourceLayout.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkSubresourceLayout.byteLength = 0x28;
 
@@ -7301,7 +7904,7 @@ function VkImageViewCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   this._components = new VkComponentMapping({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
@@ -7438,7 +8041,10 @@ VkImageViewCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._image.reset();
+  }
   
   
   if (this._components !== null) {
@@ -7487,14 +8093,7 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageViewCreateInfo.byteLength = 0x50;
 
@@ -7612,8 +8211,7 @@ VkBufferCopy.prototype.flush = function flush() {
 };
 
 VkBufferCopy.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkBufferCopy.byteLength = 0x18;
 
@@ -7660,7 +8258,7 @@ function VkSparseMemoryBind(opts) {
   }
   
   
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -7734,7 +8332,10 @@ VkSparseMemoryBind.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   
   
@@ -7746,8 +8347,7 @@ VkSparseMemoryBind.prototype.flush = function flush() {
 };
 
 VkSparseMemoryBind.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkSparseMemoryBind.byteLength = 0x28;
 
@@ -7803,7 +8403,7 @@ function VkSparseImageMemoryBind(opts) {
   this._subresource = new VkImageSubresource({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._offset = new VkOffset3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0xC });
   this._extent = new VkExtent3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
   
   
@@ -7921,7 +8521,10 @@ VkSparseImageMemoryBind.prototype.reset = function reset() {
     if (this.memoryBuffer !== this._extent.memoryBuffer) this._extent = new VkExtent3D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
     else this._extent.reset();
   }
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._memory.reset();
+  }
   
   
   
@@ -7969,14 +8572,7 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
 };
 
 VkSparseImageMemoryBind.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkSparseImageMemoryBind.byteLength = 0x40;
 
@@ -8031,7 +8627,7 @@ function VkSparseBufferMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8072,7 +8668,14 @@ Object.defineProperties(VkSparseBufferMemoryBindInfo.prototype, {
     },
   "pBinds": {
     get() {
-    return this._pBinds;
+    if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseMemoryBind);
+      this._pBinds = array;
+      return this.pBinds;
+    } else {
+      return this._pBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8088,7 +8691,10 @@ Object.defineProperties(VkSparseBufferMemoryBindInfo.prototype, {
 
 VkSparseBufferMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._buffer.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8120,10 +8726,7 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseBufferMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSparseBufferMemoryBindInfo.byteLength = 0x18;
 
@@ -8166,7 +8769,7 @@ function VkSparseImageOpaqueMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8207,7 +8810,14 @@ Object.defineProperties(VkSparseImageOpaqueMemoryBindInfo.prototype, {
     },
   "pBinds": {
     get() {
-    return this._pBinds;
+    if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseMemoryBind);
+      this._pBinds = array;
+      return this.pBinds;
+    } else {
+      return this._pBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8223,7 +8833,10 @@ Object.defineProperties(VkSparseImageOpaqueMemoryBindInfo.prototype, {
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._image.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8255,10 +8868,7 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSparseImageOpaqueMemoryBindInfo.byteLength = 0x18;
 
@@ -8301,7 +8911,7 @@ function VkSparseImageMemoryBindInfo(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8342,7 +8952,14 @@ Object.defineProperties(VkSparseImageMemoryBindInfo.prototype, {
     },
   "pBinds": {
     get() {
-    return this._pBinds;
+    if (this._pBinds === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.bindCount, VkSparseImageMemoryBind);
+      this._pBinds = array;
+      return this.pBinds;
+    } else {
+      return this._pBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8358,7 +8975,10 @@ Object.defineProperties(VkSparseImageMemoryBindInfo.prototype, {
 
 VkSparseImageMemoryBindInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._image.reset();
+  }
   
   this._pBinds = null;
   this._pBindsNative = null;
@@ -8390,10 +9010,7 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseImageMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSparseImageMemoryBindInfo.byteLength = 0x18;
 
@@ -8516,7 +9133,14 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     },
   "pWaitSemaphores": {
     get() {
-    return this._pWaitSemaphores;
+    if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
+      this._pWaitSemaphores = array;
+      return this.pWaitSemaphores;
+    } else {
+      return this._pWaitSemaphores;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8537,7 +9161,14 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     },
   "pBufferBinds": {
     get() {
-    return this._pBufferBinds;
+    if (this._pBufferBinds === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.bufferBindCount, VkSparseBufferMemoryBindInfo);
+      this._pBufferBinds = array;
+      return this.pBufferBinds;
+    } else {
+      return this._pBufferBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8558,7 +9189,14 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     },
   "pImageOpaqueBinds": {
     get() {
-    return this._pImageOpaqueBinds;
+    if (this._pImageOpaqueBinds === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.imageOpaqueBindCount, VkSparseImageOpaqueMemoryBindInfo);
+      this._pImageOpaqueBinds = array;
+      return this.pImageOpaqueBinds;
+    } else {
+      return this._pImageOpaqueBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8579,7 +9217,14 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     },
   "pImageBinds": {
     get() {
-    return this._pImageBinds;
+    if (this._pImageBinds === null && this.memoryViewBigInt64[0x9] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x9];
+      let array = decodeNativeArrayOfObjects(addr, this.imageBindCount, VkSparseImageMemoryBindInfo);
+      this._pImageBinds = array;
+      return this.pImageBinds;
+    } else {
+      return this._pImageBinds;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8600,7 +9245,14 @@ Object.defineProperties(VkBindSparseInfo.prototype, {
     },
   "pSignalSemaphores": {
     get() {
-    return this._pSignalSemaphores;
+    if (this._pSignalSemaphores === null && this.memoryViewBigInt64[0xB] !== BI0) {
+      let addr = this.memoryViewBigInt64[0xB];
+      let array = decodeNativeArrayOfObjects(addr, this.signalSemaphoreCount, VkSemaphore);
+      this._pSignalSemaphores = array;
+      return this.pSignalSemaphores;
+    } else {
+      return this._pSignalSemaphores;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -8742,20 +9394,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
 };
 
 VkBindSparseInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkBindSparseInfo.byteLength = 0x60;
 
@@ -9026,18 +9665,7 @@ VkImageCopy.prototype.flush = function flush() {
 };
 
 VkImageCopy.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageCopy.byteLength = 0x44;
 
@@ -9253,16 +9881,7 @@ VkImageBlit.prototype.flush = function flush() {
 };
 
 VkImageBlit.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageBlit.byteLength = 0x50;
 
@@ -9469,14 +10088,7 @@ VkBufferImageCopy.prototype.flush = function flush() {
 };
 
 VkBufferImageCopy.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkBufferImageCopy.byteLength = 0x38;
 
@@ -9723,18 +10335,7 @@ VkImageResolve.prototype.flush = function flush() {
 };
 
 VkImageResolve.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageResolve.byteLength = 0x44;
 
@@ -9890,10 +10491,7 @@ VkShaderModuleCreateInfo.prototype.flush = function flush() {
 };
 
 VkShaderModuleCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkShaderModuleCreateInfo.byteLength = 0x28;
 
@@ -9996,7 +10594,14 @@ Object.defineProperties(VkDescriptorSetLayoutBinding.prototype, {
     },
   "pImmutableSamplers": {
     get() {
-    return this._pImmutableSamplers;
+    if (this._pImmutableSamplers === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorCount, VkSampler);
+      this._pImmutableSamplers = array;
+      return this.pImmutableSamplers;
+    } else {
+      return this._pImmutableSamplers;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -10046,10 +10651,7 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
 };
 
 VkDescriptorSetLayoutBinding.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDescriptorSetLayoutBinding.byteLength = 0x18;
 
@@ -10170,7 +10772,14 @@ Object.defineProperties(VkDescriptorSetLayoutCreateInfo.prototype, {
     },
   "pBindings": {
     get() {
-    return this._pBindings;
+    if (this._pBindings === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.bindingCount, VkDescriptorSetLayoutBinding);
+      this._pBindings = array;
+      return this.pBindings;
+    } else {
+      return this._pBindings;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -10225,12 +10834,7 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorSetLayoutCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDescriptorSetLayoutCreateInfo.byteLength = 0x20;
 
@@ -10324,8 +10928,7 @@ VkDescriptorPoolSize.prototype.flush = function flush() {
 };
 
 VkDescriptorPoolSize.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDescriptorPoolSize.byteLength = 0x8;
 
@@ -10444,7 +11047,14 @@ Object.defineProperties(VkDescriptorPoolCreateInfo.prototype, {
     },
   "pPoolSizes": {
     get() {
-    return this._pPoolSizes;
+    if (this._pPoolSizes === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.poolSizeCount, VkDescriptorPoolSize);
+      this._pPoolSizes = array;
+      return this.pPoolSizes;
+    } else {
+      return this._pPoolSizes;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -10500,12 +11110,7 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDescriptorPoolCreateInfo.byteLength = 0x28;
 
@@ -10564,7 +11169,7 @@ function VkDescriptorSetAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._descriptorPool = null;
+  this._descriptorPool = new VkDescriptorPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this._pSetLayouts = null;
   this._pSetLayoutsNative = null;
@@ -10639,7 +11244,14 @@ Object.defineProperties(VkDescriptorSetAllocateInfo.prototype, {
     },
   "pSetLayouts": {
     get() {
-    return this._pSetLayouts;
+    if (this._pSetLayouts === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorSetCount, VkDescriptorSetLayout);
+      this._pSetLayouts = array;
+      return this.pSetLayouts;
+    } else {
+      return this._pSetLayouts;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -10657,7 +11269,10 @@ VkDescriptorSetAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._descriptorPool = null;
+  if (this._descriptorPool !== null) {
+    if (this.memoryBuffer !== this._descriptorPool.memoryBuffer) this._descriptorPool = new VkDescriptorPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._descriptorPool.reset();
+  }
   
   this._pSetLayouts = null;
   this._pSetLayoutsNative = null;
@@ -10694,12 +11309,7 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorSetAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDescriptorSetAllocateInfo.byteLength = 0x28;
 
@@ -10805,8 +11415,7 @@ VkSpecializationMapEntry.prototype.flush = function flush() {
 };
 
 VkSpecializationMapEntry.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkSpecializationMapEntry.byteLength = 0x10;
 
@@ -10875,7 +11484,14 @@ Object.defineProperties(VkSpecializationInfo.prototype, {
     },
   "pMapEntries": {
     get() {
-    return this._pMapEntries;
+    if (this._pMapEntries === null && this.memoryViewBigInt64[0x1] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x1];
+      let array = decodeNativeArrayOfObjects(addr, this.mapEntryCount, VkSpecializationMapEntry);
+      this._pMapEntries = array;
+      return this.pMapEntries;
+    } else {
+      return this._pMapEntries;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -10948,10 +11564,7 @@ VkSpecializationInfo.prototype.flush = function flush() {
 };
 
 VkSpecializationInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSpecializationInfo.byteLength = 0x20;
 
@@ -11002,7 +11615,7 @@ function VkPipelineShaderStageCreateInfo(opts) {
   this._pNext = null;
   
   
-  this._module = null;
+  this._module = new VkShaderModule({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this._pName = null;
   this._pSpecializationInfo = null;
   this.sType = 0x12;
@@ -11090,6 +11703,14 @@ Object.defineProperties(VkPipelineShaderStageCreateInfo.prototype, {
       let str = textDecoder.decode(this._pName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pName = buffer;
+        return this.pName;
+      }
       return null;
     }
     },
@@ -11106,7 +11727,15 @@ Object.defineProperties(VkPipelineShaderStageCreateInfo.prototype, {
     },
   "pSpecializationInfo": {
     get() {
-    return this._pSpecializationInfo;
+    if (this._pSpecializationInfo === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkSpecializationInfo.byteLength));
+      this._pSpecializationInfo = new VkSpecializationInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x5] = this._pSpecializationInfo.memoryAddress;
+      return this.pSpecializationInfo;
+    } else {
+      return this._pSpecializationInfo;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -11130,7 +11759,10 @@ VkPipelineShaderStageCreateInfo.prototype.reset = function reset() {
   this._pNext = null;
   
   
-  this._module = null;
+  if (this._module !== null) {
+    if (this.memoryBuffer !== this._module.memoryBuffer) this._module = new VkShaderModule({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._module.reset();
+  }
   this._pName = null;
   this._pSpecializationInfo = null;
   this.sType = 0x12;
@@ -11147,10 +11779,7 @@ VkPipelineShaderStageCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineShaderStageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineShaderStageCreateInfo.byteLength = 0x30;
 
@@ -11213,8 +11842,8 @@ function VkComputePipelineCreateInfo(opts) {
   this._pNext = null;
   
   this._stage = new VkPipelineShaderStageCreateInfo({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
-  this._layout = null;
-  this._basePipelineHandle = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x48 });
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x1D;
   if (typeof opts === "object") {
@@ -11342,8 +11971,14 @@ VkComputePipelineCreateInfo.prototype.reset = function reset() {
     if (this.memoryBuffer !== this._stage.memoryBuffer) this._stage = new VkPipelineShaderStageCreateInfo({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
     else this._stage.reset();
   }
-  this._layout = null;
-  this._basePipelineHandle = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x48 });
+    else this._layout.reset();
+  }
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x1D;
 };
@@ -11371,12 +12006,7 @@ VkComputePipelineCreateInfo.prototype.flush = function flush() {
 };
 
 VkComputePipelineCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkComputePipelineCreateInfo.byteLength = 0x60;
 
@@ -11489,8 +12119,7 @@ VkVertexInputBindingDescription.prototype.flush = function flush() {
 };
 
 VkVertexInputBindingDescription.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkVertexInputBindingDescription.byteLength = 0xC;
 
@@ -11598,8 +12227,7 @@ VkVertexInputAttributeDescription.prototype.flush = function flush() {
 };
 
 VkVertexInputAttributeDescription.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkVertexInputAttributeDescription.byteLength = 0x10;
 
@@ -11721,7 +12349,14 @@ Object.defineProperties(VkPipelineVertexInputStateCreateInfo.prototype, {
     },
   "pVertexBindingDescriptions": {
     get() {
-    return this._pVertexBindingDescriptions;
+    if (this._pVertexBindingDescriptions === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.vertexBindingDescriptionCount, VkVertexInputBindingDescription);
+      this._pVertexBindingDescriptions = array;
+      return this.pVertexBindingDescriptions;
+    } else {
+      return this._pVertexBindingDescriptions;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -11742,7 +12377,14 @@ Object.defineProperties(VkPipelineVertexInputStateCreateInfo.prototype, {
     },
   "pVertexAttributeDescriptions": {
     get() {
-    return this._pVertexAttributeDescriptions;
+    if (this._pVertexAttributeDescriptions === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.vertexAttributeDescriptionCount, VkVertexInputAttributeDescription);
+      this._pVertexAttributeDescriptions = array;
+      return this.pVertexAttributeDescriptions;
+    } else {
+      return this._pVertexAttributeDescriptions;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -11819,14 +12461,7 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineVertexInputStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineVertexInputStateCreateInfo.byteLength = 0x30;
 
@@ -11968,10 +12603,7 @@ VkPipelineInputAssemblyStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineInputAssemblyStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineInputAssemblyStateCreateInfo.byteLength = 0x20;
 
@@ -12110,10 +12742,7 @@ VkPipelineTessellationStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineTessellationStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineTessellationStateCreateInfo.byteLength = 0x18;
 
@@ -12239,7 +12868,14 @@ Object.defineProperties(VkPipelineViewportStateCreateInfo.prototype, {
     },
   "pViewports": {
     get() {
-    return this._pViewports;
+    if (this._pViewports === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewport);
+      this._pViewports = array;
+      return this.pViewports;
+    } else {
+      return this._pViewports;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -12260,7 +12896,14 @@ Object.defineProperties(VkPipelineViewportStateCreateInfo.prototype, {
     },
   "pScissors": {
     get() {
-    return this._pScissors;
+    if (this._pScissors === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.scissorCount, VkRect2D);
+      this._pScissors = array;
+      return this.pScissors;
+    } else {
+      return this._pScissors;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -12337,14 +12980,7 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineViewportStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportStateCreateInfo.byteLength = 0x30;
 
@@ -12596,10 +13232,7 @@ VkPipelineRasterizationStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineRasterizationStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationStateCreateInfo.byteLength = 0x40;
 
@@ -12837,10 +13470,7 @@ VkPipelineMultisampleStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineMultisampleStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineMultisampleStateCreateInfo.byteLength = 0x30;
 
@@ -13016,8 +13646,7 @@ VkPipelineColorBlendAttachmentState.prototype.flush = function flush() {
 };
 
 VkPipelineColorBlendAttachmentState.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkPipelineColorBlendAttachmentState.byteLength = 0x20;
 
@@ -13174,7 +13803,14 @@ Object.defineProperties(VkPipelineColorBlendStateCreateInfo.prototype, {
     },
   "pAttachments": {
     get() {
-    return this._pAttachments;
+    if (this._pAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkPipelineColorBlendAttachmentState);
+      this._pAttachments = array;
+      return this.pAttachments;
+    } else {
+      return this._pAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -13257,14 +13893,7 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineColorBlendStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineColorBlendStateCreateInfo.byteLength = 0x38;
 
@@ -13417,10 +14046,7 @@ VkPipelineDynamicStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineDynamicStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineDynamicStateCreateInfo.byteLength = 0x20;
 
@@ -13569,8 +14195,7 @@ VkStencilOpState.prototype.flush = function flush() {
 };
 
 VkStencilOpState.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkStencilOpState.byteLength = 0x1C;
 
@@ -13839,14 +14464,7 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineDepthStencilStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineDepthStencilStateCreateInfo.byteLength = 0x68;
 
@@ -13942,10 +14560,10 @@ function VkGraphicsPipelineCreateInfo(opts) {
   this._pDepthStencilState = null;
   this._pColorBlendState = null;
   this._pDynamicState = null;
-  this._layout = null;
-  this._renderPass = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x68 });
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x70 });
   
-  this._basePipelineHandle = null;
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x80 });
   
   this.sType = 0x1C;
   if (typeof opts === "object") {
@@ -14026,7 +14644,14 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pStages": {
     get() {
-    return this._pStages;
+    if (this._pStages === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.stageCount, VkPipelineShaderStageCreateInfo);
+      this._pStages = array;
+      return this.pStages;
+    } else {
+      return this._pStages;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14039,7 +14664,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pVertexInputState": {
     get() {
-    return this._pVertexInputState;
+    if (this._pVertexInputState === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineVertexInputStateCreateInfo.byteLength));
+      this._pVertexInputState = new VkPipelineVertexInputStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x4] = this._pVertexInputState.memoryAddress;
+      return this.pVertexInputState;
+    } else {
+      return this._pVertexInputState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14056,7 +14689,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pInputAssemblyState": {
     get() {
-    return this._pInputAssemblyState;
+    if (this._pInputAssemblyState === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineInputAssemblyStateCreateInfo.byteLength));
+      this._pInputAssemblyState = new VkPipelineInputAssemblyStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x5] = this._pInputAssemblyState.memoryAddress;
+      return this.pInputAssemblyState;
+    } else {
+      return this._pInputAssemblyState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14073,7 +14714,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pTessellationState": {
     get() {
-    return this._pTessellationState;
+    if (this._pTessellationState === null && this.memoryViewBigInt64[0x6] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x6];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineTessellationStateCreateInfo.byteLength));
+      this._pTessellationState = new VkPipelineTessellationStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x6] = this._pTessellationState.memoryAddress;
+      return this.pTessellationState;
+    } else {
+      return this._pTessellationState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14090,7 +14739,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pViewportState": {
     get() {
-    return this._pViewportState;
+    if (this._pViewportState === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineViewportStateCreateInfo.byteLength));
+      this._pViewportState = new VkPipelineViewportStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x7] = this._pViewportState.memoryAddress;
+      return this.pViewportState;
+    } else {
+      return this._pViewportState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14107,7 +14764,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pRasterizationState": {
     get() {
-    return this._pRasterizationState;
+    if (this._pRasterizationState === null && this.memoryViewBigInt64[0x8] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x8];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineRasterizationStateCreateInfo.byteLength));
+      this._pRasterizationState = new VkPipelineRasterizationStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x8] = this._pRasterizationState.memoryAddress;
+      return this.pRasterizationState;
+    } else {
+      return this._pRasterizationState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14124,7 +14789,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pMultisampleState": {
     get() {
-    return this._pMultisampleState;
+    if (this._pMultisampleState === null && this.memoryViewBigInt64[0x9] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x9];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineMultisampleStateCreateInfo.byteLength));
+      this._pMultisampleState = new VkPipelineMultisampleStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x9] = this._pMultisampleState.memoryAddress;
+      return this.pMultisampleState;
+    } else {
+      return this._pMultisampleState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14141,7 +14814,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pDepthStencilState": {
     get() {
-    return this._pDepthStencilState;
+    if (this._pDepthStencilState === null && this.memoryViewBigInt64[0xA] !== BI0) {
+      let addr = this.memoryViewBigInt64[0xA];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineDepthStencilStateCreateInfo.byteLength));
+      this._pDepthStencilState = new VkPipelineDepthStencilStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0xA] = this._pDepthStencilState.memoryAddress;
+      return this.pDepthStencilState;
+    } else {
+      return this._pDepthStencilState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14158,7 +14839,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pColorBlendState": {
     get() {
-    return this._pColorBlendState;
+    if (this._pColorBlendState === null && this.memoryViewBigInt64[0xB] !== BI0) {
+      let addr = this.memoryViewBigInt64[0xB];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineColorBlendStateCreateInfo.byteLength));
+      this._pColorBlendState = new VkPipelineColorBlendStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0xB] = this._pColorBlendState.memoryAddress;
+      return this.pColorBlendState;
+    } else {
+      return this._pColorBlendState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14175,7 +14864,15 @@ Object.defineProperties(VkGraphicsPipelineCreateInfo.prototype, {
     },
   "pDynamicState": {
     get() {
-    return this._pDynamicState;
+    if (this._pDynamicState === null && this.memoryViewBigInt64[0xC] !== BI0) {
+      let addr = this.memoryViewBigInt64[0xC];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineDynamicStateCreateInfo.byteLength));
+      this._pDynamicState = new VkPipelineDynamicStateCreateInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0xC] = this._pDynamicState.memoryAddress;
+      return this.pDynamicState;
+    } else {
+      return this._pDynamicState;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14277,10 +14974,19 @@ VkGraphicsPipelineCreateInfo.prototype.reset = function reset() {
   this._pDepthStencilState = null;
   this._pColorBlendState = null;
   this._pDynamicState = null;
-  this._layout = null;
-  this._renderPass = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x68 });
+    else this._layout.reset();
+  }
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x70 });
+    else this._renderPass.reset();
+  }
   
-  this._basePipelineHandle = null;
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x80 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x1C;
 };
@@ -14315,12 +15021,7 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
 };
 
 VkGraphicsPipelineCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkGraphicsPipelineCreateInfo.byteLength = 0x90;
 
@@ -14516,10 +15217,7 @@ VkPipelineCacheCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineCacheCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineCacheCreateInfo.byteLength = 0x28;
 
@@ -14624,8 +15322,7 @@ VkPushConstantRange.prototype.flush = function flush() {
 };
 
 VkPushConstantRange.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkPushConstantRange.byteLength = 0xC;
 
@@ -14727,7 +15424,14 @@ Object.defineProperties(VkPipelineLayoutCreateInfo.prototype, {
     },
   "pSetLayouts": {
     get() {
-    return this._pSetLayouts;
+    if (this._pSetLayouts === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.setLayoutCount, VkDescriptorSetLayout);
+      this._pSetLayouts = array;
+      return this.pSetLayouts;
+    } else {
+      return this._pSetLayouts;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14748,7 +15452,14 @@ Object.defineProperties(VkPipelineLayoutCreateInfo.prototype, {
     },
   "pPushConstantRanges": {
     get() {
-    return this._pPushConstantRanges;
+    if (this._pPushConstantRanges === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.pushConstantRangeCount, VkPushConstantRange);
+      this._pPushConstantRanges = array;
+      return this.pPushConstantRanges;
+    } else {
+      return this._pPushConstantRanges;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -14825,14 +15536,7 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineLayoutCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineLayoutCreateInfo.byteLength = 0x30;
 
@@ -15136,10 +15840,7 @@ VkSamplerCreateInfo.prototype.flush = function flush() {
 };
 
 VkSamplerCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSamplerCreateInfo.byteLength = 0x50;
 
@@ -15314,10 +16015,7 @@ VkCommandPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkCommandPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCommandPoolCreateInfo.byteLength = 0x18;
 
@@ -15368,7 +16066,7 @@ function VkCommandBufferAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._commandPool = null;
+  this._commandPool = new VkCommandPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x28;
@@ -15439,7 +16137,10 @@ VkCommandBufferAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._commandPool = null;
+  if (this._commandPool !== null) {
+    if (this.memoryBuffer !== this._commandPool.memoryBuffer) this._commandPool = new VkCommandPool({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._commandPool.reset();
+  }
   
   
   this.sType = 0x28;
@@ -15456,10 +16157,7 @@ VkCommandBufferAllocateInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCommandBufferAllocateInfo.byteLength = 0x20;
 
@@ -15514,9 +16212,9 @@ function VkCommandBufferInheritanceInfo(opts) {
   }
   
   this._pNext = null;
-  this._renderPass = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._framebuffer = null;
+  this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   
   
@@ -15640,9 +16338,15 @@ VkCommandBufferInheritanceInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._renderPass = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._renderPass.reset();
+  }
   
-  this._framebuffer = null;
+  if (this._framebuffer !== null) {
+    if (this.memoryBuffer !== this._framebuffer.memoryBuffer) this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._framebuffer.reset();
+  }
   
   
   
@@ -15660,10 +16364,7 @@ VkCommandBufferInheritanceInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferInheritanceInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCommandBufferInheritanceInfo.byteLength = 0x38;
 
@@ -15783,7 +16484,15 @@ Object.defineProperties(VkCommandBufferBeginInfo.prototype, {
     },
   "pInheritanceInfo": {
     get() {
-    return this._pInheritanceInfo;
+    if (this._pInheritanceInfo === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkCommandBufferInheritanceInfo.byteLength));
+      this._pInheritanceInfo = new VkCommandBufferInheritanceInfo({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x3] = this._pInheritanceInfo.memoryAddress;
+      return this.pInheritanceInfo;
+    } else {
+      return this._pInheritanceInfo;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -15821,10 +16530,7 @@ VkCommandBufferBeginInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCommandBufferBeginInfo.byteLength = 0x20;
 
@@ -15875,8 +16581,8 @@ function VkRenderPassBeginInfo(opts) {
   }
   
   this._pNext = null;
-  this._renderPass = null;
-  this._framebuffer = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this._renderArea = new VkRect2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   
   this._pClearValues = null;
@@ -15990,7 +16696,14 @@ Object.defineProperties(VkRenderPassBeginInfo.prototype, {
     },
   "pClearValues": {
     get() {
-    return this._pClearValues;
+    if (this._pClearValues === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.clearValueCount, VkClearValue);
+      this._pClearValues = array;
+      return this.pClearValues;
+    } else {
+      return this._pClearValues;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -16008,8 +16721,14 @@ VkRenderPassBeginInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x40"], 0x0);
   
   this._pNext = null;
-  this._renderPass = null;
-  this._framebuffer = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._renderPass.reset();
+  }
+  if (this._framebuffer !== null) {
+    if (this.memoryBuffer !== this._framebuffer.memoryBuffer) this._framebuffer = new VkFramebuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._framebuffer.reset();
+  }
   if (this._renderArea !== null) {
     if (this.memoryBuffer !== this._renderArea.memoryBuffer) this._renderArea = new VkRect2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
     else this._renderArea.reset();
@@ -16062,14 +16781,7 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassBeginInfo.byteLength = 0x40;
 
@@ -16171,8 +16883,7 @@ VkClearDepthStencilValue.prototype.flush = function flush() {
 };
 
 VkClearDepthStencilValue.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkClearDepthStencilValue.byteLength = 0x8;
 
@@ -16289,10 +17000,7 @@ VkClearAttachment.prototype.flush = function flush() {
 };
 
 VkClearAttachment.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkClearAttachment.byteLength = 0x18;
 
@@ -16453,8 +17161,7 @@ VkAttachmentDescription.prototype.flush = function flush() {
 };
 
 VkAttachmentDescription.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkAttachmentDescription.byteLength = 0x24;
 
@@ -16564,8 +17271,7 @@ VkAttachmentReference.prototype.flush = function flush() {
 };
 
 VkAttachmentReference.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkAttachmentReference.byteLength = 0x8;
 
@@ -16662,7 +17368,14 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     },
   "pInputAttachments": {
     get() {
-    return this._pInputAttachments;
+    if (this._pInputAttachments === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.inputAttachmentCount, VkAttachmentReference);
+      this._pInputAttachments = array;
+      return this.pInputAttachments;
+    } else {
+      return this._pInputAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -16683,7 +17396,14 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     },
   "pColorAttachments": {
     get() {
-    return this._pColorAttachments;
+    if (this._pColorAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference);
+      this._pColorAttachments = array;
+      return this.pColorAttachments;
+    } else {
+      return this._pColorAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -16696,7 +17416,14 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     },
   "pResolveAttachments": {
     get() {
-    return this._pResolveAttachments;
+    if (this._pResolveAttachments === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference);
+      this._pResolveAttachments = array;
+      return this.pResolveAttachments;
+    } else {
+      return this._pResolveAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -16709,7 +17436,15 @@ Object.defineProperties(VkSubpassDescription.prototype, {
     },
   "pDepthStencilAttachment": {
     get() {
-    return this._pDepthStencilAttachment;
+    if (this._pDepthStencilAttachment === null && this.memoryViewBigInt64[0x6] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x6];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkAttachmentReference.byteLength));
+      this._pDepthStencilAttachment = new VkAttachmentReference({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x6] = this._pDepthStencilAttachment.memoryAddress;
+      return this.pDepthStencilAttachment;
+    } else {
+      return this._pDepthStencilAttachment;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -16831,14 +17566,7 @@ VkSubpassDescription.prototype.flush = function flush() {
 };
 
 VkSubpassDescription.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkSubpassDescription.byteLength = 0x48;
 
@@ -17007,8 +17735,7 @@ VkSubpassDependency.prototype.flush = function flush() {
 };
 
 VkSubpassDependency.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkSubpassDependency.byteLength = 0x1C;
 
@@ -17149,7 +17876,14 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     },
   "pAttachments": {
     get() {
-    return this._pAttachments;
+    if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkAttachmentDescription);
+      this._pAttachments = array;
+      return this.pAttachments;
+    } else {
+      return this._pAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -17170,7 +17904,14 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     },
   "pSubpasses": {
     get() {
-    return this._pSubpasses;
+    if (this._pSubpasses === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.subpassCount, VkSubpassDescription);
+      this._pSubpasses = array;
+      return this.pSubpasses;
+    } else {
+      return this._pSubpasses;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -17191,7 +17932,14 @@ Object.defineProperties(VkRenderPassCreateInfo.prototype, {
     },
   "pDependencies": {
     get() {
-    return this._pDependencies;
+    if (this._pDependencies === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.dependencyCount, VkSubpassDependency);
+      this._pDependencies = array;
+      return this.pDependencies;
+    } else {
+      return this._pDependencies;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -17290,16 +18038,7 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassCreateInfo.byteLength = 0x40;
 
@@ -17425,10 +18164,7 @@ VkEventCreateInfo.prototype.flush = function flush() {
 };
 
 VkEventCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkEventCreateInfo.byteLength = 0x18;
 
@@ -17547,10 +18283,7 @@ VkFenceCreateInfo.prototype.flush = function flush() {
 };
 
 VkFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkFenceCreateInfo.byteLength = 0x18;
 
@@ -18217,8 +18950,7 @@ VkPhysicalDeviceFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkPhysicalDeviceFeatures.byteLength = 0xDC;
 
@@ -18527,8 +19259,7 @@ VkPhysicalDeviceSparseProperties.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x14), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x14), 0x0);};
 
 VkPhysicalDeviceSparseProperties.byteLength = 0x14;
 
@@ -19378,20 +20109,7 @@ VkPhysicalDeviceLimits.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x1F8), 0x0);
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x1F8), 0x0);};
 
 VkPhysicalDeviceLimits.byteLength = 0x1F8;
 
@@ -19922,10 +20640,7 @@ VkSemaphoreCreateInfo.prototype.flush = function flush() {
 };
 
 VkSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSemaphoreCreateInfo.byteLength = 0x18;
 
@@ -20062,10 +20777,7 @@ VkQueryPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkQueryPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkQueryPoolCreateInfo.byteLength = 0x20;
 
@@ -20125,7 +20837,7 @@ function VkFramebufferCreateInfo(opts) {
   
   this._pNext = null;
   
-  this._renderPass = null;
+  this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this._pAttachments = null;
   this._pAttachmentsNative = null;
@@ -20215,7 +20927,14 @@ Object.defineProperties(VkFramebufferCreateInfo.prototype, {
     },
   "pAttachments": {
     get() {
-    return this._pAttachments;
+    if (this._pAttachments === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkImageView);
+      this._pAttachments = array;
+      return this.pAttachments;
+    } else {
+      return this._pAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -20258,7 +20977,10 @@ VkFramebufferCreateInfo.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._renderPass = null;
+  if (this._renderPass !== null) {
+    if (this.memoryBuffer !== this._renderPass.memoryBuffer) this._renderPass = new VkRenderPass({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._renderPass.reset();
+  }
   
   this._pAttachments = null;
   this._pAttachmentsNative = null;
@@ -20298,12 +21020,7 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkFramebufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkFramebufferCreateInfo.byteLength = 0x40;
 
@@ -20433,8 +21150,7 @@ VkDrawIndirectCommand.prototype.flush = function flush() {
 };
 
 VkDrawIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDrawIndirectCommand.byteLength = 0x10;
 
@@ -20557,8 +21273,7 @@ VkDrawIndexedIndirectCommand.prototype.flush = function flush() {
 };
 
 VkDrawIndexedIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDrawIndexedIndirectCommand.byteLength = 0x14;
 
@@ -20661,8 +21376,7 @@ VkDispatchIndirectCommand.prototype.flush = function flush() {
 };
 
 VkDispatchIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDispatchIndirectCommand.byteLength = 0xC;
 
@@ -20781,7 +21495,14 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     },
   "pWaitSemaphores": {
     get() {
-    return this._pWaitSemaphores;
+    if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
+      this._pWaitSemaphores = array;
+      return this.pWaitSemaphores;
+    } else {
+      return this._pWaitSemaphores;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -20817,7 +21538,14 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     },
   "pCommandBuffers": {
     get() {
-    return this._pCommandBuffers;
+    if (this._pCommandBuffers === null && this.memoryViewBigInt64[0x6] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x6];
+      let array = decodeNativeArrayOfObjects(addr, this.commandBufferCount, VkCommandBuffer);
+      this._pCommandBuffers = array;
+      return this.pCommandBuffers;
+    } else {
+      return this._pCommandBuffers;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -20838,7 +21566,14 @@ Object.defineProperties(VkSubmitInfo.prototype, {
     },
   "pSignalSemaphores": {
     get() {
-    return this._pSignalSemaphores;
+    if (this._pSignalSemaphores === null && this.memoryViewBigInt64[0x8] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x8];
+      let array = decodeNativeArrayOfObjects(addr, this.signalSemaphoreCount, VkSemaphore);
+      this._pSignalSemaphores = array;
+      return this.pSignalSemaphores;
+    } else {
+      return this._pSignalSemaphores;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -20937,16 +21672,7 @@ VkSubmitInfo.prototype.flush = function flush() {
 };
 
 VkSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkSubmitInfo.byteLength = 0x48;
 
@@ -21013,7 +21739,7 @@ function VkDisplayPropertiesKHR(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._display = null;
+  this._display = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._displayName = null;
   this._physicalDimensions = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this._physicalResolution = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
@@ -21038,6 +21764,14 @@ Object.defineProperties(VkDisplayPropertiesKHR.prototype, {
       let str = textDecoder.decode(this._displayName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x1] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x1];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._displayName = buffer;
+        return this.displayName;
+      }
       return null;
     }
     },
@@ -21072,7 +21806,10 @@ Object.defineProperties(VkDisplayPropertiesKHR.prototype, {
 
 VkDisplayPropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
-  this._display = null;
+  if (this._display !== null) {
+    if (this.memoryBuffer !== this._display.memoryBuffer) this._display = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._display.reset();
+  }
   this._displayName = null;
   if (this._physicalDimensions !== null) {
     if (this.memoryBuffer !== this._physicalDimensions.memoryBuffer) this._physicalDimensions = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
@@ -21098,12 +21835,7 @@ VkDisplayPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkDisplayPropertiesKHR.byteLength = 0x30;
 
@@ -21160,7 +21892,7 @@ function VkDisplayPlanePropertiesKHR(opts) {
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
   }
-  this._currentDisplay = null;
+  this._currentDisplay = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   
   
   if (typeof opts === "object") {
@@ -21184,7 +21916,10 @@ Object.defineProperties(VkDisplayPlanePropertiesKHR.prototype, {
 
 VkDisplayPlanePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
-  this._currentDisplay = null;
+  if (this._currentDisplay !== null) {
+    if (this.memoryBuffer !== this._currentDisplay.memoryBuffer) this._currentDisplay = new VkDisplayKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._currentDisplay.reset();
+  }
   
   
 };
@@ -21199,8 +21934,7 @@ VkDisplayPlanePropertiesKHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x10), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x10), 0x0);};
 
 VkDisplayPlanePropertiesKHR.byteLength = 0x10;
 
@@ -21304,10 +22038,7 @@ VkDisplayModeParametersKHR.prototype.flush = function flush() {
 };
 
 VkDisplayModeParametersKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDisplayModeParametersKHR.byteLength = 0xC;
 
@@ -21342,7 +22073,7 @@ function VkDisplayModePropertiesKHR(opts) {
     this.memoryViewUint8 = new Uint8Array(this.memoryBuffer);
 
   }
-  this._displayMode = null;
+  this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
   this._parameters = new VkDisplayModeParametersKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
@@ -21366,7 +22097,10 @@ Object.defineProperties(VkDisplayModePropertiesKHR.prototype, {
 
 VkDisplayModePropertiesKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
-  this._displayMode = null;
+  if (this._displayMode !== null) {
+    if (this.memoryBuffer !== this._displayMode.memoryBuffer) this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
+    else this._displayMode.reset();
+  }
   if (this._parameters !== null) {
     if (this.memoryBuffer !== this._parameters.memoryBuffer) this._parameters = new VkDisplayModeParametersKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
     else this._parameters.reset();
@@ -21384,10 +22118,7 @@ VkDisplayModePropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkDisplayModePropertiesKHR.byteLength = 0x18;
 
@@ -21520,12 +22251,7 @@ VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplayModeCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDisplayModeCreateInfoKHR.byteLength = 0x20;
 
@@ -21682,24 +22408,7 @@ VkDisplayPlaneCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x44), 0x0);
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x44), 0x0);};
 
 VkDisplayPlaneCapabilitiesKHR.byteLength = 0x44;
 
@@ -21773,7 +22482,7 @@ function VkDisplaySurfaceCreateInfoKHR(opts) {
   
   this._pNext = null;
   
-  this._displayMode = null;
+  this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -21903,7 +22612,10 @@ VkDisplaySurfaceCreateInfoKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._displayMode = null;
+  if (this._displayMode !== null) {
+    if (this.memoryBuffer !== this._displayMode.memoryBuffer) this._displayMode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._displayMode.reset();
+  }
   
   
   
@@ -21939,12 +22651,7 @@ VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplaySurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDisplaySurfaceCreateInfoKHR.byteLength = 0x40;
 
@@ -22146,14 +22853,7 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplayPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkDisplayPresentInfoKHR.byteLength = 0x38;
 
@@ -22308,14 +23008,7 @@ VkSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x34), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x34), 0x0);};
 
 VkSurfaceCapabilitiesKHR.byteLength = 0x34;
 
@@ -22469,10 +23162,7 @@ VkWin32SurfaceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkWin32SurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkWin32SurfaceCreateInfoKHR.byteLength = 0x28;
 
@@ -22560,8 +23250,7 @@ VkSurfaceFormatKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x8), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x8), 0x0);};
 
 VkSurfaceFormatKHR.byteLength = 0x8;
 
@@ -22605,7 +23294,7 @@ function VkSwapchainCreateInfoKHR(opts) {
   
   this._pNext = null;
   
-  this._surface = null;
+  this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   
@@ -22619,7 +23308,7 @@ function VkSwapchainCreateInfoKHR(opts) {
   
   
   
-  this._oldSwapchain = null;
+  this._oldSwapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x60 });
   this.sType = 0x3B9ACDE8;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -22852,7 +23541,10 @@ VkSwapchainCreateInfoKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._surface = null;
+  if (this._surface !== null) {
+    if (this.memoryBuffer !== this._surface.memoryBuffer) this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._surface.reset();
+  }
   
   
   
@@ -22869,7 +23561,10 @@ VkSwapchainCreateInfoKHR.prototype.reset = function reset() {
   
   
   
-  this._oldSwapchain = null;
+  if (this._oldSwapchain !== null) {
+    if (this.memoryBuffer !== this._oldSwapchain.memoryBuffer) this._oldSwapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x60 });
+    else this._oldSwapchain.reset();
+  }
   this.sType = 0x3B9ACDE8;
 };
 
@@ -22896,12 +23591,7 @@ VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkSwapchainCreateInfoKHR.byteLength = 0x68;
 
@@ -23077,7 +23767,14 @@ Object.defineProperties(VkPresentInfoKHR.prototype, {
     },
   "pWaitSemaphores": {
     get() {
-    return this._pWaitSemaphores;
+    if (this._pWaitSemaphores === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.waitSemaphoreCount, VkSemaphore);
+      this._pWaitSemaphores = array;
+      return this.pWaitSemaphores;
+    } else {
+      return this._pWaitSemaphores;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -23098,7 +23795,14 @@ Object.defineProperties(VkPresentInfoKHR.prototype, {
     },
   "pSwapchains": {
     get() {
-    return this._pSwapchains;
+    if (this._pSwapchains === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkSwapchainKHR);
+      this._pSwapchains = array;
+      return this.pSwapchains;
+    } else {
+      return this._pSwapchains;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -23206,14 +23910,7 @@ VkPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkPresentInfoKHR.byteLength = 0x40;
 
@@ -23373,10 +24070,7 @@ VkDebugReportCallbackCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugReportCallbackCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugReportCallbackCreateInfoEXT.byteLength = 0x28;
 
@@ -23506,10 +24200,7 @@ VkValidationFlagsEXT.prototype.flush = function flush() {
 };
 
 VkValidationFlagsEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkValidationFlagsEXT.byteLength = 0x20;
 
@@ -23664,10 +24355,7 @@ VkValidationFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkValidationFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkValidationFeaturesEXT.byteLength = 0x30;
 
@@ -23781,10 +24469,7 @@ VkPipelineRasterizationStateRasterizationOrderAMD.prototype.flush = function flu
 };
 
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationStateRasterizationOrderAMD.byteLength = 0x18;
 
@@ -23885,6 +24570,14 @@ Object.defineProperties(VkDebugMarkerObjectNameInfoEXT.prototype, {
       let str = textDecoder.decode(this._pObjectName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pObjectName = buffer;
+        return this.pObjectName;
+      }
       return null;
     }
     },
@@ -23923,10 +24616,7 @@ VkDebugMarkerObjectNameInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugMarkerObjectNameInfoEXT.byteLength = 0x28;
 
@@ -24092,10 +24782,7 @@ VkDebugMarkerObjectTagInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugMarkerObjectTagInfoEXT.byteLength = 0x38;
 
@@ -24193,6 +24880,14 @@ Object.defineProperties(VkDebugMarkerMarkerInfoEXT.prototype, {
       let str = textDecoder.decode(this._pMarkerName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMarkerName = buffer;
+        return this.pMarkerName;
+      }
       return null;
     }
     },
@@ -24255,12 +24950,7 @@ VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerMarkerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDebugMarkerMarkerInfoEXT.byteLength = 0x28;
 
@@ -24368,10 +25058,7 @@ VkDedicatedAllocationImageCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationImageCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDedicatedAllocationImageCreateInfoNV.byteLength = 0x18;
 
@@ -24475,10 +25162,7 @@ VkDedicatedAllocationBufferCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationBufferCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDedicatedAllocationBufferCreateInfoNV.byteLength = 0x18;
 
@@ -24523,8 +25207,8 @@ function VkDedicatedAllocationMemoryAllocateInfoNV(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9B2F92;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -24593,8 +25277,14 @@ VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9B2F92;
 };
 
@@ -24609,10 +25299,7 @@ VkDedicatedAllocationMemoryAllocateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDedicatedAllocationMemoryAllocateInfoNV.byteLength = 0x20;
 
@@ -24713,10 +25400,7 @@ VkExternalImageFormatPropertiesNV.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkExternalImageFormatPropertiesNV.byteLength = 0x30;
 
@@ -24822,10 +25506,7 @@ VkExternalMemoryImageCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExternalMemoryImageCreateInfoNV.byteLength = 0x18;
 
@@ -24927,10 +25608,7 @@ VkExportMemoryAllocateInfoNV.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportMemoryAllocateInfoNV.byteLength = 0x18;
 
@@ -25044,10 +25722,7 @@ VkImportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
 };
 
 VkImportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportMemoryWin32HandleInfoNV.byteLength = 0x20;
 
@@ -25142,10 +25817,7 @@ VkExportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
 };
 
 VkExportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportMemoryWin32HandleInfoNV.byteLength = 0x20;
 
@@ -25239,7 +25911,14 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoNV.prototype, {
     },
   "pAcquireSyncs": {
     get() {
-    return this._pAcquireSyncs;
+    if (this._pAcquireSyncs === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.acquireCount, VkDeviceMemory);
+      this._pAcquireSyncs = array;
+      return this.pAcquireSyncs;
+    } else {
+      return this._pAcquireSyncs;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -25290,7 +25969,14 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoNV.prototype, {
     },
   "pReleaseSyncs": {
     get() {
-    return this._pReleaseSyncs;
+    if (this._pReleaseSyncs === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.releaseCount, VkDeviceMemory);
+      this._pReleaseSyncs = array;
+      return this.pReleaseSyncs;
+    } else {
+      return this._pReleaseSyncs;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -25384,14 +26070,7 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.byteLength = 0x48;
 
@@ -25519,10 +26198,7 @@ VkDeviceGeneratedCommandsFeaturesNVX.prototype.flush = function flush() {
 };
 
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGeneratedCommandsFeaturesNVX.byteLength = 0x18;
 
@@ -25670,10 +26346,7 @@ VkDeviceGeneratedCommandsLimitsNVX.prototype.flush = function flush() {
 };
 
 VkDeviceGeneratedCommandsLimitsNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGeneratedCommandsLimitsNVX.byteLength = 0x28;
 
@@ -25735,7 +26408,7 @@ function VkIndirectCommandsTokenNVX(opts) {
 
   }
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -25787,7 +26460,10 @@ Object.defineProperties(VkIndirectCommandsTokenNVX.prototype, {
 VkIndirectCommandsTokenNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
   
 };
@@ -25798,8 +26474,7 @@ VkIndirectCommandsTokenNVX.prototype.flush = function flush() {
 };
 
 VkIndirectCommandsTokenNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkIndirectCommandsTokenNVX.byteLength = 0x18;
 
@@ -25907,8 +26582,7 @@ VkIndirectCommandsLayoutTokenNVX.prototype.flush = function flush() {
 };
 
 VkIndirectCommandsLayoutTokenNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkIndirectCommandsLayoutTokenNVX.byteLength = 0x10;
 
@@ -26019,7 +26693,14 @@ Object.defineProperties(VkIndirectCommandsLayoutCreateInfoNVX.prototype, {
     },
   "pTokens": {
     get() {
-    return this._pTokens;
+    if (this._pTokens === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.tokenCount, VkIndirectCommandsLayoutTokenNVX);
+      this._pTokens = array;
+      return this.pTokens;
+    } else {
+      return this._pTokens;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -26075,12 +26756,7 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
 };
 
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkIndirectCommandsLayoutCreateInfoNVX.byteLength = 0x28;
 
@@ -26141,16 +26817,16 @@ function VkCmdProcessCommandsInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this._pIndirectCommandsTokens = null;
   this._pIndirectCommandsTokensNative = null;
   
-  this._targetCommandBuffer = null;
-  this._sequencesCountBuffer = null;
+  this._targetCommandBuffer = new VkCommandBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+  this._sequencesCountBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
   
-  this._sequencesIndexBuffer = null;
+  this._sequencesIndexBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x3B9C19F2;
   if (typeof opts === "object") {
@@ -26231,7 +26907,14 @@ Object.defineProperties(VkCmdProcessCommandsInfoNVX.prototype, {
     },
   "pIndirectCommandsTokens": {
     get() {
-    return this._pIndirectCommandsTokens;
+    if (this._pIndirectCommandsTokens === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.indirectCommandsTokenCount, VkIndirectCommandsTokenNVX);
+      this._pIndirectCommandsTokens = array;
+      return this.pIndirectCommandsTokens;
+    } else {
+      return this._pIndirectCommandsTokens;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -26326,16 +27009,31 @@ VkCmdProcessCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x60"], 0x0);
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  if (this._objectTable !== null) {
+    if (this.memoryBuffer !== this._objectTable.memoryBuffer) this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._objectTable.reset();
+  }
+  if (this._indirectCommandsLayout !== null) {
+    if (this.memoryBuffer !== this._indirectCommandsLayout.memoryBuffer) this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._indirectCommandsLayout.reset();
+  }
   
   this._pIndirectCommandsTokens = null;
   this._pIndirectCommandsTokensNative = null;
   
-  this._targetCommandBuffer = null;
-  this._sequencesCountBuffer = null;
+  if (this._targetCommandBuffer !== null) {
+    if (this.memoryBuffer !== this._targetCommandBuffer.memoryBuffer) this._targetCommandBuffer = new VkCommandBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._targetCommandBuffer.reset();
+  }
+  if (this._sequencesCountBuffer !== null) {
+    if (this.memoryBuffer !== this._sequencesCountBuffer.memoryBuffer) this._sequencesCountBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
+    else this._sequencesCountBuffer.reset();
+  }
   
-  this._sequencesIndexBuffer = null;
+  if (this._sequencesIndexBuffer !== null) {
+    if (this.memoryBuffer !== this._sequencesIndexBuffer.memoryBuffer) this._sequencesIndexBuffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._sequencesIndexBuffer.reset();
+  }
   
   this.sType = 0x3B9C19F2;
 };
@@ -26370,12 +27068,7 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
 };
 
 VkCmdProcessCommandsInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkCmdProcessCommandsInfoNVX.byteLength = 0x60;
 
@@ -26458,8 +27151,8 @@ function VkCmdReserveSpaceForCommandsInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9C19F3;
   if (typeof opts === "object") {
@@ -26538,8 +27231,14 @@ VkCmdReserveSpaceForCommandsInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._objectTable = null;
-  this._indirectCommandsLayout = null;
+  if (this._objectTable !== null) {
+    if (this.memoryBuffer !== this._objectTable.memoryBuffer) this._objectTable = new VkObjectTableNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._objectTable.reset();
+  }
+  if (this._indirectCommandsLayout !== null) {
+    if (this.memoryBuffer !== this._indirectCommandsLayout.memoryBuffer) this._indirectCommandsLayout = new VkIndirectCommandsLayoutNVX({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._indirectCommandsLayout.reset();
+  }
   
   this.sType = 0x3B9C19F3;
 };
@@ -26555,10 +27254,7 @@ VkCmdReserveSpaceForCommandsInfoNVX.prototype.flush = function flush() {
 };
 
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCmdReserveSpaceForCommandsInfoNVX.byteLength = 0x28;
 
@@ -26779,10 +27475,7 @@ VkObjectTableCreateInfoNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableCreateInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkObjectTableCreateInfoNVX.byteLength = 0x48;
 
@@ -26898,8 +27591,7 @@ VkObjectTableEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTableEntryNVX.byteLength = 0x8;
 
@@ -26940,7 +27632,7 @@ function VkObjectTablePipelineEntryNVX(opts) {
   }
   
   
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -26991,7 +27683,10 @@ VkObjectTablePipelineEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
   
   
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipeline.reset();
+  }
   
 };
 
@@ -27001,8 +27696,7 @@ VkObjectTablePipelineEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTablePipelineEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTablePipelineEntryNVX.byteLength = 0x10;
 
@@ -27047,8 +27741,8 @@ function VkObjectTableDescriptorSetEntryNVX(opts) {
   }
   
   
-  this._pipelineLayout = null;
-  this._descriptorSet = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+  this._descriptorSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -27117,8 +27811,14 @@ VkObjectTableDescriptorSetEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._pipelineLayout = null;
-  this._descriptorSet = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipelineLayout.reset();
+  }
+  if (this._descriptorSet !== null) {
+    if (this.memoryBuffer !== this._descriptorSet.memoryBuffer) this._descriptorSet = new VkDescriptorSet({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._descriptorSet.reset();
+  }
   
 };
 
@@ -27128,8 +27828,7 @@ VkObjectTableDescriptorSetEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableDescriptorSetEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTableDescriptorSetEntryNVX.byteLength = 0x18;
 
@@ -27178,7 +27877,7 @@ function VkObjectTableVertexBufferEntryNVX(opts) {
   }
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   if (typeof opts === "object") {
     if (opts.type !== void 0) this.type = opts.type;
@@ -27229,7 +27928,10 @@ VkObjectTableVertexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x10"], 0x0);
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
 };
 
@@ -27239,8 +27941,7 @@ VkObjectTableVertexBufferEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableVertexBufferEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTableVertexBufferEntryNVX.byteLength = 0x10;
 
@@ -27285,7 +27986,7 @@ function VkObjectTableIndexBufferEntryNVX(opts) {
   }
   
   
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -27346,7 +28047,10 @@ VkObjectTableIndexBufferEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._buffer.reset();
+  }
   
   
 };
@@ -27357,8 +28061,7 @@ VkObjectTableIndexBufferEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableIndexBufferEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTableIndexBufferEntryNVX.byteLength = 0x18;
 
@@ -27407,7 +28110,7 @@ function VkObjectTablePushConstantEntryNVX(opts) {
   }
   
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
   
   
   if (typeof opts === "object") {
@@ -27468,7 +28171,10 @@ VkObjectTablePushConstantEntryNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x8 });
+    else this._pipelineLayout.reset();
+  }
   
   
 };
@@ -27479,8 +28185,7 @@ VkObjectTablePushConstantEntryNVX.prototype.flush = function flush() {
 };
 
 VkObjectTablePushConstantEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkObjectTablePushConstantEntryNVX.byteLength = 0x18;
 
@@ -27673,12 +28378,7 @@ VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFeatures2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceFeatures2.byteLength = 0xF0;
 
@@ -27867,12 +28567,7 @@ VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFeatures2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceFeatures2KHR.byteLength = 0xF0;
 
@@ -28025,12 +28720,7 @@ VkPhysicalDeviceProperties2.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x348), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x348), 0x0);};
 
 VkPhysicalDeviceProperties2.byteLength = 0x348;
 
@@ -28183,12 +28873,7 @@ VkPhysicalDeviceProperties2KHR.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x348), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x348), 0x0);};
 
 VkPhysicalDeviceProperties2KHR.byteLength = 0x348;
 
@@ -28309,12 +28994,7 @@ VkFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkFormatProperties2.byteLength = 0x20;
 
@@ -28435,12 +29115,7 @@ VkFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkFormatProperties2KHR.byteLength = 0x20;
 
@@ -28565,12 +29240,7 @@ VkImageFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkImageFormatProperties2.byteLength = 0x30;
 
@@ -28695,12 +29365,7 @@ VkImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkImageFormatProperties2KHR.byteLength = 0x30;
 
@@ -28866,10 +29531,7 @@ VkPhysicalDeviceImageFormatInfo2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageFormatInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceImageFormatInfo2.byteLength = 0x28;
 
@@ -29051,10 +29713,7 @@ VkPhysicalDeviceImageFormatInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceImageFormatInfo2KHR.byteLength = 0x28;
 
@@ -29191,12 +29850,7 @@ VkQueueFamilyProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkQueueFamilyProperties2.byteLength = 0x28;
 
@@ -29317,12 +29971,7 @@ VkQueueFamilyProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkQueueFamilyProperties2KHR.byteLength = 0x28;
 
@@ -29443,12 +30092,7 @@ VkPhysicalDeviceMemoryProperties2.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x218), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x218), 0x0);};
 
 VkPhysicalDeviceMemoryProperties2.byteLength = 0x218;
 
@@ -29569,12 +30213,7 @@ VkPhysicalDeviceMemoryProperties2KHR.prototype.reflect = function reflect(memory
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x218), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x218), 0x0);};
 
 VkPhysicalDeviceMemoryProperties2KHR.byteLength = 0x218;
 
@@ -29679,12 +30318,7 @@ VkSparseImageFormatProperties2.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkSparseImageFormatProperties2.byteLength = 0x28;
 
@@ -29789,12 +30423,7 @@ VkSparseImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkSparseImageFormatProperties2KHR.byteLength = 0x28;
 
@@ -29940,10 +30569,7 @@ VkPhysicalDeviceSparseImageFormatInfo2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSparseImageFormatInfo2.byteLength = 0x28;
 
@@ -30105,10 +30731,7 @@ VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.byteLength = 0x28;
 
@@ -30228,10 +30851,7 @@ VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.reflect = function reflect
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDevicePushDescriptorPropertiesKHR.byteLength = 0x18;
 
@@ -30335,8 +30955,7 @@ VkConformanceVersionKHR.prototype.flush = function flush() {
 };
 
 VkConformanceVersionKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkConformanceVersionKHR.byteLength = 0x4;
 
@@ -30470,12 +31089,7 @@ VkPhysicalDeviceDriverPropertiesKHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x218), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x218), 0x0);};
 
 VkPhysicalDeviceDriverPropertiesKHR.byteLength = 0x218;
 
@@ -30574,7 +31188,14 @@ Object.defineProperties(VkPresentRegionsKHR.prototype, {
     },
   "pRegions": {
     get() {
-    return this._pRegions;
+    if (this._pRegions === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkPresentRegionKHR);
+      this._pRegions = array;
+      return this.pRegions;
+    } else {
+      return this._pRegions;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -30628,12 +31249,7 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
 };
 
 VkPresentRegionsKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPresentRegionsKHR.byteLength = 0x20;
 
@@ -30700,7 +31316,14 @@ Object.defineProperties(VkPresentRegionKHR.prototype, {
     },
   "pRectangles": {
     get() {
-    return this._pRectangles;
+    if (this._pRectangles === null && this.memoryViewBigInt64[0x1] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x1];
+      let array = decodeNativeArrayOfObjects(addr, this.rectangleCount, VkRectLayerKHR);
+      this._pRectangles = array;
+      return this.pRectangles;
+    } else {
+      return this._pRectangles;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -30747,10 +31370,7 @@ VkPresentRegionKHR.prototype.flush = function flush() {
 };
 
 VkPresentRegionKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPresentRegionKHR.byteLength = 0x10;
 
@@ -30889,12 +31509,7 @@ VkRectLayerKHR.prototype.flush = function flush() {
 };
 
 VkRectLayerKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRectLayerKHR.byteLength = 0x14;
 
@@ -31009,10 +31624,7 @@ VkPhysicalDeviceVariablePointersFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointersFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVariablePointersFeatures.byteLength = 0x18;
 
@@ -31131,10 +31743,7 @@ VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointersFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVariablePointersFeaturesKHR.byteLength = 0x18;
 
@@ -31253,10 +31862,7 @@ VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.byteLength = 0x18;
 
@@ -31375,10 +31981,7 @@ VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointerFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVariablePointerFeatures.byteLength = 0x18;
 
@@ -31469,8 +32072,7 @@ VkExternalMemoryProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0xC), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0xC), 0x0);};
 
 VkExternalMemoryProperties.byteLength = 0xC;
 
@@ -31557,8 +32159,7 @@ VkExternalMemoryPropertiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0xC), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0xC), 0x0);};
 
 VkExternalMemoryPropertiesKHR.byteLength = 0xC;
 
@@ -31660,10 +32261,7 @@ VkPhysicalDeviceExternalImageFormatInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalImageFormatInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalImageFormatInfo.byteLength = 0x18;
 
@@ -31765,10 +32363,7 @@ VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.byteLength = 0x18;
 
@@ -31873,12 +32468,7 @@ VkExternalImageFormatProperties.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalImageFormatProperties.byteLength = 0x20;
 
@@ -31983,12 +32573,7 @@ VkExternalImageFormatPropertiesKHR.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalImageFormatPropertiesKHR.byteLength = 0x20;
 
@@ -32112,10 +32697,7 @@ VkPhysicalDeviceExternalBufferInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalBufferInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalBufferInfo.byteLength = 0x20;
 
@@ -32247,10 +32829,7 @@ VkPhysicalDeviceExternalBufferInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalBufferInfoKHR.byteLength = 0x20;
 
@@ -32363,12 +32942,7 @@ VkExternalBufferProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalBufferProperties.byteLength = 0x20;
 
@@ -32473,12 +33047,7 @@ VkExternalBufferPropertiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalBufferPropertiesKHR.byteLength = 0x20;
 
@@ -32656,16 +33225,7 @@ VkPhysicalDeviceIDProperties.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkPhysicalDeviceIDProperties.byteLength = 0x40;
 
@@ -32859,16 +33419,7 @@ VkPhysicalDeviceIDPropertiesKHR.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkPhysicalDeviceIDPropertiesKHR.byteLength = 0x40;
 
@@ -32986,10 +33537,7 @@ VkExternalMemoryImageCreateInfo.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExternalMemoryImageCreateInfo.byteLength = 0x18;
 
@@ -33091,10 +33639,7 @@ VkExternalMemoryImageCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExternalMemoryImageCreateInfoKHR.byteLength = 0x18;
 
@@ -33196,10 +33741,7 @@ VkExternalMemoryBufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkExternalMemoryBufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExternalMemoryBufferCreateInfo.byteLength = 0x18;
 
@@ -33301,10 +33843,7 @@ VkExternalMemoryBufferCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExternalMemoryBufferCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExternalMemoryBufferCreateInfoKHR.byteLength = 0x18;
 
@@ -33406,10 +33945,7 @@ VkExportMemoryAllocateInfo.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportMemoryAllocateInfo.byteLength = 0x18;
 
@@ -33511,10 +34047,7 @@ VkExportMemoryAllocateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportMemoryAllocateInfoKHR.byteLength = 0x18;
 
@@ -33613,6 +34146,14 @@ Object.defineProperties(VkImportMemoryWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -33651,10 +34192,7 @@ VkImportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportMemoryWin32HandleInfoKHR.byteLength = 0x28;
 
@@ -33740,6 +34278,14 @@ Object.defineProperties(VkExportMemoryWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -33776,10 +34322,7 @@ VkExportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportMemoryWin32HandleInfoKHR.byteLength = 0x28;
 
@@ -33883,10 +34426,7 @@ VkMemoryWin32HandlePropertiesKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryWin32HandlePropertiesKHR.byteLength = 0x18;
 
@@ -33931,7 +34471,7 @@ function VkMemoryGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BE72B;
   if (typeof opts === "object") {
@@ -33992,7 +34532,10 @@ VkMemoryGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9BE72B;
 };
@@ -34008,10 +34551,7 @@ VkMemoryGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryGetWin32HandleInfoKHR.byteLength = 0x20;
 
@@ -34128,10 +34668,7 @@ VkImportMemoryFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportMemoryFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportMemoryFdInfoKHR.byteLength = 0x18;
 
@@ -34239,10 +34776,7 @@ VkMemoryFdPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryFdPropertiesKHR.byteLength = 0x18;
 
@@ -34287,7 +34821,7 @@ function VkMemoryGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._memory = null;
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BEB12;
   if (typeof opts === "object") {
@@ -34348,7 +34882,10 @@ VkMemoryGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._memory = null;
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9BEB12;
 };
@@ -34364,10 +34901,7 @@ VkMemoryGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryGetFdInfoKHR.byteLength = 0x20;
 
@@ -34469,7 +35003,14 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype, {
     },
   "pAcquireSyncs": {
     get() {
-    return this._pAcquireSyncs;
+    if (this._pAcquireSyncs === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.acquireCount, VkDeviceMemory);
+      this._pAcquireSyncs = array;
+      return this.pAcquireSyncs;
+    } else {
+      return this._pAcquireSyncs;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -34520,7 +35061,14 @@ Object.defineProperties(VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype, {
     },
   "pReleaseSyncs": {
     get() {
-    return this._pReleaseSyncs;
+    if (this._pReleaseSyncs === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.releaseCount, VkDeviceMemory);
+      this._pReleaseSyncs = array;
+      return this.pReleaseSyncs;
+    } else {
+      return this._pReleaseSyncs;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -34614,14 +35162,7 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.byteLength = 0x48;
 
@@ -34747,10 +35288,7 @@ VkPhysicalDeviceExternalSemaphoreInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalSemaphoreInfo.byteLength = 0x18;
 
@@ -34852,10 +35390,7 @@ VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.byteLength = 0x18;
 
@@ -34971,10 +35506,7 @@ VkExternalSemaphoreProperties.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalSemaphoreProperties.byteLength = 0x20;
 
@@ -35098,10 +35630,7 @@ VkExternalSemaphorePropertiesKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalSemaphorePropertiesKHR.byteLength = 0x20;
 
@@ -35211,10 +35740,7 @@ VkExportSemaphoreCreateInfo.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportSemaphoreCreateInfo.byteLength = 0x18;
 
@@ -35316,10 +35842,7 @@ VkExportSemaphoreCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportSemaphoreCreateInfoKHR.byteLength = 0x18;
 
@@ -35364,7 +35887,7 @@ function VkImportSemaphoreWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -35447,6 +35970,14 @@ Object.defineProperties(VkImportSemaphoreWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -35468,7 +35999,10 @@ VkImportSemaphoreWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   
   
@@ -35487,10 +36021,7 @@ VkImportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportSemaphoreWin32HandleInfoKHR.byteLength = 0x30;
 
@@ -35584,6 +36115,14 @@ Object.defineProperties(VkExportSemaphoreWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -35620,10 +36159,7 @@ VkExportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportSemaphoreWin32HandleInfoKHR.byteLength = 0x28;
 
@@ -35774,10 +36310,7 @@ VkD3D12FenceSubmitInfoKHR.prototype.flush = function flush() {
 };
 
 VkD3D12FenceSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkD3D12FenceSubmitInfoKHR.byteLength = 0x30;
 
@@ -35834,7 +36367,7 @@ function VkSemaphoreGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BFAB3;
   if (typeof opts === "object") {
@@ -35895,7 +36428,10 @@ VkSemaphoreGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   this.sType = 0x3B9BFAB3;
 };
@@ -35911,10 +36447,7 @@ VkSemaphoreGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkSemaphoreGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSemaphoreGetWin32HandleInfoKHR.byteLength = 0x20;
 
@@ -35963,7 +36496,7 @@ function VkImportSemaphoreFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -36044,7 +36577,10 @@ VkImportSemaphoreFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   
   
@@ -36062,10 +36598,7 @@ VkImportSemaphoreFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportSemaphoreFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportSemaphoreFdInfoKHR.byteLength = 0x28;
 
@@ -36122,7 +36655,7 @@ function VkSemaphoreGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._semaphore = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BFE99;
   if (typeof opts === "object") {
@@ -36183,7 +36716,10 @@ VkSemaphoreGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._semaphore = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._semaphore.reset();
+  }
   
   this.sType = 0x3B9BFE99;
 };
@@ -36199,10 +36735,7 @@ VkSemaphoreGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkSemaphoreGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSemaphoreGetFdInfoKHR.byteLength = 0x20;
 
@@ -36308,10 +36841,7 @@ VkPhysicalDeviceExternalFenceInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalFenceInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalFenceInfo.byteLength = 0x18;
 
@@ -36413,10 +36943,7 @@ VkPhysicalDeviceExternalFenceInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExternalFenceInfoKHR.byteLength = 0x18;
 
@@ -36532,10 +37059,7 @@ VkExternalFenceProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalFenceProperties.byteLength = 0x20;
 
@@ -36659,10 +37183,7 @@ VkExternalFencePropertiesKHR.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkExternalFencePropertiesKHR.byteLength = 0x20;
 
@@ -36772,10 +37293,7 @@ VkExportFenceCreateInfo.prototype.flush = function flush() {
 };
 
 VkExportFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportFenceCreateInfo.byteLength = 0x18;
 
@@ -36877,10 +37395,7 @@ VkExportFenceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportFenceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportFenceCreateInfoKHR.byteLength = 0x18;
 
@@ -36925,7 +37440,7 @@ function VkImportFenceWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -37008,6 +37523,14 @@ Object.defineProperties(VkImportFenceWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -37029,7 +37552,10 @@ VkImportFenceWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   
   
@@ -37048,10 +37574,7 @@ VkImportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportFenceWin32HandleInfoKHR.byteLength = 0x30;
 
@@ -37145,6 +37668,14 @@ Object.defineProperties(VkExportFenceWin32HandleInfoKHR.prototype, {
       let str = textDecoder.decode(this._name);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._name = buffer;
+        return this.name;
+      }
       return null;
     }
     },
@@ -37181,10 +37712,7 @@ VkExportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkExportFenceWin32HandleInfoKHR.byteLength = 0x28;
 
@@ -37229,7 +37757,7 @@ function VkFenceGetWin32HandleInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9C8752;
   if (typeof opts === "object") {
@@ -37290,7 +37818,10 @@ VkFenceGetWin32HandleInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9C8752;
 };
@@ -37306,10 +37837,7 @@ VkFenceGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkFenceGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkFenceGetWin32HandleInfoKHR.byteLength = 0x20;
 
@@ -37358,7 +37886,7 @@ function VkImportFenceFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -37439,7 +37967,10 @@ VkImportFenceFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   
   
@@ -37457,10 +37988,7 @@ VkImportFenceFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportFenceFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportFenceFdInfoKHR.byteLength = 0x28;
 
@@ -37517,7 +38045,7 @@ function VkFenceGetFdInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._fence = null;
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9C8B39;
   if (typeof opts === "object") {
@@ -37578,7 +38106,10 @@ VkFenceGetFdInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._fence = null;
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9C8B39;
 };
@@ -37594,10 +38125,7 @@ VkFenceGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkFenceGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkFenceGetFdInfoKHR.byteLength = 0x20;
 
@@ -37727,10 +38255,7 @@ VkPhysicalDeviceMultiviewFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMultiviewFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceMultiviewFeatures.byteLength = 0x20;
 
@@ -37864,10 +38389,7 @@ VkPhysicalDeviceMultiviewFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceMultiviewFeaturesKHR.byteLength = 0x20;
 
@@ -37986,10 +38508,7 @@ VkPhysicalDeviceMultiviewProperties.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceMultiviewProperties.byteLength = 0x18;
 
@@ -38104,10 +38623,7 @@ VkPhysicalDeviceMultiviewPropertiesKHR.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceMultiviewPropertiesKHR.byteLength = 0x18;
 
@@ -38291,10 +38807,7 @@ VkRenderPassMultiviewCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassMultiviewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkRenderPassMultiviewCreateInfo.byteLength = 0x40;
 
@@ -38494,10 +39007,7 @@ VkRenderPassMultiviewCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkRenderPassMultiviewCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkRenderPassMultiviewCreateInfoKHR.byteLength = 0x40;
 
@@ -38700,16 +39210,7 @@ VkSurfaceCapabilities2EXT.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x48), 0x0);
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x48), 0x0);};
 
 VkSurfaceCapabilities2EXT.byteLength = 0x48;
 
@@ -38851,10 +39352,7 @@ VkDisplayPowerInfoEXT.prototype.flush = function flush() {
 };
 
 VkDisplayPowerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDisplayPowerInfoEXT.byteLength = 0x18;
 
@@ -38956,10 +39454,7 @@ VkDeviceEventInfoEXT.prototype.flush = function flush() {
 };
 
 VkDeviceEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceEventInfoEXT.byteLength = 0x18;
 
@@ -39061,10 +39556,7 @@ VkDisplayEventInfoEXT.prototype.flush = function flush() {
 };
 
 VkDisplayEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDisplayEventInfoEXT.byteLength = 0x18;
 
@@ -39166,10 +39658,7 @@ VkSwapchainCounterCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkSwapchainCounterCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSwapchainCounterCreateInfoEXT.byteLength = 0x18;
 
@@ -39217,7 +39706,7 @@ function VkPhysicalDeviceGroupProperties(opts) {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -39267,7 +39756,12 @@ VkPhysicalDeviceGroupProperties.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  if (this._physicalDevices !== null) {
+    let array = this._physicalDevices;
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii].reset();
+    };
+  };
   
   this.sType = 0x3B9BDB70;
 };
@@ -39287,12 +39781,7 @@ VkPhysicalDeviceGroupProperties.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x120), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x120), 0x0);};
 
 VkPhysicalDeviceGroupProperties.byteLength = 0x120;
 
@@ -39348,7 +39837,7 @@ function VkPhysicalDeviceGroupPropertiesKHR(opts) {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -39398,7 +39887,12 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reset = function reset() {
   
   this._pNext = null;
   
-  this._physicalDevices = null;
+  if (this._physicalDevices !== null) {
+    let array = this._physicalDevices;
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii].reset();
+    };
+  };
   
   this.sType = 0x3B9BDB70;
 };
@@ -39418,12 +39912,7 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x120), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x120), 0x0);};
 
 VkPhysicalDeviceGroupPropertiesKHR.byteLength = 0x120;
 
@@ -39546,10 +40035,7 @@ VkMemoryAllocateFlagsInfo.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateFlagsInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryAllocateFlagsInfo.byteLength = 0x18;
 
@@ -39668,10 +40154,7 @@ VkMemoryAllocateFlagsInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateFlagsInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryAllocateFlagsInfoKHR.byteLength = 0x18;
 
@@ -39722,8 +40205,8 @@ function VkBindBufferMemoryInfo(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F48;
   if (typeof opts === "object") {
@@ -39819,8 +40302,14 @@ VkBindBufferMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F48;
 };
@@ -39836,10 +40325,7 @@ VkBindBufferMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindBufferMemoryInfo.byteLength = 0x28;
 
@@ -39894,8 +40380,8 @@ function VkBindBufferMemoryInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F48;
   if (typeof opts === "object") {
@@ -39991,8 +40477,14 @@ VkBindBufferMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
-  this._memory = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F48;
 };
@@ -40008,10 +40500,7 @@ VkBindBufferMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindBufferMemoryInfoKHR.byteLength = 0x28;
 
@@ -40141,10 +40630,7 @@ VkBindBufferMemoryDeviceGroupInfo.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindBufferMemoryDeviceGroupInfo.byteLength = 0x20;
 
@@ -40270,10 +40756,7 @@ VkBindBufferMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindBufferMemoryDeviceGroupInfoKHR.byteLength = 0x20;
 
@@ -40324,8 +40807,8 @@ function VkBindImageMemoryInfo(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F49;
   if (typeof opts === "object") {
@@ -40423,8 +40906,14 @@ VkBindImageMemoryInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F49;
 };
@@ -40440,10 +40929,7 @@ VkBindImageMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindImageMemoryInfo.byteLength = 0x28;
 
@@ -40498,8 +40984,8 @@ function VkBindImageMemoryInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   this.sType = 0x3B9D2F49;
   if (typeof opts === "object") {
@@ -40597,8 +41083,14 @@ VkBindImageMemoryInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._memory = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   this.sType = 0x3B9D2F49;
 };
@@ -40614,10 +41106,7 @@ VkBindImageMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindImageMemoryInfoKHR.byteLength = 0x28;
 
@@ -40739,7 +41228,14 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfo.prototype, {
     },
   "pSplitInstanceBindRegions": {
     get() {
-    return this._pSplitInstanceBindRegions;
+    if (this._pSplitInstanceBindRegions === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.splitInstanceBindRegionCount, VkRect2D);
+      this._pSplitInstanceBindRegions = array;
+      return this.pSplitInstanceBindRegions;
+    } else {
+      return this._pSplitInstanceBindRegions;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -40795,12 +41291,7 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkBindImageMemoryDeviceGroupInfo.byteLength = 0x30;
 
@@ -40926,7 +41417,14 @@ Object.defineProperties(VkBindImageMemoryDeviceGroupInfoKHR.prototype, {
     },
   "pSplitInstanceBindRegions": {
     get() {
-    return this._pSplitInstanceBindRegions;
+    if (this._pSplitInstanceBindRegions === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.splitInstanceBindRegionCount, VkRect2D);
+      this._pSplitInstanceBindRegions = array;
+      return this.pSplitInstanceBindRegions;
+    } else {
+      return this._pSplitInstanceBindRegions;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -40982,12 +41480,7 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkBindImageMemoryDeviceGroupInfoKHR.byteLength = 0x30;
 
@@ -41096,7 +41589,14 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfo.prototype, {
     },
   "pDeviceRenderAreas": {
     get() {
-    return this._pDeviceRenderAreas;
+    if (this._pDeviceRenderAreas === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.deviceRenderAreaCount, VkRect2D);
+      this._pDeviceRenderAreas = array;
+      return this.pDeviceRenderAreas;
+    } else {
+      return this._pDeviceRenderAreas;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -41151,12 +41651,7 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDeviceGroupRenderPassBeginInfo.byteLength = 0x20;
 
@@ -41261,7 +41756,14 @@ Object.defineProperties(VkDeviceGroupRenderPassBeginInfoKHR.prototype, {
     },
   "pDeviceRenderAreas": {
     get() {
-    return this._pDeviceRenderAreas;
+    if (this._pDeviceRenderAreas === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.deviceRenderAreaCount, VkRect2D);
+      this._pDeviceRenderAreas = array;
+      return this.pDeviceRenderAreas;
+    } else {
+      return this._pDeviceRenderAreas;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -41316,12 +41818,7 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDeviceGroupRenderPassBeginInfoKHR.byteLength = 0x20;
 
@@ -41433,10 +41930,7 @@ VkDeviceGroupCommandBufferBeginInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupCommandBufferBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupCommandBufferBeginInfo.byteLength = 0x18;
 
@@ -41540,10 +42034,7 @@ VkDeviceGroupCommandBufferBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupCommandBufferBeginInfoKHR.byteLength = 0x18;
 
@@ -41723,10 +42214,7 @@ VkDeviceGroupSubmitInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupSubmitInfo.byteLength = 0x40;
 
@@ -41926,10 +42414,7 @@ VkDeviceGroupSubmitInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupSubmitInfoKHR.byteLength = 0x40;
 
@@ -42064,10 +42549,7 @@ VkDeviceGroupBindSparseInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupBindSparseInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupBindSparseInfo.byteLength = 0x18;
 
@@ -42186,10 +42668,7 @@ VkDeviceGroupBindSparseInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupBindSparseInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupBindSparseInfoKHR.byteLength = 0x18;
 
@@ -42338,12 +42817,7 @@ VkDeviceGroupPresentCapabilitiesKHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x98), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x98), 0x0);};
 
 VkDeviceGroupPresentCapabilitiesKHR.byteLength = 0x98;
 
@@ -42392,7 +42866,7 @@ function VkImageSwapchainCreateInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9BB468;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -42443,7 +42917,10 @@ VkImageSwapchainCreateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   this.sType = 0x3B9BB468;
 };
 
@@ -42458,10 +42935,7 @@ VkImageSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageSwapchainCreateInfoKHR.byteLength = 0x18;
 
@@ -42508,7 +42982,7 @@ function VkBindImageMemorySwapchainInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9BB469;
   if (typeof opts === "object") {
@@ -42569,7 +43043,10 @@ VkBindImageMemorySwapchainInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   
   this.sType = 0x3B9BB469;
 };
@@ -42585,10 +43062,7 @@ VkBindImageMemorySwapchainInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemorySwapchainInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindImageMemorySwapchainInfoKHR.byteLength = 0x20;
 
@@ -42641,10 +43115,10 @@ function VkAcquireNextImageInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._swapchain = null;
+  this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._semaphore = null;
-  this._fence = null;
+  this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+  this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
   this.sType = 0x3B9BB46A;
   if (typeof opts === "object") {
@@ -42751,10 +43225,19 @@ VkAcquireNextImageInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._swapchain = null;
+  if (this._swapchain !== null) {
+    if (this.memoryBuffer !== this._swapchain.memoryBuffer) this._swapchain = new VkSwapchainKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._swapchain.reset();
+  }
   
-  this._semaphore = null;
-  this._fence = null;
+  if (this._semaphore !== null) {
+    if (this.memoryBuffer !== this._semaphore.memoryBuffer) this._semaphore = new VkSemaphore({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._semaphore.reset();
+  }
+  if (this._fence !== null) {
+    if (this.memoryBuffer !== this._fence.memoryBuffer) this._fence = new VkFence({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._fence.reset();
+  }
   
   this.sType = 0x3B9BB46A;
 };
@@ -42770,10 +43253,7 @@ VkAcquireNextImageInfoKHR.prototype.flush = function flush() {
 };
 
 VkAcquireNextImageInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkAcquireNextImageInfoKHR.byteLength = 0x38;
 
@@ -42922,10 +43402,7 @@ VkDeviceGroupPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupPresentInfoKHR.byteLength = 0x28;
 
@@ -43020,7 +43497,14 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfo.prototype, {
     },
   "pPhysicalDevices": {
     get() {
-    return this._pPhysicalDevices;
+    if (this._pPhysicalDevices === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.physicalDeviceCount, VkPhysicalDevice);
+      this._pPhysicalDevices = array;
+      return this.pPhysicalDevices;
+    } else {
+      return this._pPhysicalDevices;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -43074,12 +43558,7 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDeviceGroupDeviceCreateInfo.byteLength = 0x20;
 
@@ -43170,7 +43649,14 @@ Object.defineProperties(VkDeviceGroupDeviceCreateInfoKHR.prototype, {
     },
   "pPhysicalDevices": {
     get() {
-    return this._pPhysicalDevices;
+    if (this._pPhysicalDevices === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.physicalDeviceCount, VkPhysicalDevice);
+      this._pPhysicalDevices = array;
+      return this.pPhysicalDevices;
+    } else {
+      return this._pPhysicalDevices;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -43224,12 +43710,7 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupDeviceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDeviceGroupDeviceCreateInfoKHR.byteLength = 0x20;
 
@@ -43335,10 +43816,7 @@ VkDeviceGroupSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceGroupSwapchainCreateInfoKHR.byteLength = 0x18;
 
@@ -43472,8 +43950,7 @@ VkDescriptorUpdateTemplateEntry.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateEntry.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDescriptorUpdateTemplateEntry.byteLength = 0x20;
 
@@ -43619,8 +44096,7 @@ VkDescriptorUpdateTemplateEntryKHR.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateEntryKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDescriptorUpdateTemplateEntryKHR.byteLength = 0x20;
 
@@ -43684,9 +44160,9 @@ function VkDescriptorUpdateTemplateCreateInfo(opts) {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   this.sType = 0x3B9C1608;
   if (typeof opts === "object") {
@@ -43739,7 +44215,14 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfo.prototype, {
     },
   "pDescriptorUpdateEntries": {
     get() {
-    return this._pDescriptorUpdateEntries;
+    if (this._pDescriptorUpdateEntries === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry);
+      this._pDescriptorUpdateEntries = array;
+      return this.pDescriptorUpdateEntries;
+    } else {
+      return this._pDescriptorUpdateEntries;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -43820,9 +44303,15 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.reset = function reset() {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  if (this._descriptorSetLayout !== null) {
+    if (this.memoryBuffer !== this._descriptorSetLayout.memoryBuffer) this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._descriptorSetLayout.reset();
+  }
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._pipelineLayout.reset();
+  }
   
   this.sType = 0x3B9C1608;
 };
@@ -43857,12 +44346,7 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDescriptorUpdateTemplateCreateInfo.byteLength = 0x48;
 
@@ -43942,9 +44426,9 @@ function VkDescriptorUpdateTemplateCreateInfoKHR(opts) {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
   
-  this._pipelineLayout = null;
+  this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   this.sType = 0x3B9C1608;
   if (typeof opts === "object") {
@@ -43997,7 +44481,14 @@ Object.defineProperties(VkDescriptorUpdateTemplateCreateInfoKHR.prototype, {
     },
   "pDescriptorUpdateEntries": {
     get() {
-    return this._pDescriptorUpdateEntries;
+    if (this._pDescriptorUpdateEntries === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry);
+      this._pDescriptorUpdateEntries = array;
+      return this.pDescriptorUpdateEntries;
+    } else {
+      return this._pDescriptorUpdateEntries;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -44078,9 +44569,15 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reset = function reset() {
   this._pDescriptorUpdateEntries = null;
   this._pDescriptorUpdateEntriesNative = null;
   
-  this._descriptorSetLayout = null;
+  if (this._descriptorSetLayout !== null) {
+    if (this.memoryBuffer !== this._descriptorSetLayout.memoryBuffer) this._descriptorSetLayout = new VkDescriptorSetLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
+    else this._descriptorSetLayout.reset();
+  }
   
-  this._pipelineLayout = null;
+  if (this._pipelineLayout !== null) {
+    if (this.memoryBuffer !== this._pipelineLayout.memoryBuffer) this._pipelineLayout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._pipelineLayout.reset();
+  }
   
   this.sType = 0x3B9C1608;
 };
@@ -44115,12 +44612,7 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDescriptorUpdateTemplateCreateInfoKHR.byteLength = 0x48;
 
@@ -44232,8 +44724,7 @@ VkXYColorEXT.prototype.flush = function flush() {
 };
 
 VkXYColorEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkXYColorEXT.byteLength = 0x8;
 
@@ -44506,18 +44997,7 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
 };
 
 VkHdrMetadataEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkHdrMetadataEXT.byteLength = 0x40;
 
@@ -44649,10 +45129,7 @@ VkDisplayNativeHdrSurfaceCapabilitiesAMD.prototype.reflect = function reflect(me
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkDisplayNativeHdrSurfaceCapabilitiesAMD.byteLength = 0x18;
 
@@ -44756,10 +45233,7 @@ VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.flush = function flush() {
 };
 
 VkSwapchainDisplayNativeHdrCreateInfoAMD.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSwapchainDisplayNativeHdrCreateInfoAMD.byteLength = 0x18;
 
@@ -44832,8 +45306,7 @@ VkRefreshCycleDurationGOOGLE.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x8), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x8), 0x0);};
 
 VkRefreshCycleDurationGOOGLE.byteLength = 0x8;
 
@@ -44928,8 +45401,7 @@ VkPastPresentationTimingGOOGLE.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkPastPresentationTimingGOOGLE.byteLength = 0x28;
 
@@ -45024,7 +45496,14 @@ Object.defineProperties(VkPresentTimesInfoGOOGLE.prototype, {
     },
   "pTimes": {
     get() {
-    return this._pTimes;
+    if (this._pTimes === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.swapchainCount, VkPresentTimeGOOGLE);
+      this._pTimes = array;
+      return this.pTimes;
+    } else {
+      return this._pTimes;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -45078,12 +45557,7 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
 };
 
 VkPresentTimesInfoGOOGLE.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPresentTimesInfoGOOGLE.byteLength = 0x20;
 
@@ -45174,8 +45648,7 @@ VkPresentTimeGOOGLE.prototype.flush = function flush() {
 };
 
 VkPresentTimeGOOGLE.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkPresentTimeGOOGLE.byteLength = 0x10;
 
@@ -45255,8 +45728,7 @@ VkViewportWScalingNV.prototype.flush = function flush() {
 };
 
 VkViewportWScalingNV.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkViewportWScalingNV.byteLength = 0x8;
 
@@ -45349,7 +45821,14 @@ Object.defineProperties(VkPipelineViewportWScalingStateCreateInfoNV.prototype, {
     },
   "pViewportWScalings": {
     get() {
-    return this._pViewportWScalings;
+    if (this._pViewportWScalings === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewportWScalingNV);
+      this._pViewportWScalings = array;
+      return this.pViewportWScalings;
+    } else {
+      return this._pViewportWScalings;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -45404,12 +45883,7 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportWScalingStateCreateInfoNV.byteLength = 0x20;
 
@@ -45523,8 +45997,7 @@ VkViewportSwizzleNV.prototype.flush = function flush() {
 };
 
 VkViewportSwizzleNV.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkViewportSwizzleNV.byteLength = 0x10;
 
@@ -45625,7 +46098,14 @@ Object.defineProperties(VkPipelineViewportSwizzleStateCreateInfoNV.prototype, {
     },
   "pViewportSwizzles": {
     get() {
-    return this._pViewportSwizzles;
+    if (this._pViewportSwizzles === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkViewportSwizzleNV);
+      this._pViewportSwizzles = array;
+      return this.pViewportSwizzles;
+    } else {
+      return this._pViewportSwizzles;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -45680,12 +46160,7 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportSwizzleStateCreateInfoNV.byteLength = 0x20;
 
@@ -45797,10 +46272,7 @@ VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.byteLength = 0x18;
 
@@ -45907,7 +46379,14 @@ Object.defineProperties(VkPipelineDiscardRectangleStateCreateInfoEXT.prototype, 
     },
   "pDiscardRectangles": {
     get() {
-    return this._pDiscardRectangles;
+    if (this._pDiscardRectangles === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.discardRectangleCount, VkRect2D);
+      this._pDiscardRectangles = array;
+      return this.pDiscardRectangles;
+    } else {
+      return this._pDiscardRectangles;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -45963,12 +46442,7 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
 };
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.byteLength = 0x28;
 
@@ -46084,10 +46558,7 @@ VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.reflect = func
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.byteLength = 0x18;
 
@@ -46184,8 +46655,7 @@ VkInputAttachmentAspectReference.prototype.flush = function flush() {
 };
 
 VkInputAttachmentAspectReference.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkInputAttachmentAspectReference.byteLength = 0xC;
 
@@ -46282,8 +46752,7 @@ VkInputAttachmentAspectReferenceKHR.prototype.flush = function flush() {
 };
 
 VkInputAttachmentAspectReferenceKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkInputAttachmentAspectReferenceKHR.byteLength = 0xC;
 
@@ -46370,7 +46839,14 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfo.prototype, {
     },
   "pAspectReferences": {
     get() {
-    return this._pAspectReferences;
+    if (this._pAspectReferences === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.aspectReferenceCount, VkInputAttachmentAspectReference);
+      this._pAspectReferences = array;
+      return this.pAspectReferences;
+    } else {
+      return this._pAspectReferences;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -46424,12 +46900,7 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassInputAttachmentAspectCreateInfo.byteLength = 0x20;
 
@@ -46520,7 +46991,14 @@ Object.defineProperties(VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype
     },
   "pAspectReferences": {
     get() {
-    return this._pAspectReferences;
+    if (this._pAspectReferences === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.aspectReferenceCount, VkInputAttachmentAspectReference);
+      this._pAspectReferences = array;
+      return this.pAspectReferences;
+    } else {
+      return this._pAspectReferences;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -46574,12 +47052,7 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
 };
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.byteLength = 0x20;
 
@@ -46628,7 +47101,7 @@ function VkPhysicalDeviceSurfaceInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._surface = null;
+  this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9C9AD8;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -46696,7 +47169,10 @@ VkPhysicalDeviceSurfaceInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._surface = null;
+  if (this._surface !== null) {
+    if (this.memoryBuffer !== this._surface.memoryBuffer) this._surface = new VkSurfaceKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._surface.reset();
+  }
   this.sType = 0x3B9C9AD8;
 };
 
@@ -46711,10 +47187,7 @@ VkPhysicalDeviceSurfaceInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSurfaceInfo2KHR.byteLength = 0x18;
 
@@ -46838,12 +47311,7 @@ VkSurfaceCapabilities2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x48), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x48), 0x0);};
 
 VkSurfaceCapabilities2KHR.byteLength = 0x48;
 
@@ -46948,12 +47416,7 @@ VkSurfaceFormat2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkSurfaceFormat2KHR.byteLength = 0x18;
 
@@ -47058,12 +47521,7 @@ VkDisplayProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkDisplayProperties2KHR.byteLength = 0x40;
 
@@ -47168,12 +47626,7 @@ VkDisplayPlaneProperties2KHR.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkDisplayPlaneProperties2KHR.byteLength = 0x20;
 
@@ -47278,12 +47731,7 @@ VkDisplayModeProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkDisplayModeProperties2KHR.byteLength = 0x28;
 
@@ -47330,7 +47778,7 @@ function VkDisplayPlaneInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._mode = null;
+  this._mode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9CA2AB;
   if (typeof opts === "object") {
@@ -47391,7 +47839,10 @@ VkDisplayPlaneInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._mode = null;
+  if (this._mode !== null) {
+    if (this.memoryBuffer !== this._mode.memoryBuffer) this._mode = new VkDisplayModeKHR({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._mode.reset();
+  }
   
   this.sType = 0x3B9CA2AB;
 };
@@ -47407,10 +47858,7 @@ VkDisplayPlaneInfo2KHR.prototype.flush = function flush() {
 };
 
 VkDisplayPlaneInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDisplayPlaneInfo2KHR.byteLength = 0x20;
 
@@ -47519,12 +47967,7 @@ VkDisplayPlaneCapabilities2KHR.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x58), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x58), 0x0);};
 
 VkDisplayPlaneCapabilities2KHR.byteLength = 0x58;
 
@@ -47626,10 +48069,7 @@ VkSharedPresentSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkSharedPresentSurfaceCapabilitiesKHR.byteLength = 0x18;
 
@@ -47766,10 +48206,7 @@ VkPhysicalDevice16BitStorageFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice16BitStorageFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDevice16BitStorageFeatures.byteLength = 0x20;
 
@@ -47918,10 +48355,7 @@ VkPhysicalDevice16BitStorageFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDevice16BitStorageFeaturesKHR.byteLength = 0x20;
 
@@ -48058,10 +48492,7 @@ VkPhysicalDeviceSubgroupProperties.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceSubgroupProperties.byteLength = 0x20;
 
@@ -48118,7 +48549,7 @@ function VkBufferMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0450;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48169,7 +48600,10 @@ VkBufferMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9D0450;
 };
 
@@ -48184,10 +48618,7 @@ VkBufferMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkBufferMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferMemoryRequirementsInfo2.byteLength = 0x18;
 
@@ -48232,7 +48663,7 @@ function VkBufferMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0450;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48283,7 +48714,10 @@ VkBufferMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9D0450;
 };
 
@@ -48298,10 +48732,7 @@ VkBufferMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkBufferMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
@@ -48346,7 +48777,7 @@ function VkImageMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0451;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48413,7 +48844,10 @@ VkImageMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0451;
 };
 
@@ -48428,10 +48862,7 @@ VkImageMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkImageMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageMemoryRequirementsInfo2.byteLength = 0x18;
 
@@ -48476,7 +48907,7 @@ function VkImageMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0451;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48543,7 +48974,10 @@ VkImageMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0451;
 };
 
@@ -48558,10 +48992,7 @@ VkImageMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkImageMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
@@ -48606,7 +49037,7 @@ function VkImageSparseMemoryRequirementsInfo2(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0452;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48657,7 +49088,10 @@ VkImageSparseMemoryRequirementsInfo2.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0452;
 };
 
@@ -48672,10 +49106,7 @@ VkImageSparseMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkImageSparseMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageSparseMemoryRequirementsInfo2.byteLength = 0x18;
 
@@ -48720,7 +49151,7 @@ function VkImageSparseMemoryRequirementsInfo2KHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D0452;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -48771,7 +49202,10 @@ VkImageSparseMemoryRequirementsInfo2KHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._image = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
   this.sType = 0x3B9D0452;
 };
 
@@ -48786,10 +49220,7 @@ VkImageSparseMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageSparseMemoryRequirementsInfo2KHR.byteLength = 0x18;
 
@@ -48910,12 +49341,7 @@ VkMemoryRequirements2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkMemoryRequirements2.byteLength = 0x28;
 
@@ -49036,12 +49462,7 @@ VkMemoryRequirements2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkMemoryRequirements2KHR.byteLength = 0x28;
 
@@ -49146,12 +49567,7 @@ VkSparseImageMemoryRequirements2.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkSparseImageMemoryRequirements2.byteLength = 0x40;
 
@@ -49256,12 +49672,7 @@ VkSparseImageMemoryRequirements2KHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkSparseImageMemoryRequirements2KHR.byteLength = 0x40;
 
@@ -49363,10 +49774,7 @@ VkPhysicalDevicePointClippingProperties.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDevicePointClippingProperties.byteLength = 0x18;
 
@@ -49468,10 +49876,7 @@ VkPhysicalDevicePointClippingPropertiesKHR.prototype.reflect = function reflect(
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDevicePointClippingPropertiesKHR.byteLength = 0x18;
 
@@ -49582,10 +49987,7 @@ VkMemoryDedicatedRequirements.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryDedicatedRequirements.byteLength = 0x18;
 
@@ -49700,10 +50102,7 @@ VkMemoryDedicatedRequirementsKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryDedicatedRequirementsKHR.byteLength = 0x18;
 
@@ -49752,8 +50151,8 @@ function VkMemoryDedicatedAllocateInfo(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9CBA19;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -49822,8 +50221,14 @@ VkMemoryDedicatedAllocateInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9CBA19;
 };
 
@@ -49838,10 +50243,7 @@ VkMemoryDedicatedAllocateInfo.prototype.flush = function flush() {
 };
 
 VkMemoryDedicatedAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryDedicatedAllocateInfo.byteLength = 0x20;
 
@@ -49890,8 +50292,8 @@ function VkMemoryDedicatedAllocateInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9CBA19;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -49960,8 +50362,14 @@ VkMemoryDedicatedAllocateInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._image = null;
-  this._buffer = null;
+  if (this._image !== null) {
+    if (this.memoryBuffer !== this._image.memoryBuffer) this._image = new VkImage({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._image.reset();
+  }
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9CBA19;
 };
 
@@ -49976,10 +50384,7 @@ VkMemoryDedicatedAllocateInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryDedicatedAllocateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryDedicatedAllocateInfoKHR.byteLength = 0x20;
 
@@ -50085,10 +50490,7 @@ VkImageViewUsageCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageViewUsageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageViewUsageCreateInfo.byteLength = 0x18;
 
@@ -50190,10 +50592,7 @@ VkImageViewUsageCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageViewUsageCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageViewUsageCreateInfoKHR.byteLength = 0x18;
 
@@ -50295,10 +50694,7 @@ VkPipelineTessellationDomainOriginStateCreateInfo.prototype.flush = function flu
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineTessellationDomainOriginStateCreateInfo.byteLength = 0x18;
 
@@ -50400,10 +50796,7 @@ VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.flush = function 
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.byteLength = 0x18;
 
@@ -50448,7 +50841,7 @@ function VkSamplerYcbcrConversionInfo(opts) {
   }
   
   this._pNext = null;
-  this._conversion = null;
+  this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D2B61;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -50499,7 +50892,10 @@ VkSamplerYcbcrConversionInfo.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._conversion = null;
+  if (this._conversion !== null) {
+    if (this.memoryBuffer !== this._conversion.memoryBuffer) this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._conversion.reset();
+  }
   this.sType = 0x3B9D2B61;
 };
 
@@ -50514,10 +50910,7 @@ VkSamplerYcbcrConversionInfo.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSamplerYcbcrConversionInfo.byteLength = 0x18;
 
@@ -50562,7 +50955,7 @@ function VkSamplerYcbcrConversionInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._conversion = null;
+  this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D2B61;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -50613,7 +51006,10 @@ VkSamplerYcbcrConversionInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._conversion = null;
+  if (this._conversion !== null) {
+    if (this.memoryBuffer !== this._conversion.memoryBuffer) this._conversion = new VkSamplerYcbcrConversion({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._conversion.reset();
+  }
   this.sType = 0x3B9D2B61;
 };
 
@@ -50628,10 +51024,7 @@ VkSamplerYcbcrConversionInfoKHR.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSamplerYcbcrConversionInfoKHR.byteLength = 0x18;
 
@@ -50852,12 +51245,7 @@ VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkSamplerYcbcrConversionCreateInfo.byteLength = 0x40;
 
@@ -51106,12 +51494,7 @@ VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkSamplerYcbcrConversionCreateInfoKHR.byteLength = 0x40;
 
@@ -51241,10 +51624,7 @@ VkBindImagePlaneMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindImagePlaneMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindImagePlaneMemoryInfo.byteLength = 0x18;
 
@@ -51346,10 +51726,7 @@ VkBindImagePlaneMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImagePlaneMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindImagePlaneMemoryInfoKHR.byteLength = 0x18;
 
@@ -51451,10 +51828,7 @@ VkImagePlaneMemoryRequirementsInfo.prototype.flush = function flush() {
 };
 
 VkImagePlaneMemoryRequirementsInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImagePlaneMemoryRequirementsInfo.byteLength = 0x18;
 
@@ -51556,10 +51930,7 @@ VkImagePlaneMemoryRequirementsInfoKHR.prototype.flush = function flush() {
 };
 
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImagePlaneMemoryRequirementsInfoKHR.byteLength = 0x18;
 
@@ -51663,10 +52034,7 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.byteLength = 0x18;
 
@@ -51770,10 +52138,7 @@ VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.flush = function flu
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.byteLength = 0x18;
 
@@ -51877,10 +52242,7 @@ VkSamplerYcbcrConversionImageFormatProperties.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkSamplerYcbcrConversionImageFormatProperties.byteLength = 0x18;
 
@@ -51984,10 +52346,7 @@ VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.byteLength = 0x18;
 
@@ -52091,10 +52450,7 @@ VkTextureLODGatherFormatPropertiesAMD.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkTextureLODGatherFormatPropertiesAMD.byteLength = 0x18;
 
@@ -52141,7 +52497,7 @@ function VkConditionalRenderingBeginInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   this.sType = 0x3B9C066A;
@@ -52213,7 +52569,10 @@ VkConditionalRenderingBeginInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   
   
   this.sType = 0x3B9C066A;
@@ -52230,10 +52589,7 @@ VkConditionalRenderingBeginInfoEXT.prototype.flush = function flush() {
 };
 
 VkConditionalRenderingBeginInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkConditionalRenderingBeginInfoEXT.byteLength = 0x28;
 
@@ -52345,10 +52701,7 @@ VkProtectedSubmitInfo.prototype.flush = function flush() {
 };
 
 VkProtectedSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkProtectedSubmitInfo.byteLength = 0x18;
 
@@ -52452,10 +52805,7 @@ VkPhysicalDeviceProtectedMemoryFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceProtectedMemoryFeatures.byteLength = 0x18;
 
@@ -52559,10 +52909,7 @@ VkPhysicalDeviceProtectedMemoryProperties.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceProtectedMemoryProperties.byteLength = 0x18;
 
@@ -52688,10 +53035,7 @@ VkDeviceQueueInfo2.prototype.flush = function flush() {
 };
 
 VkDeviceQueueInfo2.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceQueueInfo2.byteLength = 0x20;
 
@@ -52825,10 +53169,7 @@ VkPipelineCoverageToColorStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineCoverageToColorStateCreateInfoNV.byteLength = 0x20;
 
@@ -52947,10 +53288,7 @@ VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.byteLength = 0x18;
 
@@ -53038,8 +53376,7 @@ VkSampleLocationEXT.prototype.flush = function flush() {
 };
 
 VkSampleLocationEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkSampleLocationEXT.byteLength = 0x8;
 
@@ -53151,7 +53488,14 @@ Object.defineProperties(VkSampleLocationsInfoEXT.prototype, {
     },
   "pSampleLocations": {
     get() {
-    return this._pSampleLocations;
+    if (this._pSampleLocations === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.sampleLocationsCount, VkSampleLocationEXT);
+      this._pSampleLocations = array;
+      return this.pSampleLocations;
+    } else {
+      return this._pSampleLocations;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -53222,14 +53566,7 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
 };
 
 VkSampleLocationsInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkSampleLocationsInfoEXT.byteLength = 0x28;
 
@@ -53349,10 +53686,7 @@ VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
 };
 
 VkAttachmentSampleLocationsEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkAttachmentSampleLocationsEXT.byteLength = 0x30;
 
@@ -53456,10 +53790,7 @@ VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
 };
 
 VkSubpassSampleLocationsEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSubpassSampleLocationsEXT.byteLength = 0x30;
 
@@ -53547,7 +53878,14 @@ Object.defineProperties(VkRenderPassSampleLocationsBeginInfoEXT.prototype, {
     },
   "pAttachmentInitialSampleLocations": {
     get() {
-    return this._pAttachmentInitialSampleLocations;
+    if (this._pAttachmentInitialSampleLocations === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentInitialSampleLocationsCount, VkAttachmentSampleLocationsEXT);
+      this._pAttachmentInitialSampleLocations = array;
+      return this.pAttachmentInitialSampleLocations;
+    } else {
+      return this._pAttachmentInitialSampleLocations;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -53568,7 +53906,14 @@ Object.defineProperties(VkRenderPassSampleLocationsBeginInfoEXT.prototype, {
     },
   "pPostSubpassSampleLocations": {
     get() {
-    return this._pPostSubpassSampleLocations;
+    if (this._pPostSubpassSampleLocations === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.postSubpassSampleLocationsCount, VkSubpassSampleLocationsEXT);
+      this._pPostSubpassSampleLocations = array;
+      return this.pPostSubpassSampleLocations;
+    } else {
+      return this._pPostSubpassSampleLocations;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -53644,14 +53989,7 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
 };
 
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassSampleLocationsBeginInfoEXT.byteLength = 0x30;
 
@@ -53802,12 +54140,7 @@ VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineSampleLocationsStateCreateInfoEXT.byteLength = 0x40;
 
@@ -53952,14 +54285,7 @@ VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.reflect = function reflec
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkPhysicalDeviceSampleLocationsPropertiesEXT.byteLength = 0x30;
 
@@ -54080,12 +54406,7 @@ VkMultisamplePropertiesEXT.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMultisamplePropertiesEXT.byteLength = 0x18;
 
@@ -54187,10 +54508,7 @@ VkSamplerReductionModeCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkSamplerReductionModeCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSamplerReductionModeCreateInfoEXT.byteLength = 0x18;
 
@@ -54294,10 +54612,7 @@ VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.flush = function flu
 };
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.byteLength = 0x18;
 
@@ -54436,10 +54751,7 @@ VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.reflect = function
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.byteLength = 0x28;
 
@@ -54585,10 +54897,7 @@ VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.byteLength = 0x20;
 
@@ -54711,10 +55020,7 @@ VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.byteLength = 0x18;
 
@@ -54850,10 +55156,7 @@ VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.byteLength = 0x28;
 
@@ -54991,10 +55294,7 @@ VkWriteDescriptorSetInlineUniformBlockEXT.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkWriteDescriptorSetInlineUniformBlockEXT.byteLength = 0x20;
 
@@ -55102,10 +55402,7 @@ VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.flush = function flush
 };
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.byteLength = 0x18;
 
@@ -55260,10 +55557,7 @@ VkPipelineCoverageModulationStateCreateInfoNV.prototype.flush = function flush()
 };
 
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineCoverageModulationStateCreateInfoNV.byteLength = 0x28;
 
@@ -55401,10 +55695,7 @@ VkImageFormatListCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageFormatListCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageFormatListCreateInfoKHR.byteLength = 0x20;
 
@@ -55540,10 +55831,7 @@ VkValidationCacheCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkValidationCacheCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkValidationCacheCreateInfoEXT.byteLength = 0x28;
 
@@ -55596,7 +55884,7 @@ function VkShaderModuleValidationCacheCreateInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._validationCache = null;
+  this._validationCache = new VkValidationCacheEXT({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9D3B01;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -55647,7 +55935,10 @@ VkShaderModuleValidationCacheCreateInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._validationCache = null;
+  if (this._validationCache !== null) {
+    if (this.memoryBuffer !== this._validationCache.memoryBuffer) this._validationCache = new VkValidationCacheEXT({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._validationCache.reset();
+  }
   this.sType = 0x3B9D3B01;
 };
 
@@ -55662,10 +55953,7 @@ VkShaderModuleValidationCacheCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkShaderModuleValidationCacheCreateInfoEXT.byteLength = 0x18;
 
@@ -55778,10 +56066,7 @@ VkPhysicalDeviceMaintenance3Properties.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceMaintenance3Properties.byteLength = 0x20;
 
@@ -55898,10 +56183,7 @@ VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceMaintenance3PropertiesKHR.byteLength = 0x20;
 
@@ -56025,10 +56307,7 @@ VkDescriptorSetLayoutSupport.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkDescriptorSetLayoutSupport.byteLength = 0x18;
 
@@ -56148,10 +56427,7 @@ VkDescriptorSetLayoutSupportKHR.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkDescriptorSetLayoutSupportKHR.byteLength = 0x18;
 
@@ -56255,10 +56531,7 @@ VkPhysicalDeviceShaderDrawParametersFeatures.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceShaderDrawParametersFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderDrawParametersFeatures.byteLength = 0x18;
 
@@ -56362,10 +56635,7 @@ VkPhysicalDeviceShaderDrawParameterFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderDrawParameterFeatures.byteLength = 0x18;
 
@@ -56480,10 +56750,7 @@ VkPhysicalDeviceShaderFloat16Int8FeaturesKHR.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceShaderFloat16Int8FeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderFloat16Int8FeaturesKHR.byteLength = 0x18;
 
@@ -56602,10 +56869,7 @@ VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.byteLength = 0x18;
 
@@ -56825,10 +57089,7 @@ VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.reflect = function reflect(
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x58), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x58), 0x0);};
 
 VkPhysicalDeviceFloatControlsPropertiesKHR.byteLength = 0x58;
 
@@ -56996,10 +57257,7 @@ VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceHostQueryResetFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceHostQueryResetFeaturesEXT.byteLength = 0x18;
 
@@ -57102,8 +57360,7 @@ VkShaderResourceUsageAMD.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkShaderResourceUsageAMD.byteLength = 0x20;
 
@@ -57236,12 +57493,7 @@ VkShaderStatisticsInfoAMD.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x48), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x48), 0x0);};
 
 VkShaderStatisticsInfoAMD.byteLength = 0x48;
 
@@ -57359,10 +57611,7 @@ VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.byteLength = 0x18;
 
@@ -57463,6 +57712,14 @@ Object.defineProperties(VkDebugUtilsObjectNameInfoEXT.prototype, {
       let str = textDecoder.decode(this._pObjectName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x4] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x4];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pObjectName = buffer;
+        return this.pObjectName;
+      }
       return null;
     }
     },
@@ -57501,10 +57758,7 @@ VkDebugUtilsObjectNameInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugUtilsObjectNameInfoEXT.byteLength = 0x28;
 
@@ -57670,10 +57924,7 @@ VkDebugUtilsObjectTagInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugUtilsObjectTagInfoEXT.byteLength = 0x38;
 
@@ -57771,6 +58022,14 @@ Object.defineProperties(VkDebugUtilsLabelEXT.prototype, {
       let str = textDecoder.decode(this._pLabelName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x2] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x2];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pLabelName = buffer;
+        return this.pLabelName;
+      }
       return null;
     }
     },
@@ -57833,12 +58092,7 @@ VkDebugUtilsLabelEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsLabelEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkDebugUtilsLabelEXT.byteLength = 0x28;
 
@@ -58004,10 +58258,7 @@ VkDebugUtilsMessengerCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsMessengerCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDebugUtilsMessengerCreateInfoEXT.byteLength = 0x30;
 
@@ -58132,6 +58383,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
       let str = textDecoder.decode(this._pMessageIdName);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x3] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x3];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMessageIdName = buffer;
+        return this.pMessageIdName;
+      }
       return null;
     }
     },
@@ -58160,6 +58419,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
       let str = textDecoder.decode(this._pMessage);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x5] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x5];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._pMessage = buffer;
+        return this.pMessage;
+      }
       return null;
     }
     },
@@ -58184,7 +58451,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     },
   "pQueueLabels": {
     get() {
-    return this._pQueueLabels;
+    if (this._pQueueLabels === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.queueLabelCount, VkDebugUtilsLabelEXT);
+      this._pQueueLabels = array;
+      return this.pQueueLabels;
+    } else {
+      return this._pQueueLabels;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -58205,7 +58479,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     },
   "pCmdBufLabels": {
     get() {
-    return this._pCmdBufLabels;
+    if (this._pCmdBufLabels === null && this.memoryViewBigInt64[0x9] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x9];
+      let array = decodeNativeArrayOfObjects(addr, this.cmdBufLabelCount, VkDebugUtilsLabelEXT);
+      this._pCmdBufLabels = array;
+      return this.pCmdBufLabels;
+    } else {
+      return this._pCmdBufLabels;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -58226,7 +58507,14 @@ Object.defineProperties(VkDebugUtilsMessengerCallbackDataEXT.prototype, {
     },
   "pObjects": {
     get() {
-    return this._pObjects;
+    if (this._pObjects === null && this.memoryViewBigInt64[0xB] !== BI0) {
+      let addr = this.memoryViewBigInt64[0xB];
+      let array = decodeNativeArrayOfObjects(addr, this.objectCount, VkDebugUtilsObjectNameInfoEXT);
+      this._pObjects = array;
+      return this.pObjects;
+    } else {
+      return this._pObjects;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -58328,16 +58616,7 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsMessengerCallbackDataEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkDebugUtilsMessengerCallbackDataEXT.byteLength = 0x60;
 
@@ -58493,10 +58772,7 @@ VkImportMemoryHostPointerInfoEXT.prototype.flush = function flush() {
 };
 
 VkImportMemoryHostPointerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImportMemoryHostPointerInfoEXT.byteLength = 0x20;
 
@@ -58604,10 +58880,7 @@ VkMemoryHostPointerPropertiesEXT.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkMemoryHostPointerPropertiesEXT.byteLength = 0x18;
 
@@ -58711,10 +58984,7 @@ VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.byteLength = 0x18;
 
@@ -58876,10 +59146,7 @@ VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.reflect = funct
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x38), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x38), 0x0);};
 
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.byteLength = 0x38;
 
@@ -59013,10 +59280,7 @@ VkCalibratedTimestampInfoEXT.prototype.flush = function flush() {
 };
 
 VkCalibratedTimestampInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCalibratedTimestampInfoEXT.byteLength = 0x18;
 
@@ -59211,10 +59475,7 @@ VkPhysicalDeviceShaderCorePropertiesAMD.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x48), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x48), 0x0);};
 
 VkPhysicalDeviceShaderCorePropertiesAMD.byteLength = 0x48;
 
@@ -59377,10 +59638,7 @@ VkPhysicalDeviceShaderCoreProperties2AMD.prototype.reflect = function reflect(me
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceShaderCoreProperties2AMD.byteLength = 0x18;
 
@@ -59510,10 +59768,7 @@ VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.flush = function
 };
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.byteLength = 0x20;
 
@@ -59834,10 +60089,7 @@ VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.byteLength = 0x60;
 
@@ -60171,10 +60423,7 @@ VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x70), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x70), 0x0);};
 
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.byteLength = 0x70;
 
@@ -60384,10 +60633,7 @@ VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.byteLength = 0x20;
 
@@ -60513,10 +60759,7 @@ VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.flush = function
 };
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.byteLength = 0x20;
 
@@ -60624,10 +60867,7 @@ VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.reflect = funct
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.byteLength = 0x18;
 
@@ -60817,10 +61057,7 @@ VkAttachmentDescription2KHR.prototype.flush = function flush() {
 };
 
 VkAttachmentDescription2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkAttachmentDescription2KHR.byteLength = 0x38;
 
@@ -60978,10 +61215,7 @@ VkAttachmentReference2KHR.prototype.flush = function flush() {
 };
 
 VkAttachmentReference2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkAttachmentReference2KHR.byteLength = 0x20;
 
@@ -61136,7 +61370,14 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     },
   "pInputAttachments": {
     get() {
-    return this._pInputAttachments;
+    if (this._pInputAttachments === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.inputAttachmentCount, VkAttachmentReference2KHR);
+      this._pInputAttachments = array;
+      return this.pInputAttachments;
+    } else {
+      return this._pInputAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61157,7 +61398,14 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     },
   "pColorAttachments": {
     get() {
-    return this._pColorAttachments;
+    if (this._pColorAttachments === null && this.memoryViewBigInt64[0x6] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x6];
+      let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference2KHR);
+      this._pColorAttachments = array;
+      return this.pColorAttachments;
+    } else {
+      return this._pColorAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61170,7 +61418,14 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     },
   "pResolveAttachments": {
     get() {
-    return this._pResolveAttachments;
+    if (this._pResolveAttachments === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.colorAttachmentCount, VkAttachmentReference2KHR);
+      this._pResolveAttachments = array;
+      return this.pResolveAttachments;
+    } else {
+      return this._pResolveAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61183,7 +61438,15 @@ Object.defineProperties(VkSubpassDescription2KHR.prototype, {
     },
   "pDepthStencilAttachment": {
     get() {
-    return this._pDepthStencilAttachment;
+    if (this._pDepthStencilAttachment === null && this.memoryViewBigInt64[0x8] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x8];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkAttachmentReference2KHR.byteLength));
+      this._pDepthStencilAttachment = new VkAttachmentReference2KHR({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x8] = this._pDepthStencilAttachment.memoryAddress;
+      return this.pDepthStencilAttachment;
+    } else {
+      return this._pDepthStencilAttachment;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61313,16 +61576,7 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
 };
 
 VkSubpassDescription2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkSubpassDescription2KHR.byteLength = 0x58;
 
@@ -61543,10 +61797,7 @@ VkSubpassDependency2KHR.prototype.flush = function flush() {
 };
 
 VkSubpassDependency2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSubpassDependency2KHR.byteLength = 0x30;
 
@@ -61685,7 +61936,14 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     },
   "pAttachments": {
     get() {
-    return this._pAttachments;
+    if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkAttachmentDescription2KHR);
+      this._pAttachments = array;
+      return this.pAttachments;
+    } else {
+      return this._pAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61706,7 +61964,14 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     },
   "pSubpasses": {
     get() {
-    return this._pSubpasses;
+    if (this._pSubpasses === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.subpassCount, VkSubpassDescription2KHR);
+      this._pSubpasses = array;
+      return this.pSubpasses;
+    } else {
+      return this._pSubpasses;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61727,7 +61992,14 @@ Object.defineProperties(VkRenderPassCreateInfo2KHR.prototype, {
     },
   "pDependencies": {
     get() {
-    return this._pDependencies;
+    if (this._pDependencies === null && this.memoryViewBigInt64[0x7] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x7];
+      let array = decodeNativeArrayOfObjects(addr, this.dependencyCount, VkSubpassDependency2KHR);
+      this._pDependencies = array;
+      return this.pDependencies;
+    } else {
+      return this._pDependencies;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -61851,16 +62123,7 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
 };
 
 VkRenderPassCreateInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassCreateInfo2KHR.byteLength = 0x50;
 
@@ -61994,10 +62257,7 @@ VkSubpassBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkSubpassBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSubpassBeginInfoKHR.byteLength = 0x18;
 
@@ -62088,10 +62348,7 @@ VkSubpassEndInfoKHR.prototype.flush = function flush() {
 };
 
 VkSubpassEndInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSubpassEndInfoKHR.byteLength = 0x10;
 
@@ -62171,8 +62428,7 @@ VkVertexInputBindingDivisorDescriptionEXT.prototype.flush = function flush() {
 };
 
 VkVertexInputBindingDivisorDescriptionEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkVertexInputBindingDivisorDescriptionEXT.byteLength = 0x8;
 
@@ -62255,7 +62511,14 @@ Object.defineProperties(VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype
     },
   "pVertexBindingDivisors": {
     get() {
-    return this._pVertexBindingDivisors;
+    if (this._pVertexBindingDivisors === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.vertexBindingDivisorCount, VkVertexInputBindingDivisorDescriptionEXT);
+      this._pVertexBindingDivisors = array;
+      return this.pVertexBindingDivisors;
+    } else {
+      return this._pVertexBindingDivisors;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -62309,12 +62572,7 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.byteLength = 0x20;
 
@@ -62422,10 +62680,7 @@ VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.reflect = function
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.byteLength = 0x18;
 
@@ -62550,10 +62805,7 @@ VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDevicePCIBusInfoPropertiesEXT.byteLength = 0x20;
 
@@ -62669,10 +62921,7 @@ VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.flush = function
 };
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.byteLength = 0x18;
 
@@ -62798,10 +63047,7 @@ VkPhysicalDevice8BitStorageFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDevice8BitStorageFeaturesKHR.byteLength = 0x20;
 
@@ -62924,10 +63170,7 @@ VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.flush = function flush
 };
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.byteLength = 0x18;
 
@@ -63057,10 +63300,7 @@ VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.byteLength = 0x20;
 
@@ -63183,10 +63423,7 @@ VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.byteLength = 0x18;
 
@@ -63305,10 +63542,7 @@ VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.flush = function flu
 };
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.byteLength = 0x18;
 
@@ -63414,10 +63648,7 @@ VkQueueFamilyCheckpointPropertiesNV.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkQueueFamilyCheckpointPropertiesNV.byteLength = 0x18;
 
@@ -63537,10 +63768,7 @@ VkCheckpointDataNV.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkCheckpointDataNV.byteLength = 0x20;
 
@@ -63669,10 +63897,7 @@ VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.byteLength = 0x20;
 
@@ -63778,7 +64003,15 @@ Object.defineProperties(VkSubpassDescriptionDepthStencilResolveKHR.prototype, {
     },
   "pDepthStencilResolveAttachment": {
     get() {
-    return this._pDepthStencilResolveAttachment;
+    if (this._pDepthStencilResolveAttachment === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkAttachmentReference2KHR.byteLength));
+      this._pDepthStencilResolveAttachment = new VkAttachmentReference2KHR({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x3] = this._pDepthStencilResolveAttachment.memoryAddress;
+      return this.pDepthStencilResolveAttachment;
+    } else {
+      return this._pDepthStencilResolveAttachment;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -63817,10 +64050,7 @@ VkSubpassDescriptionDepthStencilResolveKHR.prototype.flush = function flush() {
 };
 
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSubpassDescriptionDepthStencilResolveKHR.byteLength = 0x20;
 
@@ -63930,10 +64160,7 @@ VkImageViewASTCDecodeModeEXT.prototype.flush = function flush() {
 };
 
 VkImageViewASTCDecodeModeEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageViewASTCDecodeModeEXT.byteLength = 0x18;
 
@@ -64037,10 +64264,7 @@ VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.byteLength = 0x18;
 
@@ -64155,10 +64379,7 @@ VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.byteLength = 0x18;
 
@@ -64331,10 +64552,7 @@ VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.reflect = function refl
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.byteLength = 0x40;
 
@@ -64485,10 +64703,7 @@ VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.flush = function flush
 };
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.byteLength = 0x18;
 
@@ -64596,10 +64811,7 @@ VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.flush = function 
 };
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.byteLength = 0x18;
 
@@ -64703,10 +64915,7 @@ VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.flush = function
 };
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.byteLength = 0x18;
 
@@ -64810,10 +65019,7 @@ VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.byteLength = 0x18;
 
@@ -64900,7 +65106,14 @@ Object.defineProperties(VkPipelineViewportExclusiveScissorStateCreateInfoNV.prot
     },
   "pExclusiveScissors": {
     get() {
-    return this._pExclusiveScissors;
+    if (this._pExclusiveScissors === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.exclusiveScissorCount, VkRect2D);
+      this._pExclusiveScissors = array;
+      return this.pExclusiveScissors;
+    } else {
+      return this._pExclusiveScissors;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -64954,12 +65167,7 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
 };
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.byteLength = 0x20;
 
@@ -65067,10 +65275,7 @@ VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.byteLength = 0x18;
 
@@ -65185,10 +65390,7 @@ VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.flush = function fl
 };
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.byteLength = 0x18;
 
@@ -65296,10 +65498,7 @@ VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.flush = function f
 };
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.byteLength = 0x18;
 
@@ -65403,10 +65602,7 @@ VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.byteLength = 0x18;
 
@@ -65510,10 +65706,7 @@ VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.flush = fun
 };
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.byteLength = 0x18;
 
@@ -65606,8 +65799,7 @@ VkShadingRatePaletteNV.prototype.flush = function flush() {
 };
 
 VkShadingRatePaletteNV.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkShadingRatePaletteNV.byteLength = 0x10;
 
@@ -65700,7 +65892,14 @@ Object.defineProperties(VkPipelineViewportShadingRateImageStateCreateInfoNV.prot
     },
   "pShadingRatePalettes": {
     get() {
-    return this._pShadingRatePalettes;
+    if (this._pShadingRatePalettes === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.viewportCount, VkShadingRatePaletteNV);
+      this._pShadingRatePalettes = array;
+      return this.pShadingRatePalettes;
+    } else {
+      return this._pShadingRatePalettes;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -65755,12 +65954,7 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
 };
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.byteLength = 0x20;
 
@@ -65883,10 +66077,7 @@ VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.byteLength = 0x18;
 
@@ -66011,12 +66202,7 @@ VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.reflect = function reflec
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceShadingRateImagePropertiesNV.byteLength = 0x20;
 
@@ -66119,8 +66305,7 @@ VkCoarseSampleLocationNV.prototype.flush = function flush() {
 };
 
 VkCoarseSampleLocationNV.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkCoarseSampleLocationNV.byteLength = 0xC;
 
@@ -66205,7 +66390,14 @@ Object.defineProperties(VkCoarseSampleOrderCustomNV.prototype, {
     },
   "pSampleLocations": {
     get() {
-    return this._pSampleLocations;
+    if (this._pSampleLocations === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let array = decodeNativeArrayOfObjects(addr, this.sampleLocationCount, VkCoarseSampleLocationNV);
+      this._pSampleLocations = array;
+      return this.pSampleLocations;
+    } else {
+      return this._pSampleLocations;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -66254,10 +66446,7 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
 };
 
 VkCoarseSampleOrderCustomNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCoarseSampleOrderCustomNV.byteLength = 0x18;
 
@@ -66358,7 +66547,14 @@ Object.defineProperties(VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pro
     },
   "pCustomSampleOrders": {
     get() {
-    return this._pCustomSampleOrders;
+    if (this._pCustomSampleOrders === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.customSampleOrderCount, VkCoarseSampleOrderCustomNV);
+      this._pCustomSampleOrders = array;
+      return this.pCustomSampleOrders;
+    } else {
+      return this._pCustomSampleOrders;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -66413,12 +66609,7 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
 };
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.byteLength = 0x20;
 
@@ -66541,10 +66732,7 @@ VkPhysicalDeviceMeshShaderFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceMeshShaderFeaturesNV.byteLength = 0x18;
 
@@ -66746,14 +66934,7 @@ VkPhysicalDeviceMeshShaderPropertiesNV.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x58), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x58), 0x0);};
 
 VkPhysicalDeviceMeshShaderPropertiesNV.byteLength = 0x58;
 
@@ -66885,8 +67066,7 @@ VkDrawMeshTasksIndirectCommandNV.prototype.flush = function flush() {
 };
 
 VkDrawMeshTasksIndirectCommandNV.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkDrawMeshTasksIndirectCommandNV.byteLength = 0x8;
 
@@ -67030,10 +67210,7 @@ VkRayTracingShaderGroupCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkRayTracingShaderGroupCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkRayTracingShaderGroupCreateInfoNV.byteLength = 0x28;
 
@@ -67104,8 +67281,8 @@ function VkRayTracingPipelineCreateInfoNV(opts) {
   this._pGroups = null;
   this._pGroupsNative = null;
   
-  this._layout = null;
-  this._basePipelineHandle = null;
+  this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+  this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
   
   this.sType = 0x3B9D4E88;
   if (typeof opts === "object") {
@@ -67175,7 +67352,14 @@ Object.defineProperties(VkRayTracingPipelineCreateInfoNV.prototype, {
     },
   "pStages": {
     get() {
-    return this._pStages;
+    if (this._pStages === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.stageCount, VkPipelineShaderStageCreateInfo);
+      this._pStages = array;
+      return this.pStages;
+    } else {
+      return this._pStages;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -67196,7 +67380,14 @@ Object.defineProperties(VkRayTracingPipelineCreateInfoNV.prototype, {
     },
   "pGroups": {
     get() {
-    return this._pGroups;
+    if (this._pGroups === null && this.memoryViewBigInt64[0x5] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x5];
+      let array = decodeNativeArrayOfObjects(addr, this.groupCount, VkRayTracingShaderGroupCreateInfoNV);
+      this._pGroups = array;
+      return this.pGroups;
+    } else {
+      return this._pGroups;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -67272,8 +67463,14 @@ VkRayTracingPipelineCreateInfoNV.prototype.reset = function reset() {
   this._pGroups = null;
   this._pGroupsNative = null;
   
-  this._layout = null;
-  this._basePipelineHandle = null;
+  if (this._layout !== null) {
+    if (this.memoryBuffer !== this._layout.memoryBuffer) this._layout = new VkPipelineLayout({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._layout.reset();
+  }
+  if (this._basePipelineHandle !== null) {
+    if (this.memoryBuffer !== this._basePipelineHandle.memoryBuffer) this._basePipelineHandle = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x40 });
+    else this._basePipelineHandle.reset();
+  }
   
   this.sType = 0x3B9D4E88;
 };
@@ -67327,14 +67524,7 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkRayTracingPipelineCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkRayTracingPipelineCreateInfoNV.byteLength = 0x50;
 
@@ -67415,16 +67605,16 @@ function VkGeometryTrianglesNV(opts) {
   }
   
   this._pNext = null;
-  this._vertexData = null;
+  this._vertexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
   
-  this._indexData = null;
+  this._indexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
   
   
   
-  this._transformData = null;
+  this._transformData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
   
   this.sType = 0x3B9D4E8C;
   if (typeof opts === "object") {
@@ -67588,16 +67778,25 @@ VkGeometryTrianglesNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x60"], 0x0);
   
   this._pNext = null;
-  this._vertexData = null;
+  if (this._vertexData !== null) {
+    if (this.memoryBuffer !== this._vertexData.memoryBuffer) this._vertexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._vertexData.reset();
+  }
   
   
   
   
-  this._indexData = null;
+  if (this._indexData !== null) {
+    if (this.memoryBuffer !== this._indexData.memoryBuffer) this._indexData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x38 });
+    else this._indexData.reset();
+  }
   
   
   
-  this._transformData = null;
+  if (this._transformData !== null) {
+    if (this.memoryBuffer !== this._transformData.memoryBuffer) this._transformData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x50 });
+    else this._transformData.reset();
+  }
   
   this.sType = 0x3B9D4E8C;
 };
@@ -67613,10 +67812,7 @@ VkGeometryTrianglesNV.prototype.flush = function flush() {
 };
 
 VkGeometryTrianglesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkGeometryTrianglesNV.byteLength = 0x60;
 
@@ -67705,7 +67901,7 @@ function VkGeometryAABBNV(opts) {
   }
   
   this._pNext = null;
-  this._aabbData = null;
+  this._aabbData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   
   
@@ -67787,7 +67983,10 @@ VkGeometryAABBNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._aabbData = null;
+  if (this._aabbData !== null) {
+    if (this.memoryBuffer !== this._aabbData.memoryBuffer) this._aabbData = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._aabbData.reset();
+  }
   
   
   
@@ -67805,10 +68004,7 @@ VkGeometryAABBNV.prototype.flush = function flush() {
 };
 
 VkGeometryAABBNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkGeometryAABBNV.byteLength = 0x28;
 
@@ -67950,12 +68146,7 @@ VkGeometryDataNV.prototype.flush = function flush() {
 };
 
 VkGeometryDataNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkGeometryDataNV.byteLength = 0x88;
 
@@ -68099,12 +68290,7 @@ VkGeometryNV.prototype.flush = function flush() {
 };
 
 VkGeometryNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkGeometryNV.byteLength = 0xA8;
 
@@ -68229,7 +68415,14 @@ Object.defineProperties(VkAccelerationStructureInfoNV.prototype, {
     },
   "pGeometries": {
     get() {
-    return this._pGeometries;
+    if (this._pGeometries === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.geometryCount, VkGeometryNV);
+      this._pGeometries = array;
+      return this.pGeometries;
+    } else {
+      return this._pGeometries;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -68286,12 +68479,7 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
 };
 
 VkAccelerationStructureInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkAccelerationStructureInfoNV.byteLength = 0x28;
 
@@ -68447,12 +68635,7 @@ VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkAccelerationStructureCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkAccelerationStructureCreateInfoNV.byteLength = 0x40;
 
@@ -68505,8 +68688,8 @@ function VkBindAccelerationStructureMemoryInfoNV(opts) {
   }
   
   this._pNext = null;
-  this._accelerationStructure = null;
-  this._memory = null;
+  this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+  this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   
   
   this._pDeviceIndices = null;
@@ -68613,8 +68796,14 @@ VkBindAccelerationStructureMemoryInfoNV.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x38"], 0x0);
   
   this._pNext = null;
-  this._accelerationStructure = null;
-  this._memory = null;
+  if (this._accelerationStructure !== null) {
+    if (this.memoryBuffer !== this._accelerationStructure.memoryBuffer) this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._accelerationStructure.reset();
+  }
+  if (this._memory !== null) {
+    if (this.memoryBuffer !== this._memory.memoryBuffer) this._memory = new VkDeviceMemory({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._memory.reset();
+  }
   
   
   this._pDeviceIndices = null;
@@ -68632,10 +68821,7 @@ VkBindAccelerationStructureMemoryInfoNV.prototype.flush = function flush() {
 };
 
 VkBindAccelerationStructureMemoryInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBindAccelerationStructureMemoryInfoNV.byteLength = 0x38;
 
@@ -68738,7 +68924,14 @@ Object.defineProperties(VkWriteDescriptorSetAccelerationStructureNV.prototype, {
     },
   "pAccelerationStructures": {
     get() {
-    return this._pAccelerationStructures;
+    if (this._pAccelerationStructures === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.accelerationStructureCount, VkAccelerationStructureNV);
+      this._pAccelerationStructures = array;
+      return this.pAccelerationStructures;
+    } else {
+      return this._pAccelerationStructures;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -68792,12 +68985,7 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSetAccelerationStructureNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkWriteDescriptorSetAccelerationStructureNV.byteLength = 0x20;
 
@@ -68847,7 +69035,7 @@ function VkAccelerationStructureMemoryRequirementsInfoNV(opts) {
   
   this._pNext = null;
   
-  this._accelerationStructure = null;
+  this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
   this.sType = 0x3B9D4E90;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -68908,7 +69096,10 @@ VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reset = function reset
   
   this._pNext = null;
   
-  this._accelerationStructure = null;
+  if (this._accelerationStructure !== null) {
+    if (this.memoryBuffer !== this._accelerationStructure.memoryBuffer) this._accelerationStructure = new VkAccelerationStructureNV({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 });
+    else this._accelerationStructure.reset();
+  }
   this.sType = 0x3B9D4E90;
 };
 
@@ -68923,10 +69114,7 @@ VkAccelerationStructureMemoryRequirementsInfoNV.prototype.flush = function flush
 };
 
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkAccelerationStructureMemoryRequirementsInfoNV.byteLength = 0x20;
 
@@ -69085,10 +69273,7 @@ VkPhysicalDeviceRayTracingPropertiesNV.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x40), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x40), 0x0);};
 
 VkPhysicalDeviceRayTracingPropertiesNV.byteLength = 0x40;
 
@@ -69198,7 +69383,14 @@ Object.defineProperties(VkDrmFormatModifierPropertiesListEXT.prototype, {
     },
   "pDrmFormatModifierProperties": {
     get() {
-    return this._pDrmFormatModifierProperties;
+    if (this._pDrmFormatModifierProperties === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.drmFormatModifierCount, VkDrmFormatModifierPropertiesEXT);
+      this._pDrmFormatModifierProperties = array;
+      return this.pDrmFormatModifierProperties;
+    } else {
+      return this._pDrmFormatModifierProperties;
+    }
     },
     },
   
@@ -69229,12 +69421,7 @@ VkDrmFormatModifierPropertiesListEXT.prototype.reflect = function reflect(memory
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkDrmFormatModifierPropertiesListEXT.byteLength = 0x20;
 
@@ -69329,8 +69516,7 @@ VkDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x10), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x10), 0x0);};
 
 VkDrmFormatModifierPropertiesEXT.byteLength = 0x10;
 
@@ -69477,10 +69663,7 @@ VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.byteLength = 0x28;
 
@@ -69614,10 +69797,7 @@ VkImageDrmFormatModifierListCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageDrmFormatModifierListCreateInfoEXT.byteLength = 0x20;
 
@@ -69721,7 +69901,14 @@ Object.defineProperties(VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype,
     },
   "pPlaneLayouts": {
     get() {
-    return this._pPlaneLayouts;
+    if (this._pPlaneLayouts === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.drmFormatModifierPlaneCount, VkSubresourceLayout);
+      this._pPlaneLayouts = array;
+      return this.pPlaneLayouts;
+    } else {
+      return this._pPlaneLayouts;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -69776,12 +69963,7 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
 };
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.byteLength = 0x28;
 
@@ -69893,10 +70075,7 @@ VkImageDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkImageDrmFormatModifierPropertiesEXT.byteLength = 0x18;
 
@@ -69998,10 +70177,7 @@ VkImageStencilUsageCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkImageStencilUsageCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageStencilUsageCreateInfoEXT.byteLength = 0x18;
 
@@ -70103,10 +70279,7 @@ VkDeviceMemoryOverallocationCreateInfoAMD.prototype.flush = function flush() {
 };
 
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkDeviceMemoryOverallocationCreateInfoAMD.byteLength = 0x18;
 
@@ -70224,10 +70397,7 @@ VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.byteLength = 0x20;
 
@@ -70359,14 +70529,7 @@ VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x28), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x28), 0x0);};
 
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.byteLength = 0x28;
 
@@ -70500,12 +70663,7 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.byteLength = 0x18;
 
@@ -70609,10 +70767,7 @@ VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.byteLength = 0x18;
 
@@ -70716,10 +70871,7 @@ VkSurfaceProtectedCapabilitiesKHR.prototype.flush = function flush() {
 };
 
 VkSurfaceProtectedCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSurfaceProtectedCapabilitiesKHR.byteLength = 0x18;
 
@@ -70823,10 +70975,7 @@ VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.prototype.flush = functio
 };
 
 VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR.byteLength = 0x18;
 
@@ -70930,10 +71079,7 @@ VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.byteLength = 0x18;
 
@@ -71048,10 +71194,7 @@ VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.flush = function fl
 };
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.byteLength = 0x18;
 
@@ -71202,14 +71345,7 @@ VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x110), 0x0);
-  
-  
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x110), 0x0);};
 
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.byteLength = 0x110;
 
@@ -71317,10 +71453,7 @@ VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.byteLength = 0x18;
 
@@ -71424,10 +71557,7 @@ VkMemoryPriorityAllocateInfoEXT.prototype.flush = function flush() {
 };
 
 VkMemoryPriorityAllocateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkMemoryPriorityAllocateInfoEXT.byteLength = 0x18;
 
@@ -71553,10 +71683,7 @@ VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.byteLength = 0x20;
 
@@ -71690,10 +71817,7 @@ VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.byteLength = 0x20;
 
@@ -71746,7 +71870,7 @@ function VkBufferDeviceAddressInfoEXT(opts) {
   }
   
   this._pNext = null;
-  this._buffer = null;
+  this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9E8321;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -71797,7 +71921,10 @@ VkBufferDeviceAddressInfoEXT.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._buffer = null;
+  if (this._buffer !== null) {
+    if (this.memoryBuffer !== this._buffer.memoryBuffer) this._buffer = new VkBuffer({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._buffer.reset();
+  }
   this.sType = 0x3B9E8321;
 };
 
@@ -71812,10 +71939,7 @@ VkBufferDeviceAddressInfoEXT.prototype.flush = function flush() {
 };
 
 VkBufferDeviceAddressInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferDeviceAddressInfoEXT.byteLength = 0x18;
 
@@ -71920,10 +72044,7 @@ VkBufferDeviceAddressCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkBufferDeviceAddressCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkBufferDeviceAddressCreateInfoEXT.byteLength = 0x18;
 
@@ -72025,10 +72146,7 @@ VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.byteLength = 0x18;
 
@@ -72139,10 +72257,7 @@ VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.reflect = function refl
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkFilterCubicImageViewImageFormatPropertiesEXT.byteLength = 0x18;
 
@@ -72250,10 +72365,7 @@ VkPhysicalDeviceImagelessFramebufferFeaturesKHR.prototype.flush = function flush
 };
 
 VkPhysicalDeviceImagelessFramebufferFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceImagelessFramebufferFeaturesKHR.byteLength = 0x18;
 
@@ -72340,7 +72452,14 @@ Object.defineProperties(VkFramebufferAttachmentsCreateInfoKHR.prototype, {
     },
   "pAttachmentImageInfos": {
     get() {
-    return this._pAttachmentImageInfos;
+    if (this._pAttachmentImageInfos === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentImageInfoCount, VkFramebufferAttachmentImageInfoKHR);
+      this._pAttachmentImageInfos = array;
+      return this.pAttachmentImageInfos;
+    } else {
+      return this._pAttachmentImageInfos;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -72394,12 +72513,7 @@ VkFramebufferAttachmentsCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkFramebufferAttachmentsCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkFramebufferAttachmentsCreateInfoKHR.byteLength = 0x20;
 
@@ -72580,10 +72694,7 @@ VkFramebufferAttachmentImageInfoKHR.prototype.flush = function flush() {
 };
 
 VkFramebufferAttachmentImageInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkFramebufferAttachmentImageInfoKHR.byteLength = 0x30;
 
@@ -72694,7 +72805,14 @@ Object.defineProperties(VkRenderPassAttachmentBeginInfoKHR.prototype, {
     },
   "pAttachments": {
     get() {
-    return this._pAttachments;
+    if (this._pAttachments === null && this.memoryViewBigInt64[0x3] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x3];
+      let array = decodeNativeArrayOfObjects(addr, this.attachmentCount, VkImageView);
+      this._pAttachments = array;
+      return this.pAttachments;
+    } else {
+      return this._pAttachments;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -72748,12 +72866,7 @@ VkRenderPassAttachmentBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkRenderPassAttachmentBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkRenderPassAttachmentBeginInfoKHR.byteLength = 0x20;
 
@@ -72861,10 +72974,7 @@ VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT.prototype.flush = function 
 };
 
 VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT.byteLength = 0x18;
 
@@ -72979,10 +73089,7 @@ VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.byteLength = 0x18;
 
@@ -73088,10 +73195,7 @@ VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.byteLength = 0x18;
 
@@ -73272,10 +73376,7 @@ VkCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
 };
 
 VkCooperativeMatrixPropertiesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkCooperativeMatrixPropertiesNV.byteLength = 0x30;
 
@@ -73407,10 +73508,7 @@ VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.byteLength = 0x18;
 
@@ -73455,9 +73553,9 @@ function VkImageViewHandleInfoNVX(opts) {
   }
   
   this._pNext = null;
-  this._imageView = null;
+  this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
-  this._sampler = null;
+  this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
   this.sType = 0x3B9B3F30;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -73535,9 +73633,15 @@ VkImageViewHandleInfoNVX.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x28"], 0x0);
   
   this._pNext = null;
-  this._imageView = null;
+  if (this._imageView !== null) {
+    if (this.memoryBuffer !== this._imageView.memoryBuffer) this._imageView = new VkImageView({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._imageView.reset();
+  }
   
-  this._sampler = null;
+  if (this._sampler !== null) {
+    if (this.memoryBuffer !== this._sampler.memoryBuffer) this._sampler = new VkSampler({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x20 });
+    else this._sampler.reset();
+  }
   this.sType = 0x3B9B3F30;
 };
 
@@ -73552,10 +73656,7 @@ VkImageViewHandleInfoNVX.prototype.flush = function flush() {
 };
 
 VkImageViewHandleInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkImageViewHandleInfoNVX.byteLength = 0x28;
 
@@ -73645,8 +73746,7 @@ VkPipelineCreationFeedbackEXT.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x10), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x10), 0x0);};
 
 VkPipelineCreationFeedbackEXT.byteLength = 0x10;
 
@@ -73723,7 +73823,15 @@ Object.defineProperties(VkPipelineCreationFeedbackCreateInfoEXT.prototype, {
     },
   "pPipelineCreationFeedback": {
     get() {
-    return this._pPipelineCreationFeedback;
+    if (this._pPipelineCreationFeedback === null && this.memoryViewBigInt64[0x2] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x2];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(VkPipelineCreationFeedbackEXT.byteLength));
+      this._pPipelineCreationFeedback = new VkPipelineCreationFeedbackEXT({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[0x2] = this._pPipelineCreationFeedback.memoryAddress;
+      return this.pPipelineCreationFeedback;
+    } else {
+      return this._pPipelineCreationFeedback;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -73748,7 +73856,14 @@ Object.defineProperties(VkPipelineCreationFeedbackCreateInfoEXT.prototype, {
     },
   "pPipelineStageCreationFeedbacks": {
     get() {
-    return this._pPipelineStageCreationFeedbacks;
+    if (this._pPipelineStageCreationFeedbacks === null && this.memoryViewBigInt64[0x4] !== BI0) {
+      let addr = this.memoryViewBigInt64[0x4];
+      let array = decodeNativeArrayOfObjects(addr, this.pipelineStageCreationFeedbackCount, VkPipelineCreationFeedbackEXT);
+      this._pPipelineStageCreationFeedbacks = array;
+      return this.pPipelineStageCreationFeedbacks;
+    } else {
+      return this._pPipelineStageCreationFeedbacks;
+    }
     },
     set(value) {
     if (value !== null ) {
@@ -73803,12 +73918,7 @@ VkPipelineCreationFeedbackCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkPipelineCreationFeedbackCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkPipelineCreationFeedbackCreateInfoEXT.byteLength = 0x28;
 
@@ -73918,10 +74028,7 @@ VkSurfaceFullScreenExclusiveInfoEXT.prototype.flush = function flush() {
 };
 
 VkSurfaceFullScreenExclusiveInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSurfaceFullScreenExclusiveInfoEXT.byteLength = 0x18;
 
@@ -74012,10 +74119,7 @@ VkSurfaceFullScreenExclusiveWin32InfoEXT.prototype.flush = function flush() {
 };
 
 VkSurfaceFullScreenExclusiveWin32InfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSurfaceFullScreenExclusiveWin32InfoEXT.byteLength = 0x18;
 
@@ -74115,10 +74219,7 @@ VkSurfaceCapabilitiesFullScreenExclusiveEXT.prototype.flush = function flush() {
 };
 
 VkSurfaceCapabilitiesFullScreenExclusiveEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkSurfaceCapabilitiesFullScreenExclusiveEXT.byteLength = 0x18;
 
@@ -74220,10 +74321,7 @@ VkHeadlessSurfaceCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkHeadlessSurfaceCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkHeadlessSurfaceCreateInfoEXT.byteLength = 0x18;
 
@@ -74327,10 +74425,7 @@ VkPhysicalDeviceCoverageReductionModeFeaturesNV.prototype.flush = function flush
 };
 
 VkPhysicalDeviceCoverageReductionModeFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceCoverageReductionModeFeaturesNV.byteLength = 0x18;
 
@@ -74443,10 +74538,7 @@ VkPipelineCoverageReductionStateCreateInfoNV.prototype.flush = function flush() 
 };
 
 VkPipelineCoverageReductionStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineCoverageReductionStateCreateInfoNV.byteLength = 0x18;
 
@@ -74573,10 +74665,7 @@ VkFramebufferMixedSamplesCombinationNV.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkFramebufferMixedSamplesCombinationNV.byteLength = 0x20;
 
@@ -74692,10 +74781,7 @@ VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.prototype.flush = function 
 };
 
 VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.byteLength = 0x18;
 
@@ -74803,10 +74889,7 @@ VkPerformanceValueINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceValueINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPerformanceValueINTEL.byteLength = 0x10;
 
@@ -74911,10 +74994,7 @@ VkInitializePerformanceApiInfoINTEL.prototype.flush = function flush() {
 };
 
 VkInitializePerformanceApiInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkInitializePerformanceApiInfoINTEL.byteLength = 0x18;
 
@@ -75016,10 +75096,7 @@ VkQueryPoolCreateInfoINTEL.prototype.flush = function flush() {
 };
 
 VkQueryPoolCreateInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkQueryPoolCreateInfoINTEL.byteLength = 0x18;
 
@@ -75124,10 +75201,7 @@ VkPerformanceMarkerInfoINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceMarkerInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPerformanceMarkerInfoINTEL.byteLength = 0x18;
 
@@ -75231,10 +75305,7 @@ VkPerformanceStreamMarkerInfoINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceStreamMarkerInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPerformanceStreamMarkerInfoINTEL.byteLength = 0x18;
 
@@ -75363,10 +75434,7 @@ VkPerformanceOverrideInfoINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceOverrideInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPerformanceOverrideInfoINTEL.byteLength = 0x20;
 
@@ -75476,10 +75544,7 @@ VkPerformanceConfigurationAcquireInfoINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceConfigurationAcquireInfoINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPerformanceConfigurationAcquireInfoINTEL.byteLength = 0x18;
 
@@ -75583,10 +75648,7 @@ VkPhysicalDeviceIndexTypeUint8FeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceIndexTypeUint8FeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceIndexTypeUint8FeaturesEXT.byteLength = 0x18;
 
@@ -75697,10 +75759,7 @@ VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.prototype.reflect = function reflec
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceShaderSMBuiltinsPropertiesNV.byteLength = 0x18;
 
@@ -75808,10 +75867,7 @@ VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.byteLength = 0x18;
 
@@ -75937,10 +75993,7 @@ VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.prototype.flush = function fl
 };
 
 VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.byteLength = 0x20;
 
@@ -76052,10 +76105,7 @@ VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.prototype.flush = functi
 };
 
 VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.byteLength = 0x18;
 
@@ -76100,7 +76150,7 @@ function VkPipelineInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   this.sType = 0x3B9EE4C9;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -76151,7 +76201,10 @@ VkPipelineInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x18"], 0x0);
   
   this._pNext = null;
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._pipeline.reset();
+  }
   this.sType = 0x3B9EE4C9;
 };
 
@@ -76166,10 +76219,7 @@ VkPipelineInfoKHR.prototype.flush = function flush() {
 };
 
 VkPipelineInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineInfoKHR.byteLength = 0x18;
 
@@ -76298,10 +76348,7 @@ VkPipelineExecutablePropertiesKHR.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x218), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x218), 0x0);};
 
 VkPipelineExecutablePropertiesKHR.byteLength = 0x218;
 
@@ -76360,7 +76407,7 @@ function VkPipelineExecutableInfoKHR(opts) {
   }
   
   this._pNext = null;
-  this._pipeline = null;
+  this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
   
   this.sType = 0x3B9EE4CB;
   if (typeof opts === "object") {
@@ -76421,7 +76468,10 @@ VkPipelineExecutableInfoKHR.prototype.reset = function reset() {
   this.memoryViewUint8.set(STRUCT_RESET_CACHE["0x20"], 0x0);
   
   this._pNext = null;
-  this._pipeline = null;
+  if (this._pipeline !== null) {
+    if (this.memoryBuffer !== this._pipeline.memoryBuffer) this._pipeline = new VkPipeline({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x10 });
+    else this._pipeline.reset();
+  }
   
   this.sType = 0x3B9EE4CB;
 };
@@ -76437,10 +76487,7 @@ VkPipelineExecutableInfoKHR.prototype.flush = function flush() {
 };
 
 VkPipelineExecutableInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineExecutableInfoKHR.byteLength = 0x20;
 
@@ -76574,12 +76621,7 @@ VkPipelineExecutableStatisticKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x220), 0x0);
-  
-  
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x220), 0x0);};
 
 VkPipelineExecutableStatisticKHR.byteLength = 0x220;
 
@@ -76765,10 +76807,7 @@ VkPipelineExecutableInternalRepresentationKHR.prototype.flush = function flush()
 };
 
 VkPipelineExecutableInternalRepresentationKHR.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineExecutableInternalRepresentationKHR.byteLength = 0x228;
 
@@ -76888,10 +76927,7 @@ VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.prototype.flush = func
 };
 
 VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT.byteLength = 0x18;
 
@@ -76995,10 +77031,7 @@ VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.prototype.flush = function flush
 };
 
 VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.byteLength = 0x18;
 
@@ -77125,10 +77158,7 @@ VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.prototype.reflect = function r
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x30), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x30), 0x0);};
 
 VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT.byteLength = 0x30;
 
@@ -77255,10 +77285,7 @@ VkPhysicalDeviceSubgroupSizeControlFeaturesEXT.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceSubgroupSizeControlFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceSubgroupSizeControlFeaturesEXT.byteLength = 0x18;
 
@@ -77387,10 +77414,7 @@ VkPhysicalDeviceSubgroupSizeControlPropertiesEXT.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x20), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x20), 0x0);};
 
 VkPhysicalDeviceSubgroupSizeControlPropertiesEXT.byteLength = 0x20;
 
@@ -77506,10 +77530,7 @@ VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT.prototype.reflect = funct
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT.byteLength = 0x18;
 
@@ -77668,10 +77689,7 @@ VkPhysicalDeviceLineRasterizationFeaturesEXT.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceLineRasterizationFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceLineRasterizationFeaturesEXT.byteLength = 0x28;
 
@@ -77795,10 +77813,7 @@ VkPhysicalDeviceLineRasterizationPropertiesEXT.prototype.reflect = function refl
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x18), 0x0);
-  
-  
-};
+  dstView.set(srcView.subarray(0x0, 0x18), 0x0);};
 
 VkPhysicalDeviceLineRasterizationPropertiesEXT.byteLength = 0x18;
 
@@ -77937,10 +77952,7 @@ VkPipelineRasterizationLineStateCreateInfoEXT.prototype.flush = function flush()
 };
 
 VkPipelineRasterizationLineStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineRasterizationLineStateCreateInfoEXT.byteLength = 0x20;
 
@@ -78054,10 +78066,7 @@ VkPipelineCompilerControlCreateInfoAMD.prototype.flush = function flush() {
 };
 
 VkPipelineCompilerControlCreateInfoAMD.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPipelineCompilerControlCreateInfoAMD.byteLength = 0x18;
 
@@ -78161,10 +78170,7 @@ VkPhysicalDeviceCoherentMemoryFeaturesAMD.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceCoherentMemoryFeaturesAMD.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-};
+  };
 
 VkPhysicalDeviceCoherentMemoryFeaturesAMD.byteLength = 0x18;
 
@@ -78311,14 +78317,7 @@ VkClearColorValue.prototype.flush = function flush() {
 };
 
 VkClearColorValue.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-  
-  
-};
+  };
 
 VkClearColorValue.byteLength = 0x10;
 
@@ -78448,12 +78447,7 @@ VkClearValue.prototype.flush = function flush() {
 };
 
 VkClearValue.prototype.reflect = function reflect(memoryAddress) {
-  
-  
-  
-  
-  
-};
+  };
 
 VkClearValue.byteLength = 0x10;
 
@@ -78552,6 +78546,14 @@ Object.defineProperties(VkPerformanceValueDataINTEL.prototype, {
       let str = textDecoder.decode(this._valueString);
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[0x0] !== BI0) {
+        let addr = this.memoryViewBigInt64[0x0];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._valueString = buffer;
+        return this.valueString;
+      }
       return null;
     }
     },
@@ -78585,8 +78587,7 @@ VkPerformanceValueDataINTEL.prototype.flush = function flush() {
 };
 
 VkPerformanceValueDataINTEL.prototype.reflect = function reflect(memoryAddress) {
-  
-};
+  };
 
 VkPerformanceValueDataINTEL.byteLength = 0x8;
 
@@ -78692,8 +78693,7 @@ VkPipelineExecutableStatisticValueKHR.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  dstView.set(srcView.subarray(0x0, 0x8), 0x0);
-};
+  dstView.set(srcView.subarray(0x0, 0x8), 0x0);};
 
 VkPipelineExecutableStatisticValueKHR.byteLength = 0x8;
 

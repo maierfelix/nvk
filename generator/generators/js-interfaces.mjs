@@ -290,7 +290,7 @@ function getStructureMemoryViews(passedByReference) {
 
 function getGetterProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value} = jsType;
+  let {type, value, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   switch (type) {
     case JavaScriptType.NUMBER:
@@ -309,6 +309,24 @@ function getGetterProcessor(member) {
     return this.memoryView${instr}[${offset}] !== 0;`;
     }
     case JavaScriptType.OBJECT: {
+      let instr = "BigInt64";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexaByteOffset(byteOffset / byteStride);
+      if (isReference) {
+        if (member.isHandleType) {
+          warn(`Cannot handle handle reference reflection for ${currentStruct.name}.${member.name}`);
+        }
+        return `
+    if (this._${member.name} === null && this.memoryView${instr}[${offset}] !== BI0) {
+      let addr = this.memoryView${instr}[${offset}];
+      let buffer = getArrayBufferFromAddress(addr, BigInt(${member.type}.byteLength));
+      this._${member.name} = new ${member.type}({ $memoryBuffer: buffer, $memoryOffset: 0x0 });
+      this.memoryViewBigInt64[${offset}] = this._${member.name}.memoryAddress;
+      return this.${member.name};
+    } else {
+      return this._${member.name};
+    }`;
+      }
       return `
     return this._${member.name};`;
     }
@@ -322,16 +340,31 @@ function getGetterProcessor(member) {
     return decodeNullTerminatedUTF8String(
       new Uint8Array(this.memoryBuffer).subarray(this.$memoryOffset + ${hxByteOffsetBegin}, ${hxByteOffsetEnd})
     ) || null;`;
-      }
-      return `
+      } else {
+        let instr = "BigInt64";
+        let byteStride = getDataViewInstructionStride(instr);
+        let offset = getHexaByteOffset(byteOffsetBegin / byteStride);
+        return `
     if (this._${member.name} !== null) {
       let str = textDecoder.decode(this._${member.name});
       return str.substr(0, str.length - 1);
     } else {
+      // native memory contains a string which we didn't reflect yet
+      if (this.memoryViewBigInt64[${offset}] !== BI0) {
+        let addr = this.memoryViewBigInt64[${offset}];
+        let length = findNullTerminatedUTF8StringLength(addr);
+        let buffer = getArrayBufferFromAddress(addr, BigInt(length));
+        this._${member.name} = buffer;
+        return this.${member.name};
+      }
       return null;
     }`;
+      }
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
+      if (currentStruct.returnedonly) {
+        warn(`Cannot process natively created array of strings for ${currentStruct.name}.${member.name}`);
+      }
       return `
     return this._${member.name};`;
     }
@@ -359,10 +392,30 @@ function getGetterProcessor(member) {
     return this._${member.name};`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
-      return `
+      // dynamic array of references
+      if (!jsType.isStatic) {
+        let instr = "BigInt64";
+        let byteStride = getDataViewInstructionStride(instr);
+        let offset = getHexaByteOffset(byteOffset / byteStride);
+        if (!member.hasOwnProperty("length")) {
+          warn(`Expected member length attribute set for ${currentStruct.name}.${member.name}`);
+        }
+        return `
+    if (this._${member.name} === null && this.memoryView${instr}[${offset}] !== BI0) {
+      let addr = this.memoryView${instr}[${offset}];
+      let array = decodeNativeArrayOfObjects(addr, this.${member.length}, ${member.type});
+      this._${member.name} = array;
+      return this.${member.name};
+    } else {
+      return this._${member.name};
+    }`;
+      } else {
+        return `
     return this._${member.name};`;
+      }
     }
     case JavaScriptType.TYPED_ARRAY: {
+      // TODO: Handle reflection
       return `
     return this._${member.name};`;
     }
@@ -741,38 +794,6 @@ function getFlusherProcessor(member) {
   return ``;
 };
 
-function getReflectorProcesssor(member) {
-  let jsType = getJavaScriptType(ast, member);
-  let {type, value} = jsType;
-  let byteOffset = getStructureMemberByteOffset(member) | 0;
-  let byteLength = getStructureMemberByteLength(member) | 0;
-  switch (type) {
-    case JavaScriptType.OBJECT: {
-      return ``;
-    }
-    case JavaScriptType.ARRAY_OF_NUMBERS: {
-      return ``;
-    }
-    case JavaScriptType.ARRAY_OF_OBJECTS: {
-      let struct = getNodeByName(member.type, ast).returnedonly;
-      if (jsType.isStatic) {
-        
-      } else {
-        
-      }
-      return ``;
-    }
-    case JavaScriptType.ARRAY_OF_STRINGS: {
-      return ``;
-    }
-  };
-  if (isPNextMember(member)) {
-    return ``;
-  }
-  warn(`Cannot resolve reflector processor for ${member.name} of type ${type}`);
-  return ``;
-};
-
 function getStructureAutoSType() {
   let struct = currentStruct;
   let sType = null;
@@ -883,7 +904,6 @@ export default function(astReference, includeValidations, disableMinification, c
       getFlusherProcessor,
       getStructureAutoSType,
       getConstructorResetter,
-      getReflectorProcesssor,
       getStructureByteLength,
       getStructureMemoryViews,
       getConstructorInitializer,

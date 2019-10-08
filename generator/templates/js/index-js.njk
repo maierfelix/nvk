@@ -22,16 +22,58 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 };
 
 const BI0 = BigInt(0);
+const BI4 = BigInt(4);
+const BI8 = BigInt(8);
 const NULLT = String.fromCharCode(0x0);
 const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
 const textDecoder = new (typeof TextDecoder === "undefined" ? require("util").TextDecoder : TextDecoder);
 
+function dereferencePointer(addr) {
+  // read ptr address
+  let ptrBuffer = getArrayBufferFromAddress(addr, BI8);
+  // deref ptr
+  return getAddressFromArrayBuffer(ptrBuffer);
+};
+
 function decodeNullTerminatedUTF8String(view) {
   let terminator = view.indexOf(0x0);
   let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
   return textDecoder.decode(subview);
+};
+
+function findNullTerminatedUTF8StringLength(addr) {
+  let limit = 2 << 12; 
+  // read 4 bytes on each iteration
+  for (let ii = 0; ii < limit; ii += 4) {
+    let chunk = getArrayBufferFromAddress(addr + BigInt(ii), BI4);
+    let chunkU8 = new Uint8Array(chunk);
+    if (chunkU8[0x0] === 0) return ii + 0x1 + 0x0;
+    if (chunkU8[0x1] === 0) return ii + 0x1 + 0x1;
+    if (chunkU8[0x2] === 0) return ii + 0x1 + 0x2;
+    if (chunkU8[0x3] === 0) return ii + 0x1 + 0x3;
+  };
+  throw new ReferenceError(`Failed to find UTF8 String length - Memory is either corrupted, misses a NULL terminator or exceeds the Limit of '${limit}' bytes`);
+  return -1;
+};
+
+function decodeNativeArrayOfObjects(addr, length, ctor) {
+  let out = [];
+  let byteLength = BigInt(ctor.byteLength);
+  let baseAddr = dereferencePointer(addr);
+  for (let ii = 0; ii < length; ++ii) {
+    let buffer = getArrayBufferFromAddress(
+      baseAddr + BigInt(ii) * byteLength,
+      byteLength
+    );
+    let item = new ctor({
+      $memoryBuffer: buffer,
+      $memoryOffset: 0
+    });
+    out.push(item);
+  };
+  return out;
 };
 
 function typeToString(value) {

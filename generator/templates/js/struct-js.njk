@@ -82,13 +82,6 @@ Object.defineProperties({{ struct.name }}.prototype, {
   let dstView = new Uint8Array(dstBuffer);
   dstView.set(srcView.subarray(0x0, {{ getStructureByteLength() | safe }}), 0x0);
   {%- endif -%}
-  {% for member in struct.children -%}
-  {%- if isIgnoreableType(member) != true -%}
-  {%- if isFlushableMember(member) == true %}
-  {{ getReflectorProcesssor(member) | safe }}
-  {% endif -%}
-  {%- endif -%}
-  {%- endfor %}
 };
 
 {{ struct.name }}.byteLength = {{ getStructureByteLength() | safe }};
