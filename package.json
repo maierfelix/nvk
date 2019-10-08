@@ -30,7 +30,8 @@
     "build": "node ./build.js",
     "generate": "node --experimental-modules ./generator/index.mjs",
     "release": "node ./make-release.js",
-    "all": "npm run generate --docs & npm run build & npm run release"
+    "all": "npm run generate --docs & npm run build & npm run release",
+    "postinstall": "node postInstall.js"
   },
   "devDependencies": {
     "bindings": "^1.5.0",
