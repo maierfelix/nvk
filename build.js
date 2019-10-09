@@ -78,7 +78,7 @@ function copyFiles() {
       files.push([`${sdkPath}/lib/libvulkan.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.1.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.${vkVersion}.dylib`, targetDir]);
-      files.push([`${baseDir}/ICD/`, targetDir]);
+      //files.push([`${baseDir}/ICD/`, targetDir]);
     }
     // add linux runtime files
     else if (platform === "linux") {

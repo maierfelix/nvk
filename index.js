@@ -76,7 +76,12 @@ if (!fs.existsSync(`${generatedPath}/interfaces.js`)) {
 }
 
 if (platform === "darwin") {
-  process.env.VK_ICD_FILENAMES = path.join(__dirname, `${releasePath}/${pkg.config.MAC_ICD_PATH}`);
+  // if a vulkan sdk is installed, then make sure that validation layers can be used
+  if (process.env.hasOwnProperty("VULKAN_SDK")) {
+    if (!process.env.hasOwnProperty("VK_LAYER_PATH")) {
+      process.env.VK_LAYER_PATH = path.join(process.env.VULKAN_SDK, `/etc/vulkan/explicit_layer.d`);
+    }
+  }
 }
 
 if (disableValidationChecks) {
