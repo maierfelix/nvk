@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/npm/v/nvk.svg?style=flat-square" alt="NPM Version" />
   </a>
   <a href="#">
-    <img src="https://img.shields.io/badge/vulkan-1.1.114-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
+    <img src="https://img.shields.io/badge/vulkan-1.1.121-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
   </a>
   <a href="//www.npmjs.com/package/nvk">
     <img src="https://img.shields.io/npm/dt/nvk.svg?style=flat-square" alt="NPM Downloads" />
@@ -64,11 +64,14 @@ Bounding checks and type validations are enabled by default, but can be disabled
     + [Windows](#windows)
     + [Linux](#linux)
     + [MacOS](#macos)
+    + [Releasing](#releasing)
+    + [Publishing](#publishing)
   * [CLI](#cli)
       - [Syntax](#syntax)
       - [Flags](#flags)
     + [Usage](#usage)
-      - [Generation](#generation)
+      - [General](#general)
+      - [Generating](#generating)
       - [Building](#building)
   * [RenderDoc](#renderdoc)
   * [TODOs](#todos)
@@ -265,15 +268,15 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.114/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript, `~40.000` lines are C++ code and the rest code for the documentation and AST.
+The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.121/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript, `~40.000` lines are C++ code and the rest code for the documentation and AST.
 
-Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.114/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
+Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.121/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
 
 ## Linking:
 
 This section is of interest, if you have an existing C++ project and want to link against this one.
 
-This project mostly doesn't requires to be linked against. All structures and handles have properties to access the underlying memory directly. For example, see [VkApplicationInfo](https://maierfelix.github.io/nvk/1.1.114/structs/VkApplicationInfo.html) (#Default Properties).
+This project mostly doesn't requires to be linked against. All structures and handles have properties to access the underlying memory directly. For example, see [VkApplicationInfo](https://maierfelix.github.io/nvk/1.1.121/structs/VkApplicationInfo.html) (#Default Properties).
 
 Structures and handles come with these 3 properties:
 
@@ -340,6 +343,25 @@ npm run generate --vkversion=x
 npm run build --vkversion=x
 ````
 
+### Releasing:
+When updating the bindings to a newer Vulkan version, or other drastic changes were made:
+
+ - Update the [package.json](https://github.com/maierfelix/nvk/blob/master/package.json):
+   - Add the previously used Vulkan version to `config.OUTDATED`
+   - Add the new Vulkan version to `config.POST_DEFAULT_BINDING_VERSION`
+   - Edit the TS type reference lines at the beginning of [index.js](https://github.com/maierfelix/nvk/blob/master/index.js) to contain the new Vulkan version
+ - Update the [README.md](https://github.com/maierfelix/nvk/blob/master/README.md) to contain links to the new Vulkan version
+ - Update the Website link of the repository
+
+### Publishing:
+When a new version of this project should be published (e.g. to *npm*), consider the following steps:
+
+ - Update the [package.json](https://github.com/maierfelix/nvk/blob/master/package.json):
+   - Update the npm package version (if necessary)
+ - Make sure that the bindings for all platforms were generated with:
+   - The `--docs` flag enabled, to include a documentation
+   - The `--disable-minification` flag **not** enabled
+
 ## CLI:
 
 #### Syntax:
@@ -355,10 +377,10 @@ npm run [script] [flag] [value]
 [--enable-shared-memory-hints]: Enables console hints, reporting to use nested structures when possible - useful for performance optimization
 ````
 
-#### Generator:
+#### Generating:
 You can generate bindings with:
 ````
-npm run generate --vkversion=1.1.114
+npm run generate --vkversion=1.1.121
 ````
 
 The generated bindings can then be found in `generated/{vkversion}/${platform}`
@@ -379,7 +401,7 @@ The generated bindings can then be found in `generated/{vkversion}/${platform}`
 #### Building:
 You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.114
+npm run build --vkversion=1.1.121
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
@@ -396,7 +418,3 @@ Using [RenderDoc](https://renderdoc.org/) is simple. Open RenderDoc and in the *
 
  - Executable Path: `C:\Program Files\nodejs\node.exe`
  - Command-line Arguments: `--experimental-modules C:\GitHub\nvk-examples\triangle\index.mjs`
-
-## TODOs:
- - [ ] Function generation (~95%)
- - [ ] Documentation generator (95%)
