@@ -363,6 +363,7 @@ When a new version of this project should be published (e.g. to *npm*), consider
  - Make sure that the bindings for all platforms were generated with:
    - The `--docs` flag enabled, to include a documentation
    - The `--disable-minification` flag **not** enabled
+ - Before running `npm init & npm publish`, you should preview the files which will land into the package. This can be done using the command `npm pack --dry-run`
 
 ## CLI:
 
