@@ -350,6 +350,8 @@ When updating the bindings to a newer Vulkan version, or other drastic changes w
    - Add the previously used Vulkan version to `config.OUTDATED`
    - Add the new Vulkan version to `config.POST_DEFAULT_BINDING_VERSION`
    - Edit the TS type reference lines at the beginning of [index.js](https://github.com/maierfelix/nvk/blob/master/index.js) to contain the new Vulkan version
+ - Update the [.npmignore](https://github.com/maierfelix/nvk/blob/master/.npmignore)
+   - Make sure that the `config.OUTDATED` section in [package.json](https://github.com/maierfelix/nvk/blob/master/package.json) matches the content in there, so previous/outdated Vulkan bindings dont't get included in the npm package
  - Update the [README.md](https://github.com/maierfelix/nvk/blob/master/README.md) to contain links to the new Vulkan version
  - Update the Website link of the repository
 
