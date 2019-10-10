@@ -31,7 +31,12 @@ let includes = null;
 
 let objects = [];
 
-const {DOCS_DIR, TEMPLATE_DIR, LINK_MDN_GOBJECTS} = pkg.config;
+const {
+  DOCS_DIR,
+  TEMPLATE_DIR,
+  LINK_MDN_GOBJECTS,
+  DISCORD_SERVER_INVITE_LINK
+} = pkg.config;
 
 const INDEX_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/index.njk`, "utf-8");
 const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
@@ -379,7 +384,8 @@ export default function(astReference, data, version) {
     let output = nunjucks.renderString(INDEX_TEMPLATE, {
       objects,
       categories,
-      ...defaultFunctions
+      ...defaultFunctions,
+      DISCORD_SERVER_INVITE_LINK
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/index.html`, output, `utf-8`);
   }

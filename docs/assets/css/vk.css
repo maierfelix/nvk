@@ -329,3 +329,23 @@ vk-logo {
 vk-logo > img {
   width: 4em;
 }
+
+.discord-btn {
+  position: absolute;
+  right: 0.5rem;
+  text-decoration: none;
+  background-color: rgba(123, 147, 232, 0.675);
+  border-radius: 2em;
+  padding: 0.675rem;
+  padding-left: 0.875em;
+  padding-right: 0.875em;
+  text-transform: capitalize;
+  color: #f3fffe;
+  z-index: 9999;
+}
+
+.discord-btn > img {
+  width: 1.5rem;
+  float: left;
+  padding-right: 0.25rem;
+}
