@@ -348,4 +348,9 @@ vk-logo > img {
   width: 1.5rem;
   float: left;
   padding-right: 0.25rem;
+  transition: background 0.125s;
+}
+
+.discord-btn:hover {
+  background: rgba(123, 147, 232, 0.725);
 }
