@@ -3,7 +3,7 @@
     "root": "../../..",
     "platform": "<(OS)",
     "release": "<@(module_root_dir)/build/Release",
-    "vkSDK": "/Users/user/Documents/Projects//vulkansdk-macos-1.1.121.1//macOS"
+    "vkSDK": "/macOS"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
