@@ -80,6 +80,24 @@ function typeToString(value) {
   return ((value === void 0 || value === null) ? String(value) : value.constructor.name);
 };
 
+function ASSERT_IS_STRING(value, name) {
+  if (typeof value !== "string") {
+    throw new TypeError(`Invalid type for '${name}': Expected 'String' but got '" + typeToString(value) + "'`);
+  }
+}
+
+function ASSERT_IS_NUMBER(value, name) {
+  if (typeof value !== "number") {
+    throw new TypeError(`Invalid type for '${name}': Expected 'Number' but got '" + typeToString(value) + "'`);
+  }
+};
+
+function ASSERT_IS_NUMBER_OR_BIGINT(value, name) {
+  if (typeof value !== "bigint" && typeof value !== "number") {
+    throw new TypeError(`Invalid type for '${name}': Expected 'BigInt' or 'Number' but got '" + typeToString(value) + "'`);
+  }
+};
+
 class NativeStringArray {
   constructor(array) {
     this.array = array;

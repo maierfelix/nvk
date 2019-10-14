@@ -22,7 +22,7 @@ function {{ handle.name }}(opts) {
     this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
   }
   this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-  this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
+  this.memoryView = new DataView(this.memoryBuffer, 0x0, {{ getHandleByteLength() | safe }});
 };
 
 {{ handle.name }}.prototype.reflect = function reflect(memoryAddress) {
