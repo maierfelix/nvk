@@ -1,0 +1,106 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>vkCmdBuildAccelerationStructureNV | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>vkCmdBuildAccelerationStructureNV</vk-name>
+
+    <vk-description>Build an acceleration structure</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdBuildAccelerationStructureNV();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pInfo</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkAccelerationStructureInfoNV.html">VkAccelerationStructureInfoNV</a></vk-property-type>
+        <vk-property-description> contains the shared information for the acceleration structure's structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>instanceData</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is the buffer containing instance data that will be used to build the acceleration structure as described in <<acceleration-structure-instance, Accelerator structure instances.>> This parameter <i>must</i> be <i>null</i> for bottom level acceleration structures.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>instanceOffset</vk-property-parameter>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the offset in bytes (relative to the start of <b>instanceData</b>) at which the instance data is located.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>update</vk-property-parameter>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>dst</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
+        <vk-property-description> is a reference to the target acceleration structure for the build.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>src</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
+        <vk-property-description> is a reference to an existing acceleration structure that is to be used to update the <b>dst</b> acceleration structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>scratch</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is the <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> that will be used as scratch memory for the build.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>scratchOffset</vk-property-parameter>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the offset in bytes relative to the start of <b>scratch</b> that will be used as a scratch memory.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

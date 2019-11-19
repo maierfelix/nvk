@@ -1,0 +1,212 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VulkanWindow | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VulkanWindow</vk-name>
+
+    <vk-description>Creates a new window, which can be rendered onto</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">win = new VulkanWindow();
+win = new VulkanWindow(object);</code></pre>
+    </vk-syntax>
+
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-description>Takes an object with the following properties:</vk-description>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">width</vk-property-prototype>
+        <vk-property-description>The width of the window.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">height</vk-property-prototype>
+        <vk-property-description>The height of the window.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">title</vk-property-prototype>
+        <vk-property-description>The title of the window.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">resizable</vk-property-prototype>
+        <vk-property-description>Indicates if the window can be resized. Defaults to <b><i>true</i></b></vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+
+      <!-- width -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>width</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>The current width of the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- height -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>height</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>The current height of the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- frameBufferWidth -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>frameBufferWidth</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>The window's framebuffer width.</vk-property-description>
+      </vk-property-entry>
+      <!-- frameBufferHeight -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>frameBufferHeight</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>The window's framebuffer height.</vk-property-description>
+      </vk-property-entry>
+      <!-- devicePixelRatio -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>devicePixelRatio</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Pixel ratio of the current display device.</vk-property-description>
+      </vk-property-entry>
+      <!-- title -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>title</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="string">String</vk-property-type>
+        <vk-property-description>The current title of the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- close -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>close</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Programmatically closes the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- focus -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>focus</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Programmatically focuses the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- pollEvents -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>pollEvents</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Processes pending events. Put this call into your update/draw loop.</vk-property-description>
+      </vk-property-entry>
+      <!-- shouldClose -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>shouldClose</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Indicates if the window is about to be closed.</vk-property-description>
+      </vk-property-entry>
+      <!-- getRequiredInstanceExtensions -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>getRequiredInstanceExtensions</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
+        <vk-property-description>Array of strings containing required extensions for surface creation. You probably will use this in VkInstanceCreateInfo.prototype.ppEnabledExtensionNames</vk-property-description>
+      </vk-property-entry>
+      <!-- createSurface -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>createSurface</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function<vk-property-type type="object">Object</vk-property-type></vk-property-type>
+        <vk-property-description>Cross-platform way to create a surface.</vk-property-description>
+      </vk-property-entry>
+      <!-- onfocus -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onfocus</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when the window is focused/unfocues.</vk-property-description>
+      </vk-property-entry>
+      <!-- onresize -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onresize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when window is resized.</vk-property-description>
+      </vk-property-entry>
+      <!-- onclose -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onclose</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event fired when the window closes.</vk-property-description>
+      </vk-property-entry>
+      <!-- onmousedown -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onmousedown</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event fired when the user presses a mouse button inside the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- onmouseup -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onmouseup</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event fired when the user leaves a mouse button inside the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- onmousemove -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onmousemove</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when the user moves the mouse inside the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- onmousewheel -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onmousewheel</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when the user scrolls with the mouse inside the window.</vk-property-description>
+      </vk-property-entry>
+      <!-- onkeydown -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onkeydown</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when the user presses a key.</vk-property-description>
+      </vk-property-entry>
+      <!-- onkeyup -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>onkeyup</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when the user leaves a key.</vk-property-description>
+      </vk-property-entry>
+      <!-- ondrop -->
+      <vk-property-entry>
+        <vk-property-prototype>VulkanWindow.prototype.<vk-prototype-name>ondrop</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="function">Function</vk-property-type>
+        <vk-property-description>Event triggered when dragging files into the window. Gives an array of strings containing paths to the files.</vk-property-description>
+      </vk-property-entry>
+
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

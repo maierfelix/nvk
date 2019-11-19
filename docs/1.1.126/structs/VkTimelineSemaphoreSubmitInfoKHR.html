@@ -1,0 +1,160 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkTimelineSemaphoreSubmitInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkTimelineSemaphoreSubmitInfoKHR</vk-name>
+
+    <vk-description>Structure specifying signal and wait values for timeline semaphores</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">timelineSemaphoreSubmitInfoKHRInfo = VkTimelineSemaphoreSubmitInfoKHR();
+timelineSemaphoreSubmitInfoKHRInfo = new VkTimelineSemaphoreSubmitInfoKHR();
+timelineSemaphoreSubmitInfoKHRInfo = new VkTimelineSemaphoreSubmitInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let timelineSemaphoreSubmitInfoKHRInfo = new VkTimelineSemaphoreSubmitInfoKHR();
+timelineSemaphoreSubmitInfoKHRInfo.sType = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR;
+timelineSemaphoreSubmitInfoKHRInfo.pNext = ;
+timelineSemaphoreSubmitInfoKHRInfo.waitSemaphoreValueCount = ;
+timelineSemaphoreSubmitInfoKHRInfo.pWaitSemaphoreValues = ;
+timelineSemaphoreSubmitInfoKHRInfo.signalSemaphoreValueCount = ;
+timelineSemaphoreSubmitInfoKHRInfo.pSignalSemaphoreValues = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let timelineSemaphoreSubmitInfoKHRInfo = new VkTimelineSemaphoreSubmitInfoKHR();
+timelineSemaphoreSubmitInfoKHRInfo.sType = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR;
+timelineSemaphoreSubmitInfoKHRInfo.pNext = ;
+timelineSemaphoreSubmitInfoKHRInfo.waitSemaphoreValueCount = ;
+timelineSemaphoreSubmitInfoKHRInfo.pWaitSemaphoreValues = ;
+timelineSemaphoreSubmitInfoKHRInfo.signalSemaphoreValueCount = ;
+timelineSemaphoreSubmitInfoKHRInfo.pSignalSemaphoreValues = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>waitSemaphoreValueCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphore wait values specified in <b>pWaitSemaphoreValues</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>pWaitSemaphoreValues</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of length <b>waitSemaphoreValueCount</b> containing values for the corresponding semaphores in <b><a href="../structs/VkSubmitInfo.html">VkSubmitInfo</a></b>::<b>pWaitSemaphores</b> to wait for.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>signalSemaphoreValueCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphore signal values specified in <b>pSignalSemaphoreValues</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>pSignalSemaphoreValues</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of length <b>signalSemaphoreValueCount</b> containing values for the corresponding semaphores in <b><a href="../structs/VkSubmitInfo.html">VkSubmitInfo</a></b>::<b>pSignalSemaphores</b> to set when signaled.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkTimelineSemaphoreSubmitInfoKHR.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

@@ -1,0 +1,202 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkSurfaceCapabilities2EXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkSurfaceCapabilities2EXT</vk-name>
+
+    <vk-description>Structure describing capabilities of a surface</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">surfaceCapabilities2EXT = VkSurfaceCapabilities2EXT();
+surfaceCapabilities2EXT = new VkSurfaceCapabilities2EXT();
+surfaceCapabilities2EXT = new VkSurfaceCapabilities2EXT(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let surfaceCapabilities2EXT = new VkSurfaceCapabilities2EXT();
+surfaceCapabilities2EXT.sType;
+surfaceCapabilities2EXT.pNext;
+surfaceCapabilities2EXT.minImageCount;
+surfaceCapabilities2EXT.maxImageCount;
+surfaceCapabilities2EXT.currentExtent;
+surfaceCapabilities2EXT.minImageExtent;
+surfaceCapabilities2EXT.maxImageExtent;
+surfaceCapabilities2EXT.maxImageArrayLayers;
+surfaceCapabilities2EXT.supportedTransforms;
+surfaceCapabilities2EXT.currentTransform;
+surfaceCapabilities2EXT.supportedCompositeAlpha;
+surfaceCapabilities2EXT.supportedUsageFlags;
+surfaceCapabilities2EXT.supportedSurfaceCounters;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let surfaceCapabilities2EXT = new VkSurfaceCapabilities2EXT();
+surfaceCapabilities2EXT.sType;
+surfaceCapabilities2EXT.pNext;
+surfaceCapabilities2EXT.minImageCount;
+surfaceCapabilities2EXT.maxImageCount;
+surfaceCapabilities2EXT.currentExtent;
+surfaceCapabilities2EXT.minImageExtent;
+surfaceCapabilities2EXT.maxImageExtent;
+surfaceCapabilities2EXT.maxImageArrayLayers;
+surfaceCapabilities2EXT.supportedTransforms;
+surfaceCapabilities2EXT.currentTransform;
+surfaceCapabilities2EXT.supportedCompositeAlpha;
+surfaceCapabilities2EXT.supportedUsageFlags;
+surfaceCapabilities2EXT.supportedSurfaceCounters;
+</code></pre>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>minImageCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>maxImageCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>currentExtent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>minImageExtent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>maxImageExtent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>maxImageArrayLayers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>supportedTransforms</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>currentTransform</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>supportedCompositeAlpha</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkCompositeAlphaFlagBitsKHR.html">VkCompositeAlphaFlagBitsKHR</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>supportedUsageFlags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkImageUsageFlagBits.html">VkImageUsageFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>supportedSurfaceCounters</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceCounterFlagBitsEXT.html">VkSurfaceCounterFlagBitsEXT</a></vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkSurfaceCounterFlagBitsEXT</b> indicating the supported surface counter types.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSurfaceCapabilities2EXT.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

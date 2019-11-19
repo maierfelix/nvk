@@ -1,0 +1,104 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkSubgroupFeatureFlagBits | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkSubgroupFeatureFlagBits</vk-name>
+
+    <vk-description>Enum describing what subgroup operations are supported</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkSubgroupFeatureFlagBits = {
+  VK_SUBGROUP_FEATURE_BASIC_BIT: 0x1,
+  VK_SUBGROUP_FEATURE_VOTE_BIT: 0x2,
+  VK_SUBGROUP_FEATURE_ARITHMETIC_BIT: 0x4,
+  VK_SUBGROUP_FEATURE_BALLOT_BIT: 0x8,
+  VK_SUBGROUP_FEATURE_SHUFFLE_BIT: 0x10,
+  VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT: 0x20,
+  VK_SUBGROUP_FEATURE_CLUSTERED_BIT: 0x40,
+  VK_SUBGROUP_FEATURE_QUAD_BIT: 0x80,
+  VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV: 0x100
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_BASIC_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniform</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_VOTE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformVote</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_ARITHMETIC_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformArithmetic</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_BALLOT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformBallot</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_SHUFFLE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformShuffle</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformShuffleRelative</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_CLUSTERED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformClustered</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_QUAD_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformQuad</i> capability.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubgroupFeatureFlagBits.<vk-prototype-name>VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the device will accept SPIR-V shader modules containing the <i>GroupNonUniformPartitionedNV</i> capability.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

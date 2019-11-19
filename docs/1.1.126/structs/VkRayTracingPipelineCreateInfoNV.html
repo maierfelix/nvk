@@ -1,0 +1,195 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkRayTracingPipelineCreateInfoNV | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkRayTracingPipelineCreateInfoNV</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created ray tracing pipeline</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">rayTracingPipelineNVInfo = VkRayTracingPipelineCreateInfoNV();
+rayTracingPipelineNVInfo = new VkRayTracingPipelineCreateInfoNV();
+rayTracingPipelineNVInfo = new VkRayTracingPipelineCreateInfoNV(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let rayTracingPipelineNVInfo = new VkRayTracingPipelineCreateInfoNV();
+rayTracingPipelineNVInfo.sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV;
+rayTracingPipelineNVInfo.pNext = ;
+rayTracingPipelineNVInfo.flags = ;
+rayTracingPipelineNVInfo.stageCount = ;
+rayTracingPipelineNVInfo.pStages = ;
+rayTracingPipelineNVInfo.groupCount = ;
+rayTracingPipelineNVInfo.pGroups = ;
+rayTracingPipelineNVInfo.maxRecursionDepth = ;
+rayTracingPipelineNVInfo.layout = ;
+rayTracingPipelineNVInfo.basePipelineHandle = ;
+rayTracingPipelineNVInfo.basePipelineIndex = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let rayTracingPipelineNVInfo = new VkRayTracingPipelineCreateInfoNV();
+rayTracingPipelineNVInfo.sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV;
+rayTracingPipelineNVInfo.pNext = ;
+rayTracingPipelineNVInfo.flags = ;
+rayTracingPipelineNVInfo.stageCount = ;
+rayTracingPipelineNVInfo.pStages = ;
+rayTracingPipelineNVInfo.groupCount = ;
+rayTracingPipelineNVInfo.pGroups = ;
+rayTracingPipelineNVInfo.maxRecursionDepth = ;
+rayTracingPipelineNVInfo.layout = ;
+rayTracingPipelineNVInfo.basePipelineHandle = ;
+rayTracingPipelineNVInfo.basePipelineIndex = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkPipelineCreateFlagBits.html">VkPipelineCreateFlagBits</a></vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkPipelineCreateFlagBits</b> specifying how the pipeline will be generated.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>stageCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> <b><a href="../structs/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo</a></b> structures describing the set of the shader stages to be included in the ray tracing pipeline.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>pStages</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> array.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>groupCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> <b><a href="../structs/VkRayTracingShaderGroupCreateInfoNV.html">VkRayTracingShaderGroupCreateInfoNV</a></b> structures describing the set of the shader stages to be included in each shader group in the ray tracing pipeline.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>pGroups</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkRayTracingShaderGroupCreateInfoNV.html">VkRayTracingShaderGroupCreateInfoNV]</a></vk-property-type></vk-property-type>
+        <vk-property-description> array.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>maxRecursionDepth</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum recursion that will be called from this pipeline.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>layout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></vk-property-type>
+        <vk-property-description> is the description of binding locations used by both the pipeline and descriptor sets used with the pipeline.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>basePipelineHandle</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
+        <vk-property-description> is a pipeline to derive from.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>basePipelineIndex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkRayTracingPipelineCreateInfoNV.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

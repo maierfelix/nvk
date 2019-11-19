@@ -1,0 +1,89 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>vkCreateComputePipelines | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>vkCreateComputePipelines</vk-name>
+
+    <vk-description>Creates a new compute pipeline object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkCreateComputePipelines();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-parameter>device</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
+        <vk-property-description> is the logical device that creates the compute pipelines.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pipelineCache</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkPipelineCache.html">VkPipelineCache</a></vk-property-type>
+        <vk-property-description> is either <b>VK_NULL_HANDLE</b>, indicating that pipeline caching is disabled; or the handle of a valid <<pipelines-cache,pipeline cache>> object, in which case use of that cache is enabled for the duration of the command.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>createInfoCount</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pCreateInfos</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkComputePipelineCreateInfo.html">VkComputePipelineCreateInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkComputePipelineCreateInfo.html">VkComputePipelineCreateInfo</a></b> structures.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pAllocator</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkAllocationCallbacks.html">VkAllocationCallbacks</a></vk-property-type>
+        <vk-property-description> controls host memory allocation as described in the <<memory-allocation, Memory Allocation>> chapter.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-parameter>pPipelines</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkPipeline.html">VkPipeline]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../handles/VkPipeline.html">VkPipeline</a></b> handles in which the resulting compute pipeline objects are returned.+[NOTE].editing-note====TODO (Jon) - Should we say something like "`the i'th element of the<b>pPipelines</b> array is created based on the corresponding element of the<b>pCreateInfos</b> array`"? Also for <b><a href="../calls/vkCreateGraphicsPipelines.html">vkCreateGraphicsPipelines</a></b> below.====</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
