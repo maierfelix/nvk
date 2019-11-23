@@ -292,8 +292,6 @@ export function isIgnoreableType(obj) {
     type === "xcb_window_t" ||
     type === "xcb_visualid_t" ||
     type === "Display *" ||
-    type === "const SECURITY_ATTRIBUTES *" ||
-    type === "DWORD" ||
     type === "HMONITOR"
   );
 };
@@ -541,6 +539,7 @@ export function isReferenceableMember(member) {
     case "uint16_t":
     case "uint32_t":
     case "uint64_t":
+    case "DWORD":
       return false;
     default: {
       warn(`Cannot resolve resolvability ${member.rawType} for ${member.name}!`);
@@ -601,6 +600,7 @@ export function getDataViewInstruction(member) {
     case "uint16_t": return `Uint16`;
     case "uint32_t": return `Uint32`;
     case "uint64_t": return `BigUint64`;
+    case "DWORD": return `Uint32`;
     default:
       warn(`Cannot resolve DataView instruction for ${member.name} of type ${type}`);
   };
@@ -618,6 +618,7 @@ export function getDataViewInstructionStride(instr) {
     case "Uint16": return Uint16Array.BYTES_PER_ELEMENT;
     case "Uint32": return Uint32Array.BYTES_PER_ELEMENT;
     case "BigUint64": return BigUint64Array.BYTES_PER_ELEMENT;
+    case "DWORD": return Uint32Array.BYTES_PER_ELEMENT;
     default:
       warn(`Cannot resolve DataView stride for ${member.name} of type ${type}`);
   };

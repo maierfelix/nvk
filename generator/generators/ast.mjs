@@ -609,7 +609,9 @@ function parseTypeElement(child) {
   if (
     out.rawType === `HWND` ||
     out.rawType === `HANDLE` ||
-    out.rawType === `HINSTANCE`) {
+    out.rawType === `HINSTANCE` ||
+    out.rawType === `const SECURITY_ATTRIBUTES *`
+  ) {
     out.isWin32Handle = true;
   }
   // handle reference
@@ -660,6 +662,7 @@ function isNumber(type) {
     case "uint16_t":
     case "uint32_t":
     case "uint64_t":
+    case "DWORD":
       return true;
   };
   return false;
@@ -857,14 +860,17 @@ export default function({ xmlInput, version, docs } = _) {
     let structs = out.filter(node => node.kind === "STRUCT");
     // include struct extensions
     structs.map(struct => {
+      // struct extends another struct
       if (struct.extends) {
         struct.extends.map(extensionName => {
+          // resolve the struct we want to extend
           let extStruct = structs.filter(s => s.name === extensionName)[0];
           if (extStruct) {
+            // add this struct to the to be extended struct
             if (!extStruct.extensions) extStruct.extensions = [];
             if (extStruct.extensions.indexOf(struct.name) <= -1) extStruct.extensions.push(struct.name);
           } else {
-            if (!extStruct) warn(`Cannot resolve struct extensions for ${struct.name} => ${struct.extends}`);
+            warn(`Cannot resolve struct extensions for ${struct.name} => ${struct.extends}`);
           }
         });
       }

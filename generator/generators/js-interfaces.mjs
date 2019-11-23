@@ -317,6 +317,7 @@ function getGetterProcessor(member) {
     return this._${member.name};`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
+      let byteOffsetBegin = getStructureMemberByteOffset(member) | 0;
       if (currentStruct.returnedonly) {
         if (!jsType.isStatic) {
           warn(`Cannot process non-static array of numbers for ${currentStruct.name}.${member.name}`);
@@ -328,7 +329,7 @@ function getGetterProcessor(member) {
         let out = `\n    return [\n`;
         for (let ii = 0; ii < length; ++ii) {
           let instr = getDataViewInstruction(member);
-          let offset = getHexaByteOffset(byteOffset + ii);
+          let offset = getHexaByteOffset(byteOffsetBegin + ii);
           let comma = ii < length - 1 ? `,\n` : ``;
           out += `      this.memoryView.get${instr}(${offset}, ${endianess})${comma}`;
         };
@@ -339,10 +340,11 @@ function getGetterProcessor(member) {
     return this._${member.name};`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
+      let byteOffsetBegin = getStructureMemberByteOffset(member) | 0;
       // dynamic array of references
       if (!jsType.isStatic) {
         let instr = "BigInt64";
-        let offset = getHexaByteOffset(byteOffset);
+        let offset = getHexaByteOffset(byteOffsetBegin);
         if (!member.hasOwnProperty("length")) {
           warn(`Expected member length attribute set for ${currentStruct.name}.${member.name}`);
         }

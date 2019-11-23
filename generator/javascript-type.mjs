@@ -260,6 +260,7 @@ export function getJavaScriptType(ast, object) {
     case "uint8_t":
     case "uint16_t":
     case "uint32_t":
+    case "DWORD":
       return new JavaScriptType({
         type: JavaScriptType.NUMBER
       });

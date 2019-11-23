@@ -26204,7 +26204,6 @@
       "VkExportMemoryWin32HandleInfoNV",
       "VkExportMemoryAllocateInfo",
       "VkImportMemoryWin32HandleInfoKHR",
-      "VkExportMemoryWin32HandleInfoKHR",
       "VkImportMemoryFdInfoKHR",
       "VkMemoryAllocateFlagsInfo",
       "VkMemoryDedicatedAllocateInfo",
@@ -27593,6 +27592,7 @@
     "sType": "VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO",
     "extensions": [
       "VkDedicatedAllocationBufferCreateInfoNV",
+      "VkExternalBufferProperties",
       "VkExternalMemoryBufferCreateInfo",
       "VkBufferDeviceAddressCreateInfoEXT"
     ],
@@ -38289,7 +38289,6 @@
     "sType": "VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO",
     "extensions": [
       "VkExportSemaphoreCreateInfo",
-      "VkExportSemaphoreWin32HandleInfoKHR",
       "VkSemaphoreTypeCreateInfoKHR"
     ],
     "documentation": {
@@ -43033,7 +43032,8 @@
         "name": "pAttributes",
         "isConstant": true,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -43052,7 +43052,8 @@
         "name": "dwAccess",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isNumber": true,
+        "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -47423,7 +47424,7 @@
     "kind": "STRUCT",
     "name": "VkExternalMemoryProperties",
     "needsReflection": true,
-    "returnedonly": true,
+    "returnedonly": false,
     "children": [
       {
         "text": "VkExternalMemoryFeatureFlags externalMemoryFeatures",
@@ -47489,8 +47490,8 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryPropertiesKHR",
-    "needsReflection": true,
-    "returnedonly": true,
+    "needsReflection": false,
+    "returnedonly": false,
     "children": [
       {
         "text": "VkExternalMemoryFeatureFlags externalMemoryFeatures",
@@ -48036,8 +48037,8 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalBufferProperties",
-    "needsReflection": true,
-    "returnedonly": true,
+    "needsReflection": false,
+    "returnedonly": false,
     "children": [
       {
         "text": "VkStructureType sType",
@@ -48090,6 +48091,9 @@
         }
       }
     ],
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -48100,8 +48104,8 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalBufferPropertiesKHR",
-    "needsReflection": true,
-    "returnedonly": true,
+    "needsReflection": false,
+    "returnedonly": false,
     "children": [
       {
         "text": "VkStructureType sType",
@@ -48155,6 +48159,9 @@
       }
     ],
     "alias": "VkExternalBufferProperties",
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -48784,6 +48791,9 @@
       "VkMemoryAllocateInfo"
     ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO",
+    "extensions": [
+      "VkExportMemoryWin32HandleInfoKHR"
+    ],
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",
@@ -48854,6 +48864,9 @@
       "VkMemoryAllocateInfo"
     ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_KHR",
+    "extensions": [
+      "VkExportMemoryWin32HandleInfoKHR"
+    ],
     "documentation": {
       "macros": [],
       "category": "",
@@ -49001,7 +49014,8 @@
         "name": "pAttributes",
         "isConstant": true,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -49020,7 +49034,8 @@
         "name": "dwAccess",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isNumber": true,
+        "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -49048,7 +49063,7 @@
       }
     ],
     "extends": [
-      "VkMemoryAllocateInfo"
+      "VkExportMemoryAllocateInfo"
     ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR",
     "documentation": {
@@ -50091,6 +50106,9 @@
       }
     ],
     "alias": "VkExportSemaphoreCreateInfo",
+    "extensions": [
+      "VkExportSemaphoreWin32HandleInfoKHR"
+    ],
     "extends": [
       "VkSemaphoreCreateInfo"
     ],
@@ -50279,7 +50297,8 @@
         "name": "pAttributes",
         "isConstant": true,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -50298,7 +50317,8 @@
         "name": "dwAccess",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isNumber": true,
+        "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -50326,7 +50346,7 @@
       }
     ],
     "extends": [
-      "VkSemaphoreCreateInfo"
+      "VkExportSemaphoreCreateInfoKHR"
     ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR",
     "documentation": {
@@ -51430,7 +51450,8 @@
         "name": "pAttributes",
         "isConstant": true,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -51449,7 +51470,8 @@
         "name": "dwAccess",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isNumber": true,
+        "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [

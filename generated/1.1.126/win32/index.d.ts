@@ -34405,12 +34405,12 @@ interface VkExportFenceWin32HandleInfoKHR {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes: null;
+    pAttributes: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess: null;
+    dwAccess: number;
 
     /**
      * is a UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created fence.
@@ -34434,12 +34434,12 @@ declare interface VkExportFenceWin32HandleInfoKHRInitializer {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes?: null;
+    pAttributes?: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess?: null;
+    dwAccess?: number;
 
     /**
      * is a UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created fence.
@@ -35353,12 +35353,12 @@ interface VkExportSemaphoreWin32HandleInfoKHR {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes: null;
+    pAttributes: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess: null;
+    dwAccess: number;
 
     /**
      * is a UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created semaphore.
@@ -35382,12 +35382,12 @@ declare interface VkExportSemaphoreWin32HandleInfoKHRInitializer {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes?: null;
+    pAttributes?: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess?: null;
+    dwAccess?: number;
 
     /**
      * is a UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created semaphore.
@@ -36439,12 +36439,12 @@ interface VkExportMemoryWin32HandleInfoKHR {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes: null;
+    pAttributes: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess: null;
+    dwAccess: number;
 
     /**
      * is a UTF-16 string to associate with the underlying resource referenced by NT handles exported from the created memory.
@@ -36468,12 +36468,12 @@ declare interface VkExportMemoryWin32HandleInfoKHRInitializer {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes?: null;
+    pAttributes?: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess?: null;
+    dwAccess?: number;
 
     /**
      * is a UTF-16 string to associate with the underlying resource referenced by NT handles exported from the created memory.
@@ -37189,17 +37189,17 @@ interface VkExternalBufferPropertiesKHR {
     /**
      *
      */
-    readonly sType: VkStructureType;
+    sType: VkStructureType;
 
     /**
      *
      */
-    readonly pNext: null;
+    pNext: null;
 
     /**
      *
      */
-    readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+    externalMemoryProperties: VkExternalMemoryProperties | null;
 
 }
 
@@ -37208,17 +37208,17 @@ declare interface VkExternalBufferPropertiesKHRInitializer {
     /**
      *
      */
-    readonly sType?: VkStructureType;
+    sType?: VkStructureType;
 
     /**
      *
      */
-    readonly pNext?: null;
+    pNext?: null;
 
     /**
      *
      */
-    readonly externalMemoryProperties?: VkExternalMemoryProperties | null;
+    externalMemoryProperties?: VkExternalMemoryProperties | null;
 }
 
 declare interface VkExternalBufferPropertiesKHRConstructor {
@@ -37253,17 +37253,17 @@ interface VkExternalBufferProperties {
     /**
      *
      */
-    readonly sType: VkStructureType;
+    sType: VkStructureType;
 
     /**
      *
      */
-    readonly pNext: null;
+    pNext: null;
 
     /**
      *
      */
-    readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+    externalMemoryProperties: VkExternalMemoryProperties | null;
 
 }
 
@@ -37272,17 +37272,17 @@ declare interface VkExternalBufferPropertiesInitializer {
     /**
      *
      */
-    readonly sType?: VkStructureType;
+    sType?: VkStructureType;
 
     /**
      *
      */
-    readonly pNext?: null;
+    pNext?: null;
 
     /**
      *
      */
-    readonly externalMemoryProperties?: VkExternalMemoryProperties | null;
+    externalMemoryProperties?: VkExternalMemoryProperties | null;
 }
 
 declare interface VkExternalBufferPropertiesConstructor {
@@ -37741,17 +37741,17 @@ interface VkExternalMemoryPropertiesKHR {
     /**
      *
      */
-    readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
+    externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
 
     /**
      *
      */
-    readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+    exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
 
     /**
      *
      */
-    readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+    compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
 
 }
 
@@ -37760,17 +37760,17 @@ declare interface VkExternalMemoryPropertiesKHRInitializer {
     /**
      *
      */
-    readonly externalMemoryFeatures?: VkExternalMemoryFeatureFlagBits;
+    externalMemoryFeatures?: VkExternalMemoryFeatureFlagBits;
 
     /**
      *
      */
-    readonly exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+    exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
 
     /**
      *
      */
-    readonly compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+    compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
 }
 
 declare interface VkExternalMemoryPropertiesKHRConstructor {
@@ -37805,17 +37805,17 @@ interface VkExternalMemoryProperties {
     /**
      *
      */
-    readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
+    externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
 
     /**
      *
      */
-    readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+    exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
 
     /**
      *
      */
-    readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+    compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
 
 }
 
@@ -37824,17 +37824,17 @@ declare interface VkExternalMemoryPropertiesInitializer {
     /**
      *
      */
-    readonly externalMemoryFeatures?: VkExternalMemoryFeatureFlagBits;
+    externalMemoryFeatures?: VkExternalMemoryFeatureFlagBits;
 
     /**
      *
      */
-    readonly exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+    exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
 
     /**
      *
      */
-    readonly compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+    compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
 }
 
 declare interface VkExternalMemoryPropertiesConstructor {
@@ -41221,12 +41221,12 @@ interface VkExportMemoryWin32HandleInfoNV {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes: null;
+    pAttributes: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess: null;
+    dwAccess: number;
 
 }
 
@@ -41245,12 +41245,12 @@ declare interface VkExportMemoryWin32HandleInfoNVInitializer {
     /**
      * is a reference to a Windows 'SECURITY_ATTRIBUTES' structure specifying security attributes of the handle.
      */
-    pAttributes?: null;
+    pAttributes?: bigint | number;
 
     /**
      * is a 'DWORD' specifying access rights of the handle.
      */
-    dwAccess?: null;
+    dwAccess?: number;
 }
 
 declare interface VkExportMemoryWin32HandleInfoNVConstructor {

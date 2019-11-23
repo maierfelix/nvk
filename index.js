@@ -1,6 +1,6 @@
-/// <reference types="./generated/1.1.121/darwin/" />
-/// <reference types="./generated/1.1.121/win32/" />
-/// <reference types="./generated/1.1.121/linux" />
+/// <reference types="./generated/1.1.126/darwin/" />
+/// <reference types="./generated/1.1.126/win32/" />
+/// <reference types="./generated/1.1.126/linux" />
 
 const fs = require("fs");
 const path = require("path");
