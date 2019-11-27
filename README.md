@@ -33,7 +33,7 @@ This is a low-abstraction, high-performance [Vulkan](https://en.wikipedia.org/wi
 
 | Real-Time RTX Ray Tracer |
 :-------------------------:|
-<a href="https://github.com/maierfelix/tiny-rtx"><img src="https://i.imgur.com/5KOxFS1.png" height="228"></a>
+<a href="https://github.com/maierfelix/tiny-rtx"><img src="https://i.imgur.com/b8IoouL.png" height="228"></a>
 
 ### Why Vulkan in JavaScript?
  - Vulkan is a binding friendly API
