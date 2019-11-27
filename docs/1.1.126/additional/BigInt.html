@@ -46,9 +46,10 @@
         <vk-property-description>Dereferences a BigInt, which represents a memory pointer.</vk-property-description>
 
         <vk-syntax>
-          <pre><code class="language-js">let ptr = 42n;
-let memoryAddress = addr.dereference(); // jumps to the memory which ptr points to
-let memoryBuffer = ArrayBuffer.fromAddress(memoryAddress);</code></pre>
+          <pre><code class="language-js">let ptr = 42n; // arbitrary pointer
+let memoryAddress = ptr.dereference(); // the memory location which ptr points to
+let memoryByteLength = 128n; // arbitrary bytelength
+let memoryBuffer = ArrayBuffer.fromAddress(memoryAddress, memoryByteLength); // creates a view on the pointed-to memory </code></pre>
         </vk-syntax>
 
       </vk-property-entry>
