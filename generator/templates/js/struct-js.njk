@@ -1,12 +1,26 @@
 /** {{ struct.name }} **/
-function {{ struct.name }}(opts) {
+function {{ struct.name }}(opts, byteOffset) {
   if (new.target !== {{ struct.name }}) {
-    _{{ struct.name }}.reset();
-    return _{{ struct.name }};
+    if (typeof opts === "string") {
+      // opts contains our stack byteOffset
+      // byteOffset is unused
+      let out = getStructFromStack(opts, {{ struct.name }}, STRUCT_CACHE_{{ struct.name }});
+      out.reset();
+      return out;
+    } else if (typeof opts === "object" && byteOffset !== void 0) {
+      // opts contains our initialization data
+      // byteOffset contains the stack byteOffset
+      let out = getStructFromStack(byteOffset, {{ struct.name }}, STRUCT_CACHE_{{ struct.name }});
+      out.reset(opts);
+      return out;
+    } else {
+      throw new Error(`Invalid Signature for '{{ struct.name }}'`);
+    }
   }
   this.memoryBuffer = null;
   this.memoryAddress = BI0;
   this.$memoryOffset = 0x0;
+  this.resetMemoryView = null;
   if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
     this.memoryBuffer = opts.$memoryBuffer;
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
@@ -51,14 +65,26 @@ Object.defineProperties({{ struct.name }}.prototype, {
   {% endfor %}
 });
 
-{{ struct.name }}.prototype.reset = function reset() {
-  new Uint8Array(this.memoryBuffer, this.$memoryOffset, {{ getStructureByteLength() | safe }}).set(STRUCT_RESET_CACHE["{{ getStructureByteLength() | safe }}"], 0x0);
+{{ struct.name }}.prototype.reset = function reset(opts) {
+  if (this.resetMemoryView === null) {
+    this.resetMemoryView = new Uint8Array(this.memoryBuffer, this.$memoryOffset, {{ getStructureByteLength() | safe }});
+  }
+  this.resetMemoryView.set(STRUCT_RESET_CACHE["{{ getStructureByteLength() | safe }}"], 0x0);
   {% for member in struct.children %}
   {%- if isIgnoreableType(member) != true -%}
   {{ getConstructorResetter(member) | safe }}
   {% endif -%}
   {%- endfor -%}
   {{ getStructureAutoSType() | safe }}
+  if (typeof opts === "object") {
+    {% for member in struct.children %}
+    {%- if isIgnoreableType(member) != true -%}
+    {%- if isFillableMember(struct, member) == true -%}
+    if (opts.{{ member.name }} !== void 0) this.{{ member.name }} = opts.{{ member.name }};
+    {% endif -%}
+    {% endif -%}
+    {%- endfor %}
+  }
 };
 
 {{ struct.name }}.prototype.flush = function flush() {

@@ -10,6 +10,16 @@ if (!ENABLE_SHARED_MEMORY_HINTS) {
   });
 }
 
+if (typeof BigInt === "undefined") {
+  throw new ReferenceError(`BigInt Type is not available on your platform!`);
+}
+
+const BI0 = BigInt(0);
+const BI4 = BigInt(4);
+const BI8 = BigInt(8);
+const NULLT = String.fromCharCode(0x0);
+const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
+
 const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
 const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
 
@@ -21,20 +31,24 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
   return getArrayBufferFromAddress(address, BigInt(byteLength));
 };
 
-const BI0 = BigInt(0);
-const BI4 = BigInt(4);
-const BI8 = BigInt(8);
-const NULLT = String.fromCharCode(0x0);
-const VK_ENUMERATIONS = nvk.$getVulkanEnumerations();
+global.BigInt.prototype.dereference = function() {
+  // read ptr address
+  let ptrBuffer = getArrayBufferFromAddress(this, BI8);
+  // deref ptr
+  return getAddressFromArrayBuffer(ptrBuffer);
+};
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
 const textDecoder = new (typeof TextDecoder === "undefined" ? require("util").TextDecoder : TextDecoder);
 
-function dereferencePointer(addr) {
-  // read ptr address
-  let ptrBuffer = getArrayBufferFromAddress(addr, BI8);
-  // deref ptr
-  return getAddressFromArrayBuffer(ptrBuffer);
+function getStructFromStack(byteOffset, ctor, cache) {
+  if (cache[byteOffset] === void 0) {
+    let stackAllocated = new ctor();
+    cache[byteOffset] = stackAllocated;
+    return stackAllocated;
+  }
+  let stackAllocated = cache[byteOffset];
+  return stackAllocated;
 };
 
 function decodeNullTerminatedUTF8String(view) {
@@ -61,7 +75,7 @@ function findNullTerminatedUTF8StringLength(addr) {
 function decodeNativeArrayOfObjects(addr, length, ctor) {
   let out = [];
   let byteLength = BigInt(ctor.byteLength);
-  let baseAddr = dereferencePointer(addr);
+  let baseAddr = addr.dereference();
   for (let ii = 0; ii < length; ++ii) {
     let buffer = getArrayBufferFromAddress(
       baseAddr + BigInt(ii) * byteLength,

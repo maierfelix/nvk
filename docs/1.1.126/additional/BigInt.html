@@ -1,0 +1,67 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>BigInt | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>BigInt</vk-name>
+
+    <vk-description><i>nvk</i> extends the <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type> Object with additional low-level methods.</vk-description>
+
+    </vk-stub><vk-section-title>Additional Properties</vk-section-title>
+
+    <vk-properties>
+
+      <!-- dereference -->
+      <vk-property-entry>
+        <vk-property-prototype>BigInt.prototype.<vk-prototype-name>dereference</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+        <vk-property-description>Dereferences a BigInt, which represents a memory pointer.</vk-property-description>
+
+        <vk-syntax>
+          <pre><code class="language-js">let ptr = 42n;
+let memoryAddress = addr.dereference(); // jumps to the memory which ptr points to
+let memoryBuffer = ArrayBuffer.fromAddress(memoryAddress);</code></pre>
+        </vk-syntax>
+
+      </vk-property-entry>
+
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

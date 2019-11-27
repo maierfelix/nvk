@@ -45,8 +45,9 @@ const HANDLES_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/handles.njk`, "ut
 const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
 const HEADER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/header.njk`, "utf-8");
 const NAVIGATION_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/navigation.njk`, "utf-8");
-const WINDOW_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/window.njk`, "utf-8");
+const BIGINT_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/bigint.njk`, "utf-8");
 const ARRAYBUFFER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/arraybuffer.njk`, "utf-8");
+const WINDOW_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/window.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -392,6 +393,7 @@ export default function(astReference, data, version) {
   // search json
   {
     let out = [];
+    addSearchQuery(out, `BigInt`, `additional`, ``);
     addSearchQuery(out, `ArrayBuffer`, `additional`, ``);
     addSearchQuery(out, `VulkanWindow`, `additional`, ``);
     objects.map(obj => {
@@ -407,6 +409,7 @@ export default function(astReference, data, version) {
   {
     let out = [];
     addCategoryQuery(out, `Additional`, [
+      ...addSearchQuery([], `BigInt`, `additional`, ``),
       ...addSearchQuery([], `ArrayBuffer`, `additional`, ``),
       ...addSearchQuery([], `VulkanWindow`, `additional`, ``)
     ]);
@@ -491,14 +494,14 @@ export default function(astReference, data, version) {
     });
   }
 
-  // window
+  // bigint
   {
-    let output = nunjucks.renderString(WINDOW_TEMPLATE, {
+    let output = nunjucks.renderString(BIGINT_TEMPLATE, {
       objects,
       categories,
       ...defaultFunctions
     });
-    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/VulkanWindow.html`, output, `utf-8`);
+    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/BigInt.html`, output, `utf-8`);
   }
   // arraybuffer
   {
@@ -508,6 +511,15 @@ export default function(astReference, data, version) {
       ...defaultFunctions
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/additional/ArrayBuffer.html`, output, `utf-8`);
+  }
+  // window
+  {
+    let output = nunjucks.renderString(WINDOW_TEMPLATE, {
+      objects,
+      categories,
+      ...defaultFunctions
+    });
+    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/VulkanWindow.html`, output, `utf-8`);
   }
   return null;
 };

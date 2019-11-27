@@ -115,6 +115,7 @@ function getConstructorResetter(member) {
           let byteOffset = getStructureMemberByteOffset(member);
           let memoryOffset = getHexaByteOffset(byteOffset);
           return `if (this._${member.name} !== null) {
+    // TODO: optimize this
     if (this.memoryBuffer !== this._${member.name}.memoryBuffer) this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + ${memoryOffset} });
     else this._${member.name}.reset();
   }`;
@@ -835,7 +836,7 @@ export default function(astReference, includeValidations, disableMinification, c
   {
     output += `\n`;
     structs.map(struct => {
-      output += `let _${struct.name} = new ${struct.name}();\n`;
+      output += `let STRUCT_CACHE_${struct.name} = {};\n`;
     });
     output += `\n`;
   }
