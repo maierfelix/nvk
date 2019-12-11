@@ -248,7 +248,7 @@ for (let ii = 0; ii < commandBuffers.length; ++ii) {
 
 On the first iteration of the loop, a `VkCommandBufferBeginInfo` structure is allocated on the heap but also gets cached internally. Based on the String id `0x0` you have added, *nvk* uses this id to identify this structure and return a cached one whenever this code gets executed again.
 
-Now obviously, you don't want to add your own ids to each structure by hand. There is a [rollup](https://rollupjs.org/) plugin, which detects *nvk* structure calls (when invoked without `new`) and inserts a unique id automatically. You can find the rollup plugin [here](https://www.npmjs.com/package/nvk-struct-cache) and a project example [here](https://github.com/maierfelix/nvk-examples/tree/master/struct-caching).
+Obviously, you don't want to add your own ids to each structure by hand. There is a [rollup](https://rollupjs.org/) plugin, which detects *nvk* structure calls (when invoked without `new`) and inserts a unique id automatically. You can find the rollup plugin [here](https://www.npmjs.com/package/nvk-struct-cache) and a project example [here](https://github.com/maierfelix/nvk-examples/tree/master/struct-caching).
 
 ## Project Structure:
  - `docs`: generated vulkan documentation files
