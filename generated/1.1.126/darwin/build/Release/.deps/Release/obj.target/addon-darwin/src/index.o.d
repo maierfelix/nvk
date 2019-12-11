@@ -13,8 +13,7 @@ Release/obj.target/addon-darwin/src/index.o: ../src/index.cpp \
   /Users/user/Documents/Projects/vulkansdk-macos-1.1.126.0/macOS/include/vulkan/vulkan_core.h \
   ../../../../lib/include/GLFW/glfw3native.h \
   /Users/user/Documents/Projects/vulkansdk-macos-1.1.126.0/macOS/include/vulkan/vulkan_macos.h \
-  ../src/calls.h ../src/utils.h ../src/enums.h ../src/window.h \
-  ../src/memoryLayouts.h
+  ../src/calls.h ../src/utils.h ../src/enums.h ../src/window.h
 ../src/index.cpp:
 /Users/user/Documents/GitHub/nvk/node_modules/node-addon-api/napi.h:
 /Users/user/Library/Caches/node-gyp/12.11.1/include/node/node_api.h:
@@ -33,4 +32,3 @@ Release/obj.target/addon-darwin/src/index.o: ../src/index.cpp \
 ../src/utils.h:
 ../src/enums.h:
 ../src/window.h:
-../src/memoryLayouts.h:
