@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/npm/v/nvk.svg?style=flat-square" alt="NPM Version" />
   </a>
   <a href="#">
-    <img src="https://img.shields.io/badge/vulkan-1.1.121-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
+    <img src="https://img.shields.io/badge/vulkan-1.1.126-f07178.svg?style=flat-square" alt="Vulkan Header Version" />
   </a>
   <a href="//www.npmjs.com/package/nvk">
     <img src="https://img.shields.io/npm/dt/nvk.svg?style=flat-square" alt="NPM Downloads" />
@@ -286,15 +286,15 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.121/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript, `~40.000` lines are C++ code and the rest code for the documentation and AST.
+The Generator generates code based on a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.126/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~60.000` lines are JavaScript, `~50.000` lines are TypeScript, `~40.000` lines are C++ code and the rest code for the documentation and AST.
 
-Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.121/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
+Starting from version `0.5.0`, *nvk* now uses a concept called *Hybrid bindings*, which reduces the overhead of JavaScript<->C++ context switching. Structures tend to have many members, where each member has to be a getter/setter function. Before this change, these getters/setters were written in C++, so there were many tiny context switches. Now the native memory of Structures and Handles just get filled entirely within JavaScript (see the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.126/win32/interfaces.js)), resulting in much less overhead and much simpler binding and generator code.
 
 ## Linking:
 
 This section is of interest, if you have an existing C++ project and want to link against this one.
 
-This project mostly doesn't requires to be linked against. All structures and handles have properties to access the underlying memory directly. For example, see [VkApplicationInfo](https://maierfelix.github.io/nvk/1.1.121/structs/VkApplicationInfo.html) (#Default Properties).
+This project mostly doesn't requires to be linked against. All structures and handles have properties to access the underlying memory directly. For example, see [VkApplicationInfo](https://maierfelix.github.io/nvk/1.1.126/structs/VkApplicationInfo.html) (#Default Properties).
 
 Structures and handles come with these 3 properties:
 
@@ -401,7 +401,7 @@ npm run [script] [flag] [value]
 #### Generating:
 You can generate bindings with:
 ````
-npm run generate --vkversion=1.1.121
+npm run generate --vkversion=1.1.126
 ````
 
 The generated bindings can then be found in `generated/{vkversion}/${platform}`
@@ -422,7 +422,7 @@ The generated bindings can then be found in `generated/{vkversion}/${platform}`
 #### Building:
 You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.121
+npm run build --vkversion=1.1.126
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
