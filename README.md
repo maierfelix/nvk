@@ -223,14 +223,32 @@ scissor.extent.height = 320;
 
 #### Cached Structures
 
-To reduce GC pressure, *nvk* allows to use cached structures. Instead of having to allocate a structure every time on the heap, *nvk* pre-allocates a cached version of each available structure.
+To reduce GC pressure, *nvk* allows to use cached structures. Instead of having to allocate a structure every time on the heap, *nvk* allows to use a caching mechanism to mimic stack allocation.
 
-To use the cached version of a structure, you have to remove the `new` keyword from a structure call:
+Imagine the following situation:
 ````js
-let applicationInfo = VkApplicationInfo();
+let commandBuffers = [...Array(8)].map(() => new VkCommandBuffer());
+for (let ii = 0; ii < commandBuffers.length; ++ii) {
+  let commandBufferBeginInfo = new VkCommandBufferBeginInfo();
+  vkBeginCommandBuffer(commandBuffers[ii], cmdBufferBeginInfo);
+  ...
+};
+````
+This results in *8* allocations of `VkCommandBufferBeginInfo` structures. When this code gets executed in frequently used code sections, the heap pressure will be high.
+
+Now *nvk* has a mechanism to simulate stack allocation:
+````js
+let commandBuffers = [...Array(8)].map(() => new VkCommandBuffer());
+for (let ii = 0; ii < commandBuffers.length; ++ii) {
+  let commandBufferBeginInfo = VkCommandBufferBeginInfo("0x0");
+  vkBeginCommandBuffer(commandBuffers[ii], cmdBufferBeginInfo);
+  ...
+};
 ````
 
-When a structure gets created without the `new` keyword, a cached version of the structure gets returned. Note that the returned structure is **not** a new structure, but always the same one. Each time you create a structure without the `new` keyword, the cached structure gets reset to it's original state (similar to zero/null a structure in C).
+On the first iteration of the loop, a `VkCommandBufferBeginInfo` structure is allocated on the heap but also gets cached internally. Based on the String id `0x0` you have added, *nvk* uses this id to identify this structure and return a cached one whenever this code gets executed again.
+
+Now obviously, you don't want to add your own ids to each structure by hand. There is a [rollup](https://rollupjs.org/) plugin, which detects *nvk* structure calls (when invoked without `new`) and inserts a unique id automatically. You can find this plugin [here](https://www.npmjs.com/package/nvk-struct-cache).
 
 Example:
 
