@@ -328,9 +328,10 @@ function getGetterProcessor(member) {
         }
         let length = parseInt(member.length);
         let out = `\n    return [\n`;
+        let instr = getDataViewInstruction(member);
+        let byteStride = getDataViewInstructionStride(instr);
         for (let ii = 0; ii < length; ++ii) {
-          let instr = getDataViewInstruction(member);
-          let offset = getHexaByteOffset(byteOffsetBegin + ii);
+          let offset = getHexaByteOffset(byteOffsetBegin + (ii * byteStride));
           let comma = ii < length - 1 ? `,\n` : ``;
           out += `      this.memoryView.get${instr}(${offset}, ${endianess})${comma}`;
         };
