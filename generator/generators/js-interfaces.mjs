@@ -44,6 +44,62 @@ let endianess = String(os.endianness() === "LE");
 
 nunjucks.configure({ autoescape: true });
 
+function getCopyOperation(member) {
+  let jsType = getJavaScriptType(ast, member);
+  let {type, value, isReference} = jsType;
+  if (jsType.isNumeric) return `copy.${member.name} = original.${member.name};`;
+  if (jsType.isBoolean) return `copy.${member.name} = original.${member.name};`;
+  if (jsType.isString) return `copy.${member.name} = original.${member.name};`;
+  if (jsType.isFunction) return `copy.${member.name} = original.${member.name};`;
+  if (jsType.isArrayBuffer) {
+    return `if (original.${member.name} !== null) {
+      let buf = new ArrayBuffer(original.${member.name}.byteLength);
+      new Uint8Array(buf).set(new Uint8Array(original.${member.name}), 0x0);
+      copy.${member.name} = buf;
+    }`;
+  }
+  if (isPNextMember(member)) {
+    return `if (original.${member.name} !== null) {
+      copy.${member.name} = original.${member.name}.constructor.createCopyFrom(original.${member.name});
+    }`;
+  }
+  switch (type) {
+    case JavaScriptType.OBJECT: {
+      return `if (original.${member.name} !== null) {
+        copy.${member.name} = original.${member.name}.constructor.createCopyFrom(original.${member.name});
+      }`;
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS: {
+      return `if (original.${member.name} !== null) {
+        copy.${member.name} = [...Array(original.${member.name}.length)].map((v, i) => {
+          return original.${member.name}[i].constructor.createCopyFrom(original.${member.name}[i]);
+        });
+      }`;
+    }
+    case JavaScriptType.ARRAY_OF_NUMBERS: {
+      return `if (original.${member.name} !== null) {
+        copy.${member.name} = [...Array(original.${member.name}.length)].map((v, i) => {
+          return original.${member.name}[i];
+        });
+      }`;
+    }
+    case JavaScriptType.ARRAY_OF_STRINGS: {
+      return `if (original.${member.name} !== null) {
+        copy.${member.name} = [...Array(original.${member.name}.length)].map((v, i) => {
+          return original.${member.name}[i];
+        });
+      }`;
+    }
+    case JavaScriptType.TYPED_ARRAY: {
+      return `if (original.${member.name} !== null) {
+        copy.${member.name} = new ${member.jsTypedArrayName}(original.${member.name});
+      }`;
+    }
+  };
+  warn(`Cannot handle Copy Operation for ${currentStruct.name}.${member.name}, ${jsType.type}`);
+  return `copy.${member.name} = original.${member.name};`;
+};
+
 function getConstructorMemberInitializer(member) {
   let jsType = getJavaScriptType(ast, member);
   let {type, value, isReference} = jsType;
@@ -183,8 +239,12 @@ function getEnumInlineValue(name) {
   let value = enumLayouts[name];
   if (value === void 0) {
     let value_KHR = enumLayouts[name + "_KHR"];
+    let value_EXT = enumLayouts[name + "_EXT"];
+    let value_NV = enumLayouts[name + "_NV"];
     // try different extension names
     if (value_KHR !== void 0) return getHexaByteOffset(value_KHR);
+    if (value_EXT !== void 0) return getHexaByteOffset(value_EXT);
+    if (value_NV !== void 0) return getHexaByteOffset(value_NV);
     warn(`Cannot inline enum value of '${name}'`);
     return name;
   }
@@ -516,8 +576,18 @@ function getSetterProcessor(member) {
       }
       return `
     if (value !== null ${ validate ? `&& value.constructor === Function` : `` }) {
+      let MITM = function() {
+        for (let ii = 0; ii < arguments.length; ++ii) {
+          let arg = arguments[ii];
+          if (arg instanceof Object && arg.constructor.createCopyFrom instanceof Function) {
+            let copy = arg.constructor.createCopyFrom(arg);
+            arguments[ii] = copy;
+          }
+        };
+        return value.apply(this, arguments);
+      }.bind(this);
       this._${member.name} = value;
-      this._${member.name}CallbackProxy = new nvk.$CallbackProxy(value, module.exports);
+      this._${member.name}CallbackProxy = new nvk.$CallbackProxy(MITM, module.exports);
       this.memoryView.set${instr}(${offset}, nvk.$vulkanCallbackFunctionPointers["${functionPointerAccessor}"], ${endianess});
       ${pUserData}
     } else if (value === null) {
@@ -728,6 +798,7 @@ function getStructureAutoSType() {
   if (filtered.length) sTypeMember = filtered[0];
   if (sTypeMember) sType = struct.sType || getAutoStructureType(struct.name);
   if (sType) return `this.sType = ${getEnumInlineStypeValue(sType)};`;
+  if (sTypeMember) warn(`Cannot resolve Auto SType for '${struct.name}'`);
   return ``;
 };
 
@@ -821,6 +892,7 @@ export default function(astReference, includeValidations, disableMinification, c
       isFillableMember,
       isIgnoreableType,
       isFlushableMember,
+      getCopyOperation,
       getGetterProcessor,
       getSetterProcessor,
       getFlusherProcessor,

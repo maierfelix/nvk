@@ -110,6 +110,16 @@ Object.defineProperties({{ struct.name }}.prototype, {
   {%- endif -%}
 };
 
+{{ struct.name }}.createCopyFrom = function createCopyFrom(original) {
+  let copy = new {{ struct.name }}();
+  {% for member in struct.children -%}
+  {%- if isIgnoreableType(member) != true -%}
+  {{ getCopyOperation(member) | safe }}
+  {% endif -%}
+  {%- endfor %}
+  return copy;
+};
+
 {{ struct.name }}.byteLength = {{ getStructureByteLength() | safe }};
 
 {{ struct.name }}.memoryLayout = {

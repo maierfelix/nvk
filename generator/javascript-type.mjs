@@ -76,6 +76,12 @@ export class JavaScriptType {
       type === JavaScriptType.BOOLEAN
     );
   }
+  get isFunction() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.FUNCTION
+    );
+  }
 };
 
 // static types

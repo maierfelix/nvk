@@ -285,8 +285,8 @@ function parseExtensionMembers(parent, child) {
         else if (attr.offset) {
           member.name = attr.name;
           member.extends = attr.extends;
-          let extBase = 1e9;
-          let extBlockSize = 1e3;
+          let extBase = 1000000000;
+          let extBlockSize = 1000;
           let offset = parseInt(attr.offset, 0);
           let extNumber = parseInt(attr.extnumber, 0) || baseNum;
           let numValue = extBase + (extNumber - 1) * extBlockSize + offset;
@@ -298,6 +298,9 @@ function parseExtensionMembers(parent, child) {
           member.name = attr.name;
           member.extends = attr.extends;
           let pos = 1 << parseInt(attr.bitpos, 0);
+          if (parseInt(attr.bitpos, 0) >= 32) {
+            throw new RangeError(`Bit Position out of Range`);
+          }
           member.value = formatIntToHex(pos);
           out.push(member);
         }

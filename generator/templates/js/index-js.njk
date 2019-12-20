@@ -32,10 +32,7 @@ global.ArrayBuffer.fromAddress = function(address, byteLength) {
 };
 
 global.BigInt.prototype.dereference = function() {
-  // read ptr address
-  let ptrBuffer = getArrayBufferFromAddress(this, BI8);
-  // deref ptr
-  return getAddressFromArrayBuffer(ptrBuffer);
+  return new BigUint64Array(ArrayBuffer.fromAddress(this, BI8))[0];
 };
 
 const textEncoder = new (typeof TextEncoder === "undefined" ? require("util").TextEncoder : TextEncoder);
@@ -75,10 +72,9 @@ function findNullTerminatedUTF8StringLength(addr) {
 function decodeNativeArrayOfObjects(addr, length, ctor) {
   let out = [];
   let byteLength = BigInt(ctor.byteLength);
-  let baseAddr = addr.dereference();
   for (let ii = 0; ii < length; ++ii) {
     let buffer = getArrayBufferFromAddress(
-      baseAddr + BigInt(ii) * byteLength,
+      addr + BigInt(ii) * byteLength,
       byteLength
     );
     let item = new ctor({
