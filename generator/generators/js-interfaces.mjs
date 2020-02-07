@@ -102,9 +102,12 @@ function getCopyOperation(member) {
 
 function getConstructorMemberInitializer(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value, isReference} = jsType;
+  let {type, value, isHandle, isReference} = jsType;
   switch (type) {
     case JavaScriptType.OBJECT: {
+      if (isHandle) {
+        return `this._${member.name} = null;`;
+      }
       if (isReference) {
         return `this._${member.name} = null;`;
       } else {
@@ -161,10 +164,13 @@ function getConstructorInitializer(member) {
 function getConstructorResetter(member) {
   let jsType = getJavaScriptType(ast, member);
   if (member.needsInitializationAtInstantiation) {
-    let {type, value, isReference} = jsType;
+    let {type, value, isHandle, isReference} = jsType;
     let length = parseInt(member.length);
     switch (type) {
       case JavaScriptType.OBJECT: {
+        if (isHandle) {
+          return `this._${member.name} = null;`;
+        }
         if (isReference) {
           return `this._${member.name} = null;`;
         } else {
