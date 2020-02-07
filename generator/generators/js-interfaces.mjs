@@ -324,7 +324,7 @@ function getStructureMemoryViews(passedByReference) {
 
 function getGetterProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value, isReference} = jsType;
+  let {type, value, isStruct, isHandle, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   let offset = getHexaByteOffset(byteOffset);
   switch (type) {
@@ -342,7 +342,7 @@ function getGetterProcessor(member) {
     case JavaScriptType.OBJECT: {
       let instr = "BigInt64";
       if (isReference) {
-        if (member.isHandleType) {
+        if (isHandle) {
           warn(`Cannot handle handle reference reflection for ${currentStruct.name}.${member.name}`);
         }
         return `
@@ -463,7 +463,7 @@ function getGetterProcessor(member) {
 
 function getSetterProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value, isReference} = jsType;
+  let {type, value, isStruct, isHandle, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   let byteLength = getStructureMemberByteLength(member);
   let offset = getHexaByteOffset(byteOffset);
@@ -506,13 +506,13 @@ function getSetterProcessor(member) {
       let instr = "BigInt64";
       return `
     if (value !== null ${ validate ? `&& value.constructor === ${member.type}` : ``}) {
-      ${member.isStructType ? `value.flush();` : ``}
+      ${isStruct ? `value.flush();` : ``}
       this._${member.name} = value;
-      ${member.isStructType && isReference ? `this.memoryView.set${instr}(${offset}, value.memoryAddress, ${endianess});` : ``}
-      ${member.isHandleType ? `this.memoryView.set${instr}(${offset}, value.memoryView.get${instr}(0x0, ${endianess}), ${endianess});` : ``}
+      ${isStruct && isReference ? `this.memoryView.set${instr}(${offset}, value.memoryAddress, ${endianess});` : ``}
+      ${isHandle ? `this.memoryView.set${instr}(${offset}, value.memoryView.get${instr}(0x0, ${endianess}), ${endianess});` : ``}
     } else if (value === null) {
       this._${member.name} = null;
-      ${((member.isStructType && isReference) || member.isHandleType) ? `this.memoryView.set${instr}(${offset}, BI0, ${endianess});` : ``}
+      ${((isStruct && isReference) || isHandle) ? `this.memoryView.set${instr}(${offset}, BI0, ${endianess});` : ``}
     } ${ validate ? `else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + typeToString(value) + "'");
     }`: `` }
@@ -658,7 +658,7 @@ function getSetterProcessor(member) {
 
 function getFlusherProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value, isReference} = jsType;
+  let {type, value, isHandle, isStruct, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   let byteLength = getStructureMemberByteLength(member);
   let offset = getHexaByteOffset(byteOffset);
@@ -671,7 +671,7 @@ function getFlusherProcessor(member) {
       return ``; // not needed
     }
     case JavaScriptType.OBJECT: {
-      if (member.isStructType && !isReference) {
+      if (isStruct && !isReference) {
         return `
   if (this._${member.name} !== null) {
     let ${member.name} = this._${member.name};
@@ -786,7 +786,7 @@ function getFlusherProcessor(member) {
         throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + typeToString(array[ii]) + "'");
         return false;
       }` : `` }
-      ${member.isStructType ? `if (!array[ii].flush()) return false;` : ``}
+      ${isStruct ? `if (!array[ii].flush()) return false;` : ``}
     };
     ${write}
   }`;
