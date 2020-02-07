@@ -20,6 +20,8 @@ export class JavaScriptType {
     if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
     if (opts.isStatic !== void 0) this.isStatic = opts.isStatic;
     if (opts.isReference !== void 0) this.isReference = opts.isReference;
+    if (opts.isHandle !== void 0) this.isHandle = opts.isHandle;
+    if (opts.isStruct !== void 0) this.isStruct = opts.isStruct;
     //if (!opts.byteLength) console.log("nooooo");
   }
   toString() {
@@ -202,7 +204,9 @@ export function getJavaScriptType(ast, object) {
       value: object.type,
       isArray: true,
       isNullable: true,
-      isStatic: object.isStaticArray
+      isStatic: object.isStaticArray,
+      isStruct: object.isStructType,
+      isHandle: object.isHandleType
     });
   }
   if (object.isStructType || object.isHandleType || object.isBaseType) {
@@ -211,7 +215,9 @@ export function getJavaScriptType(ast, object) {
         type: JavaScriptType.OBJECT,
         value: object.type,
         isNullable: true,
-        isReference: object.dereferenceCount > 0
+        isReference: object.dereferenceCount > 0,
+        isStruct: object.isStructType,
+        isHandle: object.isHandleType
       });
     }
   }
