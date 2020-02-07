@@ -5084,14 +5084,14 @@ VkPhysicalDeviceMemoryProperties.prototype.reset = function reset(opts) {
     for (let ii = 0; ii < array.length; ++ii) {
       array[ii].reset();
     };
-  };
+  }
   
   if (this._memoryHeaps !== null) {
     let array = this._memoryHeaps;
     for (let ii = 0; ii < array.length; ++ii) {
       array[ii].reset();
     };
-  };
+  }
   
   if (typeof opts === "object") {
     
@@ -11693,7 +11693,7 @@ VkImageBlit.prototype.reset = function reset(opts) {
     for (let ii = 0; ii < array.length; ++ii) {
       array[ii].reset();
     };
-  };
+  }
   if (this._dstSubresource !== null) {
     // TODO: optimize this
     if (this.memoryBuffer !== this._dstSubresource.memoryBuffer) this._dstSubresource = new VkImageSubresourceLayers({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x28 });
@@ -11704,7 +11704,7 @@ VkImageBlit.prototype.reset = function reset(opts) {
     for (let ii = 0; ii < array.length; ++ii) {
       array[ii].reset();
     };
-  };
+  }
   
   if (typeof opts === "object") {
     if (opts.srcSubresource !== void 0) this.srcSubresource = opts.srcSubresource;
@@ -48545,7 +48545,7 @@ function VkPhysicalDeviceGroupProperties(opts, byteOffset) {
   
   this._pNext = null;
   
-  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
+  this._physicalDevices = [...Array(32)].map((v, i) => null);
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -48601,9 +48601,9 @@ VkPhysicalDeviceGroupProperties.prototype.reset = function reset(opts) {
   if (this._physicalDevices !== null) {
     let array = this._physicalDevices;
     for (let ii = 0; ii < array.length; ++ii) {
-      array[ii].reset();
+      array[ii] = null;
     };
-  };
+  }
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -48709,7 +48709,7 @@ function VkPhysicalDeviceGroupPropertiesKHR(opts, byteOffset) {
   
   this._pNext = null;
   
-  this._physicalDevices = [...Array(32)].map((v, i) => new VkPhysicalDevice({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x18 + (i * 0x8) }));
+  this._physicalDevices = [...Array(32)].map((v, i) => null);
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {
@@ -48765,9 +48765,9 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reset = function reset(opts) {
   if (this._physicalDevices !== null) {
     let array = this._physicalDevices;
     for (let ii = 0; ii < array.length; ++ii) {
-      array[ii].reset();
+      array[ii] = null;
     };
-  };
+  }
   
   this.sType = 0x3B9BDB70;
   if (typeof opts === "object") {

@@ -118,6 +118,9 @@ function getConstructorMemberInitializer(member) {
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
       let length = parseInt(member.length);
+      if (isHandle) {
+        return `this._${member.name} = [...Array(${length})].map((v, i) => null);`;
+      }
       let byteOffset = getStructureMemberByteOffset(member);
       let memoryOffset = getHexaByteOffset(byteOffset);
       let byteLength = getHexaByteOffset(parseInt(getStructureMemberByteLength(member)) / length);
@@ -164,7 +167,7 @@ function getConstructorInitializer(member) {
 function getConstructorResetter(member) {
   let jsType = getJavaScriptType(ast, member);
   if (member.needsInitializationAtInstantiation) {
-    let {type, value, isHandle, isReference} = jsType;
+    let {type, value, isStruct, isHandle, isReference} = jsType;
     let length = parseInt(member.length);
     switch (type) {
       case JavaScriptType.OBJECT: {
@@ -187,12 +190,22 @@ function getConstructorResetter(member) {
         let byteOffset = getStructureMemberByteOffset(member);
         let memoryOffset = getHexaByteOffset(byteOffset);
         let byteLength = getHexaByteOffset(parseInt(getStructureMemberByteLength(member)) / length);
-        return `if (this._${member.name} !== null) {
+        if (isHandle) {
+          return `if (this._${member.name} !== null) {
+    let array = this._${member.name};
+    for (let ii = 0; ii < array.length; ++ii) {
+      array[ii] = null;
+    };
+  }`;
+        }
+        else if (isStruct) {
+          return `if (this._${member.name} !== null) {
     let array = this._${member.name};
     for (let ii = 0; ii < array.length; ++ii) {
       array[ii].reset();
     };
-  };`;
+  }`;
+        }
       }
       case JavaScriptType.ARRAY_OF_NUMBERS: {
         if (currentStruct.isUnionType) return `this._${member.name} = null;`;
