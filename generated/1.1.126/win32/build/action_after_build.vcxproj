@@ -11,18 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ED8C219C-FFE7-B8B6-D6AD-36EAB7442C3B}</ProjectGuid>
+    <ProjectGuid>{9DF27A37-501D-D7EB-EDA6-88940A8386F6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>action_after_build</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Label="Locals">
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
@@ -40,7 +41,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsWinRT>false</CompileAsWinRT>
@@ -60,7 +61,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\User\\AppData\\Local\\node-gyp\\Cache\\13.1.0\\x64\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\User\\AppData\\Local\\node-gyp\\Cache\\13.7.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -68,13 +69,13 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=action_after_build;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;V8_DEPRECATION_WARNINGS;V8_IMMINENT_DEPRECATION_WARNINGS;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;V8_ENABLE_CHECKS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsWinRT>false</CompileAsWinRT>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
@@ -97,7 +98,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\User\\AppData\\Local\\node-gyp\\Cache\\13.1.0\\x64\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\User\\AppData\\Local\\node-gyp\\Cache\\13.7.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -105,7 +106,7 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.1.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\include\node;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\src;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\config;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\openssl\openssl\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\uv\include;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\zlib;C:\Users\User\AppData\Local\node-gyp\Cache\13.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=action_after_build;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;V8_DEPRECATION_WARNINGS;V8_IMMINENT_DEPRECATION_WARNINGS;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
