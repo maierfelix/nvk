@@ -118348,20 +118348,20 @@
         "jsType": "Number"
       },
       {
-        "text": "int32_t messageCode",
+        "text": "int32_t messageCodeconst",
         "type": "int32_t",
         "rawType": "int32_t",
-        "name": "messageCode",
+        "name": "messageCodeconst",
         "isConstant": false,
         "dereferenceCount": 0,
         "isNumber": true,
         "jsType": "Number"
       },
       {
-        "text": "const char * pLayerPrefix",
+        "text": "const char * pLayerPrefixconst",
         "type": "char",
         "rawType": "const char *",
-        "name": "pLayerPrefix",
+        "name": "pLayerPrefixconst",
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined"
@@ -118420,10 +118420,10 @@
         "jsType": "Number"
       },
       {
-        "text": "VkDebugUtilsMessageTypeFlagsEXT messageTypes",
+        "text": "VkDebugUtilsMessageTypeFlagsEXT messageTypesconst",
         "type": "int32_t",
         "rawType": "int32_t",
-        "name": "messageTypes",
+        "name": "messageTypesconst",
         "isConstant": false,
         "dereferenceCount": 0,
         "bitmaskType": "VkDebugUtilsMessageTypeFlagBitsEXT",

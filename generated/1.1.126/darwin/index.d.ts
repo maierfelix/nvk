@@ -56051,8 +56051,8 @@ declare var VkBaseOutStructure: VkBaseOutStructureConstructor;
    * @param objectType
    * @param object
    * @param location
-   * @param messageCode
-   * @param pLayerPrefix
+   * @param messageCodeconst
+   * @param pLayerPrefixconst
    * @param pMessage
    * @param pUserData
    */
@@ -56062,8 +56062,8 @@ declare var VkBaseOutStructure: VkBaseOutStructureConstructor;
       objectType: VkDebugReportObjectTypeEXT,
       object: bigint | number,
       location: bigint | number,
-      messageCode: number,
-      pLayerPrefix: string | null,
+      messageCodeconst: number,
+      pLayerPrefixconst: string | null,
       pMessage: string | null,
       pUserData: null
     ) : boolean
@@ -56072,14 +56072,14 @@ declare var VkBaseOutStructure: VkBaseOutStructureConstructor;
   /**
    * 
    * @param messageSeverity
-   * @param messageTypes
+   * @param messageTypesconst
    * @param pCallbackData
    * @param pUserData
    */
   export interface vkDebugUtilsMessengerCallbackEXT {
     (
       messageSeverity: VkDebugUtilsMessageSeverityFlagBitsEXT,
-      messageTypes: VkDebugUtilsMessageTypeFlagBitsEXT,
+      messageTypesconst: VkDebugUtilsMessageTypeFlagBitsEXT,
       pCallbackData: VkDebugUtilsMessengerCallbackDataEXT | null,
       pUserData: null
     ) : boolean
