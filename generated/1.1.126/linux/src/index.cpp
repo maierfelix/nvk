@@ -170,8 +170,8 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
   VkDebugReportObjectTypeEXT objectType,
   uint64_t object,
   size_t location,
-  int32_t messageCode,
-  const char * pLayerPrefix,
+  int32_t messageCodeconst,
+  const char * pLayerPrefixconst,
   const char * pMessage,
   void * pUserData
   ) {
@@ -184,8 +184,8 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
   args.push_back(Napi::Number::New(env, static_cast<uint32_t>(objectType)).As<Napi::Value>());
   args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(object)).As<Napi::Value>());
   args.push_back(Napi::BigInt::New(env, static_cast<uint64_t>(location)).As<Napi::Value>());
-  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageCode)).As<Napi::Value>());
-  args.push_back(Napi::String::New(env, pLayerPrefix).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageCodeconst)).As<Napi::Value>());
+  args.push_back(Napi::String::New(env, pLayerPrefixconst).As<Napi::Value>());
   args.push_back(Napi::String::New(env, pMessage).As<Napi::Value>());
   args.push_back(env.Null().As<Napi::Value>());
   Napi::Value ret = callback.Call(args);
@@ -198,7 +198,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugReportCallbackEXT(
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
   VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-  VkDebugUtilsMessageTypeFlagsEXT messageTypes,
+  VkDebugUtilsMessageTypeFlagsEXT messageTypesconst,
   const VkDebugUtilsMessengerCallbackDataEXT * pCallbackData,
   void * pUserData
   ) {
@@ -208,7 +208,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL CB_vkDebugUtilsMessengerCallbackEXT(
   std::vector<napi_value> args = {};
   
   args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageSeverity)).As<Napi::Value>());
-  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageTypes)).As<Napi::Value>());
+  args.push_back(Napi::Number::New(env, static_cast<uint32_t>(messageTypesconst)).As<Napi::Value>());
   {
     Napi::Object module = proxy->module.Value();
     Napi::Function ctor = module.Get("VkDebugUtilsMessengerCallbackDataEXT").As<Napi::Function>();
