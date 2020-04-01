@@ -4,6 +4,7 @@
 
 **/
 import fs from "fs";
+import path from "path";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
@@ -22,7 +23,7 @@ export default function(astReference, VK_VERSION) {
   let vars = {
     VK_VERSION,
     NVK_VERSION: pkg.version,
-    SDK_PATH: resolveLunarVkSDKPath(VK_VERSION)
+    SDK_PATH: path.normalize(resolveLunarVkSDKPath(VK_VERSION))
   };
   let out = {
     json: null
