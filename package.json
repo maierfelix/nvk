@@ -45,6 +45,7 @@
     "xml-js": "^1.6.7",
     "yauzl": "^2.10.0"
   },
+  "types": "./generated/1.1.126/win32/index.d.ts",
   "dependencies": {},
   "description": "Vulkan API for JavaScript/TypeScript",
   "repository": {
