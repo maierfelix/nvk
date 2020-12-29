@@ -269,6 +269,7 @@ function parseExtensionMembers(parent, child) {
       // we only care about enum extensions
       else if (ch.name === "enum") {
         if (attr.dir) member.isNegative = true;
+        member.extends = attr.extends;
         member.kind = TYPES.EXTENSION_MEMBER_ENUM;
         if (attr.value) {
           member.name = attr.name;

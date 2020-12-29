@@ -217,6 +217,7 @@ export function getAutoStructureType(name) {
   out += values.join(`_`).toUpperCase();
   // manual spelling fix ups
   out = out.replace(/(INT_8)/gm, `INT8`);
+  out = out.replace(/(INT_64)/gm, `INT64`);
   out = out.replace(/(FLOAT_16)/gm, `FLOAT16`);
   out = out.replace(/(_BIT)/gm, `BIT`);
   out = out.replace(/(WIN_32)/gm, `WIN32`);
