@@ -16613,7 +16613,7 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
     let array = this._blendConstants;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setFloat32(0x28 + ii, array[ii], true);
+      this.memoryView.setFloat32((0x28 + ii) * 4, array[ii], true);
     };
   } else {
     this.memoryView.setFloat32(0x28, 0x0, true);
@@ -29885,7 +29885,7 @@ VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
     let array = this._color;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setFloat32(0x18 + ii, array[ii], true);
+      this.memoryView.setFloat32((0x18 + ii) * 4, array[ii], true);
     };
   } else {
     this.memoryView.setFloat32(0x18, 0x0, true);
@@ -72848,7 +72848,7 @@ VkDebugUtilsLabelEXT.prototype.flush = function flush() {
     let array = this._color;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setFloat32(0x18 + ii, array[ii], true);
+      this.memoryView.setFloat32((0x18 + ii) * 4, array[ii], true);
     };
   } else {
     this.memoryView.setFloat32(0x18, 0x0, true);
@@ -108650,7 +108650,7 @@ VkPhysicalDeviceVulkan11Properties.prototype.flush = function flush() {
     let array = this._deviceUUID;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setUint8(0x10 + ii, array[ii], true);
+      this.memoryView.setUint8((0x10 + ii) * 1, array[ii], true);
     };
   } else {
     this.memoryView.setUint8(0x10, 0x0, true);
@@ -108661,7 +108661,7 @@ VkPhysicalDeviceVulkan11Properties.prototype.flush = function flush() {
     let array = this._driverUUID;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setUint8(0x20 + ii, array[ii], true);
+      this.memoryView.setUint8((0x20 + ii) * 1, array[ii], true);
     };
   } else {
     this.memoryView.setUint8(0x20, 0x0, true);
@@ -108672,7 +108672,7 @@ VkPhysicalDeviceVulkan11Properties.prototype.flush = function flush() {
     let array = this._deviceLUID;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setUint8(0x30 + ii, array[ii], true);
+      this.memoryView.setUint8((0x30 + ii) * 1, array[ii], true);
     };
   } else {
     this.memoryView.setUint8(0x30, 0x0, true);
@@ -111317,7 +111317,7 @@ VkClearColorValue.prototype.flush = function flush() {
     let array = this._float32;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setFloat32(0x0 + ii, array[ii], true);
+      this.memoryView.setFloat32((0x0 + ii) * 4, array[ii], true);
     };
   } else {
     
@@ -111328,7 +111328,7 @@ VkClearColorValue.prototype.flush = function flush() {
     let array = this._int32;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setInt32(0x0 + ii, array[ii], true);
+      this.memoryView.setInt32((0x0 + ii) * 4, array[ii], true);
     };
   } else {
     
@@ -111339,7 +111339,7 @@ VkClearColorValue.prototype.flush = function flush() {
     let array = this._uint32;
     
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.setUint32(0x0 + ii, array[ii], true);
+      this.memoryView.setUint32((0x0 + ii) * 4, array[ii], true);
     };
   } else {
     
