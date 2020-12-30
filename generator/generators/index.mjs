@@ -9,7 +9,6 @@ import pkg from "../../package.json";
 
 import {
   warn,
-  getSortedIncludes,
   getPlatformRelevantIncludes
 } from "../utils.mjs";
 

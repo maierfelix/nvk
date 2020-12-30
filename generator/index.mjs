@@ -24,7 +24,6 @@ import {
   isSupportedWSI,
   formatVkVersion,
   getSortedIncludes,
-  getPlatformRelevantIncludes,
   isCurrentPlatformSupportedExtension
 } from "./utils.mjs";
 
