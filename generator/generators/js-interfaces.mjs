@@ -740,7 +740,7 @@ function getFlusherProcessor(member) {
       }
     };` : `` }
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.set${instr}((${offset} + ii) * ${byteStride}, array[ii], ${endianess});
+      this.memoryView.set${instr}(${offset} + (ii * ${byteStride}), array[ii], ${endianess});
     };
   } else {
     ${!currentStruct.isUnionType ? `this.memoryView.set${instr}(${offset}, 0x0, ${endianess});` : ``}
