@@ -290,16 +290,17 @@ function getCallBodyBefore(call) {
       return ``;
     }
     if (param.isStaticArray && param.isNumericArray) {
+      const arrayType = param.enumType || param.type;
       return `
-    std::shared_ptr<std::vector<${param.type}>> $p${index} = nullptr;
+    std::shared_ptr<std::vector<${arrayType}>> $p${index} = nullptr;
     if (info[${index}].IsArray()) {
       // validate length
       if (info[${index}].As<Napi::Array>().Length() != ${param.length}) {
         Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
-      std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
-      $p${index} = std::make_shared<std::vector<${param.type}>>(data);
+      std::vector<${arrayType}> data = createArrayOfV8Numbers<${arrayType}>(info[${index}]);
+      $p${index} = std::make_shared<std::vector<${arrayType}>>(data);
     } else if (!info[${index}].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();

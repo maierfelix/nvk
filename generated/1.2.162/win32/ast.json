@@ -5349,12 +5349,6 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "undefined",
-        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR"
-      },
-      {
-        "kind": "ENUM_MEMBER",
-        "type": "VALUE",
         "value": "999999000",
         "name": "VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR"
       },
@@ -20725,13 +20719,8 @@
         "kind": "EXTENSION_MEMBER_ENUM",
         "extends": "VkStructureType",
         "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR",
-        "alias": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR",
+        "alias": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES",
         "isAlias": true
-      },
-      {
-        "kind": "EXTENSION_MEMBER_ENUM",
-        "name": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR",
-        "extends": "VkStructureType"
       },
       {
         "kind": "EXTENSION_MEMBER_STRUCT",

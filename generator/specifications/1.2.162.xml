@@ -11776,7 +11776,7 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="1"                                             name="VK_KHR_VARIABLE_POINTERS_SPEC_VERSION"/>
                 <enum value="&quot;VK_KHR_variable_pointers&quot;"          name="VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME"/>
                 <enum extends="VkStructureType"                             name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR" alias="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES"/>
-                <enum extends="VkStructureType"                             name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR" alias="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR"/>
+                <enum extends="VkStructureType"                             name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR" alias="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES"/>
                 <type name="VkPhysicalDeviceVariablePointerFeaturesKHR"/>
                 <type name="VkPhysicalDeviceVariablePointersFeaturesKHR"/>
             </require>

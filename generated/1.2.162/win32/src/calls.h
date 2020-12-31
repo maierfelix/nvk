@@ -27319,15 +27319,15 @@ Napi::Value _vkCmdSetFragmentShadingRateKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-    std::shared_ptr<std::vector<int32_t>> $p2 = nullptr;
+    std::shared_ptr<std::vector<VkFragmentShadingRateCombinerOpKHR>> $p2 = nullptr;
     if (info[2].IsArray()) {
       // validate length
       if (info[2].As<Napi::Array>().Length() != 2) {
         Napi::RangeError::New(env, "Invalid array length for argument 3 'combinerOps' in 'vkCmdSetFragmentShadingRateKHR'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
-      std::vector<int32_t> data = createArrayOfV8Numbers<int32_t>(info[2]);
-      $p2 = std::make_shared<std::vector<int32_t>>(data);
+      std::vector<VkFragmentShadingRateCombinerOpKHR> data = createArrayOfV8Numbers<VkFragmentShadingRateCombinerOpKHR>(info[2]);
+      $p2 = std::make_shared<std::vector<VkFragmentShadingRateCombinerOpKHR>>(data);
     } else if (!info[2].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument 3 'combinerOps' in 'vkCmdSetFragmentShadingRateKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
@@ -27462,15 +27462,15 @@ Napi::Value _vkCmdSetFragmentShadingRateEnumNV(const Napi::CallbackInfo& info) {
   }
   VkFragmentShadingRateNV $p1 = static_cast<VkFragmentShadingRateNV>(info[1].As<Napi::Number>().Int64Value());
 
-    std::shared_ptr<std::vector<int32_t>> $p2 = nullptr;
+    std::shared_ptr<std::vector<VkFragmentShadingRateCombinerOpKHR>> $p2 = nullptr;
     if (info[2].IsArray()) {
       // validate length
       if (info[2].As<Napi::Array>().Length() != 2) {
         Napi::RangeError::New(env, "Invalid array length for argument 3 'combinerOps' in 'vkCmdSetFragmentShadingRateEnumNV'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
-      std::vector<int32_t> data = createArrayOfV8Numbers<int32_t>(info[2]);
-      $p2 = std::make_shared<std::vector<int32_t>>(data);
+      std::vector<VkFragmentShadingRateCombinerOpKHR> data = createArrayOfV8Numbers<VkFragmentShadingRateCombinerOpKHR>(info[2]);
+      $p2 = std::make_shared<std::vector<VkFragmentShadingRateCombinerOpKHR>>(data);
     } else if (!info[2].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument 3 'combinerOps' in 'vkCmdSetFragmentShadingRateEnumNV'").ThrowAsJavaScriptException();
       return env.Undefined();
