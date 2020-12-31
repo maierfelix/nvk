@@ -192,11 +192,14 @@ function getInputArrayBody(call, param, index) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
-    out += `
-    if (info[${index}].As<Napi::TypedArray>().ElementLength() != $p${lengthIndex}) {
-      Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }`;
+    // TODO: support reading validation length from other param
+    if (lengthIndex >= 0) {
+      out += `
+      if (info[${index}].As<Napi::TypedArray>().ElementLength() != $p${lengthIndex}) {
+        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }`;
+    }
     out += `
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
     $p${index} = std::make_shared<${type}*>(data);`;

@@ -7407,10 +7407,10 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[7].As<Napi::TypedArray>().ElementLength() != $p6) {
-      Napi::RangeError::New(env, "Invalid array length for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[7].As<Napi::TypedArray>().ElementLength() != $p6) {
+        Napi::RangeError::New(env, "Invalid array length for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     uint32_t* data = getTypedArrayData<uint32_t>(info[7]);
     $p7 = std::make_shared<uint32_t*>(data);
   } else if (!info[7].IsNull()) {
@@ -7571,10 +7571,10 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -11456,10 +11456,10 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
       Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
@@ -18213,10 +18213,10 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
       Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[2].As<Napi::TypedArray>().ElementLength() != $p1) {
-      Napi::RangeError::New(env, "Invalid array length for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[2].As<Napi::TypedArray>().ElementLength() != $p1) {
+        Napi::RangeError::New(env, "Invalid array length for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     int32_t* data = getTypedArrayData<int32_t>(info[2]);
     $p2 = std::make_shared<int32_t*>(data);
   } else if (!info[2].IsNull()) {
@@ -18301,10 +18301,10 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[3].As<Napi::TypedArray>().ElementLength() != $p1) {
-      Napi::RangeError::New(env, "Invalid array length for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[3].As<Napi::TypedArray>().ElementLength() != $p1) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     uint64_t* data = getTypedArrayData<uint64_t>(info[3]);
     $p3 = std::make_shared<uint64_t*>(data);
   } else if (!info[3].IsNull()) {
@@ -19891,10 +19891,10 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
       Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -19911,10 +19911,10 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
       Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[5].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[5].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[5]);
     $p5 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[5].IsNull()) {
@@ -20005,10 +20005,10 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -20098,10 +20098,10 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -23550,10 +23550,10 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModes2EXT(const Napi::CallbackInfo
       Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModes2EXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModes2EXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[3].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModes2EXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
@@ -25582,10 +25582,10 @@ Napi::Value _vkCmdBuildAccelerationStructuresIndirectKHR(const Napi::CallbackInf
       Napi::TypeError::New(env, "Invalid type for argument 4 'pIndirectDeviceAddresses' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[3].As<Napi::TypedArray>().ElementLength() != $p1) {
-      Napi::RangeError::New(env, "Invalid array length for argument 4 'pIndirectDeviceAddresses' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[3].As<Napi::TypedArray>().ElementLength() != $p1) {
+        Napi::RangeError::New(env, "Invalid array length for argument 4 'pIndirectDeviceAddresses' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceAddress* data = getTypedArrayData<VkDeviceAddress>(info[3]);
     $p3 = std::make_shared<VkDeviceAddress*>(data);
   } else if (!info[3].IsNull()) {
@@ -25602,10 +25602,10 @@ Napi::Value _vkCmdBuildAccelerationStructuresIndirectKHR(const Napi::CallbackInf
       Napi::TypeError::New(env, "Invalid type for argument 5 'pIndirectStrides' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p1) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pIndirectStrides' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p1) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pIndirectStrides' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     uint32_t* data = getTypedArrayData<uint32_t>(info[4]);
     $p4 = std::make_shared<uint32_t*>(data);
   } else if (!info[4].IsNull()) {
@@ -26379,10 +26379,10 @@ Napi::Value _vkCmdBindVertexBuffers2EXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[4].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
@@ -26399,10 +26399,10 @@ Napi::Value _vkCmdBindVertexBuffers2EXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[5].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 6 'pSizes' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[5].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 6 'pSizes' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[5]);
     $p5 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[5].IsNull()) {
@@ -26419,10 +26419,10 @@ Napi::Value _vkCmdBindVertexBuffers2EXT(const Napi::CallbackInfo& info) {
       Napi::TypeError::New(env, "Invalid type for argument 7 'pStrides' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
-    if (info[6].As<Napi::TypedArray>().ElementLength() != $p2) {
-      Napi::RangeError::New(env, "Invalid array length for argument 7 'pStrides' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
+      if (info[6].As<Napi::TypedArray>().ElementLength() != $p2) {
+        Napi::RangeError::New(env, "Invalid array length for argument 7 'pStrides' in 'vkCmdBindVertexBuffers2EXT'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[6]);
     $p6 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[6].IsNull()) {
@@ -27539,10 +27539,6 @@ Napi::Value _vkGetAccelerationStructureBuildSizesKHR(const Napi::CallbackInfo& i
 
     if (info[3].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
       Napi::TypeError::New(env, "Invalid type for argument 4 'pMaxPrimitiveCounts' in 'vkGetAccelerationStructureBuildSizesKHR'").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
-    if (info[3].As<Napi::TypedArray>().ElementLength() != $p-1) {
-      Napi::RangeError::New(env, "Invalid array length for argument 4 'pMaxPrimitiveCounts' in 'vkGetAccelerationStructureBuildSizesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[3]);
