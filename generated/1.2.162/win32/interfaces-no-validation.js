@@ -127966,6 +127966,7 @@ module.exports = {
   VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,
   VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,
   VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,
+  VK_API_VERSION_1_2: nvk.VK_API_VERSION_1_2,
   vkUseDevice: nvk.vkUseDevice,
   vkUseInstance: nvk.vkUseInstance,
   VulkanWindow: nvk.VulkanWindow,

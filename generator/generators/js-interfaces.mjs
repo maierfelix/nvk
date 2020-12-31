@@ -943,6 +943,7 @@ export default function(astReference, includeValidations, disableMinification, c
   output += `  VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,\n`;
   output += `  VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,\n`;
   output += `  VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,\n`;
+  output += `  VK_API_VERSION_1_2: nvk.VK_API_VERSION_1_2,\n`;
   output += `  vkUseDevice: nvk.vkUseDevice,\n`;
   output += `  vkUseInstance: nvk.vkUseInstance,\n`;
   // add VulkanWindow
