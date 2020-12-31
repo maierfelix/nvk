@@ -507,6 +507,7 @@ function parseTypeElement(child) {
   });
   let text = str.join(" ");
   let staticArrayMatch = text.match(/\[([^)]+)\]/);
+  let staticArrayInArrayMatch = text.match(/\[([^)]+)\]\[([^)]+)\]/);
   let isConstant = !!text.match("const ");
   let dereferenceCount = text.split(/\*/g).length - 1;
   let raw = text.split(" ");
@@ -584,6 +585,16 @@ function parseTypeElement(child) {
       }
     }
   }
+  else if (staticArrayInArrayMatch) {
+    let size = staticArrayInArrayMatch[1].trim();
+    let subsize = staticArrayInArrayMatch[2].trim();
+    out.isArray = true;
+    out.length = size * subsize;
+    if (enums[out.length]) out.length = enums[out.length];
+    out.isStaticArray = true;
+    out.rawType = text.replace(name + " ", "");
+    if (type === "char") out.isString = true;
+  }
   else if (staticArrayMatch) {
     let size = staticArrayMatch[1].trim();
     out.isArray = true;
@@ -601,7 +612,7 @@ function parseTypeElement(child) {
   // a numeric array
   if (out.isArray && isNumber(type)) out.isNumericArray = true;
   // a typed array
-  if (out.isNumericArray && !out.isStaticArray) {
+  if ((out.isNumericArray && !out.isStaticArray)) {
     if (isNumericReferenceType(out.rawType)) {
       out.isTypedArray = true;
       out.jsTypedArrayName = getJavaScriptTypedArrayName(out.rawType);

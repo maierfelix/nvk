@@ -118977,7 +118977,7 @@ function VkTransformMatrixKHR(opts, byteOffset) {
     this.memoryView = new DataView(this.memoryBuffer, 0x0, 0x30);
 
   }
-  this._matrix = [...Array(3)].fill(0x0);
+  this._matrix = [...Array(12)].fill(0x0);
   
   if (typeof opts === "object") {
     if (opts.matrix !== void 0) this.matrix = opts.matrix;
@@ -119008,7 +119008,7 @@ VkTransformMatrixKHR.prototype.reset = function reset(opts) {
   }
   this.resetMemoryView.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   if (this._matrix !== null) this._matrix.fill(0x0);
-      else this._matrix = [...Array(3)].fill(0x0);
+      else this._matrix = [...Array(12)].fill(0x0);
   
   if (typeof opts === "object") {
     if (opts.matrix !== void 0) this.matrix = opts.matrix;
@@ -119089,7 +119089,7 @@ function VkTransformMatrixNV(opts, byteOffset) {
     this.memoryView = new DataView(this.memoryBuffer, 0x0, 0x30);
 
   }
-  this._matrix = [...Array(3)].fill(0x0);
+  this._matrix = [...Array(12)].fill(0x0);
   
   if (typeof opts === "object") {
     if (opts.matrix !== void 0) this.matrix = opts.matrix;
@@ -119120,7 +119120,7 @@ VkTransformMatrixNV.prototype.reset = function reset(opts) {
   }
   this.resetMemoryView.set(STRUCT_RESET_CACHE["0x30"], 0x0);
   if (this._matrix !== null) this._matrix.fill(0x0);
-      else this._matrix = [...Array(3)].fill(0x0);
+      else this._matrix = [...Array(12)].fill(0x0);
   
   if (typeof opts === "object") {
     if (opts.matrix !== void 0) this.matrix = opts.matrix;
