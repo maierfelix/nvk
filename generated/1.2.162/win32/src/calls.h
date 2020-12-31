@@ -23254,7 +23254,7 @@ Napi::Value _vkGetDeviceAccelerationStructureCompatibilityKHR(const Napi::Callba
 $vkGetDeviceAccelerationStructureCompatibilityKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
-    $p2
+    reinterpret_cast<VkAccelerationStructureCompatibilityKHR *>(&$p2)
   );
   
   

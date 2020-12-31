@@ -574,6 +574,10 @@ function getCallBodyInner(call) {
       param.dereferenceCount > 0 &&
       !(param.isStructType || param.isHandleType || param.enumType)
     ) out += `    &$p${index}${addComma}`;
+    else if (
+      param.dereferenceCount > 0 &&
+      (param.enumType)
+    ) out += `    reinterpret_cast<${param.enumRawType}>(&$p${index}${addComma})`;
     else {
       out += `    $p${index}${addComma}`;
     }
