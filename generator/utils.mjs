@@ -509,6 +509,7 @@ export function isReferenceableMember(member) {
     case "LPCWSTR":
     case "const char *":
     case "const char * const*":
+    case "const uint32_t * const*":
       return true;
     case "float *":
     case "double *":
@@ -581,7 +582,8 @@ export function isArrayOfObjectsMember(member) {
 export function isHeaderHeapVector(member) {
   return (
     isArrayOfObjectsMember(member) ||
-    member.rawType === "const char * const*"
+    member.rawType === "const char * const*" ||
+    member.rawType === "const uint32_t * const*"
   );
 };
 

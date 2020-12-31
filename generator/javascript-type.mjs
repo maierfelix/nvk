@@ -160,14 +160,14 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.BOOLEAN
     });
   }
-  if (object.enumType && !object.isBitmaskType) {
+  if (object.enumType && !object.isBitmaskType && !object.isStaticArray) {
     return new JavaScriptType({
       type: JavaScriptType.NUMBER,
       value: object.enumType,
       isEnum: true
     });
   }
-  if (object.isBitmaskType) {
+  if (object.isBitmaskType && !object.isStaticArray) {
     let bitmask = getBitmaskByName(ast, object.bitmaskType);
     // future reserved bitmask, or must be 0
     if (!bitmask) {
@@ -281,6 +281,11 @@ export function getJavaScriptType(ast, object) {
         type: JavaScriptType.OBJECT_INOUT,
         value: "BigInt",
         isNullable: true
+      });
+    // TODO: bad
+    case "const uint32_t * const*":
+      return new JavaScriptType({
+        type: JavaScriptType.BIGINT
       });
   };
   warn(`Cannot handle object ${object.rawType} in JavaScript type resolver!`);

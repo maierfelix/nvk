@@ -125632,7 +125632,7 @@ function VkPipelineFragmentShadingRateStateCreateInfoKHR(opts, byteOffset) {
   
   this._pNext = null;
   this._fragmentSize = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
-  
+  this._combinerOps = [...Array(2)].fill(0x0);
   this.sType = ;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -125679,10 +125679,15 @@ Object.defineProperties(VkPipelineFragmentShadingRateStateCreateInfoKHR.prototyp
     },
   "combinerOps": {
     get() {
-    return this.memoryView.getInt32(0x0, true);
+    return this._combinerOps;
     },
     set(value) {
-    this.memoryView.setInt32(0x0, value, true);
+    if (value !== null ) {
+      this._combinerOps = value;
+    } else if (value === null) {
+      this._combinerOps = null;
+    } 
+    
     }
     },
   
@@ -125700,7 +125705,8 @@ VkPipelineFragmentShadingRateStateCreateInfoKHR.prototype.reset = function reset
     if (this.memoryBuffer !== this._fragmentSize.memoryBuffer) this._fragmentSize = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: this.$memoryOffset + 0x0 });
     else this._fragmentSize.reset();
   }
-  
+  if (this._combinerOps !== null) this._combinerOps.fill(0x0);
+      else this._combinerOps = [...Array(2)].fill(0x0);
   this.sType = ;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -125731,6 +125737,15 @@ VkPipelineFragmentShadingRateStateCreateInfoKHR.prototype.flush = function flush
   }
   
   
+  if (this._combinerOps !== null) {
+    let array = this._combinerOps;
+    
+    for (let ii = 0; ii < array.length; ++ii) {
+      this.memoryView.setInt32(0x0 + (ii * 4), array[ii], true);
+    };
+  } else {
+    this.memoryView.setInt32(0x0, 0x0, true);
+  }
   
   return true;
 };
@@ -125747,7 +125762,11 @@ VkPipelineFragmentShadingRateStateCreateInfoKHR.createCopyFrom = function create
   if (original.fragmentSize !== null) {
         copy.fragmentSize = original.fragmentSize.constructor.createCopyFrom(original.fragmentSize);
       }
-  copy.combinerOps = original.combinerOps;
+  if (original.combinerOps !== null) {
+        copy.combinerOps = [...Array(original.combinerOps.length)].map((v, i) => {
+          return original.combinerOps[i];
+        });
+      }
   
   return copy;
 };
@@ -126897,7 +126916,7 @@ function VkPipelineFragmentShadingRateEnumStateCreateInfoNV(opts, byteOffset) {
   this._pNext = null;
   
   
-  
+  this._combinerOps = [...Array(2)].fill(0x0);
   this.sType = ;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -126944,10 +126963,15 @@ Object.defineProperties(VkPipelineFragmentShadingRateEnumStateCreateInfoNV.proto
     },
   "combinerOps": {
     get() {
-    return this.memoryView.getInt32(0x0, true);
+    return this._combinerOps;
     },
     set(value) {
-    this.memoryView.setInt32(0x0, value, true);
+    if (value !== null ) {
+      this._combinerOps = value;
+    } else if (value === null) {
+      this._combinerOps = null;
+    } 
+    
     }
     },
   
@@ -126962,7 +126986,8 @@ VkPipelineFragmentShadingRateEnumStateCreateInfoNV.prototype.reset = function re
   this._pNext = null;
   
   
-  
+  if (this._combinerOps !== null) this._combinerOps.fill(0x0);
+      else this._combinerOps = [...Array(2)].fill(0x0);
   this.sType = ;
   if (typeof opts === "object") {
     if (opts.sType !== void 0) this.sType = opts.sType;
@@ -126982,6 +127007,15 @@ VkPipelineFragmentShadingRateEnumStateCreateInfoNV.prototype.flush = function fl
   }
   
   
+  if (this._combinerOps !== null) {
+    let array = this._combinerOps;
+    
+    for (let ii = 0; ii < array.length; ++ii) {
+      this.memoryView.setInt32(0x0 + (ii * 4), array[ii], true);
+    };
+  } else {
+    this.memoryView.setInt32(0x0, 0x0, true);
+  }
   
   return true;
 };
@@ -126997,7 +127031,11 @@ VkPipelineFragmentShadingRateEnumStateCreateInfoNV.createCopyFrom = function cre
     }
   copy.shadingRateType = original.shadingRateType;
   copy.shadingRate = original.shadingRate;
-  copy.combinerOps = original.combinerOps;
+  if (original.combinerOps !== null) {
+        copy.combinerOps = [...Array(original.combinerOps.length)].map((v, i) => {
+          return original.combinerOps[i];
+        });
+      }
   
   return copy;
 };

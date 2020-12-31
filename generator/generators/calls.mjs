@@ -57,7 +57,6 @@ function getParamIndexByParamName(call, name) {
 function getInputArrayBody(call, param, index) {
   let {rawType} = param;
   let out = ``;
-  let {isConstant} = param;
   if (param.dereferenceCount <= 0) warn(`Cannot handle non-reference item in input-array-body!`);
   // create variable
   {
@@ -74,6 +73,10 @@ function getInputArrayBody(call, param, index) {
       out += `
   ${varType} *$p${index} = nullptr;\n`;
     }
+    else if (param.dereferenceCount === 2 && param.isNumericArray) {
+      out += `
+  std::shared_ptr<std::vector<${varType}*>> $p${index} = nullptr;\n`;
+    }
     else {
       warn(`Cannot handle param intializer ${rawType} in input-array-body!`);
     }
@@ -88,7 +91,7 @@ function getInputArrayBody(call, param, index) {
   if (param.length) {
     if (param.isHandleType || param.isStructType) {
       let lengthIndex = getParamIndexByParamName(call, param.length);
-      if (lengthIndex > -1) {
+      if (!param.length.match("->") && lengthIndex > -1) {
         let lengthParam = getParamByParamName(call, param.length);
         if (lengthParam.dereferenceCount > 0) {
           out += `
@@ -121,7 +124,25 @@ function getInputArrayBody(call, param, index) {
       Napi::RangeError::New(env, "Invalid array length for argument ${lengthIndex + 1} '${param.length.replace("::", ".")}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
-      } else {
+      }
+      // length get read from other param
+      else if (call.params.filter(p => p.name === param.length.split("->")[0])[0]) {
+        let readParam = call.params.filter(p => p.name === param.length.split("->")[0])[0];
+        // we only support structs for now
+        if (!readParam.isStructType) {
+          warn(`Cannot handle non-struct param length validation for ${call.name}.${param.name} (${param.length})`);
+        }
+        let paramName = param.length.split("->")[0];
+        let memberName = param.length.split("->")[1];
+        let lengthIndex = getParamIndexByParamName(call, paramName);
+        out += `
+    // validate length
+    if ($p${lengthIndex} != nullptr && info[${index}].As<Napi::Array>().Length() != $p${lengthIndex}->${memberName}) {
+      Napi::RangeError::New(env, "666 Invalid array length for argument ${lengthIndex + 1} '${param.length}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+      }
+      else {
         warn(`Cannot handle param length validation for ${call.name}.${param.name} (${param.length})`);
       }
     }
@@ -166,7 +187,6 @@ function getInputArrayBody(call, param, index) {
   else if (param.isTypedArray) {
     let type = param.baseType || param.type;
     let lengthIndex = getParamIndexByParamName(call, param.length);
-    let lengthParam = getParamByParamName(call, param.length);
     out += `
     if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.jsTypedArrayName)}) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
@@ -180,6 +200,27 @@ function getInputArrayBody(call, param, index) {
     out += `
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
     $p${index} = std::make_shared<${type}*>(data);`;
+  }
+  // array of array of numbers
+  else if (param.dereferenceCount === 2 && param.isNumericArray) {
+    if (param.type !== "uint32_t") {
+      warn(`Cannot handle array of array of numbers type '${param.type}'`);
+    }
+    out += `
+    Napi::Array array = info[${index}].As<Napi::Array>();
+    std::vector<${param.type}*> data(array.Length());
+    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+      Napi::Value item = array.Get(ii);
+      Napi::Array innerArray = item.As<Napi::Array>();
+      ${param.type}* innerData = new ${param.type}[innerArray.Length()];
+      for (unsigned int ii = 0; ii < innerArray.Length(); ++ii) {
+        Napi::Value item = innerArray.Get(ii);
+        uint32_t value = item.As<Napi::Number>().Uint32Value();
+        innerData[ii] = value;
+      }
+      data.push_back(innerData);
+    };
+    $p${index} = std::make_shared<std::vector<${param.type}*>>(data);`;
   }
   else {
     warn(`Cannot handle param ${rawType} in input-array-body!`);
@@ -351,6 +392,7 @@ function getCallBodyBefore(call) {
       case "const int32_t *":
       case "const uint32_t *":
       case "const uint64_t *":
+      case "const uint32_t * const*":
         if (param.isArray) {
           return getInputArrayBody(call, param, index);
         } else {
@@ -496,6 +538,13 @@ function getCallBodyInner(call) {
     ) {
       out += `    $p${index} ? (${param.rawType}) $p${index}.get()->data() : nullptr${addComma}`;
     }
+    // array of array of numbers
+    else if (
+      param.dereferenceCount === 2 &&
+      param.isNumericArray
+    ) {
+      out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
+    }
     else if (
       param.rawType === `const void *`
     ) out += `    $p${index}${addComma}`;
@@ -542,7 +591,17 @@ function getCallBodyAfter(call) {
     if (isIgnoreableType(param)) return;
     let isReference = param.dereferenceCount > 0;
     let {isConstant} = param;
-    if (param.isString) {
+    // array of array of numbers
+    if (param.dereferenceCount === 2 && param.isNumericArray) {
+      out.push(`
+  if (info[${pIndex}].IsArray()) {
+    // free data
+    for (unsigned int ii = 0; ii < $p${pIndex}.get()->size(); ++ii) {
+      delete $p${pIndex}.get()->data()[ii];
+    }
+  }`);
+    }
+    else if (param.isString) {
       // no reflection needed
       out.push(`
   if ($p${pIndex}) delete[] $p${pIndex};`);
@@ -563,9 +622,10 @@ function getCallBodyAfter(call) {
       obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
+    }
     // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
-    } else if (param.isStructType && isReference) {
+    else if (param.isStructType && isReference) {
       let struct = getStructByStructName(ast, param.type);
         out.push(`
   if (info[${pIndex}].IsObject()) {

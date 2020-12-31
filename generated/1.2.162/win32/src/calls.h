@@ -5785,6 +5785,11 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if ($p1 != nullptr && info[2].As<Napi::Array>().Length() != $p1->descriptorSetCount) {
+      Napi::RangeError::New(env, "666 Invalid array length for argument 2 'pAllocateInfo->descriptorSetCount' in 'vkAllocateDescriptorSets'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkDescriptorSet> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
@@ -6553,6 +6558,11 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
 
   if (info[2].IsArray()) {
 
+    // validate length
+    if ($p1 != nullptr && info[2].As<Napi::Array>().Length() != $p1->commandBufferCount) {
+      Napi::RangeError::New(env, "666 Invalid array length for argument 2 'pAllocateInfo->commandBufferCount' in 'vkAllocateCommandBuffers'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
     Napi::Array array = info[2].As<Napi::Array>();
     std::vector<VkCommandBuffer> data(array.Length());
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
@@ -25604,14 +25614,43 @@ Napi::Value _vkCmdBuildAccelerationStructuresIndirectKHR(const Napi::CallbackInf
   }
 
 
+  std::shared_ptr<std::vector<uint32_t*>> $p5 = nullptr;
+
+  if (info[5].IsArray()) {
+
+    Napi::Array array = info[5].As<Napi::Array>();
+    std::vector<uint32_t*> data(array.Length());
+    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+      Napi::Value item = array.Get(ii);
+      Napi::Array innerArray = item.As<Napi::Array>();
+      uint32_t* innerData = new uint32_t[innerArray.Length()];
+      for (unsigned int ii = 0; ii < innerArray.Length(); ++ii) {
+        Napi::Value item = innerArray.Get(ii);
+        uint32_t value = item.As<Napi::Number>().Uint32Value();
+        innerData[ii] = value;
+      }
+      data.push_back(innerData);
+    };
+    $p5 = std::make_shared<std::vector<uint32_t*>>(data);
+  } else if (!info[5].IsNull()) {
+    Napi::TypeError::New(env, "Invalid type for argument 6 'ppMaxPrimitiveCounts' in 'vkCmdBuildAccelerationStructuresIndirectKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+
 $vkCmdBuildAccelerationStructuresIndirectKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2 ? (const VkAccelerationStructureBuildGeometryInfoKHR *) $p2.get()->data() : nullptr,
     $p3 ? *$p3.get() : nullptr,
     $p4 ? *$p4.get() : nullptr,
-    &$p5
+    $p5 ? $p5.get()->data() : nullptr
   );
+  if (info[5].IsArray()) {
+    // free data
+    for (unsigned int ii = 0; ii < $p5.get()->size(); ++ii) {
+      delete $p5.get()->data()[ii];
+    }
+  }
   
   
   return env.Undefined();

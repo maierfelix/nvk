@@ -81,6 +81,7 @@
     "standalone_static_library": 1,
     "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
     "cache": "C:\\Users\\maier\\AppData\\Local\\npm-cache",
+    "disable_minification": "true",
     "globalconfig": "C:\\Users\\maier\\AppData\\Roaming\\npm\\etc\\npmrc",
     "init.module": "C:\\Users\\maier\\.npm-init.js",
     "init_module": "C:\\Users\\maier\\.npm-init.js",

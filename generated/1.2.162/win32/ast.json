@@ -84082,6 +84082,7 @@
         "name": "instanceCustomIndex",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84093,6 +84094,7 @@
         "name": "mask",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84104,6 +84106,7 @@
         "name": "instanceShaderBindingTableRecordOffset",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84115,6 +84118,7 @@
         "name": "flags",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "bitmaskType": "VkGeometryInstanceFlagBitsKHR",
         "bitmaskRawType": "VkGeometryInstanceFlagsKHR",
         "isBitmaskType": true,
@@ -84160,6 +84164,7 @@
         "name": "instanceCustomIndex",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84171,6 +84176,7 @@
         "name": "mask",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84182,6 +84188,7 @@
         "name": "instanceShaderBindingTableRecordOffset",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "isNumber": true,
         "jsType": "Number",
         "kind": "STRUCT_MEMBER"
@@ -84193,6 +84200,7 @@
         "name": "flags",
         "isConstant": false,
         "dereferenceCount": 0,
+        "isBitField": true,
         "bitmaskType": "VkGeometryInstanceFlagBitsKHR",
         "bitmaskRawType": "VkGeometryInstanceFlagsKHR",
         "isBitmaskType": true,

@@ -12946,7 +12946,7 @@ interface VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
     /**
      *
      */
-    combinerOps: VkFragmentShadingRateCombinerOpKHR;
+    combinerOps: number[] | null;
 
 }
 
@@ -12975,7 +12975,7 @@ declare interface VkPipelineFragmentShadingRateEnumStateCreateInfoNVInitializer 
     /**
      *
      */
-    combinerOps?: VkFragmentShadingRateCombinerOpKHR;
+    combinerOps?: number[] | null;
 }
 
 declare interface VkPipelineFragmentShadingRateEnumStateCreateInfoNVConstructor {
@@ -13619,7 +13619,7 @@ interface VkPipelineFragmentShadingRateStateCreateInfoKHR {
     /**
      *
      */
-    combinerOps: VkFragmentShadingRateCombinerOpKHR;
+    combinerOps: number[] | null;
 
 }
 
@@ -13643,7 +13643,7 @@ declare interface VkPipelineFragmentShadingRateStateCreateInfoKHRInitializer {
     /**
      *
      */
-    combinerOps?: VkFragmentShadingRateCombinerOpKHR;
+    combinerOps?: number[] | null;
 }
 
 declare interface VkPipelineFragmentShadingRateStateCreateInfoKHRConstructor {
@@ -75104,7 +75104,7 @@ declare var VkClearColorValue: VkClearColorValueConstructor;
    * @param pIndirectStrides
    * @param ppMaxPrimitiveCounts
    */
-  export function vkCmdBuildAccelerationStructuresIndirectKHR(commandBuffer: VkCommandBuffer | null, infoCount: number, pInfos: VkAccelerationStructureBuildGeometryInfoKHR[] | null, pIndirectDeviceAddresses: BigUint64Array | null, pIndirectStrides: Uint32Array | null, ppMaxPrimitiveCounts: VkInoutAddress | null): void;
+  export function vkCmdBuildAccelerationStructuresIndirectKHR(commandBuffer: VkCommandBuffer | null, infoCount: number, pInfos: VkAccelerationStructureBuildGeometryInfoKHR[] | null, pIndirectDeviceAddresses: BigUint64Array | null, pIndirectStrides: Uint32Array | null, ppMaxPrimitiveCounts: bigint | number): void;
 
   /**
    * 
@@ -75340,7 +75340,7 @@ declare var VkClearColorValue: VkClearColorValueConstructor;
    * @param pFragmentSize
    * @param combinerOps
    */
-  export function vkCmdSetFragmentShadingRateKHR(commandBuffer: VkCommandBuffer | null, pFragmentSize: VkExtent2D | null, combinerOps: VkFragmentShadingRateCombinerOpKHR): void;
+  export function vkCmdSetFragmentShadingRateKHR(commandBuffer: VkCommandBuffer | null, pFragmentSize: VkExtent2D | null, combinerOps: number[] | null): void;
 
   /**
    * 
@@ -75356,7 +75356,7 @@ declare var VkClearColorValue: VkClearColorValueConstructor;
    * @param shadingRate
    * @param combinerOps
    */
-  export function vkCmdSetFragmentShadingRateEnumNV(commandBuffer: VkCommandBuffer | null, shadingRate: VkFragmentShadingRateNV, combinerOps: VkFragmentShadingRateCombinerOpKHR): void;
+  export function vkCmdSetFragmentShadingRateEnumNV(commandBuffer: VkCommandBuffer | null, shadingRate: VkFragmentShadingRateNV, combinerOps: number[] | null): void;
 
   /**
    * 

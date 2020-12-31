@@ -10,8 +10,13 @@ Napi::Value MemoryLayouts(const Napi::CallbackInfo& info) {
   {% for member in struct.children -%}
   {
     Napi::Object obj = Napi::Object::New(env);
+    {% if member.isBitField -%}
+    obj.Set(strByteOffset, Napi::Number::New(env, 666));
+    obj.Set(strByteLength, Napi::Number::New(env, 666));
+    {% else %}
     obj.Set(strByteOffset, Napi::Number::New(env, offsetof({{ struct.name }}, {{ member.name }})));
     obj.Set(strByteLength, Napi::Number::New(env, sizeof({{ struct.name }}::{{ member.name }})));
+    {% endif %}
     s{{ struct.name }}.Set(Napi::String::New(env, "{{ member.name }}"), obj);
   }
   {% endfor -%}

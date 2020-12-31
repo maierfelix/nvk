@@ -510,9 +510,11 @@ function parseTypeElement(child) {
   let isConstant = !!text.match("const ");
   let dereferenceCount = text.split(/\*/g).length - 1;
   let raw = text.split(" ");
+  let isBitField = false;
   if (raw.findIndex(s => s.match(":")) > 0) {
     const index = raw.findIndex(s => s.match(":"));
     raw.splice(index, 1);
+    isBitField = true;
   }
   if (raw.length > 1 && !staticArrayMatch) raw.pop();
   let rawType = raw.join(" ");
@@ -529,6 +531,9 @@ function parseTypeElement(child) {
     isConstant,
     dereferenceCount
   };
+  if (isBitField) {
+    out.isBitField = true;
+  }
   if (isBitmaskType) {
     out.bitmaskType = out.rawType;
     out.rawType = out.rawType.replace(out.type, `int32_t`);
