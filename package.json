@@ -16,12 +16,13 @@
       "1.1.108",
       "1.1.114",
       "1.1.121",
-      "1.1.126"
+      "1.1.126",
+      "1.2.135"
     ],
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
-    "POST_DEFAULT_BINDING_VERSION": "1.2.131",
+    "POST_DEFAULT_BINDING_VERSION": "1.2.162",
     "TS_ROOT": "../../../index",
     "INTERFACE_ROOT": "../../../index",
     "DOCS_DIR": "./docs",

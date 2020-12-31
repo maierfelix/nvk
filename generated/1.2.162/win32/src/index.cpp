@@ -19,8 +19,6 @@
 #include "enums.h"
 #include "window.h"
 
-#include "memoryLayouts.h"
-
 
 class CallbackProxy : public Napi::ObjectWrap<CallbackProxy> {
   public:
@@ -335,12 +333,11 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["VK_VERSION_PATCH"] = Napi::Function::New(env, _VK_VERSION_PATCH, "VK_VERSION_PATCH");
   exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
   exports["VK_API_VERSION_1_1"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 1, 0));
+  exports["VK_API_VERSION_1_2"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 2, 0));
   exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
   exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
   exports["getAddressFromArrayBuffer"] = Napi::Function::New(env, getAddressFromArrayBuffer, "getAddressFromArrayBuffer");
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
-  
-  exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   
   exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
   {
