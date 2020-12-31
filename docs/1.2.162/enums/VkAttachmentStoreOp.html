@@ -1,0 +1,74 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkAttachmentStoreOp | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkAttachmentStoreOp</vk-name>
+
+    <vk-description>Specify how contents of an attachment are treated at the end of a subpass</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkAttachmentStoreOp = {
+  VK_ATTACHMENT_STORE_OP_STORE: 0,
+  VK_ATTACHMENT_STORE_OP_DONT_CARE: 1,
+  VK_ATTACHMENT_STORE_OP_NONE_QCOM: 1000301000
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentStoreOp.<vk-prototype-name>VK_ATTACHMENT_STORE_OP_STORE</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the contents generated during the render pass and within the render area are written to memory. For attachments with a depth/stencil format, this uses the access type <b>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</b>. For attachments with a color format, this uses the access type <b>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentStoreOp.<vk-prototype-name>VK_ATTACHMENT_STORE_OP_DONT_CARE</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the contents within the render area are not needed after rendering, and <i>may</i> be discarded; the contents of the attachment will be <b style="text-decoration:underline;">undefined</b> inside the render area. For attachments with a depth/stencil format, this uses the access type <b>VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT</b>. For attachments with a color format, this uses the access type <b>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentStoreOp.<vk-prototype-name>VK_ATTACHMENT_STORE_OP_NONE_QCOM</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the contents within the render area were not written during rendering, and <i>may</i> not be written to memory. If the attachment was written to during the renderpass, the contents of the attachment will be <b style="text-decoration:underline;">undefined</b> inside the render area.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

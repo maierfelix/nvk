@@ -1,0 +1,74 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkImageTiling | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkImageTiling</vk-name>
+
+    <vk-description>Specifies the tiling arrangement of data in an image</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkImageTiling = {
+  VK_IMAGE_TILING_OPTIMAL: 0,
+  VK_IMAGE_TILING_LINEAR: 1,
+  VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT: 1000158000
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageTiling.<vk-prototype-name>VK_IMAGE_TILING_OPTIMAL</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies optimal tiling (texels are laid out in an implementation-dependent arrangement, for more optimal memory access).</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageTiling.<vk-prototype-name>VK_IMAGE_TILING_LINEAR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies linear tiling (texels are laid out in memory in row-major order, possibly with some padding on each row).</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageTiling.<vk-prototype-name>VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> indicates that the image's tiling is defined by a <<glossary-drm-format-modifier,Linux DRM format modifier>>. The modifier is specified at image creation with <b><a href="../structs/VkImageDrmFormatModifierListCreateInfoEXT.html">VkImageDrmFormatModifierListCreateInfoEXT</a></b> or <b><a href="../structs/VkImageDrmFormatModifierExplicitCreateInfoEXT.html">VkImageDrmFormatModifierExplicitCreateInfoEXT</a></b>, and <i>can</i> be queried with <b><a href="../calls/vkGetImageDrmFormatModifierPropertiesEXT.html">vkGetImageDrmFormatModifierPropertiesEXT</a></b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

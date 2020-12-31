@@ -1,0 +1,209 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDynamicState | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDynamicState</vk-name>
+
+    <vk-description>Indicate which dynamic state is taken from dynamic state commands</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkDynamicState = {
+  VK_DYNAMIC_STATE_VIEWPORT: 0,
+  VK_DYNAMIC_STATE_SCISSOR: 1,
+  VK_DYNAMIC_STATE_LINE_WIDTH: 2,
+  VK_DYNAMIC_STATE_DEPTH_BIAS: 3,
+  VK_DYNAMIC_STATE_BLEND_CONSTANTS: 4,
+  VK_DYNAMIC_STATE_DEPTH_BOUNDS: 5,
+  VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK: 6,
+  VK_DYNAMIC_STATE_STENCIL_WRITE_MASK: 7,
+  VK_DYNAMIC_STATE_STENCIL_REFERENCE: 8,
+  VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV: 1000087000,
+  VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT: 1000099000,
+  VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT: 1000143000,
+  VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR: 1000347000,
+  VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV: 1000164004,
+  VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV: 1000164006,
+  VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV: 1000205001,
+  VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR: 1000226000,
+  VK_DYNAMIC_STATE_LINE_STIPPLE_EXT: 1000259000,
+  VK_DYNAMIC_STATE_CULL_MODE_EXT: 1000267000,
+  VK_DYNAMIC_STATE_FRONT_FACE_EXT: 1000267001,
+  VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY_EXT: 1000267002,
+  VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT_EXT: 1000267003,
+  VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT_EXT: 1000267004,
+  VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE_EXT: 1000267005,
+  VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE_EXT: 1000267006,
+  VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE_EXT: 1000267007,
+  VK_DYNAMIC_STATE_DEPTH_COMPARE_OP_EXT: 1000267008,
+  VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE_EXT: 1000267009,
+  VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE_EXT: 1000267010,
+  VK_DYNAMIC_STATE_STENCIL_OP_EXT: 1000267011
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VIEWPORT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_SCISSOR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_LINE_WIDTH</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_BIAS</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>depthBiasConstantFactor</b>, <b>depthBiasClamp</b> and <b>depthBiasSlopeFactor</b> states in <b><a href="../structs/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a></b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetDepthBias.html">vkCmdSetDepthBias</a></b> before any draws are performed with <b>depthBiasEnable</b> in <b><a href="../structs/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a></b> set to <b>VK_TRUE</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_BLEND_CONSTANTS</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>blendConstants</b> state in <b><a href="../structs/VkPipelineColorBlendStateCreateInfo.html">VkPipelineColorBlendStateCreateInfo</a></b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetBlendConstants.html">vkCmdSetBlendConstants</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineColorBlendAttachmentState.html">VkPipelineColorBlendAttachmentState</a></b> member <b>blendEnable</b> set to <b>VK_TRUE</b> and any of the blend functions using a constant blend color.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_BOUNDS</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>minDepthBounds</b> and <b>maxDepthBounds</b> states of <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetDepthBounds.html">vkCmdSetDepthBounds</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> member <b>depthBoundsTestEnable</b> set to <b>VK_TRUE</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>compareMask</b> state in <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> for both <b>front</b> and <b>back</b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetStencilCompareMask.html">vkCmdSetStencilCompareMask</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> member <b>stencilTestEnable</b> set to <b>VK_TRUE</b></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_STENCIL_WRITE_MASK</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>writeMask</b> state in <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> for both <b>front</b> and <b>back</b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetStencilWriteMask.html">vkCmdSetStencilWriteMask</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> member <b>stencilTestEnable</b> set to <b>VK_TRUE</b></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_STENCIL_REFERENCE</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>reference</b> state in <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> for both <b>front</b> and <b>back</b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetStencilReference.html">vkCmdSetStencilReference</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></b> member <b>stencilTestEnable</b> set to <b>VK_TRUE</b></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the <b>pViewportScalings</b> state in <b><a href="../structs/VkPipelineViewportWScalingStateCreateInfoNV.html">VkPipelineViewportWScalingStateCreateInfoNV</a></b> will be ignored and <i>must</i> be set dynamically with <b><a href="../calls/vkCmdSetViewportWScalingNV.html">vkCmdSetViewportWScalingNV</a></b> before any draws are performed with a pipeline state with <b><a href="../structs/VkPipelineViewportWScalingStateCreateInfoNV.html">VkPipelineViewportWScalingStateCreateInfoNV</a></b> member <b>viewportScalingEnable</b> set to <b>VK_TRUE</b></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_LINE_STIPPLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_CULL_MODE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_FRONT_FACE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_COMPARE_OP_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDynamicState.<vk-prototype-name>VK_DYNAMIC_STATE_STENCIL_OP_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

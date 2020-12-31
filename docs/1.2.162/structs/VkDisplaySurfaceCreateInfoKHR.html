@@ -1,0 +1,189 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDisplaySurfaceCreateInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDisplaySurfaceCreateInfoKHR</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created display plane surface object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">displaySurfaceKHRInfo = VkDisplaySurfaceCreateInfoKHR();
+displaySurfaceKHRInfo = new VkDisplaySurfaceCreateInfoKHR();
+displaySurfaceKHRInfo = new VkDisplaySurfaceCreateInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let displaySurfaceKHRInfo = new VkDisplaySurfaceCreateInfoKHR();
+displaySurfaceKHRInfo.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
+displaySurfaceKHRInfo.pNext = ;
+displaySurfaceKHRInfo.flags = ;
+displaySurfaceKHRInfo.displayMode = ;
+displaySurfaceKHRInfo.planeIndex = ;
+displaySurfaceKHRInfo.planeStackIndex = ;
+displaySurfaceKHRInfo.transform = ;
+displaySurfaceKHRInfo.globalAlpha = ;
+displaySurfaceKHRInfo.alphaMode = ;
+displaySurfaceKHRInfo.imageExtent = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let displaySurfaceKHRInfo = new VkDisplaySurfaceCreateInfoKHR();
+displaySurfaceKHRInfo.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
+displaySurfaceKHRInfo.pNext = ;
+displaySurfaceKHRInfo.flags = ;
+displaySurfaceKHRInfo.displayMode = ;
+displaySurfaceKHRInfo.planeIndex = ;
+displaySurfaceKHRInfo.planeStackIndex = ;
+displaySurfaceKHRInfo.transform = ;
+displaySurfaceKHRInfo.globalAlpha = ;
+displaySurfaceKHRInfo.alphaMode = ;
+displaySurfaceKHRInfo.imageExtent.width = ;
+displaySurfaceKHRInfo.imageExtent.height = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a structure extending this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use, and <i>must</i> be zero.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>displayMode</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkDisplayModeKHR.html">VkDisplayModeKHR</a></vk-property-type>
+        <vk-property-description> is a <b><a href="../handles/VkDisplayModeKHR.html">VkDisplayModeKHR</a></b> handle specifying the mode to use when displaying this surface.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>planeIndex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the plane on which this surface appears.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>planeStackIndex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the z-order of the plane.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>transform</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
+        <vk-property-description> is a <b>VkSurfaceTransformFlagBitsKHR</b> value specifying the transformation to apply to images as part of the scanout operation.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>globalAlpha</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the global alpha value. This value is ignored if <b>alphaMode</b> is not <b>VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>alphaMode</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkDisplayPlaneAlphaFlagBitsKHR.html">VkDisplayPlaneAlphaFlagBitsKHR</a></vk-property-type>
+        <vk-property-description> is a <b>VkDisplayPlaneAlphaFlagBitsKHR</b> value specifying the type of alpha blending to use.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description> The size of the presentable images to use with the surface.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

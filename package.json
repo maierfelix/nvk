@@ -3,7 +3,7 @@
   "main": "index.js",
   "version": "0.8.0",
   "engines": {
-    "node": ">= 10.9.0"
+    "node": ">= 15.4.0"
   },
   "config": {
     "OUTDATED": [

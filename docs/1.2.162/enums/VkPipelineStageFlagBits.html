@@ -1,0 +1,214 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkPipelineStageFlagBits | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkPipelineStageFlagBits</vk-name>
+
+    <vk-description>Bitmask specifying pipeline stages</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkPipelineStageFlagBits = {
+  VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT: 0x1,
+  VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT: 0x2,
+  VK_PIPELINE_STAGE_VERTEX_INPUT_BIT: 0x4,
+  VK_PIPELINE_STAGE_VERTEX_SHADER_BIT: 0x8,
+  VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT: 0x10,
+  VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT: 0x20,
+  VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT: 0x40,
+  VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT: 0x80,
+  VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT: 0x100,
+  VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT: 0x200,
+  VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT: 0x400,
+  VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT: 0x800,
+  VK_PIPELINE_STAGE_TRANSFER_BIT: 0x1000,
+  VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT: 0x2000,
+  VK_PIPELINE_STAGE_HOST_BIT: 0x4000,
+  VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT: 0x8000,
+  VK_PIPELINE_STAGE_ALL_COMMANDS_BIT: 0x10000,
+  VK_PIPELINE_STAGE_RESERVED_27_BIT_KHR: 0x8000000,
+  VK_PIPELINE_STAGE_RESERVED_26_BIT_KHR: 0x4000000,
+  VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT: 0x1000000,
+  VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT: 0x40000,
+  VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR: 0x2000000,
+  VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR: 0x200000,
+  VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV: 0x400000,
+  VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV: 0x80000,
+  VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV: 0x100000,
+  VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT: 0x800000,
+  VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV: 0x20000,
+  VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV: VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR,
+  VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV: VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR,
+  VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR: VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> is equivalent to <b>VK_PIPELINE_STAGE_ALL_COMMANDS_BIT</b> with <b>VkAccessFlags</b> set to `0` when specified in the second synchronization scope, but specifies no stages in the first scope.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies the stage of the pipeline where Draw/DispatchIndirect/TraceRaysIndirect data structures are consumed. This stage also includes reading commands written by <b><a href="../calls/vkCmdExecuteGeneratedCommandsNV.html">vkCmdExecuteGeneratedCommandsNV</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_VERTEX_INPUT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_VERTEX_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TRANSFER_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_HOST_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_ALL_COMMANDS_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_RESERVED_27_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_RESERVED_26_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineStageFlagBits.<vk-prototype-name>VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

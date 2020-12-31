@@ -1,0 +1,209 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkSubpassDescription2KHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkSubpassDescription2KHR</vk-name>
+
+    <vk-description></vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">subpassDescription2KHR = VkSubpassDescription2KHR();
+subpassDescription2KHR = new VkSubpassDescription2KHR();
+subpassDescription2KHR = new VkSubpassDescription2KHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let subpassDescription2KHR = new VkSubpassDescription2KHR();
+subpassDescription2KHR.sType = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR;
+subpassDescription2KHR.pNext = ;
+subpassDescription2KHR.flags = ;
+subpassDescription2KHR.pipelineBindPoint = ;
+subpassDescription2KHR.viewMask = ;
+subpassDescription2KHR.inputAttachmentCount = ;
+subpassDescription2KHR.pInputAttachments = ;
+subpassDescription2KHR.colorAttachmentCount = ;
+subpassDescription2KHR.pColorAttachments = ;
+subpassDescription2KHR.pResolveAttachments = ;
+subpassDescription2KHR.pDepthStencilAttachment = ;
+subpassDescription2KHR.preserveAttachmentCount = ;
+subpassDescription2KHR.pPreserveAttachments = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let subpassDescription2KHR = new VkSubpassDescription2KHR();
+subpassDescription2KHR.sType = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR;
+subpassDescription2KHR.pNext = ;
+subpassDescription2KHR.flags = ;
+subpassDescription2KHR.pipelineBindPoint = ;
+subpassDescription2KHR.viewMask = ;
+subpassDescription2KHR.inputAttachmentCount = ;
+subpassDescription2KHR.pInputAttachments = ;
+subpassDescription2KHR.colorAttachmentCount = ;
+subpassDescription2KHR.pColorAttachments = ;
+subpassDescription2KHR.pResolveAttachments = ;
+subpassDescription2KHR.pDepthStencilAttachment = ;
+subpassDescription2KHR.preserveAttachmentCount = ;
+subpassDescription2KHR.pPreserveAttachments = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSubpassDescriptionFlagBits.html">VkSubpassDescriptionFlagBits</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pipelineBindPoint</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkPipelineBindPoint.html">VkPipelineBindPoint</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>viewMask</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>inputAttachmentCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pInputAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAttachmentReference2.html">VkAttachmentReference2]</a></vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>colorAttachmentCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pColorAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAttachmentReference2.html">VkAttachmentReference2]</a></vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pResolveAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAttachmentReference2.html">VkAttachmentReference2]</a></vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pDepthStencilAttachment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkAttachmentReference2.html">VkAttachmentReference2</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>preserveAttachmentCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>pPreserveAttachments</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkSubpassDescription2KHR.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

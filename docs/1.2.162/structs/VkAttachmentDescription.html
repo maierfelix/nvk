@@ -1,0 +1,181 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkAttachmentDescription | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkAttachmentDescription</vk-name>
+
+    <vk-description>Structure specifying an attachment description</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">attachmentDescription = VkAttachmentDescription();
+attachmentDescription = new VkAttachmentDescription();
+attachmentDescription = new VkAttachmentDescription(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let attachmentDescription = new VkAttachmentDescription();
+attachmentDescription.flags = ;
+attachmentDescription.format = ;
+attachmentDescription.samples = ;
+attachmentDescription.loadOp = ;
+attachmentDescription.storeOp = ;
+attachmentDescription.stencilLoadOp = ;
+attachmentDescription.stencilStoreOp = ;
+attachmentDescription.initialLayout = ;
+attachmentDescription.finalLayout = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let attachmentDescription = new VkAttachmentDescription();
+attachmentDescription.flags = ;
+attachmentDescription.format = ;
+attachmentDescription.samples = ;
+attachmentDescription.loadOp = ;
+attachmentDescription.storeOp = ;
+attachmentDescription.stencilLoadOp = ;
+attachmentDescription.stencilStoreOp = ;
+attachmentDescription.initialLayout = ;
+attachmentDescription.finalLayout = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentDescriptionFlagBits.html">VkAttachmentDescriptionFlagBits</a></vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkAttachmentDescriptionFlagBits</b> specifying additional properties of the attachment.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkFormat.html">VkFormat</a></vk-property-type>
+        <vk-property-description> is a <b>VkFormat</b> value specifying the format of the image view that will be used for the attachment.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
+        <vk-property-description> is the number of samples of the image as defined in <b>VkSampleCountFlagBits</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>loadOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a></vk-property-type>
+        <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of color and depth components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>storeOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a></vk-property-type>
+        <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of color and depth components of the attachment are treated at the end of the subpass where it is last used.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>stencilLoadOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a></vk-property-type>
+        <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of stencil components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>stencilStoreOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a></vk-property-type>
+        <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of stencil components of the attachment are treated at the end of the last subpass where it is used.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>initialLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkImageLayout.html">VkImageLayout</a></vk-property-type>
+        <vk-property-description> is the layout the attachment image subresource will be in when a render pass instance begins.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>finalLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkImageLayout.html">VkImageLayout</a></vk-property-type>
+        <vk-property-description> is the layout the attachment image subresource will be transitioned to when a render pass instance ends.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

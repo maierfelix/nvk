@@ -1,0 +1,188 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDeviceCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDeviceCreateInfo</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created device</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">deviceInfo = VkDeviceCreateInfo();
+deviceInfo = new VkDeviceCreateInfo();
+deviceInfo = new VkDeviceCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let deviceInfo = new VkDeviceCreateInfo();
+deviceInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+deviceInfo.pNext = ;
+deviceInfo.flags = ;
+deviceInfo.queueCreateInfoCount = ;
+deviceInfo.pQueueCreateInfos = ;
+deviceInfo.enabledLayerCount = ;
+deviceInfo.ppEnabledLayerNames = ;
+deviceInfo.enabledExtensionCount = ;
+deviceInfo.ppEnabledExtensionNames = ;
+deviceInfo.pEnabledFeatures = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let deviceInfo = new VkDeviceCreateInfo();
+deviceInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+deviceInfo.pNext = ;
+deviceInfo.flags = ;
+deviceInfo.queueCreateInfoCount = ;
+deviceInfo.pQueueCreateInfos = ;
+deviceInfo.enabledLayerCount = ;
+deviceInfo.ppEnabledLayerNames = ;
+deviceInfo.enabledExtensionCount = ;
+deviceInfo.ppEnabledExtensionNames = ;
+deviceInfo.pEnabledFeatures = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a structure extending this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>queueCreateInfoCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the size of the <b>pQueueCreateInfos</b> array. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pQueueCreateInfos</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkDeviceQueueCreateInfo.html">VkDeviceQueueCreateInfo]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkDeviceQueueCreateInfo.html">VkDeviceQueueCreateInfo</a></b> structures describing the queues that are requested to be created along with the logical device. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>enabledLayerCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is deprecated and ignored.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>ppEnabledLayerNames</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
+        <vk-property-description> is deprecated and ignored. See <<extendingvulkan-layers-devicelayerdeprecation>>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>enabledExtensionCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of device extensions to enable.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>ppEnabledExtensionNames</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b>enabledExtensionCount</b> strings containing the names of extensions to enable for the created device. See the <<extendingvulkan-extensions>> section for further details.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pEnabledFeatures</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a></vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a <b><a href="../structs/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a></b> structure containing boolean indicators of all the features to be enabled. Refer to the <<features,Features>> section for further details.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceCreateInfo.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

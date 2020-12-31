@@ -1,0 +1,196 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkAccelerationStructureBuildGeometryInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkAccelerationStructureBuildGeometryInfoKHR</vk-name>
+
+    <vk-description>Structure specifying the geometry data used to build an acceleration structure</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">accelerationStructureBuildGeometryInfoKHRInfo = VkAccelerationStructureBuildGeometryInfoKHR();
+accelerationStructureBuildGeometryInfoKHRInfo = new VkAccelerationStructureBuildGeometryInfoKHR();
+accelerationStructureBuildGeometryInfoKHRInfo = new VkAccelerationStructureBuildGeometryInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let accelerationStructureBuildGeometryInfoKHRInfo = new VkAccelerationStructureBuildGeometryInfoKHR();
+accelerationStructureBuildGeometryInfoKHRInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR;
+accelerationStructureBuildGeometryInfoKHRInfo.pNext = ;
+accelerationStructureBuildGeometryInfoKHRInfo.type = ;
+accelerationStructureBuildGeometryInfoKHRInfo.flags = ;
+accelerationStructureBuildGeometryInfoKHRInfo.mode = ;
+accelerationStructureBuildGeometryInfoKHRInfo.srcAccelerationStructure = ;
+accelerationStructureBuildGeometryInfoKHRInfo.dstAccelerationStructure = ;
+accelerationStructureBuildGeometryInfoKHRInfo.geometryCount = ;
+accelerationStructureBuildGeometryInfoKHRInfo.pGeometries = ;
+accelerationStructureBuildGeometryInfoKHRInfo.ppGeometries = ;
+accelerationStructureBuildGeometryInfoKHRInfo.scratchData = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let accelerationStructureBuildGeometryInfoKHRInfo = new VkAccelerationStructureBuildGeometryInfoKHR();
+accelerationStructureBuildGeometryInfoKHRInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR;
+accelerationStructureBuildGeometryInfoKHRInfo.pNext = ;
+accelerationStructureBuildGeometryInfoKHRInfo.type = ;
+accelerationStructureBuildGeometryInfoKHRInfo.flags = ;
+accelerationStructureBuildGeometryInfoKHRInfo.mode = ;
+accelerationStructureBuildGeometryInfoKHRInfo.srcAccelerationStructure = ;
+accelerationStructureBuildGeometryInfoKHRInfo.dstAccelerationStructure = ;
+accelerationStructureBuildGeometryInfoKHRInfo.geometryCount = ;
+accelerationStructureBuildGeometryInfoKHRInfo.pGeometries = ;
+accelerationStructureBuildGeometryInfoKHRInfo.ppGeometries = ;
+accelerationStructureBuildGeometryInfoKHRInfo.scratchData.deviceAddress = ;
+accelerationStructureBuildGeometryInfoKHRInfo.scratchData.hostAddress = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a structure extending this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>type</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkAccelerationStructureTypeKHR.html">VkAccelerationStructureTypeKHR</a></vk-property-type>
+        <vk-property-description> is a <b>VkAccelerationStructureTypeKHR</b> value specifying the type of acceleration structure being built.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkBuildAccelerationStructureFlagBitsKHR.html">VkBuildAccelerationStructureFlagBitsKHR</a></vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkBuildAccelerationStructureFlagBitsKHR</b> specifying additional parameters of the acceleration structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>mode</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkBuildAccelerationStructureModeKHR.html">VkBuildAccelerationStructureModeKHR</a></vk-property-type>
+        <vk-property-description> is a <b>VkBuildAccelerationStructureModeKHR</b> value specifying the type of operation to perform.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>srcAccelerationStructure</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkAccelerationStructureKHR.html">VkAccelerationStructureKHR</a></vk-property-type>
+        <vk-property-description> reference to an existing acceleration structure that is to be used to update the <b>dst</b> acceleration structure when <b>mode</b> is <b>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>dstAccelerationStructure</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkAccelerationStructureKHR.html">VkAccelerationStructureKHR</a></vk-property-type>
+        <vk-property-description> reference to the target acceleration structure for the build.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>geometryCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies the number of geometries that will be built into <b>dstAccelerationStructure</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>pGeometries</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAccelerationStructureGeometryKHR.html">VkAccelerationStructureGeometryKHR]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkAccelerationStructureGeometryKHR.html">VkAccelerationStructureGeometryKHR</a></b> structures.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>ppGeometries</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAccelerationStructureGeometryKHR.html">VkAccelerationStructureGeometryKHR]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of references to <b><a href="../structs/VkAccelerationStructureGeometryKHR.html">VkAccelerationStructureGeometryKHR</a></b> structures.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>scratchData</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkDeviceOrHostAddressKHR.html">VkDeviceOrHostAddressKHR</a></vk-property-type>
+        <vk-property-description> is the device or host address to memory that will be used as scratch memory for the build.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkAccelerationStructureBuildGeometryInfoKHR.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

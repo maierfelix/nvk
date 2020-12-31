@@ -1,0 +1,177 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDeviceMemoryReportCallbackDataEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDeviceMemoryReportCallbackDataEXT</vk-name>
+
+    <vk-description>Structure specifying parameters returned to the callback</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">deviceMemoryReportCallbackDataEXT = VkDeviceMemoryReportCallbackDataEXT();
+deviceMemoryReportCallbackDataEXT = new VkDeviceMemoryReportCallbackDataEXT();
+deviceMemoryReportCallbackDataEXT = new VkDeviceMemoryReportCallbackDataEXT(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let deviceMemoryReportCallbackDataEXT = new VkDeviceMemoryReportCallbackDataEXT();
+deviceMemoryReportCallbackDataEXT.sType;
+deviceMemoryReportCallbackDataEXT.pNext;
+deviceMemoryReportCallbackDataEXT.flags;
+deviceMemoryReportCallbackDataEXT.type;
+deviceMemoryReportCallbackDataEXT.memoryObjectId;
+deviceMemoryReportCallbackDataEXT.size;
+deviceMemoryReportCallbackDataEXT.objectType;
+deviceMemoryReportCallbackDataEXT.objectHandle;
+deviceMemoryReportCallbackDataEXT.heapIndex;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let deviceMemoryReportCallbackDataEXT = new VkDeviceMemoryReportCallbackDataEXT();
+deviceMemoryReportCallbackDataEXT.sType;
+deviceMemoryReportCallbackDataEXT.pNext;
+deviceMemoryReportCallbackDataEXT.flags;
+deviceMemoryReportCallbackDataEXT.type;
+deviceMemoryReportCallbackDataEXT.memoryObjectId;
+deviceMemoryReportCallbackDataEXT.size;
+deviceMemoryReportCallbackDataEXT.objectType;
+deviceMemoryReportCallbackDataEXT.objectHandle;
+deviceMemoryReportCallbackDataEXT.heapIndex;
+</code></pre>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a structure extending this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is 0 and reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>type</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkDeviceMemoryReportEventTypeEXT.html">VkDeviceMemoryReportEventTypeEXT</a></vk-property-type>
+        <vk-property-description> is a <b>VkDeviceMemoryReportEventTypeEXT</b> type specifying the type of event reported in this <b><a href="../structs/VkDeviceMemoryReportCallbackDataEXT.html">VkDeviceMemoryReportCallbackDataEXT</a></b> structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>memoryObjectId</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the unique id for the underlying memory object as described below.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>size</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the size of the memory object in bytes. If <b>type</b> is <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT</b>, <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT</b> or <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT</b>, <b>size</b> <i>must</i> be a valid <i>VkDeviceSize</i> value.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>objectType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkObjectType.html">VkObjectType</a></vk-property-type>
+        <vk-property-description> is a <b>VkObjectType</b> value specifying the type of the object associated with this device memory report event. If <b>type</b> is <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT</b>, <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT</b> or <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT</b>, <b>objectType</b> <i>must</i> be a valid <b>VkObjectType</b> enum.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>objectHandle</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the object this device memory report event is attributed to. If <b>type</b> is <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT</b>, <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT</b>, <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT</b> or <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT</b>, <b>objectHandle</b> <i>must</i> be a valid Vulkan handle of the type associated with <b>objectType</b> as defined in the <<debugging-object-types, VkObjectType and Vulkan Handle Relationship>> table.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>heapIndex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes which memory heap this device memory allocation is made from. If <b>type</b> is <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT</b> or <b>VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT</b>, <b>heapIndex</b> <i>must</i> correspond to one of the valid heaps from the <b><a href="../structs/VkPhysicalDeviceMemoryProperties.html">VkPhysicalDeviceMemoryProperties</a></b> structure. Otherwise, <b>heapIndex</b> is <b style="text-decoration:underline;">undefined</b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceMemoryReportCallbackDataEXT.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

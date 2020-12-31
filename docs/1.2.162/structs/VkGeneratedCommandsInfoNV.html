@@ -1,0 +1,227 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkGeneratedCommandsInfoNV | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkGeneratedCommandsInfoNV</vk-name>
+
+    <vk-description>Structure specifying parameters for the generation of commands</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">generatedCommandsInfoNVInfo = VkGeneratedCommandsInfoNV();
+generatedCommandsInfoNVInfo = new VkGeneratedCommandsInfoNV();
+generatedCommandsInfoNVInfo = new VkGeneratedCommandsInfoNV(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    
+    <vk-property-prototype id="expand-code" class="expand-btn"></vk-property-prototype>
+
+    <vk-stub id="code-no-expand" style="display:none;">
+      <pre><code class="language-js">let generatedCommandsInfoNVInfo = new VkGeneratedCommandsInfoNV();
+generatedCommandsInfoNVInfo.sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV;
+generatedCommandsInfoNVInfo.pNext = ;
+generatedCommandsInfoNVInfo.pipelineBindPoint = ;
+generatedCommandsInfoNVInfo.pipeline = ;
+generatedCommandsInfoNVInfo.indirectCommandsLayout = ;
+generatedCommandsInfoNVInfo.streamCount = ;
+generatedCommandsInfoNVInfo.pStreams = ;
+generatedCommandsInfoNVInfo.sequencesCount = ;
+generatedCommandsInfoNVInfo.preprocessBuffer = ;
+generatedCommandsInfoNVInfo.preprocessOffset = ;
+generatedCommandsInfoNVInfo.preprocessSize = ;
+generatedCommandsInfoNVInfo.sequencesCountBuffer = ;
+generatedCommandsInfoNVInfo.sequencesCountOffset = ;
+generatedCommandsInfoNVInfo.sequencesIndexBuffer = ;
+generatedCommandsInfoNVInfo.sequencesIndexOffset = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-stub id="code-expanded" style="display:none;">
+      <pre><code class="language-js">let generatedCommandsInfoNVInfo = new VkGeneratedCommandsInfoNV();
+generatedCommandsInfoNVInfo.sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV;
+generatedCommandsInfoNVInfo.pNext = ;
+generatedCommandsInfoNVInfo.pipelineBindPoint = ;
+generatedCommandsInfoNVInfo.pipeline = ;
+generatedCommandsInfoNVInfo.indirectCommandsLayout = ;
+generatedCommandsInfoNVInfo.streamCount = ;
+generatedCommandsInfoNVInfo.pStreams = ;
+generatedCommandsInfoNVInfo.sequencesCount = ;
+generatedCommandsInfoNVInfo.preprocessBuffer = ;
+generatedCommandsInfoNVInfo.preprocessOffset = ;
+generatedCommandsInfoNVInfo.preprocessSize = ;
+generatedCommandsInfoNVInfo.sequencesCountBuffer = ;
+generatedCommandsInfoNVInfo.sequencesCountOffset = ;
+generatedCommandsInfoNVInfo.sequencesIndexBuffer = ;
+generatedCommandsInfoNVInfo.sequencesIndexOffset = ;
+</code></pre>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to a structure extending this structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>pipelineBindPoint</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="../enums/VkPipelineBindPoint.html">VkPipelineBindPoint</a></vk-property-type>
+        <vk-property-description> is the <b>VkPipelineBindPoint</b> used for the <b>pipeline</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>pipeline</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
+        <vk-property-description> is the <b><a href="../handles/VkPipeline.html">VkPipeline</a></b> used in the generation and execution process.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>indirectCommandsLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkIndirectCommandsLayoutNV.html">VkIndirectCommandsLayoutNV</a></vk-property-type>
+        <vk-property-description> is the <b><a href="../handles/VkIndirectCommandsLayoutNV.html">VkIndirectCommandsLayoutNV</a></b> that provides the command sequence to generate.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>streamCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> defines the number of input streams</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>pStreams</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkIndirectCommandsStreamNV.html">VkIndirectCommandsStreamNV]</a></vk-property-type></vk-property-type>
+        <vk-property-description> provides an array of <b><a href="../structs/VkIndirectCommandsStreamNV.html">VkIndirectCommandsStreamNV</a></b> that provide the input data for the tokens used in <b>indirectCommandsLayout</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sequencesCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of sequences to reserve. If <b>sequencesCountBuffer</b> is <b>VK_NULL_HANDLE</b>, this is also the actual number of sequences generated.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>preprocessBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> where the preprocessed data is stored.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>preprocessOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>preprocessSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum byte size within the <b>preprocessBuffer</b> after the <b>preprocessOffset</b> that is available for preprocessing.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sequencesCountBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is a <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> in which the actual number of sequences is provided as single <i>uint32_t</i> value.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sequencesCountOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the byte offset into <b>sequencesCountBuffer</b> where the count value is stored.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sequencesIndexBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is a <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> that encodes the used sequence indices as <i>uint32_t</i> array.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>sequencesIndexOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+      <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the byte offset into <b>sequencesIndexBuffer</b> where the index values start.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Native memory reference of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the structure's memory layout.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.<vk-prototype-name>byteLength</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description>Total native byte length of the structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Internal Properties</vk-section-title>
+
+    <vk-description>These properties are mainly used by <i>nvk</i> internally.</vk-description>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.<vk-prototype-name>reset</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Resets the native memory of the structure.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.<vk-prototype-name>flush</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Writes the structure's data into the native memory.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkGeneratedCommandsInfoNV.<vk-prototype-name>reflect</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>Synchronizes the structure's data with the native memory.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

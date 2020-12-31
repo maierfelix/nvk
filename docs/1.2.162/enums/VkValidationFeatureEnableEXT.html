@@ -1,0 +1,84 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkValidationFeatureEnableEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkValidationFeatureEnableEXT</vk-name>
+
+    <vk-description>Specify validation features to enable</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkValidationFeatureEnableEXT = {
+  VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT: 0,
+  VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT: 1,
+  VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT: 2,
+  VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT: 3,
+  VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT: 4
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkValidationFeatureEnableEXT.<vk-prototype-name>VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that GPU-assisted validation is enabled. Activating this feature instruments shader programs to generate additional diagnostic data. This feature is disabled by default.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkValidationFeatureEnableEXT.<vk-prototype-name>VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the validation layers reserve a descriptor set binding slot for their own use. The layer reports a value for <b><a href="../structs/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a></b>::<b>maxBoundDescriptorSets</b> that is one less than the value reported by the device. If the device supports the binding of only one descriptor set, the validation layer does not perform GPU-assisted validation. This feature is disabled by default.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkValidationFeatureEnableEXT.<vk-prototype-name>VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that Vulkan best-practices validation is enabled. Activating this feature enables the output of warnings related to common misuse of the API, but which are not explicitly prohibited by the specification. This feature is disabled by default.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkValidationFeatureEnableEXT.<vk-prototype-name>VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the layers will process <i>debugPrintfEXT</i> operations in shaders and send the resulting output to the debug callback. This feature is disabled by default.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkValidationFeatureEnableEXT.<vk-prototype-name>VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that Vulkan synchronization validation is enabled. This feature reports resource access conflicts due to missing or incorrect synchronization operations between actions (Draw, Copy, Dispatch, Blit) reading or writing the same regions of memory. This feature is disabled by default.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

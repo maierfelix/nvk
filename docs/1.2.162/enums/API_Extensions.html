@@ -1,0 +1,1914 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>API_Extensions | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>API_Extensions</vk-name>
+
+    <vk-description></vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">API_Extensions = {
+  VK_KHR_SURFACE_SPEC_VERSION: 25,
+  VK_KHR_SWAPCHAIN_SPEC_VERSION: 70,
+  VK_KHR_DISPLAY_SPEC_VERSION: 23,
+  VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION: 10,
+  VK_KHR_XLIB_SURFACE_SPEC_VERSION: 6,
+  VK_KHR_XCB_SURFACE_SPEC_VERSION: 6,
+  VK_KHR_WAYLAND_SURFACE_SPEC_VERSION: 6,
+  VK_KHR_MIR_SURFACE_SPEC_VERSION: 4,
+  VK_KHR_ANDROID_SURFACE_SPEC_VERSION: 6,
+  VK_KHR_WIN32_SURFACE_SPEC_VERSION: 6,
+  VK_ANDROID_NATIVE_BUFFER_SPEC_VERSION: 8,
+  VK_ANDROID_NATIVE_BUFFER_NUMBER: 11,
+  VK_EXT_DEBUG_REPORT_SPEC_VERSION: 9,
+  VK_NV_GLSL_SHADER_SPEC_VERSION: 1,
+  VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION: 1,
+  VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION: 3,
+  VK_IMG_FILTER_CUBIC_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_17_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_18_SPEC_VERSION: 0,
+  VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_20_SPEC_VERSION: 0,
+  VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION: 1,
+  VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION: 1,
+  VK_EXT_DEBUG_MARKER_SPEC_VERSION: 4,
+  VK_AMD_EXTENSION_24_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_25_SPEC_VERSION: 0,
+  VK_AMD_GCN_SHADER_SPEC_VERSION: 1,
+  VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_28_SPEC_VERSION: 0,
+  VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION: 1,
+  VK_NVX_EXTENSION_30_SPEC_VERSION: 0,
+  VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION: 2,
+  VK_AMD_EXTENSION_32_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_33_SPEC_VERSION: 0,
+  VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION: 2,
+  VK_AMD_EXTENSION_35_SPEC_VERSION: 0,
+  VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION: 1,
+  VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION: 2,
+  VK_AMD_SHADER_BALLOT_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_39_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_40_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_41_SPEC_VERSION: 0,
+  VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION: 1,
+  VK_AMD_SHADER_INFO_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_44_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_45_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_46_SPEC_VERSION: 0,
+  VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION: 1,
+  VK_NVX_EXTENSION_48_SPEC_VERSION: 0,
+  VK_GOOGLE_EXTENSION_49_SPEC_VERSION: 0,
+  VK_GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION: 1,
+  VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION: 2,
+  VK_NV_EXTENSION_52_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_53_SPEC_VERSION: 0,
+  VK_KHR_MULTIVIEW_SPEC_VERSION: 1,
+  VK_IMG_FORMAT_PVRTC_SPEC_VERSION: 1,
+  VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION: 1,
+  VK_NV_EXTERNAL_MEMORY_SPEC_VERSION: 1,
+  VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION: 1,
+  VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION: 2,
+  VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION: 2,
+  VK_KHR_DEVICE_GROUP_SPEC_VERSION: 4,
+  VK_EXT_VALIDATION_FLAGS_SPEC_VERSION: 2,
+  VK_NN_VI_SURFACE_SPEC_VERSION: 1,
+  VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION: 1,
+  VK_EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION: 1,
+  VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION: 1,
+  VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION: 1,
+  VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION: 1,
+  VK_IMG_EXTENSION_69_SPEC_VERSION: 0,
+  VK_KHR_MAINTENANCE1_SPEC_VERSION: 2,
+  VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION: 1,
+  VK_KHR_WIN32_KEYED_MUTEX_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION: 1,
+  VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION: 2,
+  VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION: 2,
+  VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION: 1,
+  VK_KHR_16BIT_STORAGE_SPEC_VERSION: 1,
+  VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION: 1,
+  VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION: 1,
+  VK_NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION: 3,
+  VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION: 1,
+  VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION: 1,
+  VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION: 1,
+  VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION: 1,
+  VK_EXT_DISPLAY_CONTROL_SPEC_VERSION: 1,
+  VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION: 1,
+  VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION: 1,
+  VK_NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION: 1,
+  VK_NV_VIEWPORT_ARRAY2_SPEC_VERSION: 1,
+  VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION: 1,
+  VK_NV_VIEWPORT_SWIZZLE_SPEC_VERSION: 1,
+  VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION: 1,
+  VK_NV_EXTENSION_101_SPEC_VERSION: 0,
+  VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION: 1,
+  VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION: 1,
+  VK_NV_EXTENSION_104_SPEC_VERSION: 0,
+  VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION: 4,
+  VK_EXT_HDR_METADATA_SPEC_VERSION: 2,
+  VK_IMG_EXTENSION_107_SPEC_VERSION: 0,
+  VK_IMG_EXTENSION_108_SPEC_VERSION: 0,
+  VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION: 1,
+  VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION: 1,
+  VK_IMG_EXTENSION_111_SPEC_VERSION: 0,
+  VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_FENCE_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION: 1,
+  VK_KHR_EXTERNAL_FENCE_FD_SPEC_VERSION: 1,
+  VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION: 1,
+  VK_KHR_MAINTENANCE2_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_119_SPEC_VERSION: 0,
+  VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION: 1,
+  VK_KHR_VARIABLE_POINTERS_SPEC_VERSION: 1,
+  VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION: 1,
+  VK_MVK_IOS_SURFACE_SPEC_VERSION: 3,
+  VK_MVK_MACOS_SURFACE_SPEC_VERSION: 3,
+  VK_MVK_MOLTENVK_SPEC_VERSION: 0,
+  VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION: 1,
+  VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION: 1,
+  VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION: 3,
+  VK_EXT_DEBUG_UTILS_SPEC_VERSION: 2,
+  VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION: 3,
+  VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION: 2,
+  VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION: 1,
+  VK_AMD_GPU_SHADER_INT16_SPEC_VERSION: 2,
+  VK_AMD_EXTENSION_134_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_135_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_136_SPEC_VERSION: 0,
+  VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION: 1,
+  VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION: 1,
+  VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_140_SPEC_VERSION: 0,
+  VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_142_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_143_SPEC_VERSION: 0,
+  VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION: 1,
+  VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION: 1,
+  VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION: 1,
+  VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION: 1,
+  VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION: 2,
+  VK_NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION: 1,
+  VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION: 11,
+  VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION: 1,
+  VK_KHR_RAY_QUERY_SPEC_VERSION: 1,
+  VK_NV_EXTENSION_152_SPEC_VERSION: 0,
+  VK_NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION: 1,
+  VK_NV_FILL_RECTANGLE_SPEC_VERSION: 1,
+  VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION: 1,
+  VK_EXT_POST_DEPTH_COVERAGE_SPEC_VERSION: 1,
+  VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION: 14,
+  VK_KHR_BIND_MEMORY_2_SPEC_VERSION: 1,
+  VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_160_SPEC_VERSION: 0,
+  VK_EXT_VALIDATION_CACHE_SPEC_VERSION: 1,
+  VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION: 2,
+  VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION: 1,
+  VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION: 1,
+  VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION: 3,
+  VK_NV_RAY_TRACING_SPEC_VERSION: 3,
+  VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION: 2,
+  VK_EXT_EXTENSION_168_SPEC_VERSION: 0,
+  VK_KHR_MAINTENANCE3_SPEC_VERSION: 1,
+  VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION: 1,
+  VK_EXT_FILTER_CUBIC_SPEC_VERSION: 3,
+  VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION: 4,
+  VK_QCOM_extension_173_SPEC_VERSION: 0,
+  VK_QCOM_extension_174_SPEC_VERSION: 0,
+  VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION: 2,
+  VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_177_SPEC_VERSION: 0,
+  VK_KHR_8BIT_STORAGE_SPEC_VERSION: 1,
+  VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION: 1,
+  VK_AMD_BUFFER_MARKER_SPEC_VERSION: 1,
+  VK_KHR_SHADER_ATOMIC_INT64_SPEC_VERSION: 1,
+  VK_KHR_SHADER_CLOCK_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_183_SPEC_VERSION: 0,
+  VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION: 1,
+  VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION: 1,
+  VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION: 2,
+  VK_KHR_EXTENSION_187_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_188_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_189_SPEC_VERSION: 0,
+  VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION: 1,
+  VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION: 3,
+  VK_GGP_FRAME_TOKEN_SPEC_VERSION: 1,
+  VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION: 1,
+  VK_GOOGLE_EXTENSION_194_SPEC_VERSION: 0,
+  VK_GOOGLE_EXTENSION_195_SPEC_VERSION: 0,
+  VK_GOOGLE_EXTENSION_196_SPEC_VERSION: 0,
+  VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION: 1,
+  VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION: 4,
+  VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION: 1,
+  VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION: 1,
+  VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION: 1,
+  VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION: 1,
+  VK_NV_MESH_SHADER_SPEC_VERSION: 1,
+  VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION: 1,
+  VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION: 2,
+  VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION: 1,
+  VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION: 2,
+  VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION: 2,
+  VK_KHR_EXTENSION_209_SPEC_VERSION: 0,
+  VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION: 1,
+  VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION: 2,
+  VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION: 3,
+  VK_EXT_PCI_BUS_INFO_SPEC_VERSION: 2,
+  VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION: 1,
+  VK_FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION: 1,
+  VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_217_SPEC_VERSION: 0,
+  VK_EXT_METAL_SURFACE_SPEC_VERSION: 1,
+  VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_220_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_221_SPEC_VERSION: 0,
+  VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_223_SPEC_VERSION: 0,
+  VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION: 1,
+  VK_GOOGLE_DECORATE_STRING_SPEC_VERSION: 1,
+  VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION: 2,
+  VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION: 1,
+  VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_229_SPEC_VERSION: 0,
+  VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_231_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_232_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_233_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_234_SPEC_VERSION: 0,
+  VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION: 1,
+  VK_AMD_EXTENSION_236_SPEC_VERSION: 0,
+  VK_KHR_SPIRV_1_4_SPEC_VERSION: 1,
+  VK_EXT_MEMORY_BUDGET_SPEC_VERSION: 1,
+  VK_EXT_MEMORY_PRIORITY_SPEC_VERSION: 1,
+  VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION: 1,
+  VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION: 1,
+  VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION: 1,
+  VK_INTEL_EXTENSION_243_SPEC_VERSION: 0,
+  VK_MESA_EXTENSION_244_SPEC_VERSION: 0,
+  VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION: 2,
+  VK_EXT_TOOLING_INFO_SPEC_VERSION: 1,
+  VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION: 1,
+  VK_EXT_VALIDATION_FEATURES_SPEC_VERSION: 4,
+  VK_KHR_EXTENSION_249_SPEC_VERSION: 0,
+  VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION: 1,
+  VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION: 1,
+  VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION: 1,
+  VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION: 1,
+  VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_255_SPEC_VERSION: 0,
+  VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION: 4,
+  VK_EXT_HEADLESS_SURFACE_SPEC_VERSION: 1,
+  VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_259_SPEC_VERSION: 0,
+  VK_EXT_LINE_RASTERIZATION_SPEC_VERSION: 1,
+  VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION: 1,
+  VK_EXT_HOST_QUERY_RESET_SPEC_VERSION: 1,
+  VK_GOOGLE_EXTENSION_263_SPEC_VERSION: 0,
+  VK_BRCM_EXTENSION_264_SPEC_VERSION: 0,
+  VK_BRCM_EXTENSION_265_SPEC_VERSION: 0,
+  VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_267_SPEC_VERSION: 0,
+  VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION: 1,
+  VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION: 4,
+  VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION: 1,
+  VK_INTEL_EXTENSION_271_SPEC_VERSION: 0,
+  VK_INTEL_EXTENSION_272_SPEC_VERSION: 0,
+  VK_INTEL_EXTENSION_273_SPEC_VERSION: 0,
+  VK_INTEL_EXTENSION_274_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_275_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_276_SPEC_VERSION: 0,
+  VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION: 1,
+  VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION: 3,
+  VK_NV_EXTENSION_279_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_280_SPEC_VERSION: 0,
+  VK_ARM_EXTENSION_281_SPEC_VERSION: 0,
+  VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION: 1,
+  VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_284_SPEC_VERSION: 0,
+  VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_286_SPEC_VERSION: 0,
+  VK_EXT_ROBUSTNESS_2_SPEC_VERSION: 1,
+  VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION: 12,
+  VK_EXT_EXTENSION_289_SPEC_VERSION: 0,
+  VK_GOOGLE_USER_TYPE_SPEC_VERSION: 1,
+  VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION: 1,
+  VK_NV_EXTENSION_292_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_293_SPEC_VERSION: 0,
+  VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_295_SPEC_VERSION: 0,
+  VK_EXT_PRIVATE_DATA_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_297_SPEC_VERSION: 0,
+  VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION: 3,
+  VK_KHR_EXTENSION_299_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_300_SPEC_VERSION: 0,
+  VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION: 1,
+  VK_QCOM_render_pass_store_ops_SPEC_VERSION: 2,
+  VK_QCOM_extension_303_SPEC_VERSION: 0,
+  VK_QCOM_extension_304_SPEC_VERSION: 0,
+  VK_QCOM_extension_305_SPEC_VERSION: 0,
+  VK_QCOM_extension_306_SPEC_VERSION: 0,
+  VK_QCOM_extension_307_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_308_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_309_SPEC_VERSION: 0,
+  VK_QCOM_extension_310_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_311_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_312_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_313_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_314_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_315_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_316_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_317_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_318_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_319_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_320_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_321_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_322_SPEC_VERSION: 0,
+  VK_AMD_EXTENSION_323_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_324_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_325_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_326_SPEC_VERSION: 0,
+  VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION: 1,
+  VK_NV_EXTENSION_328_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_329_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_330_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_331_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_332_SPEC_VERSION: 0,
+  VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION: 1,
+  VK_QCOM_rotated_copy_commands_SPEC_VERSION: 0,
+  VK_KHR_EXTENSION_335_SPEC_VERSION: 0,
+  VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_337_SPEC_VERSION: 0,
+  VK_KHR_COPY_COMMANDS_2_SPEC_VERSION: 1,
+  VK_ARM_EXTENSION_339_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_340_SPEC_VERSION: 0,
+  VK_EXT_4444_FORMATS_SPEC_VERSION: 1,
+  VK_EXT_EXTENSION_342_SPEC_VERSION: 0,
+  VK_ARM_EXTENSION_343_SPEC_VERSION: 0,
+  VK_ARM_EXTENSION_344_SPEC_VERSION: 0,
+  VK_ARM_EXTENSION_345_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_346_SPEC_VERSION: 0,
+  VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION: 1,
+  VK_KHR_EXTENSION_350_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_351_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_352_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_353_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_354_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_355_SPEC_VERSION: 0,
+  VK_EXT_VERTEX_ATTRIBUTE_ALIASING_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_357: 0,
+  VK_KHR_EXTENSION_358_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_359: 0,
+  VK_EXT_EXTENSION_360: 0,
+  VK_EXT_EXTENSION_361: 0,
+  VK_EXT_EXTENSION_362_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_363_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_364_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_365_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_366_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_367_SPEC_VERSION: 0,
+  VK_EXT_EXTENSION_368_SPEC_VERSION: 0,
+  VK_QCOM_EXTENSION_369_SPEC_VERSION: 0,
+  VK_HUAWEI_EXTENSION_370_SPEC_VERSION: 0,
+  VK_HUAWEI_EXTENSION_371_SPEC_VERSION: 0,
+  VK_NV_EXTENSION_372_SPEC_VERSION: 0
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SWAPCHAIN_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DISPLAY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_XLIB_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_XCB_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_WAYLAND_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_MIR_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_ANDROID_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_WIN32_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ANDROID_NATIVE_BUFFER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ANDROID_NATIVE_BUFFER_NUMBER</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEBUG_REPORT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_GLSL_SHADER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_FILTER_CUBIC_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_17_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_18_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_20_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEBUG_MARKER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_24_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_25_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_GCN_SHADER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_28_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NVX_EXTENSION_30_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_32_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_33_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_35_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_BALLOT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_39_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_40_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_41_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_INFO_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_44_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_45_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_46_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NVX_EXTENSION_48_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_EXTENSION_49_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_52_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_53_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_MULTIVIEW_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_FORMAT_PVRTC_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTERNAL_MEMORY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DEVICE_GROUP_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_VALIDATION_FLAGS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NN_VI_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_ASTC_DECODE_MODE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_EXTENSION_69_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_MAINTENANCE1_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_WIN32_KEYED_MUTEX_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_16BIT_STORAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DISPLAY_CONTROL_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_VIEWPORT_ARRAY2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_VIEWPORT_SWIZZLE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_101_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_104_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_HDR_METADATA_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_EXTENSION_107_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_EXTENSION_108_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_IMG_EXTENSION_111_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_FENCE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTERNAL_FENCE_FD_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_MAINTENANCE2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_119_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_VARIABLE_POINTERS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_MVK_IOS_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_MVK_MACOS_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_MVK_MOLTENVK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEBUG_UTILS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_GPU_SHADER_INT16_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_134_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_135_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_136_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_140_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_142_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_143_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_ACCELERATION_STRUCTURE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_RAY_TRACING_PIPELINE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_RAY_QUERY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_152_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_FILL_RECTANGLE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_POST_DEPTH_COVERAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_BIND_MEMORY_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_160_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_VALIDATION_CACHE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_RAY_TRACING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_168_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_MAINTENANCE3_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_FILTER_CUBIC_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_173_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_174_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_177_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_8BIT_STORAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_BUFFER_MARKER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_ATOMIC_INT64_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_CLOCK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_183_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_187_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_188_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_189_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GGP_FRAME_TOKEN_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_EXTENSION_194_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_EXTENSION_195_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_EXTENSION_196_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_MESH_SHADER_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_209_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_PCI_BUS_INFO_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_217_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_METAL_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_220_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_221_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_223_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_DECORATE_STRING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_FRAGMENT_SHADING_RATE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_229_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_231_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_232_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_233_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_234_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_IMAGE_ATOMIC_INT64_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_236_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SPIRV_1_4_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_MEMORY_BUDGET_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_MEMORY_PRIORITY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_EXTENSION_243_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_MESA_EXTENSION_244_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_TOOLING_INFO_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_VALIDATION_FEATURES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_249_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_255_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_HEADLESS_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_259_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_LINE_RASTERIZATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_HOST_QUERY_RESET_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_EXTENSION_263_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_BRCM_EXTENSION_264_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_BRCM_EXTENSION_265_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_267_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_EXTENSION_271_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_EXTENSION_272_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_EXTENSION_273_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_INTEL_EXTENSION_274_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_275_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_276_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_279_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_280_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ARM_EXTENSION_281_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_284_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DEVICE_MEMORY_REPORT_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_286_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_ROBUSTNESS_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_289_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_GOOGLE_USER_TYPE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_PIPELINE_LIBRARY_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_292_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_293_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_295_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_PRIVATE_DATA_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_297_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_299_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_300_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_render_pass_store_ops_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_303_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_304_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_305_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_306_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_307_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_308_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_309_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_extension_310_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_311_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_312_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_313_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_314_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_315_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_316_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_317_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_318_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_319_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_320_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_321_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_322_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_AMD_EXTENSION_323_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_324_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_325_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_326_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_328_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_329_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_330_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_331_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_332_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_rotated_copy_commands_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_335_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_337_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_COPY_COMMANDS_2_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ARM_EXTENSION_339_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_340_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_4444_FORMATS_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_342_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ARM_EXTENSION_343_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ARM_EXTENSION_344_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_ARM_EXTENSION_345_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_346_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_350_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_351_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_352_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_353_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_354_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_355_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_VERTEX_ATTRIBUTE_ALIASING_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_357</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_KHR_EXTENSION_358_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_359</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_360</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_361</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_362_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_363_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_364_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_365_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_366_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_367_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_EXT_EXTENSION_368_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_QCOM_EXTENSION_369_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_HUAWEI_EXTENSION_370_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_HUAWEI_EXTENSION_371_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>API_Extensions.<vk-prototype-name>VK_NV_EXTENSION_372_SPEC_VERSION</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
