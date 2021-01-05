@@ -34,7 +34,8 @@
     "build": "node ./build.js",
     "generate": "node --experimental-modules --experimental-json-modules ./generator/index.mjs",
     "release": "node ./make-release.js",
-    "all": "npm run generate --docs & npm run build & npm run release"
+    "all": "npm run generate --docs & npm run build & npm run release",
+    "postinstall": "node postInstall.js"
   },
   "devDependencies": {
     "ncp": "^2.0.0",
